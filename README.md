@@ -3,7 +3,10 @@
 
 This book is an open-access (CC-BY-NC) introduction to the principles of computer science, using Python as a sample language. It is suitable for college-level introductions to computer science or for self-study. You are welcome to use and adapt as you see fit. I welcome ideas for changes or corrections! You can email me at brendan.p.shea@gmail.com. (NOTE: Students should email me at my school email address).
 
-## Chapter 0: Computers and Hardware
+## Outline of the Book
+The book contains 12 chapters, focused on a mix of theoretical and practical concepts and applications.
+
+### Chapter 0: Computers and Hardware
 
 In this chapter, you'll embark on a journey to understand the fundamental concepts of computers and hardware. You'll start by learning what a computer is and exploring the field of Computer Science. You'll then delve into the Binary number system, the language of zeros and ones that computers understand, and the role of transistors, the tiny switches that are the building blocks of all digital devices.
 
@@ -15,7 +18,7 @@ Finally, you'll get introduced to the operating system concept, focusing on the 
 
 Understanding these fundamental concepts is crucial to your journey in computer science. This chapter lays the groundwork for everything else you'll learn in this course and beyond. 
 
-## Chapter 1: Files and Formats
+### Chapter 1: Files and Formats
 
 In this chapter, you'll delve into the world of computer files and formats. You'll learn what a computer file is, how it's stored, and how its data layout is determined by its file format. You'll also understand the role of file extensions in indicating the type of data stored in a file.
 
