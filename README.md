@@ -1,6 +1,7 @@
-# Computing Concepts: Introduction
+# Computing Concepts With Python
 ### Brendan Shea, PhD
 
+This book is an open-access (CC-BY-NC) introduction to the principles of computer science, using Python as a sample language. It is suitable for college-level introductions to computer science or for self-study. You are welcome to use and adapt as you see fit. I welcome ideas for changes or corrections! You can email me at brendan.p.shea@gmail.com. (NOTE: Students should email me at my school email address).
 
 ## Chapter 0: Computers and Hardware
 
