@@ -54,7 +54,7 @@ for duck in duck_list:
 As you explain your code, you validate your knowledge. Each step you articulate builds your confidence, like a duck takes to water.
 
 ```java
-// Flawed Java Code with a Duck Misstep:
+// Flawed Java Code:
 if (duck.isInPond());
 {
     // A wild semicolon appears! It should not be there.
@@ -78,7 +78,7 @@ UPDATE ducks SET duck_name = 'Sarah' WHERE ducki_id = 123
 The duck teaches you to see the lighter side of debugging. Smile at the errors, and let the duck's calm demeanor guide you to a solution.
 
 ```python
-# Flawed Python Code with a Duck's Humor:
+# Flawed Python Code:
 if duck_color == "green":
 print("This might be a Mallard.")  # Indentation makes all the difference!
 ```
