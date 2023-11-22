@@ -1,0 +1,12 @@
+# Site settings
+title: Computing Concepts With Python
+description: An interactive textbook teaching basic concepts of computer science and programming.
+
+# Build settings
+remote_theme: pages-themes/dinky@v0.2.0
+show_downloads: true
+
+# Optional settings
+author: Brendan P. Shea, PhD
+email: brendanpshea@gmail.com
+github_username:  brendanpshea
