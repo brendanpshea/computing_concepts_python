@@ -1,7 +1,7 @@
-Repository Overview: Computing Concepts with Python
-===================================================
+# Repository Overview: Computing Concepts with Python
+### Brendan Shea, PhD | Rochester Community and Technical College
 
-Welcome to the Github repository for the course "Computing Concepts with Python". This engaging and comprehensive course takes a hands-on approach to introduce various computing concepts using the highly popular and beginner-friendly Python programming language. The Jupyter notebooks in this repository serve as an interactive learning platform, offering detailed explanations, examples, and problems that students can experiment with directly.
+Welcome to the Github repository (and interactive textbook) for "Computing Concepts with Python". This engaging and comprehensive course takes a hands-on approach to introduce various computing concepts using the highly popular and beginner-friendly Python programming language. The Jupyter notebooks in this repository serve as an interactive learning platform, offering detailed explanations, examples, and problems that students can experiment with directly. 
 
 The course's structure is as follows:
 
