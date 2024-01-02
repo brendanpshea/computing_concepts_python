@@ -4,12 +4,13 @@ Embark on an engaging journey into the world of computing with "Computing Concep
 
 "Computing Concepts with Python" is a resource that transforms the teaching landscape. As an Open Educational Resource, it is freely accessible, allowing you to integrate it seamlessly into your curriculum. Each chapter is meticulously structured to provide comprehensive coverage of key computing topics while encouraging active learning. The interactive notebooks are perfect for classroom demonstrations, homework assignments, or as a foundation for more advanced projects. With this textbook, you're not just providing information; you're offering an immersive educational tool that sparks curiosity, fosters critical thinking, and prepares students for the challenges of the modern technological world.
 
-Join us in exploring the exciting realm of computing with "Computing Concepts with Python" – where learning is interactive, accessible, and relentlessly intriguing!
+If you've never used Google Colab before, I think you'll find it's pretty intutive. I've put together a tutorial here: [Ch 0: Brendan's Colab Tutorial](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_00_Intro_to_Colab.ipynb).
 
-### [Ch 1: Computers and Hardware](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_00_Intro_to_Colab.ipynb)
+
+### [Ch 1: Computers and Hardware](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_01_ComputersHardware.ipynb)
  This chapter welcomes students to the study of computer science, emphasizing the interactive lecture notes as the class's primary resource. It offers an introductory lecture on computer hardware, aiming to provide an understanding of the physical components of computers. The chapter covers topics such as processors, memory, storage devices, and input/output mechanisms. It emphasizes the importance of understanding computer hardware as the foundation for software interactions and computational tasks.
 
-### [Ch 2: Files and Formats](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_01_ComputersHardware.ipynb)
+### [Ch 2: Files and Formats](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_02_Files_and_Formats.ipynb)
 This chapter dives into the concept of digital files and formats, using engaging examples like digital artwork, reports, and music recordings to explain the necessity of files as a digital home for various data types. The focus is on understanding the different file types and formats, their specific uses, and the importance of choosing the right format for different kinds of data. This chapter is crucial for grasping how data is stored, accessed, and shared in the digital world.
 
 ### [Ch 3: Computer Networking](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_03_Networks.ipynb)
