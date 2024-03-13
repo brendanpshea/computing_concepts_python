@@ -4,7 +4,6 @@
 "The overall narrative of a video game, including the sequence of events and character interactions, is an example of an algorithm.","false"
 "Theoretical analysis of algorithms involves understanding the fundamental properties and limitations of algorithms using mathematical tools.","true"
 "Empirical evaluation of algorithms involves measuring the real-world performance of algorithms on actual hardware and software systems.","true"
-"Computer scientists actively research and develop new algorithmic techniques to solve emerging problems and improve existing solutions.","true"
 "The 'for' loop in Python is used to repeatedly execute a block of code as long as a specified condition is true.","false"
 "The 'range()' function in Python generates a sequence of numbers based on the provided start, stop, and step values.","true"
 "Nested loops are loops inside other loops, allowing for the execution of multiple iterations within each iteration of the outer loop.","true"
@@ -20,6 +19,10 @@
 "Big O notation is used to describe the efficiency of an algorithm in terms of its running time or space requirements.","true"
 "An algorithm with a time complexity of O(n^2) is generally more efficient than an algorithm with a time complexity of O(log n) for large datasets.","false"
 "Merge sort has a time complexity of O(n log n), making it more efficient than bubble sort for large datasets.","true"
-"Understanding the efficiency of different algorithms is crucial for solving problems and optimizing code.","true"
 "The search-sort tradeoff highlights the relationship between the efficiency of searching for data and the organization of that data.","true"
 "In real-life scenarios, it may be necessary to adjust the problem-solving strategy depending on the context or constraints of the situation.","true"
+"Loops can only execute a fixed number of times.", false
+"Algorithms are independent of programming languages.", true
+"Nested loops can lead to exponential time complexity.", true
+"Algorithms with higher time complexity are always slower in execution.", false
+"All sorting algorithms have a best-case time complexity of O(n log n).", false
