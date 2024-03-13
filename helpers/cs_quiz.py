@@ -1,6 +1,7 @@
 import csv
 import requests
 import random
+import textwrap
 
 def read_questions(url):
     try:
@@ -18,8 +19,10 @@ def read_questions(url):
         return []
 
 def ask_question(question):
+    # Use the textwrap module to wrap text at 80 characters
+    wrapped_question = textwrap.fill(question, width=80)
     while True:
-        user_answer = input(f"{question} (True/False/Quit): ")
+        user_answer = input(f"{wrapped_question} (True/False/Quit): ")
         user_answer = user_answer.lower()
         if user_answer in ['true', 'false', 'quit']:
             return user_answer
