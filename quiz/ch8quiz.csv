@@ -23,3 +23,15 @@ Regularly backing up your data is not necessary if you have a reliable computer.
 A multi-layered approach to data security is recommended.,true
 Staying informed about the latest security best practices is important for protecting your data.,true
 The CIA triad consists of Confidentiality, Integrity, and Authenticity.,false
+The Enigma machine was an electro-mechanical device used for encryption during World War II.,true
+The Kasiski examination is a method for determining the length of the keyword in a Vigenère cipher.,true
+The Vernam cipher, also known as the one-time pad, is vulnerable to frequency analysis.,false
+Symmetric encryption algorithms use different keys for encryption and decryption.,false
+RSA is an example of an asymmetric encryption algorithm.,true
+The security of RSA relies on the difficulty of factoring large prime numbers.,true
+Hashing is a reversible process that can be used to recover the original input from the hash value.,false
+The MD5 algorithm is considered secure for cryptographic purposes.,false
+Digital signatures provide non-repudiation, ensuring the authenticity of the sender.,true
+The Modulo Hash algorithm ensures collision resistance.,false
+Cybercriminals often target individuals' personal information for identity theft and financial fraud.,true
+
