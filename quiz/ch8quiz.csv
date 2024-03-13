@@ -2,7 +2,7 @@ The Caesar cipher is an example of a transposition cipher.,false
 The Vigenère cipher is a polyalphabetic substitution cipher.,true
 The Enigma machine was used by the Allied forces during World War II.,false
 The Kasiski examination is a method for breaking the Caesar cipher.,false
-The Vernam cipher, also known as the one-time pad, provides unbreakable security if used correctly.,true
+The Vernam cipher-also known as the one-time pad-provides unbreakable security if used correctly.,true
 Symmetric encryption uses the same key for both encryption and decryption.,true
 In asymmetric encryption, the public key is used for decryption and the private key is used for encryption.,false
 The SHA-256 algorithm is an example of a symmetric encryption algorithm.,false
