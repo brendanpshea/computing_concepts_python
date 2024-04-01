@@ -1,0 +1,58 @@
+"[CREATE TABLE Planets (PlanetID INT, Name VARCHAR(50), Population INT)] creates a new table named Planets with columns for PlanetID, Name, and Population.", 1
+"[MAKE DATAFRAME Planets WITH (PlanetID INT, Name VARCHAR(50), Population INT)] creates a new table named Planets with columns for PlanetID, Name, and Population.", 0
+"[INSERT INTO Species (SpeciesID, Name) VALUES (1, 'Human'), (2, 'Wookiee'), (3, 'Hutt')] inserts three rows into the Species table.", 1
+"[APPEND (1, 'Human'), (2, 'Wookiee'), (3, 'Hutt') TO Species (SpeciesID, Name)] inserts three rows into the Species table.", 0
+"[SELECT Name, Population FROM Planets] retrieves the Name and Population columns from the Planets table.", 1
+"[EXTRACT Name, Population FROM Planets] retrieves the Name and Population columns from the Planets table.", 0
+"[SELECT * FROM Starships ORDER BY Length DESC] retrieves all columns from the Starships table, sorted by the Length column in descending order.", 1
+"[GET * FROM Starships SORT BY Length DESCENDING] retrieves all columns from the Starships table, sorted by the Length column in descending order.", 0
+"[SELECT COUNT(*) AS NumCharacters FROM Characters] returns the number of rows in the Characters table with the alias 'NumCharacters'.", 1
+"[SUM(*) AS NumCharacters FROM Characters] returns the number of rows in the Characters table with the alias 'NumCharacters'.", 0
+"[SELECT Name, Mass FROM Starships WHERE Mass > 1000000] retrieves the Name and Mass of starships with a Mass greater than 1,000,000.", 1
+"[FIND Name, Mass FROM Starships IF Mass > 1000000] retrieves the Name and Mass of starships with a Mass greater than 1,000,000.", 0
+"[SELECT DISTINCT Species FROM Characters] returns the unique species from the Characters table.", 1
+"[GET UNIQUE Species FROM Characters] returns the unique species from the Characters table.", 0
+"[SELECT Name FROM Planets ORDER BY Name LIMIT 5] retrieves the first 5 planet names in alphabetical order.", 1
+"[LIST Name FROM Planets SORT BY Name TAKE 5] retrieves the first 5 planet names in alphabetical order.", 0
+"[CREATE TABLE Jedi (JediID INT, Name VARCHAR(50), Rank VARCHAR(20))] creates a new table named Jedi with columns for JediID, Name, and Rank.", 1
+"[DEFINE Jedi AS (JediID INT, Name VARCHAR(50), Rank VARCHAR(20))] creates a new table named Jedi with columns for JediID, Name, and Rank.", 0
+"[INSERT INTO Planets (PlanetID, Name, Population) VALUES (1, 'Tatooine', 200000), (2, 'Naboo', 4500000000), (3, 'Coruscant', 1000000000000)] inserts three rows into the Planets table.", 1
+"[ADD (1, 'Tatooine', 200000), (2, 'Naboo', 4500000000), (3, 'Coruscant', 1000000000000) INTO Planets (PlanetID, Name, Population)] inserts three rows into the Planets table.", 0
+"[SELECT Title, EpisodeID FROM Films ORDER BY ReleaseDate] retrieves the Title and EpisodeID of films, ordered by their release date.", 1
+"[EXTRACT Title, EpisodeID FROM Films SORTED BY ReleaseDate] retrieves the Title and EpisodeID of films, ordered by their release date.", 0
+"[SELECT Species, AVG(Height) AS AvgHeight FROM Characters GROUP BY Species] calculates the average height for each species in the Characters table.", 1
+"[CALCULATE AVG(Height) AS AvgHeight, Species FROM Characters CLUSTER BY Species] calculates the average height for each species in the Characters table.", 0
+"[SELECT Name, Manufacturer, Cost FROM Starships WHERE Cost < 1000000] retrieves the Name, Manufacturer, and Cost of starships with a Cost less than 1,000,000.", 1
+"[LIST Name, Manufacturer, Cost FROM Starships IF Cost < 1000000] retrieves the Name, Manufacturer, and Cost of starships with a Cost less than 1,000,000.", 0
+"[SELECT Name FROM Characters WHERE Name LIKE '%Skywalker%'] retrieves characters whose name contains 'Skywalker'.", 1
+"[FIND Name FROM Characters WHERE Name CONTAINS '%Skywalker%'] retrieves characters whose name contains 'Skywalker'.", 0
+"[SELECT COUNT(*) FROM Planets WHERE Population > 1000000000] counts the number of planets with a population greater than 1 billion.", 1
+"[SUM(*) FROM Planets IF Population > 1000000000] counts the number of planets with a population greater than 1 billion.", 0
+"[CREATE TABLE Sith (SithID INT, Name VARCHAR(50), Apprentice VARCHAR(50))] creates a new table named Sith with columns for SithID, Name, and Apprentice.", 1
+"[DEFINE TABLE Sith WITH COLUMNS (SithID INT, Name VARCHAR(50), Apprentice VARCHAR(50))] creates a new table named Sith with columns for SithID, Name, and Apprentice.", 0
+"[INSERT INTO Jedi (JediID, Name, Rank) VALUES (1, 'Yoda', 'Grand Master'), (2, 'Obi-Wan Kenobi', 'Master'), (3, 'Anakin Skywalker', 'Knight')] inserts three rows into the Jedi table.", 1
+"[APPEND TO Jedi (JediID, Name, Rank) WITH (1, 'Yoda', 'Grand Master'), (2, 'Obi-Wan Kenobi', 'Master'), (3, 'Anakin Skywalker', 'Knight')] inserts three rows into the Jedi table.", 0
+"[SELECT Name, HomePlanet FROM Characters LIMIT 10] retrieves the Name and HomePlanet of the first 10 characters.", 1
+"[GET Name, HomePlanet FROM Characters TAKE 10] retrieves the Name and HomePlanet of the first 10 characters.", 0
+"[SELECT Model, Crew FROM Starships WHERE Passengers > 50] retrieves the Model and Crew of starships that can carry more than 50 passengers.", 1
+"[EXTRACT Model, Crew FROM Starships IF Passengers > 50] retrieves the Model and Crew of starships that can carry more than 50 passengers.", 0
+"Business rules establish the policies, procedures, and constraints that a database design must respect.", 1
+"Business rules are the physical components, such as servers and storage devices, that a database system requires.", 0
+"Identifying entities is a crucial step in database design as they will become the tables in the database.", 1
+"Identifying entities involves determining the hardware specifications for the database server.", 0
+"Attributes in a database design represent the details or characteristics that describe each entity and become the columns in each table.", 1
+"Attributes in a database design are the relationships between tables that ensure referential integrity.", 0
+"Relationships in a database design map out how one entity interacts with another, helping to understand where to use primary and foreign keys.", 1
+"Relationships in a database design refer to the performance metrics, such as query response time and throughput.", 0
+"Physical modeling in database design involves translating the conceptual model into SQL code, including deciding on data types and specifying keys.", 1
+"Physical modeling in database design is the process of optimizing the database for maximum storage capacity.", 0
+"Primary keys in a database table uniquely identify each record and must contain a unique value.", 1
+"Primary keys in a database table are used to establish relationships between multiple tables.", 0
+"Foreign keys in a database table are used to link two tables together by referencing the primary key in another table.", 1
+"Foreign keys in a database table are used to encrypt sensitive data to ensure security.", 0
+"Serverless databases like SQLite are suitable for small-scale applications and are easy to set up with minimal configuration.", 1
+"Serverless databases like SQLite are designed for high-volume transactional processing in enterprise environments.", 0
+"Server-client databases like PostgreSQL and MySQL are designed for scalability and can accommodate complex operations, making them ideal for mid-to-large-scale applications.", 1
+"Server-client databases like PostgreSQL and MySQL are used for storing unstructured data, such as images and videos.", 0
+"Open-source databases like SQLite and PostgreSQL are community-driven, free to use, and adaptable, benefiting from contributions from a community of developers.", 1
+"Open-source databases like SQLite and PostgreSQL are proprietary software with strict licensing requirements.", 0
