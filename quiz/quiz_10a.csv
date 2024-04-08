@@ -1,0 +1,30 @@
+"Dictionaries in Python are defined using curly braces {}.", 1
+"Dictionaries in Python are defined using parentheses ().", 0
+"In a dictionary, keys must be immutable data types, while values can be mutable or immutable.", 1
+"In a dictionary, keys can be mutable data types, while values must be immutable.", 0
+"The keys() method returns a view object that contains all the keys in a dictionary.", 1
+"The get_keys() method returns a list of all the keys in a dictionary.", 0
+"The values() method returns a view object that contains all the values in a dictionary.", 1
+"The get_values() method returns a list of all the values in a dictionary.", 0
+"The items() method returns a view object that contains tuples of key-value pairs in a dictionary.", 1
+"The get_items() method returns a list of tuples containing the key-value pairs in a dictionary.", 0
+"You can add a new key-value pair to a dictionary using the update() method or by using the square bracket notation.", 1
+"You can add a new key-value pair to a dictionary using the append() method or by using the curly brace notation.", 0
+"The get() method returns the value associated with a key, or a default value if the key is not found.", 1
+"The find() method returns the value associated with a key, or None if the key is not found.", 0
+"The pop() method removes and returns the value associated with a specific key in a dictionary.", 1
+"The remove() method removes and returns the key-value pair associated with a specific key in a dictionary.", 0
+"A class is a blueprint for creating objects with predefined properties and methods.", 1
+"A class is a function that creates objects with predefined properties and methods.", 0
+"Objects are instances of a class, created using the class constructor.", 1
+"Objects are instances of a class, created using the object() function.", 0
+"Classes are defined using the class keyword, followed by the class name.", 1
+"Classes are defined using the def keyword, followed by the class name and a colon.", 0
+"The init() method is a special method used to initialize the attributes of a class.", 1
+"The initialize() method is a special method used to initialize the attributes of a class.", 0
+"The self parameter refers to the current instance of the class and is used to access its attributes and methods.", 1
+"The this parameter refers to the current instance of the class and is used to access its attributes and methods.", 0
+"Inheritance allows a new class to inherit attributes and methods from an existing class.", 1
+"Inheritance allows an existing class to inherit attributes and methods from a new class using the inherits keyword.", 0
+"The str() method is used to define a string representation of an object.", 1
+"The string() method is used to define a string representation of an object.", 0
