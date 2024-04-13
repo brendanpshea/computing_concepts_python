@@ -27,3 +27,33 @@
 "Polling is a method whereby the computer regularly checks the status of an input/output device to see if it's ready for data transfer.", 1
 "An interrupt is a method whereby the computer regularly checks the status of an input/output device to see if it's ready for data transfer.", 0
 "The operating system is software that manages hardware resources, provides services for software applications, and acts as an interface between the user and the hardware.", 1
+"Aristotle's work on formal logic laid the groundwork for creating predictable and efficient algorithms in computer science.", 1
+"Aristotle is considered the father of the modern computer due to his invention of the first mechanical calculating device.", 0
+"The term 'algorithm' is derived from the name of the Persian mathematician Al-Khwarizmi.", 1
+"Al-Khwarizmi is credited with inventing the first programmable computer.", 0
+"Leibniz developed the binary number system, which is the foundation of how computers process information.", 1
+"Leibniz is known for inventing the first electronic computer.", 0
+"Bayes' Theorem is a crucial tool in the development of machine learning algorithms.", 1
+"Bayes' Theorem was developed specifically for use in computer graphics and video game design.", 0
+"Charles Babbage designed the first concept of a general-purpose computer called the Analytical Engine.", 1
+"Charles Babbage is known for developing the first high-level programming language.", 0
+"Ada Lovelace is recognized as the world's first computer programmer.", 1
+"Ada Lovelace designed the first digital computer.", 0
+"George Boole's Boolean algebra forms the basis of digital circuit design in computer science.", 1
+"George Boole is known for inventing the first computer mouse.", 0
+"Herman Hollerith invented a punch card system that revolutionized data processing.", 1
+"Herman Hollerith is credited with developing the first object-oriented programming language.", 0
+"Alan Turing's concept of the Turing machine helped formalize the ideas of algorithms and computation.", 1
+"Alan Turing invented the first commercial personal computer.", 0
+"The von Neumann architecture, which is used in most modern computers, stores both instructions and data in the computer's memory.", 1
+"The von Neumann architecture is a type of computer processor developed by Intel.", 0
+"Claude Shannon is known as the 'father of information theory'.", 1
+"Claude Shannon invented the first computer operating system.", 0
+"Grace Hopper believed that programming languages should be as understandable as English.", 1
+"Grace Hopper was the inventor of the Python programming language.", 0
+"Donald Knuth's book series 'The Art of Computer Programming' is considered a crucial resource for understanding and designing computer programs.", 1
+"Donald Knuth developed the first version of the Linux operating system.", 0
+"Edsger Dijkstra's algorithm for finding the shortest path in a graph is widely used in routing protocols and network services.", 1
+"Edsger Dijkstra is known for creating the first computer virus.", 0
+"Richard Hamming's work on error-detecting and error-correcting codes has significantly impacted data transmission and information processing systems.", 1
+"Richard Hamming invented the first solid-state computer storage device.", 0
