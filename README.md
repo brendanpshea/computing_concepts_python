@@ -62,6 +62,10 @@ An introduction to **neural networks** and how they power modern AI. You'll lear
 This open-access textbook is licensed under the MIT License. For more details, refer to the LICENSE file in this repository.
 
 ---
-We hope you find this textbook useful and encourage you to explore the various chapters in an interactive way through the provided Colab links.
+I hope you find this textbook useful and encourage you to explore the various chapters in an interactive way through the provided Colab links.
 
 **A Note on the Use of AI Tools.** These chapters were intitially developed as the “generative AI” explosion took off (staring with OpenAI’s GPT 3.0), and I’ve had fun experimenting with many of these tools—including successive versions of ChatGPT, Google Gemini, Claude, CoPilot, Mistral, and others—in helping to turn my (voluminous, but often unorganized) lecture notes into something resembling a proper book. My experience was these tools with these has been generally positive, and I think that they can someday do at least some of the work done by traditional editors and publishing houses (I say this as a former editor at an academic press!). I’m less convinced they are going to immediately replace the actual *writer* or *programmer*, though, as there’s still a fair amount of expertise (and effort!) into producing quality, meaningful output.
+
+# About the Author
+Brendan Shea, PhD, is Professor of Philosophy and Computer Science at Rochester Community and Technical College and a Resident Fellow at the Minnesota Center for Philosophy of Science at the University of Minnesota-Twin Cities. He also serves as the Public Member of the Institutional Biosafety Committee at Mayo Clinic-Rochester. His main research and teaching interests lie in the philosophy of science, data modeling, applied ethics, and in the areas where these overlap (such as bioethics and the ethics of artificial intelligence). You can find out more about his research here: https://philpeople.org/profiles/brendan-shea.
+
