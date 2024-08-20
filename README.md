@@ -1,10 +1,7 @@
 # Computing Concepts With Python
 ### Brendan Shea, PhD | Brendan.Shea@rctc.edu
-# Computing Concepts with Python
 
 Welcome to **Computing Concepts with Python**, an open-access textbook designed to introduce students to the foundational concepts of computer science. The textbook includes Jupyter notebooks with interactive exercises, real-world examples, and practical coding exercises using Python.
-
-## Chapters
 
 ## Chapters
 
