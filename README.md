@@ -22,7 +22,7 @@ This chapter uses the classic game **Pac-Man** to explore different **file forma
 This chapter introduces the basics of computer networks, including how computers communicate over the internet, IP addresses, and the structure of the web. You'll also explore the protocols that power network communication.
 
 ### 4. Introduction to Python Strings
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_04_Python_Strings.ipynb)  
+[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_04_PythonStrings.ipynb)  
 Learn the fundamentals of **Python programming**, starting with string manipulation. You will practice creating, modifying, and analyzing strings using Python, and apply these skills to simple text-based tasks.
 
 ### 5. Integers, Floats, and Functions
