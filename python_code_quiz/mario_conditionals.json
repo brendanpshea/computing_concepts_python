@@ -1,0 +1,470 @@
+{
+  "questions": [
+    {
+      "function_name": "is_mario_brother",
+      "parameters": ["name"],
+      "description": "Return True if 'name' is 'Mario' or 'Luigi', else return False.",
+      "input_type": "string",
+      "answer_code": "def is_mario_brother(name):\n    return name == 'Mario' or name == 'Luigi'",
+      "hint": "Use the '==' operator and logical 'or'.",
+      "test_inputs": [
+        "Mario",
+        "Luigi",
+        "Peach",
+        "Toad",
+        "Bowser"
+      ]
+    },
+    {
+      "function_name": "power_up_effect",
+      "parameters": ["power_up"],
+      "description": "Return 'grow' if 'power_up' is 'Mushroom', 'fire' if 'power_up' is 'Fire Flower', else 'unknown'.",
+      "input_type": "string",
+      "answer_code": "def power_up_effect(power_up):\n    if power_up == 'Mushroom':\n        return 'grow'\n    elif power_up == 'Fire Flower':\n        return 'fire'\n    else:\n        return 'unknown'",
+      "hint": "Use if, elif, and else statements.",
+      "test_inputs": [
+        "Mushroom",
+        "Fire Flower",
+        "Star",
+        "1-Up Mushroom",
+        "Leaf"
+      ]
+    },
+    {
+      "function_name": "is_even_coin_count",
+      "parameters": ["coins"],
+      "description": "Return True if the number of 'coins' is even, else return False.",
+      "input_type": "int",
+      "answer_code": "def is_even_coin_count(coins):\n    return coins % 2 == 0",
+      "hint": "Use the modulus operator '%'.",
+      "test_inputs": [
+        10,
+        15,
+        0,
+        7,
+        100
+      ]
+    },
+    {
+      "function_name": "can_enter_castle",
+      "parameters": ["has_key", "is_boss_defeated"],
+      "description": "Return True if 'has_key' is True and 'is_boss_defeated' is True, else return False.",
+      "input_type": ["bool", "bool"],
+      "answer_code": "def can_enter_castle(has_key, is_boss_defeated):\n    return has_key and is_boss_defeated",
+      "hint": "Use the logical 'and' operator.",
+      "test_inputs": [
+        [true, true],
+        [true, false],
+        [false, true],
+        [false, false],
+        [true, true]
+      ]
+    },
+    {
+      "function_name": "select_character",
+      "parameters": ["choice"],
+      "description": "Return 'Mario' if 'choice' is 1, 'Luigi' if 'choice' is 2, else 'Toad'.",
+      "input_type": "int",
+      "answer_code": "def select_character(choice):\n    if choice == 1:\n        return 'Mario'\n    elif choice == 2:\n        return 'Luigi'\n    else:\n        return 'Toad'",
+      "hint": "Use if, elif, else to handle different choices.",
+      "test_inputs": [
+        1,
+        2,
+        3,
+        0,
+        -1
+      ]
+    },
+    {
+      "function_name": "is_power_up",
+      "parameters": ["item"],
+      "description": "Return True if 'item' is in the list ['Mushroom', 'Fire Flower', 'Star'], else return False.",
+      "input_type": "string",
+      "answer_code": "def is_power_up(item):\n    return item in ['Mushroom', 'Fire Flower', 'Star']",
+      "hint": "Use the 'in' keyword with a list.",
+      "test_inputs": [
+        "Mushroom",
+        "Coin",
+        "Fire Flower",
+        "Goomba",
+        "Star"
+      ]
+    },
+    {
+      "function_name": "compare_scores",
+      "parameters": ["score1", "score2"],
+      "description": "Return 'Player 1 wins' if 'score1' > 'score2', 'Player 2 wins' if 'score2' > 'score1', else 'Tie'.",
+      "input_type": ["int", "int"],
+      "answer_code": "def compare_scores(score1, score2):\n    if score1 > score2:\n        return 'Player 1 wins'\n    elif score2 > score1:\n        return 'Player 2 wins'\n    else:\n        return 'Tie'",
+      "hint": "Use comparison operators and if statements.",
+      "test_inputs": [
+        [100, 90],
+        [85, 85],
+        [70, 80],
+        [50, 30],
+        [40, 40]
+      ]
+    },
+    {
+      "function_name": "item_price",
+      "parameters": ["item"],
+      "description": "Return the price of 'item' based on the following: 'Mushroom': 5, 'Fire Flower': 10, 'Star': 20. If item not listed, return 0.",
+      "input_type": "string",
+      "answer_code": "def item_price(item):\n    if item == 'Mushroom':\n        return 5\n    elif item == 'Fire Flower':\n        return 10\n    elif item == 'Star':\n        return 20\n    else:\n        return 0",
+      "hint": "Use if-elif-else to return different prices.",
+      "test_inputs": [
+        "Mushroom",
+        "Fire Flower",
+        "Star",
+        "Coin",
+        "Leaf"
+      ]
+    },
+    {
+      "function_name": "is_enemy",
+      "parameters": ["character"],
+      "description": "Return True if 'character' is in ['Goomba', 'Koopa', 'Bowser'], else False.",
+      "input_type": "string",
+      "answer_code": "def is_enemy(character):\n    return character in ['Goomba', 'Koopa', 'Bowser']",
+      "hint": "Use the 'in' operator with a list.",
+      "test_inputs": [
+        "Mario",
+        "Goomba",
+        "Peach",
+        "Koopa",
+        "Luigi"
+      ]
+    },
+    {
+      "function_name": "lives_status",
+      "parameters": ["lives"],
+      "description": "Return 'Game Over' if 'lives' <= 0, else 'Lives remaining: X' where X is 'lives'.",
+      "input_type": "int",
+      "answer_code": "def lives_status(lives):\n    if lives <= 0:\n        return 'Game Over'\n    else:\n        return f'Lives remaining: {lives}'",
+      "hint": "Use an if-else statement and f-strings.",
+      "test_inputs": [
+        3,
+        1,
+        0,
+        -1,
+        5
+      ]
+    },
+    {
+      "function_name": "can_unlock_level",
+      "parameters": ["coins"],
+      "description": "Return True if 'coins' is at least 100, else False.",
+      "input_type": "int",
+      "answer_code": "def can_unlock_level(coins):\n    return coins >= 100",
+      "hint": "Use the '>=' operator.",
+      "test_inputs": [
+        150,
+        100,
+        99,
+        0,
+        200
+      ]
+    },
+    {
+      "function_name": "is_invincible",
+      "parameters": ["power_ups"],
+      "description": "Return True if 'Star' is in 'power_ups' list, else False.",
+      "input_type": "list",
+      "answer_code": "def is_invincible(power_ups):\n    return 'Star' in power_ups",
+      "hint": "Use the 'in' operator with lists.",
+      "test_inputs": [
+        ["Mushroom", "Fire Flower"],
+        ["Star"],
+        [],
+        ["Coin", "Star"],
+        ["Mushroom", "Leaf"]
+      ]
+    },
+    {
+      "function_name": "next_world",
+      "parameters": ["current_world"],
+      "description": "Return 'current_world' + 1 if 'current_world' is less than 8, else return 'End of Game'.",
+      "input_type": "int",
+      "answer_code": "def next_world(current_world):\n    if current_world < 8:\n        return current_world + 1\n    else:\n        return 'End of Game'",
+      "hint": "Use an if-else statement.",
+      "test_inputs": [
+        1,
+        7,
+        8,
+        5,
+        10
+      ]
+    },
+    {
+      "function_name": "damage_taken",
+      "parameters": ["has_shield", "damage"],
+      "description": "Return 'damage' if 'has_shield' is False, else return 'damage' divided by 2.",
+      "input_type": ["bool", "int"],
+      "answer_code": "def damage_taken(has_shield, damage):\n    if has_shield:\n        return damage / 2\n    else:\n        return damage",
+      "hint": "Use if-else and division.",
+      "test_inputs": [
+        [true, 10],
+        [false, 10],
+        [true, 5],
+        [false, 20],
+        [true, 0]
+      ]
+    },
+    {
+      "function_name": "can_use_pipe",
+      "parameters": ["is_small", "pipe_color"],
+      "description": "Return True if 'is_small' is True and 'pipe_color' is 'Green', else False.",
+      "input_type": ["bool", "string"],
+      "answer_code": "def can_use_pipe(is_small, pipe_color):\n    return is_small and pipe_color == 'Green'",
+      "hint": "Use logical 'and' and comparison.",
+      "test_inputs": [
+        [true, "Green"],
+        [false, "Green"],
+        [true, "Red"],
+        [false, "Red"],
+        [true, "Yellow"]
+      ]
+    },
+    {
+      "function_name": "is_bonus_level",
+      "parameters": ["level_number"],
+      "description": "Return True if 'level_number' is divisible by 5, else False.",
+      "input_type": "int",
+      "answer_code": "def is_bonus_level(level_number):\n    return level_number % 5 == 0",
+      "hint": "Use the modulus operator '%'.",
+      "test_inputs": [
+        5,
+        10,
+        3,
+        7,
+        15
+      ]
+    },
+     {
+      "function_name": "mushroom_growth",
+      "parameters": ["size"],
+      "description": "If 'size' is less than 5, return 'Small Mushroom'. If 'size' is between 5 and 10 (inclusive), return 'Medium Mushroom'. If 'size' is greater than 10, return 'Super Mushroom'.",
+      "input_type": "int",
+      "answer_code": "def mushroom_growth(size):\n    if size < 5:\n        return 'Small Mushroom'\n    elif 5 <= size <= 10:\n        return 'Medium Mushroom'\n    else:\n        return 'Super Mushroom'",
+      "hint": "Use if-elif-else statements and comparison operators.",
+      "test_inputs": [
+        3,
+        5,
+        10,
+        12,
+        7
+      ]
+    },
+    {
+      "function_name": "coin_total",
+      "parameters": ["coins", "bonus"],
+      "description": "If 'bonus' is True, double the 'coins' and return the result. Otherwise, return the 'coins' as is.",
+      "input_type": ["int", "bool"],
+      "answer_code": "def coin_total(coins, bonus):\n    if bonus:\n        return coins * 2\n    else:\n        return coins",
+      "hint": "Use an if-else statement and multiplication.",
+      "test_inputs": [
+        [50, true],
+        [30, false],
+        [10, true],
+        [0, false],
+        [25, true]
+      ]
+    },
+    {
+      "function_name": "message_to_bowser",
+      "parameters": ["message"],
+      "description": "If the length of 'message' is greater than 10, return the message in uppercase. Otherwise, return the message reversed.",
+      "input_type": "string",
+      "answer_code": "def message_to_bowser(message):\n    if len(message) > 10:\n        return message.upper()\n    else:\n        return message[::-1]",
+      "hint": "Use len(), if-else, upper(), and slicing.",
+      "test_inputs": [
+        "Hello Bowser",
+        "Attack!",
+        "Surrender now",
+        "You will lose",
+        "Hi"
+      ]
+    },
+    {
+      "function_name": "power_up_list",
+      "parameters": ["power_ups"],
+      "description": "If 'Star' is in 'power_ups', return the list sorted. Otherwise, add 'Mushroom' to the list and return it.",
+      "input_type": "list",
+      "answer_code": "def power_up_list(power_ups):\n    if 'Star' in power_ups:\n        return sorted(power_ups)\n    else:\n        power_ups.append('Mushroom')\n        return power_ups",
+      "hint": "Use if-else, 'in', sorted(), and list methods.",
+      "test_inputs": [
+        ["Fire Flower", "Leaf"],
+        ["Star", "Mushroom"],
+        [],
+        ["Coin"],
+        ["Star", "1-Up Mushroom"]
+      ]
+    },
+    {
+      "function_name": "calculate_damage",
+      "parameters": ["attack", "defense"],
+      "description": "Calculate damage as 'attack' minus 'defense'. If 'defense' is greater than 'attack', return 0.",
+      "input_type": ["int", "int"],
+      "answer_code": "def calculate_damage(attack, defense):\n    damage = attack - defense\n    if damage < 0:\n        return 0\n    else:\n        return damage",
+      "hint": "Use subtraction and if-else.",
+      "test_inputs": [
+        [50, 30],
+        [20, 25],
+        [100, 100],
+        [75, 50],
+        [10, 15]
+      ]
+    },
+    {
+      "function_name": "is_hidden_block",
+      "parameters": ["block_position"],
+      "description": "If 'block_position' is divisible by 7, return True. Else, return False.",
+      "input_type": "int",
+      "answer_code": "def is_hidden_block(block_position):\n    return block_position % 7 == 0",
+      "hint": "Use the modulus operator '%'.",
+      "test_inputs": [
+        14,
+        21,
+        10,
+        28,
+        9
+      ]
+    },
+    {
+      "function_name": "character_health_status",
+      "parameters": ["health"],
+      "description": "If 'health' is above 70, return 'Healthy'. If 'health' is between 30 and 70, return 'Injured'. If 'health' is below 30, return 'Critical'.",
+      "input_type": "int",
+      "answer_code": "def character_health_status(health):\n    if health > 70:\n        return 'Healthy'\n    elif 30 <= health <= 70:\n        return 'Injured'\n    else:\n        return 'Critical'",
+      "hint": "Use if-elif-else and comparison operators.",
+      "test_inputs": [
+        80,
+        50,
+        20,
+        70,
+        30
+      ]
+    },
+    {
+      "function_name": "unlock_secret_area",
+      "parameters": ["collected_items"],
+      "description": "If the number of 'collected_items' is at least 3 and 'Key' is in 'collected_items', return True. Else, return False.",
+      "input_type": "list",
+      "answer_code": "def unlock_secret_area(collected_items):\n    return len(collected_items) >= 3 and 'Key' in collected_items",
+      "hint": "Use len(), 'in', and logical operators.",
+      "test_inputs": [
+        ["Key", "Coin", "Star"],
+        ["Coin", "Mushroom"],
+        ["Key", "Coin", "Mushroom", "Star"],
+        ["Leaf", "Fire Flower", "Coin"],
+        ["Key", "Star"]
+      ]
+    },
+    {
+      "function_name": "combine_names",
+      "parameters": ["name1", "name2"],
+      "description": "If 'name1' and 'name2' start with the same letter, return their combination in uppercase. Else, return their combination in lowercase.",
+      "input_type": ["string", "string"],
+      "answer_code": "def combine_names(name1, name2):\n    if name1[0].lower() == name2[0].lower():\n        return (name1 + name2).upper()\n    else:\n        return (name1 + name2).lower()",
+      "hint": "Use indexing, lower(), upper(), and if-else.",
+      "test_inputs": [
+        ["Mario", "Mario"],
+        ["Luigi", "Larry"],
+        ["Peach", "Bowser"],
+        ["Toad", "Toadette"],
+        ["Daisy", "Donkey Kong"]
+      ]
+    },
+    {
+      "function_name": "calculate_jump_height",
+      "parameters": ["power_level"],
+      "description": "Return 'power_level' times 2 if 'power_level' is less than 5. Return 'power_level' times 3 if 'power_level' is between 5 and 10. Return 'power_level' times 4 if 'power_level' is greater than 10.",
+      "input_type": "int",
+      "answer_code": "def calculate_jump_height(power_level):\n    if power_level < 5:\n        return power_level * 2\n    elif 5 <= power_level <= 10:\n        return power_level * 3\n    else:\n        return power_level * 4",
+      "hint": "Use if-elif-else and multiplication.",
+      "test_inputs": [
+        3,
+        7,
+        12,
+        5,
+        10
+      ]
+    },
+    {
+      "function_name": "is_mega_mushroom",
+      "parameters": ["mushroom_size"],
+      "description": "If 'mushroom_size' is greater than 100, return True. Else, return False.",
+      "input_type": "int",
+      "answer_code": "def is_mega_mushroom(mushroom_size):\n    return mushroom_size > 100",
+      "hint": "Use comparison operators.",
+      "test_inputs": [
+        50,
+        150,
+        100,
+        101,
+        99
+      ]
+    },
+    {
+      "function_name": "select_power_up",
+      "parameters": ["options"],
+      "description": "If 'options' contains 'Star', return 'Star'. Else, if 'options' contains 'Fire Flower', return 'Fire Flower'. Else, return 'Mushroom'.",
+      "input_type": "list",
+      "answer_code": "def select_power_up(options):\n    if 'Star' in options:\n        return 'Star'\n    elif 'Fire Flower' in options:\n        return 'Fire Flower'\n    else:\n        return 'Mushroom'",
+      "hint": "Use if-elif-else and 'in'.",
+      "test_inputs": [
+        ["Coin", "Leaf"],
+        ["Fire Flower", "Coin"],
+        ["Mushroom", "Star"],
+        ["1-Up Mushroom"],
+        ["Leaf", "Mushroom"]
+      ]
+    },
+    {
+      "function_name": "next_level",
+      "parameters": ["current_level", "has_completed"],
+      "description": "If 'has_completed' is True, return 'current_level' + 1. Else, return 'current_level'.",
+      "input_type": ["int", "bool"],
+      "answer_code": "def next_level(current_level, has_completed):\n    if has_completed:\n        return current_level + 1\n    else:\n        return current_level",
+      "hint": "Use if-else.",
+      "test_inputs": [
+        [1, true],
+        [2, false],
+        [5, true],
+        [7, false],
+        [10, true]
+      ]
+    },
+    {
+      "function_name": "adjust_score",
+      "parameters": ["score", "multiplier"],
+      "description": "If 'multiplier' is greater than 1, return 'score' multiplied by 'multiplier'. Else, return 'score'.",
+      "input_type": ["int", "float"],
+      "answer_code": "def adjust_score(score, multiplier):\n    if multiplier > 1:\n        return score * multiplier\n    else:\n        return score",
+      "hint": "Use if-else and multiplication.",
+      "test_inputs": [
+        [100, 1.5],
+        [200, 1.0],
+        [150, 2.0],
+        [80, 0.5],
+        [50, 1.2]
+      ]
+    },
+    {
+      "function_name": "enemy_alert",
+      "parameters": ["enemies"],
+      "description": "If the number of 'enemies' is more than 5, return 'High Alert'. If it's between 1 and 5, return 'Moderate Alert'. If there are no enemies, return 'All Clear'.",
+      "input_type": "list",
+      "answer_code": "def enemy_alert(enemies):\n    count = len(enemies)\n    if count > 5:\n        return 'High Alert'\n    elif 1 <= count <=5:\n        return 'Moderate Alert'\n    else:\n        return 'All Clear'",
+      "hint": "Use len(), if-elif-else.",
+      "test_inputs": [
+        ["Goomba", "Koopa", "Shy Guy", "Bob-omb", "Piranha Plant", "Boo"],
+        ["Goomba"],
+        [],
+        ["Koopa", "Goomba", "Boo"],
+        ["Shy Guy", "Bob-omb"]
+      ]
+    }
+  ]
+}
+
