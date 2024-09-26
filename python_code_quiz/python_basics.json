@@ -1,4 +1,291 @@
 {
+    "questions": [
+        {
+            "function_name": "alien_greeting",
+            "parameters": ["name"],
+            "description": "Return a greeting message to an alien named 'name'.",
+            "input_type": "string",
+            "answer_code": "def alien_greeting(name):\n    return f'Welcome to Earth, {name}!'",
+            "hint": "Use an f-string to create the greeting message.",
+            "test_inputs": [
+                "Zorg",
+                "E.T.",
+                "Spock",
+                "Klaatu",
+                "Yoda"
+            ]
+        },
+        {
+            "function_name": "calculate_hyperspace_distance",
+            "parameters": ["distance1", "distance2"],
+            "description": "Calculate the total distance of two hyperspace jumps.",
+            "input_type": ["float", "float"],
+            "answer_code": "def calculate_hyperspace_distance(distance1, distance2):\n    return distance1 + distance2",
+            "hint": "Add the two distances together.",
+            "test_inputs": [
+                [12.5, 7.8],
+                [3.4, 5.6],
+                [100.0, 200.0],
+                [0.0, 50.0],
+                [42.0, 58.0]
+            ]
+        },
+        {
+            "function_name": "decrypt_message",
+            "parameters": ["message"],
+            "description": "Return the decrypted version of the message by reversing it.",
+            "input_type": "string",
+            "answer_code": "def decrypt_message(message):\n    return message[::-1]",
+            "hint": "Reverse the string using slicing.",
+            "test_inputs": [
+                "!dlroW ,olleH",
+                "gninrom dooG",
+                "!ereht iH",
+                "ssap ym s'teL",
+                ".egassem terces a s'tI"
+            ]
+        },
+        {
+            "function_name": "calculate_energy",
+            "parameters": ["mass"],
+            "description": "Calculate the energy equivalent of a mass using E=mc^2. c = 299792458.",
+            "input_type": "float",
+            "answer_code": "def calculate_energy(mass):\n    c = 299792458\n    return mass * c ** 2",
+            "hint": "Use the formula E = mass * c squared.",
+            "test_inputs": [
+                1.0,
+                0.5,
+                2.0,
+                0.1,
+                0.001
+            ]
+        },
+        {
+            "function_name": "join_planet_names",
+            "parameters": ["planet1", "planet2"],
+            "description": "Return the two planet names joined with ' and ' in between.",
+            "input_type": ["string", "string"],
+            "answer_code": "def join_planet_names(planet1, planet2):\n    return planet1 + ' and ' + planet2",
+            "hint": "Concatenate the strings with ' and ' in between.",
+            "test_inputs": [
+                ["Earth", "Mars"],
+                ["Vulcan", "Krypton"],
+                ["Tatooine", "Naboo"],
+                ["Pandora", "Arrakis"],
+                ["Gallifrey", "Cybertron"]
+            ]
+        },
+        {
+            "function_name": "calculate_oxygen_supply",
+            "parameters": ["hours", "astronauts"],
+            "description": "Calculate the total oxygen needed for a mission. Multiply hours, astronauts, and oxygen per hour (0.84).",
+            "input_type": ["int", "int"],
+            "answer_code": "def calculate_oxygen_supply(hours, astronauts):\n    oxygen_per_hour = 0.84\n    return hours * astronauts * oxygen_per_hour",
+            "hint": "Multiply hours, astronauts, and oxygen per hour.",
+            "test_inputs": [
+                [24, 3],
+                [48, 4],
+                [72, 6],
+                [12, 2],
+                [168, 5]
+            ]
+        },
+        {
+            "function_name": "get_starship_code",
+            "parameters": ["starship_name"],
+            "description": "Return the first three letters of the starship name in uppercase.",
+            "input_type": "string",
+            "answer_code": "def get_starship_code(starship_name):\n    return starship_name[:3].upper()",
+            "hint": "Use slicing and the upper() method.",
+            "test_inputs": [
+                "Enterprise",
+                "Millennium Falcon",
+                "Serenity",
+                "Galactica",
+                "Rocinante"
+            ]
+        },
+        {
+            "function_name": "format_coordinates",
+            "parameters": ["x_coord", "y_coord", "z_coord"],
+            "description": "Return the coordinates formatted as '(x, y, z)'.",
+            "input_type": ["float", "float", "float"],
+            "answer_code": "def format_coordinates(x_coord, y_coord, z_coord):\n    return f'({x_coord}, {y_coord}, {z_coord})'",
+            "hint": "Use an f-string to format the coordinates.",
+            "test_inputs": [
+                [1.0, 2.0, 3.0],
+                [0.0, 0.0, 0.0],
+                [-1.5, 2.3, -3.6],
+                [42.0, 17.0, 23.0],
+                [3.14, 1.59, 2.65]
+            ]
+        },
+        {
+            "function_name": "alien_age_in_earth_years",
+            "parameters": ["alien_age", "planet_year_length"],
+            "description": "Convert alien age to Earth years given the planet's year length. Multiply the alien age by the planet's year length in Earth years.",
+            "input_type": ["float", "float"],
+            "answer_code": "def alien_age_in_earth_years(alien_age, planet_year_length):\n    return alien_age * planet_year_length",
+            "hint": "Multiply the alien age by the planet's year length in Earth years.",
+            "test_inputs": [
+                [10, 0.5],
+                [20, 1.88],
+                [5, 11.86],
+                [100, 0.241],
+                [50, 29.46]
+            ]
+        },
+        {
+            "function_name": "ship_name_length",
+            "parameters": ["ship_name"],
+            "description": "Return the number of characters in the ship's name.",
+            "input_type": "string",
+            "answer_code": "def ship_name_length(ship_name):\n    return len(ship_name)",
+            "hint": "Use the len() function to get the length.",
+            "test_inputs": [
+                "USS Enterprise",
+                "Discovery One",
+                "Heart of Gold",
+                "Event Horizon",
+                "Nostromo"
+            ]
+        },
+        {
+            "function_name": "calculate_signal_delay",
+            "parameters": ["distance"],
+            "description": "Calculate the time it takes for a signal to travel a certain distance in space. Divide the distance by the speed of light (299792458).",
+            "input_type": "float",
+            "answer_code": "def calculate_signal_delay(distance):\n    c = 299792458\n    return distance / c",
+            "hint": "Divide the distance by the speed of light.",
+            "test_inputs": [
+                1.496e11,
+                7.784e11,
+                4.067e16,
+                2.537e13,
+                1e9
+            ]
+        },
+        {
+            "function_name": "capitalize_alien_message",
+            "parameters": ["message"],
+            "description": "Return the message with all letters capitalized.",
+            "input_type": "string",
+            "answer_code": "def capitalize_alien_message(message):\n    return message.upper()",
+            "hint": "Use the upper() method.",
+            "test_inputs": [
+                "we come in peace",
+                "take me to your leader",
+                "live long and prosper",
+                "may the force be with you",
+                "so long and thanks for all the fish"
+            ]
+        },
+        {
+            "function_name": "split_transmission",
+            "parameters": ["transmission"],
+            "description": "Split the transmission into a list of words.",
+            "input_type": "string",
+            "answer_code": "def split_transmission(transmission):\n    return transmission.split()",
+            "hint": "Use the split() method.",
+            "test_inputs": [
+                "hello earth",
+                "message from mars",
+                "initiate docking sequence",
+                "prepare for hyperspace jump",
+                "unknown signal detected"
+            ]
+        },
+        {
+            "function_name": "calculate_fuel_efficiency",
+            "parameters": ["distance", "fuel"],
+            "description": "Calculate the fuel efficiency of a starship. Divide the distance by the amount of fuel used.",
+            "input_type": ["float", "float"],
+            "answer_code": "def calculate_fuel_efficiency(distance, fuel):\n    return distance / fuel",
+            "hint": "Divide the distance by the amount of fuel used.",
+            "test_inputs": [
+                [1000.0, 50.0],
+                [5000.0, 200.0],
+                [1200.0, 60.0],
+                [2500.0, 125.0],
+                [800.0, 40.0]
+            ]
+        },
+        {
+            "function_name": "format_droid_name",
+            "parameters": ["droid_name"],
+            "description": "Return the droid's name in uppercase with 'Droid: ' prefixed.",
+            "input_type": "string",
+            "answer_code": "def format_droid_name(droid_name):\n    return 'Droid: ' + droid_name.upper()",
+            "hint": "Use the upper() method and string concatenation.",
+            "test_inputs": [
+                "R2D2",
+                "C3PO",
+                "BB8",
+                "K2SO",
+                "D0"
+            ]
+        },
+        {
+            "function_name": "calculate_planetary_year",
+            "parameters": ["earth_years", "orbital_period"],
+            "description": "Convert Earth years to years on another planet given its orbital period. Divide Earth years by the planet's orbital period in Earth years.",
+            "input_type": ["float", "float"],
+            "answer_code": "def calculate_planetary_year(earth_years, orbital_period):\n    return earth_years / orbital_period",
+            "hint": "Divide Earth years by the planet's orbital period in Earth years.",
+            "test_inputs": [
+                [1, 0.241],
+                [1, 0.615],
+                [1, 1.88],
+                [1, 11.86],
+                [1, 29.46]
+            ]
+        },
+        {
+            "function_name": "get_last_character",
+            "parameters": ["text"],
+            "description": "Return the last character of the given string.",
+            "input_type": "string",
+            "answer_code": "def get_last_character(text):\n    return text[-1]",
+            "hint": "Use negative indexing to get the last character.",
+            "test_inputs": [
+                "hello",
+                "world",
+                "alien",
+                "spaceship",
+                "galaxy"
+            ]
+        },
+        {
+            "function_name": "repeat_message",
+            "parameters": ["message", "times"],
+            "description": "Repeat the message a certain number of times.",
+            "input_type": ["string", "int"],
+            "answer_code": "def repeat_message(message, times):\n    return message * times",
+            "hint": "Use the '*' operator to repeat the string.",
+            "test_inputs": [
+                ["beep ", 3],
+                ["boop ", 2],
+                ["ding ", 4],
+                ["buzz ", 5],
+                ["zap ", 6]
+            ]
+        },
+        {
+            "function_name": "calculate_cryo_sleep_duration",
+            "parameters": ["trip_distance", "sleep_cycles"],
+            "description": "Calculate the duration of each cryo-sleep cycle for the trip. Divide the total distance by the number of sleep cycles.",
+            "input_type": ["float", "int"],
+            "answer_code": "def calculate_cryo_sleep_duration(trip_distance, sleep_cycles):\n    return trip_distance / sleep_cycles",
+            "hint": "Divide the total distance by the number of sleep cycles.",
+            "test_inputs": [
+                [1000.0, 5],
+                [5000.0, 10],
+                [750.0, 3],
+                [2500.0, 2],
+                [1200.0, 4]
+            ]
+        },
+        {
             "function_name": "get_first_element",
             "parameters": ["lst"],
             "description": "Return the first element of the given list.",
@@ -163,3 +450,5 @@
                 [["spaceship", "asteroid", "comet"], "black hole"]
             ]
         }
+    ]
+}
