@@ -1,4 +1,4 @@
-ffrom IPython.display import display
+from IPython.display import display
 import ipywidgets as widgets
 import traceback
 import random
