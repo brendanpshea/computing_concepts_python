@@ -1,0 +1,165 @@
+{
+            "function_name": "get_first_element",
+            "parameters": ["lst"],
+            "description": "Return the first element of the given list.",
+            "input_type": "list",
+            "answer_code": "def get_first_element(lst):\n    return lst[0]",
+            "hint": "Use indexing to get the first element.",
+            "test_inputs": [
+                [1, 2, 3],
+                ["Mars", "Venus", "Jupiter"],
+                ["robot", "android", "cyborg"],
+                [42],
+                ["spaceship", "asteroid", "comet"]
+            ]
+        },
+        {
+            "function_name": "get_last_element",
+            "parameters": ["lst"],
+            "description": "Return the last element of the given list.",
+            "input_type": "list",
+            "answer_code": "def get_last_element(lst):\n    return lst[-1]",
+            "hint": "Use negative indexing to get the last element.",
+            "test_inputs": [
+                [1, 2, 3],
+                ["Mars", "Venus", "Jupiter"],
+                ["robot", "android", "cyborg"],
+                [42],
+                ["spaceship", "asteroid", "comet"]
+            ]
+        },
+        {
+            "function_name": "get_sublist",
+            "parameters": ["lst", "start", "end"],
+            "description": "Return a sublist from 'start' index to 'end' index (exclusive).",
+            "input_type": ["list", "int", "int"],
+            "answer_code": "def get_sublist(lst, start, end):\n    return lst[start:end]",
+            "hint": "Use slicing to get a sublist.",
+            "test_inputs": [
+                [["alpha", "beta", "gamma", "delta"], 1, 3],
+                [["Earth", "Mars", "Venus", "Jupiter"], 0, 2],
+                [[true, false, true], 0, 1],
+                [["spaceship", "asteroid", "comet", "meteor"], 2, 4],
+                [[42], 0, 1]
+            ]
+        },
+        {
+            "function_name": "remove_first_element",
+            "parameters": ["lst"],
+            "description": "Remove the first element from the list and return the modified list.",
+            "input_type": "list",
+            "answer_code": "def remove_first_element(lst):\n    return lst[1:]",
+            "hint": "Use slicing to exclude the first element.",
+            "test_inputs": [
+                [1, 2, 3],
+                ["spaceship", "asteroid", "comet"],
+                ["robot", "android", "cyborg"],
+                [42],
+                ["Mars", "Venus", "Jupiter", "Saturn"]
+            ]
+        },
+        {
+            "function_name": "remove_last_element",
+            "parameters": ["lst"],
+            "description": "Remove the last element from the list and return the modified list.",
+            "input_type": "list",
+            "answer_code": "def remove_last_element(lst):\n    return lst[:-1]",
+            "hint": "Use slicing to exclude the last element.",
+            "test_inputs": [
+                [1, 2, 3],
+                ["spaceship", "asteroid", "comet"],
+                ["robot", "android", "cyborg"],
+                [42],
+                ["Mars", "Venus", "Jupiter", "Saturn"]
+            ]
+        },
+        {
+            "function_name": "concatenate_lists",
+            "parameters": ["lst1", "lst2"],
+            "description": "Return the concatenation of two lists.",
+            "input_type": ["list", "list"],
+            "answer_code": "def concatenate_lists(lst1, lst2):\n    return lst1 + lst2",
+            "hint": "Use the '+' operator to concatenate lists.",
+            "test_inputs": [
+                [["star", "planet"], ["galaxy", "universe"]],
+                [["alpha"], ["beta", "gamma"]],
+                [[true], [false, true]],
+                [[], ["spaceship"]],
+                [["robot"], ["android", "cyborg", "AI"]]
+            ]
+        },
+        {
+            "function_name": "repeat_list",
+            "parameters": ["lst", "times"],
+            "description": "Return the list repeated 'times' number of times.",
+            "input_type": ["list", "int"],
+            "answer_code": "def repeat_list(lst, times):\n    return lst * times",
+            "hint": "Use the '*' operator to repeat the list.",
+            "test_inputs": [
+                [["photon"], 3],
+                [["quark", "lepton"], 2],
+                [["robot"], 4],
+                [[], 5],
+                [["nebula"], 0]
+            ]
+        },
+        {
+            "function_name": "remove_element",
+            "parameters": ["lst", "element"],
+            "description": "Return the list after removing the first occurrence of 'element'.",
+            "input_type": ["list", "any"],
+            "answer_code": "def remove_element(lst, element):\n    lst_copy = lst.copy()\n    lst_copy.remove(element)\n    return lst_copy",
+            "hint": "Use the 'remove()' method to remove the element.",
+            "test_inputs": [
+                [["Earth", "Mars", "Venus"], "Mars"],
+                [["robot", "android", "robot"], "robot"],
+                [[true, false, true], true],
+                [["asteroid", "asteroid", "asteroid"], "asteroid"],
+                [[10, 20, 30, 40], 30]
+            ]
+        },
+        {
+            "function_name": "get_element_at_index",
+            "parameters": ["lst", "index"],
+            "description": "Return the element at the given 'index' in the list.",
+            "input_type": ["list", "int"],
+            "answer_code": "def get_element_at_index(lst, index):\n    return lst[index]",
+            "hint": "Use indexing to get the element at 'index'.",
+            "test_inputs": [
+                [["photon", "neutron", "electron"], 0],
+                [["alpha", "beta", "gamma"], 2],
+                [[true, false], 1],
+                [["black hole"], 0],
+                [["star", "planet", "galaxy"], -1]
+            ]
+        },
+        {
+            "function_name": "reverse_list",
+            "parameters": ["lst"],
+            "description": "Return the reversed list.",
+            "input_type": "list",
+            "answer_code": "def reverse_list(lst):\n    return lst[::-1]",
+            "hint": "Use slicing to reverse the list.",
+            "test_inputs": [
+                [1, 2, 3],
+                ["Mars", "Venus", "Jupiter"],
+                ["robot", "android", "cyborg"],
+                [42],
+                ["spaceship", "asteroid", "comet"]
+            ]
+        },
+        {
+            "function_name": "count_element_occurrences",
+            "parameters": ["lst", "element"],
+            "description": "Return the number of times 'element' occurs in the list.",
+            "input_type": ["list", "any"],
+            "answer_code": "def count_element_occurrences(lst, element):\n    return lst.count(element)",
+            "hint": "Use the 'count()' method of lists.",
+            "test_inputs": [
+                [["star", "planet", "star", "galaxy"], "star"],
+                [["robot", "android", "robot"], "robot"],
+                [[true, false, true], true],
+                [["asteroid", "asteroid", "asteroid"], "asteroid"],
+                [["spaceship", "asteroid", "comet"], "black hole"]
+            ]
+        }
