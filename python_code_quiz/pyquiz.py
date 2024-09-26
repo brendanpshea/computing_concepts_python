@@ -305,7 +305,7 @@ class PracticeTool:
     def build_question_text(self, question):
       """Constructs the question text with sample runs."""
       header = f"<h3>Question {self.current_question_index + 1} of {len(self.questions)}</h3>"
-      description = f"<p>Write a function <b>{question.function_name}({', '.join(question.parameters)})</b> that {question.description}.</p>"
+      description = f"<p>Write a function <b>{question.function_name}({', '.join(question.parameters)})</b> to: {question.description}.</p>"
       samples = "<h4>Sample Runs:</h4><pre>"
 
       # Prepare sample runs using the correct answer code
