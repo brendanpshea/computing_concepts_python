@@ -449,6 +449,246 @@
                 [["asteroid", "asteroid", "asteroid"], "asteroid"],
                 [["spaceship", "asteroid", "comet"], "black hole"]
             ]
+        },
+        {
+            "function_name": "uppercase_first_letter",
+            "parameters": ["text"],
+            "description": "Return the text with the first letter in uppercase.",
+            "input_type": "string",
+            "answer_code": "def uppercase_first_letter(text):\n    return text[0].upper() + text[1:]",
+            "hint": "Use indexing and the upper() method.",
+            "test_inputs": [
+                "alien",
+                "spaceship",
+                "galaxy",
+                "nebula",
+                "supernova"
+            ]
+        },
+        {
+            "function_name": "combine_and_reverse",
+            "parameters": ["str1", "str2"],
+            "description": "Combine two strings and return the reverse of the result.",
+            "input_type": ["string", "string"],
+            "answer_code": "def combine_and_reverse(str1, str2):\n    return (str1 + str2)[::-1]",
+            "hint": "Use string concatenation and slicing.",
+            "test_inputs": [
+                ["star", "ship"],
+                ["black", "hole"],
+                ["time", "travel"],
+                ["space", "station"],
+                ["warp", "drive"]
+            ]
+        },
+        {
+            "function_name": "calculate_gravity_force",
+            "parameters": ["mass1", "mass2", "distance"],
+            "description": "Calculate the gravitational force between two masses.",
+            "input_type": ["float", "float", "float"],
+            "answer_code": "def calculate_gravity_force(mass1, mass2, distance):\n    G = 6.67430e-11\n    return G * (mass1 * mass2) / distance ** 2",
+            "hint": "Use the formula F = G * (m1 * m2) / d^2.",
+            "test_inputs": [
+                [5.972e24, 7.348e22, 384400000],
+                [1.989e30, 5.972e24, 1.496e11],
+                [5.972e24, 1.0, 6.371e6],
+                [7.348e22, 1.0, 1.737e6],
+                [5.972e24, 5.972e24, 1.0e7]
+            ]
+        },
+        {
+            "function_name": "extract_planet_initials",
+            "parameters": ["planets"],
+            "description": "Return a string of the first letters of each planet in the list.",
+            "input_type": ["list"],
+            "answer_code": "def extract_planet_initials(planets):\n    return ''.join([planet[0] for planet in planets])",
+            "hint": "Use list indexing and join the letters.",
+            "test_inputs": [
+                ["Mercury", "Venus", "Earth", "Mars"],
+                ["Jupiter", "Saturn", "Uranus", "Neptune"],
+                ["Earth", "Mars", "Venus"],
+                ["Proxima Centauri b", "Kepler-22b"],
+                ["Alpha", "Beta", "Gamma", "Delta"]
+            ]
+        },
+        {
+            "function_name": "multiply_string_length",
+            "parameters": ["text", "number"],
+            "description": "Return the text repeated by the length of the text multiplied by 'number'.",
+            "input_type": ["string", "int"],
+            "answer_code": "def multiply_string_length(text, number):\n    return text * (len(text) * number)",
+            "hint": "Use len() and multiplication.",
+            "test_inputs": [
+                ["star", 2],
+                ["galaxy", 1],
+                ["quasar", 0],
+                ["nebula", 3],
+                ["comet", 2]
+            ]
+        },
+        {
+            "function_name": "format_star_date",
+            "parameters": ["year", "month", "day"],
+            "description": "Return the date formatted as 'Star Date: YYYY.MM.DD'.",
+            "input_type": ["int", "int", "int"],
+            "answer_code": "def format_star_date(year, month, day):\n    return f'Star Date: {year}.{month:02}.{day:02}'",
+            "hint": "Use f-strings with zero-padded numbers.",
+            "test_inputs": [
+                [2265, 1, 4],
+                [2371, 12, 25],
+                [2151, 7, 9],
+                [2293, 11, 19],
+                [3187, 5, 17]
+            ]
+        },
+        {
+            "function_name": "sum_of_ascii_values",
+            "parameters": ["text"],
+            "description": "Return the sum of the ASCII values of all characters in the text.",
+            "input_type": "string",
+            "answer_code": "def sum_of_ascii_values(text):\n    return sum([ord(char) for char in text])",
+            "hint": "Use ord() and sum().",
+            "test_inputs": [
+                "alien",
+                "space",
+                "quantum",
+                "wormhole",
+                "dimension"
+            ]
+        },
+        {
+            "function_name": "middle_element",
+            "parameters": ["lst"],
+            "description": "Return the middle element of the list.",
+            "input_type": ["list"],
+            "answer_code": "def middle_element(lst):\n    return lst[len(lst)//2]",
+            "hint": "Use len() and integer division.",
+            "test_inputs": [
+                ["Earth", "Mars", "Venus"],
+                ["star", "planet", "moon", "asteroid", "comet"],
+                ["photon", "electron", "neutron"],
+                ["robot", "android", "cyborg", "AI"],
+                ["alpha", "beta", "gamma", "delta", "epsilon"]
+            ]
+        },
+        {
+            "function_name": "combine_first_and_last",
+            "parameters": ["lst"],
+            "description": "Return a string combining the first and last elements of the list.",
+            "input_type": ["list"],
+            "answer_code": "def combine_first_and_last(lst):\n    return lst[0] + lst[-1]",
+            "hint": "Use indexing to access elements.",
+            "test_inputs": [
+                ["time", "space", "continuum"],
+                ["warp", "drive"],
+                ["hyper", "space", "jump"],
+                ["light", "speed"],
+                ["quantum", "entanglement"]
+            ]
+        },
+        {
+            "function_name": "slice_and_uppercase",
+            "parameters": ["text", "start", "end"],
+            "description": "Return the substring from 'start' to 'end' in uppercase.",
+            "input_type": ["string", "int", "int"],
+            "answer_code": "def slice_and_uppercase(text, start, end):\n    return text[start:end].upper()",
+            "hint": "Use slicing and the upper() method.",
+            "test_inputs": [
+                ["wormhole", 0, 4],
+                ["dimension", 3, 7],
+                ["astronaut", 2, 6],
+                ["spaceship", 1, 5],
+                ["supernova", 4, 8]
+            ]
+        },
+        {
+            "function_name": "calculate_signal_strength",
+            "parameters": ["base_strength", "distance"],
+            "description": "Calculate the signal strength after attenuation over distance.",
+            "input_type": ["float", "float"],
+            "answer_code": "def calculate_signal_strength(base_strength, distance):\n    return base_strength / (distance ** 2)",
+            "hint": "Use the inverse square law.",
+            "test_inputs": [
+                [1000.0, 10.0],
+                [500.0, 5.0],
+                [750.0, 15.0],
+                [1200.0, 20.0],
+                [900.0, 12.0]
+            ]
+        },
+        {
+            "function_name": "merge_and_sort_lists",
+            "parameters": ["lst1", "lst2"],
+            "description": "Merge two lists and return the sorted result.",
+            "input_type": ["list", "list"],
+            "answer_code": "def merge_and_sort_lists(lst1, lst2):\n    return sorted(lst1 + lst2)",
+            "hint": "Use list concatenation and sorted().",
+            "test_inputs": [
+                [[3, 1, 4], [2, 5]],
+                [["gamma", "alpha"], ["beta", "delta"]],
+                [[42], [7, 13, 21]],
+                [[true], [false, true]],
+                [[5.5, 2.2], [3.3, 1.1]]
+            ]
+        },
+        {
+            "function_name": "double_middle_character",
+            "parameters": ["text"],
+            "description": "Return the text with the middle character doubled.",
+            "input_type": "string",
+            "answer_code": "def double_middle_character(text):\n    index = len(text) // 2\n    return text[:index] + text[index] + text[index:]",
+            "hint": "Use len(), slicing, and concatenation.",
+            "test_inputs": [
+                "alien",
+                "robot",
+                "galaxy",
+                "planet",
+                "comet"
+            ]
+        },
+        {
+            "function_name": "average_of_list",
+            "parameters": ["numbers"],
+            "description": "Return the average of a list of numbers.",
+            "input_type": ["list"],
+            "answer_code": "def average_of_list(numbers):\n    return sum(numbers) / len(numbers)",
+            "hint": "Use sum() and len().",
+            "test_inputs": [
+                [10, 20, 30],
+                [5, 15, 25, 35],
+                [2, 4, 6, 8, 10],
+                [100, 200],
+                [7, 14, 21, 28, 35, 42]
+            ]
+        },
+        {
+            "function_name": "capitalize_every_word",
+            "parameters": ["text"],
+            "description": "Return the text with every word capitalized.",
+            "input_type": "string",
+            "answer_code": "def capitalize_every_word(text):\n    return ' '.join([word.capitalize() for word in text.split()])",
+            "hint": "Use split(), capitalize(), and join().",
+            "test_inputs": [
+                "alien invasion",
+                "space odyssey",
+                "time travel theories",
+                "quantum mechanics",
+                "deep space exploration"
+            ]
+        },
+        {
+            "function_name": "multiply_elements_and_sum",
+            "parameters": ["numbers", "multiplier"],
+            "description": "Multiply each element in the list by 'multiplier' and return the sum.",
+            "input_type": ["list", "int"],
+            "answer_code": "def multiply_elements_and_sum(numbers, multiplier):\n    return sum([num * multiplier for num in numbers])",
+            "hint": "Use list comprehension and sum().",
+            "test_inputs": [
+                [[1, 2, 3], 2],
+                [[5, 10, 15], 3],
+                [[7, 14, 21], 1],
+                [[0, 0, 0], 5],
+                [[2, 4, 6, 8], 0]
+            ]
         }
     ]
 }
