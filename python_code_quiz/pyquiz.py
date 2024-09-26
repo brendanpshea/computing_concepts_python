@@ -1,4 +1,4 @@
-from IPython.display import display
+from IPython.display import display, HTML
 import ipywidgets as widgets
 import traceback
 import random
@@ -8,6 +8,8 @@ import itertools
 import pandas as pd
 import contextlib
 import io
+import html
+import numpy as np
 
 # Sample input lists
 int_inputs = [0, 1, -1, 2, -2, 5, -5, 10, -10, 100, -100, -50, 2147483647, -2147483648]
@@ -303,25 +305,47 @@ class PracticeTool:
         self.skip_dropdown.value = self.current_question_index
 
     def build_question_text(self, question):
-      """Constructs the question text with sample runs."""
-      header = f"<h3>Question {self.current_question_index + 1} of {len(self.questions)}</h3>"
-      description = f"<p>Write a function <b>{question.function_name}({', '.join(question.parameters)})</b> to: {question.description}.</p>"
-      samples = "<h4>Sample Runs:</h4><pre>"
+        """Constructs the question text with sample runs."""
+        header = f"<h3>Question {self.current_question_index + 1} of {len(self.questions)}</h3>"
+        description = f"<p>Write a function <b>{question.function_name}({', '.join(question.parameters)})</b> to: {question.description}.</p>"
+        samples = "<h4>Sample Runs:</h4>"
 
-      # Prepare sample runs using the correct answer code
-      correct_func = self.get_function_from_code(question.answer_code, question.function_name)
-      for sample_input in question.sample_inputs:
-          args = self.prepare_arguments(sample_input, question)
-          args_str = ', '.join(repr(arg) for arg in args)
-          try:
-              result = correct_func(*args)
-              samples += f"{question.function_name}({args_str}) ➞ {repr(result)}\n"
-          except Exception as e:
-              samples += f"{question.function_name}({args_str}) ➞ Error: {e}\n"
-      samples += "</pre>"
+        # Prepare sample runs using the correct answer code
+        correct_func = self.get_function_from_code(question.answer_code, question.function_name)
+        sample_data = []
+        for sample_input in question.sample_inputs:
+            args = self.prepare_arguments(sample_input, question)
+            args_str = ', '.join(repr(arg) for arg in args)
+            try:
+                result = correct_func(*args)
+                sample_data.append({
+                    'Input': f"{question.function_name}({args_str})",
+                    'Output': html.escape(repr(result))
+                })
+            except Exception as e:
+                sample_data.append({
+                    'Input': f"{question.function_name}({args_str})",
+                    'Output': f"Error: {html.escape(str(e))}"
+                })
 
-      return header + description + samples
+        # Create a pandas DataFrame and style it
+        df = pd.DataFrame(sample_data)
+        styled_df = df.style.set_properties(**{
+            'text-align': 'left',
+            'white-space': 'pre-wrap',
+            'border': '1px solid black',
+            'padding': '8px'
+        })
+        styled_df = styled_df.set_table_styles([
+            {'selector': 'th', 'props': [('font-weight', 'bold'), ('text-align', 'left'), ('border', '1px solid black'), ('padding', '8px')]},
+            {'selector': 'td', 'props': [('text-align', 'left'), ('border', '1px solid black'), ('padding', '8px')]},
+            {'selector': 'table', 'props': [('border-collapse', 'collapse'), ('width', '100%')]}
+        ])
 
+        # Convert the styled DataFrame to HTML and wrap it in a div for proper rendering
+        samples += f'<div style="overflow-x: auto;">{styled_df.to_html(escape=False)}</div>'
+
+        return header + description + samples
 
     def run_code(self, _):
         """Executes the student's code and displays test results."""
@@ -351,6 +375,19 @@ class PracticeTool:
             raise NameError(f"Function '{function_name}' is not defined.")
         return func
 
+    def object_compare(self, obj1, obj2):
+        """
+        Compare two arbitrary Python objects, including NumPy arrays.
+        """
+        if isinstance(obj1, np.ndarray) and isinstance(obj2, np.ndarray):
+            return np.array_equal(obj1, obj2)
+        elif isinstance(obj1, (list, tuple)) and isinstance(obj2, (list, tuple)):
+            return len(obj1) == len(obj2) and all(self.object_compare(e1, e2) for e1, e2 in zip(obj1, obj2))
+        elif isinstance(obj1, dict) and isinstance(obj2, dict):
+            return obj1.keys() == obj2.keys() and all(self.object_compare(obj1[k], obj2[k]) for k in obj1.keys())
+        else:
+            return obj1 == obj2
+
     def execute_tests(self, question, student_func, correct_func):
         """Executes test cases and collects results."""
         test_results = []
@@ -365,7 +402,7 @@ class PracticeTool:
                 with contextlib.redirect_stdout(self.student_output):
                     student_output = student_func(*args)
                 correct_output = correct_func(*args)
-                passed = student_output == correct_output
+                passed = self.object_compare(student_output, correct_output)
                 status = 'Pass' if passed else 'Fail'
                 test_results.append({
                     'Result': status,
@@ -379,8 +416,8 @@ class PracticeTool:
                 test_results.append({
                     'Result': 'Error',
                     'Input': f"{question.function_name}({args_str})",
-                    'Expected Output': 'Exception',
-                    'Your Output': f"Error: {e}"
+                    'Expected Output': repr(correct_output),
+                    'Your Output': f"Error: {str(e)}"
                 })
 
         # Update Next button status
@@ -392,8 +429,35 @@ class PracticeTool:
         with self.results_output:
             self.results_output.clear_output()
             df = pd.DataFrame(test_results)
-            df_styled = df.style.set_properties(**{'text-align': 'left'})
-            display(df_styled)
+
+            # Define a function to apply color coding
+            def color_result(val):
+                if val == 'Pass':
+                    return 'background-color: #90EE90'  # Light green
+                elif val == 'Fail':
+                    return 'background-color: #FFCCCB'  # Light red
+                elif val == 'Error':
+                    return 'background-color: #FFD700'  # Gold
+                return ''
+
+            # Apply the color coding and other styles
+            styled_df = df.style.map(color_result, subset=['Result'])
+            styled_df = styled_df.set_properties(**{
+                'text-align': 'left',
+                'white-space': 'pre-wrap',
+                'border': '1px solid black',
+                'padding': '8px'
+            })
+            styled_df = styled_df.set_table_styles([
+                {'selector': 'th', 'props': [('font-weight', 'bold'), ('text-align', 'left'), ('border', '1px solid black'), ('padding', '8px')]},
+                {'selector': 'td', 'props': [('text-align', 'left'), ('border', '1px solid black'), ('padding', '8px')]},
+                {'selector': 'table', 'props': [('border-collapse', 'collapse'), ('width', '100%')]}
+            ])
+
+            # Convert the styled DataFrame to HTML and wrap it in a div for proper rendering
+            html_table = f'<div style="overflow-x: auto;">{styled_df.to_html(escape=False)}</div>'
+            display(HTML(html_table))
+
             if not self.next_button.disabled:
                 display(widgets.HTML("<b>All test cases passed! Click Next to continue.</b>"))
         self.tab_widget.selected_index = 2  # Switch to Test Results tab
@@ -457,4 +521,4 @@ class PracticeTool:
             self.display_question()
 
 # Instantiate the practice tool with questions from a JSON file
-# practice_tool = PracticeTool(json_url='questions.json')
+# practice_tool = PracticeTool(json_url='questions2.json')
