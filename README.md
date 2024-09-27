@@ -30,7 +30,7 @@ Learn the fundamentals of **Python programming**, starting with string manipulat
 This chapter focuses on numerical data types in Python—**integers** and **floats**. You'll also learn about **functions**, how to define them, and how to use them to organize and reuse your code.
 
 ### 6. Conditionals and Logic
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_06_Conditionals.ipynb)  
+[Open In Colab](https://github.com/brendanpshea/computing_concepts_python/blob/main/IntroCS_06_LogicConditionals.ipynb)  
 An introduction to **conditional statements** and logical operators in Python. This chapter teaches you how to write code that can make decisions based on conditions, including working with `if`, `else`, and `elif` statements.
 
 ### 7. Algorithms and Loops
