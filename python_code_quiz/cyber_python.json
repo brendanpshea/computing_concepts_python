@@ -1,0 +1,154 @@
+{
+  "questions": [
+    {
+      "function_name": "is_strong_password",
+      "parameters": ["password"],
+      "description": "Create a function that checks if a password is strong. A strong password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.",
+      "input_type": "string",
+      "answer_code": "def is_strong_password(password):\n    if len(password) < 8:\n        return False\n    has_upper = False\n    has_lower = False\n    has_number = False\n    for char in password:\n        if char.isupper():\n            has_upper = True\n        elif char.islower():\n            has_lower = True\n        elif char.isdigit():\n            has_number = True\n    return has_upper and has_lower and has_number",
+      "hint": "Use a loop to check each character in the password. Use the .isupper(), .islower(), and .isdigit() string methods.",
+      "test_inputs": [
+        "Password123",
+        "weakpass",
+        "ALLCAPS123",
+        "NoNumbers",
+        "12345678"
+      ]
+    },
+        {
+      "function_name": "count_login_attempts",
+      "parameters": ["log_file"],
+      "description": "Given a list of login attempts (successful or failed), count the number of failed login attempts.",
+      "input_type": "list of strings",
+      "answer_code": "def count_login_attempts(log_file):\n    failed_attempts = 0\n    for entry in log_file:\n        if 'failed' in entry.lower():\n            failed_attempts += 1\n    return failed_attempts",
+      "hint": "Loop through the log entries and check if each entry contains the word 'failed'.",
+      "test_inputs": [
+        ["User1 login successful", "User2 login failed", "User3 login failed", "User1 login successful"],
+        ["Admin login successful", "User login failed", "Guest login failed"],
+        ["Login successful", "Login successful", "Login successful"],
+        ["Failed attempt", "Failed login", "FAILED", "failed"],
+        []
+      ]
+    },
+    {
+      "function_name": "is_valid_ip",
+      "parameters": ["ip_address"],
+      "description": "Create a function that checks if a given string is a valid IPv4 address. Each number in the IP address should be between 0 and 255.",
+      "input_type": "string",
+      "answer_code": "def is_valid_ip(ip_address):\n    parts = ip_address.split('.')\n    if len(parts) != 4:\n        return False\n    for part in parts:\n        if not part.isdigit() or int(part) < 0 or int(part) > 255:\n            return False\n    return True",
+      "hint": "Split the IP address into parts and check if each part is a valid number between 0 and 255.",
+      "test_inputs": [
+        "192.168.0.1",
+        "256.1.2.3",
+        "10.0.0.0",
+        "172.16.0.0",
+        "192.168.001.1"
+      ]
+    },
+    {
+      "function_name": "mask_credit_card",
+      "parameters": ["card_number"],
+      "description": "Create a function that masks a credit card number, showing only the last 4 digits and replacing the rest with asterisks.",
+      "input_type": "string",
+      "answer_code": "def mask_credit_card(card_number):\n    if len(card_number) <= 4:\n        return card_number\n    return '*' * (len(card_number) - 4) + card_number[-4:]",
+      "hint": "Use string slicing to get the last 4 digits, and multiply '*' by the appropriate length for the mask.",
+      "test_inputs": [
+        "1234567890123456",
+        "9876543210987654",
+        "1111222233334444",
+        "12345",
+        "123"
+      ]
+    },
+    {
+      "function_name": "count_uppercase_letters",
+      "parameters": ["password"],
+      "description": "Create a function that counts the number of uppercase letters in a password.",
+      "input_type": "string",
+      "answer_code": "def count_uppercase_letters(password):\n    count = 0\n    for char in password:\n        if char.isupper():\n            count += 1\n    return count",
+      "hint": "Loop through each character in the password and use the .isupper() method to check if it's uppercase.",
+      "test_inputs": [
+        "Password123",
+        "ALLCAPS",
+        "nocaps",
+        "MixedCAPS",
+        "12345"
+      ]
+    },
+    {
+      "function_name": "simple_hash",
+      "parameters": ["input_string"],
+      "description": "Create a simple hash function. Sum the ASCII values of all characters in the input string and return the result modulo 1000.",
+      "input_type": "string",
+      "answer_code": "def simple_hash(input_string):\n    hash_value = 0\n    for char in input_string:\n        hash_value += ord(char)\n    return hash_value % 1000",
+      "hint": "Use a loop to iterate through each character, and the ord() function to get ASCII values.",
+      "test_inputs": [
+        "password123",
+        "cybersecurity",
+        "python",
+        "hash function",
+        ""
+      ]
+    },
+    {
+      "function_name": "is_valid_username",
+      "parameters": ["username"],
+      "description": "Create a function that checks if a username is valid. A valid username should be between 3 and 15 characters long and contain only letters, numbers, and underscores.",
+      "input_type": "string",
+      "answer_code": "def is_valid_username(username):\n    if len(username) < 3 or len(username) > 15:\n        return False\n    for char in username:\n        if not (char.isalnum() or char == '_'):\n            return False\n    return True",
+      "hint": "Check the length of the username first, then use a loop with .isalnum() to check each character.",
+      "test_inputs": [
+        "user_123",
+        "toolongusername123",
+        "sh",
+        "valid_user",
+        "invalid user!"
+      ]
+    },
+    {
+      "function_name": "check_password_strength",
+      "parameters": ["password"],
+      "description": "Create a function that checks the strength of a password and returns 'Weak', 'Medium', or 'Strong'. 'Weak' if less than 8 characters, 'Strong' if 12 or more characters, 'Medium' otherwise.",
+      "input_type": "string",
+      "answer_code": "def check_password_strength(password):\n    if len(password) < 8:\n        return 'Weak'\n    elif len(password) >= 12:\n        return 'Strong'\n    else:\n        return 'Medium'",
+      "hint": "Use if-elif-else statements to check the length of the password and return the appropriate strength.",
+      "test_inputs": [
+        "pass",
+        "password123",
+        "securepassword",
+        "short",
+        "verylongpassword"
+      ]
+    },
+    {
+      "function_name": "remove_special_characters",
+      "parameters": ["input_string"],
+      "description": "Create a function that removes all special characters from a string, leaving only letters and numbers.",
+      "input_type": "string",
+      "answer_code": "def remove_special_characters(input_string):\n    cleaned_string = ''\n    for char in input_string:\n        if char.isalnum():\n            cleaned_string += char\n    return cleaned_string",
+      "hint": "Use a loop to check each character and only keep it if it's alphanumeric (use .isalnum()).",
+      "test_inputs": [
+        "Hello, World!",
+        "User@123",
+        "P@ssw0rd!",
+        "No-Special-Chars",
+        "Only_Underscore"
+      ]
+    },
+    {
+      "function_name": "caesar_cipher_encrypt",
+      "parameters": ["message", "shift"],
+      "description": "Implement a simple Caesar cipher encryption. Shift each letter in the message by the specified number of positions in the alphabet. Only encrypt lowercase letters, leave other characters unchanged.",
+      "input_type": "string, integer",
+      "answer_code": "def caesar_cipher_encrypt(message, shift):\n    encrypted = ''\n    for char in message:\n        if char.islower():\n            shifted = chr((ord(char) - 97 + shift) % 26 + 97)\n            encrypted += shifted\n        else:\n            encrypted += char\n    return encrypted",
+      "hint": "Use ord() to get the ASCII value of a character and chr() to convert back to a character. Remember the ASCII value of 'a' is 97.",
+      "test_inputs": [
+        ("hello world", 3),
+        ("python", 1),
+        ("secret message", 5),
+        ("UPPERCASE", 2),
+        ("mix3d CH@RACTERS", 4)
+      ]
+    }
+  ]
+}
