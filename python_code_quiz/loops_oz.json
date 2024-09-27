@@ -1,0 +1,229 @@
+{
+  "questions": [
+    {
+      "function_name": "yellow_brick_road",
+      "parameters": ["steps"],
+      "description": "Return a string of 'yellow' and 'brick' alternating 'steps' number of times.",
+      "input_type": "integer",
+      "answer_code": "def yellow_brick_road(steps):\n    result = []\n    for i in range(steps):\n        if i % 2 == 0:\n            result.append('yellow')\n        else:\n            result.append('brick')\n    return ' '.join(result)",
+      "hint": "Use a for loop and modulo operator to alternate between 'yellow' and 'brick'.",
+      "test_inputs": [
+        3,
+        5,
+        0,
+        1,
+        8
+      ]
+    },
+    {
+      "function_name": "count_munchkins",
+      "parameters": ["munchkin_heights"],
+      "description": "Count how many munchkins are shorter than 4 feet (input heights are in inches).",
+      "input_type": "list of integers",
+      "answer_code": "def count_munchkins(munchkin_heights):\n    count = 0\n    for height in munchkin_heights:\n        if height < 48:  # 4 feet = 48 inches\n            count += 1\n    return count",
+      "hint": "Use a for loop to iterate through the list and an if statement to check height.",
+      "test_inputs": [
+        [36, 42, 50, 45, 38],
+        [49, 52, 47, 50, 48],
+        [30, 35, 40],
+        [60, 55, 58],
+        []
+      ]
+    },
+    {
+      "function_name": "emerald_city_guard",
+      "parameters": ["password"],
+      "description": "Return True if the password contains 'emerald' (case-insensitive), else return False.",
+      "input_type": "string",
+      "answer_code": "def emerald_city_guard(password):\n    return 'emerald' in password.lower()",
+      "hint": "Convert the password to lowercase and use the 'in' operator.",
+      "test_inputs": [
+        "GreenEmeraldCity",
+        "ruby_slippers",
+        "EMERALD_PALACE",
+        "oz_wizard",
+        "ThEEmErAlDcItY"
+      ]
+    },
+    {
+      "function_name": "scarecrow_brain_cells",
+      "parameters": ["days"],
+      "description": "Calculate the number of brain cells the Scarecrow grows. He starts with 0 and doubles every day for 'days' number of days.",
+      "input_type": "integer",
+      "answer_code": "def scarecrow_brain_cells(days):\n    cells = 0\n    for _ in range(days):\n        cells = cells * 2 + 1\n    return cells",
+      "hint": "Use a for loop and double the number of cells each iteration.",
+      "test_inputs": [
+        0,
+        1,
+        3,
+        5,
+        10
+      ]
+    },
+    {
+      "function_name": "tin_man_heart_beats",
+      "parameters": ["emotions"],
+      "description": "Count how many times the Tin Man's heart beats. It beats once for each emotion in the list, except for 'love' which makes it beat twice.",
+      "input_type": "list of strings",
+      "answer_code": "def tin_man_heart_beats(emotions):\n    beats = 0\n    for emotion in emotions:\n        if emotion.lower() == 'love':\n            beats += 2\n        else:\n            beats += 1\n    return beats",
+      "hint": "Use a for loop to iterate through emotions and an if statement to check for 'love'.",
+      "test_inputs": [
+        ["happy", "sad", "love", "fear"],
+        ["love", "love", "love"],
+        ["angry", "surprised", "confused"],
+        [],
+        ["LOVE", "Happy", "Love", "joy"]
+      ]
+    },
+    {
+      "function_name": "cowardly_lion_courage",
+      "parameters": ["fears_faced"],
+      "description": "Calculate the Cowardly Lion's courage level. He starts at 0 and gains 2 points for each fear faced, but loses 1 point every 3 fears (due to exhaustion).",
+      "input_type": "integer",
+      "answer_code": "def cowardly_lion_courage(fears_faced):\n    courage = 0\n    for i in range(1, fears_faced + 1):\n        courage += 2\n        if i % 3 == 0:\n            courage -= 1\n    return courage",
+      "hint": "Use a for loop and the modulo operator to check every third fear.",
+      "test_inputs": [
+        0,
+        1,
+        3,
+        5,
+        10
+      ]
+    },
+    {
+      "function_name": "wicked_witch_melt",
+      "parameters": ["water_drops"],
+      "description": "Return how many seconds it takes for the Wicked Witch to melt. Each water drop takes 1 second to fall, and she melts on the 10th drop.",
+      "input_type": "integer",
+      "answer_code": "def wicked_witch_melt(water_drops):\n    if water_drops >= 10:\n        return 10\n    else:\n        return water_drops",
+      "hint": "Use an if-else statement to check if water_drops is greater than or equal to 10.",
+      "test_inputs": [
+        5,
+        10,
+        15,
+        0,
+        8
+      ]
+    },
+    {
+      "function_name": "ruby_slipper_clicks",
+      "parameters": ["destination"],
+      "description": "Return the number of times Dorothy must click her ruby slippers to get home. Each letter in 'destination' requires one click, but 'z' requires two clicks.",
+      "input_type": "string",
+      "answer_code": "def ruby_slipper_clicks(destination):\n    clicks = 0\n    for char in destination.lower():\n        if char == 'z':\n            clicks += 2\n        elif char.isalpha():\n            clicks += 1\n    return clicks",
+      "hint": "Use a for loop to iterate through the string and check for 'z' and alphabetic characters.",
+      "test_inputs": [
+        "Kansas",
+        "Oz",
+        "Emerald City",
+        "Munchkinland",
+        "Yellow Brick Road"
+      ]
+    },
+    {
+      "function_name": "flying_monkey_formation",
+      "parameters": ["num_monkeys"],
+      "description": "Return a list representing the flying monkey formation. Each monkey is represented by 'M', and they fly in groups of 3, separated by '-'.",
+      "input_type": "integer",
+      "answer_code": "def flying_monkey_formation(num_monkeys):\n    formation = []\n    for i in range(num_monkeys):\n        formation.append('M')\n        if (i + 1) % 3 == 0 and i != num_monkeys - 1:\n            formation.append('-')\n    return ''.join(formation)",
+      "hint": "Use a for loop and the modulo operator to add separators after every third monkey.",
+      "test_inputs": [
+        3,
+        5,
+        10,
+        1,
+        0
+      ]
+    },
+    {
+      "function_name": "populate_oz",
+      "parameters": ["num_citizens"],
+      "description": "Create a list of Oz citizens. Even indices are 'Munchkin', odd indices are 'Winkie', but every 5th citizen is a 'Wizard'.",
+      "input_type": "integer",
+      "answer_code": "def populate_oz(num_citizens):\n    citizens = []\n    for i in range(num_citizens):\n        if (i + 1) % 5 == 0:\n            citizens.append('Wizard')\n        elif i % 2 == 0:\n            citizens.append('Munchkin')\n        else:\n            citizens.append('Winkie')\n    return citizens",
+      "hint": "Use a for loop with if-elif statements to determine citizen type based on index.",
+      "test_inputs": [
+        10,
+        5,
+        3,
+        0,
+        15
+      ]
+    },
+    {
+      "function_name": "tornado_strength",
+      "parameters": ["wind_speeds"],
+      "description": "Calculate the strength of the tornado that takes Dorothy to Oz. The strength is the average of wind speeds above 50 mph.",
+      "input_type": "list of integers",
+      "answer_code": "def tornado_strength(wind_speeds):\n    strong_winds = [speed for speed in wind_speeds if speed > 50]\n    if strong_winds:\n        return sum(strong_winds) / len(strong_winds)\n    else:\n        return 0",
+      "hint": "Use a list comprehension to filter wind speeds and calculate the average.",
+      "test_inputs": [
+        [30, 45, 60, 75, 80],
+        [40, 45, 50, 55, 60],
+        [100, 110, 120],
+        [30, 40, 50],
+        []
+      ]
+    },
+    {
+      "function_name": "enchanted_forest",
+      "parameters": ["tree_heights"],
+      "description": "Return the number of 'tall' trees in the Enchanted Forest. A tree is considered 'tall' if it's height is greater than the average height of all trees.",
+      "input_type": "list of integers",
+      "answer_code": "def enchanted_forest(tree_heights):\n    if not tree_heights:\n        return 0\n    average = sum(tree_heights) / len(tree_heights)\n    return sum(1 for height in tree_heights if height > average)",
+      "hint": "Calculate the average first, then use a generator expression to count tall trees.",
+      "test_inputs": [
+        [5, 10, 15, 20, 25],
+        [100, 100, 100, 100],
+        [1, 2, 3, 4, 5],
+        [10],
+        []
+      ]
+    },
+    {
+      "function_name": "magic_spell",
+      "parameters": ["ingredients"],
+      "description": "Create a magic spell by taking the first letter of each ingredient, capitalizing it, and joining them. If an ingredient starts with a vowel, use the last letter instead.",
+      "input_type": "list of strings",
+      "answer_code": "def magic_spell(ingredients):\n    vowels = 'aeiou'\n    spell = ''\n    for ingredient in ingredients:\n        if ingredient[0].lower() in vowels:\n            spell += ingredient[-1].upper()\n        else:\n            spell += ingredient[0].upper()\n    return spell",
+      "hint": "Use a for loop to iterate through ingredients and check if the first letter is a vowel.",
+      "test_inputs": [
+        ["newt", "apple", "toadstool", "egg", "frog"],
+        ["owl", "unicorn", "dragon", "phoenix"],
+        ["eye", "ear", "nose", "tongue"],
+        ["xylophone", "yarn", "zebra"],
+        []
+      ]
+    },
+    {
+      "function_name": "rainbow_bridge",
+      "parameters": ["colors"],
+      "description": "Build a rainbow bridge to Oz. Return True if the colors are in the correct order (ROYGBIV), otherwise return False.",
+      "input_type": "list of strings",
+      "answer_code": "def rainbow_bridge(colors):\n    correct_order = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']\n    if len(colors) != len(correct_order):\n        return False\n    for i in range(len(colors)):\n        if colors[i].lower() != correct_order[i]:\n            return False\n    return True",
+      "hint": "Compare each color to the correct order using a for loop and index.",
+      "test_inputs": [
+        ["red", "orange", "yellow", "green", "blue", "indigo", "violet"],
+        ["red", "yellow", "blue", "green", "indigo", "orange", "violet"],
+        ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "INDIGO", "VIOLET"],
+        ["red", "orange", "yellow", "green", "blue", "indigo"],
+        []
+      ]
+    },
+    {
+      "function_name": "oz_currency_converter",
+      "parameters": ["emerald_coins"],
+      "description": "Convert Emerald City coins to Ruby slippers. Each Ruby slipper costs 5 coins, but buy 2 get 1 free. Return the number of Ruby slippers that can be bought.",
+      "input_type": "integer",
+      "answer_code": "def oz_currency_converter(emerald_coins):\n    full_price_slippers = emerald_coins // 5\n    free_slippers = full_price_slippers // 2\n    return full_price_slippers + free_slippers",
+      "hint": "Use integer division to calculate full price slippers and free slippers.",
+      "test_inputs": [
+        10,
+        15,
+        5,
+        0,
+        100
+      ]
+    }
+  ]
+}
