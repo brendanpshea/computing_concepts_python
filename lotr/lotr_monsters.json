@@ -1,0 +1,142 @@
+[
+    {
+        "monster_name": "Goblin",
+        "initial_description": "A small, green creature with a mischievous grin appears. It looks like it hasn't had breakfast yet, and you might be on the menu.",
+        "hit_dice": 2,
+        "attack_die": 4,
+        "defense": 1
+    },
+    {
+        "monster_name": "Luggage",
+        "initial_description": "A walking chest with hundreds of little legs trots up to you. Its lid opens slightly, revealing rows of sharp teeth. Friendly? Maybe not.",
+        "hit_dice": 4,
+        "attack_die": 6,
+        "defense": 3
+    },
+    {
+        "monster_name": "Swamp Dragon",
+        "initial_description": "A dragon the size of a small dog hiccups, emitting a small flame. It looks at you apologetically before preparing to sneeze again.",
+        "hit_dice": 3,
+        "attack_die": 6,
+        "defense": 2
+    },
+    {
+        "monster_name": "Troll",
+        "initial_description": "A large, rocky creature lumbers into view. It seems to be pondering the meaning of life, or possibly just what to have for dinner.",
+        "hit_dice": 8,
+        "attack_die": 10,
+        "defense": 4
+    },
+    {
+        "monster_name": "Werewolf",
+        "initial_description": "A hairy individual howls at the moon, then checks his watch. 'Is it that time of the month already?' he mutters.",
+        "hit_dice": 6,
+        "attack_die": 8,
+        "defense": 3
+    },
+    {
+        "monster_name": "Vampire",
+        "initial_description": "A pale figure in a cape appears, dramatically backlit. He pauses, waiting for applause that never comes.",
+        "hit_dice": 7,
+        "attack_die": 8,
+        "defense": 3
+    },
+    {
+        "monster_name": "Gelatinous Cube",
+        "initial_description": "A large, wobbly cube of jelly approaches. It jiggles menacingly, if such a thing is possible.",
+        "hit_dice": 4,
+        "attack_die": 6,
+        "defense": 2
+    },
+    {
+        "monster_name": "Mimic",
+        "initial_description": "You see a perfectly ordinary chest. It winks at you. Wait, chests don't have eyes...",
+        "hit_dice": 5,
+        "attack_die": 8,
+        "defense": 3
+    },
+    {
+        "monster_name": "Beholder",
+        "initial_description": "A floating orb with multiple eyestalks drifts into view. It looks like it's having a bad hair day, if eyes could have hair.",
+        "hit_dice": 10,
+        "attack_die": 12,
+        "defense": 5
+    },
+    {
+        "monster_name": "Rust Monster",
+        "initial_description": "A peculiar creature scuttles towards you, its antennae twitching excitedly at the sight of your shiny armor.",
+        "hit_dice": 3,
+        "attack_die": 6,
+        "defense": 2
+    },
+    {
+        "monster_name": "Kobold",
+        "initial_description": "A tiny, scaly humanoid appears, brandishing a spoon like it's the mightiest of weapons. It's adorably fierce.",
+        "hit_dice": 1,
+        "attack_die": 4,
+        "defense": 1
+    },
+    {
+        "monster_name": "Animated Broom",
+        "initial_description": "A broom stands upright, bristles twitching. It eyes the dirt on your boots disapprovingly.",
+        "hit_dice": 1,
+        "attack_die": 4,
+        "defense": 1
+    },
+    {
+        "monster_name": "Awakened Shrub",
+        "initial_description": "A small bush waddles towards you. It looks like it's trying to decide whether to offer you a flower or slap you with a branch.",
+        "hit_dice": 1,
+        "attack_die": 4,
+        "defense": 1
+    },
+    {
+        "monster_name": "Flumph",
+        "initial_description": "A jellyfish-like creature floats by, telepathically humming an off-key tune. It seems more interested in making friends than fighting.",
+        "hit_dice": 2,
+        "attack_die": 4,
+        "defense": 1
+    },
+    {
+        "monster_name": "Flying Sword",
+        "initial_description": "A sword hovers in the air, point aimed at you. It looks like it's trying to remember which end is the handle.",
+        "hit_dice": 2,
+        "attack_die": 6,
+        "defense": 2
+    },
+    {
+        "monster_name": "Crawling Claw",
+        "initial_description": "A disembodied hand scuttles across the floor. It's making frantic gestures that could either mean 'hello' or 'prepare to die'.",
+        "hit_dice": 1,
+        "attack_die": 4,
+        "defense": 1
+    },
+    {
+        "monster_name": "Pixie",
+        "initial_description": "A tiny winged humanoid zips around your head, giggling mischievously. It seems to be playing a one-sided game of tag.",
+        "hit_dice": 1,
+        "attack_die": 4,
+        "defense": 1
+    },
+    {
+        "monster_name": "Pseudodragon",
+        "initial_description": "A cat-sized dragon lands on a nearby rock, trying to look fierce. It manages to be more cute than intimidating.",
+        "hit_dice": 2,
+        "attack_die": 4,
+        "defense": 2
+    },
+    {
+        "monster_name": "Skeleton",
+        "initial_description": "A skeleton walks in, its bones rattling like percussion instruments. It looks like it's one femur away from falling apart.",
+        "hit_dice": 2,
+        "attack_die": 6,
+        "defense": 1
+    },
+    {
+        "monster_name": "Stirge",
+        "initial_description": "A bizarre mix of bat and mosquito buzzes towards you. It's eyeing your neck like it's an all-you-can-drink buffet.",
+        "hit_dice": 1,
+        "attack_die": 4,
+        "defense": 1
+    }
+]
