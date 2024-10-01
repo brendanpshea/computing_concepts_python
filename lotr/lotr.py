@@ -458,7 +458,6 @@ class Game:
         # Calculate Hits
         player_hits = len(correct_selections) + len(incorrect_not_selected)  # TP + TN
         monster_hits = len(incorrect_selections) + len(missed_correct)  # FP + FN
-        print("Player hits:", player_hits, "Monster hits: ", monster_hits)
 
         # Calculate Total Damage
         player_damage = sum(random.randint(1, self.player.weapon['attack_die']) for _ in range(player_hits))
@@ -476,7 +475,7 @@ class Game:
         battle_results = "<div class='bbs-container'><div class='section'>"
 
         if effective_player_damage > 0:
-            battle_results += f"You attack the <span class='bold'>{self.current_monster.monster_name}</span> with your <span class='yellow'>{self.player.weapon['name']}</span> and deal <span class='yellow'>{effective_player_damage}</span> damage.<br>"
+            battle_results += f"You attack the <span class='bold'>{self.current_monster.monster_name}</span> with your <span class='yellow'>{self.player.weapon['name']}</span> and deal <span class='yellow'>{effective_player_damage}</span> damage with {player_hits} hits.<br>"
         else:
             battle_results += f"Your attack couldn't penetrate the <span class='bold'>{self.current_monster.monster_name}</span>'s defense.<br>"
 
