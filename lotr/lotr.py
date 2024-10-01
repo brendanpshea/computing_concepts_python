@@ -458,6 +458,7 @@ class Game:
         # Calculate Hits
         player_hits = len(correct_selections) + len(incorrect_not_selected)  # TP + TN
         monster_hits = len(incorrect_selections) + len(missed_correct)  # FP + FN
+        print("Player hits:", player_hits, "Monster hits: ", monster_hits)
 
         # Calculate Total Damage
         player_damage = sum(random.randint(1, self.player.weapon['attack_die']) for _ in range(player_hits))
