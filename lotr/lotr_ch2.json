@@ -8,7 +8,7 @@
     ],
     "incorrect": [
       "Bits can only represent letters",
-      "A byte always represents a single character"
+      "A byte can represent exactly one single character"
     ],
     "hint": "Think about the fundamental units of digital information."
   },
@@ -111,7 +111,7 @@
       "Colors are typically represented using the RGB model"
     ],
     "incorrect": [
-      "Pixels always use only 1 bit to represent color",
+      "Pixels typically 1 bit to represent color",
       "The number of pixels doesn't affect image resolution"
     ],
     "hint": "Think about how digital images are composed at the most basic level."
@@ -137,7 +137,7 @@
       "PNG is an example of a lossless image format"
     ],
     "incorrect": [
-      "It always results in the smallest possible file size",
+      "It usually results in the smallest possible file size",
       "It's never used for image files"
     ],
     "hint": "Think about the properties and uses of lossless compression techniques."
@@ -150,7 +150,7 @@
       "JPEG is an example of a lossy image format"
     ],
     "incorrect": [
-      "The original data can always be perfectly reconstructed",
+      "The original data can be perfectly reconstructed",
       "It's commonly used for compressing executable files"
     ],
     "hint": "Consider the trade-offs involved in lossy compression methods."
@@ -176,7 +176,7 @@
       "It typically results in larger file sizes than compressed formats"
     ],
     "incorrect": [
-      "It always uses lossy compression",
+      "It uses lossy compression",
       "It's primarily used for streaming audio over the internet"
     ],
     "hint": "Consider the features and uses of uncompressed audio formats."
@@ -189,7 +189,7 @@
       "It's widely used for music distribution"
     ],
     "incorrect": [
-      "It always preserves perfect audio quality",
+      "It preserves perfect audio quality",
       "It's an uncompressed audio format"
     ],
     "hint": "Think about the characteristics and common uses of MP3 files."
@@ -216,7 +216,7 @@
     ],
     "incorrect": [
       "They are composed of a grid of pixels",
-      "They are always larger in file size than raster images"
+      "They are generally larger in file size than raster images"
     ],
     "hint": "Think about how vector graphics differ from raster images."
   },
@@ -228,7 +228,7 @@
       "The compiled program is often specific to an operating system or architecture"
     ],
     "incorrect": [
-      "They are always interpreted line-by-line at runtime",
+      "They are interpreted line-by-line at runtime",
       "The source code can be easily modified after compilation"
     ],
     "hint": "Consider the process and results of compiling a program."
@@ -241,7 +241,7 @@
       "Python and JavaScript are examples of interpreted languages"
     ],
     "incorrect": [
-      "They always execute faster than compiled languages",
+      "They generally execute faster than compiled languages",
       "The source code is converted to machine code before running"
     ],
     "hint": "Think about how interpreted languages are executed and their characteristics."
