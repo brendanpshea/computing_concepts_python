@@ -1,410 +1,262 @@
 [
   {
-    "question": "What does ASCII stand for?",
-    "correct": ["American Standard Code for Information Interchange"],
-    "incorrect": [
-      "Automated System for Computer Information Input",
-      "Advanced Standard Computer Information Interface",
-      "Algorithmic System for Coding Information Internally"
-    ],
-    "hint": "Think about the full name of this common character encoding standard."
-  },
-  {
-    "question": "Which of the following are true about ASCII? (Select all that apply)",
+    "question": "Which of the following are true about bits and bytes? (Select all that apply)",
     "correct": [
-      "It uses 7 bits to represent characters",
-      "It can represent 128 characters",
-      "It includes uppercase and lowercase letters"
+      "A bit is the smallest unit of data in computing",
+      "A byte typically consists of 8 bits",
+      "Bytes can represent 256 different values"
     ],
     "incorrect": [
-      "It can represent all Unicode characters",
-      "It uses 8 bits to represent characters"
+      "Bits can only represent letters",
+      "A byte always represents a single character"
     ],
-    "hint": "Consider the basic characteristics and limitations of ASCII encoding."
+    "hint": "Think about the fundamental units of digital information."
   },
   {
-    "question": "What is bitmap (BMP) in the context of image files?",
-    "correct": ["An uncompressed raster image file format"],
-    "incorrect": [
-      "A vector image format",
-      "A lossy compression technique",
-      "A type of image editing software"
-    ],
-    "hint": "Think about how BMP files store image data."
-  },
-  {
-    "question": "Which of the following are characteristics of BMP files? (Select all that apply)",
+    "question": "Which of the following are examples of text encoding systems? (Select all that apply)",
     "correct": [
-      "They store image data pixel by pixel",
-      "They can support various color depths",
-      "They typically result in large file sizes"
+      "ASCII",
+      "Unicode",
+      "UTF-8"
     ],
     "incorrect": [
-      "They always use lossy compression",
-      "They are primarily used for web graphics"
+      "JPEG",
+      "MP3"
     ],
-    "hint": "Consider the strengths and limitations of the BMP format."
+    "hint": "Consider systems used to represent textual data in computers."
   },
   {
-    "question": "What does CSV stand for in file formats?",
-    "correct": ["Comma Separated Values"],
-    "incorrect": [
-      "Computer System Variables",
-      "Coded Sequence Vectors",
-      "Complex Storage Volume"
-    ],
-    "hint": "Think about what separates the data in this type of file."
-  },
-  {
-    "question": "Which statements about CSV files are true? (Select all that apply)",
+    "question": "What are characteristics of the ASCII encoding system? (Select all that apply)",
     "correct": [
-      "They store tabular data",
-      "Each line typically represents a row",
+      "Uses 7 bits to represent characters",
+      "Can represent 128 different characters",
+      "Includes uppercase and lowercase letters"
+    ],
+    "incorrect": [
+      "Can represent characters from all world languages",
+      "Uses 16 bits for each character"
+    ],
+    "hint": "Think about the capabilities and limitations of ASCII."
+  },
+  {
+    "question": "Which of the following are true about Unicode? (Select all that apply)",
+    "correct": [
+      "Aims to represent every character from all writing systems",
+      "Can use multiple bytes to represent a single character",
+      "UTF-8 is a common implementation of Unicode"
+    ],
+    "incorrect": [
+      "It's limited to 256 characters",
+      "It's only used for Asian languages"
+    ],
+    "hint": "Consider the goals and features of the Unicode standard."
+  },
+  {
+    "question": "Which of the following are characteristics of markup languages? (Select all that apply)",
+    "correct": [
+      "They use tags to structure content",
+      "They can define how content should be displayed",
+      "HTML and XML are examples of markup languages"
+    ],
+    "incorrect": [
+      "They are used to perform mathematical calculations",
+      "They directly execute program instructions"
+    ],
+    "hint": "Think about how markup languages are used to structure and present information."
+  },
+  {
+    "question": "What are features of the CSV (Comma-Separated Values) format? (Select all that apply)",
+    "correct": [
+      "It's used for storing tabular data",
+      "Each line typically represents a row of data",
       "Fields are separated by commas"
     ],
     "incorrect": [
-      "They can store complex hierarchical data",
-      "They use XML tags to structure data"
+      "It can store complex hierarchical data",
+      "It uses XML tags to structure data"
     ],
-    "hint": "Consider the basic structure and limitations of CSV files."
+    "hint": "Consider the structure and common uses of CSV files."
   },
   {
-    "question": "What does HTML stand for?",
-    "correct": ["Hypertext Markup Language"],
-    "incorrect": [
-      "High-Level Text Management Language",
-      "Hyperlink and Text Manipulation Language",
-      "Home Tool for Markup Languages"
-    ],
-    "hint": "Think about the full name of this common web technology."
-  },
-  {
-    "question": "Which of the following are true about HTML? (Select all that apply)",
+    "question": "Which of the following are true about JSON (JavaScript Object Notation)? (Select all that apply)",
     "correct": [
-      "It's the standard markup language for creating web pages",
-      "It uses tags to structure content",
-      "It's typically rendered by web browsers"
-    ],
-    "incorrect": [
-      "It's used for server-side scripting",
-      "It's a programming language for creating desktop applications"
-    ],
-    "hint": "Consider the primary use and characteristics of HTML."
-  },
-  {
-    "question": "What does JSON stand for?",
-    "correct": ["JavaScript Object Notation"],
-    "incorrect": [
-      "Java Standard Object Network",
-      "Joint Synchronization of Networked Objects",
-      "Justified Sequencing of Nested Operations"
-    ],
-    "hint": "Think about the origin and purpose of this data format."
-  },
-  {
-    "question": "Which characteristics describe JSON? (Select all that apply)",
-    "correct": [
-      "It's a lightweight, text-based data interchange format",
+      "It's a lightweight data interchange format",
       "It's easy for humans to read and write",
-      "It's commonly used for configuration files and API responses"
+      "It's based on a subset of JavaScript"
     ],
     "incorrect": [
-      "It requires special software to view or edit",
-      "It's primarily used for storing binary data"
+      "It can only store numerical data",
+      "It's a type of image format"
     ],
-    "hint": "Consider the advantages and common uses of JSON."
+    "hint": "Think about the features and uses of JSON in data storage and transfer."
   },
   {
-    "question": "What does PDF stand for?",
-    "correct": ["Portable Document Format"],
-    "incorrect": [
-      "Personal Data File",
-      "Printable Document Form",
-      "Programmed Digital Format"
-    ],
-    "hint": "Think about the purpose of this file format in terms of document portability."
-  },
-  {
-    "question": "Which statements about PDF files are correct? (Select all that apply)",
+    "question": "What are characteristics of relational databases? (Select all that apply)",
     "correct": [
-      "They present documents consistently across different devices",
-      "They can contain text, images, and interactive elements",
-      "They were developed by Adobe"
+      "Data is organized into tables",
+      "Tables can have relationships with each other",
+      "They often use SQL for querying"
     ],
     "incorrect": [
-      "They are primarily used for editing documents",
-      "They are always editable by default"
+      "They can only store text data",
+      "Each table can only have one column"
     ],
-    "hint": "Consider the main features and purpose of PDF files."
+    "hint": "Consider how data is structured and managed in relational databases."
   },
   {
-    "question": "What does PNG stand for in image file formats?",
-    "correct": ["Portable Network Graphics"],
-    "incorrect": [
-      "Programmable Numerical Graphics",
-      "Personal Nested Graphic",
-      "Pixelated Natural Graphic"
-    ],
-    "hint": "Think about the full name of this common image format."
-  },
-  {
-    "question": "Which of the following are true about PNG files? (Select all that apply)",
+    "question": "Which of the following are true about pixels in digital images? (Select all that apply)",
     "correct": [
-      "They use lossless compression",
-      "They support transparency",
-      "They are widely used for web graphics"
+      "They are the smallest unit of a digital image",
+      "Each pixel represents a single color",
+      "Colors are typically represented using the RGB model"
     ],
     "incorrect": [
-      "They always produce smaller file sizes than JPEG",
-      "They are primarily used for print publications"
+      "Pixels always use only 1 bit to represent color",
+      "The number of pixels doesn't affect image resolution"
     ],
-    "hint": "Consider the key features and common uses of PNG files."
+    "hint": "Think about how digital images are composed at the most basic level."
   },
   {
-    "question": "What does SVG stand for in graphics formats?",
-    "correct": ["Scalable Vector Graphics"],
-    "incorrect": [
-      "Simple Visual Graphics",
-      "Structured Variable Geometry",
-      "System Vector Generator"
-    ],
-    "hint": "Think about the key characteristic of this image format that allows for resizing without quality loss."
-  },
-  {
-    "question": "Which statements about SVG files are true? (Select all that apply)",
+    "question": "What are characteristics of the RGB color model? (Select all that apply)",
     "correct": [
-      "They are based on XML",
-      "They allow for infinite scaling without loss of quality",
-      "They are ideal for logos and illustrations"
+      "It uses red, green, and blue as primary colors",
+      "Each color component typically ranges from 0 to 255",
+      "It can represent millions of colors"
     ],
     "incorrect": [
-      "They are primarily used for photographic images",
-      "They always result in smaller file sizes than raster formats"
+      "It only uses black and white",
+      "It's only used in printed materials"
     ],
-    "hint": "Consider the nature of vector graphics and the advantages of SVG."
+    "hint": "Consider how colors are represented digitally using RGB."
   },
   {
-    "question": "What is assembly code?",
-    "correct": ["A low-level programming language with a strong correspondence to machine code instructions"],
-    "incorrect": [
-      "A high-level programming language",
-      "A type of encryption algorithm",
-      "A method for compressing executable files"
-    ],
-    "hint": "Think about the level of abstraction in this type of code."
-  },
-  {
-    "question": "Which of the following are true about bit depth in digital audio? (Select all that apply)",
+    "question": "Which of the following are true about lossless compression? (Select all that apply)",
     "correct": [
-      "It represents the number of bits used for each audio sample",
-      "Higher bit depth allows for greater dynamic range",
-      "Common depths include 16-bit and 24-bit"
-    ],
-    "incorrect": [
-      "It determines the speed of audio playback",
-      "Lower bit depth always results in better audio quality"
-    ],
-    "hint": "Consider how bit depth affects the precision of audio representation."
-  },
-  {
-    "question": "What is a B-tree in computer science?",
-    "correct": ["A self-balancing tree data structure used in databases and file systems"],
-    "incorrect": [
-      "A type of binary code",
-      "A programming language for tree-like structures",
-      "A compression algorithm for hierarchical data"
-    ],
-    "hint": "Think about data structures used for efficient data retrieval and storage."
-  },
-  {
-    "question": "Which statements about bytecode are correct? (Select all that apply)",
-    "correct": [
-      "It's an intermediate code generated by compiling source code",
-      "It's designed to be executed by a virtual machine",
-      "It provides portability across different platforms"
-    ],
-    "incorrect": [
-      "It's directly executable by computer hardware",
-      "It's a type of encryption for secure data transmission"
-    ],
-    "hint": "Consider the role of bytecode in the compilation and execution process."
-  },
-  {
-    "question": "What is C# primarily used for?",
-    "correct": ["Windows application development and game development with the Unity engine"],
-    "incorrect": [
-      "Developing operating systems",
-      "Creating web browsers",
-      "Managing hardware drivers"
-    ],
-    "hint": "Think about the common applications of this Microsoft-developed language."
-  },
-  {
-    "question": "Which of the following are characteristics of C++? (Select all that apply)",
-    "correct": [
-      "It's a general-purpose programming language",
-      "It extends C with object-oriented features",
-      "It's known for its performance and control over system resources"
-    ],
-    "incorrect": [
-      "It's primarily used for web development",
-      "It's an interpreted language"
-    ],
-    "hint": "Consider the key features and common uses of C++."
-  },
-  {
-    "question": "What is a compiled language?",
-    "correct": ["A programming language where the entire source code is translated into machine code before execution"],
-    "incorrect": [
-      "A language that is interpreted line by line at runtime",
-      "A markup language for structuring documents",
-      "A query language for databases"
-    ],
-    "hint": "Think about how the source code is processed before it can be run."
-  },
-  {
-    "question": "What is the primary function of a compiler?",
-    "correct": ["To translate source code written in a high-level language into machine code or bytecode"],
-    "incorrect": [
-      "To execute program code",
-      "To design user interfaces",
-      "To manage computer memory"
-    ],
-    "hint": "Consider the role of a compiler in the programming process."
-  },
-  {
-    "question": "What is FLAC in the context of audio files?",
-    "correct": ["Free Lossless Audio Codec"],
-    "incorrect": [
-      "Fast Loading Audio Compression",
-      "Frequency Layered Audio Coding",
-      "File-based Lossy Audio Compression"
-    ],
-    "hint": "Think about the full name of this audio format, particularly its compression characteristics."
-  },
-  {
-    "question": "Which statements about FLAC are true? (Select all that apply)",
-    "correct": [
-      "It's a lossless audio compression format",
-      "It reduces file size without losing audio quality",
-      "It's popular for archiving and high-fidelity audio playback"
-    ],
-    "incorrect": [
-      "It achieves smaller file sizes than MP3",
-      "It's primarily used for streaming low-quality audio"
-    ],
-    "hint": "Consider the advantages and common uses of FLAC."
-  },
-  {
-    "question": "What is an interpreted language?",
-    "correct": ["A programming language where the source code is executed line by line by an interpreter at runtime"],
-    "incorrect": [
-      "A language that must be compiled before execution",
-      "A markup language for creating web pages",
-      "A low-level language directly understood by computers"
-    ],
-    "hint": "Think about how code in these languages is executed."
-  },
-  {
-    "question": "Which of the following are true about Java? (Select all that apply)",
-    "correct": [
-      "It's an object-oriented programming language",
-      "It's designed to be platform-independent",
-      "It compiles to bytecode that runs on a Java Virtual Machine"
-    ],
-    "incorrect": [
-      "It's primarily used for low-level system programming",
-      "It's a markup language for structuring documents"
-    ],
-    "hint": "Consider the key features and design philosophy of Java."
-  },
-  {
-    "question": "What is the primary use of JavaScript?",
-    "correct": ["Creating interactive web pages"],
-    "incorrect": [
-      "Developing operating systems",
-      "Managing database systems",
-      "Compiling other programming languages"
-    ],
-    "hint": "Think about where you most commonly encounter JavaScript."
-  },
-  {
-    "question": "What is a linker in the context of programming?",
-    "correct": ["A program that combines object code from multiple source files or libraries into a single executable file"],
-    "incorrect": [
-      "A tool for connecting different computers in a network",
-      "A program for creating hyperlinks in web pages",
-      "A utility for compressing multiple files into one"
-    ],
-    "hint": "Consider what needs to happen after individual parts of a program are compiled."
-  },
-  {
-    "question": "Which of the following describe lossless compression? (Select all that apply)",
-    "correct": [
-      "It allows the original data to be perfectly reconstructed from the compressed data",
-      "It's used in formats like PNG for images",
-      "It's used in formats like FLAC for audio"
+      "The original data can be perfectly reconstructed",
+      "It's often used for text and program files",
+      "PNG is an example of a lossless image format"
     ],
     "incorrect": [
       "It always results in the smallest possible file size",
-      "It's primarily used for compressing video files"
+      "It's never used for image files"
     ],
-    "hint": "Think about the key characteristic of this type of compression and its common applications."
+    "hint": "Think about the properties and uses of lossless compression techniques."
   },
   {
-    "question": "What is lossy compression?",
-    "correct": ["A data compression technique that reduces file size by permanently removing some information"],
-    "incorrect": [
-      "A compression technique that preserves all original data",
-      "A method for encrypting data to prevent information loss",
-      "A technique for lossless data storage"
-    ],
-    "hint": "Consider what happens to the original data in this type of compression."
-  },
-  {
-    "question": "Which of the following are true about MP3 files? (Select all that apply)",
+    "question": "What are characteristics of lossy compression? (Select all that apply)",
     "correct": [
-      "They use lossy compression",
-      "They are widely used for music storage and streaming",
-      "They achieve significant file size reduction compared to uncompressed audio"
+      "Some data is permanently lost in the compression process",
+      "It often results in smaller file sizes than lossless compression",
+      "JPEG is an example of a lossy image format"
     ],
     "incorrect": [
-      "They provide lossless audio quality",
-      "They are primarily used for professional audio production"
+      "The original data can always be perfectly reconstructed",
+      "It's commonly used for compressing executable files"
+    ],
+    "hint": "Consider the trade-offs involved in lossy compression methods."
+  },
+  {
+    "question": "Which of the following are important concepts in digital audio? (Select all that apply)",
+    "correct": [
+      "Sample rate",
+      "Bit depth",
+      "Audio channels"
+    ],
+    "incorrect": [
+      "Pixel density",
+      "Frame rate"
+    ],
+    "hint": "Think about how analog sound is converted and represented digitally."
+  },
+  {
+    "question": "What are characteristics of the WAV audio format? (Select all that apply)",
+    "correct": [
+      "It's an uncompressed audio format",
+      "It preserves the original audio quality",
+      "It typically results in larger file sizes than compressed formats"
+    ],
+    "incorrect": [
+      "It always uses lossy compression",
+      "It's primarily used for streaming audio over the internet"
+    ],
+    "hint": "Consider the features and uses of uncompressed audio formats."
+  },
+  {
+    "question": "Which of the following are true about the MP3 audio format? (Select all that apply)",
+    "correct": [
+      "It uses lossy compression",
+      "It can significantly reduce file size",
+      "It's widely used for music distribution"
+    ],
+    "incorrect": [
+      "It always preserves perfect audio quality",
+      "It's an uncompressed audio format"
     ],
     "hint": "Think about the characteristics and common uses of MP3 files."
   },
   {
-    "question": "What is metadata?",
-    "correct": ["Data that provides information about other data"],
-    "incorrect": [
-      "A type of database management system",
-      "A programming language for big data",
-      "A method for encrypting sensitive information"
-    ],
-    "hint": "Consider what kind of information might be associated with files or database entries beyond their main content."
-  },
-  {
-    "question": "Which of the following are examples of metadata? (Select all that apply)",
+    "question": "What are features of the PDF file format? (Select all that apply)",
     "correct": [
-      "Creation date of a file",
-      "Author of a document",
-      "File size"
+      "It can contain text, images, and vector graphics",
+      "It's designed for consistent display across different devices",
+      "It can include interactive elements"
     ],
     "incorrect": [
-      "The plot of a movie",
-      "The lyrics of a song"
+      "It's primarily used for editing documents",
+      "It can only contain text"
     ],
-    "hint": "Think about the additional information that describes or gives context to data."
+    "hint": "Consider the capabilities and common uses of PDF files."
   },
   {
-    "question": "What is Unicode?",
-    "correct": ["A character encoding standard aiming to represent every character from all writing systems in the world"],
-    "incorrect": [
-      "A programming language for creating user interfaces",
-      "A compression algorithm for text files",
-      "A markup language for formatting documents"
+    "question": "Which of the following are true about vector graphics? (Select all that apply)",
+    "correct": [
+      "They use mathematical formulas to represent images",
+      "They can be scaled without losing quality",
+      "SVG is a common format for vector graphics"
     ],
-    "hint": "Consider the purpose of this standard in relation to text representation."
+    "incorrect": [
+      "They are composed of a grid of pixels",
+      "They are always larger in file size than raster images"
+    ],
+    "hint": "Think about how vector graphics differ from raster images."
+  },
+  {
+    "question": "What are characteristics of compiled programming languages? (Select all that apply)",
+    "correct": [
+      "Source code is translated to machine code before execution",
+      "They often result in faster program execution",
+      "The compiled program is often specific to an operating system or architecture"
+    ],
+    "incorrect": [
+      "They are always interpreted line-by-line at runtime",
+      "The source code can be easily modified after compilation"
+    ],
+    "hint": "Consider the process and results of compiling a program."
+  },
+  {
+    "question": "Which of the following are true about interpreted programming languages? (Select all that apply)",
+    "correct": [
+      "Code is translated and executed line-by-line at runtime",
+      "They often offer more flexibility and ease of debugging",
+      "Python and JavaScript are examples of interpreted languages"
+    ],
+    "incorrect": [
+      "They always execute faster than compiled languages",
+      "The source code is converted to machine code before running"
+    ],
+    "hint": "Think about how interpreted languages are executed and their characteristics."
+  },
+  {
+    "question": "What are features of markup languages like HTML and XML? (Select all that apply)",
+    "correct": [
+      "They use tags to structure content",
+      "They can define how content should be displayed or processed",
+      "They are often used for web pages and data exchange"
+    ],
+    "incorrect": [
+      "They are used to perform complex calculations",
+      "They directly execute program instructions"
+    ],
+    "hint": "Consider how markup languages are used to structure and present information."
   }
 ]
