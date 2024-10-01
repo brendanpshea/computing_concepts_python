@@ -1,3 +1,5 @@
+# game.py
+
 import json
 import random
 from dataclasses import dataclass, field
@@ -205,18 +207,28 @@ class Game:
         """
         Render the initial screen before any encounters.
         """
+        # Create a Start Adventure button
+        start_button = widgets.Button(
+            description="Start Adventure",
+            button_style='success',  # 'success', 'info', 'warning', 'danger' or ''
+            tooltip='Start your adventure',
+            layout=widgets.Layout(width='200px', height='40px')
+        )
+        start_button.on_click(lambda b: self.present_encounter())
+
         initial_html = f"""
         <div class='bbs-container'>
             <div class='title'>Welcome to the Loop of the Recursive Dragon!</div>
             <div class='section'>
                 Prepare yourself for a challenging quiz adventure. Answer questions correctly to defeat monsters and earn gold. Visit the store after every {self.STORE_INTERVAL} questions to upgrade your equipment.
             </div>
-            <div class='section'>
-                <button class='button' onclick="{self.present_encounter.__name__}()">Start Adventure</button>
-            </div>
         </div>
         """
-        self.main_container.children = [widgets.HTML(value=initial_html)]
+        # Update the main container with HTML and the start button
+        self.main_container.children = [
+            widgets.HTML(value=initial_html),
+            start_button
+        ]
 
     def generate_monster(self) -> Optional[Monster]:
         """
@@ -796,6 +808,202 @@ class Game:
             widgets.HTML(value=battle_results),
             continue_button
         ]
+
+    def present_store(self):
+        """
+        Present the store to the player where they can buy items.
+        """
+        self.just_visited_store = True  # Set the flag
+        store_html = f"""
+        <div class='bbs-container'>
+            <div class='title'>The Traveling Merchant</div>
+            <div class='section'>
+                A mysterious merchant appears and offers you goods for sale.
+            </div>
+        </div>
+        """
+
+        # Update the gold label
+        self.gold_label.value = f"You have <span class='yellow'>{self.player.gold}</span> gold."
+
+        # Create a list to hold all items for sale
+        items_for_sale = []
+
+        # Add weapons to items for sale
+        for weapon_name, weapon in WEAPONS.items():
+            # Skip the starting weapon (Fists) or any items the player already has
+            if weapon_name == "Fists" or weapon_name == self.player.weapon['name']:
+                continue
+            items_for_sale.append({
+                "name": weapon['name'],
+                "type": "weapon",
+                "price": weapon['price'],
+                "stats": f"Atk Die: {weapon['attack_die']}"
+            })
+
+        # Add armors to items for sale
+        for armor_name, armor in ARMORS.items():
+            # Skip the starting armor (Clothes) or any items the player already has
+            if armor_name == "Clothes" or armor_name == self.player.armor['name']:
+                continue
+            items_for_sale.append({
+                "name": armor['name'],
+                "type": "armor",
+                "price": armor['price'],
+                "stats": f"Defense: {armor['defense']}"
+            })
+
+        # Add potions or other consumables
+        items_for_sale.append({
+            "name": "Health Potion",
+            "type": "potion",
+            "price": 20,
+            "effect": "heal",
+            "value": 10,
+            "stats": "+10 HP"
+        })
+
+        # Create widgets to display items and allow purchase
+        item_widgets = []
+        for item in items_for_sale:
+            # Create a label for the item
+            item_label = widgets.HTML(
+                value=f"<div style='display: flex; align-items: center; width: 600px;'>"
+                      f"<span style='flex: 1; font-size:14px; word-wrap: break-word;'>{item['name']} ({item['stats']}) "
+                      f"(<span class='yellow'>{item['price']}</span> gold)</span>"
+                      f"</div>"
+            )
+            # Create a buy button
+            buy_button = widgets.Button(
+                description="Buy",
+                button_style='primary',
+                layout=widgets.Layout(width='80px')
+            )
+            # Disable button if player can't afford or already owns the item
+            if self.player.gold < item['price'] or (
+                (item['type'] == 'weapon' and item['name'] == self.player.weapon['name']) or
+                (item['type'] == 'armor' and item['name'] == self.player.armor['name'])
+            ):
+                buy_button.disabled = True
+
+            # Capture the current item in the lambda
+            buy_button.on_click(lambda b, item=item: self.buy_item(item))
+            # Combine label and button in a horizontal box
+            item_row = widgets.HBox([item_label, buy_button], layout=widgets.Layout(gap='10px'))
+            item_widgets.append(item_row)
+
+        # Create a container for the item widgets
+        items_box = widgets.VBox(item_widgets, layout=widgets.Layout(gap='10px', overflow_y='auto', max_height='400px'))
+
+        # Create a button to continue the adventure
+        continue_button = widgets.Button(
+            description="Continue Adventure",
+            button_style='success',
+            layout=widgets.Layout(width='200px')
+        )
+        continue_button.on_click(lambda b: self.game_loop())
+
+        # Update the main container
+        self.main_container.children = [
+            widgets.HTML(value=store_html),
+            self.gold_label,
+            items_box,
+            self.store_message,
+            continue_button
+        ]
+
+    def buy_item(self, item):
+        """
+        Handle the purchase of an item.
+        """
+        if self.player.gold < item['price']:
+            # Not enough gold
+            message = f"<div class='bbs-container'><div class='section'><span class='red'>You do not have enough gold to buy {item['name']}.</span></div></div>"
+        else:
+            self.player.gold -= item['price']
+            if item['type'] == 'potion':
+                # Heal the player
+                self.player.hit_points += item['value']
+                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased {item['name']} and healed {item['value']} HP.</span></div></div>"
+            elif item['type'] == 'weapon':
+                # Update the player's weapon
+                self.player.weapon = WEAPONS[item['name']]
+                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased and equipped {item['name']}.</span></div></div>"
+            elif item['type'] == 'armor':
+                # Update the player's armor
+                self.player.armor = ARMORS[item['name']]
+                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased and equipped {item['name']}.</span></div></div>"
+            else:
+                message = f"<div class='bbs-container'><div class='section'><span class='red'>Error: Unknown item type.</span></div></div>"
+
+            # Update the gold label
+            self.gold_label.value = f"You have <span class='yellow'>{self.player.gold}</span> gold."
+
+        # Update the message
+        self.store_message.value = message
+
+        # Refresh the store to update button states
+        self.present_store()
+
+    def show_victory(self):
+        """
+        Display the victory screen when all questions are answered.
+        """
+        victory_html = f"""
+        <div class='bbs-container'>
+            <div class='title'>Victory!</div>
+            <div class='section'>
+                Congratulations! You have answered all questions and defeated all monsters.<br>
+                <span class='bold'>Final Stats:</span><br>
+                Correct Answers: <span class='yellow'>{self.player.total_correct}</span><br>
+                Incorrect Answers: <span class='yellow'>{self.player.total_incorrect}</span><br>
+                HP: <span class='yellow'>{self.player.hit_points}</span><br>
+                Gold: <span class='yellow'>{self.player.gold}</span><br>
+                Weapon: <span class='yellow'>{self.player.weapon['name']}</span><br>
+                Armor: <span class='yellow'>{self.player.armor['name']}</span>
+            </div>
+        </div>
+        """
+        self.main_container.children = [widgets.HTML(value=victory_html)]
+
+    def show_game_over(self):
+        """
+        Display the game over screen when the player is defeated.
+        """
+        game_over_html = f"""
+        <div class='bbs-container'>
+            <div class='title'>Game Over</div>
+            <div class='section'>
+                You have been defeated by the <span class='bold underline'>{self.current_monster.monster_name}</span>.<br>
+                <span class='bold'>Final Stats:</span><br>
+                Correct Answers: <span class='yellow'>{self.player.total_correct}</span><br>
+                Incorrect Answers: <span class='yellow'>{self.player.total_incorrect}</span><br>
+                HP: <span class='yellow'>{self.player.hit_points}</span><br>
+                Gold: <span class='yellow'>{self.player.gold}</span><br>
+                Weapon: <span class='yellow'>{self.player.weapon['name']}</span><br>
+                Armor: <span class='yellow'>{self.player.armor['name']}</span>
+            </div>
+        </div>
+        """
+        self.main_container.children = [widgets.HTML(value=game_over_html)]
+
+    def game_loop(self):
+        """
+        Main game loop to handle game progression.
+        """
+        if self.player.hit_points <= 0:
+            self.show_game_over()
+            return
+        if not self.questions_to_ask and not self.current_monster:
+            self.show_victory()
+            return
+        # Check if it's time to show the store
+        if (self.questions_asked % self.STORE_INTERVAL == 0 and
+                self.questions_asked > 0 and not self.just_visited_store):
+            self.present_store()
+        else:
+            self.just_visited_store = False  # Reset the flag
+            self.present_encounter()
 
 # ----------------------------
 # Function to Start the Game
