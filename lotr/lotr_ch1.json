@@ -20,7 +20,7 @@
       "Most modern computers are digital"
     ],
     "incorrect": [
-      "Analog computers are always more accurate than digital computers",
+      "Analog computers are more accurate than digital computers",
       "Digital computers cannot process real-world continuous data"
     ],
     "hint": "Consider how these computers represent and process information, and their prevalence in modern technology."
@@ -113,7 +113,7 @@
     ],
     "incorrect": [
       "A bit can represent any number",
-      "A bit is always equal to 1 byte"
+      "A bit is equal to 1 byte"
     ],
     "hint": "Think about the fundamental unit of information in digital systems."
   },
@@ -125,7 +125,7 @@
       "A byte is often used to represent a single character in text encoding"
     ],
     "incorrect": [
-      "A byte always represents a negative number",
+      "A bit can represnt numbers from -256 to 256r",
       "A byte is the largest unit of storage in a computer"
     ],
     "hint": "Consider the common uses and characteristics of bytes in computing."
@@ -138,7 +138,7 @@
       "Its size can vary depending on the computer architecture"
     ],
     "incorrect": [
-      "It always equals 1 byte",
+      "It is the same size as a byte",
       "It's only used for storing text data"
     ],
     "hint": "Think about how processors handle data in chunks and how this might vary across systems."
@@ -151,7 +151,7 @@
       "The 'kilo' prefix in computing often refers to 2^10 rather than 10^3"
     ],
     "incorrect": [
-      "It always equals exactly 1000 bytes",
+      "It equals  1000 bytes",
       "It's the smallest unit of measurement in computing"
     ],
     "hint": "Consider the standard definitions in computing, which may differ from general metric usage."
@@ -177,7 +177,7 @@
       "The term comes from 'giga' meaning billion, but it's not exactly a billion bytes"
     ],
     "incorrect": [
-      "A gigabyte is always larger than the RAM capacity of any computer",
+      "A gigabyte is larger than the RAM capacity of any computer",
       "Gigabytes are primarily used for measuring CPU speed"
     ],
     "hint": "Consider the size of a gigabyte and its common applications in computing."
@@ -230,7 +230,7 @@
     ],
     "incorrect": [
       "It permanently stores all data on the computer",
-      "It is always larger in capacity than secondary storage"
+      "It is generally larger in capacity than secondary storage"
     ],
     "hint": "Consider the type of memory that the CPU accesses directly and frequently."
   },
@@ -255,7 +255,7 @@
       "They are used in embedded systems as well as personal computers"
     ],
     "incorrect": [
-      "They are always larger than traditional CPUs",
+      "They are larger than the CPUs they replaced",
       "They can only perform one task at a time"
     ],
     "hint": "Think about the integration and versatility of modern microprocessors."
@@ -281,8 +281,8 @@
       "They use flash memory to store data"
     ],
     "incorrect": [
-      "They are always more durable than HDDs",
-      "They are always larger in capacity than HDDs"
+      "They are generally more durable than HDDs",
+      "They are usually larger in capacity than HDDs"
     ],
     "hint": "Think about the technology behind SSDs and how it compares to traditional HDDs."
   },
@@ -333,7 +333,7 @@
       "It's used for long-term data storage"
     ],
     "incorrect": [
-      "It's always faster than volatile memory",
+      "It's frequently faster than volatile memory",
       "RAM is an example of non-volatile memory"
     ],
     "hint": "Think about the persistence of data in this type of memory and common examples."
@@ -419,7 +419,7 @@
       "It can be more efficient for certain tasks than a GUI"
     ],
     "incorrect": [
-      "It always requires a mouse to operate",
+      "It requires a mouse to operate",
       "It's only used in old, outdated systems"
     ],
     "hint": "Consider how users interact with a computer through a CLI."
@@ -432,7 +432,7 @@
       "It's generally considered more user-friendly for beginners"
     ],
     "incorrect": [
-      "It always provides faster performance than a CLI",
+      "It provides faster performance than a CLI",
       "It's only used in mobile devices"
     ],
     "hint": "Think about how most modern users interact with their computers."
@@ -445,7 +445,7 @@
       "They can cause the CPU to temporarily suspend its current task"
     ],
     "incorrect": [
-      "They always result in the computer shutting down",
+      "They result in the computer shutting down to handle them",
       "They are only used in multi-core processors"
     ],
     "hint": "Consider how a computer system handles unexpected or time-sensitive events."
@@ -458,7 +458,7 @@
       "It's a technique used for handling I/O operations"
     ],
     "incorrect": [
-      "It always provides faster response times than interrupts",
+      "It almost always provides faster response times than interrupts",
       "It's only used in network communications"
     ],
     "hint": "Think about a method of checking for events that doesn't rely on interrupts."
