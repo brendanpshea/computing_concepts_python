@@ -23,12 +23,12 @@ def load_json(file_path_or_url: str) -> List[Dict]:
             response = requests.get(file_path_or_url)
             response.raise_for_status()  # Raise an exception for HTTP errors
             data = response.json()
-            print(f"Loaded {len(data)} items from URL '{file_path_or_url}'.")
+            # print(f"Loaded {len(data)} items from URL '{file_path_or_url}'.")
         elif os.path.isfile(file_path_or_url):
             # Load from local file
             with open(file_path_or_url, 'r') as f:
                 data = json.load(f)
-            print(f"Loaded {len(data)} items from file '{file_path_or_url}'.")
+            # print(f"Loaded {len(data)} items from file '{file_path_or_url}'.")
         else:
             print(f"Error: '{file_path_or_url}' is neither a valid file nor a URL.")
             return []
