@@ -445,25 +445,30 @@ class Game:
         incorrect_set = set(self.current_question.get('incorrect', []))
         selected_set = set(selected_options)
 
-        # Determine correct and incorrect selections
-        correct_selections = selected_set & correct_set
-        incorrect_selections = selected_set & incorrect_set
-        missed_correct = correct_set - selected_set
+        # Determine selections
+        correct_selections = selected_set & correct_set  # TP
+        incorrect_selections = selected_set & incorrect_set  # FP
+        missed_correct = correct_set - selected_set  # FN
+        incorrect_not_selected = incorrect_set - selected_set  # TN
 
         # Update total correct and incorrect counters
         self.player.total_correct += len(correct_selections)
         self.player.total_incorrect += len(incorrect_selections)
 
-        # Calculate Damage to Monster
-        player_hits = len(correct_selections)
-        player_damage = sum(random.randint(1, self.player.weapon['attack_die']) for _ in range(player_hits))
-        effective_player_damage = max(player_damage - self.current_monster.defense, 0)
-        self.current_monster.hit_points -= effective_player_damage
+        # Calculate Hits
+        player_hits = len(correct_selections) + len(incorrect_not_selected)  # TP + TN
+        monster_hits = len(incorrect_selections) + len(missed_correct)  # FP + FN
 
-        # Calculate Damage to Player
-        monster_hits = len(incorrect_selections)
+        # Calculate Total Damage
+        player_damage = sum(random.randint(1, self.player.weapon['attack_die']) for _ in range(player_hits))
         monster_damage = sum(random.randint(1, self.current_monster.attack_die) for _ in range(monster_hits))
+
+        # Apply Defense after summing all hits
+        effective_player_damage = max(player_damage - self.current_monster.defense, 0)
         effective_monster_damage = max(monster_damage - self.player.armor['defense'], 0)
+
+        # Update Hit Points
+        self.current_monster.hit_points -= effective_player_damage
         self.player.hit_points -= effective_monster_damage
 
         # Build Battle Results
