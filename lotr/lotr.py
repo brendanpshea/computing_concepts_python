@@ -163,7 +163,7 @@ class Game:
             # Calculate difficulty score and sort monsters
             difficulty_monsters = []
             for monster in monsters_data:
-                difficulty_score = monster['hit_dice'] + monster['attack_die'] + monster['defense']
+                difficulty_score = 3 * monster['hit_dice'] + monster['attack_die'] + monster['defense']
                 difficulty_monsters.append((difficulty_score, monster))
             # Sort monsters by difficulty_score
             sorted_monsters = sorted(difficulty_monsters, key=lambda x: x[0])
@@ -182,7 +182,7 @@ class Game:
 
         # Initialize counters and flags
         self.questions_asked = 0
-        self.STORE_INTERVAL = 3  # The store will appear after every 3 questions
+        self.STORE_INTERVAL = 10  # The store will appear after every 3 questions
         self.store_message = widgets.HTML(value="")
         self.gold_label = widgets.HTML(value="")
         self.just_visited_store = False  # Initialize the flag
@@ -239,7 +239,7 @@ class Game:
             return None
 
         # Constants for progression
-        QUESTIONS_PER_STAGE = 3  # Number of questions per stage
+        QUESTIONS_PER_STAGE = 10  # Number of questions per stage
         TOTAL_STAGES = 5  # Define the number of stages you want
         monsters_per_stage = max(len(self.monsters_data) // TOTAL_STAGES, 1)
 
