@@ -120,7 +120,7 @@ BBS_CSS = """
 
 @dataclass
 class Player:
-    hit_points: int = 10
+    hit_points: int = 20
     weapon: Dict[str, Union[str, int]] = field(default_factory=lambda: WEAPONS["Fists"])
     armor: Dict[str, Union[str, int]] = field(default_factory=lambda: ARMORS["Clothes"])
     gold: int = 0
