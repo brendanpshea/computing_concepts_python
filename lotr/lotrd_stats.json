@@ -1,3 +1,4 @@
+[
 {
     "question": "What is the primary purpose of descriptive statistics?",
     "correct": [
@@ -433,3 +434,4 @@
     ],
     "hint": "Think about how the characteristics of the normal distribution enable us to quantify uncertainty in our estimates."
   }
+]
