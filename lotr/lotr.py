@@ -139,7 +139,7 @@ class Monster:
 
     def __post_init__(self):
         self.hit_points = sum(random.randint(1, 6) for _ in range(self.hit_dice))
-        self.gold_value = random.randint(1, self.hit_dice * 6)
+        self.gold_value = 2 * random.randint(1, self.hit_dice * 6)
 
 # ----------------------------
 # Game Class
