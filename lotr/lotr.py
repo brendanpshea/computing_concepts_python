@@ -475,12 +475,12 @@ class Game:
         battle_results = "<div class='bbs-container'><div class='section'>"
 
         if effective_player_damage > 0:
-            battle_results += f"You attack the <span class='bold'>{self.current_monster.monster_name}</span> with your <span class='yellow'>{self.player.weapon['name']}</span> and deal <span class='yellow'>{effective_player_damage}</span> damage with {player_hits} hits.<br>"
+            battle_results += f"You attack the <span class='bold'>{self.current_monster.monster_name}</span> with your <span class='yellow'>{self.player.weapon['name']}</span> and deal <span class='yellow'>{effective_player_damage}</span> damage with {player_hits} hits (correct answers).<br>"
         else:
             battle_results += f"Your attack couldn't penetrate the <span class='bold'>{self.current_monster.monster_name}</span>'s defense.<br>"
 
         if effective_monster_damage > 0:
-            battle_results += f"The <span class='bold'>{self.current_monster.monster_name}</span> retaliates and deals <span class='red'>{effective_monster_damage}</span> damage to you due to incorrect answers.<br>"
+            battle_results += f"The <span class='bold'>{self.current_monster.monster_name}</span> retaliates and deals <span class='red'>{effective_monster_damage}</span> damage to you due to {monster_hits} incorrect answers.<br>"
         else:
             if monster_hits > 0:
                 battle_results += f"The <span class='bold'>{self.current_monster.monster_name}</span>'s attack couldn't penetrate your <span class='yellow'>{self.player.armor['name']}</span>.<br>"
