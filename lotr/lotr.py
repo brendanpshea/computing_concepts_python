@@ -927,15 +927,17 @@ class Game:
 # Function to Start the Game
 # ----------------------------
 
-def start_game(questions_file: str, monsters_file: str):
+def start_game(questions_file, monsters_file = "default"):
     """
     Start the quiz game using the provided questions and monsters JSON files.
     The files can be local file paths or URLs.
     """
     # Load questions and monsters data
     questions_data = load_json(questions_file)
-    monsters_data = load_json(monsters_file)
-
+    if monsters_file = "default":
+        monsters_file = "https://github.com/brendanpshea/computing_concepts_python/raw/main/lotr/lotr_monsters.json"
+    else:
+        monsters_data = load_json(monsters_file)
     # Check if data was loaded successfully
     if not questions_data:
         print("Cannot start the game without questions.")
