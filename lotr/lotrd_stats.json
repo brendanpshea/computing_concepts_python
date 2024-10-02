@@ -1,0 +1,436 @@
+{
+    "question": "What is the primary purpose of descriptive statistics?",
+    "correct": [
+      "To summarize and interpret data",
+      "To guide us through the intricate terrain of information"
+    ],
+    "incorrect": [
+      "To predict future trends",
+      "To prove causal relationships",
+      "To generate new data points"
+    ],
+    "hint": "Think about how descriptive statistics help us understand existing data."
+  },
+  {
+    "question": "Which of the following is NOT a measure of central tendency?",
+    "correct": [
+      "Standard deviation"
+    ],
+    "incorrect": [
+      "Mean",
+      "Median",
+      "Mode"
+    ],
+    "hint": "Consider which measure describes spread rather than center."
+  },
+  {
+    "question": "What is the formula for calculating the mean?",
+    "correct": [
+      "Sum of all values divided by the number of values"
+    ],
+    "incorrect": [
+      "Middle value in a sorted dataset",
+      "Most frequently occurring value",
+      "Largest value minus the smallest value"
+    ],
+    "hint": "Think about how you would find an average."
+  },
+  {
+    "question": "When is the median a more appropriate measure than the mean?",
+    "correct": [
+      "When the data is skewed",
+      "When there are outliers in the dataset"
+    ],
+    "incorrect": [
+      "When the data is normally distributed",
+      "When calculating percentage changes",
+      "When dealing with categorical data"
+    ],
+    "hint": "Consider situations where extreme values might affect the average."
+  },
+  {
+    "question": "What does the mode represent in a dataset?",
+    "correct": [
+      "The most frequently occurring value"
+    ],
+    "incorrect": [
+      "The middle value",
+      "The average value",
+      "The difference between the largest and smallest values"
+    ],
+    "hint": "Think about which measure tells you what value appears most often."
+  },
+  {
+    "question": "Which measure of dispersion is most affected by outliers?",
+    "correct": [
+      "Range"
+    ],
+    "incorrect": [
+      "Interquartile range",
+      "Median absolute deviation",
+      "Standard deviation"
+    ],
+    "hint": "Consider which measure only uses the two most extreme values."
+  },
+  {
+    "question": "What does the variance measure?",
+    "correct": [
+      "The average squared deviation from the mean"
+    ],
+    "incorrect": [
+      "The average deviation from the median",
+      "The difference between the largest and smallest values",
+      "The most common value in a dataset"
+    ],
+    "hint": "Think about how variance relates to the mean and squared differences."
+  },
+  {
+    "question": "Why is the standard deviation often preferred over variance?",
+    "correct": [
+      "It's in the same units as the original data"
+    ],
+    "incorrect": [
+      "It's always a whole number",
+      "It's less affected by outliers",
+      "It's easier to calculate"
+    ],
+    "hint": "Consider the units of measurement for variance and standard deviation."
+  },
+  {
+    "question": "In a normal distribution, approximately what percentage of data falls within one standard deviation of the mean?",
+    "correct": [
+      "68%"
+    ],
+    "incorrect": [
+      "50%",
+      "95%",
+      "99.7%"
+    ],
+    "hint": "Recall the empirical rule for normal distributions."
+  },
+  {
+    "question": "What type of data is the mode most suitable for?",
+    "correct": [
+      "Categorical data",
+      "Discrete numerical data"
+    ],
+    "incorrect": [
+      "Continuous data",
+      "Ordinal data",
+      "Ratio data"
+    ],
+    "hint": "Think about data types where frequency of occurrence is most meaningful."
+  },
+  {
+    "question": "What does a bimodal distribution indicate?",
+    "correct": [
+      "The dataset has two modes",
+      "There are two peaks in the data distribution"
+    ],
+    "incorrect": [
+      "The data is normally distributed",
+      "The mean and median are equal",
+      "There are no outliers in the dataset"
+    ],
+    "hint": "Consider what 'bi' means in the context of modes."
+  },
+  {
+    "question": "Which Python library is commonly used for creating data frames and calculating descriptive statistics?",
+    "correct": [
+      "pandas"
+    ],
+    "incorrect": [
+      "matplotlib",
+      "scikit-learn",
+      "seaborn"
+    ],
+    "hint": "Think about which library is specifically designed for data manipulation and analysis."
+  },
+  {
+    "question": "What does the interquartile range (IQR) measure?",
+    "correct": [
+      "The range of the middle 50% of the data"
+    ],
+    "incorrect": [
+      "The range of the entire dataset",
+      "The difference between the mean and median",
+      "The standard deviation of the upper half of the data"
+    ],
+    "hint": "Consider how quartiles divide the data and which ones the IQR uses."
+  },
+  {
+    "question": "Which measure of central tendency is least affected by outliers?",
+    "correct": [
+      "Median"
+    ],
+    "incorrect": [
+      "Mean",
+      "Mode",
+      "Geometric mean"
+    ],
+    "hint": "Think about which measure doesn't directly use the value of extreme data points."
+  },
+  {
+    "question": "What is the primary purpose of data visualization in descriptive statistics?",
+    "correct": [
+      "To represent statistical findings in clear, compelling graphs",
+      "To uncover meaningful patterns and insights in data"
+    ],
+    "incorrect": [
+      "To perform complex calculations",
+      "To generate random data samples",
+      "To prove statistical hypotheses"
+    ],
+    "hint": "Consider how visual representations can aid in understanding data."
+  },
+  {
+    "question": "Which of the following is NOT a common type of graph used in descriptive statistics?",
+    "correct": [
+      "Neural network diagram"
+    ],
+    "incorrect": [
+      "Histogram",
+      "Bar chart",
+      "Line plot"
+    ],
+    "hint": "Think about which graph type is more commonly used in machine learning rather than basic data description."
+  },
+  {
+    "question": "What does a percentile represent?",
+    "correct": [
+      "The value below which a given percentage of observations fall"
+    ],
+    "incorrect": [
+      "The percentage of data above a given value",
+      "The most frequent percentage in a dataset",
+      "The average of all percentages in a dataset"
+    ],
+    "hint": "Consider how percentiles divide the data into hundredths."
+  },
+  {
+    "question": "Which measure is used to describe the asymmetry of a probability distribution?",
+    "correct": [
+      "Skewness"
+    ],
+    "incorrect": [
+      "Kurtosis",
+      "Variance",
+      "Range"
+    ],
+    "hint": "Think about which measure tells you if a distribution leans more to one side."
+  },
+  {
+    "question": "What is the main difference between descriptive and inferential statistics?",
+    "correct": [
+      "Descriptive statistics summarize data, while inferential statistics make predictions about a population"
+    ],
+    "incorrect": [
+      "Descriptive statistics use graphs, while inferential statistics use numbers",
+      "Descriptive statistics are more accurate than inferential statistics",
+      "Inferential statistics are always based on the entire population"
+    ],
+    "hint": "Consider the goals of each type of statistics - describing vs. inferring."
+  },
+  {
+    "question": "Which of the following is an advantage of using the median over the mean?",
+    "correct": [
+      "It's less affected by outliers",
+      "It can be used with ordinal data"
+    ],
+    "incorrect": [
+      "It uses all the data points in its calculation",
+      "It's always a good measure for normally distributed data",
+      "It's more suitable for further statistical analyses"
+    ],
+    "hint": "Think about situations where extreme values or data types might influence your choice of measure."
+  },
+    {
+    "question": "What does the frequency of a category represent in categorical data analysis?",
+    "correct": [
+      "The count of how many times that category appears in the dataset"
+    ],
+    "incorrect": [
+      "The percentage of the category in the dataset",
+      "The mean value of the category",
+      "The median value of the category"
+    ],
+    "hint": "Think about the simplest way to count occurrences in a dataset."
+  },
+  {
+    "question": "How is the percentage of a category calculated?",
+    "correct": [
+      "(Frequency of the category / Total number of observations) × 100"
+    ],
+    "incorrect": [
+      "(Total number of observations / Frequency of the category) × 100",
+      "Frequency of the category × 100",
+      "(Frequency of the category / Number of categories) × 100"
+    ],
+    "hint": "Consider how you would convert a proportion to a percentage."
+  },
+  {
+    "question": "Which type of graph is most suitable for displaying the distribution of a categorical variable?",
+    "correct": [
+      "Bar graph"
+    ],
+    "incorrect": [
+      "Line graph",
+      "Scatter plot",
+      "Box plot"
+    ],
+    "hint": "Think about which graph type uses rectangular bars to represent categories."
+  },
+  {
+    "question": "What is the formula for calculating percent change?",
+    "correct": [
+      "((Final Value - Initial Value) / Initial Value) × 100"
+    ],
+    "incorrect": [
+      "((Initial Value - Final Value) / Initial Value) × 100",
+      "((Final Value - Initial Value) / Final Value) × 100",
+      "(Final Value / Initial Value) × 100"
+    ],
+    "hint": "Consider how you would express the change relative to the starting point."
+  },
+  {
+    "question": "When is percent change most appropriate to use?",
+    "correct": [
+      "When analyzing trends over time",
+      "When comparing changes across different regions or time periods"
+    ],
+    "incorrect": [
+      "When comparing two unrelated values",
+      "When analyzing categorical data",
+      "When calculating the average of a dataset"
+    ],
+    "hint": "Think about situations where you're interested in relative changes from a starting point."
+  },
+  {
+    "question": "What type of graph is most suitable for visualizing data that changes over time?",
+    "correct": [
+      "Line graph"
+    ],
+    "incorrect": [
+      "Bar graph",
+      "Pie chart",
+      "Histogram"
+    ],
+    "hint": "Consider which graph type best shows continuous change and trends."
+  },
+  {
+    "question": "What is the formula for calculating percent difference?",
+    "correct": [
+      "(|Value1 - Value2| / ((Value1 + Value2) / 2)) × 100"
+    ],
+    "incorrect": [
+      "((Value1 - Value2) / Value1) × 100",
+      "((Value2 - Value1) / Value2) × 100",
+      "(|Value1 - Value2| / Value1) × 100"
+    ],
+    "hint": "Think about a formula that treats both values equally and expresses the difference as a percentage of their average."
+  },
+  {
+    "question": "When is percent difference more appropriate to use than percent change?",
+    "correct": [
+      "When comparing two values of equal standing",
+      "When there's no clear 'before' and 'after' value"
+    ],
+    "incorrect": [
+      "When analyzing trends over time",
+      "When calculating the growth rate",
+      "When comparing a value to a fixed baseline"
+    ],
+    "hint": "Consider situations where you're comparing two values without a clear temporal or hierarchical relationship."
+  },
+  {
+    "question": "What does a confidence interval represent?",
+    "correct": [
+      "A range of plausible values for a population parameter, with a certain level of confidence"
+    ],
+    "incorrect": [
+      "The exact value of a population parameter",
+      "The range of all possible values in a dataset",
+      "The difference between the highest and lowest values in a sample"
+    ],
+    "hint": "Think about how we express uncertainty in our estimates of population parameters."
+  },
+  {
+    "question": "What factors affect the width of a confidence interval?",
+    "correct": [
+      "Sample size",
+      "Variability in the data",
+      "Chosen confidence level"
+    ],
+    "incorrect": [
+      "Population size",
+      "Number of variables",
+      "Median of the dataset"
+    ],
+    "hint": "Consider what elements contribute to the precision of our estimate."
+  },
+  {
+    "question": "What does a 95% confidence interval mean?",
+    "correct": [
+      "If we repeated the sampling process many times, about 95% of the calculated intervals would contain the true population parameter"
+    ],
+    "incorrect": [
+      "There's a 95% chance the true parameter is in that interval",
+      "95% of the data falls within that interval",
+      "The interval contains 95% of all possible values"
+    ],
+    "hint": "Think about the long-run behavior of confidence intervals if we could repeat our sampling many times."
+  },
+  {
+    "question": "What are the key features of a normal distribution?",
+    "correct": [
+      "Bell-shaped",
+      "Symmetrical",
+      "Most values cluster around the middle"
+    ],
+    "incorrect": [
+      "Skewed to the right",
+      "U-shaped",
+      "Most values are at the extremes"
+    ],
+    "hint": "Visualize the classic 'bell curve' shape and its properties."
+  },
+  {
+    "question": "In a normal distribution, approximately what percentage of data falls within one standard deviation of the mean?",
+    "correct": [
+      "68%"
+    ],
+    "incorrect": [
+      "95%",
+      "99.7%",
+      "50%"
+    ],
+    "hint": "Recall the empirical rule for normal distributions."
+  },
+  {
+    "question": "Why is the normal distribution important in statistics?",
+    "correct": [
+      "Many natural phenomena follow this distribution",
+      "It allows us to make predictions about data",
+      "Many statistical methods assume data is normally distributed"
+    ],
+    "incorrect": [
+      "It always represents real-world data perfectly",
+      "It's the only distribution used in statistics",
+      "It eliminates the need for hypothesis testing"
+    ],
+    "hint": "Consider the practical applications and theoretical importance of the normal distribution in statistical analysis."
+  },
+  {
+    "question": "What is the relationship between the normal distribution and confidence intervals?",
+    "correct": [
+      "Properties of the normal distribution allow us to calculate confidence intervals",
+      "The predictable spread of the normal distribution is used in determining confidence levels"
+    ],
+    "incorrect": [
+      "Confidence intervals are only used for non-normal distributions",
+      "The normal distribution is irrelevant to confidence interval calculations",
+      "Confidence intervals always produce a normal distribution"
+    ],
+    "hint": "Think about how the characteristics of the normal distribution enable us to quantify uncertainty in our estimates."
+  }
+]
