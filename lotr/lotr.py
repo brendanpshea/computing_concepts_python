@@ -1,4 +1,4 @@
-# game.py
+# lotr.py
 
 import json
 import random
