@@ -42,7 +42,7 @@ Learn about **algorithms** and how to implement them using **loops** in Python. 
 An introduction to **cybersecurity** concepts, including encryption, data privacy, and security vulnerabilities. You'll explore real-world examples of security breaches and learn how to protect data in the digital world.
 
 ### 9. Data and Databases
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_09_Data_and_Databases.ipynb)  
+[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_09_DatabaseSQL.ipynb)   
 This chapter introduces you to the world of **data** and **databases**. You will learn how data is stored, accessed, and manipulated using databases like **SQLite**, and practice writing simple queries to retrieve data.
 
 ### 10. Dictionaries, Objects, and Tests
