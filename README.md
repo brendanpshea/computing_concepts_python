@@ -62,12 +62,12 @@ Learn about neural networks and build a simple one using Python.
 ### PyQuiz
 PyQuiz is an interactive Python coding practice tool designed to help students learn and practice Python programming through a series of coding questions. It provides a user-friendly interface using IPython widgets, making it ideal for use in Jupyter notebooks or similar interactive Python environments.
 
-[Learn more about PyQuiz](python_code_quiz/README.md)
+[Learn more about PyQuiz](python_code_quiz/readme.md)
 
 ### Loop of the Recursive Dragon
 Loop of the Recursive Dragon is an interactive quiz game that combines elements of role-playing games with educational quizzes. Students can battle monsters by answering questions correctly, earning gold, and upgrading their equipment as they progress through the game.
 
-[Learn more about Loop of the Recursive Dragon](lotr/README.md)
+[Learn more about Loop of the Recursive Dragon](lotr/readme.md)
 
 ## License
 This open-access textbook and associated tools are licensed under the MIT License. For more details, refer to the LICENSE file in this repository.
