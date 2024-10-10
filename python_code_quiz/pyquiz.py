@@ -197,6 +197,25 @@ class PracticeTool:
             icon='lightbulb-o'
         )
 
+        # Results page buttons
+        self.results_retry_button = widgets.Button(
+            description='Retry',
+            button_style='warning',
+            tooltip='Reset your code',
+            icon='refresh'
+        )
+        self.results_next_button = widgets.Button(
+            description='Next',
+            button_style='info',
+            tooltip='Next question',
+            icon='arrow-right',
+            disabled=True
+        )
+
+        # Attach event handlers for results page buttons
+        self.results_retry_button.on_click(self.reset_code)
+        self.results_next_button.on_click(self.next_question)
+
         # Skip to question dropdown
         self.skip_dropdown = widgets.Dropdown(
             options=[(f"Problem {i+1}", i) for i in range(len(self.questions))],
@@ -278,6 +297,7 @@ class PracticeTool:
         # Update progress and disable Next button
         self.progress_bar.value = self.current_question_index
         self.next_button.disabled = True
+        self.results_next_button.disabled = True  # Disable results page Next button
 
         question = self.questions[self.current_question_index]
         function_signature = f"def {question.function_name}({', '.join(question.parameters)}):\n    pass"
@@ -359,13 +379,19 @@ class PracticeTool:
             student_func = self.get_function_from_code(self.code_input.value, question.function_name)
             correct_func = self.get_function_from_code(question.answer_code, question.function_name)
             test_results = self.execute_tests(question, student_func, correct_func)
-            self.display_test_results(test_results)
-            self.display_program_output()
-        except Exception:
-            with self.results_output:
-                self.results_output.clear_output()
-                traceback.print_exc()
-            self.tab_widget.selected_index = 2  # Switch to Test Results tab
+        except Exception as e:
+            # If there's an exception when compiling or retrieving the student's function
+            test_results = [{
+                'Result': 'Error',
+                'Input': '',
+                'Expected Output': '',
+                'Your Output': f"Error: {str(e)}"
+            }]
+            self.next_button.disabled = True
+            self.results_next_button.disabled = True
+
+        self.display_test_results(test_results)
+        self.display_program_output()
 
     def get_function_from_code(self, code, function_name):
         """Compiles code and retrieves the specified function."""
@@ -404,16 +430,23 @@ class PracticeTool:
                 with contextlib.redirect_stdout(self.student_output):
                     student_output = student_func(*args)
                 correct_output = correct_func(*args)
-                passed = self.object_compare(student_output, correct_output)
-                status = 'Pass' if passed else 'Fail'
+                if student_output is None and correct_output is not None:
+                    message = "Your function did not return a value. Did you forget to include a return statement?"
+                    passed = False
+                    status = 'Fail'
+                    your_output = message
+                else:
+                    passed = self.object_compare(student_output, correct_output)
+                    status = 'Pass' if passed else 'Fail'
+                    your_output = repr(student_output)
+                if passed:
+                    passed_tests += 1
                 test_results.append({
                     'Result': status,
                     'Input': f"{question.function_name}({args_str})",
                     'Expected Output': repr(correct_output),
-                    'Your Output': repr(student_output)
+                    'Your Output': your_output
                 })
-                if passed:
-                    passed_tests += 1
             except Exception as e:
                 test_results.append({
                     'Result': 'Error',
@@ -423,7 +456,9 @@ class PracticeTool:
                 })
 
         # Update Next button status
-        self.next_button.disabled = passed_tests < total_tests
+        all_passed = passed_tests == total_tests
+        self.next_button.disabled = not all_passed
+        self.results_next_button.disabled = not all_passed
         return test_results
 
     def display_test_results(self, test_results):
@@ -443,7 +478,10 @@ class PracticeTool:
                 return ''
 
             # Apply the color coding and other styles
-            styled_df = df.style.map(color_result, subset=['Result'])
+            styled_df = df.style.apply(lambda x: ['background-color: #90EE90' if v == 'Pass' else
+                                                  'background-color: #FFCCCB' if v == 'Fail' else
+                                                  'background-color: #FFD700' if v == 'Error' else ''
+                                                  for v in x], subset=['Result'])
             styled_df = styled_df.set_properties(**{
                 'text-align': 'left',
                 'white-space': 'pre-wrap',
@@ -460,8 +498,12 @@ class PracticeTool:
             html_table = f'<div style="overflow-x: auto;">{styled_df.to_html(escape=False)}</div>'
             display(HTML(html_table))
 
-            if not self.next_button.disabled:
+            if not self.results_next_button.disabled:
                 display(widgets.HTML("<b>All test cases passed! Click Next to continue.</b>"))
+
+            # Display Next and Retry buttons on the results page
+            buttons = widgets.HBox([self.results_retry_button, self.results_next_button])
+            display(buttons)
         self.tab_widget.selected_index = 2  # Switch to Test Results tab
 
     def display_program_output(self):
@@ -493,6 +535,7 @@ class PracticeTool:
         self.program_output.clear_output()
         self.tab_widget.selected_index = 1  # Switch to Problem tab
         self.next_button.disabled = True
+        self.results_next_button.disabled = True  # Disable results page Next button
 
     def next_question(self, _):
         """Advances to the next question."""
@@ -502,6 +545,7 @@ class PracticeTool:
         else:
             self.problem_area.children = [widgets.HTML("<h3>All questions completed!</h3>")]
             self.next_button.disabled = True
+            self.results_next_button.disabled = True
             self.progress_bar.value = len(self.questions)
             self.results_output.clear_output()
             self.program_output.clear_output()
@@ -521,6 +565,7 @@ class PracticeTool:
         if new_index != self.current_question_index:
             self.current_question_index = new_index
             self.display_question()
+
 
 # Instantiate the practice tool with questions from a JSON file
 # practice_tool = PracticeTool(json_url='questions2.json')
