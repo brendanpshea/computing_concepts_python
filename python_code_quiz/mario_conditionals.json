@@ -468,7 +468,7 @@
     {
             "function_name": "create_mario_array",
             "parameters": ["size"],
-            "description": "Create and return a NumPy array filled with Mario's stars of the given 'size'.",
+            "description": "Create and return a NumPy array filled with Mario's stars of the given 'size'. You'll need to import numpy.",
             "input_type": "int",
             "answer_code": "import numpy as np\ndef create_mario_array(size):\n    return np.full(size, 'Star')",
             "hint": "Use the np.full() function to create an array filled with a specific value.",
@@ -483,7 +483,7 @@
         {
             "function_name": "add_coin_bonus",
             "parameters": ["coins", "bonus"],
-            "description": "Add 'bonus' coins to the 'coins' array and return the new array.",
+            "description": "Add 'bonus' coins to the 'coins' array and return the new numpy array. You'll need to import numpy.",
             "input_type": ["list", "int"],
             "answer_code": "import numpy as np\ndef add_coin_bonus(coins, bonus):\n    return np.array(coins) + bonus",
             "hint": "Convert the list to a NumPy array and add the scalar bonus.",
@@ -498,7 +498,7 @@
         {
             "function_name": "double_power_up",
             "parameters": ["power_ups"],
-            "description": "Double each element in the 'power_ups' array and return the result.",
+            "description": "Double each element in the 'power_ups' array and return the result. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef double_power_up(power_ups):\n    return np.array(power_ups) * 2",
             "hint": "Use element-wise multiplication with NumPy arrays.",
@@ -513,7 +513,7 @@
         {
             "function_name": "mario_square",
             "parameters": ["levels"],
-            "description": "Return a NumPy array with each Mario level squared.",
+            "description": "Return a NumPy array with each Mario level squared. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef mario_square(levels):\n    return np.array(levels) ** 2",
             "hint": "Use the '**' operator for element-wise squaring.",
@@ -528,7 +528,7 @@
         {
             "function_name": "slice_castle_levels",
             "parameters": ["levels", "start", "end"],
-            "description": "Return a slice of the 'levels' array from 'start' to 'end' (exclusive).",
+            "description": "Return a slice of the 'levels' array from 'start' to 'end' (exclusive). You'll need to import numpy.",
             "input_type": ["list", "int", "int"],
             "answer_code": "import numpy as np\ndef slice_castle_levels(levels, start, end):\n    return np.array(levels)[start:end]",
             "hint": "Use slicing with NumPy arrays.",
@@ -543,7 +543,7 @@
         {
             "function_name": "mario_addition",
             "parameters": ["array1", "array2"],
-            "description": "Add two NumPy arrays element-wise and return the result.",
+            "description": "Add two NumPy arrays element-wise and return the result. You'll need to import numpy.",
             "input_type": ["list", "list"],
             "answer_code": "import numpy as np\ndef mario_addition(array1, array2):\n    return np.array(array1) + np.array(array2)",
             "hint": "Convert lists to NumPy arrays and use the '+' operator.",
@@ -558,7 +558,7 @@
         {
             "function_name": "multiply_mushrooms",
             "parameters": ["mushrooms"],
-            "description": "Multiply each element in the 'mushrooms' array by 3 and return the result.",
+            "description": "Multiply each element in the 'mushrooms' array by 3 and return the result. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef multiply_mushrooms(mushrooms):\n    return np.array(mushrooms) * 3",
             "hint": "Use element-wise multiplication with NumPy arrays.",
@@ -573,7 +573,7 @@
         {
             "function_name": "mario_max_score",
             "parameters": ["scores"],
-            "description": "Find and return the maximum score from the 'scores' array.",
+            "description": "Find and return the maximum score from the 'scores' array. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef mario_max_score(scores):\n    return np.max(np.array(scores))",
             "hint": "Use the np.max() function.",
@@ -588,7 +588,7 @@
         {
             "function_name": "calculate_average_coins",
             "parameters": ["coins"],
-            "description": "Calculate and return the average number of coins from the 'coins' array.",
+            "description": "Calculate and return the average number of coins from the 'coins' array. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef calculate_average_coins(coins):\n    return np.mean(np.array(coins))",
             "hint": "Use the np.mean() function.",
@@ -603,7 +603,7 @@
         {
             "function_name": "count_positive_levels",
             "parameters": ["levels"],
-            "description": "Count and return the number of positive levels in the 'levels' array.",
+            "description": "Count and return the number of positive levels in the 'levels' array. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef count_positive_levels(levels):\n    return np.sum(np.array(levels) > 0)",
             "hint": "Use boolean indexing and np.sum().",
@@ -618,7 +618,7 @@
         {
             "function_name": "replace_negative_coins",
             "parameters": ["coins"],
-            "description": "Replace all negative numbers in the 'coins' array with zero and return the modified array.",
+            "description": "Replace all negative numbers in the 'coins' array with zero and return the modified array. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef replace_negative_coins(coins):\n    arr = np.array(coins)\n    arr[arr < 0] = 0\n    return arr.tolist()",
             "hint": "Use boolean indexing to identify and replace negative values.",
@@ -633,7 +633,7 @@
         {
             "function_name": "mario_concatenate",
             "parameters": ["array1", "array2"],
-            "description": "Concatenate two NumPy arrays and return the result.",
+            "description": "Concatenate two NumPy arrays and return the result.You'll need to import numpy.",
             "input_type": ["list", "list"],
             "answer_code": "import numpy as np\ndef mario_concatenate(array1, array2):\n    return np.concatenate((np.array(array1), np.array(array2))).tolist()",
             "hint": "Use the np.concatenate() function.",
@@ -648,7 +648,7 @@
         {
             "function_name": "elementwise_multiplication",
             "parameters": ["array1", "array2"],
-            "description": "Perform element-wise multiplication of two NumPy arrays and return the result.",
+            "description": "Perform element-wise multiplication of two NumPy arrays and return the result. You'll need to import numpy.",
             "input_type": ["list", "list"],
             "answer_code": "import numpy as np\ndef elementwise_multiplication(array1, array2):\n    return (np.array(array1) * np.array(array2)).tolist()",
             "hint": "Convert lists to NumPy arrays and use the '*' operator.",
@@ -663,7 +663,7 @@
         {
             "function_name": "find_coin_indices",
             "parameters": ["coins", "value"],
-            "description": "Find and return the indices where 'value' occurs in the 'coins' array.",
+            "description": "Find and return the indices where 'value' occurs in the 'coins' array. You'll need to import numpy.",
             "input_type": ["list", "int"],
             "answer_code": "import numpy as np\ndef find_coin_indices(coins, value):\n    return np.where(np.array(coins) == value)[0].tolist()",
             "hint": "Use np.where() and convert the result to a list.",
@@ -678,7 +678,7 @@
         {
             "function_name": "normalize_coins",
             "parameters": ["coins"],
-            "description": "Normalize the 'coins' array so that its values range between 0 and 1 and return the result.",
+            "description": "Normalize the 'coins' array so that its values range between 0 and 1 and return the result. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef normalize_coins(coins):\n    arr = np.array(coins, dtype=float)\n    min_val = np.min(arr)\n    max_val = np.max(arr)\n    if max_val != min_val:\n        return ((arr - min_val) / (max_val - min_val)).tolist()\n    else:\n        return arr.tolist()",
             "hint": "Use min and max functions for normalization.",
@@ -693,7 +693,7 @@
         {
             "function_name": "sum_castle_coins",
             "parameters": ["coins"],
-            "description": "Sum all the coins in the 'coins' array and return the total.",
+            "description": "Sum all the coins in the 'coins' array and return the total. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef sum_castle_coins(coins):\n    return np.sum(np.array(coins))",
             "hint": "Use the np.sum() function.",
@@ -708,7 +708,7 @@
         {
             "function_name": "mario_mean_level",
             "parameters": ["levels"],
-            "description": "Calculate and return the mean of Mario's levels from the 'levels' array.",
+            "description": "Calculate and return the mean of Mario's levels from the 'levels' array. You'll need to import numpy.",
             "input_type": "list",
             "answer_code": "import numpy as np\ndef mario_mean_level(levels):\n    return np.mean(np.array(levels))",
             "hint": "Use the np.mean() function.",
