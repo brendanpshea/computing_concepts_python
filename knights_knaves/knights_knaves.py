@@ -678,7 +678,7 @@ def play_game():
 
         difficulty = levels[level_index]
         print(f"\nCurrent Level: {difficulty}")
-        print(f"You need to solve 3 puzzles to advance to the next level.\n")
+        print(f"You are on an island with only knights (who always tell the truth) and knaves (who always lie). Can you tell which is which?\n")
 
         # Generate puzzle
         generator = PuzzleGenerator()
