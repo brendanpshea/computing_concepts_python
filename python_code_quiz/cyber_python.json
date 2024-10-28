@@ -143,11 +143,11 @@
       "answer_code": "def caesar_cipher_encrypt(message, shift):\n    encrypted = ''\n    for char in message:\n        if char.islower():\n            shifted = chr((ord(char) - 97 + shift) % 26 + 97)\n            encrypted += shifted\n        else:\n            encrypted += char\n    return encrypted",
       "hint": "Use ord() to get the ASCII value of a character and chr() to convert back to a character. Remember the ASCII value of 'a' is 97.",
       "test_inputs": [
-        ("hello world", 3),
-        ("python", 1),
-        ("secret message", 5),
-        ("UPPERCASE", 2),
-        ("mix3d CH@RACTERS", 4)
+        ["hello world", 3],
+        ["python", 1],
+        ["secret message", 5],
+        ["UPPERCASE", 2],
+        ["mix3d CH@RACTERS", 4]
       ]
     }
   ]
