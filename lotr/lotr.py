@@ -161,14 +161,7 @@ class Game:
             print("Warning: No monsters data provided.")
         else:
             # Calculate difficulty score and sort monsters
-            difficulty_monsters = []
-            for monster in monsters_data:
-                difficulty_score = 3 * monster['hit_dice'] + monster['attack_die'] + monster['defense']
-                difficulty_monsters.append((difficulty_score, monster))
-            # Sort monsters by difficulty_score
-            sorted_monsters = sorted(difficulty_monsters, key=lambda x: x[0])
-            # Extract the sorted monsters
-            self.monsters_data = [monster for _, monster in sorted_monsters]
+            self.monsters_data = self.sort_monsters_by_difficulty(monsters_data)
         
         # Initialize Player
         self.player = Player()
@@ -203,6 +196,22 @@ class Game:
         # Render the initial game state
         self.render_initial_screen()
 
+    def sort_monsters_by_difficulty(self, monsters_data: List[Dict]) -> List[Dict]:
+        """
+        Sort monsters based on a difficulty score.
+        """
+        difficulty_monsters = []
+        for monster in monsters_data:
+            # Adjust the weighting factors as needed
+            difficulty_score = (3 * monster.get('hit_dice', 1) +
+                                monster.get('attack_die', 1) +
+                                monster.get('defense', 1))
+            difficulty_monsters.append((difficulty_score, monster))
+        
+        # Sort monsters by difficulty score in ascending order
+        sorted_monsters = sorted(difficulty_monsters, key=lambda x: x[0])
+        return [monster for _, monster in sorted_monsters]    
+
     def render_initial_screen(self):
         """
         Render the initial screen before any encounters.
@@ -231,37 +240,42 @@ class Game:
         ]
 
     def generate_monster(self) -> Optional[Monster]:
-        """
-        Generate a monster appropriate for the player's progression.
-        """
-        if not self.monsters_data:
-            print("Error: No monsters data available.")
-            return None
+      if not self.monsters_data:
+          print("Error: No monsters data available.")
+          return None
 
-        # Constants for progression
-        QUESTIONS_PER_STAGE = 10  # Number of questions per stage
-        TOTAL_STAGES = 5  # Define the number of stages you want
-        monsters_per_stage = max(len(self.monsters_data) // TOTAL_STAGES, 1)
+      # Constants for progression
+      QUESTIONS_PER_STAGE = 10  # Number of questions per stage
 
-        # Calculate current stage based on questions answered
-        current_stage = min(self.questions_asked // QUESTIONS_PER_STAGE, TOTAL_STAGES - 1)
+      # Calculate current stage based on questions answered
+      current_stage = self.questions_asked // QUESTIONS_PER_STAGE
 
-        # Determine the index range of monsters for the current stage
-        max_monster_index = min((current_stage + 1) * monsters_per_stage, len(self.monsters_data))
+      # Define how many monsters per stage you want to introduce
+      # For example, every stage introduces 4 new monsters
+      MONSTERS_PER_STAGE = 4
 
-        # Create the pool of monsters for the current stage
-        available_monsters = self.monsters_data[:max_monster_index]
+      # Determine the range of monsters for the current stage
+      start_index = current_stage * MONSTERS_PER_STAGE
+      end_index = start_index + MONSTERS_PER_STAGE
 
-        # Select a random monster from available options
-        data = random.choice(available_monsters)
-        monster = Monster(
-            monster_name=data["monster_name"],
-            initial_description=data.get("initial_description", ""),
-            hit_dice=data["hit_dice"],
-            attack_die=data["attack_die"],
-            defense=data["defense"]
-        )
-        return monster
+      # Ensure we don't exceed the list
+      if start_index >= len(self.monsters_data):
+          # If we've exhausted all defined monsters, use the hardest available
+          selected_monster_data = self.monsters_data[-1]
+      else:
+          # If multiple monsters are available in the current stage, pick one randomly
+          stage_monsters = self.monsters_data[start_index:end_index]
+          selected_monster_data = random.choice(stage_monsters)
+
+      # Initialize the Monster instance
+      monster = Monster(
+          monster_name=selected_monster_data["monster_name"],
+          initial_description=selected_monster_data.get("initial_description", ""),
+          hit_dice=selected_monster_data["hit_dice"],
+          attack_die=selected_monster_data["attack_die"],
+          defense=selected_monster_data["defense"]
+      )
+      return monster
 
     def present_encounter(self):
         """
@@ -529,202 +543,6 @@ class Game:
             widgets.HTML(value=battle_results),
             continue_button
         ]
-
-    def present_store(self):
-        """
-        Present the store to the player where they can buy items.
-        """
-        self.just_visited_store = True  # Set the flag
-        store_html = f"""
-        <div class='bbs-container'>
-            <div class='title'>The Traveling Merchant</div>
-            <div class='section'>
-                A mysterious merchant appears and offers you goods for sale.
-            </div>
-        </div>
-        """
-
-        # Update the gold label
-        self.gold_label.value = f"You have <span class='yellow'>{self.player.gold}</span> gold."
-
-        # Create a list to hold all items for sale
-        items_for_sale = []
-
-        # Add weapons to items for sale
-        for weapon_name, weapon in WEAPONS.items():
-            # Skip the starting weapon (Fists) or any items the player already has
-            if weapon_name == "Fists" or weapon_name == self.player.weapon['name']:
-                continue
-            items_for_sale.append({
-                "name": weapon['name'],
-                "type": "weapon",
-                "price": weapon['price'],
-                "stats": f"Atk Die: {weapon['attack_die']}"
-            })
-
-        # Add armors to items for sale
-        for armor_name, armor in ARMORS.items():
-            # Skip the starting armor (Clothes) or any items the player already has
-            if armor_name == "Clothes" or armor_name == self.player.armor['name']:
-                continue
-            items_for_sale.append({
-                "name": armor['name'],
-                "type": "armor",
-                "price": armor['price'],
-                "stats": f"Defense: {armor['defense']}"
-            })
-
-        # Add potions or other consumables
-        items_for_sale.append({
-            "name": "Health Potion",
-            "type": "potion",
-            "price": 20,
-            "effect": "heal",
-            "value": 10,
-            "stats": "+10 HP"
-        })
-
-        # Create widgets to display items and allow purchase
-        item_widgets = []
-        for item in items_for_sale:
-            # Create a label for the item
-            item_label = widgets.HTML(
-                value=f"<div style='display: flex; align-items: center; width: 600px;'>"
-                      f"<span style='flex: 1; font-size:14px; word-wrap: break-word;'>{item['name']} ({item['stats']}) "
-                      f"(<span class='yellow'>{item['price']}</span> gold)</span>"
-                      f"</div>"
-            )
-            # Create a buy button
-            buy_button = widgets.Button(
-                description="Buy",
-                button_style='primary',
-                layout=widgets.Layout(width='80px')
-            )
-            # Disable button if player can't afford or already owns the item
-            if self.player.gold < item['price'] or (
-                (item['type'] == 'weapon' and item['name'] == self.player.weapon['name']) or
-                (item['type'] == 'armor' and item['name'] == self.player.armor['name'])
-            ):
-                buy_button.disabled = True
-
-            # Capture the current item in the lambda
-            buy_button.on_click(lambda b, item=item: self.buy_item(item))
-            # Combine label and button in a horizontal box
-            item_row = widgets.HBox([item_label, buy_button], layout=widgets.Layout(gap='10px'))
-            item_widgets.append(item_row)
-
-        # Create a container for the item widgets
-        items_box = widgets.VBox(item_widgets, layout=widgets.Layout(gap='10px', overflow_y='auto', max_height='400px'))
-
-        # Create a button to continue the adventure
-        continue_button = widgets.Button(
-            description="Continue Adventure",
-            button_style='success',
-            layout=widgets.Layout(width='200px')
-        )
-        continue_button.on_click(lambda b: self.game_loop())
-
-        # Update the main container
-        self.main_container.children = [
-            widgets.HTML(value=store_html),
-            self.gold_label,
-            items_box,
-            self.store_message,
-            continue_button
-        ]
-
-    def buy_item(self, item):
-        """
-        Handle the purchase of an item.
-        """
-        if self.player.gold < item['price']:
-            # Not enough gold
-            message = f"<div class='bbs-container'><div class='section'><span class='red'>You do not have enough gold to buy {item['name']}.</span></div></div>"
-        else:
-            self.player.gold -= item['price']
-            if item['type'] == 'potion':
-                # Heal the player
-                self.player.hit_points += item['value']
-                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased {item['name']} and healed {item['value']} HP.</span></div></div>"
-            elif item['type'] == 'weapon':
-                # Update the player's weapon
-                self.player.weapon = WEAPONS[item['name']]
-                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased and equipped {item['name']}.</span></div></div>"
-            elif item['type'] == 'armor':
-                # Update the player's armor
-                self.player.armor = ARMORS[item['name']]
-                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased and equipped {item['name']}.</span></div></div>"
-            else:
-                message = f"<div class='bbs-container'><div class='section'><span class='red'>Error: Unknown item type.</span></div></div>"
-
-            # Update the gold label
-            self.gold_label.value = f"You have <span class='yellow'>{self.player.gold}</span> gold."
-
-        # Update the message
-        self.store_message.value = message
-
-        # Refresh the store to update button states
-        self.present_store()
-
-    def show_victory(self):
-        """
-        Display the victory screen when all questions are answered.
-        """
-        victory_html = f"""
-        <div class='bbs-container'>
-            <div class='title'>Victory!</div>
-            <div class='section'>
-                Congratulations! You have answered all questions and defeated all monsters.<br>
-                <span class='bold'>Final Stats:</span><br>
-                Correct Answers: <span class='yellow'>{self.player.total_correct}</span><br>
-                Incorrect Answers: <span class='yellow'>{self.player.total_incorrect}</span><br>
-                HP: <span class='yellow'>{self.player.hit_points}</span><br>
-                Gold: <span class='yellow'>{self.player.gold}</span><br>
-                Weapon: <span class='yellow'>{self.player.weapon['name']}</span><br>
-                Armor: <span class='yellow'>{self.player.armor['name']}</span>
-            </div>
-        </div>
-        """
-        self.main_container.children = [widgets.HTML(value=victory_html)]
-
-    def show_game_over(self):
-        """
-        Display the game over screen when the player is defeated.
-        """
-        game_over_html = f"""
-        <div class='bbs-container'>
-            <div class='title'>Game Over</div>
-            <div class='section'>
-                You have been defeated by the <span class='bold underline'>{self.current_monster.monster_name}</span>.<br>
-                <span class='bold'>Final Stats:</span><br>
-                Correct Answers: <span class='yellow'>{self.player.total_correct}</span><br>
-                Incorrect Answers: <span class='yellow'>{self.player.total_incorrect}</span><br>
-                HP: <span class='yellow'>{self.player.hit_points}</span><br>
-                Gold: <span class='yellow'>{self.player.gold}</span><br>
-                Weapon: <span class='yellow'>{self.player.weapon['name']}</span><br>
-                Armor: <span class='yellow'>{self.player.armor['name']}</span>
-            </div>
-        </div>
-        """
-        self.main_container.children = [widgets.HTML(value=game_over_html)]
-
-    def game_loop(self):
-        """
-        Main game loop to handle game progression.
-        """
-        if self.player.hit_points <= 0:
-            self.show_game_over()
-            return
-        if not self.questions_to_ask and not self.current_monster:
-            self.show_victory()
-            return
-        # Check if it's time to show the store
-        if (self.questions_asked % self.STORE_INTERVAL == 0 and
-                self.questions_asked > 0 and not self.just_visited_store):
-            self.present_store()
-        else:
-            self.just_visited_store = False  # Reset the flag
-            self.present_encounter()
 
   
     def present_store(self):
