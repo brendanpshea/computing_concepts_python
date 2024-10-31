@@ -1,0 +1,632 @@
+[
+  {
+    "question": "Michael Scott proudly announces he's made the company's quarterly reports 'super secure' by implementing which CIA triad components?",
+    "correct": [
+      "Confidentiality - By requiring his famous 'that's what she said' passphrase",
+      "Integrity - By keeping an original copy in his 'World's Best Boss' mug",
+      "Availability - By saving multiple copies on both his computer and Dwight's"
+    ],
+    "incorrect": [
+      "Credibility - By having each department head verify the numbers",
+      "Authorization - By requiring his signature on each access request",
+      "Authentication - By keeping a log of who views the reports"
+    ],
+    "hint": "Remember the three fundamental principles that ensure information security."
+  },
+  {
+    "question": "In Star Trek: The Next Generation, Lieutenant Commander Data is implementing measures to increase data confidentiality on the Enterprise. Which of his actions are appropriate?",
+    "correct": [
+      "Implementing encryption for all ship-to-starbase communications",
+      "Setting up multi-factor authentication for bridge crew access",
+      "Creating separate access levels for different crew departments"
+    ],
+    "incorrect": [
+      "Installing monitoring software to track all crew activities",
+      "Requiring daily password changes for all systems",
+      "Limiting all sensitive information to local storage only"
+    ],
+    "hint": "Think about methods that keep information secret from unauthorized users."
+  },
+  {
+    "question": "The IT Crowd's Roy and Moss are working to increase system availability. Which measures would actually help?",
+    "correct": [
+      "Setting up redundant backup servers",
+      "Implementing RAID storage configurations",
+      "Creating automated failover systems"
+    ],
+    "incorrect": [
+      "Running comprehensive virus scans every hour",
+      "Implementing strict access controls on all systems",
+      "Encrypting all data in the database"
+    ],
+    "hint": "Focus on measures that ensure systems remain operational and accessible."
+  },
+  {
+    "question": " Walter White needs to ensure the integrity of his digital lab records. Which measures would be effective?",
+    "correct": [
+      "Implementing checksums for all data files",
+      "Using digital signatures for lab entries",
+      "Maintaining detailed audit logs of all changes"
+    ],
+    "incorrect": [
+      "Creating multiple copies of all files across different locations",
+      "Implementing real-time backup systems",
+      "Using complex encryption for all data storage"
+    ],
+    "hint": "Consider methods that ensure data remains unaltered and authentic."
+  },
+  {
+    "question": "Detective McNulty is considering potential threats to confidentiality. Which scenarios represent actual confidentiality threats?",
+    "correct": [
+      "An unauthorized person shoulder-surfing police computer screens",
+      "Unencrypted case files being transmitted over public Wi-Fi",
+      "Confidential informant lists stored in plain text on unlocked devices"
+    ],
+    "incorrect": [
+      "Power outages affecting the police database",
+      "Network latency during peak usage hours",
+      "Software crashes corrupting recent entries"
+    ],
+    "hint": "Look for situations where sensitive information might be exposed to unauthorized parties."
+  },
+  {
+    "question": "BoJack Horseman's Princess Carolyn needs to identify threats to data integrity at her agency. Which scenarios represent actual integrity threats?",
+    "correct": [
+      "Unauthorized script modifications by competing agencies",
+      "Man-in-the-middle attacks during contract transmissions",
+      "Malware that alters talent database entries"
+    ],
+    "incorrect": [
+      "Competitors accessing and viewing confidential contracts",
+      "Network downtime during important meetings",
+      "Slow system response times during backups"
+    ],
+    "hint": "Consider situations where data might be altered without authorization."
+  },
+  {
+    "question": "While working at Dunder Mifflin, Dwight Schrute identifies several potential availability threats. Which are genuine concerns?",
+    "correct": [
+      "DDoS attacks targeting the company's sales portal",
+      "Hardware failures without backup systems",
+      "Network bottlenecks during peak sales periods"
+    ],
+    "incorrect": [
+      "Weak passwords on user accounts",
+      "Unencrypted customer data in transit",
+      "Lack of input validation in web forms"
+    ],
+    "hint": "Think about what could prevent legitimate users from accessing systems and data."
+  },
+  {
+    "question": "In Star Trek, the Enterprise crew wonders if theire system has been infeceted by a computer worm. Which characteristics help the crew identify it as a worm?",
+    "correct": [
+      "Self-replication across ship's networked systems",
+      "Automatic propagation without human intervention",
+      "Using network protocols to spread between systems"
+    ],
+    "incorrect": [
+      "Changing file permissions on infected systems",
+      "Creating backdoor accounts for later access",
+      "Stealing user credentials from infected machines"
+    ],
+    "hint": "Focus on how worms spread and operate independently."
+  },
+  {
+    "question": "Which of the following are  virus traits?",
+    "correct": [
+      "Attaching to host programs or files",
+      "Modifying or corrupting existing files",
+      "Requiring execution to activate"
+    ],
+    "incorrect": [
+      "Scanning networks for vulnerable systems",
+      "Creating secure encrypted channels",
+      "Monitoring system resources for anomalies"
+    ],
+    "hint": "Consider how viruses depend on host files and user actions."
+  },
+  {
+    "question": "Which of the following are spyware traits?",
+    "correct": [
+      "Collecting user data without consent",
+      "Running secretly in the background",
+      "Transmitting gathered information to external servers"
+    ],
+    "incorrect": [
+      "Modifying system security settings for protection",
+      "Scanning for and removing other malware",
+      "Creating system restore points automatically"
+    ],
+    "hint": "Think about software designed to secretly monitor and collect information."
+  },
+  {
+    "question": "Walter White falls victim to ransomware. Which characteristics identify it as ransomware?",
+    "correct": [
+      "Encrypting files and demanding payment for decryption",
+      "Displaying a ransom note with payment instructions",
+      "Setting a deadline for payment before file deletion"
+    ],
+    "incorrect": [
+      "Installing security patches automatically",
+      "Creating encrypted backup copies of files",
+      "Monitoring network traffic for suspicious activity"
+    ],
+    "hint": "Consider the primary goal of ransomware and how it achieves it."
+  },
+  {
+    "question": "The Wire's tech team has documented some common SQL practices. Which are actually dangerous?",
+    "correct": [
+      "Using unsanitized user input directly in queries",
+      "Storing passwords in plain text",
+      "Not using prepared statements"
+    ],
+    "incorrect": [
+      "Running queries during low-traffic periods",
+      "Creating regular database backups",
+      "Using stored procedures for complex operations"
+    ],
+    "hint": "Think about practices that could lead to SQL injection attacks."
+  },
+  {
+    "question": "Angela is tasked with increasing password entropy. Which methods would actually help?",
+    "correct": [
+      "Using a mix of upper and lower case letters, numbers, and symbols",
+      "Increasing password length significantly",
+      "Avoiding common dictionary words and patterns"
+    ],
+    "incorrect": [
+      "Changing passwords every day",
+      "Using the same complex password for all accounts",
+      "Creating passwords based on personal memories"
+    ],
+    "hint": "Consider what makes passwords more complex and harder to guess."
+  },
+  {
+    "question": "Jen suggests ways to improve password manageability. Which are legitimate methods?",
+    "correct": [
+      "Using a reputable password manager",
+      "Creating passphrases with multiple random words",
+      "Implementing single sign-on for related systems"
+    ],
+    "incorrect": [
+      "Creating a secure spreadsheet of all passwords",
+      "Using variations of the same base password",
+      "Storing encrypted password files locally"
+    ],
+    "hint": "Think about ways to maintain strong passwords while keeping them manageable."
+  },
+  {
+    "question": "Which are firewall functions?",
+    "correct": [
+      "Filtering incoming and outgoing network traffic",
+      "Blocking unauthorized access attempts",
+      "Monitoring and controlling network ports"
+    ],
+    "incorrect": [
+      "Detecting and removing malware automatically",
+      "Managing system backup and recovery",
+      "Enforcing password complexity requirements"
+    ],
+    "hint": "Focus on how firewalls control network traffic and access."
+  },
+  {
+    "question": "Which scenarios are best thought of as Applicatoin Layer attacks?",
+    "correct": [
+      "SQL injection attempts in the user input fields",
+      "Cross-site scripting (XSS) in the chat feature",
+      "Buffer overflow attempts in file upload functions"
+    ],
+    "incorrect": [
+      "Network packet fragmentation",
+      "MAC address spoofing attempts",
+      "ARP cache poisoning events"
+    ],
+    "hint": "Think about attacks that target specific applications and their functions."
+  },
+  {
+    "question": "Which scenarios are best thought of as Transport Layer attacks?",
+    "correct": [
+      "TCP SYN flood overwhelming connection queues",
+      "Session hijacking of authenticated connections",
+      "SSL/TLS downgrade attacks forcing weak encryption"
+    ],
+    "incorrect": [
+      "Malformed HTTP requests to web servers",
+      "DNS cache poisoning attempts",
+      "Brute force login attempts"
+    ],
+    "hint": "Consider attacks that target connection-oriented protocols and session management."
+  },
+  {
+    "question": "Which scenarios are best thought of as Internet Layer attacks?",
+    "correct": [
+      "ICMP flood attacks overwhelming network resources",
+      "IP spoofing to bypass access controls",
+      "Smurf attacks using broadcast amplification"
+    ],
+    "incorrect": [
+      "SQL database corruption",
+      "Website defacement attempts",
+      "Password dictionary attacks"
+    ],
+    "hint": "Focus on attacks targeting IP addressing and routing."
+  },
+  {
+    "question": "Which scenarios are best thought of as data link layer attacks?",
+    "correct": [
+      "MAC address spoofing to impersonate legitimate devices",
+      "ARP poisoning to redirect network traffic",
+      "VLAN hopping to access restricted network segments"
+    ],
+    "incorrect": [
+      "Phishing emails targeting employees",
+      "Malware infections in user applications",
+      "DDoS attacks on web servers"
+    ],
+    "hint": "Think about attacks targeting network hardware addresses and local network communications."
+  },
+  {
+    "question": "Which statements are correct about the Caesar Cipher?",
+    "correct": [
+      "Each letter is shifted a fixed number of positions in the alphabet",
+      "The shift amount serves as the encryption key",
+      "A shift of 3 would turn 'HELLO' into 'KHOOR'"
+    ],
+    "incorrect": [
+      "It uses different shift amounts for each letter",
+      "The key is a word that determines the shift pattern",
+      "It requires mathematical factorization to decrypt"
+    ],
+    "hint": "Consider the simplest form of substitution cipher."
+  },
+  {
+    "question": "In Sherlock, Holmes explains the Vigenère cipher to Watson. Which properties should he mention?",
+    "correct": [
+      "It uses a keyword to determine multiple shift values",
+      "Each letter in the keyword creates a different Caesar cipher shift",
+      "The keyword repeats to match the plaintext length"
+    ],
+    "incorrect": [
+      "It only shifts vowels in the plaintext",
+      "The key length must be prime number",
+      "It requires public-private key pairs"
+    ],
+    "hint": "Think about how this cipher improves upon the Caesar cipher using a keyword."
+  },
+  {
+    "question": "Which of the following are symmetric encryption properties?",
+    "correct": [
+      "The same key is used for encryption and decryption",
+      "It's generally faster than asymmetric encryption",
+      "Examples include AES and DES"
+    ],
+    "incorrect": [
+      "It uses different keys for sending and receiving",
+      "It's primarily used for digital signatures",
+      "The key can be safely shared publicly"
+    ],
+    "hint": "Consider encryption methods where both parties need to know the same secret."
+  },
+  {
+    "question": "Trinity is explaining asymmetric encryption properties. Which are accurate?",
+    "correct": [
+      "It uses different but mathematically related public and private keys",
+      "The public key can be freely shared",
+      "RSA and ECC are common examples"
+    ],
+    "incorrect": [
+      "It's typically faster than symmetric encryption",
+      "Both keys must be kept secret",
+      "The same key is used by both sender and receiver"
+    ],
+    "hint": "Think about encryption that uses key pairs rather than a single shared key."
+  },
+  {
+    "question": "Which statements correctly describe how hashes work?",
+    "correct": [
+      "They transform input data into a fixed-size output",
+      "They use mathematical algorithms to create a unique digest",
+      "Small changes in input create significantly different outputs"
+    ],
+    "incorrect": [
+      "They can be reversed to recover the original input",
+      "They use encryption keys to process data",
+      "They maintain the same output size as the input"
+    ],
+    "hint": "Consider one-way functions that create fixed-length output values."
+  },
+  {
+    "question": "Which are properties of cryptographic hashes?",
+    "correct": [
+      "They produce fixed-length output regardless of input size",
+      "They're deterministic (same input always produces same output)",
+      "It's computationally infeasible to find two inputs with same hash"
+    ],
+    "incorrect": [
+      "They can be easily reversed to find the original input",
+      "Longer inputs produce longer hash values",
+      "Similar inputs always produce similar hashes"
+    ],
+    "hint": "Think about the fundamental characteristics that make hashes useful for security."
+  },
+  {
+    "question": "Which of the following are secure coding principles?",
+    "correct": [
+      "Input validation before processing user data",
+      "Principle of least privilege in access control",
+      "Proper error handling without revealing system details"
+    ],
+    "incorrect": [
+      "Storing passwords in plain text for quick access",
+      "Using client-side validation only",
+      "Embedding database credentials in source code"
+    ],
+    "hint": "Consider practices that prevent common security vulnerabilities."
+  },
+  {
+    "question": "Huell analyzes a sophisticated phishing scam. Which properties make it effective?",
+    "correct": [
+      "Creating a sense of urgency or time pressure",
+      "Mimicking legitimate business communication styles",
+      "Using social engineering to exploit trust"
+    ],
+    "incorrect": [
+      "Using obvious spelling errors in the message",
+      "Requesting information through unsecured channels",
+      "Sending from clearly fake email addresses"
+    ],
+    "hint": "Think about what makes people fall for deceptive messages."
+  },
+  {
+    "question": "Ben Wyatt identifies potentional vulnerabilities in Pawnee's small business networks. Which are legitimate concerns?",
+    "correct": [
+      "Unpatched software and operating systems",
+      "Weak or default passwords on network devices",
+      "Lack of regular security audits and updates"
+    ],
+    "incorrect": [
+      "Targeting by advanced persistent threats (APTs)",
+      "Quantum computing attacks",
+      "Zero-day exploit development"
+    ],
+    "hint": "Consider common issues in networks with limited IT resources."
+  },
+  {
+    "question": "Which of the following are characteristics of a DDoS attack?",
+    "correct": [
+      "Multiple sources sending excessive traffic simultaneously",
+      "Network resources becoming overwhelmed and unresponsive",
+      "Legitimate users unable to access services"
+    ],
+    "incorrect": [
+      "Encrypted files appearing on systems",
+      "Data being quietly exfiltrated",
+      "System files being modified"
+    ],
+    "hint": "Think about attacks that overwhelm systems with traffic."
+  },
+  {
+    "question": "Moss identifies an attack by script kiddies. Which characteristics give it away?",
+    "correct": [
+      "Using well-known, pre-written exploit tools",
+      "Lacking understanding of the underlying vulnerabilities",
+      "Following step-by-step instructions from hacking forums"
+    ],
+    "incorrect": [
+      "Writing custom exploit code",
+      "Developing new zero-day vulnerabilities",
+      "Creating sophisticated malware"
+    ],
+    "hint": "Consider attacks by individuals with limited technical knowledge using existing tools."
+  },
+  {
+    "question": "Which of the following are common hacktivism traits?",
+    "correct": [
+      "Targeting organizations that conflict with their political/social views",
+      "Publicly announcing attacks to draw attention to causes",
+      "Defacing websites with political messages"
+    ],
+    "incorrect": [
+      "Quietly stealing financial data for profit",
+      "Maintaining long-term persistent access",
+      "Installing covert cryptocurrency miners"
+    ],
+    "hint": "Think about attackers motivated by political or social causes rather than profit."
+  },
+  {
+    "question": "Which characteristics indicate a cybercrime operation?",
+    "correct": [
+      "Monetizing stolen credit card data on dark web markets",
+      "Operating ransomware-as-a-service networks",
+      "Using sophisticated money laundering techniques to cash out"
+    ],
+    "incorrect": [
+      "Publishing stolen data to promote social change",
+      "Targeting specific companies for espionage",
+      "Leaving obvious traces to gain recognition"
+    ],
+    "hint": "Consider attacks primarily motivated by financial gain."
+  },
+  {
+    "question": "Peter has discovered potential signs of insider threats. Which behaviors are typical insider attack characteristics?",
+    "correct": [
+      "Abuse of legitimate access privileges",
+      "Data exfiltration during normal business hours",
+      "Knowledge of internal security measures and how to bypass them"
+    ],
+    "incorrect": [
+      "Using sophisticated zero-day exploits",
+      "Launching large-scale DDoS attacks",
+      "Deploying ransomware across the network"
+    ],
+    "hint": "Think about threats from people with legitimate access to systems."
+  },
+  {
+    "question": "Some CIA agents are investigating an Advanced Persistent Threat (APT). Which traits identify it as an APT?",
+    "correct": [
+      "Long-term, stealthy presence in the network",
+      "Sophisticated custom malware and tools",
+      "Targeting specific high-value information"
+    ],
+    "incorrect": [
+      "Immediate ransomware deployment",
+      "Public claims of responsibility",
+      "Quick smash-and-grab data theft"
+    ],
+    "hint": "Consider well-resourced attackers focused on long-term espionage."
+  },
+  {
+    "question": "Gilfoyle is reviewing Pied Piper's Python code. Which practices are security vulnerabilities?",
+    "correct": [
+      "Using eval() on user-provided input",
+      "Hardcoding credentials in source code",
+      "Opening files without proper path sanitization"
+    ],
+    "incorrect": [
+      "Using type hints in function definitions",
+      "Implementing error logging",
+      "Using virtual environments"
+    ],
+    "hint": "Look for code that could allow unauthorized access or execution."
+  },
+  {
+    "question": "Mark is reviewing database code. Which SQL practices create security risks?",
+    "correct": [
+      "Concatenating user input directly into queries",
+      "Using 'SELECT *' in production queries",
+      "Storing passwords without hashing"
+    ],
+    "incorrect": [
+      "Using database indexes for optimization",
+      "Implementing database transactions",
+      "Creating stored procedures"
+    ],
+    "hint": "Consider practices that could lead to SQL injection or data exposure."
+  },
+  {
+    "question": "Which of the following are properties of digital signatures?",
+    "correct": [
+      "Using private key to create unique document fingerprints",
+      "Allowing others to verify authenticity with public key",
+      "Combining hash functions with asymmetric encryption"
+    ],
+    "incorrect": [
+      "Using symmetric encryption only",
+      "Requiring the same key for signing and verification",
+      "Making documents unreadable to others"
+    ],
+    "hint": "Think about methods that prove document authenticity and origin."
+  },
+  {
+    "question": "Which statements about HTTP are correct?",
+    "correct": [
+      "Using TLS for encrypted communication",
+      "Verifying server identity with certificates",
+      "Protecting data in transit from tampering"
+    ],
+    "incorrect": [
+      "Encrypting data stored on servers",
+      "Preventing all types of attacks",
+      "Making websites load faster"
+    ],
+    "hint": "Consider how web traffic is secured between browser and server."
+  },
+  {
+    "question": "Which of the following are properties of Local Area Networks (LANs)?",
+    "correct": [
+      "Limited geographic scope (building/campus)",
+      "Higher bandwidth than wide-area connections",
+      "Direct physical control over network infrastructure"
+    ],
+    "incorrect": [
+      "Always requiring internet connectivity",
+      "Only supporting wireless connections",
+      "Unlimited geographic range"
+    ],
+    "hint": "Think about networks confined to a local geographic area."
+  },
+  {
+    "question": "Which of the following are properties of Wide Area Networks (WANs)?",
+    "correct": [
+      "Spanning large geographic distances",
+      "Often using service provider infrastructure",
+      "typically lower bandwidth than LANs"
+    ],
+    "incorrect": [
+      "Always faster than local networks",
+      "Only using private infrastructure",
+      "Limited to one city or region"
+    ],
+    "hint": "Consider networks that connect geographically distant locations."
+  },
+  {
+    "question": "Which of the following are properties of the application layer?",
+    "correct": [
+      "Providing services directly to end-users",
+      "Including protocols like HTTP, FTP, and SMTP",
+      "Handling data formatting and presentation"
+    ],
+    "incorrect": [
+      "Managing physical network connections",
+      "Handling packet routing between networks",
+      "Ensuring reliable data delivery"
+    ],
+    "hint": "Think about the network layer that interfaces with user applications."
+  },
+  {
+    "question": "Which of the following are properties of the transport layer?",
+    "correct": [
+      "Providing end-to-end communication control",
+      "Ensuring reliable data delivery (TCP)",
+      "Offering connectionless service (UDP)"
+    ],
+    "incorrect": [
+      "Managing physical addressing",
+      "Handling user authentication",
+      "Providing application interfaces"
+    ],
+    "hint": "Consider the layer responsible for data delivery between applications."
+  },
+  {
+    "question": "Which of the following are properties of the internet layer?",
+    "correct": [
+      "Handling packet routing between networks",
+      "Using IP addressing for host identification",
+      "Managing fragmentation and reassembly"
+    ],
+    "incorrect": [
+      "Providing user interfaces",
+      "Managing application protocols",
+      "Handling physical transmission"
+    ],
+    "hint": "Think about the layer responsible for getting packets across networks."
+  },
+  {
+    "question": "Which of the following are properties of the data link layer?",
+    "correct": [
+      "Managing physical addressing (MAC)",
+      "Handling error detection in frames",
+      "Controlling media access"
+    ],
+    "incorrect": [
+      "Managing IP routing",
+      "Handling user authentication",
+      "Processing application data"
+    ],
+    "hint": "Consider the layer dealing with direct node-to-node delivery."
+  },
+  {
+    "question": "Which are realistic concerns about individual vulnerablity?",
+    "correct": [
+      "Reusing passwords across multiple accounts",
+      "Oversharing personal information on social media",
+      "Falling for social engineering attacks"
+    ],
+    "incorrect": [
+      "Being targeted by nation-state hackers",
+      "Experiencing sophisticated APT attacks",
+      "Facing corporate espionage attempts"
+    ],
+    "hint": "Think about everyday security risks faced by individual users."
+  }
+]
