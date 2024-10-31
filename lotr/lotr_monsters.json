@@ -3,14 +3,14 @@
         "monster_name": "Goblin",
         "initial_description": "A small, green creature with a mischievous grin appears. It looks like it hasn't had breakfast yet, and you might be on the menu.",
         "hit_dice": 2,
-        "attack_die": 4,
+        "attack_die": 6,
         "defense": 1
     },
     {
         "monster_name": "Luggage",
         "initial_description": "A walking chest with hundreds of little legs trots up to you. Its lid opens slightly, revealing rows of sharp teeth. Friendly? Maybe not.",
         "hit_dice": 4,
-        "attack_die": 6,
+        "attack_die": 8,
         "defense": 3
     },
     {
@@ -31,21 +31,21 @@
         "monster_name": "Werewolf",
         "initial_description": "A hairy individual howls at the moon, then checks his watch. 'Is it that time of the month already?' he mutters.",
         "hit_dice": 6,
-        "attack_die": 8,
+        "attack_die": 10,
         "defense": 3
     },
     {
         "monster_name": "Vampire",
         "initial_description": "A pale figure in a cape appears, dramatically backlit. He pauses, waiting for applause that never comes.",
         "hit_dice": 7,
-        "attack_die": 8,
+        "attack_die": 12,
         "defense": 3
     },
     {
         "monster_name": "Gelatinous Cube",
         "initial_description": "A large, wobbly cube of jelly approaches. It jiggles menacingly, if such a thing is possible.",
         "hit_dice": 4,
-        "attack_die": 6,
+        "attack_die": 8,
         "defense": 2
     },
     {
@@ -94,7 +94,7 @@
         "monster_name": "Flumph",
         "initial_description": "A jellyfish-like creature floats by, telepathically humming an off-key tune. It seems more interested in making friends than fighting.",
         "hit_dice": 2,
-        "attack_die": 4,
+        "attack_die": 6,
         "defense": 1
     },
     {
