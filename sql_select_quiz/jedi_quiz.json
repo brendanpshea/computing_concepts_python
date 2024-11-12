@@ -1,0 +1,72 @@
+{
+  "questions": [
+    {
+      "question": "Display the names of all students. Simple queries don't need aliases.",
+      "answer": "SELECT name FROM student;"
+    },
+    {
+      "question": "Show all students' names and their home planets.",
+      "answer": "SELECT name, home_planet FROM student;"
+    },
+    {
+      "question": "Find all students who are 15 years old.",
+      "answer": "SELECT name, age FROM student WHERE age = 15;"
+    },
+    {
+      "question": "List all courses ordered by name alphabetically.",
+      "answer": "SELECT name, level FROM course ORDER BY name;"
+    },
+    {
+      "question": "Find all students whose names start with 'L'. The LIKE pattern 'L%' matches any string starting with L.",
+      "answer": "SELECT name FROM student WHERE name LIKE 'L%';"
+    },
+    {
+      "question": "Show all students whose names contain 'an'. The pattern '%an%' finds 'an' anywhere in the name.",
+      "answer": "SELECT name FROM student WHERE name LIKE '%an%';"
+    },
+    {
+      "question": "List all unique home planets that end with 'in'. Use DISTINCT to avoid duplicates.",
+      "answer": "SELECT DISTINCT home_planet FROM student WHERE home_planet LIKE '%in';"
+    },
+    {
+      "question": "Find students between 13 and 15 years old (inclusive). BETWEEN includes both end values.",
+      "answer": "SELECT name, age FROM student WHERE age BETWEEN 13 AND 15;"
+    },
+    {
+      "question": "Show all grades between 90 and 95. Display the student name and grade.",
+      "answer": "SELECT student.name, enrollment.grade FROM student JOIN enrollment ON student.student_id = enrollment.student_id WHERE grade BETWEEN 90 AND 95;"
+    },
+    {
+      "question": "Show each student's name and the name of their course. Use appropriate aliases (student_name, course_name) since both tables have a 'name' column.",
+      "answer": "SELECT student.name AS student_name, course.name AS course_name FROM student JOIN enrollment ON student.student_id = enrollment.student_id JOIN course ON enrollment.course_id = course.course_id;"
+    },
+    {
+      "question": "Display course names and their teacher names. Use aliases (course_name, teacher_name) to distinguish between the two name columns.",
+      "answer": "SELECT course.name AS course_name, master.name AS teacher_name FROM course JOIN master ON course.master_id = master.master_id;"
+    },
+    {
+      "question": "Show student names and grades for the 'Foundations of the Force' course. The course name needs to match exactly.",
+      "answer": "SELECT student.name, enrollment.grade FROM student JOIN enrollment ON student.student_id = enrollment.student_id JOIN course ON enrollment.course_id = course.course_id WHERE course.name = 'Foundations of the Force';"
+    },
+    {
+      "question": "Count how many students are from each home planet. Name the count column 'student_count'.",
+      "answer": "SELECT home_planet, COUNT(*) AS student_count FROM student GROUP BY home_planet;"
+    },
+    {
+      "question": "Show the average age of students from each planet. Round the average to one decimal place.",
+      "answer": "SELECT home_planet, ROUND(AVG(age), 1) AS avg_age FROM student GROUP BY home_planet;"
+    },
+    {
+      "question": "Display the highest midichlorian count for each planet. Name the max column 'highest_count'.",
+      "answer": "SELECT home_planet, MAX(midichlorian_count) AS highest_count FROM student GROUP BY home_planet;"
+    },
+    {
+      "question": "Count how many students are enrolled in each course. Show the course name and the count (as 'num_students').",
+      "answer": "SELECT course.name, COUNT(enrollment.student_id) AS num_students FROM course JOIN enrollment ON course.course_id = enrollment.course_id GROUP BY course.course_id, course.name;"
+    },
+    {
+      "question": "Show the average grade for each course. Display the course name and round the average to one decimal place.",
+      "answer": "SELECT course.name, ROUND(AVG(enrollment.grade), 1) AS avg_grade FROM course JOIN enrollment ON course.course_id = enrollment.course_id GROUP BY course.course_id, course.name;"
+    }
+  ]
+}
