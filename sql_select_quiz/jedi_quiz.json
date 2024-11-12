@@ -1,6 +1,6 @@
 [
     {
-        "question": "Display the names of all students. Simple queries don't need aliases.",
+        "question": "Display the names of all students.",
         "answer": "SELECT name FROM student;"
     },
     {
@@ -52,7 +52,7 @@
         "answer": "SELECT home_planet, COUNT(*) AS student_count FROM student GROUP BY home_planet;"
     },
     {
-        "question": "Show the average age of students from each planet. Round the average to one decimal place.",
+        "question": "Show the average age of students from each planet. ROUND() the average to one decimal place.",
         "answer": "SELECT home_planet, ROUND(AVG(age), 1) AS avg_age FROM student GROUP BY home_planet;"
     },
     {
