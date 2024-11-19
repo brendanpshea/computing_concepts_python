@@ -1,78 +1,153 @@
 {
     "questions": [
         {
-            "function_name": "create_alien_profile",
-            "parameters": ["name", "species", "home_planet"],
-            "description": "Create and return a dictionary containing the alien's profile information.",
-            "input_type": ["string", "string", "string"],
-            "answer_code": "def create_alien_profile(name, species, home_planet):\n    return {'name': name, 'species': species, 'home_planet': home_planet}",
-            "hint": "Create a dictionary with three key-value pairs.",
+            "function_name": "create_pet_profile",
+            "parameters": ["name", "species", "age"],
+            "description": "Create and return a dictionary containing information about a pet.",
+            "input_type": ["string", "string", "int"],
+            "answer_code": "def create_pet_profile(name, species, age):\n    return {'name': name, 'species': species, 'age': age}",
+            "hint": "Create a dictionary with three key-value pairs using curly braces.",
             "test_inputs": [
-                ["Zorg", "Zorgian", "Zorgopia"],
-                ["ET", "Unknown", "Unknown"],
-                ["Spock", "Vulcan", "Vulcan"],
-                ["Groot", "Flora Colossus", "Planet X"],
-                ["Thanos", "Eternal", "Titan"]
+                ["Luna", "cat", 3],
+                ["Max", "dog", 5],
+                ["Bubbles", "fish", 1],
+                ["Pip", "parrot", 2],
+                ["Ziggy", "hamster", 1]
             ]
         },
         {
-            "function_name": "get_spaceship_speed",
-            "parameters": ["ship_speeds", "ship_name"],
-            "description": "Return the speed of the specified spaceship from the dictionary of speeds.",
+            "function_name": "get_favorite_color",
+            "parameters": ["preferences", "person"],
+            "description": "Return the favorite color of the person from the preferences dictionary.",
             "input_type": ["dict", "string"],
-            "answer_code": "def get_spaceship_speed(ship_speeds, ship_name):\n    return ship_speeds.get(ship_name, 0)",
+            "answer_code": "def get_favorite_color(preferences, person):\n    return preferences[person]",
+            "hint": "Use square bracket notation to access dictionary values.",
+            "test_inputs": [
+                [{"Alice": "blue", "Bob": "red"}, "Alice"],
+                [{"Charlie": "green", "Diana": "purple"}, "Diana"],
+                [{"Eva": "yellow", "Frank": "orange"}, "Eva"],
+                [{"Grace": "pink", "Henry": "brown"}, "Henry"],
+                [{"Ivy": "white", "Jack": "black"}, "Jack"]
+            ]
+        },
+        {
+            "function_name": "update_score",
+            "parameters": ["scores", "player", "points"],
+            "description": "Add points to a player's score in the scores dictionary.",
+            "input_type": ["dict", "string", "int"],
+            "answer_code": "def update_score(scores, player, points):\n    scores[player] = scores[player] + points\n    return scores",
+            "hint": "Use square bracket notation to modify dictionary values.",
+            "test_inputs": [
+                [{"Player1": 10, "Player2": 20}, "Player1", 5],
+                [{"Mario": 100, "Luigi": 50}, "Luigi", 10],
+                [{"Pac-Man": 200, "Ghost": 150}, "Pac-Man", 50],
+                [{"Sonic": 300, "Tails": 250}, "Sonic", 100],
+                [{"Kirby": 75, "Meta Knight": 80}, "Kirby", 25]
+            ]
+        },
+        {
+            "function_name": "check_key_exists",
+            "parameters": ["dictionary", "key"],
+            "description": "Return True if the key exists in the dictionary, False otherwise.",
+            "input_type": ["dict", "string"],
+            "answer_code": "def check_key_exists(dictionary, key):\n    return key in dictionary",
+            "hint": "Use the 'in' operator to check if a key exists.",
+            "test_inputs": [
+                [{"apple": 1, "banana": 2}, "apple"],
+                [{"cat": "meow", "dog": "woof"}, "fish"],
+                [{"red": "#FF0000", "blue": "#0000FF"}, "green"],
+                [{"name": "Alice", "age": 25}, "name"],
+                [{}, "empty"]
+            ]
+        },
+        {
+            "function_name": "get_all_keys",
+            "parameters": ["dictionary"],
+            "description": "Return a list of all keys in the dictionary.",
+            "input_type": "dict",
+            "answer_code": "def get_all_keys(dictionary):\n    return list(dictionary.keys())",
+            "hint": "Use the keys() method and convert to a list.",
+            "test_inputs": [
+                {"a": 1, "b": 2, "c": 3},
+                {"name": "Bob", "age": 30},
+                {"red": 255, "green": 128, "blue": 0},
+                {"Monday": "sunny", "Tuesday": "rainy"},
+                {}
+            ]
+        },
+        {
+            "function_name": "count_values",
+            "parameters": ["dictionary"],
+            "description": "Return the number of key-value pairs in the dictionary.",
+            "input_type": "dict",
+            "answer_code": "def count_values(dictionary):\n    return len(dictionary)",
+            "hint": "Use the len() function on the dictionary.",
+            "test_inputs": [
+                {"a": 1, "b": 2},
+                {"name": "Charlie"},
+                {"x": 0, "y": 0, "z": 0},
+                {},
+                {"one": 1, "two": 2, "three": 3, "four": 4}
+            ]
+        },
+        {
+            "function_name": "get_safe_value",
+            "parameters": ["dictionary", "key", "default"],
+            "description": "Return the value for the key if it exists, otherwise return the default value.",
+            "input_type": ["dict", "string", "string"],
+            "answer_code": "def get_safe_value(dictionary, key, default):\n    return dictionary.get(key, default)",
             "hint": "Use the get() method with a default value.",
             "test_inputs": [
-                [{"Millennium Falcon": 75, "Enterprise": 100}, "Millennium Falcon"],
-                [{"Serenity": 50, "Galactica": 80}, "Serenity"],
-                [{"Death Star": 10, "X-Wing": 95}, "TIE Fighter"],
-                [{"Voyager": 85, "Discovery": 70}, "Voyager"],
-                [{"Nostromo": 45, "Sulaco": 55}, "Sulaco"]
+                [{"name": "Dave", "age": 25}, "name", "Unknown"],
+                [{"color": "blue"}, "size", "Not specified"],
+                [{}, "type", "None"],
+                [{"fruit": "apple"}, "vegetable", "carrot"],
+                [{"day": "Monday"}, "month", "January"]
             ]
         },
         {
-            "function_name": "update_inventory",
-            "parameters": ["inventory", "item", "quantity"],
-            "description": "Add or update the quantity of an item in the inventory dictionary.",
-            "input_type": ["dict", "string", "int"],
-            "answer_code": "def update_inventory(inventory, item, quantity):\n    inventory[item] = inventory.get(item, 0) + quantity\n    return inventory",
-            "hint": "Use the get() method to handle new items and add the quantity.",
-            "test_inputs": [
-                [{"phaser": 5, "tricorder": 3}, "phaser", 2],
-                [{"lightsaber": 1}, "force crystal", 3],
-                [{"space food": 10}, "space food", -5],
-                [{"fuel cells": 20}, "oxygen tanks", 5],
-                [{}, "emergency beacon", 1]
-            ]
-        },
-        {
-            "function_name": "translate_alien",
-            "parameters": ["translator", "message"],
-            "description": "Translate each word in the message using the translator dictionary. Unknown words stay unchanged.",
-            "input_type": ["dict", "string"],
-            "answer_code": "def translate_alien(translator, message):\n    words = message.split()\n    translated = [translator.get(word, word) for word in words]\n    return ' '.join(translated)",
-            "hint": "Split the message, translate each word using get(), then join.",
-            "test_inputs": [
-                [{"klaatu": "greetings", "barada": "earthlings"}, "klaatu barada"],
-                [{"bleep": "hello", "bloop": "friend"}, "bleep bloop stranger"],
-                [{"nanu": "earth", "mork": "calling"}, "nanu nanu"],
-                [{"vogon": "warning", "poetry": "incoming"}, "vogon poetry alert"],
-                [{"ping": "message", "pong": "received"}, "ping pong"]
-            ]
-        },
-        {
-            "function_name": "merge_cargo_manifests",
-            "parameters": ["manifest1", "manifest2"],
-            "description": "Combine two cargo manifests, summing quantities of shared items.",
+            "function_name": "merge_dictionaries",
+            "parameters": ["dict1", "dict2"],
+            "description": "Combine two dictionaries into a new dictionary.",
             "input_type": ["dict", "dict"],
-            "answer_code": "def merge_cargo_manifests(manifest1, manifest2):\n    merged = manifest1.copy()\n    for item, quantity in manifest2.items():\n        merged[item] = merged.get(item, 0) + quantity\n    return merged",
-            "hint": "Copy first manifest and update with second, adding quantities.",
+            "answer_code": "def merge_dictionaries(dict1, dict2):\n    new_dict = dict1.copy()\n    new_dict.update(dict2)\n    return new_dict",
+            "hint": "Copy the first dictionary and update it with the second.",
             "test_inputs": [
-                [{"dilithium": 5, "plasma": 3}, {"plasma": 2, "tritium": 4}],
-                [{"food": 10}, {"water": 15}],
-                [{"fuel": 100, "oxygen": 50}, {"fuel": 50, "repairs": 10}],
-                [{"maps": 1, "sensors": 2}, {"sensors": 3}],
-                [{}, {"emergency kit": 1}]
+                [{"a": 1}, {"b": 2}],
+                [{"name": "Eve"}, {"age": 28}],
+                [{"x": 10}, {}],
+                [{}, {"y": 20}],
+                [{"color": "red"}, {"size": "large"}]
+            ]
+        },
+        {
+            "function_name": "sum_values",
+            "parameters": ["dictionary"],
+            "description": "Return the sum of all values in the dictionary (assuming all values are numbers).",
+            "input_type": "dict",
+            "answer_code": "def sum_values(dictionary):\n    return sum(dictionary.values())",
+            "hint": "Use the values() method with the sum() function.",
+            "test_inputs": [
+                {"a": 1, "b": 2, "c": 3},
+                {"score1": 10, "score2": 20},
+                {"x": 5},
+                {"val1": 100, "val2": 200, "val3": 300},
+                {}
+            ]
+        },
+        {
+            "function_name": "print_key_value_pairs",
+            "parameters": ["dictionary"],
+            "description": "Return a list of strings where each string is 'key: value'.",
+            "input_type": "dict",
+            "answer_code": "def print_key_value_pairs(dictionary):\n    return [f'{key}: {value}' for key, value in dictionary.items()]",
+            "hint": "Use items() method and list comprehension with f-strings.",
+            "test_inputs": [
+                {"name": "Frank", "age": 30},
+                {"color": "green", "size": "medium"},
+                {"temperature": 72, "humidity": 65},
+                {"day": "Wednesday"},
+                {}
             ]
         }
     ]
