@@ -3,7 +3,7 @@
         {
             "function_name": "create_pet_profile",
             "parameters": ["name", "species", "age"],
-            "description": "Create and return a dictionary containing information about a pet.",
+            "description": "Create a dictionary that stores information about a pet. The dictionary should have three keys: 'name', 'species', and 'age', with their corresponding values from the parameters. This function shows how to create a new dictionary and set multiple key-value pairs.",
             "input_type": ["string", "string", "int"],
             "answer_code": "def create_pet_profile(name, species, age):\n    return {'name': name, 'species': species, 'age': age}",
             "hint": "Create a dictionary with three key-value pairs using curly braces.",
@@ -18,7 +18,7 @@
         {
             "function_name": "get_favorite_color",
             "parameters": ["preferences", "person"],
-            "description": "Return the favorite color of the person from the preferences dictionary.",
+            "description": "Look up and return a person's favorite color from a dictionary of preferences. The preferences dictionary contains people's names as keys and their favorite colors as values. This function demonstrates how to access values in a dictionary using keys.",
             "input_type": ["dict", "string"],
             "answer_code": "def get_favorite_color(preferences, person):\n    return preferences[person]",
             "hint": "Use square bracket notation to access dictionary values.",
@@ -33,7 +33,7 @@
         {
             "function_name": "update_score",
             "parameters": ["scores", "player", "points"],
-            "description": "Add points to a player's score in the scores dictionary.",
+            "description": "Add points to a player's existing score in the scores dictionary. The dictionary contains player names as keys and their current scores as values. This function shows how to modify values in a dictionary. First access the current score using the player name as the key, then add the new points to it.",
             "input_type": ["dict", "string", "int"],
             "answer_code": "def update_score(scores, player, points):\n    scores[player] = scores[player] + points\n    return scores",
             "hint": "Use square bracket notation to modify dictionary values.",
@@ -48,7 +48,7 @@
         {
             "function_name": "check_key_exists",
             "parameters": ["dictionary", "key"],
-            "description": "Return True if the key exists in the dictionary, False otherwise.",
+            "description": "Check if a specific key exists in the dictionary. Return True if the key is found in the dictionary, False if it isn't. This is a common operation when you need to verify if data exists before trying to access it. The 'in' operator provides a simple way to check for key existence.",
             "input_type": ["dict", "string"],
             "answer_code": "def check_key_exists(dictionary, key):\n    return key in dictionary",
             "hint": "Use the 'in' operator to check if a key exists.",
@@ -63,7 +63,7 @@
         {
             "function_name": "get_all_keys",
             "parameters": ["dictionary"],
-            "description": "Return a list of all keys in the dictionary.",
+            "description": "Create a list containing all the keys from the dictionary. The keys() method returns a special view object of all keys, which needs to be converted to a list. This is useful when you need to work with all the keys in a dictionary, such as iterating over them or checking what data is available.",
             "input_type": "dict",
             "answer_code": "def get_all_keys(dictionary):\n    return list(dictionary.keys())",
             "hint": "Use the keys() method and convert to a list.",
@@ -78,7 +78,7 @@
         {
             "function_name": "count_values",
             "parameters": ["dictionary"],
-            "description": "Return the number of key-value pairs in the dictionary.",
+            "description": "Count how many key-value pairs are in the dictionary and return this number. The len() function on a dictionary returns the total number of pairs it contains. This is helpful when you need to know the size of a dictionary or check if it's empty (length would be 0).",
             "input_type": "dict",
             "answer_code": "def count_values(dictionary):\n    return len(dictionary)",
             "hint": "Use the len() function on the dictionary.",
@@ -93,7 +93,7 @@
         {
             "function_name": "get_safe_value",
             "parameters": ["dictionary", "key", "default"],
-            "description": "Return the value for the key if it exists, otherwise return the default value.",
+            "description": "Safely retrieve a value from the dictionary using the get() method. If the key exists, return its value. If the key doesn't exist, return the default value instead. This is a safer way to access dictionary values compared to square brackets, which would raise an error for missing keys.",
             "input_type": ["dict", "string", "string"],
             "answer_code": "def get_safe_value(dictionary, key, default):\n    return dictionary.get(key, default)",
             "hint": "Use the get() method with a default value.",
@@ -108,7 +108,7 @@
         {
             "function_name": "merge_dictionaries",
             "parameters": ["dict1", "dict2"],
-            "description": "Combine two dictionaries into a new dictionary.",
+            "description": "Combine two dictionaries into a new one. First, create a copy of dict1 using copy() to avoid modifying the original. Then use update() to add all key-value pairs from dict2. If dict2 has any keys that were in dict1, the values from dict2 will replace the original values. This shows how to safely combine dictionary data.",
             "input_type": ["dict", "dict"],
             "answer_code": "def merge_dictionaries(dict1, dict2):\n    new_dict = dict1.copy()\n    new_dict.update(dict2)\n    return new_dict",
             "hint": "Copy the first dictionary and update it with the second.",
@@ -123,7 +123,7 @@
         {
             "function_name": "sum_values",
             "parameters": ["dictionary"],
-            "description": "Return the sum of all values in the dictionary (assuming all values are numbers).",
+            "description": "Calculate the sum of all values in the dictionary. Use the values() method to get all values, then sum them with the sum() function. This only works when all the values are numbers. This function demonstrates how to perform calculations on dictionary values without needing to access the keys.",
             "input_type": "dict",
             "answer_code": "def sum_values(dictionary):\n    return sum(dictionary.values())",
             "hint": "Use the values() method with the sum() function.",
@@ -138,7 +138,7 @@
         {
             "function_name": "print_key_value_pairs",
             "parameters": ["dictionary"],
-            "description": "Return a list of strings where each string is 'key: value'.",
+            "description": "Create a formatted list of strings showing each key-value pair. Use the items() method to get all pairs, then create a string for each pair using an f-string with format 'key: value'. This demonstrates how to loop through all key-value pairs in a dictionary and format them for display. The function uses a list comprehension to build the result list efficiently.",
             "input_type": "dict",
             "answer_code": "def print_key_value_pairs(dictionary):\n    return [f'{key}: {value}' for key, value in dictionary.items()]",
             "hint": "Use items() method and list comprehension with f-strings.",
