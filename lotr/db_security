@@ -1,0 +1,372 @@
+[
+  {
+    "question": "Which of the following best describes the CIA triad in database security?",
+    "correct": ["Confidentiality, Integrity, and Availability"],
+    "incorrect": [
+      "Confidentiality, Innovation, and Availability",
+      "Cybersecurity, Integrity, and Authentication",
+      "Compliance, Integrity, and Accessibility",
+      "Cryptography, Identity, and Authorization"
+    ],
+    "hint": "Think of the three core principles of database security."
+  },
+  {
+    "question": "Which of the following are examples of maintaining confidentiality in a database?",
+    "correct": ["Using strong password protection", "Encrypting sensitive data"],
+    "incorrect": [
+      "Running regular data backups",
+      "Allowing public access to sensitive files",
+      "Using multi-factor authentication only for administrators"
+    ],
+    "hint": "Focus on measures that restrict unauthorized access to information."
+  },
+  {
+    "question": "Which of the following are characteristics of ensuring database integrity?",
+    "correct": [
+      "Using checksums to validate data accuracy",
+      "Implementing referential integrity constraints",
+      "Regularly auditing and logging data changes"
+    ],
+    "incorrect": [
+      "Granting users unrestricted database access",
+      "Allowing data to be modified without validation"
+    ],
+    "hint": "Consider methods that preserve data correctness and consistency."
+  },
+  {
+    "question": "Which of the following are practices that ensure database availability?",
+    "correct": [
+      "Implementing redundant systems",
+      "Performing regular database maintenance",
+      "Using load balancers to handle traffic",
+      "Deploying failover servers"
+    ],
+    "incorrect": [
+      "Granting limited access to authorized users only"
+    ],
+    "hint": "Availability focuses on minimizing downtime and ensuring access."
+  },
+  {
+    "question": "Which of the following activities are associated with cybercriminals?",
+    "correct": [
+      "Stealing sensitive data for profit",
+      "Launching ransomware attacks",
+      "Selling stolen credentials on the dark web",
+      "Conducting fraud through phishing emails",
+      "Using botnets to execute DDoS attacks"
+    ],
+    "incorrect": [],
+    "hint": "Cybercriminals are motivated by financial gain or disruption."
+  },
+  {
+    "question": "Which of the following is a hallmark of advanced persistent threats (APTs)?",
+    "correct": ["Long-term unauthorized access to a system"],
+    "incorrect": [
+      "Launching indiscriminate attacks on multiple systems",
+      "Using simplistic attack methods like brute force",
+      "Exclusively targeting individual users",
+      "Only affecting offline systems"
+    ],
+    "hint": "APTs are often associated with persistence and stealth."
+  },
+  {
+    "question": "Which of the following are actions of hacktivists?",
+    "correct": [
+      "Defacing websites to make political statements",
+      "Launching DDoS attacks to protest corporate policies"
+    ],
+    "incorrect": [
+      "Selling stolen data on the dark web",
+      "Launching malware campaigns for profit",
+      "Stealing customer payment information"
+    ],
+    "hint": "Hacktivists are often motivated by ideology rather than profit."
+  },
+  {
+    "question": "Which of the following are characteristics of SQL injection attacks?",
+    "correct": [
+      "Exploiting vulnerabilities in web applications",
+      "Injecting malicious SQL code into a database",
+      "Manipulating database queries to gain unauthorized access"
+    ],
+    "incorrect": [
+      "Overloading a server with traffic",
+      "Sending phishing emails to users"
+    ],
+    "hint": "These attacks focus on manipulating database queries."
+  },
+  {
+    "question": "Which of the following are examples of DDoS attack effects?",
+    "correct": [
+      "Overloading a server with excessive traffic",
+      "Disrupting access to websites or applications",
+      "Crashing a database server",
+      "Slowing down network performance"
+    ],
+    "incorrect": [
+      "Stealing sensitive database records"
+    ],
+    "hint": "DDoS attacks aim to disrupt services, not to steal data."
+  },
+  {
+    "question": "Which of the following activities are associated with phishing attacks?",
+    "correct": [
+      "Sending fraudulent emails to steal login credentials",
+      "Creating fake websites to mimic legitimate ones",
+      "Encouraging victims to download malicious attachments",
+      "Asking users to enter payment details in fake forms",
+      "Masquerading as trusted entities to gain information"
+    ],
+    "incorrect": [],
+    "hint": "Phishing attacks involve deception to obtain sensitive data."
+  },
+  {
+    "question": "Which of the following is a characteristic of an on-path (man-in-the-middle) attack?",
+    "correct": ["Intercepting and altering communication between two parties"],
+    "incorrect": [
+      "Brute-forcing passwords on an encrypted database",
+      "Launching ransomware attacks on servers",
+      "Phishing for user credentials via email",
+      "Using malware to corrupt files"
+    ],
+    "hint": "Think about intercepting and manipulating communication."
+  },
+  {
+    "question": "Which of the following are characteristics of brute force attacks?",
+    "correct": [
+      "Trying all possible password combinations",
+      "Automating attempts to guess credentials"
+    ],
+    "incorrect": [
+      "Exploiting vulnerabilities in SQL queries",
+      "Intercepting user communications",
+      "Deploying ransomware to encrypt files"
+    ],
+    "hint": "Brute force attacks involve guessing passwords through repetition."
+  },
+  {
+    "question": "Which of the following activities are associated with malware?",
+    "correct": [
+      "Corrupting or deleting files",
+      "Monitoring user activities without consent",
+      "Exploiting system vulnerabilities to spread"
+    ],
+    "incorrect": [
+      "Encrypting files for ransom",
+      "Intercepting network communication"
+    ],
+    "hint": "Malware focuses on harming or compromising a system."
+  },
+  {
+    "question": "Which of the following are features of ransomware?",
+    "correct": [
+      "Encrypting files to deny access to users",
+      "Demanding payment for file decryption",
+      "Spreading through phishing emails",
+      "Using malicious websites to deliver payloads"
+    ],
+    "incorrect": [
+      "Intercepting and altering network traffic"
+    ],
+    "hint": "Ransomware focuses on holding data hostage for money."
+  },
+  {
+    "question": "Which of the following are applications of encryption?",
+    "correct": [
+      "Protecting sensitive data during transmission",
+      "Securing stored passwords",
+      "Enabling secure communication over HTTPS",
+      "Encrypting backups to prevent unauthorized access",
+      "Using digital signatures to verify authenticity"
+    ],
+    "incorrect": [],
+    "hint": "Encryption is used to safeguard data in transit and at rest."
+  },
+  {
+    "question": "Which of the following is a characteristic of asymmetric encryption?",
+    "correct": ["Uses a public key to encrypt and a private key to decrypt"],
+    "incorrect": [
+      "Uses the same key for both encryption and decryption",
+      "Is faster than symmetric encryption for large data",
+      "Encrypts data without the need for a private key",
+      "Requires manual key exchange for encryption"
+    ],
+    "hint": "Think about key pairs and their roles in encryption."
+  },
+  {
+    "question": "Which of the following are characteristics of symmetric encryption?",
+    "correct": [
+      "Uses the same key for encryption and decryption",
+      "Generally faster than asymmetric encryption for large amounts of data"
+    ],
+    "incorrect": [
+      "Requires public and private keys for operation",
+      "Cannot be used for file encryption",
+      "Is primarily used in digital signatures"
+    ],
+    "hint": "Symmetric encryption relies on a single key."
+  },
+  {
+    "question": "Which of the following are examples of protecting data-in-transit?",
+    "correct": [
+      "Using HTTPS for web communication",
+      "Encrypting emails with PGP",
+      "Establishing a VPN for secure connections"
+    ],
+    "incorrect": [
+      "Storing files in an encrypted hard drive",
+      "Performing data backups to secure servers"
+    ],
+    "hint": "Focus on protecting data as it moves from one place to another."
+  },
+  {
+    "question": "Which of the following are practices for securing data-at-rest?",
+    "correct": [
+      "Encrypting files stored on hard drives",
+      "Using full-disk encryption",
+      "Securing databases with encryption protocols",
+      "Implementing access control policies for stored data"
+    ],
+    "incorrect": [
+      "Encrypting data sent over the internet"
+    ],
+    "hint": "Data-at-rest is static and stored in a physical or cloud-based location."
+  },
+  {
+    "question": "Which of the following are characteristics of client-side encryption?",
+    "correct": [
+      "Encrypting data before it is sent to the server",
+      "Allowing users to manage their own encryption keys",
+      "Ensuring data remains encrypted even if the server is compromised",
+      "Providing end-to-end encryption for secure communication",
+      "Minimizing reliance on server-side encryption mechanisms"
+    ],
+    "incorrect": [],
+    "hint": "Client-side encryption places encryption responsibilities on the user."
+  },
+  {
+    "question": "Which of the following is a characteristic of server-side encryption?",
+    "correct": ["Data is encrypted by the server after being uploaded by the client"],
+    "incorrect": [
+      "Users manage their own encryption keys",
+      "Data is encrypted on the client before uploading",
+      "Encryption happens during data transit only",
+      "Encryption keys are shared with all users"
+    ],
+    "hint": "Server-side encryption centralizes encryption on the server."
+  },
+  {
+    "question": "Which of the following are characteristics of data masking?",
+    "correct": [
+      "Hides sensitive data from unauthorized users",
+      "Applies transformations to make data unreadable"
+    ],
+    "incorrect": [
+      "Encrypts data during transmission",
+      "Deletes sensitive data permanently",
+      "Duplicates sensitive data for backup"
+    ],
+    "hint": "Data masking alters data to protect sensitive information."
+  },
+  {
+    "question": "Which of the following are examples of data masking types?",
+    "correct": [
+      "Static data masking",
+      "Dynamic data masking",
+      "Deterministic data masking"
+    ],
+    "incorrect": [
+      "Asymmetric data masking",
+      "Encrypted data masking"
+    ],
+    "hint": "Data masking can be static, dynamic, or deterministic."
+  },
+  {
+    "question": "Which of the following are aspects of data discovery?",
+    "correct": [
+      "Identifying where sensitive data resides",
+      "Scanning databases for structured and unstructured data",
+      "Mapping data flows within an organization",
+      "Using tools to locate data in cloud storage"
+    ],
+    "incorrect": [
+      "Encrypting sensitive data at rest"
+    ],
+    "hint": "Data discovery focuses on understanding where data is stored and used."
+  },
+  {
+    "question": "Which of the following are aspects of data classification?",
+    "correct": [
+      "Categorizing data based on sensitivity",
+      "Labeling data to indicate its security level",
+      "Defining access policies for different data categories",
+      "Organizing data into public, private, and restricted types",
+      "Ensuring compliance with data protection regulations"
+    ],
+    "incorrect": [],
+    "hint": "Data classification organizes data by sensitivity and purpose."
+  },
+  {
+    "question": "Which of the following is an example of public data?",
+    "correct": ["Information freely available on a public website"],
+    "incorrect": [
+      "Employee salary information",
+      "Customer payment details",
+      "Government intelligence files",
+      "Encrypted database backups"
+    ],
+    "hint": "Public data is accessible to anyone without restrictions."
+  },
+  {
+    "question": "Which of the following are examples of internal data?",
+    "correct": [
+      "Company policies stored on an intranet",
+      "Internal emails between employees"
+    ],
+    "incorrect": [
+      "Publicly available financial reports",
+      "Encrypted customer payment records",
+      "Government-classified documents"
+    ],
+    "hint": "Internal data is intended for use within the organization."
+  },
+  {
+    "question": "Which of the following are examples of confidential data?",
+    "correct": [
+      "Customer payment details",
+      "Encrypted employee personal data",
+      "Non-disclosure agreement files"
+    ],
+    "incorrect": [
+      "Data available in public reports",
+      "Internal organizational memos"
+    ],
+    "hint": "Confidential data is sensitive and requires controlled access."
+  },
+  {
+    "question": "Which of the following are examples of restricted data?",
+    "correct": [
+      "Government-classified documents",
+      "Military intelligence files",
+      "Encrypted patient medical records",
+      "Privileged legal case files"
+    ],
+    "incorrect": [
+      "Company policies available to employees"
+    ],
+    "hint": "Restricted data is highly sensitive and access is strictly limited."
+  },
+  {
+    "question": "Which of the following are practices for secure deletion of data?",
+    "correct": [
+      "Overwriting data multiple times",
+      "Using cryptographic erasure methods",
+      "Physically destroying hard drives",
+      "Using secure wipe tools",
+      "Decommissioning devices securely"
+    ],
+    "incorrect": [],
+    "hint": "Secure deletion ensures data cannot be recovered after deletion."
+  }
+]
+
