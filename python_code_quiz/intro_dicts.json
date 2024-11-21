@@ -3,7 +3,7 @@
         {
             "function_name": "create_empty_spaceship",
             "parameters": [],
-            "description": "Create an empty dictionary to store spaceship data. Every great space adventure starts with an empty vessel waiting to be filled with crew, cargo, and questionable contraband. Just use empty curly braces {}.",
+            "description": "Create and return an empty dictionary to store spaceship data. You must return an empty dictionary using just {}. Every great space adventure starts with an empty vessel! For example: create_empty_spaceship() should return {}",
             "input_type": [],
             "answer_code": "def create_empty_spaceship():\n    return {}",
             "hint": "Use empty curly braces {} to create your empty spaceship manifest",
@@ -18,7 +18,7 @@
         {
             "function_name": "create_alien_id",
             "parameters": [],
-            "description": "Create a dictionary for an alien's basic ID card with one key 'species' and value 'Zorgian'. This is the most basic form of intergalactic identification accepted at any space port.",
+            "description": "Create and return a dictionary containing exactly one key-value pair: the key should be 'species' and the value should be 'Zorgian'. For example: create_alien_id() should return {'species': 'Zorgian'}. This is the most basic form of intergalactic identification accepted at any space port.",
             "input_type": [],
             "answer_code": "def create_alien_id():\n    return {'species': 'Zorgian'}",
             "hint": "Use curly braces with 'species': 'Zorgian' inside",
@@ -33,7 +33,7 @@
         {
             "function_name": "add_crew_member",
             "parameters": ["crew_manifest", "position", "name"],
-            "description": "Add a new crew member to the ship's manifest (dictionary). For example, if you pass an empty manifest, 'pilot' as position, and 'Starlord' as name, the manifest should become {'pilot': 'Starlord'}.",
+            "description": "Add a new crew member to the ship's manifest (dictionary) and return the updated manifest. Given a crew_manifest dictionary, a position string, and a name string, add the position:name pair to the manifest and return it. For example: add_crew_member({}, 'pilot', 'Starlord') should return {'pilot': 'Starlord'}. If the manifest already has crew members, the new one should be added to the existing ones.",
             "input_type": ["dict", "string", "string"],
             "answer_code": "def add_crew_member(crew_manifest, position, name):\n    crew_manifest[position] = name\n    return crew_manifest",
             "hint": "Use crew_manifest[position] = name to add the crew member",
@@ -48,7 +48,7 @@
         {
             "function_name": "get_weapon_power",
             "parameters": ["weapons", "weapon_name"],
-            "description": "Look up the power level of a weapon in the ship's weapons dictionary. For example, if weapons is {'laser': 50} and weapon_name is 'laser', return 50. Essential knowledge for space battles!",
+            "description": "Return the power level of a specific weapon from the weapons dictionary. Given a weapons dictionary and a weapon_name string, return the power level associated with that weapon. For example: get_weapon_power({'laser': 50, 'plasma': 75}, 'laser') should return 50.",
             "input_type": ["dict", "string"],
             "answer_code": "def get_weapon_power(weapons, weapon_name):\n    return weapons[weapon_name]",
             "hint": "Use weapons[weapon_name] to get the power level",
@@ -63,7 +63,7 @@
         {
             "function_name": "update_shield_strength",
             "parameters": ["shields", "section", "new_strength"],
-            "description": "Update the shield strength for a section of the ship. If the shields dictionary shows {'front': 50} and you need to change 'front' to 75, this will update the shield power level.",
+            "description": "Update the shield strength for a section of the ship and return the modified shields dictionary. Given a shields dictionary, a section name, and a new_strength value, update that section's strength and return the entire shields dictionary. For example: update_shield_strength({'front': 50}, 'front', 75) should return {'front': 75}.",
             "input_type": ["dict", "string", "int"],
             "answer_code": "def update_shield_strength(shields, section, new_strength):\n    shields[section] = new_strength\n    return shields",
             "hint": "Use shields[section] = new_strength to update shield power",
@@ -78,7 +78,7 @@
         {
             "function_name": "create_coordinate_pair",
             "parameters": ["x", "y"],
-            "description": "Create a dictionary for galactic coordinates where 'x' maps to the x coordinate and 'y' to the y coordinate. Used by the ship's navigation system to plot courses through space.",
+            "description": "Create and return a dictionary containing galactic coordinates. Given x and y values, return a dictionary with two key-value pairs: 'x':x and 'y':y. For example: create_coordinate_pair(5, 10) should return {'x': 5, 'y': 10}. These coordinates are used by the ship's navigation system.",
             "input_type": ["int", "int"],
             "answer_code": "def create_coordinate_pair(x, y):\n    return {'x': x, 'y': y}",
             "hint": "Create dictionary with 'x' and 'y' as keys",
@@ -93,7 +93,7 @@
         {
             "function_name": "eject_cargo",
             "parameters": ["cargo_hold", "item"],
-            "description": "Remove an item from the cargo hold dictionary using the del statement. Sometimes you need to lighten the load when running from space pirates! If cargo_hold is {'credits': 1000, 'contraband': 50} and item is 'contraband', you'll be left with just {'credits': 1000}.",
+            "description": "Remove an item from the cargo hold dictionary and return the modified dictionary. Given a cargo_hold dictionary and an item name, delete that item and return the remaining cargo. For example: eject_cargo({'credits': 1000, 'contraband': 50}, 'contraband') should return {'credits': 1000}. Sometimes you need to lighten the load when running from space pirates!",
             "input_type": ["dict", "string"],
             "answer_code": "def eject_cargo(cargo_hold, item):\n    del cargo_hold[item]\n    return cargo_hold",
             "hint": "Use del cargo_hold[item] to jettison the cargo",
@@ -108,7 +108,7 @@
         {
             "function_name": "create_alien_contact",
             "parameters": ["species", "greeting"],
-            "description": "Create a new alien contact in the universal translator. Each entry pairs an alien species with their traditional greeting. For example, species 'Vulcan' and greeting 'Live Long and Prosper' creates {'Vulcan': 'Live Long and Prosper'}.",
+            "description": "Create and return a dictionary for the universal translator. Given a species name and their greeting, return a dictionary with species as the key and greeting as the value. For example: create_alien_contact('Vulcan', 'Live Long and Prosper') should return {'Vulcan': 'Live Long and Prosper'}.",
             "input_type": ["string", "string"],
             "answer_code": "def create_alien_contact(species, greeting):\n    return {species: greeting}",
             "hint": "Create dictionary with species: greeting pair",
@@ -123,7 +123,7 @@
         {
             "function_name": "is_cargo_hold_empty",
             "parameters": ["cargo_hold"],
-            "description": "Check if the cargo hold is completely empty (has no items). Return 'yes' if it's empty like {}, 'no' if it contains any cargo. Crucial check before taking on new smuggling... er, trading missions.",
+            "description": "Check if the cargo hold is empty and return a string indicating its status. Return 'yes' if cargo_hold is an empty dictionary ({}), return 'no' if it contains any items. For example: is_cargo_hold_empty({}) should return 'yes', while is_cargo_hold_empty({'credits': 1000}) should return 'no'. Better check before accepting any questionable cargo!",
             "input_type": ["dict"],
             "answer_code": "def is_cargo_hold_empty(cargo_hold):\n    return 'yes' if not cargo_hold else 'no'",
             "hint": "Use 'not cargo_hold' to check if empty",
@@ -138,7 +138,7 @@
         {
             "function_name": "clone_ship_data",
             "parameters": ["ship_data"],
-            "description": "Create an exact copy of a ship's data dictionary using the copy() method. Useful when registering your totally legitimate vessel under a new identity at each space port.",
+            "description": "Create and return an exact copy of a ship's data dictionary. Given a ship_data dictionary, return a new dictionary with the same key-value pairs using the copy() method. For example: clone_ship_data({'name': 'Serenity', 'class': 'Firefly'}) should return {'name': 'Serenity', 'class': 'Firefly'} but as a new dictionary. Useful for registering your totally legitimate vessel under a new identity!",
             "input_type": ["dict"],
             "answer_code": "def clone_ship_data(ship_data):\n    return ship_data.copy()",
             "hint": "Use the copy() method to duplicate the data",
