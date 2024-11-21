@@ -149,6 +149,51 @@
                 {"name": "Nostromo", "type": "Commercial"},
                 {"name": "Heart of Gold", "type": "Infinite Improbability"}
             ]
+        },
+        {
+            "function_name": "count_crew_by_species",
+            "parameters": ["crew"],
+            "description": "Count how many crew members of each species are on board and return the counts in a dictionary. Given a dictionary where keys are crew names and values are species, return a new dictionary where keys are species and values are counts. For example: count_crew_by_species({'Zoe': 'Human', 'Spock': 'Vulcan', 'Kirk': 'Human'}) should return {'Human': 2, 'Vulcan': 1}. Step by step:\n1. Create an empty dictionary for counts\n2. Loop through each crew member\n3. For each species, increment its count (use get() with default 0)",
+            "input_type": ["dict"],
+            "answer_code": "def count_crew_by_species(crew):\n    counts = {}\n    for species in crew.values():\n        counts[species] = counts.get(species, 0) + 1\n    return counts",
+            "hint": "Loop through crew.values() and use a dictionary to count occurrences",
+            "test_inputs": [
+                {"Zoe": "Human", "Spock": "Vulcan", "Kirk": "Human"},
+                {"Groot": "Flora", "Rocket": "Raccoon", "Drax": "Destroyer"},
+                {"C3PO": "Droid", "R2D2": "Droid", "Luke": "Human"},
+                {"Fry": "Human", "Bender": "Robot", "Leela": "Mutant"},
+                {"Morty": "Human", "Rick": "Human", "Birdperson": "Bird"}
+            ]
+        },
+        {
+            "function_name": "get_damaged_systems",
+            "parameters": ["ship_status"],
+            "description": "Return a list of all systems that are 'damaged' (health below 50). Given a dictionary where keys are system names and values are health percentages (0-100), return a list of system names that have less than 50 health. For example: get_damaged_systems({'engines': 30, 'shields': 80, 'weapons': 45}) should return ['engines', 'weapons']. Step by step:\n1. Create an empty list for damaged systems\n2. Loop through the systems and their health values\n3. If health is below 50, add system name to list",
+            "input_type": ["dict"],
+            "answer_code": "def get_damaged_systems(ship_status):\n    damaged = []\n    for system, health in ship_status.items():\n        if health < 50:\n            damaged.append(system)\n    return damaged",
+            "hint": "Use items() to loop through both keys and values, checking each health value",
+            "test_inputs": [
+                {"engines": 30, "shields": 80, "weapons": 45},
+                {"life_support": 20, "navigation": 100, "comms": 15},
+                {"reactor": 90, "cargo_bay": 95, "med_bay": 85},
+                {"shields": 10, "weapons": 25, "engines": 5},
+                {"teleporter": 45, "scanner": 40, "computer": 100}
+            ]
+        },
+        {
+            "function_name": "merge_cargo_manifests",
+            "parameters": ["manifest1", "manifest2"],
+            "description": "Combine two cargo manifests by adding quantities of shared items. Given two dictionaries where keys are item names and values are quantities, return a new dictionary with combined quantities. For example: merge_cargo_manifests({'fuel': 100, 'food': 50}, {'fuel': 50, 'ammo': 25}) should return {'fuel': 150, 'food': 50, 'ammo': 25}. Step by step:\n1. Create a copy of manifest1\n2. Loop through items in manifest2\n3. For each item, add its quantity to existing amount (or set if new)",
+            "input_type": ["dict", "dict"],
+            "answer_code": "def merge_cargo_manifests(manifest1, manifest2):\n    result = manifest1.copy()\n    for item, quantity in manifest2.items():\n        result[item] = result.get(item, 0) + quantity\n    return result",
+            "hint": "Copy first manifest then use get() with default 0 when adding quantities",
+            "test_inputs": [
+                [{"fuel": 100, "food": 50}, {"fuel": 50, "ammo": 25}],
+                [{"water": 200}, {"food": 100, "water": 50}],
+                [{"parts": 10, "tools": 5}, {"fuel": 100}],
+                [{"credits": 1000}, {"credits": 500, "gems": 10}],
+                [{"oxygen": 100, "fuel": 200}, {"oxygen": 50, "food": 75}]
+            ]
         }
     ]
 }
