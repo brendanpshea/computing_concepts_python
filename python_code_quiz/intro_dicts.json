@@ -3,7 +3,7 @@
         {
             "function_name": "create_pet_profile",
             "parameters": ["name", "species", "age"],
-            "description": "Create a dictionary that stores information about a pet. The dictionary should have three keys: 'name', 'species', and 'age', with their corresponding values from the parameters. This function shows how to create a new dictionary and set multiple key-value pairs.",
+            "description": "Create a dictionary that stores information about a pet. The dictionary should have three keys: 'name', 'species', and 'age', with their corresponding values from the parameters. You might start with something like my_dict = {'name':name....",
             "input_type": ["string", "string", "int"],
             "answer_code": "def create_pet_profile(name, species, age):\n    return {'name': name, 'species': species, 'age': age}",
             "hint": "Create a dictionary with three key-value pairs using curly braces.",
@@ -63,7 +63,7 @@
         {
             "function_name": "get_all_keys",
             "parameters": ["dictionary"],
-            "description": "Create a list containing all the keys from the dictionary. The keys() method returns a special view object of all keys, which needs to be converted to a list. This is useful when you need to work with all the keys in a dictionary, such as iterating over them or checking what data is available.",
+            "description": "Create a list containing all the keys from the dictionary. The keys() method returns a special view object of all keys, which needs to be cast to a list using list(). This is useful when you need to work with all the keys in a dictionary, such as iterating over them or checking what data is available.",
             "input_type": "dict",
             "answer_code": "def get_all_keys(dictionary):\n    return list(dictionary.keys())",
             "hint": "Use the keys() method and convert to a list.",
