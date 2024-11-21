@@ -1,6 +1,156 @@
 {
     "questions": [
         {
+            "function_name": "create_empty_dictionary", 
+            "parameters": [],
+            "description": "Return an empty dictionary. This is the most basic way to create a dictionary in Python - just use empty curly braces {}. You'll use this whenever you need to start building a new dictionary.",
+            "input_type": [],
+            "answer_code": "def create_empty_dictionary():\n    return {}",
+            "hint": "Use empty curly braces {}",
+            "test_inputs": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "function_name": "create_simple_dictionary",
+            "parameters": [],
+            "description": "Create and return a dictionary with exactly one key 'color' and value 'blue'. This shows how to create a dictionary with a single key-value pair using curly braces. The key and value are separated by a colon.",
+            "input_type": [],
+            "answer_code": "def create_simple_dictionary():\n    return {'color': 'blue'}",
+            "hint": "Use curly braces with 'color': 'blue' inside",
+            "test_inputs": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "function_name": "add_key_value",
+            "parameters": ["dictionary", "key", "value"],
+            "description": "Add a new key and value to the dictionary. For example, if you pass {'a': 1} as the dictionary, 'b' as the key, and 2 as the value, the dictionary should become {'a': 1, 'b': 2}. This shows how to add new items to a dictionary using square bracket notation.",
+            "input_type": ["dict", "string", "int"],
+            "answer_code": "def add_key_value(dictionary, key, value):\n    dictionary[key] = value\n    return dictionary",
+            "hint": "Use dictionary[key] = value to add the new pair",
+            "test_inputs": [
+                [{}, "x", 1],
+                [{"a": 1}, "b", 2],
+                [{"name": "Alice"}, "age", 25],
+                [{"red": 255}, "blue", 255],
+                [{"count": 0}, "step", 1]
+            ]
+        },
+        {
+            "function_name": "get_value",
+            "parameters": ["dictionary", "key"],
+            "description": "Return the value associated with the given key in the dictionary. For example, if the dictionary is {'name': 'Alice'} and the key is 'name', return 'Alice'. This shows the basic way to look up values using square bracket notation.",
+            "input_type": ["dict", "string"],
+            "answer_code": "def get_value(dictionary, key):\n    return dictionary[key]",
+            "hint": "Use dictionary[key] to get the value",
+            "test_inputs": [
+                [{"a": 1}, "a"],
+                [{"name": "Bob"}, "name"],
+                [{"x": 100}, "x"],
+                [{"color": "red"}, "color"],
+                [{"test": True}, "test"]
+            ]
+        },
+        {
+            "function_name": "change_value",
+            "parameters": ["dictionary", "key", "new_value"],
+            "description": "Change the value for an existing key in the dictionary. For example, if the dictionary is {'score': 10} and you want to change 'score' to 20, update the value and return the modified dictionary. This shows how to modify existing values.",
+            "input_type": ["dict", "string", "int"],
+            "answer_code": "def change_value(dictionary, key, new_value):\n    dictionary[key] = new_value\n    return dictionary",
+            "hint": "Use dictionary[key] = new_value to change the value",
+            "test_inputs": [
+                [{"x": 1}, "x", 2],
+                [{"score": 10}, "score", 20],
+                [{"count": 0}, "count", 1],
+                [{"value": 100}, "value", 200],
+                [{"number": 5}, "number", 10]
+            ]
+        },
+        {
+            "function_name": "create_number_pairs",
+            "parameters": ["num1", "num2"],
+            "description": "Create a dictionary where 'first' maps to num1 and 'second' maps to num2. For example, if num1 is 5 and num2 is 10, return {'first': 5, 'second': 10}. This shows how to create a dictionary with multiple key-value pairs using parameters.",
+            "input_type": ["int", "int"],
+            "answer_code": "def create_number_pairs(num1, num2):\n    return {'first': num1, 'second': num2}",
+            "hint": "Create dictionary with 'first' and 'second' as keys",
+            "test_inputs": [
+                [5, 10],
+                [1, 2],
+                [100, 200],
+                [0, 1],
+                [42, 99]
+            ]
+        },
+        {
+            "function_name": "remove_key",
+            "parameters": ["dictionary", "key"],
+            "description": "Remove the given key and its value from the dictionary using the del statement. For example, if the dictionary is {'a': 1, 'b': 2} and the key is 'a', the dictionary should become {'b': 2}. This shows how to delete items from a dictionary.",
+            "input_type": ["dict", "string"],
+            "answer_code": "def remove_key(dictionary, key):\n    del dictionary[key]\n    return dictionary",
+            "hint": "Use del dictionary[key] to remove the pair",
+            "test_inputs": [
+                [{"a": 1, "b": 2}, "a"],
+                [{"name": "Alice", "age": 25}, "age"],
+                [{"x": 0, "y": 0}, "x"],
+                [{"test": True, "debug": False}, "debug"],
+                [{"color": "red", "size": "large"}, "size"]
+            ]
+        },
+        {
+            "function_name": "create_string_pairs",
+            "parameters": ["key_name", "value_text"],
+            "description": "Create and return a dictionary with one key-value pair, using key_name as the key and value_text as the value. For example, if key_name is 'name' and value_text is 'Alice', return {'name': 'Alice'}. This reinforces creating dictionaries with string values.",
+            "input_type": ["string", "string"],
+            "answer_code": "def create_string_pairs(key_name, value_text):\n    return {key_name: value_text}",
+            "hint": "Create dictionary with key_name: value_text",
+            "test_inputs": [
+                ["name", "Alice"],
+                ["color", "blue"],
+                ["city", "Paris"],
+                ["day", "Monday"],
+                ["mood", "happy"]
+            ]
+        },
+        {
+            "function_name": "is_dictionary_empty",
+            "parameters": ["dictionary"],
+            "description": "Return True if the dictionary is empty (has no key-value pairs), False otherwise. For example, {} is empty but {'a': 1} is not. This shows how to check if a dictionary contains any items using the not operator.",
+            "input_type": ["dict"],
+            "answer_code": "def is_dictionary_empty(dictionary):\n    return not dictionary",
+            "hint": "Use 'not dictionary' to check if empty",
+            "test_inputs": [
+                [{}],
+                [{"a": 1}],
+                [{"name": "Bob"}],
+                [{"x": 0, "y": 0}],
+                [{"test": True}]
+            ]
+        },
+        {
+            "function_name": "copy_dictionary",
+            "parameters": ["dictionary"],
+            "description": "Create and return a copy of the given dictionary using the copy() method. This creates a new dictionary with the same key-value pairs as the original. This shows how to safely copy dictionaries instead of creating a reference to the original.",
+            "input_type": ["dict"],
+            "answer_code": "def copy_dictionary(dictionary):\n    return dictionary.copy()",
+            "hint": "Use the copy() method",
+            "test_inputs": [
+                [{"a": 1, "b": 2}],
+                [{"name": "Charlie"}],
+                [{"x": 10, "y": 20}],
+                [{"test": True}],
+                [{}]
+            ]
+        },
+        {
             "function_name": "create_pet_profile",
             "parameters": ["name", "species", "age"],
             "description": "Create a dictionary that stores information about a pet. The dictionary should have three keys: 'name', 'species', and 'age', with their corresponding values from the parameters. You might start with something like my_dict = {'name':name....",
