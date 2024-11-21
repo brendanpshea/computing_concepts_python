@@ -7,7 +7,13 @@
             "input_type": [],
             "answer_code": "def create_empty_spaceship():\n    return {}",
             "hint": "Use empty curly braces {} to create your empty spaceship manifest",
-            "test_inputs": []
+            "test_inputs": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
         },
         {
             "function_name": "create_alien_id",
@@ -16,7 +22,13 @@
             "input_type": [],
             "answer_code": "def create_alien_id():\n    return {'species': 'Zorgian'}",
             "hint": "Use curly braces with 'species': 'Zorgian' inside",
-            "test_inputs": []
+            "test_inputs": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
         },
         {
             "function_name": "add_crew_member",
@@ -34,18 +46,78 @@
             ]
         },
         {
-            "function_name": "get_value",
-            "parameters": ["dictionary", "key"],
-            "description": "Return the value associated with the given key in the dictionary. For example, if the dictionary is {'name': 'Alice'} and the key is 'name', return 'Alice'. This shows the basic way to look up values using square bracket notation.",
+            "function_name": "get_weapon_power",
+            "parameters": ["weapons", "weapon_name"],
+            "description": "Return the power level of a specific weapon from the weapons dictionary. Given a weapons dictionary and a weapon_name string, return the power level associated with that weapon. For example: get_weapon_power({'laser': 50, 'plasma': 75}, 'laser') should return 50.",
             "input_type": ["dict", "string"],
-            "answer_code": "def get_value(dictionary, key):\n    return dictionary[key]",
-            "hint": "Use dictionary[key] to get the value",
+            "answer_code": "def get_weapon_power(weapons, weapon_name):\n    return weapons[weapon_name]",
+            "hint": "Use weapons[weapon_name] to get the power level",
             "test_inputs": [
-                [{"a": 1}, "a"],
-                [{"name": "Bob"}, "name"],
-                [{"x": 100}, "x"],
-                [{"color": "red"}, "color"],
-                [{"test": "yes"}, "test"]
+                [{"laser": 50}, "laser"],
+                [{"plasma": 100}, "plasma"],
+                [{"photon": 75}, "photon"],
+                [{"sonic": 25}, "sonic"],
+                [{"quantum": 200}, "quantum"]
+            ]
+        },
+        {
+            "function_name": "update_shield_strength",
+            "parameters": ["shields", "section", "new_strength"],
+            "description": "Update the shield strength for a section of the ship and return the modified shields dictionary. Given a shields dictionary, a section name, and a new_strength value, update that section's strength and return the entire shields dictionary. For example: update_shield_strength({'front': 50}, 'front', 75) should return {'front': 75}.",
+            "input_type": ["dict", "string", "int"],
+            "answer_code": "def update_shield_strength(shields, section, new_strength):\n    shields[section] = new_strength\n    return shields",
+            "hint": "Use shields[section] = new_strength to update shield power",
+            "test_inputs": [
+                [{"front": 50}, "front", 75],
+                [{"rear": 100}, "rear", 80],
+                [{"left": 60}, "left", 90],
+                [{"right": 70}, "right", 85],
+                [{"top": 40}, "top", 95]
+            ]
+        },
+        {
+            "function_name": "create_coordinate_pair",
+            "parameters": ["x", "y"],
+            "description": "Create and return a dictionary containing galactic coordinates. Given x and y values, return a dictionary with two key-value pairs: 'x':x and 'y':y. For example: create_coordinate_pair(5, 10) should return {'x': 5, 'y': 10}. These coordinates are used by the ship's navigation system.",
+            "input_type": ["int", "int"],
+            "answer_code": "def create_coordinate_pair(x, y):\n    return {'x': x, 'y': y}",
+            "hint": "Create dictionary with 'x' and 'y' as keys",
+            "test_inputs": [
+                [5, 10],
+                [1, 2],
+                [100, 200],
+                [0, 1],
+                [42, 99]
+            ]
+        },
+        {
+            "function_name": "eject_cargo",
+            "parameters": ["cargo_hold", "item"],
+            "description": "Remove an item from the cargo hold dictionary and return the modified dictionary. Given a cargo_hold dictionary and an item name, delete that item and return the remaining cargo. For example: eject_cargo({'credits': 1000, 'contraband': 50}, 'contraband') should return {'credits': 1000}. Sometimes you need to lighten the load when running from space pirates!",
+            "input_type": ["dict", "string"],
+            "answer_code": "def eject_cargo(cargo_hold, item):\n    del cargo_hold[item]\n    return cargo_hold",
+            "hint": "Use del cargo_hold[item] to jettison the cargo",
+            "test_inputs": [
+                [{"credits": 1000, "contraband": 50}, "contraband"],
+                [{"fuel": 100, "food": 200}, "food"],
+                [{"weapons": 5, "shields": 3}, "weapons"],
+                [{"maps": "secret", "plans": "classified"}, "plans"],
+                [{"oxygen": "low", "fuel": "full"}, "oxygen"]
+            ]
+        },
+        {
+            "function_name": "create_alien_contact",
+            "parameters": ["species", "greeting"],
+            "description": "Create and return a dictionary for the universal translator. Given a species name and their greeting, return a dictionary with species as the key and greeting as the value. For example: create_alien_contact('Vulcan', 'Live Long and Prosper') should return {'Vulcan': 'Live Long and Prosper'}.",
+            "input_type": ["string", "string"],
+            "answer_code": "def create_alien_contact(species, greeting):\n    return {species: greeting}",
+            "hint": "Create dictionary with species: greeting pair",
+            "test_inputs": [
+                ["Vulcan", "Live Long and Prosper"],
+                ["Klingon", "Qapla"],
+                ["Wookie", "Rrrrrr-ghghghghghgh"],
+                ["Martian", "Ack Ack"],
+                ["Groot", "I am Groot"]
             ]
         },
         {
@@ -56,7 +128,7 @@
             "answer_code": "def is_cargo_hold_empty(cargo_hold):\n    return 'yes' if not cargo_hold else 'no'",
             "hint": "Use 'not cargo_hold' to check if empty",
             "test_inputs": [
-                {},
+                [{}],
                 {"credits": 1000},
                 {"fuel": "full"},
                 {"cargo": "mysterious"},
