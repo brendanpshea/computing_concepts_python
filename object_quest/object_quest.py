@@ -12,12 +12,12 @@ class QuestSystem:
         self.current_quest_idx = 0
         self.setup_styles()
         self.create_ui()
-        
+
     def load_quests(self, quest_file: str) -> List[Dict[str, Any]]:
         with open(quest_file, 'r') as f:
             data = json.load(f)
             return data['quests']
-        
+
     def setup_styles(self):
         style = """
         <style>
@@ -43,14 +43,14 @@ class QuestSystem:
             margin-bottom: 5px;
             color: #BDE3FF;
         }
-        .quest-title { 
-            font-size: 28px; 
+        .quest-title {
+            font-size: 28px;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
             margin-bottom: 15px;
         }
-        .quest-description { 
-            font-size: 16px; 
+        .quest-description {
+            font-size: 16px;
             line-height: 1.6;
             color: #eee;
         }
@@ -87,16 +87,16 @@ class QuestSystem:
             margin-bottom: 10px;
             font-size: 18px;
         }
-        .error-message { 
-            color: #E74C3C; 
+        .error-message {
+            color: #E74C3C;
             padding: 15px;
             background-color: #FADBD8;
             border-radius: 8px;
             margin-top: 15px;
             border-left: 4px solid #E74C3C;
         }
-        .success-message { 
-            color: #27AE60; 
+        .success-message {
+            color: #27AE60;
             padding: 20px;
             background-color: #D4EFDF;
             border-radius: 8px;
@@ -136,74 +136,48 @@ class QuestSystem:
         """
         display(HTML(style))
 
-    def show_test_cases(self, test_code):
-        display(HTML("""
-        <div class="test-section">
-            <div class="test-header">🎯 To Test Your Code, We Will: </div>
-        """))
-        
-        setup_shown = False
-        for line in test_code.split('\n'):
-            if 'warrior = Warrior' in line:
-                setup_line = line.strip()
-                if not setup_shown:
-                    display(HTML(f'<div class="test-item">1. Create warrior: {setup_line}</div>'))
-                    setup_shown = True
-            elif 'battle' in line and '=' not in line and not 'class' in line and not 'def' in line:
-                action = line.strip()
-                display(HTML(f'<div class="test-item">2. Call battle: {action}</div>'))
-            elif 'assertEqual' in line:
-                assertion = line.split('assertEqual(')[1].rstrip('")\n').split(',')
-                actual_call = assertion[0].strip()
-                expected_value = assertion[1].strip()
-                display(HTML(f'<div class="test-item">3. Verify: {actual_call} == {expected_value}</div>'))
-        
-        display(HTML('</div>'))
 
     def create_ui(self):
         clear_output(wait=True)
         quest = self.quests[self.current_quest_idx]
-        
+
         display(HTML(f"""
         <div class="container">
             <div class="quest-header">
-                <div class="quest-number">Quest {self.current_quest_idx + 1}</div>
-                <div class="quest-title">{quest['title']}</div>
-                <div class="quest-description">{quest['description']}</div>
+                <div class="quest-number"><h2>Quest {self.current_quest_idx + 1} : {quest['title']}</h2></div>
+                <div class="quest-description"><br><em>{quest['description']}</em></div>
             </div>
         """))
-        
-        self.show_test_cases(quest['test_code'])
-        
-        display(HTML('<div class="code-section"><div class="code-header">✍️ Write your code here:</div></div>'))
-        
+
+        display(HTML('<div class="code-section"><div class="code-header"><br>✍️ Write your code here:</div></div>'))
+
         self.code_input = widgets.Textarea(
             value=quest['initial_code'],
             layout=widgets.Layout(width='100%', height='200px', font_family='monospace')
         )
         display(self.code_input)
-        
+
         submit_button = widgets.Button(
             description='⚔️ Submit Quest',
             button_style='success',
             layout=widgets.Layout(margin='10px 10px 10px 0px')
         )
         submit_button.on_click(self.check_solution)
-        
+
         hint_button = widgets.Button(
             description='💡 Get Hint',
             button_style='info',
             layout=widgets.Layout(margin='10px 0px 10px 0px')
         )
         hint_button.on_click(self.show_hint)
-        
+
         button_box = widgets.HBox([submit_button, hint_button])
         display(button_box)
         display(HTML('</div>'))
 
     def show_success_screen(self, quest):
         clear_output(wait=True)
-        
+
         display(HTML(f"""
         <div class="container">
             <div class="success-screen">
@@ -211,7 +185,7 @@ class QuestSystem:
                 <div class="success-text">{quest['success_message']}</div>
             </div>
         """))
-        
+
         if self.current_quest_idx < len(self.quests) - 1:
             next_button = widgets.Button(
                 description='➡️ Continue to Next Quest',
@@ -241,7 +215,7 @@ class QuestSystem:
             test_class = globals()[test_class_name]
             suite = unittest.TestLoader().loadTestsFromTestCase(test_class)
             result = unittest.TextTestRunner(stream=None).run(suite)
-            
+
             if result.wasSuccessful():
                 self.show_success_screen(self.quests[self.current_quest_idx])
             else:
@@ -252,7 +226,7 @@ class QuestSystem:
                 """))
                 for failure in result.failures:
                     print(failure[1])
-                    
+
         except Exception as e:
             display(HTML(f"""
             <div class='error-message'>
