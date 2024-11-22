@@ -12,6 +12,16 @@ import contextlib
 import io
 import html
 import numpy as np
+from copy import deepcopy
+
+def deep_clone_input(obj):
+    """
+    Creates a deep copy of an input object, handling special cases like NumPy arrays.
+    """
+    if isinstance(obj, np.ndarray):
+        return np.copy(obj)
+    return deepcopy(obj)
+
 
 # Sample input lists
 int_inputs = [0, 1, -1, 2, -2, 5, -5, 10, -10, 100, -100, -50, 2147483647, -2147483648]
@@ -327,19 +337,24 @@ class PracticeTool:
         self.skip_dropdown.value = self.current_question_index
 
     def build_question_text(self, question):
-        """Constructs the question text with sample runs."""
+        """Constructs the question text with sample runs using isolated inputs."""
         header = f"<h3>Question {self.current_question_index + 1} of {len(self.questions)}</h3>"
         description = f"<p>Write a function <b>{question.function_name}({', '.join(question.parameters)})</b> to: {question.description}.</p>"
         samples = "<h4>Sample Runs:</h4>"
 
-        # Prepare sample runs using the correct answer code
+        # Prepare sample runs using the correct answer code with isolated inputs
         correct_func = self.get_function_from_code(question.answer_code, question.function_name)
         sample_data = []
+        
         for sample_input in question.sample_inputs:
-            args = self.prepare_arguments(sample_input, question)
-            args_str = ', '.join(repr(arg) for arg in args)
+            # Create a clean copy of inputs for display
+            display_args = self.prepare_arguments(sample_input, question)
+            # Create an isolated copy for execution
+            execution_args = self.prepare_arguments_with_clone(sample_input, question, clone=True)
+            
+            args_str = ', '.join(repr(arg) for arg in display_args)
             try:
-                result = correct_func(*args)
+                result = correct_func(*execution_args)
                 sample_data.append({
                     'Input': f"{question.function_name}({args_str})",
                     'Output': html.escape(repr(result))
@@ -417,30 +432,54 @@ class PracticeTool:
             return obj1 == obj2
 
     def execute_tests(self, question, student_func, correct_func):
-        """Executes test cases and collects results."""
+        """Executes test cases and collects results with proper input isolation."""
         test_results = []
         total_tests = len(question.test_inputs)
         passed_tests = 0
 
         for test_input in question.test_inputs:
-            args = self.prepare_arguments(test_input, question)
-            args_str = ', '.join(repr(arg) for arg in args)
+            # Create separate copies for student and correct function
+            student_args = self.prepare_arguments_with_clone(test_input, question, clone=True)
+            correct_args = self.prepare_arguments_with_clone(test_input, question, clone=True)
+            
+            # Store original input for display (using non-cloned version)
+            args_str = ', '.join(repr(arg) for arg in self.prepare_arguments(test_input, question))
 
             try:
+                # Capture student output and handle mutable changes
                 with contextlib.redirect_stdout(self.student_output):
-                    student_output = student_func(*args)
-                correct_output = correct_func(*args)
+                    student_output = student_func(*student_args)
+                correct_output = correct_func(*correct_args)
+
+                # Store the potentially modified inputs for comparison
+                modified_student_args = student_args
+                modified_correct_args = correct_args
+
                 if student_output is None and correct_output is not None:
                     message = "Your function did not return a value. Did you forget to include a return statement?"
                     passed = False
                     status = 'Fail'
                     your_output = message
                 else:
-                    passed = self.object_compare(student_output, correct_output)
+                    # Check both return values and argument modifications
+                    return_match = self.object_compare(student_output, correct_output)
+                    args_match = all(self.object_compare(s_arg, c_arg) 
+                                   for s_arg, c_arg in zip(modified_student_args, modified_correct_args))
+                    
+                    passed = return_match and args_match
                     status = 'Pass' if passed else 'Fail'
                     your_output = repr(student_output)
+
+                    # If arguments were modified differently, include this in the output
+                    if not args_match:
+                        your_output += "\nWarning: Function modified input arguments differently than expected."
+                        if isinstance(student_output, (list, dict)) or isinstance(correct_output, (list, dict)):
+                            your_output += f"\nModified arguments: {repr(modified_student_args)}"
+                            your_output += f"\nExpected modifications: {repr(modified_correct_args)}"
+
                 if passed:
                     passed_tests += 1
+
                 test_results.append({
                     'Result': status,
                     'Input': f"{question.function_name}({args_str})",
@@ -460,6 +499,34 @@ class PracticeTool:
         self.next_button.disabled = not all_passed
         self.results_next_button.disabled = not all_passed
         return test_results
+
+    def prepare_arguments(self, test_input, question):
+        """
+        Original prepare_arguments method - kept for backward compatibility.
+        """
+        num_params = len(question.parameters)
+        if num_params == 1:
+            return (test_input,)
+        elif isinstance(test_input, (list, tuple)) and len(test_input) == num_params:
+            return tuple(test_input)
+        else:
+            raise ValueError(f"Invalid test input: {test_input}")
+
+    def prepare_arguments_with_clone(self, test_input, question, clone=False):
+        """
+        Prepares arguments with optional cloning.
+        """
+        num_params = len(question.parameters)
+        
+        if clone:
+            if num_params == 1:
+                return (deep_clone_input(test_input),)
+            elif isinstance(test_input, (list, tuple)) and len(test_input) == num_params:
+                return tuple(deep_clone_input(arg) for arg in test_input)
+        else:
+            return self.prepare_arguments(test_input, question)
+                
+        raise ValueError(f"Invalid test input: {test_input}")
 
     def display_test_results(self, test_results):
         """Displays the test results in the UI."""
@@ -565,7 +632,3 @@ class PracticeTool:
         if new_index != self.current_question_index:
             self.current_question_index = new_index
             self.display_question()
-
-
-# Instantiate the practice tool with questions from a JSON file
-# practice_tool = PracticeTool(json_url='questions2.json')
