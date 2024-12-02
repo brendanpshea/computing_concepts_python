@@ -1,4 +1,4 @@
-# Computing Concepts With Python
+# Computing Concepts Reimagined: Case Studies, Coding, and the Foundations of Computer Science
 ### Brendan Shea, PhD | Brendan.Shea@rctc.edu
 
 Welcome to **Computing Concepts with Python**, an open-access textbook designed to introduce students to the foundational concepts of computer science. The textbook includes Jupyter notebooks with interactive exercises, real-world examples, and practical coding exercises using Python.
@@ -57,6 +57,12 @@ Dive into the history and development of artificial intelligence.
 [Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_12_NeuralNets.ipynb)  
 Learn about neural networks and build a simple one using Python.
 
+## Case Studies
+
+This textbook is complemented by a collection of case studies that delve deeper into the foundational concepts of computer science. The case studies examine real-world examples, historical developments, and ethical considerations to provide students with a holistic understanding of key topics. Topics include cybersecurity, open-source software, abstraction, programming paradigms, artificial intelligence, and more.
+
+For a detailed list of case studies and their descriptions, refer to the [case studies README](https://github.com/brendanpshea/computing_concepts_python/tree/main/case_studies).
+
 ## Interactive Learning Tools
 
 ### PyQuiz
@@ -70,10 +76,10 @@ Loop of the Recursive Dragon is an interactive quiz game that combines elements 
 [Learn more about Loop of the Recursive Dragon](lotr/readme.md)
 
 ## License
-This open-access textbook and associated tools are licensed under the MIT License. For more details, refer to the LICENSE file in this repository.
+This open-access textbook and associated tools are licensed under the MIT License. Case studies are licensed under the GNU Public License (GPL). For more details, refer to the LICENSE file in this repository.
 
 ## A Note on the Use of AI Tools
 These chapters were initially developed as the "generative AI" explosion took off (starting with OpenAI's GPT 3.0). The author has experimented with many of these tools—including successive versions of ChatGPT, Google Gemini, Claude, CoPilot, Mistral, and others—in helping to turn lecture notes into a proper book. While these tools can be helpful, they are not a replacement for the expertise and effort required to produce quality, meaningful educational content.
 
 ## About the Author
-Brendan Shea, PhD, is Professor of Philosophy and Computer Science at Rochester Community and Technical College and a Resident Fellow at the Minnesota Center for Philosophy of Science at the University of Minnesota-Twin Cities. He also serves as the Public Member of the Institutional Biosafety Committee at Mayo Clinic-Rochester. His main research and teaching interests lie in the philosophy of science, data modeling, applied ethics, and in the areas where these overlap (such as bioethics and the ethics of artificial intelligence). You can find out more about his research here: https://philpeople.org/profiles/brendan-shea.
+Brendan Shea, PhD, is Professor of Philosophy and Computer Science at Rochester Community and Technical College and a Resident Fellow at the Minnesota Center for Philosophy of Science at the University of Minnesota-Twin Cities. He also serves as the Public Member of the Institutional Biosafety Committee at Mayo Clinic-Rochester. His main research and teaching interests lie in the philosophy of science, data modeling, applied ethics, and in the areas where these overlap (such as bioethics and the ethics of artificial intelligence). You can find out more about his research here: [Brendan Shea's PhilPeople Profile](https://philpeople.org/profiles/brendan-shea).
