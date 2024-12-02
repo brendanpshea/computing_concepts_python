@@ -1,10 +1,6 @@
-Here is a draft for the README file:
-
----
-
 # Intro to Computer Science Case Studies
 
-This repository contains a collection of case studies authored by Brendan Shea, PhD, for use in an introductory computer science textbook. Each case study is designed to introduce foundational concepts in computer science through engaging, real-world scenarios and is written with a focus on accessibility for students new to the field. 
+This repository contains a collection of case studies authored by Brendan Shea, PhD, for use in an introductory computer science classes. Each case study is designed to introduce foundational concepts in computer science through engaging, real-world scenarios and is written with a focus on accessibility for students new to the field. 
 
 The case studies in this collection are available as individual PDFs and are free to reuse under the terms of the GNU General Public License (GPL).
 
@@ -53,7 +49,3 @@ Feel free to browse and use these materials for educational purposes under the t
 ## Contact
 
 For questions, comments, or feedback, please contact Brendan Shea, PhD.
-
----
-
-Let me know if you'd like to modify or expand on any part of this README.
