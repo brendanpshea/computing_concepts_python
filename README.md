@@ -1,6 +1,8 @@
 # Computing Concepts Reimagined: Case Studies, Coding, and the Foundations of Computer Science
 ### Brendan Shea, PhD | Brendan.Shea@rctc.edu
 
+https://brendanpshea.github.io/computing_concepts_python/
+
 Welcome to **Computing Concepts with Python**, an open-access textbook designed to introduce students to the foundational concepts of computer science. The textbook includes Jupyter notebooks with interactive exercises, real-world examples, and practical coding exercises using Python.
 
 ## Textbook Chapters
