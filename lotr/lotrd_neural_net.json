@@ -1,0 +1,426 @@
+[
+  {
+    "question": "Which of the following are components of a biological neuron? (Select all that apply)",
+    "correct": [
+      "Dendrites",
+      "Axon",
+      "Cell Body (Soma)",
+      "Synapse"
+    ],
+    "incorrect": [
+      "Myelin sheath",
+      "Chromosome"
+    ],
+    "hint": "Consider how neurons communicate and transmit signals throughout the nervous system."
+  },
+  {
+    "question": "Which of the following are true about neural networks? (Select all that apply)",
+    "correct": [
+      "They are composed of interconnected layers of nodes",
+      "They can be used to approximate complex functions"
+    ],
+    "incorrect": [
+      "They require hardware specifically designed to mimic the brain",
+      "They do not need training data",
+      "They consist of a single neuron that makes all decisions"
+    ],
+    "hint": "Think about what makes a neural network powerful for solving problems and how it is different from a single neuron."
+  },
+  {
+    "question": "Which of the following are characteristics of a perceptron? (Select all that apply)",
+    "correct": [
+      "It is a type of artificial neuron",
+      "It can classify linearly separable data",
+      "It uses weights to adjust the importance of inputs"
+    ],
+    "incorrect": [
+      "It can solve any logical problem",
+      "It has multiple hidden layers"
+    ],
+    "hint": "Consider the type of problem a perceptron can solve and how it uses input information to make decisions."
+  },
+  {
+    "question": "Which steps are involved in training a perceptron? (Select all that apply)",
+    "correct": [
+      "Initialize weights randomly",
+      "Calculate output based on inputs and weights",
+      "Update weights using the error",
+      "Repeat until convergence or maximum iterations"
+    ],
+    "incorrect": [
+      "Reverse the weights after each epoch"
+    ],
+    "hint": "The perceptron learns by adjusting weights; think about how the output compares to the expected answer."
+  },
+  {
+    "question": "Which of the following statements are true about the XOR problem in neural networks? (Select all that apply)",
+    "correct": [
+      "It cannot be solved by a single perceptron",
+      "The problem is not linearly separable",
+      "A multilayer perceptron can solve the XOR problem",
+      "It involves exclusive or (XOR) logic",
+      "It requires at least one hidden layer"
+    ],
+    "incorrect": [],
+    "hint": "Consider what type of decision boundary is needed to separate XOR and whether a single neuron can accomplish it."
+  },
+  {
+    "question": "Which of the following are true about the layers of a multilayer perceptron? (Select all that apply)",
+    "correct": [
+      "Input layer receives the data",
+      "Hidden layers transform the inputs into more abstract features",
+      "Output layer provides the final result"
+    ],
+    "incorrect": [
+      "There is always only one hidden layer",
+      "All layers always have the same number of nodes"
+    ],
+    "hint": "Think about how information flows through the network from input to output."
+  },
+  {
+    "question": "Which statements about backpropagation are true? (Select all that apply)",
+    "correct": [
+      "It is used to update the weights of a neural network",
+      "It works by propagating the error backward through the network"
+    ],
+    "incorrect": [
+      "It only applies to input layers",
+      "It is a forward-only process",
+      "It doesn't use any form of gradient calculation"
+    ],
+    "hint": "Consider what happens after an output is compared to the desired answer and the weights need to be updated."
+  },
+  {
+    "question": "Which of the following are true about convolutional neural networks (CNNs)? (Select all that apply)",
+    "correct": [
+      "They are commonly used for image recognition tasks",
+      "They contain convolutional layers that apply filters",
+      "They use pooling layers to reduce dimensionality"
+    ],
+    "incorrect": [
+      "They are always composed of only fully connected layers",
+      "They can only be used for text data"
+    ],
+    "hint": "Think about how CNNs extract spatial features from input data and the different types of layers involved."
+  },
+  {
+    "question": "Which of the following best describes the role of a filter (or kernel) in a convolutional layer? (Select one answer)",
+    "correct": [
+      "It extracts features from a local region of the input"
+    ],
+    "incorrect": [
+      "It reduces the overall size of the network",
+      "It adds noise to the data",
+      "It controls the learning rate of the network",
+      "It performs backpropagation"
+    ],
+    "hint": "Consider what happens when a filter is applied to an image or input data."
+  },
+  {
+    "question": "Which statements about transfer learning are true? (Select all that apply)",
+    "correct": [
+      "It involves using a pre-trained model for a new, related task",
+      "It can save time and computational resources"
+    ],
+    "incorrect": [
+      "It always requires a large new dataset",
+      "It involves starting from scratch in every situation",
+      "It can only be applied to image data"
+    ],
+    "hint": "Think about how using a pre-trained model might be beneficial compared to training from scratch."
+  },
+  {
+    "question": "Which of the following are characteristics of Generative Adversarial Networks (GANs)? (Select all that apply)",
+    "correct": [
+      "They consist of a generator and a discriminator",
+      "They are used to generate realistic data from random inputs",
+      "The generator aims to fool the discriminator"
+    ],
+    "incorrect": [
+      "They always converge to an optimal solution",
+      "They do not require training data"
+    ],
+    "hint": "Think about the interplay between the two components of GANs and what their objectives are."
+  },
+  {
+    "question": "Which of the following are true about Recurrent Neural Networks (RNNs)? (Select all that apply)",
+    "correct": [
+      "They are designed to handle sequential data",
+      "They have connections that allow information to persist across time steps",
+      "They are commonly used for tasks like language modeling and time series",
+      "They have a looping mechanism within their architecture"
+    ],
+    "incorrect": [
+      "They are only used for image classification"
+    ],
+    "hint": "Consider the types of data where order and past information are crucial, and how RNNs handle this."
+  },
+  {
+    "question": "Which steps are involved in Backpropagation Through Time (BPTT)? (Select all that apply)",
+    "correct": [
+      "Unfolding the RNN over time",
+      "Calculating gradients for each time step",
+      "Accumulating gradients for weight updates",
+      "Applying weight updates using gradient descent",
+      "Using truncation to avoid computational issues"
+    ],
+    "incorrect": [],
+    "hint": "Think about how backpropagation is adapted for time-dependent connections and what challenges it faces."
+  },
+  {
+    "question": "Which of the following best describes the vanishing gradient problem? (Select one answer)",
+    "correct": [
+      "Gradients become too small, making it difficult for weights to update"
+    ],
+    "incorrect": [
+      "Gradients increase exponentially during training",
+      "Weights grow larger over time",
+      "The network loses all connections to the input data",
+      "The network produces constant outputs for all inputs"
+    ],
+    "hint": "Consider what happens to gradient values during backpropagation through many layers."
+  },
+  {
+    "question": "Which of the following are true about the exploding gradient problem? (Select all that apply)",
+    "correct": [
+      "Gradients become very large during training",
+      "It can cause instability in the training process"
+    ],
+    "incorrect": [
+      "It prevents the network from learning",
+      "It is only an issue in convolutional neural networks",
+      "It is a problem related to the input data format"
+    ],
+    "hint": "Think about situations where large gradient values might cause problems during training."
+  },
+  {
+    "question": "Which of the following are characteristics of Long Short-Term Memory (LSTM) networks? (Select all that apply)",
+    "correct": [
+      "They use gates to control information flow",
+      "They are designed to remember information over long periods",
+      "They are an extension of RNNs to address the vanishing gradient problem"
+    ],
+    "incorrect": [
+      "They do not have any feedback connections",
+      "They can only handle short sequences of data"
+    ],
+    "hint": "Consider the mechanisms LSTMs have to handle long-term dependencies in sequences."
+  },
+  {
+    "question": "Which of the following are true about Transformers in deep learning? (Select all that apply)",
+    "correct": [
+      "They use self-attention to process sequences",
+      "They are highly parallelizable compared to RNNs",
+      "They can handle both encoder and decoder tasks",
+      "They are widely used in natural language processing"
+    ],
+    "incorrect": [
+      "They use convolutional layers to handle sequence data"
+    ],
+    "hint": "Think about what features make Transformers more efficient for sequence modeling compared to older approaches like RNNs."
+  },
+  {
+    "question": "Which statements about self-attention are true? (Select all that apply)",
+    "correct": [
+      "It allows the model to focus on different parts of an input sequence",
+      "It calculates attention scores to determine the importance of elements",
+      "It helps capture long-range dependencies in the data",
+      "It forms the core component of the Transformer architecture",
+      "It uses key, query, and value vectors for computation"
+    ],
+    "incorrect": [],
+    "hint": "Consider how self-attention lets models learn relationships between different parts of the input sequence."
+  },
+  {
+    "question": "Which of the following best describes a Large Language Model (LLM)? (Select one answer)",
+    "correct": [
+      "It is a deep learning model trained on large amounts of text data to understand and generate human-like language"
+    ],
+    "incorrect": [
+      "It is designed only for image recognition tasks",
+      "It always requires labeled training data",
+      "It cannot generate text beyond a few words",
+      "It is a small model used for quick inference"
+    ],
+    "hint": "Think about what makes LLMs powerful in handling natural language tasks and what kind of data they are trained on."
+  },
+  {
+    "question": "Which statements about pre-training are true? (Select all that apply)",
+    "correct": [
+      "It involves training a model on a large dataset before fine-tuning it on a specific task",
+      "It can significantly reduce the training time required for a new task"
+    ],
+    "incorrect": [
+      "It is the same as training a model from scratch",
+      "It cannot be applied to natural language models",
+      "It always requires labeled data for the initial phase"
+    ],
+    "hint": "Think about the benefits of using a general-purpose model before specializing it for a particular task."
+  },
+  {
+    "question": "Which of the following statements about fine-tuning a neural network are true? (Select all that apply)",
+    "correct": [
+      "It involves taking a pre-trained model and adapting it for a specific task",
+      "It requires fewer resources compared to training from scratch",
+      "It can help achieve better performance on specialized tasks"
+    ],
+    "incorrect": [
+      "It always results in overfitting",
+      "It cannot be used for computer vision tasks"
+    ],
+    "hint": "Think about how fine-tuning reuses previously learned knowledge and how it differs from starting a model from scratch."
+  },
+  {
+    "question": "Which of the following statements describe the Paperclip Maximizer thought experiment? (Select all that apply)",
+    "correct": [
+      "It illustrates the potential danger of misaligned AI goals",
+      "It envisions an AI designed to maximize paperclip production without regard for consequences",
+      "It shows how a seemingly harmless goal can lead to catastrophic outcomes",
+      "It is a hypothetical scenario used in discussions about AI safety"
+    ],
+    "incorrect": [
+      "It describes an AI that is intended to help humans solve climate change"
+    ],
+    "hint": "Consider what happens when an AI's utility function is pursued with no regard for broader ethical implications."
+  },
+  {
+    "question": "Which statements about Inverse Reinforcement Learning (IRL) are true? (Select all that apply)",
+    "correct": [
+      "IRL aims to infer the reward function from observed behavior",
+      "It is often used to understand human preferences",
+      "It allows an agent to learn by watching others act",
+      "It requires modeling the underlying motivations behind actions",
+      "It can be used to create safer AI systems by understanding human values"
+    ],
+    "incorrect": [],
+    "hint": "Think about how IRL tries to infer why an agent behaves a certain way, rather than just mimicking the behavior."
+  },
+  {
+    "question": "Which of the following best describes robust optimization? (Select one answer)",
+    "correct": [
+      "It focuses on finding solutions that perform well under a variety of uncertain conditions"
+    ],
+    "incorrect": [
+      "It aims to maximize the sensitivity of the model to input changes",
+      "It always reduces model complexity",
+      "It is the same as stochastic optimization",
+      "It focuses on minimizing training time"
+    ],
+    "hint": "Consider what kind of optimization is concerned with performance when faced with variability or uncertainty in data."
+  },
+  {
+    "question": "Which of the following are true about impact regularization in AI systems? (Select all that apply)",
+    "correct": [
+      "It aims to limit the unintended consequences of an AI's actions",
+      "It penalizes behaviors that produce disproportionate effects on the environment"
+    ],
+    "incorrect": [
+      "It is designed to maximize the output of a specific action",
+      "It encourages the AI to act as boldly as possible",
+      "It has no effect on the AI's utility function"
+    ],
+    "hint": "Think about how impact regularization aims to control the side effects of AI's decisions."
+  },
+  {
+    "question": "Which of the following statements are true about value learning in AI? (Select all that apply)",
+    "correct": [
+      "It involves teaching AI what is important or valuable to humans",
+      "It can be challenging due to the complexity of human values",
+      "It aims to align AI objectives with human ethical principles"
+    ],
+    "incorrect": [
+      "It always involves supervised learning",
+      "It does not require human input"
+    ],
+    "hint": "Consider how an AI needs to understand human priorities and goals to align its actions effectively."
+  },
+  {
+    "question": "Which of the following are true about corrigibility in AI systems? (Select all that apply)",
+    "correct": [
+      "It ensures that an AI can be easily corrected by humans",
+      "It reduces the risk of the AI acting against human interests",
+      "It encourages the AI to cooperate with human oversight",
+      "It helps make AI systems more transparent and adjustable"
+    ],
+    "incorrect": [
+      "It makes the AI completely autonomous without any human intervention"
+    ],
+    "hint": "Think about how an AI can be designed to remain under human control and respond positively to correction."
+  },
+  {
+    "question": "Which statements about respect for autonomy in AI ethics are true? (Select all that apply)",
+    "correct": [
+      "It emphasizes respecting the decision-making capabilities of individuals",
+      "It requires AI systems to avoid undue influence over users",
+      "It implies that AI should enhance human freedom rather than restrict it",
+      "It encourages AI to act in a way that promotes user independence",
+      "It avoids manipulative behavior by AI systems"
+    ],
+    "incorrect": [],
+    "hint": "Consider how autonomy is related to an individual's right to make their own choices and how AI can support that."
+  },
+  {
+    "question": "Which of the following best describes the ethical principle of beneficence in AI? (Select one answer)",
+    "correct": [
+      "It aims for AI to act in a way that benefits individuals and society"
+    ],
+    "incorrect": [
+      "It refers to minimizing harm caused by AI",
+      "It ensures fairness and equality in AI decisions",
+      "It focuses on respecting user privacy",
+      "It demands that AI should never take risks"
+    ],
+    "hint": "Think about the goal of creating positive outcomes for users and society in the context of AI."
+  },
+  {
+    "question": "Which statements are true about the ethical principle of non-maleficence in AI? (Select all that apply)",
+    "correct": [
+      "It emphasizes minimizing harm to users and others",
+      "It ensures AI systems do not intentionally inflict damage"
+    ],
+    "incorrect": [
+      "It is the same as beneficence",
+      "It prioritizes maximizing profits over user safety",
+      "It does not consider unintended side effects"
+    ],
+    "hint": "Consider how non-maleficence is about preventing harm and why it's important in AI ethics."
+  },
+  {
+    "question": "Which of the following statements are true about the ethical principle of justice in AI? (Select all that apply)",
+    "correct": [
+      "It aims to ensure fairness in decision-making processes",
+      "It seeks to avoid discrimination in AI outputs",
+      "It involves providing equal access to AI technologies"
+    ],
+    "incorrect": [
+      "It only applies to financial distribution",
+      "It focuses solely on efficiency"
+    ],
+    "hint": "Think about how justice involves fairness, equality, and avoiding bias in decisions made by AI systems."
+  },
+  {
+    "question": "Which statements are true about AI as a moral agent? (Select all that apply)",
+    "correct": [
+      "It can make decisions that affect the well-being of others",
+      "It can be designed to follow ethical rules in decision-making",
+      "It requires complex programming to assess ethical outcomes",
+      "It raises questions about accountability for its actions"
+    ],
+    "incorrect": [
+      "It has moral rights similar to humans"
+    ],
+    "hint": "Consider how AI might be capable of actions with moral consequences but lacks the subjective experience of morality."
+  },
+  {
+    "question": "Which statements about AI as a moral patient are true? (Select all that apply)",
+    "correct": [
+      "It could potentially be harmed by the actions of others",
+      "It involves questions about whether AI should have rights",
+      "It is considered by some in the context of highly advanced AI",
+      "It is debated whether AI can have experiences or feel suffering",
+      "It is a topic in the broader discussion of moral status and rights"
+    ],
+    "incorrect": [],
+    "hint": "Think about the ethical considerations of whether AI deserves moral consideration and what implications that could have."
+  }
+]
