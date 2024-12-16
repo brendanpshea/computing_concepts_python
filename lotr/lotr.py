@@ -1,69 +1,61 @@
-# lotr.py
+# lotr_.py
 
 import json
 import random
+import os
+import requests
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Union
 import ipywidgets as widgets
-from IPython.display import display, HTML, clear_output
+from IPython.display import display, HTML
 
-# ----------------------------
-# Utility Functions and Data
-# ----------------------------
 
+# **Utility Functions**
+# **load_json(file_path_or_url)**: Loads **JSON** data. Returns empty if fails.
 def load_json(file_path_or_url: str) -> List[Dict]:
-    """
-    Load JSON data from a local file or a URL with error handling.
-    """
-    import requests
-    import os
-    try:
-        if file_path_or_url.startswith('http://') or file_path_or_url.startswith('https://'):
-            # Load from URL
+    if file_path_or_url.startswith('http://') or file_path_or_url.startswith('https://'):
+        try:
             response = requests.get(file_path_or_url)
-            response.raise_for_status()  # Raise an exception for HTTP errors
-            data = response.json()
-            # print(f"Loaded {len(data)} items from URL '{file_path_or_url}'.")
-        elif os.path.isfile(file_path_or_url):
-            # Load from local file
-            with open(file_path_or_url, 'r') as f:
-                data = json.load(f)
-            # print(f"Loaded {len(data)} items from file '{file_path_or_url}'.")
-        else:
-            print(f"Error: '{file_path_or_url}' is neither a valid file nor a URL.")
+            response.raise_for_status()
+            return response.json()
+        except (requests.RequestException, json.JSONDecodeError):
+            print(f"Error: Could not load or parse JSON from '{file_path_or_url}'.")
             return []
-        return data
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path_or_url}' was not found.")
+    elif os.path.isfile(file_path_or_url):
+        try:
+            with open(file_path_or_url, 'r') as f:
+                return json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            print(f"Error: Could not load or parse JSON from '{file_path_or_url}'.")
+            return []
+    else:
+        print(f"Error: '{file_path_or_url}' is neither a valid file nor a URL.")
         return []
-    except json.JSONDecodeError:
-        print(f"Error: The file or URL '{file_path_or_url}' contains invalid JSON.")
-        return []
-    except requests.RequestException as e:
-        print(f"Error: Failed to load data from URL '{file_path_or_url}'. Reason: {e}")
-        return []
 
-# Weapons and Armor Data
-WEAPONS = {
-    "Fists": {"name": "Fists", "attack_die": 4, "price": 0},
-    "Dagger": {"name": "Dagger", "attack_die": 6, "price": 20},
-    "Sword": {"name": "Sword", "attack_die": 8, "price": 50},
-    "Greatsword": {"name": "Greatsword", "attack_die": 10, "price": 100},
-    # Add more weapons as needed
-}
+# **Data**
+# Weapons progress from debugging tools to legendary artifacts
+WEAPONS = [
+    {"name": "Apprentice's Debug Dagger", "attack_die": 4},
+    {"name": "Journeyman's Binary Blade", "attack_die": 5},
+    {"name": "Recursive Battle Axe", "attack_die": 6},
+    {"name": "Greater Sword of Stack Overflow", "attack_die": 7},
+    {"name": "Epic Quantum Warhammer", "attack_die": 8},
+    {"name": "Ancient Blade of Deep Learning", "attack_die": 9},
+    {"name": "Legendary Sword of System Core Access", "attack_die": 10},
+]
 
-ARMORS = {
-    "Clothes": {"name": "Clothes", "defense": 0, "price": 0},
-    "Leather Armor": {"name": "Leather Armor", "defense": 2, "price": 20},
-    "Chainmail": {"name": "Chainmail", "defense": 4, "price": 50},
-    "Plate Armor": {"name": "Plate Armor", "defense": 6, "price": 100},
-    # Add more armors as needed
-}
+# Armor progresses from basic protection to legendary defenses
+ARMORS = [
+    {"name": "Initiate's Firewall Robes", "defense": 0},
+    {"name": "Acolyte's Cache Armor", "defense": 1},
+    {"name": "Encryption Mesh Vest", "defense": 2},
+    {"name": "Greater Blockchain Chainmail", "defense": 3},
+    {"name": "Epic Neural Network Plate", "defense": 4},
+    {"name": "Ancient Quantum-Shielded Armor", "defense": 5},
+    {"name": "Legendary Armor of Root Access", "defense": 6},
+]
 
-# ----------------------------
-# CSS Styles
-# ----------------------------
-
+# CSS
 BBS_CSS = """
 <style>
 .bbs-container {
@@ -85,45 +77,24 @@ BBS_CSS = """
     font-size: 16px;
     margin-bottom: 10px;
 }
-.bold {
-    font-weight: bold;
-}
-.underline {
-    text-decoration: underline;
-}
-.yellow {
-    color: #ffff00;
-}
-.red {
-    color: #ff0000;
-}
-.green {
-    color: #00ff00;
-}
-.cyan {
-    color: #00ffff;
-}
-.info {
-    color: #00ced1;
-}
-.button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
+.bold { font-weight: bold; }
+.underline { text-decoration: underline; }
+.yellow { color: #ffff00; }
+.red { color: #ff0000; }
+.cyan { color: #00ffff; }
 </style>
 """
 
-# ----------------------------
-# Data Classes
-# ----------------------------
-
+# **Data Classes**
 @dataclass
 class Player:
+    level: int = 1
+    xp: int = 0
+    xp_to_next_level: int = 50
+    max_hit_points: int = 20
     hit_points: int = 20
-    weapon: Dict[str, Union[str, int]] = field(default_factory=lambda: WEAPONS["Fists"])
-    armor: Dict[str, Union[str, int]] = field(default_factory=lambda: ARMORS["Clothes"])
-    gold: int = 0
+    weapon: Dict[str, Union[str, int]] = field(default_factory=lambda: WEAPONS[0])
+    armor: Dict[str, Union[str, int]] = field(default_factory=lambda: ARMORS[0])
     total_correct: int = 0
     total_incorrect: int = 0
 
@@ -135,52 +106,30 @@ class Monster:
     attack_die: int
     defense: int
     hit_points: int = field(init=False)
-    gold_value: int = field(init=False)
+    xp_value: int = field(init=False)  # XP value based on hd
 
     def __post_init__(self):
+        # Monster hit points: sum of hd d6 rolls
         self.hit_points = sum(random.randint(1, 6) for _ in range(self.hit_dice))
-        self.gold_value = 2 * random.randint(1, self.hit_dice * 6)
+        # XP is, for simplicity, hd * 10
+        self.xp_value = self.hit_dice * 10
 
-# ----------------------------
-# Game Class
-# ----------------------------
-
+# **Game Class**
 class Game:
     def __init__(self, questions_data: Optional[List[Dict]] = None, monsters_data: Optional[List[Dict]] = None):
-        # Load CSS Styles
         display(HTML(BBS_CSS))
-        
-        # Load data
-        if questions_data is None:
-            self.questions = []
-            print("Warning: No questions data provided.")
-        else:
-            self.questions = questions_data
-        if monsters_data is None:
-            self.monsters_data = []
-            print("Warning: No monsters data provided.")
-        else:
-            # Calculate difficulty score and sort monsters
-            self.monsters_data = self.sort_monsters_by_difficulty(monsters_data)
-        
-        # Initialize Player
+        self.questions = questions_data if questions_data else []
+        self.monsters_data = monsters_data if monsters_data else []
         self.player = Player()
 
-        # Shuffle questions at the start
         random.shuffle(self.questions)
         self.questions_to_ask = self.questions.copy()
 
         self.current_monster: Optional[Monster] = None
         self.current_question: Optional[Dict] = None
-
-        # Initialize counters and flags
         self.questions_asked = 0
-        self.STORE_INTERVAL = 10  # The store will appear after every 3 questions
-        self.store_message = widgets.HTML(value="")
-        self.gold_label = widgets.HTML(value="")
-        self.just_visited_store = False  # Initialize the flag
+        self.initial_encounter = True
 
-        # Setup UI
         self.main_container = widgets.VBox(
             layout=widgets.Layout(
                 width='800px',
@@ -192,35 +141,12 @@ class Game:
             )
         )
         display(self.main_container)
-
-        # Render the initial game state
         self.render_initial_screen()
 
-    def sort_monsters_by_difficulty(self, monsters_data: List[Dict]) -> List[Dict]:
-        """
-        Sort monsters based on a difficulty score.
-        """
-        difficulty_monsters = []
-        for monster in monsters_data:
-            # Adjust the weighting factors as needed
-            difficulty_score = (3 * monster.get('hit_dice', 1) +
-                                monster.get('attack_die', 1) +
-                                monster.get('defense', 1))
-            difficulty_monsters.append((difficulty_score, monster))
-        
-        # Sort monsters by difficulty score in ascending order
-        sorted_monsters = sorted(difficulty_monsters, key=lambda x: x[0])
-        return [monster for _, monster in sorted_monsters]    
-
     def render_initial_screen(self):
-        """
-        Render the initial screen before any encounters.
-        """
-        # Create a Start Adventure button
         start_button = widgets.Button(
             description="Start Adventure",
-            button_style='success',  # 'success', 'info', 'warning', 'danger' or ''
-            tooltip='Start your adventure',
+            button_style='success',
             layout=widgets.Layout(width='200px', height='40px')
         )
         start_button.on_click(lambda b: self.present_encounter())
@@ -229,60 +155,52 @@ class Game:
         <div class='bbs-container'>
             <div class='title'>Welcome to the Loop of the Recursive Dragon!</div>
             <div class='section'>
-                Prepare yourself for a challenging quiz adventure. Answer questions correctly to defeat monsters and earn gold. Visit the store after every {self.STORE_INTERVAL} questions to upgrade your equipment.
+                Face monsters with hit dice close to your level. Answer questions correctly to deal damage. Gain XP and level up after enough victories. Upon leveling up, your health and gear improve automatically.
             </div>
         </div>
         """
-        # Update the main container with HTML and the start button
-        self.main_container.children = [
-            widgets.HTML(value=initial_html),
-            start_button
-        ]
+        self.main_container.children = [widgets.HTML(value=initial_html), start_button]
 
     def generate_monster(self) -> Optional[Monster]:
-      if not self.monsters_data:
-          print("Error: No monsters data available.")
-          return None
+        if not self.monsters_data:
+            print("Error: No monsters data available.")
+            return None
 
-      # Constants for progression
-      QUESTIONS_PER_STAGE = 10  # Number of questions per stage
+        # Player fights monsters within ±1 hd of current level.
+        valid_monsters = [m for m in self.monsters_data if abs(m['hit_dice'] - self.player.level) <= 1]
+        if not valid_monsters:
+            # If none available, just pick any monster
+            valid_monsters = self.monsters_data
 
-      # Calculate current stage based on questions answered
-      current_stage = self.questions_asked // QUESTIONS_PER_STAGE
+        selected_monster_data = random.choice(valid_monsters)
+        return Monster(
+            monster_name=selected_monster_data["monster_name"],
+            initial_description=selected_monster_data.get("initial_description", ""),
+            hit_dice=selected_monster_data["hit_dice"],
+            attack_die=selected_monster_data["attack_die"],
+            defense=selected_monster_data["defense"]
+        )
 
-      # Define how many monsters per stage you want to introduce
-      # For example, every stage introduces 4 new monsters
-      MONSTERS_PER_STAGE = 4
-
-      # Determine the range of monsters for the current stage
-      start_index = current_stage * MONSTERS_PER_STAGE
-      end_index = start_index + MONSTERS_PER_STAGE
-
-      # Ensure we don't exceed the list
-      if start_index >= len(self.monsters_data):
-          # If we've exhausted all defined monsters, use the hardest available
-          selected_monster_data = self.monsters_data[-1]
-      else:
-          # If multiple monsters are available in the current stage, pick one randomly
-          stage_monsters = self.monsters_data[start_index:end_index]
-          selected_monster_data = random.choice(stage_monsters)
-
-      # Initialize the Monster instance
-      monster = Monster(
-          monster_name=selected_monster_data["monster_name"],
-          initial_description=selected_monster_data.get("initial_description", ""),
-          hit_dice=selected_monster_data["hit_dice"],
-          attack_die=selected_monster_data["attack_die"],
-          defense=selected_monster_data["defense"]
-      )
-      return monster
+    def build_encounter_html(self) -> str:
+        if self.initial_encounter:
+            intro = f"You encounter a <span class='bold underline'>{self.current_monster.monster_name}</span>! {self.current_monster.initial_description}"
+        else:
+            intro = f"You are still battling the <span class='bold underline'>{self.current_monster.monster_name}</span>!"
+        encounter_html = f"""
+        <div class='bbs-container'>
+            <div class='title'>Loop of the Recursive Dragon</div>
+            <div class='section'>
+                {intro}<br>
+                It has <span class='yellow'>{self.current_monster.hit_points}</span> HP.<br>
+                You have <span class='yellow'>{self.player.hit_points}</span>/<span class='yellow'>{self.player.max_hit_points}</span> HP.
+                Level: <span class='yellow'>{self.player.level}</span>, XP: <span class='yellow'>{self.player.xp}/{self.player.xp_to_next_level}</span><br>
+                Weapon: <span class='yellow'>{self.player.weapon['name']}</span>, Armor: <span class='yellow'>{self.player.armor['name']}</span>
+            </div>
+        </div>
+        """
+        return encounter_html
 
     def present_encounter(self):
-        """
-        Present a monster encounter and a question to the player.
-        If a monster is already being battled and has HP remaining, continue battling it.
-        """
-        # If there's no current monster or the current monster has been defeated, generate a new one
         if not self.current_monster or self.current_monster.hit_points <= 0:
             if not self.questions_to_ask:
                 self.show_victory()
@@ -292,39 +210,8 @@ class Game:
         else:
             self.initial_encounter = False
 
-        # Select the next question
-        if self.questions_to_ask:
-            self.current_question = self.questions_to_ask.pop(0)
-        else:
-            self.current_question = None  # No question available
-
-        # Remove debug print statements
-        # if self.current_question:
-        #     print(f"Presenting question: {self.current_question.get('question', 'No question key found.')}")
-
-        # Build the encounter and question HTML
-        if self.initial_encounter:
-            encounter_html = f"""
-            <div class='bbs-container'>
-                <div class='title'>Loop of the Recursive Dragon</div>
-                <div class='section'>
-                    You encounter a <span class='bold underline'>{self.current_monster.monster_name}</span>! {self.current_monster.initial_description}<br>
-                    It has <span class='yellow'>{self.current_monster.hit_points}</span> HP.<br>
-                    You have <span class='yellow'>{self.player.hit_points}</span> HP, wielding a <span class='yellow'>{self.player.weapon['name']}</span> and wearing <span class='yellow'>{self.player.armor['name']}</span>.
-                </div>
-            </div>
-            """
-        else:
-            encounter_html = f"""
-            <div class='bbs-container'>
-                <div class='title'>Loop of the Recursive Dragon</div>
-                <div class='section'>
-                    You are still battling the <span class='bold underline'>{self.current_monster.monster_name}</span>!<br>
-                    It has <span class='yellow'>{self.current_monster.hit_points}</span> HP remaining.<br>
-                    You have <span class='yellow'>{self.player.hit_points}</span> HP, wielding a <span class='yellow'>{self.player.weapon['name']}</span> and wearing <span class='yellow'>{self.player.armor['name']}</span>.
-                </div>
-            </div>
-            """
+        self.current_question = self.questions_to_ask.pop(0) if self.questions_to_ask else None
+        encounter_html = self.build_encounter_html()
 
         if self.current_question:
             encounter_html += f"""
@@ -334,8 +221,24 @@ class Game:
                     </div>
                 </div>
             """
+            options = self.current_question.get('correct', []) + self.current_question.get('incorrect', [])
+            random.shuffle(options)
+            self.checkboxes = [widgets.Checkbox(value=False, description=opt, indent=False,
+                                                style={'description_width': 'initial'},
+                                                layout=widgets.Layout(width='100%'))
+                               for opt in options]
+
+            submit_button = widgets.Button(description="Submit Answer", button_style='success')
+            hint_button = widgets.Button(description="Show Hint", button_style='info')
+            submit_button.on_click(self.on_submit)
+            hint_button.on_click(self.on_hint)
+
+            self.main_container.children = [
+                widgets.HTML(value=encounter_html),
+                widgets.VBox(self.checkboxes, layout=widgets.Layout(overflow_y='auto', max_height='300px', width='100%')),
+                widgets.HBox([submit_button, hint_button], layout=widgets.Layout(justify_content='center', gap='10px', width='100%'))
+            ]
         else:
-            # Monster flees if no more questions but still alive
             encounter_html += f"""
                 <div class='bbs-container'>
                     <div class='section'>
@@ -343,358 +246,126 @@ class Game:
                     </div>
                     <div class='section'>
                         <span class='bold'>Final Stats:</span><br>
-                        Correct Answers: <span class='yellow'>{self.player.total_correct}</span><br>
-                        Incorrect Answers: <span class='yellow'>{self.player.total_incorrect}</span><br>
+                        Correct: <span class='yellow'>{self.player.total_correct}</span><br>
+                        Incorrect: <span class='yellow'>{self.player.total_incorrect}</span><br>
                         HP: <span class='yellow'>{self.player.hit_points}</span><br>
-                        Gold: <span class='yellow'>{self.player.gold}</span><br>
-                        Weapon: <span class='yellow'>{self.player.weapon['name']}</span><br>
-                        Armor: <span class='yellow'>{self.player.armor['name']}</span>
+                        Level: <span class='yellow'>{self.player.level}</span>
                     </div>
                 </div>
             """
-
-        # Prepare answer options
-        if self.current_question:
-            options = self.current_question.get('correct', []) + self.current_question.get('incorrect', [])
-            random.shuffle(options)
-        else:
-            options = []
-
-        # Create Checkboxes for options with adjusted styles to allow text wrapping
-        self.checkboxes = [
-            widgets.Checkbox(
-                value=False,
-                description=opt,
-                indent=False,
-                style={'description_width': 'initial'},  # Allows the description to take full width
-                layout=widgets.Layout(width='100%')     # Ensures the checkbox takes full container width
-            )
-            for opt in options
-        ]
-
-        # Adjust the VBox to accommodate wider checkboxes and enable scrolling if necessary
-        checkboxes_box = widgets.VBox(
-            self.checkboxes,
-            layout=widgets.Layout(overflow_y='auto', max_height='300px', width='100%')  # Increased max_height and set width to 100%
-        )
-
-        # Create Buttons
-        submit_button = widgets.Button(description="Submit Answer", button_style='success')
-        hint_button = widgets.Button(description="Show Hint", button_style='info')
-        submit_button.on_click(self.on_submit)
-        hint_button.on_click(self.on_hint)
-
-        buttons_box = widgets.HBox(
-            [submit_button, hint_button],
-            layout=widgets.Layout(justify_content='center', gap='10px', width='100%')  # Ensures buttons are centered
-        )
-
-        # Update the main container with new content
-        if self.current_question:
-            self.main_container.children = [
-                widgets.HTML(value=encounter_html),
-                checkboxes_box,
-                buttons_box
-                # widgets.HTML(value="")  # Placeholder for output messages
-            ]
-        else:
-            # If no more questions, end the game
-            self.main_container.children = [
-                widgets.HTML(value=encounter_html)
-            ]
+            self.main_container.children = [widgets.HTML(value=encounter_html)]
 
     def on_submit(self, b):
-        """
-        Handle the submission of an answer.
-        """
         if not self.current_question:
-            error_html = f"<div class='bbs-container'><div class='section'><span class='red bold'>No question to answer.</span></div></div>"
-            self.main_container.children += (widgets.HTML(value=error_html),)
+            self.append_html("<div class='bbs-container'><div class='section'><span class='red bold'>No question to answer.</span></div></div>")
             return
-
-        # Collect selected options from the checkboxes
-        selected_options = [cb.description for cb in self.checkboxes if cb.value]
-        if not selected_options:
-            warning_html = f"<div class='bbs-container'><div class='section'><span class='cyan'>Please select at least one option.</span></div></div>"
-            self.main_container.children += (widgets.HTML(value=warning_html),)
+        selected = [cb.description for cb in self.checkboxes if cb.value]
+        if not selected:
+            self.append_html("<div class='bbs-container'><div class='section'><span class='cyan'>Please select at least one option.</span></div></div>")
             return
-
-        self.evaluate_answer(selected_options)
+        self.evaluate_answer(selected)
 
     def on_hint(self, b):
-        """
-        Provide a hint for the current question.
-        """
         if not self.current_question:
-            hint_html = f"<div class='bbs-container'><div class='section'><span class='red'>No question available for a hint.</span></div></div>"
+            hint_html = "<div class='bbs-container'><div class='section'><span class='red'>No question available for a hint.</span></div></div>"
         else:
             hint = self.current_question.get('hint', 'No hint available.')
             hint_html = f"<div class='bbs-container'><div class='section'><span class='cyan'>Hint: {hint}</span></div></div>"
+        self.insert_hint(hint_html)
 
-        # Display the hint below the buttons
-        # Check if there's already a hint message and replace it
-        if len(self.main_container.children) >= 3:
-            # Replace the third widget if it's a hint
-            if isinstance(self.main_container.children[2], widgets.HBox):
-                # Insert hint after the buttons
-                new_children = list(self.main_container.children)
-                # Remove existing hint if any
-                if len(new_children) > 3:
-                    new_children.pop(3)
-                # Add the new hint
-                new_children.insert(3, widgets.HTML(value=hint_html))
-                self.main_container.children = tuple(new_children)
-            else:
-                # Just append the hint
-                self.main_container.children += (widgets.HTML(value=hint_html),)
-        else:
-            # Append the hint
-            self.main_container.children += (widgets.HTML(value=hint_html),)
+    def insert_hint(self, hint_html: str):
+        children = list(self.main_container.children)
+        children = [ch for ch in children if not (isinstance(ch, widgets.HTML) and 'Hint:' in ch.value)]
+        children.append(widgets.HTML(value=hint_html))
+        self.main_container.children = tuple(children)
 
     def evaluate_answer(self, selected_options: List[str]):
-        """
-        Evaluate the player's answer and update game state accordingly.
-        """
         correct_set = set(self.current_question.get('correct', []))
         incorrect_set = set(self.current_question.get('incorrect', []))
         selected_set = set(selected_options)
 
-        # Determine selections
-        correct_selections = selected_set & correct_set  # TP
-        incorrect_selections = selected_set & incorrect_set  # FP
-        missed_correct = correct_set - selected_set  # FN
-        incorrect_not_selected = incorrect_set - selected_set  # TN
+        correct_selections = selected_set & correct_set
+        incorrect_selections = selected_set & incorrect_set
+        missed_correct = correct_set - selected_set
 
-        # Update total correct and incorrect counters
         self.player.total_correct += len(correct_selections)
         self.player.total_incorrect += len(incorrect_selections)
 
-        # Calculate Hits
-        player_hits = len(correct_selections) + len(incorrect_not_selected)  # TP + TN
-        monster_hits = len(incorrect_selections) + len(missed_correct)  # FP + FN
+        player_hits = len(correct_selections) + len(incorrect_set - selected_set)
+        monster_hits = len(incorrect_selections) + len(missed_correct)
 
-        # Calculate Total Damage
         player_damage = sum(random.randint(1, self.player.weapon['attack_die']) for _ in range(player_hits))
         monster_damage = sum(random.randint(1, self.current_monster.attack_die) for _ in range(monster_hits))
 
-        # Apply Defense after summing all hits
         effective_player_damage = max(player_damage - self.current_monster.defense, 0)
         effective_monster_damage = max(monster_damage - self.player.armor['defense'], 0)
 
-        # Update Hit Points
         self.current_monster.hit_points -= effective_player_damage
         self.player.hit_points -= effective_monster_damage
 
-        # Build Battle Results
         battle_results = "<div class='bbs-container'><div class='section'>"
-
         if effective_player_damage > 0:
-            battle_results += f"You attack the <span class='bold'>{self.current_monster.monster_name}</span> with your <span class='yellow'>{self.player.weapon['name']}</span> and deal <span class='yellow'>{effective_player_damage}</span> damage with {player_hits} hits (correct answers).<br>"
+            battle_results += f"You deal <span class='yellow'>{effective_player_damage}</span> damage.<br>"
         else:
-            battle_results += f"Your attack couldn't penetrate the <span class='bold'>{self.current_monster.monster_name}</span>'s defense.<br>"
-
+            battle_results += "Your attack was ineffective.<br>"
         if effective_monster_damage > 0:
-            battle_results += f"The <span class='bold'>{self.current_monster.monster_name}</span> retaliates and deals <span class='red'>{effective_monster_damage}</span> damage to you due to {monster_hits} incorrect answers.<br>"
+            battle_results += f"The monster hits you for <span class='red'>{effective_monster_damage}</span> damage.<br>"
         else:
             if monster_hits > 0:
-                battle_results += f"The <span class='bold'>{self.current_monster.monster_name}</span>'s attack couldn't penetrate your <span class='yellow'>{self.player.armor['name']}</span>.<br>"
+                battle_results += "The monster cannot penetrate your armor.<br>"
             else:
-                battle_results += "You avoided all incorrect options. The monster couldn't counter-attack.<br>"
+                battle_results += "No counter-attack from the monster.<br>"
 
-        # Monster Defeated
         if self.current_monster.hit_points <= 0:
-            battle_results += f"<span class='bold'>You have defeated the {self.current_monster.monster_name}!</span><br>"
-            self.player.gold += self.current_monster.gold_value
-            battle_results += f"You collect <span class='yellow'>{self.current_monster.gold_value}</span> gold pieces.<br>"
-            battle_results += f"Total gold: <span class='yellow'>{self.player.gold}</span>.<br>"
+            battle_results += f"<span class='bold'>You defeated {self.current_monster.monster_name}!</span><br>"
+            # Award XP
+            self.player.xp += self.current_monster.xp_value
+            battle_results += f"XP gained: <span class='yellow'>{self.current_monster.xp_value}</span> (Total: {self.player.xp}/{self.player.xp_to_next_level})<br>"
+            self.check_level_up()
         else:
-            battle_results += f"The <span class='bold'>{self.current_monster.monster_name}</span> has <span class='yellow'>{self.current_monster.hit_points}</span> HP remaining.<br>"
+            battle_results += f"Monster HP: <span class='yellow'>{self.current_monster.hit_points}</span><br>"
 
-        # Player Defeated
         if self.player.hit_points <= 0:
             battle_results += f"<span class='red bold'>You have been defeated! Game Over.</span></div></div>"
-            self.main_container.children = [
-                widgets.HTML(value=battle_results)
-            ]
+            self.main_container.children = [widgets.HTML(value=battle_results)]
             return
 
-        # Player Status
-        battle_results += f"Your current HP: <span class='yellow'>{self.player.hit_points}</span>.<br>"
-
-        # Re-add question if not perfectly answered
+        battle_results += f"Your HP: <span class='yellow'>{self.player.hit_points}/{self.player.max_hit_points}</span><br>"
         if missed_correct or incorrect_selections:
             self.questions_to_ask.append(self.current_question)
-            battle_results += "<span class='cyan'>You didn't answer perfectly. The question will come up again later.</span><br>"
-
+            battle_results += "<span class='cyan'>You will face this question again.</span><br>"
         battle_results += "</div></div>"
 
-        # Increment the number of questions asked
         self.questions_asked += 1
-
-        # Decide whether to present the store or the next encounter
-        if self.questions_asked % self.STORE_INTERVAL == 0 and self.questions_asked > 0:
-            self.present_store()
-            return
-
-        # Display the battle results and a continue button
         continue_button = widgets.Button(description="Continue", button_style='primary', layout=widgets.Layout(width='150px'))
         continue_button.on_click(lambda b: self.present_encounter())
-        self.main_container.children = [
-            widgets.HTML(value=battle_results),
-            continue_button
-        ]
+        self.main_container.children = [widgets.HTML(value=battle_results), continue_button]
 
-  
-    def present_store(self):
-        """
-        Present the store to the player where they can buy items.
-        """
-        self.just_visited_store = True  # Set the flag
-        store_html = f"""
-        <div class='bbs-container'>
-            <div class='title'>The Traveling Merchant</div>
-            <div class='section'>
-                A mysterious merchant appears and offers you goods for sale.
-            </div>
-        </div>
-        """
-
-        # Update the gold label
-        self.gold_label.value = f"You have <span class='yellow'>{self.player.gold}</span> gold."
-
-        # Create a list to hold all items for sale
-        items_for_sale = []
-
-        # Add weapons to items for sale
-        for weapon_name, weapon in WEAPONS.items():
-            # Skip the starting weapon (Fists) or any items the player already has
-            if weapon_name == "Fists" or weapon_name == self.player.weapon['name']:
-                continue
-            items_for_sale.append({
-                "name": weapon['name'],
-                "type": "weapon",
-                "price": weapon['price'],
-                "stats": f"Atk Die: {weapon['attack_die']}"
-            })
-
-        # Add armors to items for sale
-        for armor_name, armor in ARMORS.items():
-            # Skip the starting armor (Clothes) or any items the player already has
-            if armor_name == "Clothes" or armor_name == self.player.armor['name']:
-                continue
-            items_for_sale.append({
-                "name": armor['name'],
-                "type": "armor",
-                "price": armor['price'],
-                "stats": f"Defense: {armor['defense']}"
-            })
-
-        # Add potions or other consumables
-        items_for_sale.append({
-            "name": "Health Potion",
-            "type": "potion",
-            "price": 20,
-            "effect": "heal",
-            "value": 10,
-            "stats": "+10 HP"
-        })
-
-        # Create widgets to display items and allow purchase
-        item_widgets = []
-        for item in items_for_sale:
-            # Create a label for the item
-            item_label = widgets.HTML(
-                value=f"<div style='display: flex; align-items: center; width: 600px;'>"
-                      f"<span style='flex: 1; font-size:14px; word-wrap: break-word;'>{item['name']} ({item['stats']}) "
-                      f"(<span class='yellow'>{item['price']}</span> gold)</span>"
-                      f"</div>"
-            )
-            # Create a buy button
-            buy_button = widgets.Button(
-                description="Buy",
-                button_style='primary',
-                layout=widgets.Layout(width='80px')
-            )
-            # Disable button if player can't afford or already owns the item
-            if self.player.gold < item['price'] or (
-                (item['type'] == 'weapon' and item['name'] == self.player.weapon['name']) or
-                (item['type'] == 'armor' and item['name'] == self.player.armor['name'])
-            ):
-                buy_button.disabled = True
-
-            # Capture the current item in the lambda
-            buy_button.on_click(lambda b, item=item: self.buy_item(item))
-            # Combine label and button in a horizontal box
-            item_row = widgets.HBox([item_label, buy_button], layout=widgets.Layout(gap='10px'))
-            item_widgets.append(item_row)
-
-        # Create a container for the item widgets
-        items_box = widgets.VBox(item_widgets, layout=widgets.Layout(gap='10px', overflow_y='auto', max_height='400px'))
-
-        # Create a button to continue the adventure
-        continue_button = widgets.Button(
-            description="Continue Adventure",
-            button_style='success',
-            layout=widgets.Layout(width='200px')
-        )
-        continue_button.on_click(lambda b: self.game_loop())
-
-        # Update the main container
-        self.main_container.children = [
-            widgets.HTML(value=store_html),
-            self.gold_label,
-            items_box,
-            self.store_message,
-            continue_button
-        ]
-
-    def buy_item(self, item):
-        """
-        Handle the purchase of an item.
-        """
-        if self.player.gold < item['price']:
-            # Not enough gold
-            message = f"<div class='bbs-container'><div class='section'><span class='red'>You do not have enough gold to buy {item['name']}.</span></div></div>"
-        else:
-            self.player.gold -= item['price']
-            if item['type'] == 'potion':
-                # Heal the player
-                self.player.hit_points += item['value']
-                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased {item['name']} and healed {item['value']} HP.</span></div></div>"
-            elif item['type'] == 'weapon':
-                # Update the player's weapon
-                self.player.weapon = WEAPONS[item['name']]
-                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased and equipped {item['name']}.</span></div></div>"
-            elif item['type'] == 'armor':
-                # Update the player's armor
-                self.player.armor = ARMORS[item['name']]
-                message = f"<div class='bbs-container'><div class='section'><span class='cyan'>You purchased and equipped {item['name']}.</span></div></div>"
-            else:
-                message = f"<div class='bbs-container'><div class='section'><span class='red'>Error: Unknown item type.</span></div></div>"
-
-            # Update the gold label
-            self.gold_label.value = f"You have <span class='yellow'>{self.player.gold}</span> gold."
-
-        # Update the message
-        self.store_message.value = message
-
-        # Refresh the store to update button states
-        self.present_store()
+    def check_level_up(self):
+        if self.player.xp >= self.player.xp_to_next_level:
+            # Level up
+            self.player.level += 1
+            # Increase xp requirement for next level 
+            self.player.xp_to_next_level = self.player.xp_to_next_level + round(self.player.xp_to_next_level * 1.5)
+            # Increase max HP and restore fully
+            self.player.max_hit_points += 5
+            self.player.hit_points = self.player.max_hit_points
+            # Upgrade gear if available
+            if self.player.level <= len(WEAPONS):
+                self.player.weapon = WEAPONS[self.player.level - 1]
+            if self.player.level <= len(ARMORS):
+                self.player.armor = ARMORS[self.player.level - 1]
 
     def show_victory(self):
-        """
-        Display the victory screen when all questions are answered.
-        """
         victory_html = f"""
         <div class='bbs-container'>
             <div class='title'>Victory!</div>
             <div class='section'>
-                Congratulations! You have answered all questions and defeated all monsters.<br>
-                <span class='bold'>Final Stats:</span><br>
-                Correct Answers: <span class='yellow'>{self.player.total_correct}</span><br>
-                Incorrect Answers: <span class='yellow'>{self.player.total_incorrect}</span><br>
-                HP: <span class='yellow'>{self.player.hit_points}</span><br>
-                Gold: <span class='yellow'>{self.player.gold}</span><br>
+                All questions answered.<br>
+                Correct: <span class='yellow'>{self.player.total_correct}</span><br>
+                Incorrect: <span class='yellow'>{self.player.total_incorrect}</span><br>
+                Level: <span class='yellow'>{self.player.level}</span><br>
+                HP: <span class='yellow'>{self.player.hit_points}/{self.player.max_hit_points}</span><br>
                 Weapon: <span class='yellow'>{self.player.weapon['name']}</span><br>
                 Armor: <span class='yellow'>{self.player.armor['name']}</span>
             </div>
@@ -702,66 +373,21 @@ class Game:
         """
         self.main_container.children = [widgets.HTML(value=victory_html)]
 
-    def show_game_over(self):
-        """
-        Display the game over screen when the player is defeated.
-        """
-        game_over_html = f"""
-        <div class='bbs-container'>
-            <div class='title'>Game Over</div>
-            <div class='section'>
-                You have been defeated by the <span class='bold underline'>{self.current_monster.monster_name}</span>.<br>
-                <span class='bold'>Final Stats:</span><br>
-                Correct Answers: <span class='yellow'>{self.player.total_correct}</span><br>
-                Incorrect Answers: <span class='yellow'>{self.player.total_incorrect}</span><br>
-                HP: <span class='yellow'>{self.player.hit_points}</span><br>
-                Gold: <span class='yellow'>{self.player.gold}</span><br>
-                Weapon: <span class='yellow'>{self.player.weapon['name']}</span><br>
-                Armor: <span class='yellow'>{self.player.armor['name']}</span>
-            </div>
-        </div>
-        """
-        self.main_container.children = [widgets.HTML(value=game_over_html)]
+    def append_html(self, html_str: str):
+        children = list(self.main_container.children)
+        children.append(widgets.HTML(value=html_str))
+        self.main_container.children = tuple(children)
 
-    def game_loop(self):
-        """
-        Main game loop to handle game progression.
-        """
-        if self.player.hit_points <= 0:
-            self.show_game_over()
-            return
-        if not self.questions_to_ask and not self.current_monster:
-            self.show_victory()
-            return
-        # Check if it's time to show the store
-        if (self.questions_asked % self.STORE_INTERVAL == 0 and
-                self.questions_asked > 0 and not self.just_visited_store):
-            self.present_store()
-        else:
-            self.just_visited_store = False  # Reset the flag
-            self.present_encounter()
-
-# ----------------------------
-# Function to Start the Game
-# ----------------------------
-
-def start_game(questions_file, monsters_file = "default"):
-    """
-    Start the quiz game using the provided questions and monsters JSON files.
-    The files can be local file paths or URLs.
-    """
-    # Load questions and monsters data
+# **start_game**
+def start_game(questions_file, monsters_file="default"):
     questions_data = load_json(questions_file)
     if monsters_file == "default":
         monsters_file = "https://github.com/brendanpshea/computing_concepts_python/raw/main/lotr/lotr_monsters.json"
     monsters_data = load_json(monsters_file)
-    # Check if data was loaded successfully
     if not questions_data:
-        print("Cannot start the game without questions.")
+        print("Cannot start without questions.")
         return
     if not monsters_data:
-        print("Cannot start the game without monsters.")
+        print("Cannot start without monsters.")
         return
-
-    # Initialize and start the game
-    game = Game(questions_data=questions_data, monsters_data=monsters_data)
+    Game(questions_data=questions_data, monsters_data=monsters_data)
