@@ -138,5 +138,145 @@
         "hit_dice": 1,
         "attack_die": 4,
         "defense": 1
+    }.
+     {
+        "monster_name": "Living Topiary",
+        "initial_description": "A carefully manicured bush shaped like a unicorn gallops towards you. Its leafy mane flows in the wind, and its hedge-clipped hooves make surprisingly intimidating thuds.",
+        "hit_dice": 4,
+        "attack_die": 8,
+        "defense": 2
+    },
+    {
+        "monster_name": "Ink Elemental",
+        "initial_description": "A swirling mass of living ink rises from a fallen quill. It seems to be writing threatening messages in mid-air, though its spelling could use some work.",
+        "hit_dice": 5,
+        "attack_die": 8,
+        "defense": 2
+    },
+    {
+        "monster_name": "Clockwork Knight",
+        "initial_description": "A mechanical warrior approaches, each step precisely measured. It stops briefly to oil its joints before raising its sword with mathematical precision.",
+        "hit_dice": 6,
+        "attack_die": 10,
+        "defense": 4
+    },
+    {
+        "monster_name": "Cheese Golem",
+        "initial_description": "A hulking figure made entirely of various aged cheeses lumbers forward. The smell alone could be considered a weapon.",
+        "hit_dice": 5,
+        "attack_die": 8,
+        "defense": 3
+    },
+    {
+        "monster_name": "Origami Dragon",
+        "initial_description": "A paper dragon unfolds itself from a nearby scroll. It looks delicate but those edges seem surprisingly sharp.",
+        "hit_dice": 3,
+        "attack_die": 6,
+        "defense": 2
+    },
+    {
+        "monster_name": "Bookwyrm",
+        "initial_description": "A serpentine creature made of bound books and loose pages slithers forth, apparently very angry about overdue library fees.",
+        "hit_dice": 4,
+        "attack_die": 8,
+        "defense": 2
+    },
+    {
+        "monster_name": "Crystaline Warrior",
+        "initial_description": "A humanoid figure of pure crystal steps forward, refracting light in dazzling patterns. It raises a translucent blade that chimes melodiously.",
+        "hit_dice": 6,
+        "attack_die": 10,
+        "defense": 3
+    },
+    {
+        "monster_name": "Possessed Painting",
+        "initial_description": "A portrait steps out of its frame, its subject now three-dimensional but still somewhat flat. It poses dramatically, waiting for the perfect angle to attack.",
+        "hit_dice": 3,
+        "attack_die": 6,
+        "defense": 2
+    },
+    {
+        "monster_name": "Soup Spirit",
+        "initial_description": "A steaming apparition rises from a abandoned bowl of soup, wielding a spectral ladle. The phrase 'you are what you eat' comes to mind.",
+        "hit_dice": 4,
+        "attack_die": 6,
+        "defense": 2
+    },
+    {
+        "monster_name": "Marble Sphinx",
+        "initial_description": "A sphinx carved from marble springs to life, its stone wings creating a shower of dust. It opens its mouth to ask a riddle, but just meows instead.",
+        "hit_dice": 5,
+        "attack_die": 8,
+        "defense": 4
+    },
+    {
+        "monster_name": "Living Constellation",
+        "initial_description": "A cluster of stars descends from above, forming the shape of a warrior. It brandishes a sword made of starlight, though it keeps losing its shape as the stars drift slightly.",
+        "hit_dice": 6,
+        "attack_die": 10,
+        "defense": 3
+    },
+    {
+        "monster_name": "Yarn Elemental",
+        "initial_description": "A swirling vortex of yarn approaches, knitting needles orbiting it menacingly. Several half-finished scarves trail behind it like tentacles.",
+        "hit_dice": 3,
+        "attack_die": 6,
+        "defense": 2
+    },
+    {
+        "monster_name": "Mosaic Guardian",
+        "initial_description": "A figure assembled from countless tiny tiles shifts into view. Pieces occasionally fall off only to float back into place, making a sound like angry wind chimes.",
+        "hit_dice": 5,
+        "attack_die": 8,
+        "defense": 3
+    },
+    {
+        "monster_name": "Fungal Knight",
+        "initial_description": "A humanoid figure composed entirely of various mushrooms emerges from the shadows. Its armor appears to be made of shelf fungi, and spores puff out with each step.",
+        "hit_dice": 4,
+        "attack_die": 8,
+        "defense": 3
+    },
+    {
+        "monster_name": "Prism Beast",
+        "initial_description": "A creature made of pure light refracts through a crystal, splitting into a rainbow of colored copies. Each one seems to think it's the original.",
+        "hit_dice": 5,
+        "attack_die": 8,
+        "defense": 2
+    },
+    {
+        "monster_name": "Clockwork Phoenix",
+        "initial_description": "A mechanical bird wreathed in steam and magical flames soars overhead. Its gears grind in a way that somehow sounds like a battle cry.",
+        "hit_dice": 6,
+        "attack_die": 10,
+        "defense": 3
+    },
+    {
+        "monster_name": "Echo Knight",
+        "initial_description": "A warrior made of pure sound waves materializes, each movement creating ripples in the air. Its battle cry is literally its entire being.",
+        "hit_dice": 4,
+        "attack_die": 8,
+        "defense": 2
+    },
+    {
+        "monster_name": "Textile Titan",
+        "initial_description": "A giant humanoid woven from various fabrics towers above you. It brandishes a needle like a sword, trailing a thread that seems sharp enough to cut.",
+        "hit_dice": 6,
+        "attack_die": 10,
+        "defense": 3
+    },
+    {
+        "monster_name": "Puzzle Golem",
+        "initial_description": "A construct made of interlocking puzzle pieces shuffles forward. Parts of it occasionally fall off and reassemble in different configurations.",
+        "hit_dice": 5,
+        "attack_die": 8,
+        "defense": 3
+    },
+    {
+        "monster_name": "Living Sundial",
+        "initial_description": "A creature of shadow and brass rotates menacingly. Its gnomon points at you like an accusing finger as it prepares to tell you your time is up.",
+        "hit_dice": 3,
+        "attack_die": 6,
+        "defense": 2
     }
 ]
