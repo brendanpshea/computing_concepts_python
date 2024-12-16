@@ -59,7 +59,7 @@
         "monster_name": "Beholder",
         "initial_description": "A floating orb with multiple eyestalks drifts into view. It looks like it's having a bad hair day, if eyes could have hair.",
         "hit_dice": 10,
-        "attack_die": 12,
+        "attack_die": 20,
         "defense": 5
     },
     {
