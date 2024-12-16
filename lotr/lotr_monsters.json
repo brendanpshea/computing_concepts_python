@@ -138,7 +138,7 @@
         "hit_dice": 1,
         "attack_die": 4,
         "defense": 1
-    }.
+    },
      {
         "monster_name": "Living Topiary",
         "initial_description": "A carefully manicured bush shaped like a unicorn gallops towards you. Its leafy mane flows in the wind, and its hedge-clipped hooves make surprisingly intimidating thuds.",
