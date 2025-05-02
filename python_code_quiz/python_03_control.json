@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "function_name": "number_sign",
+      "parameters": ["number"],
+      "description": "Write a function that takes a number and returns the string 'Negative' if it's less than zero, or 'Non-negative' otherwise. Use comparison operators (< or >) to check the value.",
+      "input_type": ["int"],
+      "answer_code": "def number_sign(number):\n    if number < 0:\n        return 'Negative'\n    return 'Non-negative'",
+      "hint": "Use the < operator to check if the number is less than zero.",
+      "test_inputs": [[-5], [0], [10]]
+    },
+    {
+      "function_name": "voting_status",
+      "parameters": ["age"],
+      "description": "Write a function that determines a person's voting eligibility based on age. Return 'Can vote' if they are 18 or older, or 'Cannot vote' otherwise. Use comparison operators (>= or <=) to check the age.",
+      "input_type": ["int"],
+      "answer_code": "def voting_status(age):\n    if age >= 18:\n        return 'Can vote'\n    return 'Cannot vote'",
+      "hint": "Use the >= operator to check if the age is greater than or equal to 18.",
+      "test_inputs": [[20], [18], [16]]
+    },
+    {
+      "function_name": "divisibility_by_three",
+      "parameters": ["number"],
+      "description": "Write a function that checks if a number is divisible by 3. Return 'Divisible by 3' if it is, or 'Not divisible by 3' otherwise. Use the modulo operator (%) to check divisibility.",
+      "input_type": ["int"],
+      "answer_code": "def divisibility_by_three(number):\n    if number % 3 == 0:\n        return 'Divisible by 3'\n    return 'Not divisible by 3'",
+      "hint": "Use the modulo operator (%) to check if the remainder when divided by 3 is 0.",
+      "test_inputs": [[9], [10], [0]]
+    },
+    {
+      "function_name": "begins_with_a",
+      "parameters": ["text"],
+      "description": "Write a function that checks if a string starts with the letter 'A' (case-insensitive). Return 'Starts with A' if it does, or 'Does not start with A' otherwise. Use string methods like lower() or upper() and startswith() in your solution.",
+      "input_type": ["string"],
+      "answer_code": "def begins_with_a(text):\n    if text.lower().startswith('a'):\n        return 'Starts with A'\n    return 'Does not start with A'",
+      "hint": "Convert the string to lowercase using the lower() method, then use the startswith() method to check the first character.",
+      "test_inputs": [["Apple"], ["Banana"], ["apple"]]
+    },
+    {
+      "function_name": "score_validity",
+      "parameters": ["score"],
+      "description": "Write a function that checks if a test score is valid (between 0 and 100 inclusive). Return 'Valid score' if it is valid, or 'Invalid score' otherwise. Use comparison operators and consider using a combined comparison (0 <= score <= 100).",
+      "input_type": ["float"],
+      "answer_code": "def score_validity(score):\n    if 0 <= score <= 100:\n        return 'Valid score'\n    return 'Invalid score'",
+      "hint": "Use a combined comparison to check if the score is between 0 and 100 inclusive.",
+      "test_inputs": [[85], [-5], [105]]
+    },
+    {
+      "function_name": "get_letter_grade",
+      "parameters": ["score"],
+      "description": "Write a function that converts a numerical score to a letter grade. Use the following scale: A (90-100), B (80-89), C (70-79), D (60-69), F (below 60). Use if-elif-else statements to check the score ranges.",
+      "input_type": ["float"],
+      "answer_code": "def get_letter_grade(score):\n    if score >= 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    elif score >= 70:\n        return 'C'\n    elif score >= 60:\n        return 'D'\n    else:\n        return 'F'",
+      "hint": "Use if-elif-else statements to check the score ranges, starting from the highest grade.",
+      "test_inputs": [[85], [95], [75], [65], [55]]
+    },
+    {
+      "function_name": "compare_numbers",
+      "parameters": ["a", "b"],
+      "description": "Write a function that compares two numbers and returns 'greater', 'equal', or 'less' if the first number is greater than, equal to, or less than the second number. Use if-elif-else statements with comparison operators (>, ==, <).",
+      "input_type": ["int", "int"],
+      "answer_code": "def compare_numbers(a, b):\n    if a > b:\n        return 'greater'\n    elif a == b:\n        return 'equal'\n    else:\n        return 'less'",
+      "hint": "Use if-elif-else statements to compare the two numbers with >, ==, and < operators.",
+      "test_inputs": [[5, 3], [3, 5], [4, 4]]
+    },
+    {
+      "function_name": "water_state",
+      "parameters": ["temperature"],
+      "description": "Write a function that determines the state of water at a given temperature in Celsius. Return 'solid' if below 0, 'liquid' if between 0 and 100 (inclusive), and 'gas' if above 100. Use if-elif-else statements with appropriate comparison operators.",
+      "input_type": ["float"],
+      "answer_code": "def water_state(temperature):\n    if temperature < 0:\n        return 'solid'\n    elif temperature <= 100:\n        return 'liquid'\n    else:\n        return 'gas'",
+      "hint": "Use if-elif-else statements to check the temperature ranges for each state of water.",
+      "test_inputs": [[25], [-10], [100], [101]]
+    },
+    {
+      "function_name": "ticket_price",
+      "parameters": ["age"],
+      "description": "Write a function that calculates the ticket price based on age. Children (under 13) pay $5, teens (13-17) pay $8, adults (18-64) pay $12, and seniors (65+) pay $6. Use if-elif-else statements to handle the different age categories.",
+      "input_type": ["int"],
+      "answer_code": "def ticket_price(age):\n    if age < 13:\n        return 5\n    elif age <= 17:\n        return 8\n    elif age <= 64:\n        return 12\n    else:\n        return 6",
+      "hint": "Use if-elif-else statements to check the age ranges for each ticket price category.",
+      "test_inputs": [[10], [15], [20], [70]]
+    },
+    {
+      "function_name": "check_password",
+      "parameters": ["password"],
+      "description": "Write a function that checks if a password is valid. A valid password must be at least 8 characters long. Return 'Valid' if it's valid, or 'Too short' if it's too short. Use the len() function to get the string length and if-else statements.",
+      "input_type": ["string"],
+      "answer_code": "def check_password(password):\n    if len(password) >= 8:\n        return 'Valid'\n    else:\n        return 'Too short'",
+      "hint": "Use the len() function to get the length of the password, then check if it's at least 8 characters with an if-else statement.",
+      "test_inputs": [["secure123"], ["pass"], ["password123"]]
+    },
+    {
+      "function_name": "sum_numbers",
+      "parameters": ["n"],
+      "description": "Write a function that calculates the sum of all integers from 1 to n (inclusive). Use a for loop with range() to iterate through the numbers and keep a running total with the += operator.",
+      "input_type": ["int"],
+      "answer_code": "def sum_numbers(n):\n    total = 0\n    for i in range(1, n+1):\n        total += i\n    return total",
+      "hint": "Use a for loop with range() to iterate from 1 to n, adding each number to a running total.",
+      "test_inputs": [[4], [1], [10]]
+    },
+    {
+      "function_name": "count_vowels",
+      "parameters": ["text"],
+      "description": "Write a function that counts the number of vowels (a, e, i, o, u) in a string (case-insensitive). Use a for loop to iterate through the characters, the lower() method to handle case, and the in operator to check if a character is a vowel.",
+      "input_type": ["string"],
+      "answer_code": "def count_vowels(text):\n    vowels = 'aeiou'\n    count = 0\n    for char in text.lower():\n        if char in vowels:\n            count += 1\n    return count",
+      "hint": "Use a for loop to iterate through each character in the string, and check if the lowercase character is in the vowels string.",
+      "test_inputs": [["Hello"], ["Python Programming"], ["aeiou"]]
+    },
+    {
+      "function_name": "multiply_range",
+      "parameters": ["start", "end"],
+      "description": "Write a function that calculates the product of all integers from start to end (inclusive). Use a for loop with range() to iterate through the numbers and keep a running product with the *= operator.",
+      "input_type": ["int", "int"],
+      "answer_code": "def multiply_range(start, end):\n    product = 1\n    for i in range(start, end+1):\n        product *= i\n    return product",
+      "hint": "Use a for loop with range() to iterate from start to end, multiplying each number to a running product.",
+      "test_inputs": [[2, 4], [1, 5], [5, 7]]
+    },
+    {
+      "function_name": "repeat_char",
+      "parameters": ["char", "n"],
+      "description": "Write a function that repeats a character n times, creating a string. Use a for loop with range() and string concatenation with the += operator. Do not use the string multiplication operator (*).",
+      "input_type": ["string", "int"],
+      "answer_code": "def repeat_char(char, n):\n    result = ''\n    for i in range(n):\n        result += char\n    return result",
+      "hint": "Use a for loop with range() to append the character to a result string n times.",
+      "test_inputs": [["*", 3], ["A", 5], ["x", 0]]
+    },
+    {
+      "function_name": "sum_even_numbers",
+      "parameters": ["n"],
+      "description": "Write a function that calculates the sum of all even numbers from 2 to n (inclusive). Use a for loop with range() and its step parameter to get only even numbers, and keep a running total with the += operator.",
+      "input_type": ["int"],
+      "answer_code": "def sum_even_numbers(n):\n    total = 0\n    for i in range(2, n+1, 2):\n        total += i\n    return total",
+      "hint": "Use a for loop with range() starting at 2, ending at n, with a step of 2 to get only even numbers.",
+      "test_inputs": [[8], [2], [10]]
+    },
+    {
+      "function_name": "character_at_position",
+      "parameters": ["text", "position"],
+      "description": "Write a function that returns the character at a specific position in a string. If the position is out of range (negative or beyond the string length), return an empty string. Use if statements and string indexing.",
+      "input_type": ["string", "int"],
+      "answer_code": "def character_at_position(text, position):\n    if position < 0 or position >= len(text):\n        return ''\n    return text[position]",
+      "hint": "Check if the position is valid using if statements, then use string indexing with square brackets to get the character.",
+      "test_inputs": [["hello", 1], ["python", 0], ["code", 10]]
+    },
+    {
+      "function_name": "count_divisible_by_n",
+      "parameters": ["start", "end", "divisor"],
+      "description": "Write a function that counts how many integers from start to end (inclusive) are divisible by a given divisor. Use a for loop with range(), the modulo operator (%), and a counter variable that increments with the += operator.",
+      "input_type": ["int", "int", "int"],
+      "answer_code": "def count_divisible_by_n(start, end, divisor):\n    count = 0\n    for num in range(start, end + 1):\n        if num % divisor == 0:\n            count += 1\n    return count",
+      "hint": "Loop through the range of numbers and use the modulo operator (%) to check if each number is divisible by the divisor.",
+      "test_inputs": [[1, 10, 2], [5, 20, 5], [10, 30, 7]]
+    },
+    {
+      "function_name": "reverse_string",
+      "parameters": ["text"],
+      "description": "Write a function that reverses a string using a loop. Do not use the built-in reversed() function or string slicing with [::-1]. Use a for loop to iterate through the string and string concatenation, adding each character to the beginning of a new string.",
+      "input_type": ["string"],
+      "answer_code": "def reverse_string(text):\n    reversed_text = ''\n    for char in text:\n        reversed_text = char + reversed_text\n    return reversed_text",
+      "hint": "Loop through each character in the string and add it to the beginning of a new string.",
+      "test_inputs": [["hello"], ["python"], ["racecar"]]
+    },
+    {
+      "function_name": "fizz_buzz",
+      "parameters": ["n"],
+      "description": "Implement the FizzBuzz problem for a single number n. Return 'Fizz' if n is divisible by 3, 'Buzz' if n is divisible by 5, 'FizzBuzz' if n is divisible by both 3 and 5, or the number as a string otherwise. Use if-elif-else statements, the modulo operator (%), and the str() function to convert the number to a string.",
+      "input_type": ["int"],
+      "answer_code": "def fizz_buzz(n):\n    if n % 3 == 0 and n % 5 == 0:\n        return 'FizzBuzz'\n    elif n % 3 == 0:\n        return 'Fizz'\n    elif n % 5 == 0:\n        return 'Buzz'\n    else:\n        return str(n)",
+      "hint": "Use if-elif-else statements with the modulo operator to check divisibility by 3 and 5.",
+      "test_inputs": [[15], [3], [5], [7]]
+    },
+    {
+      "function_name": "sum_digits",
+      "parameters": ["number"],
+      "description": "Write a function that calculates the sum of the digits in a non-negative integer. Use a while loop, the modulo operator (%) to extract the last digit, integer division (//) to remove the last digit, and a variable to keep a running total.",
+      "input_type": ["int"],
+      "answer_code": "def sum_digits(number):\n    total = 0\n    while number > 0:\n        digit = number % 10\n        total += digit\n        number //= 10\n    return total",
+      "hint": "Use a while loop. In each iteration, get the last digit with % 10, add it to the total, and remove it from the number with integer division //= 10.",
+      "test_inputs": [[123], [9], [1000]]
+    }
+  ]
+}
