@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "function_name": "hello_world",
+      "parameters": [],
+      "description": "Write a function that returns the string 'Hello, World!'. This is your first function, so just return the exact text inside the quotes.",
+      "input_type": [],
+      "answer_code": "def hello_world():\n    return 'Hello, World!'",
+      "hint": "You don't need any parameters for this function. Just use the return keyword with a string.",
+      "test_inputs": [[]]
+    },
+    {
+      "function_name": "add_numbers",
+      "parameters": ["a", "b"],
+      "description": "Write a function that takes two numbers and returns their sum. For example, add_numbers(3, 4) should return 7.",
+      "input_type": ["int", "int"],
+      "answer_code": "def add_numbers(a, b):\n    return a + b",
+      "hint": "Use the + operator to add the two parameters together.",
+      "test_inputs": [[3, 4], [10, 5], [0, 0]]
+    },
+    {
+      "function_name": "greet_person",
+      "parameters": ["name"],
+      "description": "Write a function that takes a person's name and returns a greeting. For example, greet_person('Alice') should return 'Hello, Alice!'.",
+      "input_type": ["string"],
+      "answer_code": "def greet_person(name):\n    return 'Hello, ' + name + '!'",
+      "hint": "Use string concatenation with the + operator to combine the greeting with the name.",
+      "test_inputs": [["Alice"], ["Bob"], ["Charlie"]]
+    },
+    {
+      "function_name": "double_number",
+      "parameters": ["number"],
+      "description": "Write a function that takes a number and returns double its value. For example, double_number(5) should return 10.",
+      "input_type": ["int"],
+      "answer_code": "def double_number(number):\n    return number * 2",
+      "hint": "Multiply the input by 2 using the * operator.",
+      "test_inputs": [[5], [0], [100]]
+    },
+    {
+      "function_name": "is_positive",
+      "parameters": ["number"],
+      "description": "Write a function that takes a number and returns True if it's greater than zero, or False otherwise. For example, is_positive(5) should return True.",
+      "input_type": ["int"],
+      "answer_code": "def is_positive(number):\n    return number > 0",
+      "hint": "Use the > operator to check if the number is greater than zero.",
+      "test_inputs": [[5], [0], [-3]]
+    },
+    {
+      "function_name": "calculate_area",
+      "parameters": ["length", "width"],
+      "description": "Write a function that calculates the area of a rectangle. It should take the length and width as parameters and return their product. For example, calculate_area(4, 5) should return 20.",
+      "input_type": ["int", "int"],
+      "answer_code": "def calculate_area(length, width):\n    return length * width",
+      "hint": "Multiply the length by the width using the * operator.",
+      "test_inputs": [[4, 5], [10, 2], [7, 7]]
+    },
+    {
+      "function_name": "convert_to_celsius",
+      "parameters": ["fahrenheit"],
+      "description": "Write a function that converts a temperature from Fahrenheit to Celsius. The formula is: Celsius = (Fahrenheit - 32) * 5/9. For example, convert_to_celsius(32) should return 0.",
+      "input_type": ["float"],
+      "answer_code": "def convert_to_celsius(fahrenheit):\n    return (fahrenheit - 32) * 5/9",
+      "hint": "First subtract 32 from the Fahrenheit temperature, then multiply by 5/9.",
+      "test_inputs": [[32], [212], [68]]
+    },
+    {
+      "function_name": "is_adult",
+      "parameters": ["age"],
+      "description": "Write a function that checks if someone is an adult (18 or older). Return True if they are an adult, or False otherwise. For example, is_adult(20) should return True.",
+      "input_type": ["int"],
+      "answer_code": "def is_adult(age):\n    return age >= 18",
+      "hint": "Use the >= operator to check if the age is greater than or equal to 18.",
+      "test_inputs": [[20], [18], [15]]
+    },
+    {
+      "function_name": "max_number",
+      "parameters": ["a", "b"],
+      "description": "Write a function that returns the larger of two numbers. Use the built-in max() function. For example, max_number(5, 10) should return 10.",
+      "input_type": ["int", "int"],
+      "answer_code": "def max_number(a, b):\n    return max(a, b)",
+      "hint": "Use the built-in max() function which returns the largest of the given arguments.",
+      "test_inputs": [[5, 10], [10, 5], [7, 7]]
+    },
+    {
+      "function_name": "absolute_value",
+      "parameters": ["number"],
+      "description": "Write a function that returns the absolute value of a number. Use the built-in abs() function. For example, absolute_value(-5) should return 5.",
+      "input_type": ["int"],
+      "answer_code": "def absolute_value(number):\n    return abs(number)",
+      "hint": "Use the built-in abs() function which returns the absolute value of a number.",
+      "test_inputs": [[-5], [5], [0]]
+    },
+    {
+      "function_name": "combine_strings",
+      "parameters": ["first_name", "last_name"],
+      "description": "Write a function that takes a person's first and last name, and returns their full name with a space in between. For example, combine_strings('John', 'Doe') should return 'John Doe'.",
+      "input_type": ["string", "string"],
+      "answer_code": "def combine_strings(first_name, last_name):\n    return first_name + ' ' + last_name",
+      "hint": "Concatenate the first name, a space, and the last name using the + operator.",
+      "test_inputs": [["John", "Doe"], ["Jane", "Smith"], ["Albert", "Einstein"]]
+    },
+    {
+      "function_name": "round_number",
+      "parameters": ["number"],
+      "description": "Write a function that rounds a number to the nearest integer. Use the built-in round() function. For example, round_number(4.7) should return 5.",
+      "input_type": ["float"],
+      "answer_code": "def round_number(number):\n    return round(number)",
+      "hint": "Use the built-in round() function which rounds a number to the nearest integer.",
+      "test_inputs": [[4.7], [3.2], [5.5]]
+    },
+    {
+      "function_name": "is_even",
+      "parameters": ["number"],
+      "description": "Write a function that checks if a number is even. Return True if it's even, or False if it's odd. For example, is_even(4) should return True.",
+      "input_type": ["int"],
+      "answer_code": "def is_even(number):\n    return number % 2 == 0",
+      "hint": "Use the modulo operator (%) to check if the remainder when divided by 2 is 0.",
+      "test_inputs": [[4], [7], [0]]
+    },
+    {
+      "function_name": "repeat_string",
+      "parameters": ["text", "times"],
+      "description": "Write a function that repeats a string a specified number of times. For example, repeat_string('hello', 3) should return 'hellohellohello'.",
+      "input_type": ["string", "int"],
+      "answer_code": "def repeat_string(text, times):\n    return text * times",
+      "hint": "In Python, you can multiply a string by a number to repeat it that many times.",
+      "test_inputs": [["hello", 3], ["abc", 2], ["x", 5]]
+    },
+    {
+      "function_name": "calculate_tip",
+      "parameters": ["bill_amount", "tip_percentage"],
+      "description": "Write a function that calculates the tip amount for a restaurant bill. It should take the bill amount and tip percentage (as a whole number, like 15 for 15%), and return the tip amount. For example, calculate_tip(50, 15) should return 7.5.",
+      "input_type": ["float", "int"],
+      "answer_code": "def calculate_tip(bill_amount, tip_percentage):\n    return bill_amount * (tip_percentage / 100)",
+      "hint": "Convert the percentage to a decimal by dividing by 100, then multiply by the bill amount.",
+      "test_inputs": [[50, 15], [100, 20], [75, 18]]
+    },
+    {
+      "function_name": "convert_to_minutes",
+      "parameters": ["hours"],
+      "description": "Write a function that converts hours to minutes. For example, convert_to_minutes(2) should return 120.",
+      "input_type": ["float"],
+      "answer_code": "def convert_to_minutes(hours):\n    return hours * 60",
+      "hint": "Multiply the hours by 60 to get the equivalent in minutes.",
+      "test_inputs": [[2], [0.5], [1.25]]
+    },
+    {
+      "function_name": "remainder_division",
+      "parameters": ["a", "b"],
+      "description": "Write a function that returns the remainder when a is divided by b. Use the modulo operator (%). For example, remainder_division(10, 3) should return 1.",
+      "input_type": ["int", "int"],
+      "answer_code": "def remainder_division(a, b):\n    return a % b",
+      "hint": "Use the modulo operator (%) to find the remainder of division.",
+      "test_inputs": [[10, 3], [7, 2], [8, 4]]
+    },
+    {
+      "function_name": "calculate_discount",
+      "parameters": ["price", "discount_percentage"],
+      "description": "Write a function that calculates the sale price after applying a discount. It should take the original price and discount percentage (as a whole number, like 20 for 20%), and return the sale price. For example, calculate_discount(100, 20) should return 80.",
+      "input_type": ["float", "int"],
+      "answer_code": "def calculate_discount(price, discount_percentage):\n    discount_amount = price * (discount_percentage / 100)\n    return price - discount_amount",
+      "hint": "First calculate the discount amount, then subtract it from the original price.",
+      "test_inputs": [[100, 20], [50, 10], [75, 25]]
+    },
+    {
+      "function_name": "string_length",
+      "parameters": ["text"],
+      "description": "Write a function that returns the length of a string. Use the built-in len() function. For example, string_length('hello') should return 5.",
+      "input_type": ["string"],
+      "answer_code": "def string_length(text):\n    return len(text)",
+      "hint": "Use the built-in len() function which returns the number of characters in a string.",
+      "test_inputs": [["hello"], [""], ["python is fun"]]
+    },
+    {
+      "function_name": "calculate_bmi",
+      "parameters": ["weight_kg", "height_m"],
+      "description": "Write a function that calculates Body Mass Index (BMI). The formula is: BMI = weight (kg) / (height (m) * height (m)). For example, calculate_bmi(70, 1.75) should return approximately 22.86.",
+      "input_type": ["float", "float"],
+      "answer_code": "def calculate_bmi(weight_kg, height_m):\n    return weight_kg / (height_m * height_m)",
+      "hint": "Divide the weight by the square of the height (height multiplied by itself).",
+      "test_inputs": [[70, 1.75], [60, 1.6], [80, 1.8]]
+    }
+  ]
+}
