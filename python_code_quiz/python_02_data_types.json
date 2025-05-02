@@ -109,9 +109,18 @@
       "test_inputs": [[4.7], [3.2], [5.5]]
     },
     {
+      "function_name": "remainder_division",
+      "parameters": ["a", "b"],
+      "description": "Write a function that returns the remainder when a is divided by b. Use the modulo operator (%). For example, remainder_division(10, 3) should return 1.",
+      "input_type": ["int", "int"],
+      "answer_code": "def remainder_division(a, b):\n    return a % b",
+      "hint": "Use the modulo operator (%) to find the remainder of division.",
+      "test_inputs": [[10, 3], [7, 2], [8, 4]]
+    },
+    {
       "function_name": "is_even",
       "parameters": ["number"],
-      "description": "Write a function that checks if a number is even. Return True if it's even, or False if it's odd. For example, is_even(4) should return True.",
+      "description": "Write a function that checks if a number is even. Return True if it's even, or False if it's odd. You'll need to use mod (%). For example, is_even(4) should return True.",
       "input_type": ["int"],
       "answer_code": "def is_even(number):\n    return number % 2 == 0",
       "hint": "Use the modulo operator (%) to check if the remainder when divided by 2 is 0.",
@@ -120,7 +129,7 @@
     {
       "function_name": "repeat_string",
       "parameters": ["text", "times"],
-      "description": "Write a function that repeats a string a specified number of times. For example, repeat_string('hello', 3) should return 'hellohellohello'.",
+      "description": "Write a function that repeats a string a specified number of times. For example, repeat_string('hello', 3) should return 'hellohellohello'. Hint: In python, you can repeat a string by using the multiplication operator (*). So 'a' * 3 gives 'aaa'. ",
       "input_type": ["string", "int"],
       "answer_code": "def repeat_string(text, times):\n    return text * times",
       "hint": "In Python, you can multiply a string by a number to repeat it that many times.",
@@ -143,15 +152,6 @@
       "answer_code": "def convert_to_minutes(hours):\n    return hours * 60",
       "hint": "Multiply the hours by 60 to get the equivalent in minutes.",
       "test_inputs": [[2], [0.5], [1.25]]
-    },
-    {
-      "function_name": "remainder_division",
-      "parameters": ["a", "b"],
-      "description": "Write a function that returns the remainder when a is divided by b. Use the modulo operator (%). For example, remainder_division(10, 3) should return 1.",
-      "input_type": ["int", "int"],
-      "answer_code": "def remainder_division(a, b):\n    return a % b",
-      "hint": "Use the modulo operator (%) to find the remainder of division.",
-      "test_inputs": [[10, 3], [7, 2], [8, 4]]
     },
     {
       "function_name": "calculate_discount",
