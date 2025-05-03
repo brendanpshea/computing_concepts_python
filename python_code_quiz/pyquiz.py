@@ -265,6 +265,14 @@ class PracticeTool:
         return a == b
 
     def _prepare_args(self, inp, clone=False):
+
+        # Handle tuple and set type specifications
+        if isinstance(inp, list) and len(inp) == 2 and isinstance(inp[0], str):
+            if inp[0] == "tuple":
+                inp = tuple(inp[1])
+            elif inp[0] == "set":
+                inp = set(inp[1])
+        
         if isinstance(inp, (list, tuple)):
             return tuple(_clone(x) if clone else x for x in inp)
         val = _clone(inp) if clone else inp
