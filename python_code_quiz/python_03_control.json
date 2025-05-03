@@ -1,6 +1,6 @@
 {
   "questions": [
-    {
+        {
       "function_name": "number_sign",
       "parameters": ["number"],
       "description": "Write a function that takes a number and returns the string 'Negative' if it's less than zero, or 'Non-negative' otherwise. Use comparison operators (< or >) to check the value.",
@@ -8,6 +8,36 @@
       "answer_code": "def number_sign(number):\n    if number < 0:\n        return 'Negative'\n    return 'Non-negative'",
       "hint": "Use the < operator to check if the number is less than zero.",
       "test_inputs": [[-5], [0], [10]]
+    },
+    {
+      "function_name": "is_mario_brother",
+      "parameters": ["name"],
+      "description": "Return True if 'name' is 'Mario' or 'Luigi', else return False.",
+      "input_type": "string",
+      "answer_code": "def is_mario_brother(name):\n    return name == 'Mario' or name == 'Luigi'",
+      "hint": "Use the '==' operator and logical 'or'.",
+      "test_inputs": [
+        "Mario",
+        "Luigi",
+        "Peach",
+        "Toad",
+        "Bowser"
+      ]
+    },
+    {
+      "function_name": "power_up_effect",
+      "parameters": ["power_up"],
+      "description": "Return 'grow' if 'power_up' is 'Mushroom', 'fire' if 'power_up' is 'Fire Flower', else 'unknown'.",
+      "input_type": "string",
+      "answer_code": "def power_up_effect(power_up):\n    if power_up == 'Mushroom':\n        return 'grow'\n    elif power_up == 'Fire Flower':\n        return 'fire'\n    else:\n        return 'unknown'",
+      "hint": "Use if, elif, and else statements.",
+      "test_inputs": [
+        "Mushroom",
+        "Fire Flower",
+        "Star",
+        "1-Up Mushroom",
+        "Leaf"
+      ]
     },
     {
       "function_name": "voting_status",
@@ -55,6 +85,36 @@
       "test_inputs": [[85], [95], [75], [65], [55]]
     },
     {
+      "function_name": "can_enter_castle",
+      "parameters": ["has_key", "is_boss_defeated"],
+      "description": "Return True if 'has_key' is True and 'is_boss_defeated' is True, else return False.",
+      "input_type": ["bool", "bool"],
+      "answer_code": "def can_enter_castle(has_key, is_boss_defeated):\n    return has_key and is_boss_defeated",
+      "hint": "Use the logical 'and' operator.",
+      "test_inputs": [
+        [true, true],
+        [true, false],
+        [false, true],
+        [false, false],
+        [true, true]
+      ]
+    },
+    {
+      "function_name": "select_character",
+      "parameters": ["choice"],
+      "description": "Return 'Mario' if 'choice' is 1, 'Luigi' if 'choice' is 2, else 'Toad'.",
+      "input_type": "int",
+      "answer_code": "def select_character(choice):\n    if choice == 1:\n        return 'Mario'\n    elif choice == 2:\n        return 'Luigi'\n    else:\n        return 'Toad'",
+      "hint": "Use if, elif, else to handle different choices.",
+      "test_inputs": [
+        1,
+        2,
+        3,
+        0,
+        -1
+      ]
+    },
+    {
       "function_name": "compare_numbers",
       "parameters": ["a", "b"],
       "description": "Write a function that compares two numbers and returns 'greater', 'equal', or 'less' if the first number is greater than, equal to, or less than the second number. Use if-elif-else statements with comparison operators (>, ==, <).",
@@ -99,14 +159,35 @@
       "hint": "Use a for loop with range() to iterate from 1 to n, adding each number to a running total.",
       "test_inputs": [[4], [1], [10]]
     },
+     {
+      "function_name": "yellow_brick_road",
+      "parameters": ["steps"],
+      "description": "Return a string of 'yellow' and 'brick' alternating 'steps' number of times.",
+      "input_type": "integer",
+      "answer_code": "def yellow_brick_road(steps):\n    result = []\n    for i in range(steps):\n        if i % 2 == 0:\n            result.append('yellow')\n        else:\n            result.append('brick')\n    return ' '.join(result)",
+      "hint": "Use a for loop and modulo operator to alternate between 'yellow' and 'brick'.",
+      "test_inputs": [
+        3,
+        5,
+        0,
+        1,
+        8
+      ]
+    },
     {
-      "function_name": "count_vowels",
-      "parameters": ["text"],
-      "description": "Write a function that counts the number of vowels (a, e, i, o, u) in a string (case-insensitive). Use a for loop to iterate through the characters, the lower() method to handle case, and the in operator to check if a character is a vowel.",
-      "input_type": ["string"],
-      "answer_code": "def count_vowels(text):\n    vowels = 'aeiou'\n    count = 0\n    for char in text.lower():\n        if char in vowels:\n            count += 1\n    return count",
-      "hint": "Use a for loop to iterate through each character in the string, and check if the lowercase character is in the vowels string.",
-      "test_inputs": [["Hello"], ["Python Programming"], ["aeiou"]]
+      "function_name": "count_munchkins",
+      "parameters": ["munchkin_heights"],
+      "description": "Count how many munchkins are shorter than 4 feet (input heights are in inches).",
+      "input_type": "list of integers",
+      "answer_code": "def count_munchkins(munchkin_heights):\n    count = 0\n    for height in munchkin_heights:\n        if height < 48:  # 4 feet = 48 inches\n            count += 1\n    return count",
+      "hint": "Use a for loop to iterate through the list and an if statement to check height.",
+      "test_inputs": [
+        [36, 42, 50, 45, 38],
+        [49, 52, 47, 50, 48],
+        [30, 35, 40],
+        [60, 55, 58],
+        []
+      ]
     },
     {
       "function_name": "multiply_range",
