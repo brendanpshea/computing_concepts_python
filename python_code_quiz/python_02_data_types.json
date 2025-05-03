@@ -19,14 +19,35 @@
       "test_inputs": [[3, 4], [10, 5], [0, 0]]
     },
     {
-      "function_name": "greet_person",
-      "parameters": ["name"],
-      "description": "Write a function that takes a person's name and returns a greeting. For example, greet_person('Alice') should return 'Hello, Alice!'.",
-      "input_type": ["string"],
-      "answer_code": "def greet_person(name):\n    return 'Hello, ' + name + '!'",
-      "hint": "Use string concatenation with the + operator to combine the greeting with the name.",
-      "test_inputs": [["Alice"], ["Bob"], ["Charlie"]]
-    },
+            "function_name": "alien_greeting",
+            "parameters": ["name"],
+            "description": "Return a greeting message to an alien named 'name'.",
+            "input_type": "string",
+            "answer_code": "def alien_greeting(name):\n    return f'Welcome to Earth, {name}!'",
+            "hint": "Use an f-string to create the greeting message.",
+            "test_inputs": [
+                "Zorg",
+                "E.T.",
+                "Spock",
+                "Klaatu",
+                "Yoda"
+            ]
+        },
+        {
+            "function_name": "calculate_hyperspace_distance",
+            "parameters": ["distance1", "distance2"],
+            "description": "Calculate the total distance of two hyperspace jumps by adding them together.",
+            "input_type": ["float", "float"],
+            "answer_code": "def calculate_hyperspace_distance(distance1, distance2):\n    return distance1 + distance2",
+            "hint": "Add the two distances together.",
+            "test_inputs": [
+                [12.5, 7.8],
+                [3.4, 5.6],
+                [100.0, 200.0],
+                [0.0, 50.0],
+                [42.0, 58.0]
+            ]
+        },
     {
       "function_name": "double_number",
       "parameters": ["number"],
@@ -36,6 +57,37 @@
       "hint": "Multiply the input by 2 using the * operator.",
       "test_inputs": [[5], [0], [100]]
     },
+      {
+            "function_name": "calculate_energy",
+            "parameters": ["mass"],
+            "description": "Calculate the energy equivalent of a mass using E=mc^2. c = 299792458.",
+            "input_type": "float",
+            "answer_code": "def calculate_energy(mass):\n    c = 299792458\n    return mass * c ** 2",
+            "hint": "Use the formula E = mass * c squared.",
+            "test_inputs": [
+                1.0,
+                0.5,
+                2.0,
+                0.1,
+                0.001
+            ]
+        },
+
+    {
+            "function_name": "join_planet_names",
+            "parameters": ["planet1", "planet2"],
+            "description": "Return the two planet names joined with ' and ' in between.",
+            "input_type": ["string", "string"],
+            "answer_code": "def join_planet_names(planet1, planet2):\n    return planet1 + ' and ' + planet2",
+            "hint": "Concatenate the strings with ' and ' in between.",
+            "test_inputs": [
+                ["Earth", "Mars"],
+                ["Vulcan", "Krypton"],
+                ["Tatooine", "Naboo"],
+                ["Pandora", "Arrakis"],
+                ["Gallifrey", "Cybertron"]
+            ]
+        },
     {
       "function_name": "is_positive",
       "parameters": ["number"],
