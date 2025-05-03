@@ -1,0 +1,139 @@
+{
+  "questions": [
+    {
+      "function_name": "first_element",
+      "parameters": ["elements"],
+      "description": "Write a function that returns the first element of a list. If the list is empty, return None. Use list indexing to access the first element.",
+      "input_type": ["list"],
+      "answer_code": "def first_element(elements):\n    if len(elements) > 0:\n        return elements[0]\n    return None",
+      "hint": "Use list indexing with the index 0 to access the first element, but first check if the list has any elements.",
+      "test_inputs": [[[1, 2, 3]], [["hello", "world"]], [[]], [[42]]]
+    },
+    {
+      "function_name": "last_element",
+      "parameters": ["elements"],
+      "description": "Write a function that returns the last element of a list. If the list is empty, return None. Use list indexing with negative index to access the last element.",
+      "input_type": ["list"],
+      "answer_code": "def last_element(elements):\n    if len(elements) > 0:\n        return elements[-1]\n    return None",
+      "hint": "Use list indexing with the index -1 to access the last element, but first check if the list has any elements.",
+      "test_inputs": [[[1, 2, 3]], [["hello", "world"]], [[]], [[42]]]
+    },
+    {
+      "function_name": "append_to_list",
+      "parameters": ["elements", "item"],
+      "description": "Write a function that appends an item to the end of a list and returns the modified list. Use the append() method to add the item.",
+      "input_type": ["list", "any"],
+      "answer_code": "def append_to_list(elements, item):\n    elements.append(item)\n    return elements",
+      "hint": "Use the append() method to add the item to the end of the list. Remember that append() modifies the list in-place.",
+      "test_inputs": [[[1, 2, 3], 4], [[], "first"], [["a", "b"], "c"], [[true, false], null]]
+    },
+    {
+      "function_name": "sum_list",
+      "parameters": ["numbers"],
+      "description": "Write a function that calculates the sum of all numbers in a list. If the list is empty, return 0. Use a loop or the built-in sum() function.",
+      "input_type": ["list"],
+      "answer_code": "def sum_list(numbers):\n    return sum(numbers) if numbers else 0",
+      "hint": "Use the built-in sum() function, which returns the sum of all elements in an iterable. Handle the empty list case separately.",
+      "test_inputs": [[[1, 2, 3, 4]], [[]], [[10]], [[-1, -2, -3]], [[1.5, 2.5, 3.0]]]
+    },
+    {
+      "function_name": "list_to_tuple",
+      "parameters": ["elements"],
+      "description": "Write a function that converts a list to a tuple and returns the result. Use the tuple() constructor.",
+      "input_type": ["list"],
+      "answer_code": "def list_to_tuple(elements):\n    return tuple(elements)",
+      "hint": "Use the tuple() constructor to convert the list to a tuple.",
+      "test_inputs": [[[1, 2, 3]], [[]], [["a", "b", "c"]], [[42]]]
+    },
+    {
+      "function_name": "get_by_index",
+      "parameters": ["elements", "index"],
+      "description": "Write a function that first converts a list to a tuple, then returns the element at the specified index. If the index is out of range, return None. This tests tuple indexing.",
+      "input_type": ["list", "int"],
+      "answer_code": "def get_by_index(elements, index):\n    tuple_data = tuple(elements)\n    try:\n        return tuple_data[index]\n    except IndexError:\n        return None",
+      "hint": "First convert the list to a tuple using tuple(), then use tuple indexing with square brackets to access the element. Handle the IndexError exception for out-of-range indices.",
+      "test_inputs": [[[1, 2, 3], 1], [["a", "b", "c"], 0], [[42, "hello", true], 3], [[10, 20], -1]]
+    },
+    {
+      "function_name": "make_tuple",
+      "parameters": ["a", "b", "c"],
+      "description": "Write a function that creates and returns a tuple containing the three input values. Use tuple creation syntax with parentheses.",
+      "input_type": ["any", "any", "any"],
+      "answer_code": "def make_tuple(a, b, c):\n    return (a, b, c)",
+      "hint": "Create a tuple by enclosing the values in parentheses, separated by commas: (a, b, c)",
+      "test_inputs": [[1, 2, 3], ["a", "b", "c"], [true, 42, "hello"], [null, 3.14, false]]
+    },
+    {
+      "function_name": "join_tuples",
+      "parameters": ["list1", "list2"],
+      "description": "Write a function that converts two lists to tuples and then concatenates them. Return the resulting tuple. This tests tuple concatenation using the + operator.",
+      "input_type": ["list", "list"],
+      "answer_code": "def join_tuples(list1, list2):\n    tuple1 = tuple(list1)\n    tuple2 = tuple(list2)\n    return tuple1 + tuple2",
+      "hint": "First convert both lists to tuples using tuple(), then use the + operator to concatenate them into a new tuple.",
+      "test_inputs": [[[1, 2], [3, 4]], [[], [1, 2, 3]], [[1, 2, 3], []], [["a", "b"], ["c", "d"]]]
+    },
+    {
+      "function_name": "count_in_tuple",
+      "parameters": ["elements", "item"],
+      "description": "Write a function that converts a list to a tuple and then counts how many times an item appears in it. This tests the tuple count() method.",
+      "input_type": ["list", "any"],
+      "answer_code": "def count_in_tuple(elements, item):\n    tuple_data = tuple(elements)\n    return tuple_data.count(item)",
+      "hint": "First convert the list to a tuple using tuple(), then use the count() method to count occurrences of the item.",
+      "test_inputs": [[[1, 2, 3, 2, 2], 2], [["a", "b", "a", "c"], "a"], [[42, 42, 42], 42], [["x", "y", "z"], "w"]]
+    },
+    {
+      "function_name": "list_to_set",
+      "parameters": ["elements"],
+      "description": "Write a function that converts a list to a set and returns the result. Use the set() constructor.",
+      "input_type": ["list"],
+      "answer_code": "def list_to_set(elements):\n    return set(elements)",
+      "hint": "Use the set() constructor to convert the list to a set, which will automatically remove duplicate elements.",
+      "test_inputs": [[[1, 2, 3, 2, 1]], [[]], [["a", "b", "a", "c"]], [[42, 42, 42]]]
+    },
+    {
+      "function_name": "add_to_set",
+      "parameters": ["elements", "item"],
+      "description": "Write a function that converts a list to a set, adds an item to it, and returns the modified set. Use the add() method.",
+      "input_type": ["list", "any"],
+      "answer_code": "def add_to_set(elements, item):\n    set_data = set(elements)\n    set_data.add(item)\n    return set_data",
+      "hint": "First convert the list to a set using set(), then use the add() method to add the item. Remember that add() modifies the set in-place.",
+      "test_inputs": [[[1, 2, 3], 4], [[], "first"], [["a", "b"], "c"], [[true, false], null]]
+    },
+    {
+      "function_name": "combine_sets",
+      "parameters": ["list1", "list2"],
+      "description": "Write a function that converts two lists to sets and returns their union. Use the union() method or the | operator.",
+      "input_type": ["list", "list"],
+      "answer_code": "def combine_sets(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return set1 | set2",
+      "hint": "First convert both lists to sets using set(), then use the | operator or the union() method to get their union.",
+      "test_inputs": [[[1, 2], [3, 4]], [[], [1, 2, 3]], [[1, 2, 3], []], [["a", "b"], ["b", "c"]]]
+    },
+    {
+      "function_name": "find_common",
+      "parameters": ["list1", "list2"],
+      "description": "Write a function that converts two lists to sets and returns their intersection. Use the intersection() method or the & operator.",
+      "input_type": ["list", "list"],
+      "answer_code": "def find_common(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return set1 & set2",
+      "hint": "First convert both lists to sets using set(), then use the & operator or the intersection() method to find common elements.",
+      "test_inputs": [[[1, 2, 3], [2, 3, 4]], [[1, 2], [3, 4]], [[], [1, 2, 3]], [["a", "b", "c"], ["b", "c", "d"]]]
+    },
+    {
+      "function_name": "set_difference",
+      "parameters": ["list1", "list2"],
+      "description": "Write a function that converts two lists to sets and returns the elements that are in the first set but not in the second. Use the difference() method or the - operator.",
+      "input_type": ["list", "list"],
+      "answer_code": "def set_difference(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return set1 - set2",
+      "hint": "First convert both lists to sets using set(), then use the - operator or the difference() method.",
+      "test_inputs": [[[1, 2, 3], [2, 3, 4]], [[1, 2], [3, 4]], [[], [1, 2, 3]], [["a", "b", "c"], ["b", "c", "d"]]]
+    },
+    {
+      "function_name": "is_subset",
+      "parameters": ["list1", "list2"],
+      "description": "Write a function that checks if the set created from the first list is a subset of the set created from the second list. Return a boolean. Use the issubset() method or the <= operator.",
+      "input_type": ["list", "list"],
+      "answer_code": "def is_subset(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return set1 <= set2",
+      "hint": "First convert both lists to sets using set(), then use the <= operator or the issubset() method to check if set1 is a subset of set2.",
+      "test_inputs": [[[1, 2], [1, 2, 3]], [[1, 2, 3], [1, 2]], [[1, 2], [3, 4]], [[], [1, 2, 3]]]
+    }
+  ]
+}
