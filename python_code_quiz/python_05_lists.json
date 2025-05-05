@@ -1,0 +1,94 @@
+{
+  "questions": [
+    {
+      "function_name": "is_animal_in_zoo",
+      "parameters": ["zoo_animals", "animal"],
+      "description": "Write a function that checks if a specific animal is in the zoo's collection. Return True if the animal is in the list, False otherwise. Use the 'in' operator.",
+      "input_type": ["list", "str"],
+      "answer_code": "def is_animal_in_zoo(zoo_animals, animal):\n    return animal in zoo_animals",
+      "hint": "Use the 'in' operator to check if the animal exists in the zoo_animals list.",
+      "test_inputs": [[["lion", "elephant", "giraffe", "zebra"], "elephant"], [["tiger", "bear", "panda"], "wolf"], [[], "lion"], [["penguin", "seal", "polar bear"], "penguin"]]
+    },
+    {
+      "function_name": "count_book_copies",
+      "parameters": ["library", "book_title"],
+      "description": "Write a function that counts how many copies of a specific book are in the library's collection. Use the count() method.",
+      "input_type": ["list", "str"],
+      "answer_code": "def count_book_copies(library, book_title):\n    return library.count(book_title)",
+      "hint": "Use the count() method on the library list to find the number of occurrences of the book_title.",
+      "test_inputs": [[["Harry Potter", "Lord of the Rings", "Harry Potter", "Dune", "Harry Potter"], "Harry Potter"], [["1984", "Brave New World", "Fahrenheit 451"], "Animal Farm"], [[], "The Great Gatsby"], [["Pride and Prejudice", "Pride and Prejudice"], "Pride and Prejudice"]]
+    },
+    {
+      "function_name": "find_first_fossil",
+      "parameters": ["fossil_collection", "specimen"],
+      "description": "Write a function that finds the index of the first occurrence of a specific fossil specimen in the collection. If the specimen is not found, return -1. Use the index() method with error handling.",
+      "input_type": ["list", "str"],
+      "answer_code": "def find_first_fossil(fossil_collection, specimen):\n    try:\n        return fossil_collection.index(specimen)\n    except ValueError:\n        return -1",
+      "hint": "Use the index() method within a try-except block to handle the case when the specimen is not found in the list.",
+      "test_inputs": [[["Ammonite", "Trilobite", "Amber", "Coprolite"], "Trilobite"], [["T-Rex", "Velociraptor", "Triceratops"], "Stegosaurus"], [[], "Megalodon"], [["Fern", "Fish", "Fern", "Insect"], "Fern"]]
+    },
+    {
+      "function_name": "alphabetize_planets",
+      "parameters": ["planets"],
+      "description": "Write a function that returns an alphabetically sorted list of planets. Return a new sorted list without modifying the original list. Use the sorted() function.",
+      "input_type": ["list"],
+      "answer_code": "def alphabetize_planets(planets):\n    return sorted(planets)",
+      "hint": "Use the sorted() function to create a new list with the planets in alphabetical order.",
+      "test_inputs": [[["Mars", "Venus", "Earth", "Mercury"]], [["Neptune", "Jupiter", "Saturn", "Uranus"]], [[]], [["Pluto"]]]
+    },
+    {
+      "function_name": "arrange_paintings",
+      "parameters": ["gallery"],
+      "description": "Write a function that sorts a gallery's paintings in place from oldest to newest. Each painting is represented as a tuple of (name, year). Use the sort() method with a key function.",
+      "input_type": ["list"],
+      "answer_code": "def arrange_paintings(gallery):\n    gallery.sort(key=lambda painting: painting[1])\n    return gallery",
+      "hint": "Use the sort() method with a lambda function as the key parameter to sort based on the year (second element of each tuple).",
+      "test_inputs": [[[("Mona Lisa", 1503), ("Starry Night", 1889), ("The Scream", 1893), ("Guernica", 1937)]], [[("The Night Watch", 1642), ("The Birth of Venus", 1485)]], [[]], [[("Sunflowers", 1888), ("Water Lilies", 1916), ("The Persistence of Memory", 1931)]]]
+    },
+    {
+      "function_name": "top_three_mountains",
+      "parameters": ["mountains"],
+      "description": "Write a function that returns the three tallest mountains from a list of (name, height_meters) tuples. If there are fewer than three mountains, return all of them sorted by height in descending order.",
+      "input_type": ["list"],
+      "answer_code": "def top_three_mountains(mountains):\n    sorted_mountains = sorted(mountains, key=lambda m: m[1], reverse=True)\n    return sorted_mountains[:3]",
+      "hint": "Use sorted() with a key function and reverse=True to sort in descending order, then slice the list to get the first three elements.",
+      "test_inputs": [[[("Everest", 8848), ("K2", 8611), ("Kangchenjunga", 8586), ("Lhotse", 8516), ("Makalu", 8485)]], [[("Mont Blanc", 4809), ("Matterhorn", 4478)]], [[]], [[("Denali", 6190), ("Kilimanjaro", 5895), ("Aconcagua", 6962), ("Puncak Jaya", 4884)]]]
+    },
+    {
+      "function_name": "find_mushroom_species",
+      "parameters": ["forest", "characteristics"],
+      "description": "Write a function that finds all mushroom species in a forest that match the given characteristics. Each mushroom is a dictionary with keys like 'color', 'shape', and 'edible'. Return a list of mushroom names that match all characteristics.",
+      "input_type": ["list", "dict"],
+      "answer_code": "def find_mushroom_species(forest, characteristics):\n    matching_mushrooms = []\n    for mushroom in forest:\n        match = True\n        for key, value in characteristics.items():\n            if key not in mushroom or mushroom[key] != value:\n                match = False\n                break\n        if match:\n            matching_mushrooms.append(mushroom['name'])\n    return matching_mushrooms",
+      "hint": "Iterate through the list of mushroom dictionaries, check if each mushroom matches all the characteristics, and append matching mushroom names to a result list.",
+      "test_inputs": [[[{\"name\": \"Chanterelle\", \"color\": \"yellow\", \"shape\": \"funnel\", \"edible\": True}, {\"name\": \"Death Cap\", \"color\": \"white\", \"shape\": \"round\", \"edible\": False}, {\"name\": \"Oyster\", \"color\": \"white\", \"shape\": \"fan\", \"edible\": True}], {\"color\": \"white\", \"edible\": True}], [[{\"name\": \"Porcini\", \"color\": \"brown\", \"shape\": \"round\", \"edible\": True}, {\"name\": \"Morel\", \"color\": \"brown\", \"shape\": \"conical\", \"edible\": True}], {\"color\": \"brown\"}], [[{\"name\": \"Shiitake\", \"color\": \"brown\", \"shape\": \"umbrella\", \"habitat\": \"wood\"}], {\"habitat\": \"soil\"}], [[], {\"edible\": True}]]
+    },
+    {
+      "function_name": "analyze_weather_data",
+      "parameters": ["temperature_readings"],
+      "description": "Write a function that analyzes temperature readings and returns a dictionary with the minimum, maximum, and average temperatures. Use list methods and iteration.",
+      "input_type": ["list"],
+      "answer_code": "def analyze_weather_data(temperature_readings):\n    if not temperature_readings:\n        return {\"min\": None, \"max\": None, \"average\": None}\n    min_temp = min(temperature_readings)\n    max_temp = max(temperature_readings)\n    avg_temp = sum(temperature_readings) / len(temperature_readings)\n    return {\"min\": min_temp, \"max\": max_temp, \"average\": round(avg_temp, 1)}",
+      "hint": "Use min() and max() to find the lowest and highest temperatures, and calculate the average by dividing the sum by the number of readings. Return the results in a dictionary.",
+      "test_inputs": [[[22.5, 25.0, 21.8, 24.2, 26.5]], [[18.2, 19.5, 18.8, 20.1, 17.9]], [[]], [[32.7]]]
+    },
+    {
+      "function_name": "find_astronomy_events",
+      "parameters": ["event_calendar", "start_month", "end_month"],
+      "description": "Write a function that finds all astronomy events scheduled between two months (inclusive). Each event is a tuple of (name, month, day). Return a sorted list of event names.",
+      "input_type": ["list", "int", "int"],
+      "answer_code": "def find_astronomy_events(event_calendar, start_month, end_month):\n    matching_events = []\n    for event in event_calendar:\n        if start_month <= event[1] <= end_month:\n            matching_events.append(event[0])\n    return sorted(matching_events)",
+      "hint": "Iterate through the event calendar, check if each event's month is within the range, add matching event names to a list, and return the alphabetically sorted list.",
+      "test_inputs": [[[("Meteor Shower", 4, 22), ("Solar Eclipse", 7, 2), ("Lunar Eclipse", 5, 15), ("Venus Transit", 6, 8)], 4, 6], [[("Comet Viewing", 10, 5), ("Mars Opposition", 3, 12), ("Jupiter Conjunction", 8, 20)], 1, 5], [[("Satellite Launch", 12, 10), ("Space Station Flyover", 2, 15)], 6, 8], [[], 1, 12]]
+    },
+    {
+      "function_name": "group_artifacts_by_era",
+      "parameters": ["museum_collection"],
+      "description": "Write a function that organizes museum artifacts by their historical era. Each artifact is a tuple of (name, era, year). Return a dictionary where keys are eras and values are lists of artifact names from that era, sorted by year (oldest first).",
+      "input_type": ["list"],
+      "answer_code": "def group_artifacts_by_era(museum_collection):\n    era_groups = {}\n    for artifact in museum_collection:\n        name, era, year = artifact\n        if era not in era_groups:\n            era_groups[era] = []\n        era_groups[era].append((name, year))\n    \n    for era in era_groups:\n        era_groups[era].sort(key=lambda x: x[1])\n        era_groups[era] = [item[0] for item in era_groups[era]]\n    \n    return era_groups",
+      "hint": "Create a dictionary to group artifacts by era. For each era, maintain a list of (name, year) tuples, sort by year, and then extract just the names in chronological order.",
+      "test_inputs": [[[("Vase", "Ancient Greek", -500), ("Statue", "Roman", 100), ("Coin", "Ancient Greek", -300), ("Manuscript", "Medieval", 1200), ("Armor", "Medieval", 1300)]], [[("Pottery", "Mesopotamian", -3000), ("Tablet", "Mesopotamian", -2500)]], [[]], [[("Mask", "Maya", 800), ("Pottery", "Inca", 1300), ("Jewelry", "Aztec", 1400), ("Codex", "Maya", 1000)]]]
+    }
+  ]
+}
