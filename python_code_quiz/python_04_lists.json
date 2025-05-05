@@ -1,139 +1,239 @@
 {
   "questions": [
     {
-      "function_name": "first_element",
-      "parameters": ["elements"],
-      "description": "Write a function that returns the first element of a list. If the list is empty, return None. Use list indexing to access the first element.",
-      "input_type": ["list"],
-      "answer_code": "def first_element(elements):\n    if len(elements) > 0:\n        return elements[0]\n    return None",
-      "hint": "Use list indexing with the index 0 to access the first element, but first check if the list has any elements.",
-      "test_inputs": [[[1, 2, 3]], [["hello", "world"]], [[]], [[42]]]
+      "function_name": "create_stargazing_list",
+      "parameters": ["star1", "star2", "star3"],
+      "description": "Write a function that creates a list of stars for a stargazing session from individual star names passed as arguments. Return this list.",
+      "input_type": ["str", "str", "str"],
+      "answer_code": "def create_stargazing_list(star1, star2, star3):\n    return [star1, star2, star3]",
+      "hint": "Use square brackets [] and separate the star names with commas to create a list containing all three stars.",
+      "test_inputs": [["Sirius", "Vega", "Polaris"], ["Betelgeuse", "Rigel", "Aldebaran"], ["Antares", "Arcturus", "Deneb"], ["Altair", "Capella", "Castor"]]
     },
     {
-      "function_name": "last_element",
-      "parameters": ["elements"],
-      "description": "Write a function that returns the last element of a list. If the list is empty, return None. Use list indexing with negative index to access the last element.",
-      "input_type": ["list"],
-      "answer_code": "def last_element(elements):\n    if len(elements) > 0:\n        return elements[-1]\n    return None",
-      "hint": "Use list indexing with the index -1 to access the last element, but first check if the list has any elements.",
-      "test_inputs": [[[1, 2, 3]], [["hello", "world"]], [[]], [[42]]]
+      "function_name": "create_journey_stages",
+      "parameters": ["destination", "num_stages"],
+      "description": "Write a function that creates a list with stages of a journey to a destination. Each stage should be numbered (e.g., 'Stage 1: Rome', 'Stage 2: Rome'). The list should contain 'num_stages' elements.",
+      "input_type": ["str", "int"],
+      "answer_code": "def create_journey_stages(destination, num_stages):\n    journey = []\n    for i in range(1, num_stages + 1):\n        journey.append(f'Stage {i}: {destination}')\n    return journey",
+      "hint": "Initialize an empty list, then use a for loop with range() and the append() method to add each stage with its number.",
+      "test_inputs": [["Rome", 3], ["Machu Picchu", 5], ["Great Barrier Reef", 1], ["Mount Everest", 7]]
     },
     {
-      "function_name": "append_to_list",
-      "parameters": ["elements", "item"],
-      "description": "Write a function that appends an item to the end of a list and returns the modified list. Use the append() method to add the item.",
+      "function_name": "parse_genome_sequence",
+      "parameters": ["dna_string"],
+      "description": "Write a function that takes a string of DNA nucleotides (e.g., 'ATCG') and converts it to a list where each nucleotide is a separate element.",
+      "input_type": ["str"],
+      "answer_code": "def parse_genome_sequence(dna_string):\n    return list(dna_string)",
+      "hint": "Use the list() constructor on the string to convert it to a list of individual characters.",
+      "test_inputs": [["ATCG"], ["GATTACA"], [""], ["CTGAAATCG"]]
+    },
+    {
+      "function_name": "count_prime_artifacts",
+      "parameters": ["artifact_ages"],
+      "description": "Write a function that counts how many artifacts in a museum collection have ages that are prime numbers. The function should take a list of ages and return the count of prime ages.",
+      "input_type": ["list"],
+      "answer_code": "def count_prime_artifacts(artifact_ages):\n    prime_count = 0\n    for age in artifact_ages:\n        if age > 1:\n            is_prime = True\n            for i in range(2, int(age**0.5) + 1):\n                if age % i == 0:\n                    is_prime = False\n                    break\n            if is_prime:\n                prime_count += 1\n    return prime_count",
+      "hint": "Iterate through the list of ages. For each age, check if it's prime by testing divisibility by all numbers from 2 to the square root of the age.",
+      "test_inputs": [[[11, 4, 7, 9, 13]], [[2, 3, 5, 7]], [[1, 4, 6, 8, 10]], [[97, 100, 101]]]
+    },
+    {
+      "function_name": "filter_exotic_fruits",
+      "parameters": ["fruit_basket"],
+      "description": "Write a function that takes a list of fruits and returns a new list containing only fruits with names longer than 5 characters. These are considered exotic fruits in our scenario.",
+      "input_type": ["list"],
+      "answer_code": "def filter_exotic_fruits(fruit_basket):\n    exotic_fruits = []\n    for fruit in fruit_basket:\n        if len(fruit) > 5:\n            exotic_fruits.append(fruit)\n    return exotic_fruits",
+      "hint": "Iterate through the fruit basket, check the length of each fruit name using len(), and add to a new list if the length is greater than 5.",
+      "test_inputs": [[["apple", "banana", "kiwi", "dragonfruit", "fig"]], [["mango", "pineapple", "cherry", "strawberry"]], [["passion fruit", "lime", "lemon", "kumquat"]], [[]]]
+    },
+    {
+      "function_name": "check_balanced_ecosystem",
+      "parameters": ["predators", "prey"],
+      "description": "Write a function that checks if an ecosystem is balanced. It should return True if there are at least twice as many prey animals as predators, False otherwise. Both inputs are lists.",
+      "input_type": ["list", "list"],
+      "answer_code": "def check_balanced_ecosystem(predators, prey):\n    if len(predators) == 0:\n        return True\n    return len(prey) >= 2 * len(predators)",
+      "hint": "Compare the lengths of both lists. If the length of the prey list is at least twice the length of the predator list, the ecosystem is balanced.",
+      "test_inputs": [[["wolf", "fox"], ["rabbit", "deer", "mouse", "squirrel"]], [["tiger", "lion"], ["gazelle"]], [[], ["mouse", "rabbit"]], [["shark", "barracuda", "tuna"], ["sardine", "herring", "anchovy", "plankton"]]]
+    },
+    {
+      "function_name": "lead_explorer",
+      "function_name": "lead_explorer",
+      "parameters": ["expedition_team"],
+      "description": "Write a function that returns the first explorer in an expedition team list. If the team is empty, return None. Use list indexing to access the first element.",
+      "input_type": ["list"],
+      "answer_code": "def lead_explorer(expedition_team):\n    if len(expedition_team) > 0:\n        return expedition_team[0]\n    return None",
+      "hint": "Use list indexing with the index 0 to access the first explorer, but first check if the expedition team has any members.",
+      "test_inputs": [[["Amundsen", "Scott", "Shackleton"]], [["Lewis", "Clark"]], [[]], [["Armstrong"]]]
+    },
+    {
+      "function_name": "final_note",
+      "parameters": ["composition"],
+      "description": "Write a function that returns the final note in a musical composition list. If the composition is empty, return None. Use list indexing with negative index to access the last element.",
+      "input_type": ["list"],
+      "answer_code": "def final_note(composition):\n    if len(composition) > 0:\n        return composition[-1]\n    return None",
+      "hint": "Use list indexing with the index -1 to access the final note, but first check if the composition has any notes.",
+      "test_inputs": [[["C", "D", "E", "G"]], [["A", "B"]], [[]], [["F#"]]]
+    },
+    {
+      "function_name": "add_ingredient",
+      "parameters": ["recipe", "ingredient"],
+      "description": "Write a function that adds a new ingredient to a recipe list and returns the modified recipe. Use the append() method to add the ingredient.",
       "input_type": ["list", "any"],
-      "answer_code": "def append_to_list(elements, item):\n    elements.append(item)\n    return elements",
-      "hint": "Use the append() method to add the item to the end of the list. Remember that append() modifies the list in-place.",
-      "test_inputs": [[[1, 2, 3], 4], [[], "first"], [["a", "b"], "c"], [[true, false], null]]
+      "answer_code": "def add_ingredient(recipe, ingredient):\n    recipe.append(ingredient)\n    return recipe",
+      "hint": "Use the append() method to add the ingredient to the end of the recipe. Remember that append() modifies the list in-place.",
+      "test_inputs": [[["flour", "sugar", "butter"], "vanilla"], [[], "salt"], [["tomato", "cheese"], "basil"], [["water", "tea"], "honey"]]
     },
     {
-      "function_name": "sum_list",
-      "parameters": ["numbers"],
-      "description": "Write a function that calculates the sum of all numbers in a list. If the list is empty, return 0. Use a loop or the built-in sum() function.",
+      "function_name": "total_calories",
+      "parameters": ["food_items"],
+      "description": "Write a function that calculates the total calories from all food items in a list. If the list is empty, return 0. Use a loop or the built-in sum() function.",
       "input_type": ["list"],
-      "answer_code": "def sum_list(numbers):\n    return sum(numbers) if numbers else 0",
-      "hint": "Use the built-in sum() function, which returns the sum of all elements in an iterable. Handle the empty list case separately.",
-      "test_inputs": [[[1, 2, 3, 4]], [[]], [[10]], [[-1, -2, -3]], [[1.5, 2.5, 3.0]]]
+      "answer_code": "def total_calories(food_items):\n    return sum(food_items) if food_items else 0",
+      "hint": "Use the built-in sum() function, which returns the sum of all calories in the food items list. Handle the empty list case separately.",
+      "test_inputs": [[[120, 85, 200, 165]], [[]], [[450]], [[203, 175, 98]], [[75.5, 42.5, 120.0]]]
     },
     {
-      "function_name": "list_to_tuple",
-      "parameters": ["elements"],
-      "description": "Write a function that converts a list to a tuple and returns the result. Use the tuple() constructor.",
+      "function_name": "create_conservation_record",
+      "parameters": ["endangered_species"],
+      "description": "Write a function that converts a list of endangered species to an immutable conservation record (tuple) and returns the result. Use the tuple() constructor.",
       "input_type": ["list"],
-      "answer_code": "def list_to_tuple(elements):\n    return tuple(elements)",
-      "hint": "Use the tuple() constructor to convert the list to a tuple.",
-      "test_inputs": [[[1, 2, 3]], [[]], [["a", "b", "c"]], [[42]]]
+      "answer_code": "def create_conservation_record(endangered_species):\n    return tuple(endangered_species)",
+      "hint": "Use the tuple() constructor to convert the list of endangered species to an immutable conservation record.",
+      "test_inputs": [[["Panda", "Tiger", "Rhino"]], [[]], [["Elephant", "Polar Bear", "Gorilla"]], [["Blue Whale"]]]
     },
     {
-      "function_name": "get_by_index",
-      "parameters": ["elements", "index"],
-      "description": "Write a function that first converts a list to a tuple, then returns the element at the specified index. If the index is out of range, return None. This tests tuple indexing.",
+      "function_name": "get_planet",
+      "parameters": ["solar_system", "position"],
+      "description": "Write a function that first converts a list of planets to a tuple, then returns the planet at the specified position. If the position is out of range, return None. This tests tuple indexing.",
       "input_type": ["list", "int"],
-      "answer_code": "def get_by_index(elements, index):\n    tuple_data = tuple(elements)\n    try:\n        return tuple_data[index]\n    except IndexError:\n        return None",
-      "hint": "First convert the list to a tuple using tuple(), then use tuple indexing with square brackets to access the element. Handle the IndexError exception for out-of-range indices.",
-      "test_inputs": [[[1, 2, 3], 1], [["a", "b", "c"], 0], [[42, "hello", true], 3], [[10, 20], -1]]
+      "answer_code": "def get_planet(solar_system, position):\n    solar_system_tuple = tuple(solar_system)\n    try:\n        return solar_system_tuple[position]\n    except IndexError:\n        return None",
+      "hint": "First convert the list of planets to a tuple using tuple(), then use tuple indexing with square brackets to access the planet. Handle the IndexError exception for out-of-range positions.",
+      "test_inputs": [[["Mercury", "Venus", "Earth", "Mars"], 2], [["Mercury", "Venus", "Earth"], 0], [["Jupiter", "Saturn", "Uranus", "Neptune"], 5], [["Earth", "Mars"], -1]]
     },
     {
-      "function_name": "make_tuple",
-      "parameters": ["a", "b", "c"],
-      "description": "Write a function that creates and returns a tuple containing the three input values. Use tuple creation syntax with parentheses.",
+      "function_name": "dna_sequence",
+      "parameters": ["nucleotide1", "nucleotide2", "nucleotide3"],
+      "description": "Write a function that creates and returns a tuple containing three DNA nucleotides. Use tuple creation syntax with parentheses.",
       "input_type": ["any", "any", "any"],
-      "answer_code": "def make_tuple(a, b, c):\n    return (a, b, c)",
-      "hint": "Create a tuple by enclosing the values in parentheses, separated by commas: (a, b, c)",
-      "test_inputs": [[1, 2, 3], ["a", "b", "c"], [true, 42, "hello"], [null, 3.14, false]]
+      "answer_code": "def dna_sequence(nucleotide1, nucleotide2, nucleotide3):\n    return (nucleotide1, nucleotide2, nucleotide3)",
+      "hint": "Create a tuple of DNA nucleotides by enclosing the values in parentheses, separated by commas: (nucleotide1, nucleotide2, nucleotide3)",
+      "test_inputs": [["A", "T", "G"], ["C", "G", "A"], ["T", "A", "C"], ["G", "C", "T"]]
     },
     {
-      "function_name": "join_tuples",
-      "parameters": ["list1", "list2"],
-      "description": "Write a function that converts two lists to tuples and then concatenates them. Return the resulting tuple. This tests tuple concatenation using the + operator.",
+      "function_name": "merge_timelines",
+      "parameters": ["ancient_periods", "modern_periods"],
+      "description": "Write a function that converts two lists of historical periods to tuples and then concatenates them into a timeline. Return the resulting tuple. This tests tuple concatenation using the + operator.",
       "input_type": ["list", "list"],
-      "answer_code": "def join_tuples(list1, list2):\n    tuple1 = tuple(list1)\n    tuple2 = tuple(list2)\n    return tuple1 + tuple2",
-      "hint": "First convert both lists to tuples using tuple(), then use the + operator to concatenate them into a new tuple.",
-      "test_inputs": [[[1, 2], [3, 4]], [[], [1, 2, 3]], [[1, 2, 3], []], [["a", "b"], ["c", "d"]]]
+      "answer_code": "def merge_timelines(ancient_periods, modern_periods):\n    ancient_tuple = tuple(ancient_periods)\n    modern_tuple = tuple(modern_periods)\n    return ancient_tuple + modern_tuple",
+      "hint": "First convert both lists of historical periods to tuples using tuple(), then use the + operator to concatenate them into a new timeline tuple.",
+      "test_inputs": [[["Medieval", "Renaissance"], ["Industrial", "Modern"]], [[], ["Stone Age", "Bronze Age", "Iron Age"]], [["Ancient", "Classical", "Medieval"], []], [["Baroque", "Classical"], ["Romantic", "Modern"]]]
     },
     {
-      "function_name": "count_in_tuple",
-      "parameters": ["elements", "item"],
-      "description": "Write a function that converts a list to a tuple and then counts how many times an item appears in it. This tests the tuple count() method.",
+      "function_name": "count_observations",
+      "parameters": ["celestial_objects", "target_object"],
+      "description": "Write a function that converts a list of astronomical observations to a tuple and then counts how many times a specific celestial object appears in it. This tests the tuple count() method.",
       "input_type": ["list", "any"],
-      "answer_code": "def count_in_tuple(elements, item):\n    tuple_data = tuple(elements)\n    return tuple_data.count(item)",
-      "hint": "First convert the list to a tuple using tuple(), then use the count() method to count occurrences of the item.",
-      "test_inputs": [[[1, 2, 3, 2, 2], 2], [["a", "b", "a", "c"], "a"], [[42, 42, 42], 42], [["x", "y", "z"], "w"]]
+      "answer_code": "def count_observations(celestial_objects, target_object):\n    observations_tuple = tuple(celestial_objects)\n    return observations_tuple.count(target_object)",
+      "hint": "First convert the list of astronomical observations to a tuple using tuple(), then use the count() method to count occurrences of the specific celestial object.",
+      "test_inputs": [[["star", "planet", "star", "comet", "star"], "star"], [["galaxy", "nebula", "galaxy", "black hole"], "galaxy"], [["supernova", "supernova", "supernova"], "supernova"], [["asteroid", "comet", "meteor"], "planet"]]
     },
     {
-      "function_name": "list_to_set",
-      "parameters": ["elements"],
-      "description": "Write a function that converts a list to a set and returns the result. Use the set() constructor.",
+      "function_name": "unique_art_supplies",
+      "parameters": ["supplies"],
+      "description": "Write a function that converts a list of art supplies to a set (removing duplicates) and returns the result. Use the set() constructor.",
       "input_type": ["list"],
-      "answer_code": "def list_to_set(elements):\n    return set(elements)",
-      "hint": "Use the set() constructor to convert the list to a set, which will automatically remove duplicate elements.",
-      "test_inputs": [[[1, 2, 3, 2, 1]], [[]], [["a", "b", "a", "c"]], [[42, 42, 42]]]
+      "answer_code": "def unique_art_supplies(supplies):\n    return set(supplies)",
+      "hint": "Use the set() constructor to convert the list of art supplies to a set, which will automatically remove duplicate items.",
+      "test_inputs": [[["brush", "pencil", "brush", "canvas", "pencil"]], [[]], [["charcoal", "pastel", "charcoal", "easel"]], [["palette", "palette", "palette"]]]
     },
     {
-      "function_name": "add_to_set",
-      "parameters": ["elements", "item"],
-      "description": "Write a function that converts a list to a set, adds an item to it, and returns the modified set. Use the add() method.",
+      "function_name": "add_genre",
+      "parameters": ["book_genres", "new_genre"],
+      "description": "Write a function that converts a list of book genres to a set, adds a new genre to it, and returns the modified set. Use the add() method.",
       "input_type": ["list", "any"],
-      "answer_code": "def add_to_set(elements, item):\n    set_data = set(elements)\n    set_data.add(item)\n    return set_data",
-      "hint": "First convert the list to a set using set(), then use the add() method to add the item. Remember that add() modifies the set in-place.",
-      "test_inputs": [[[1, 2, 3], 4], [[], "first"], [["a", "b"], "c"], [[true, false], null]]
+      "answer_code": "def add_genre(book_genres, new_genre):\n    genres_set = set(book_genres)\n    genres_set.add(new_genre)\n    return genres_set",
+      "hint": "First convert the list of book genres to a set using set(), then use the add() method to add the new genre. Remember that add() modifies the set in-place.",
+      "test_inputs": [[["Fantasy", "SciFi", "Horror"], "Mystery"], [[], "Romance"], [["Thriller", "Biography"], "Historical"], [["Comedy", "Drama"], "Adventure"]]
     },
     {
-      "function_name": "combine_sets",
-      "parameters": ["list1", "list2"],
-      "description": "Write a function that converts two lists to sets and returns their union. Use the union() method or the | operator.",
+      "function_name": "combine_orchestras",
+      "parameters": ["string_instruments", "wind_instruments"],
+      "description": "Write a function that converts two lists of musical instruments to sets and returns their union (all unique instruments from both lists). Use the union() method or the | operator.",
       "input_type": ["list", "list"],
-      "answer_code": "def combine_sets(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return set1 | set2",
-      "hint": "First convert both lists to sets using set(), then use the | operator or the union() method to get their union.",
-      "test_inputs": [[[1, 2], [3, 4]], [[], [1, 2, 3]], [[1, 2, 3], []], [["a", "b"], ["b", "c"]]]
+      "answer_code": "def combine_orchestras(string_instruments, wind_instruments):\n    string_set = set(string_instruments)\n    wind_set = set(wind_instruments)\n    return string_set | wind_set",
+      "hint": "First convert both lists of musical instruments to sets using set(), then use the | operator or the union() method to get all unique instruments.",
+      "test_inputs": [[["violin", "cello", "bass"], ["flute", "clarinet", "oboe"]], [[], ["trumpet", "trombone", "tuba"]], [["guitar", "mandolin", "banjo"], []], [["viola", "cello"], ["cello", "bassoon"]]]
     },
     {
-      "function_name": "find_common",
-      "parameters": ["list1", "list2"],
-      "description": "Write a function that converts two lists to sets and returns their intersection. Use the intersection() method or the & operator.",
+      "function_name": "common_ingredients",
+      "parameters": ["recipe1", "recipe2"],
+      "description": "Write a function that converts two lists of cooking ingredients to sets and returns their intersection (ingredients that appear in both lists). Use the intersection() method or the & operator.",
       "input_type": ["list", "list"],
-      "answer_code": "def find_common(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return set1 & set2",
-      "hint": "First convert both lists to sets using set(), then use the & operator or the intersection() method to find common elements.",
-      "test_inputs": [[[1, 2, 3], [2, 3, 4]], [[1, 2], [3, 4]], [[], [1, 2, 3]], [["a", "b", "c"], ["b", "c", "d"]]]
+      "answer_code": "def common_ingredients(recipe1, recipe2):\n    recipe1_set = set(recipe1)\n    recipe2_set = set(recipe2)\n    return recipe1_set & recipe2_set",
+      "hint": "First convert both lists of cooking ingredients to sets using set(), then use the & operator or the intersection() method to find common ingredients.",
+      "test_inputs": [[["salt", "pepper", "garlic", "olive oil"], ["garlic", "basil", "olive oil", "tomato"]], [["flour", "sugar", "butter"], ["eggs", "milk", "vanilla"]], [[], ["salt", "pepper", "cumin"]], [["onion", "carrot", "celery"], ["celery", "potato", "onion"]]]
     },
     {
-      "function_name": "set_difference",
-      "parameters": ["list1", "list2"],
-      "description": "Write a function that converts two lists to sets and returns the elements that are in the first set but not in the second. Use the difference() method or the - operator.",
+      "function_name": "unique_species",
+      "parameters": ["ecosystem1", "ecosystem2"],
+      "description": "Write a function that converts two lists of animal species to sets and returns the elements that are in the first set but not in the second (unique to the first ecosystem). Use the difference() method or the - operator.",
       "input_type": ["list", "list"],
-      "answer_code": "def set_difference(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return set1 - set2",
-      "hint": "First convert both lists to sets using set(), then use the - operator or the difference() method.",
-      "test_inputs": [[[1, 2, 3], [2, 3, 4]], [[1, 2], [3, 4]], [[], [1, 2, 3]], [["a", "b", "c"], ["b", "c", "d"]]]
+      "answer_code": "def unique_species(ecosystem1, ecosystem2):\n    ecosystem1_set = set(ecosystem1)\n    ecosystem2_set = set(ecosystem2)\n    return ecosystem1_set - ecosystem2_set",
+      "hint": "First convert both lists of animal species to sets using set(), then use the - operator or the difference() method to find species unique to the first ecosystem.",
+      "test_inputs": [[["lion", "elephant", "giraffe", "zebra"], ["elephant", "rhino", "hippo"]], [["eagle", "hawk", "falcon"], ["hawk", "owl", "eagle"]], [[], ["shark", "dolphin", "whale"]], [["wolf", "bear", "deer", "fox"], ["coyote", "mountain lion", "rabbit"]]]
     },
     {
-      "function_name": "is_subset",
-      "parameters": ["list1", "list2"],
-      "description": "Write a function that checks if the set created from the first list is a subset of the set created from the second list. Return a boolean. Use the issubset() method or the <= operator.",
+      "function_name": "is_compound",
+      "parameters": ["elements", "compound_elements"],
+      "description": "Write a function that checks if the set of chemical elements created from the first list is a subset of the set created from the second list. Return a boolean. Use the issubset() method or the <= operator.",
       "input_type": ["list", "list"],
-      "answer_code": "def is_subset(list1, list2):\n    set1 = set(list1)\n    set2 = set(list2)\n    return set1 <= set2",
-      "hint": "First convert both lists to sets using set(), then use the <= operator or the issubset() method to check if set1 is a subset of set2.",
-      "test_inputs": [[[1, 2], [1, 2, 3]], [[1, 2, 3], [1, 2]], [[1, 2], [3, 4]], [[], [1, 2, 3]]]
+      "answer_code": "def is_compound(elements, compound_elements):\n    elements_set = set(elements)\n    compound_set = set(compound_elements)\n    return elements_set <= compound_set",
+      "hint": "First convert both lists of chemical elements to sets using set(), then use the <= operator or the issubset() method to check if the first set of elements is contained within the second set.",
+      "test_inputs": [[["H", "O"], ["H", "O", "C", "N"]], [["Na", "Cl"], ["H", "O"]], [["C", "H", "O"], ["C", "H", "O", "N"]], [[], ["Fe", "Cu", "Au"]]]
+    },
+    {
+      "function_name": "find_longest_dinosaur",
+      "parameters": ["dinosaur_names"],
+      "description": "Write a function that finds and returns the longest dinosaur name from a list of dinosaur names. If the list is empty, return an empty string.",
+      "input_type": ["list"],
+      "answer_code": "def find_longest_dinosaur(dinosaur_names):\n    if not dinosaur_names:\n        return ''\n    longest = dinosaur_names[0]\n    for dino in dinosaur_names:\n        if len(dino) > len(longest):\n            longest = dino\n    return longest",
+      "hint": "Iterate through the list of dinosaur names, keeping track of the longest one seen so far by comparing string lengths with len().",
+      "test_inputs": [[["Tyrannosaurus", "Velociraptor", "Diplodocus", "Triceratops"]], [["Stegosaurus", "Ankylosaurus", "Archaeopteryx", "Brachiosaurus"]], [[]], [["Parasaurolophus"]]]
+    },
+    {
+      "function_name": "calculate_average_temperature",
+      "parameters": ["daily_temperatures"],
+      "description": "Write a function that calculates the average temperature from a list of daily temperature readings. Return the average as a float with one decimal place. If the list is empty, return 0.0.",
+      "input_type": ["list"],
+      "answer_code": "def calculate_average_temperature(daily_temperatures):\n    if not daily_temperatures:\n        return 0.0\n    return round(sum(daily_temperatures) / len(daily_temperatures), 1)",
+      "hint": "Calculate the sum of all temperatures using sum(), divide by the number of readings using len(), and round to one decimal place using round().",
+      "test_inputs": [[[22.5, 25.0, 21.8, 24.2, 26.5]], [[18.2, 19.5]], [[]], [[32.7]]]
+    },
+    {
+      "function_name": "find_common_ingredients",
+      "parameters": ["recipes"],
+      "description": "Write a function that analyzes a list of recipe ingredient lists and finds ingredients that appear in all recipes. Return a list of common ingredients. If there are no common ingredients or the input is empty, return an empty list.",
+      "input_type": ["list"],
+      "answer_code": "def find_common_ingredients(recipes):\n    if not recipes:\n        return []\n    common = set(recipes[0])\n    for recipe in recipes[1:]:\n        common = common.intersection(set(recipe))\n    return list(common)",
+      "hint": "Convert the first recipe to a set, then use intersection with each subsequent recipe to find common elements. Convert the final set back to a list.",
+      "test_inputs": [[[ ["salt", "pepper", "olive oil", "chicken"], ["salt", "pepper", "pasta", "tomato"], ["salt", "basil", "tomato", "pepper"] ]], [[ ["flour", "sugar", "butter"], ["sugar", "eggs", "vanilla"], ["flour", "milk", "eggs"] ]], [[]], [[ ["garlic", "onion"], ["garlic", "onion"] ]]]
+    },
+    {
+      "function_name": "reverse_playlist",
+      "parameters": ["songs"],
+      "description": "Write a function that takes a list of songs and returns a new list with the songs in reverse order. This is useful for playing a music playlist from newest to oldest additions.",
+      "input_type": ["list"],
+      "answer_code": "def reverse_playlist(songs):\n    return songs[::-1]",
+      "hint": "Use list slicing with a negative step ([::-1]) to create a reversed copy of the list.",
+      "test_inputs": [[["Bohemian Rhapsody", "Stairway to Heaven", "Hotel California", "Sweet Child O' Mine"]], [["Imagine", "Let It Be"]], [[]], [["Moonlight Sonata"]]]
+    },
+    {
+      "function_name": "count_artifacts_by_era",
+      "parameters": ["artifacts", "target_era"],
+      "description": "Write a function that counts how many artifacts in a museum belong to a specific historical era. Each artifact is represented as a tuple of (name, era, year). Return the count of artifacts from the target era.",
+      "input_type": ["list", "str"],
+      "answer_code": "def count_artifacts_by_era(artifacts, target_era):\n    count = 0\n    for artifact in artifacts:\n        if artifact[1] == target_era:\n            count += 1\n    return count",
+      "hint": "Iterate through the list of artifact tuples, check if the era (second element of each tuple) matches the target era, and increment a counter if it does.",
+      "test_inputs": [[[("Vase", "Ancient Greek", -500), ("Statue", "Roman", 100), ("Coin", "Ancient Greek", -300), ("Manuscript", "Medieval", 1200)], "Ancient Greek"], [[("Sword", "Medieval", 1100), ("Armor", "Medieval", 1250), ("Chalice", "Renaissance", 1500)], "Renaissance"], [[], "Ancient Egyptian"], [[("Mask", "Maya", 800), ("Pottery", "Inca", 1300), ("Jewelry", "Aztec", 1400)], "Maya"]]
     }
   ]
 }
