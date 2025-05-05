@@ -1,221 +1,184 @@
 {
   "questions": [
     {
-      "function_name": "create_stargazing_list",
-      "parameters": ["star1", "star2", "star3"],
-      "description": "Write a function that creates a list of stars for a stargazing session from individual star names passed as arguments. Return this list.",
-      "input_type": ["str", "str", "str"],
-      "answer_code": "def create_stargazing_list(star1, star2, star3):\n    return [star1, star2, star3]",
-      "hint": "Use square brackets [] and separate the star names with commas to create a list containing all three stars.",
-      "test_inputs": [["Sirius", "Vega", "Polaris"], ["Betelgeuse", "Rigel", "Aldebaran"], ["Antares", "Arcturus", "Deneb"], ["Altair", "Capella", "Castor"]]
+      "function_name": "find_book",
+      "parameters": ["bookshelf", "title"],
+      "description": "Write a function that checks if a specific book title is in a bookshelf list. Return True if the book is found, False otherwise. Use the 'in' operator.",
+      "input_type": ["list", "str"],
+      "answer_code": "def find_book(bookshelf, title):\n    return title in bookshelf",
+      "hint": "The 'in' operator checks if an element exists in a list and returns a boolean.",
+      "test_inputs": [[['Moby Dick', 'Pride and Prejudice', '1984'], '1984'], [['Harry Potter', 'Lord of the Rings'], 'Dune'], [[], 'The Great Gatsby'], [['To Kill a Mockingbird'], 'To Kill a Mockingbird']]
     },
     {
-      "function_name": "parse_genome_sequence",
-      "parameters": ["dna_string"],
-      "description": "Write a function that takes a string of DNA nucleotides (e.g., 'ATCG') and converts it to a list where each nucleotide is a separate element.",
-      "input_type": ["str"],
-      "answer_code": "def parse_genome_sequence(dna_string):\n    return list(dna_string)",
-      "hint": "Use the list() constructor on the string to convert it to a list of individual characters.",
-      "test_inputs": [["ATCG"], ["GATTACA"], [""], ["CTGAAATCG"]]
-    },
-    {
-      "function_name": "count_prime_artifacts",
-      "parameters": ["artifact_ages"],
-      "description": "Write a function that counts how many artifacts in a museum collection have ages that are prime numbers. The function should take a list of ages and return the count of prime ages.",
+      "function_name": "first_mineral",
+      "parameters": ["rock_collection"],
+      "description": "Write a function that returns the alphabetically first mineral name from a rock collection list. If the list is empty, return an empty string.",
       "input_type": ["list"],
-      "answer_code": "def count_prime_artifacts(artifact_ages):\n    prime_count = 0\n    for age in artifact_ages:\n        if age > 1:\n            is_prime = True\n            for i in range(2, int(age**0.5) + 1):\n                if age % i == 0:\n                    is_prime = False\n                    break\n            if is_prime:\n                prime_count += 1\n    return prime_count",
-      "hint": "Iterate through the list of ages. For each age, check if it's prime by testing divisibility by all numbers from 2 to the square root of the age.",
-      "test_inputs": [[[11, 4, 7, 9, 13]], [[2, 3, 5, 7]], [[1, 4, 6, 8, 10]], [[97, 100, 101]]]
+      "answer_code": "def first_mineral(rock_collection):\n    if not rock_collection:\n        return ''\n    return sorted(rock_collection)[0]",
+      "hint": "Use the sorted() function to create a sorted copy of the list and then return the first element.",
+      "test_inputs": [[['Quartz', 'Amethyst', 'Diamond', 'Ruby']], [['Granite', 'Basalt', 'Limestone']], [[]], [['Gold']]]
     },
     {
-      "function_name": "filter_exotic_fruits",
-      "parameters": ["fruit_basket"],
-      "description": "Write a function that takes a list of fruits and returns a new list containing only fruits with names longer than 5 characters. These are considered exotic fruits in our scenario.",
+      "function_name": "search_element",
+      "parameters": ["periodic_table", "element"],
+      "description": "Write a function that finds the position (index) of a chemical element in a periodic table list. Return -1 if the element is not found.",
+      "input_type": ["list", "str"],
+      "answer_code": "def search_element(periodic_table, element):\n    try:\n        return periodic_table.index(element)\n    except ValueError:\n        return -1",
+      "hint": "Use the index() method to find the position of the element. Handle the ValueError exception that occurs when the element is not found.",
+      "test_inputs": [[['Hydrogen', 'Helium', 'Lithium', 'Beryllium'], 'Lithium'], [['Carbon', 'Nitrogen', 'Oxygen'], 'Fluorine'], [[], 'Neon'], [['Gold', 'Silver', 'Copper'], 'Silver']]
+    },
+    {
+      "function_name": "sort_temperatures",
+      "parameters": ["daily_readings"],
+      "description": "Write a function that sorts a list of temperature readings in ascending order. Return the sorted list.",
       "input_type": ["list"],
-      "answer_code": "def filter_exotic_fruits(fruit_basket):\n    exotic_fruits = []\n    for fruit in fruit_basket:\n        if len(fruit) > 5:\n            exotic_fruits.append(fruit)\n    return exotic_fruits",
-      "hint": "Iterate through the fruit basket, check the length of each fruit name using len(), and add to a new list if the length is greater than 5.",
-      "test_inputs": [[["apple", "banana", "kiwi", "dragonfruit", "fig"]], [["mango", "pineapple", "cherry", "strawberry"]], [["passion fruit", "lime", "lemon", "kumquat"]], [[]]]
+      "answer_code": "def sort_temperatures(daily_readings):\n    return sorted(daily_readings)",
+      "hint": "Use the sorted() function to create a new sorted list of temperature readings.",
+      "test_inputs": [[[22.5, 19.8, 25.1, 20.3]], [[]], [[98.6]], [[-10.5, 15.0, 5.2, -5.8]]]
     },
     {
-      "function_name": "check_balanced_ecosystem",
-      "parameters": ["predators", "prey"],
-      "description": "Write a function that checks if an ecosystem is balanced. It should return True if there are at least twice as many prey animals as predators, False otherwise. Both inputs are lists.",
+      "function_name": "highest_score",
+      "parameters": ["game_scores"],
+      "description": "Write a function that finds and returns the highest score from a list of game scores. Return 0 if the list is empty.",
+      "input_type": ["list"],
+      "answer_code": "def highest_score(game_scores):\n    if not game_scores:\n        return 0\n    return max(game_scores)",
+      "hint": "Use the max() function to find the highest score in the list. Handle the empty list case separately.",
+      "test_inputs": [[[105, 92, 98, 117, 85]], [[]], [[42]], [[10, 10, 10, 10]]]
+    },
+    {
+      "function_name": "sort_movies_by_year",
+      "parameters": ["movie_years", "movie_titles"],
+      "description": "Write a function that sorts movie titles based on their release years. Return the sorted titles list. Assume the lists are of equal length and years are unique.",
       "input_type": ["list", "list"],
-      "answer_code": "def check_balanced_ecosystem(predators, prey):\n    if len(predators) == 0:\n        return True\n    return len(prey) >= 2 * len(predators)",
-      "hint": "Compare the lengths of both lists. If the length of the prey list is at least twice the length of the predator list, the ecosystem is balanced.",
-      "test_inputs": [[["wolf", "fox"], ["rabbit", "deer", "mouse", "squirrel"]], [["tiger", "lion"], ["gazelle"]], [[], ["mouse", "rabbit"]], [["shark", "barracuda", "tuna"], ["sardine", "herring", "anchovy", "plankton"]]]
+      "answer_code": "def sort_movies_by_year(movie_years, movie_titles):\n    pairs = sorted(zip(movie_years, movie_titles))\n    return [title for year, title in pairs]",
+      "hint": "Use zip() to pair years with titles, then sort based on years. Extract just the titles from the sorted pairs.",
+      "test_inputs": [[[1977, 1980, 1983], ['Star Wars', 'Empire Strikes Back', 'Return of the Jedi']], [[2008, 2012, 2010], ['Iron Man', 'Avengers', 'Iron Man 2']], [[], []], [[1997], ['Titanic']]]
     },
     {
-      "function_name": "lead_explorer",
-      "function_name": "lead_explorer",
-      "parameters": ["expedition_team"],
-      "description": "Write a function that returns the first explorer in an expedition team list. If the team is empty, return None. Use list indexing to access the first element.",
+      "function_name": "count_occurrences",
+      "parameters": ["bird_sightings", "bird_species"],
+      "description": "Write a function that counts how many times a specific bird species appears in a list of bird sightings. Return the count.",
+      "input_type": ["list", "str"],
+      "answer_code": "def count_occurrences(bird_sightings, bird_species):\n    return bird_sightings.count(bird_species)",
+      "hint": "Use the count() method to count how many times the bird species appears in the list.",
+      "test_inputs": [[['Robin', 'Bluejay', 'Cardinal', 'Robin', 'Robin'], 'Robin'], [['Eagle', 'Hawk', 'Falcon'], 'Owl'], [[], 'Sparrow'], [['Penguin', 'Penguin'], 'Penguin']]
+    },
+    {
+      "function_name": "find_smallest_positive",
+      "parameters": ["numbers"],
+      "description": "Write a function that finds the smallest positive number in a list. Return -1 if there are no positive numbers.",
       "input_type": ["list"],
-      "answer_code": "def lead_explorer(expedition_team):\n    if len(expedition_team) > 0:\n        return expedition_team[0]\n    return None",
-      "hint": "Use list indexing with the index 0 to access the first explorer, but first check if the expedition team has any members.",
-      "test_inputs": [[["Amundsen", "Scott", "Shackleton"]], [["Lewis", "Clark"]], [[]], [["Armstrong"]]]
+      "answer_code": "def find_smallest_positive(numbers):\n    positives = [num for num in numbers if num > 0]\n    if not positives:\n        return -1\n    return min(positives)",
+      "hint": "Filter the list to include only positive numbers, then find the minimum value. Return -1 if the filtered list is empty.",
+      "test_inputs": [[[3, -1, 5, 2, -4]], [[-2, -5, -1]], [[]], [[0, -3, 8, 4]]]
     },
     {
-      "function_name": "final_note",
-      "parameters": ["composition"],
-      "description": "Write a function that returns the final note in a musical composition list. If the composition is empty, return None. Use list indexing with negative index to access the last element.",
+      "function_name": "alphabetize_patients",
+      "parameters": ["waiting_list"],
+      "description": "Write a function that returns a new list with patient names alphabetized for a clinic's waiting room. Return an empty list if the input is empty.",
       "input_type": ["list"],
-      "answer_code": "def final_note(composition):\n    if len(composition) > 0:\n        return composition[-1]\n    return None",
-      "hint": "Use list indexing with the index -1 to access the final note, but first check if the composition has any notes.",
-      "test_inputs": [[["C", "D", "E", "G"]], [["A", "B"]], [[]], [["F#"]]]
+      "answer_code": "def alphabetize_patients(waiting_list):\n    return sorted(waiting_list)",
+      "hint": "Use the sorted() function to create a new list with patient names in alphabetical order.",
+      "test_inputs": [[['Smith', 'Jones', 'Williams', 'Taylor']], [['Patel', 'Garcia', 'Kim']], [[]], [['Nguyen']]]
     },
     {
-      "function_name": "add_ingredient",
-      "parameters": ["recipe", "ingredient"],
-      "description": "Write a function that adds a new ingredient to a recipe list and returns the modified recipe. Use the append() method to add the ingredient.",
-      "input_type": ["list", "any"],
-      "answer_code": "def add_ingredient(recipe, ingredient):\n    recipe.append(ingredient)\n    return recipe",
-      "hint": "Use the append() method to add the ingredient to the end of the recipe. Remember that append() modifies the list in-place.",
-      "test_inputs": [[["flour", "sugar", "butter"], "vanilla"], [[], "salt"], [["tomato", "cheese"], "basil"], [["water", "tea"], "honey"]]
-    },
-    {
-      "function_name": "total_calories",
-      "parameters": ["food_items"],
-      "description": "Write a function that calculates the total calories from all food items in a list. If the list is empty, return 0. Use a loop or the built-in sum() function.",
+      "function_name": "top_three_scores",
+      "parameters": ["student_scores"],
+      "description": "Write a function that returns the top three highest scores from a list. If the list has fewer than three scores, return all scores in descending order.",
       "input_type": ["list"],
-      "answer_code": "def total_calories(food_items):\n    return sum(food_items) if food_items else 0",
-      "hint": "Use the built-in sum() function, which returns the sum of all calories in the food items list. Handle the empty list case separately.",
-      "test_inputs": [[[120, 85, 200, 165]], [[]], [[450]], [[203, 175, 98]], [[75.5, 42.5, 120.0]]]
+      "answer_code": "def top_three_scores(student_scores):\n    return sorted(student_scores, reverse=True)[:3]",
+      "hint": "Sort the scores in descending order using sorted() with reverse=True, then get the first three elements using list slicing.",
+      "test_inputs": [[[85, 92, 78, 95, 88]], [[91, 84]], [[]], [[100, 99, 98, 97, 96]]]
     },
     {
-      "function_name": "create_conservation_record",
-      "parameters": ["endangered_species"],
-      "description": "Write a function that converts a list of endangered species to an immutable conservation record (tuple) and returns the result. Use the tuple() constructor.",
+      "function_name": "find_products_under_price",
+      "parameters": ["product_prices", "products", "max_price"],
+      "description": "Write a function that returns a list of product names that are under a specified maximum price. Assumes prices and products lists are of equal length.",
+      "input_type": ["list", "list", "float"],
+      "answer_code": "def find_products_under_price(product_prices, products, max_price):\n    affordable_products = []\n    for i in range(len(product_prices)):\n        if product_prices[i] < max_price:\n            affordable_products.append(products[i])\n    return affordable_products",
+      "hint": "Iterate through the prices and corresponding products, adding products to a new list when their price is below the maximum.",
+      "test_inputs": [[[5.99, 10.50, 3.25, 7.80], ['Bread', 'Cheese', 'Apples', 'Milk'], 6.00], [[100, 50, 75], ['Shoes', 'Shirt', 'Pants'], 80], [[], [], 20], [[15.99], ['Book'], 10.00]]
+    },
+    {
+      "function_name": "binary_search_city",
+      "parameters": ["city_list", "target_city"],
+      "description": "Write a function that performs a binary search for a city name in an alphabetically sorted list of cities. Return True if found, False otherwise.",
+      "input_type": ["list", "str"],
+      "answer_code": "def binary_search_city(city_list, target_city):\n    low = 0\n    high = len(city_list) - 1\n    \n    while low <= high:\n        mid = (low + high) // 2\n        if city_list[mid] == target_city:\n            return True\n        elif city_list[mid] < target_city:\n            low = mid + 1\n        else:\n            high = mid - 1\n            \n    return False",
+      "hint": "Implement binary search by repeatedly dividing the sorted list in half. Keep track of the low and high bounds and compare the middle element with the target city.",
+      "test_inputs": [[['Boston', 'Chicago', 'Dallas', 'Miami', 'Seattle'], 'Dallas'], [['Atlanta', 'Denver', 'Phoenix'], 'New York'], [[], 'Paris'], [['London'], 'London']]
+    },
+    {
+      "function_name": "sort_by_length",
+      "parameters": ["song_titles"],
+      "description": "Write a function that sorts a list of song titles based on their length (shortest to longest). If two titles have the same length, maintain their original order (stable sort).",
       "input_type": ["list"],
-      "answer_code": "def create_conservation_record(endangered_species):\n    return tuple(endangered_species)",
-      "hint": "Use the tuple() constructor to convert the list of endangered species to an immutable conservation record.",
-      "test_inputs": [[["Panda", "Tiger", "Rhino"]], [[]], [["Elephant", "Polar Bear", "Gorilla"]], [["Blue Whale"]]]
+      "answer_code": "def sort_by_length(song_titles):\n    return sorted(song_titles, key=len)",
+      "hint": "Use sorted() with the key parameter set to len to sort based on string length.",
+      "test_inputs": [[['Bohemian Rhapsody', 'Hey Jude', 'Let It Be', 'Yesterday']], [['Imagine', 'Thriller', 'Respect']], [[]], [['Supercalifragilisticexpialidocious']]]
     },
     {
-      "function_name": "get_planet",
-      "parameters": ["solar_system", "position"],
-      "description": "Write a function that first converts a list of planets to a tuple, then returns the planet at the specified position. If the position is out of range, return None. This tests tuple indexing.",
-      "input_type": ["list", "int"],
-      "answer_code": "def get_planet(solar_system, position):\n    solar_system_tuple = tuple(solar_system)\n    try:\n        return solar_system_tuple[position]\n    except IndexError:\n        return None",
-      "hint": "First convert the list of planets to a tuple using tuple(), then use tuple indexing with square brackets to access the planet. Handle the IndexError exception for out-of-range positions.",
-      "test_inputs": [[["Mercury", "Venus", "Earth", "Mars"], 2], [["Mercury", "Venus", "Earth"], 0], [["Jupiter", "Saturn", "Uranus", "Neptune"], 5], [["Earth", "Mars"], -1]]
-    },
-    {
-      "function_name": "dna_sequence",
-      "parameters": ["nucleotide1", "nucleotide2", "nucleotide3"],
-      "description": "Write a function that creates and returns a tuple containing three DNA nucleotides. Use tuple creation syntax with parentheses.",
-      "input_type": ["any", "any", "any"],
-      "answer_code": "def dna_sequence(nucleotide1, nucleotide2, nucleotide3):\n    return (nucleotide1, nucleotide2, nucleotide3)",
-      "hint": "Create a tuple of DNA nucleotides by enclosing the values in parentheses, separated by commas: (nucleotide1, nucleotide2, nucleotide3)",
-      "test_inputs": [["A", "T", "G"], ["C", "G", "A"], ["T", "A", "C"], ["G", "C", "T"]]
-    },
-    {
-      "function_name": "merge_timelines",
-      "parameters": ["ancient_periods", "modern_periods"],
-      "description": "Write a function that converts two lists of historical periods to tuples and then concatenates them into a timeline. Return the resulting tuple. This tests tuple concatenation using the + operator.",
+      "function_name": "merge_sorted_lists",
+      "parameters": ["list1", "list2"],
+      "description": "Write a function that merges two already-sorted lists of numbers into a single sorted list. The returned list should also be sorted.",
       "input_type": ["list", "list"],
-      "answer_code": "def merge_timelines(ancient_periods, modern_periods):\n    ancient_tuple = tuple(ancient_periods)\n    modern_tuple = tuple(modern_periods)\n    return ancient_tuple + modern_tuple",
-      "hint": "First convert both lists of historical periods to tuples using tuple(), then use the + operator to concatenate them into a new timeline tuple.",
-      "test_inputs": [[["Medieval", "Renaissance"], ["Industrial", "Modern"]], [[], ["Stone Age", "Bronze Age", "Iron Age"]], [["Ancient", "Classical", "Medieval"], []], [["Baroque", "Classical"], ["Romantic", "Modern"]]]
+      "answer_code": "def merge_sorted_lists(list1, list2):\n    merged_list = list1 + list2\n    return sorted(merged_list)",
+      "hint": "Concatenate the two lists using the + operator, then sort the combined list using sorted().",
+      "test_inputs": [[[1, 3, 5], [2, 4, 6]], [[10, 20, 30], [15, 25, 35]], [[], [1, 2, 3]], [[5, 10, 15], []]]
     },
     {
-      "function_name": "count_observations",
-      "parameters": ["celestial_objects", "target_object"],
-      "description": "Write a function that converts a list of astronomical observations to a tuple and then counts how many times a specific celestial object appears in it. This tests the tuple count() method.",
-      "input_type": ["list", "any"],
-      "answer_code": "def count_observations(celestial_objects, target_object):\n    observations_tuple = tuple(celestial_objects)\n    return observations_tuple.count(target_object)",
-      "hint": "First convert the list of astronomical observations to a tuple using tuple(), then use the count() method to count occurrences of the specific celestial object.",
-      "test_inputs": [[["star", "planet", "star", "comet", "star"], "star"], [["galaxy", "nebula", "galaxy", "black hole"], "galaxy"], [["supernova", "supernova", "supernova"], "supernova"], [["asteroid", "comet", "meteor"], "planet"]]
-    },
-    {
-      "function_name": "unique_art_supplies",
-      "parameters": ["supplies"],
-      "description": "Write a function that converts a list of art supplies to a set (removing duplicates) and returns the result. Use the set() constructor.",
+      "function_name": "reverse_sort_grades",
+      "parameters": ["student_grades"],
+      "description": "Write a function that sorts a list of student grades in descending order (highest to lowest). Return the sorted list.",
       "input_type": ["list"],
-      "answer_code": "def unique_art_supplies(supplies):\n    return set(supplies)",
-      "hint": "Use the set() constructor to convert the list of art supplies to a set, which will automatically remove duplicate items.",
-      "test_inputs": [[["brush", "pencil", "brush", "canvas", "pencil"]], [[]], [["charcoal", "pastel", "charcoal", "easel"]], [["palette", "palette", "palette"]]]
+      "answer_code": "def reverse_sort_grades(student_grades):\n    return sorted(student_grades, reverse=True)",
+      "hint": "Use sorted() with the reverse parameter set to True to sort in descending order.",
+      "test_inputs": [[[85, 92, 78, 95, 88]], [[100, 65, 82]], [[]], [[77]]]
     },
     {
-      "function_name": "add_genre",
-      "parameters": ["book_genres", "new_genre"],
-      "description": "Write a function that converts a list of book genres to a set, adds a new genre to it, and returns the modified set. Use the add() method.",
-      "input_type": ["list", "any"],
-      "answer_code": "def add_genre(book_genres, new_genre):\n    genres_set = set(book_genres)\n    genres_set.add(new_genre)\n    return genres_set",
-      "hint": "First convert the list of book genres to a set using set(), then use the add() method to add the new genre. Remember that add() modifies the set in-place.",
-      "test_inputs": [[["Fantasy", "SciFi", "Horror"], "Mystery"], [[], "Romance"], [["Thriller", "Biography"], "Historical"], [["Comedy", "Drama"], "Adventure"]]
-    },
-    {
-      "function_name": "combine_orchestras",
-      "parameters": ["string_instruments", "wind_instruments"],
-      "description": "Write a function that converts two lists of musical instruments to sets and returns their union (all unique instruments from both lists). Use the union() method or the | operator.",
+      "function_name": "find_closest_planet",
+      "parameters": ["distances", "planet_names"],
+      "description": "Write a function that finds the name of the planet that is closest to Earth based on a list of distances. Assume distances and planet_names are of equal length and non-empty.",
       "input_type": ["list", "list"],
-      "answer_code": "def combine_orchestras(string_instruments, wind_instruments):\n    string_set = set(string_instruments)\n    wind_set = set(wind_instruments)\n    return string_set | wind_set",
-      "hint": "First convert both lists of musical instruments to sets using set(), then use the | operator or the union() method to get all unique instruments.",
-      "test_inputs": [[["violin", "cello", "bass"], ["flute", "clarinet", "oboe"]], [[], ["trumpet", "trombone", "tuba"]], [["guitar", "mandolin", "banjo"], []], [["viola", "cello"], ["cello", "bassoon"]]]
+      "answer_code": "def find_closest_planet(distances, planet_names):\n    min_index = distances.index(min(distances))\n    return planet_names[min_index]",
+      "hint": "Find the minimum distance using min(), then find its index using index(). Use this index to retrieve the corresponding planet name.",
+      "test_inputs": [[[149.6, 227.9, 778.5, 1427.0], ['Venus', 'Mars', 'Jupiter', 'Saturn']], [[57.9, 108.2], ['Mercury', 'Venus']], [[384.4], ['Moon']], [[0.0, 54.6, 78.3], ['Earth', 'Mercury', 'Venus']]]
     },
     {
-      "function_name": "common_ingredients",
-      "parameters": ["recipe1", "recipe2"],
-      "description": "Write a function that converts two lists of cooking ingredients to sets and returns their intersection (ingredients that appear in both lists). Use the intersection() method or the & operator.",
+      "function_name": "find_all_occurrences",
+      "parameters": ["dna_sequence", "motif"],
+      "description": "Write a function that finds all starting indices where a DNA motif occurs in a DNA sequence string. Return a list of indices.",
+      "input_type": ["str", "str"],
+      "answer_code": "def find_all_occurrences(dna_sequence, motif):\n    indices = []\n    start = 0\n    while True:\n        start = dna_sequence.find(motif, start)\n        if start == -1:\n            break\n        indices.append(start)\n        start += 1\n    return indices",
+      "hint": "Use a loop with the find() method to locate occurrences. Start searching from the position after each match until no more matches are found.",
+      "test_inputs": [['ACGTACGTACGT', 'ACG'], ['AAAAAA', 'AA'], ['GATTACA', 'ZZZ'], ['', 'A']]
+    },
+    {
+      "function_name": "sort_multi_field",
+      "parameters": ["player_scores", "player_names"],
+      "description": "Write a function that sorts players primarily by their scores (highest to lowest) and secondarily by their names (alphabetically) when scores are equal. Return a list of player names in the sorted order.",
       "input_type": ["list", "list"],
-      "answer_code": "def common_ingredients(recipe1, recipe2):\n    recipe1_set = set(recipe1)\n    recipe2_set = set(recipe2)\n    return recipe1_set & recipe2_set",
-      "hint": "First convert both lists of cooking ingredients to sets using set(), then use the & operator or the intersection() method to find common ingredients.",
-      "test_inputs": [[["salt", "pepper", "garlic", "olive oil"], ["garlic", "basil", "olive oil", "tomato"]], [["flour", "sugar", "butter"], ["eggs", "milk", "vanilla"]], [[], ["salt", "pepper", "cumin"]], [["onion", "carrot", "celery"], ["celery", "potato", "onion"]]]
+      "answer_code": "def sort_multi_field(player_scores, player_names):\n    # Create pairs of (score, name)\n    pairs = list(zip(player_scores, player_names))\n    # Sort by score (descending) and then by name (ascending)\n    sorted_pairs = sorted(pairs, key=lambda x: (-x[0], x[1]))\n    # Extract just the names from the sorted pairs\n    return [name for score, name in sorted_pairs]",
+      "hint": "Create pairs of (score, name) using zip(), then sort using a custom key function that sorts by negative score (for descending order) and then by name.",
+      "test_inputs": [[[100, 95, 95, 90], ['Dave', 'Alice', 'Bob', 'Charlie']], [[85, 85, 85], ['Zach', 'Maya', 'Alex']], [[], []], [[500], ['Player1']]]
     },
     {
-      "function_name": "unique_species",
-      "parameters": ["ecosystem1", "ecosystem2"],
-      "description": "Write a function that converts two lists of animal species to sets and returns the elements that are in the first set but not in the second (unique to the first ecosystem). Use the difference() method or the - operator.",
-      "input_type": ["list", "list"],
-      "answer_code": "def unique_species(ecosystem1, ecosystem2):\n    ecosystem1_set = set(ecosystem1)\n    ecosystem2_set = set(ecosystem2)\n    return ecosystem1_set - ecosystem2_set",
-      "hint": "First convert both lists of animal species to sets using set(), then use the - operator or the difference() method to find species unique to the first ecosystem.",
-      "test_inputs": [[["lion", "elephant", "giraffe", "zebra"], ["elephant", "rhino", "hippo"]], [["eagle", "hawk", "falcon"], ["hawk", "owl", "eagle"]], [[], ["shark", "dolphin", "whale"]], [["wolf", "bear", "deer", "fox"], ["coyote", "mountain lion", "rabbit"]]]
+      "function_name": "filter_and_sort_tasks",
+      "parameters": ["tasks", "priority_level"],
+      "description": "Write a function that filters a list of task strings to include only those containing the specified priority level (e.g., 'HIGH', 'MEDIUM', 'LOW') and then sorts them alphabetically.",
+      "input_type": ["list", "str"],
+      "answer_code": "def filter_and_sort_tasks(tasks, priority_level):\n    filtered_tasks = [task for task in tasks if priority_level in task]\n    return sorted(filtered_tasks)",
+      "hint": "Use a list comprehension to filter tasks containing the priority level, then sort the filtered list alphabetically.",
+      "test_inputs": [[['Buy groceries (HIGH)', 'Call mom (LOW)', 'Finish report (HIGH)', 'Exercise (MEDIUM)'], 'HIGH'], [['Study for exam (MEDIUM)', 'Clean room (LOW)'], 'HIGH'], [[], 'MEDIUM'], [['Single task (LOW)'], 'LOW']]
     },
     {
-      "function_name": "is_compound",
-      "parameters": ["elements", "compound_elements"],
-      "description": "Write a function that checks if the set of chemical elements created from the first list is a subset of the set created from the second list. Return a boolean. Use the issubset() method or the <= operator.",
-      "input_type": ["list", "list"],
-      "answer_code": "def is_compound(elements, compound_elements):\n    elements_set = set(elements)\n    compound_set = set(compound_elements)\n    return elements_set <= compound_set",
-      "hint": "First convert both lists of chemical elements to sets using set(), then use the <= operator or the issubset() method to check if the first set of elements is contained within the second set.",
-      "test_inputs": [[["H", "O"], ["H", "O", "C", "N"]], [["Na", "Cl"], ["H", "O"]], [["C", "H", "O"], ["C", "H", "O", "N"]], [[], ["Fe", "Cu", "Au"]]]
-    },
-    {
-      "function_name": "find_longest_dinosaur",
-      "parameters": ["dinosaur_names"],
-      "description": "Write a function that finds and returns the longest dinosaur name from a list of dinosaur names. If the list is empty, return an empty string.",
+      "function_name": "bubble_sort_animals",
+      "parameters": ["animal_list"],
+      "description": "Write a function that implements the bubble sort algorithm to sort a list of animal names alphabetically. Return the sorted list.",
       "input_type": ["list"],
-      "answer_code": "def find_longest_dinosaur(dinosaur_names):\n    if not dinosaur_names:\n        return ''\n    longest = dinosaur_names[0]\n    for dino in dinosaur_names:\n        if len(dino) > len(longest):\n            longest = dino\n    return longest",
-      "hint": "Iterate through the list of dinosaur names, keeping track of the longest one seen so far by comparing string lengths with len().",
-      "test_inputs": [[["Tyrannosaurus", "Velociraptor", "Diplodocus", "Triceratops"]], [["Stegosaurus", "Ankylosaurus", "Archaeopteryx", "Brachiosaurus"]], [[]], [["Parasaurolophus"]]]
-    },
-    {
-      "function_name": "calculate_average_temperature",
-      "parameters": ["daily_temperatures"],
-      "description": "Write a function that calculates the average temperature from a list of daily temperature readings. Return the average as a float with one decimal place. If the list is empty, return 0.0.",
-      "input_type": ["list"],
-      "answer_code": "def calculate_average_temperature(daily_temperatures):\n    if not daily_temperatures:\n        return 0.0\n    return round(sum(daily_temperatures) / len(daily_temperatures), 1)",
-      "hint": "Calculate the sum of all temperatures using sum(), divide by the number of readings using len(), and round to one decimal place using round().",
-      "test_inputs": [[[22.5, 25.0, 21.8, 24.2, 26.5]], [[18.2, 19.5]], [[]], [[32.7]]]
-    },
-    {
-      "function_name": "find_common_ingredients",
-      "parameters": ["recipes"],
-      "description": "Write a function that analyzes a list of recipe ingredient lists and finds ingredients that appear in all recipes. Return a list of common ingredients. If there are no common ingredients or the input is empty, return an empty list.",
-      "input_type": ["list"],
-      "answer_code": "def find_common_ingredients(recipes):\n    if not recipes:\n        return []\n    common = set(recipes[0])\n    for recipe in recipes[1:]:\n        common = common.intersection(set(recipe))\n    return list(common)",
-      "hint": "Convert the first recipe to a set, then use intersection with each subsequent recipe to find common elements. Convert the final set back to a list.",
-      "test_inputs": [[[ ["salt", "pepper", "olive oil", "chicken"], ["salt", "pepper", "pasta", "tomato"], ["salt", "basil", "tomato", "pepper"] ]], [[ ["flour", "sugar", "butter"], ["sugar", "eggs", "vanilla"], ["flour", "milk", "eggs"] ]], [[]], [[ ["garlic", "onion"], ["garlic", "onion"] ]]]
-    },
-    {
-      "function_name": "reverse_playlist",
-      "parameters": ["songs"],
-      "description": "Write a function that takes a list of songs and returns a new list with the songs in reverse order. This is useful for playing a music playlist from newest to oldest additions.",
-      "input_type": ["list"],
-      "answer_code": "def reverse_playlist(songs):\n    return songs[::-1]",
-      "hint": "Use list slicing with a negative step ([::-1]) to create a reversed copy of the list.",
-      "test_inputs": [[["Bohemian Rhapsody", "Stairway to Heaven", "Hotel California", "Sweet Child O' Mine"]], [["Imagine", "Let It Be"]], [[]], [["Moonlight Sonata"]]]
+      "answer_code": "def bubble_sort_animals(animal_list):\n    n = len(animal_list)\n    for i in range(n):\n        for j in range(0, n - i - 1):\n            if animal_list[j] > animal_list[j + 1]:\n                animal_list[j], animal_list[j + 1] = animal_list[j + 1], animal_list[j]\n    return animal_list",
+      "hint": "Implement bubble sort by comparing adjacent elements and swapping them if they are in the wrong order, repeating until the list is sorted.",
+      "test_inputs": [[['Zebra', 'Lion', 'Elephant', 'Giraffe']], [['Tiger', 'Bear']], [[]], [['Kangaroo']]]
     }
   ]
 }
