@@ -1,265 +1,184 @@
 {
-  "questions": [
-        {
-      "function_name": "number_sign",
-      "parameters": ["number"],
-      "description": "Write a function that takes a number and returns the string 'Negative' if it's less than zero, or 'Non-negative' otherwise. Use comparison operators (< or >) to check the value.",
-      "input_type": ["int"],
-      "answer_code": "def number_sign(number):\n    if number < 0:\n        return 'Negative'\n    return 'Non-negative'",
-      "hint": "Use the < operator to check if the number is less than zero.",
-      "test_inputs": [[-5], [0], [10]]
-    },
-    {
-      "function_name": "is_mario_brother",
-      "parameters": ["name"],
-      "description": "Return True if 'name' is 'Mario' or 'Luigi', else return False.",
-      "input_type": "string",
-      "answer_code": "def is_mario_brother(name):\n    return name == 'Mario' or name == 'Luigi'",
-      "hint": "Use the '==' operator and logical 'or'.",
-      "test_inputs": [
-        "Mario",
-        "Luigi",
-        "Peach",
-        "Toad",
-        "Bowser"
-      ]
-    },
-    {
-      "function_name": "power_up_effect",
-      "parameters": ["power_up"],
-      "description": "Return 'grow' if 'power_up' is 'Mushroom', 'fire' if 'power_up' is 'Fire Flower', else 'unknown'.",
-      "input_type": "string",
-      "answer_code": "def power_up_effect(power_up):\n    if power_up == 'Mushroom':\n        return 'grow'\n    elif power_up == 'Fire Flower':\n        return 'fire'\n    else:\n        return 'unknown'",
-      "hint": "Use if, elif, and else statements.",
-      "test_inputs": [
-        "Mushroom",
-        "Fire Flower",
-        "Star",
-        "1-Up Mushroom",
-        "Leaf"
-      ]
-    },
-    {
-      "function_name": "voting_status",
-      "parameters": ["age"],
-      "description": "Write a function that determines a person's voting eligibility based on age. Return 'Can vote' if they are 18 or older, or 'Cannot vote' otherwise. Use comparison operators (>= or <=) to check the age.",
-      "input_type": ["int"],
-      "answer_code": "def voting_status(age):\n    if age >= 18:\n        return 'Can vote'\n    return 'Cannot vote'",
-      "hint": "Use the >= operator to check if the age is greater than or equal to 18.",
-      "test_inputs": [[20], [18], [16]]
-    },
-    {
-      "function_name": "divisibility_by_three",
-      "parameters": ["number"],
-      "description": "Write a function that checks if a number is divisible by 3. Return 'Divisible by 3' if it is, or 'Not divisible by 3' otherwise. Use the modulo operator (%) to check divisibility.",
-      "input_type": ["int"],
-      "answer_code": "def divisibility_by_three(number):\n    if number % 3 == 0:\n        return 'Divisible by 3'\n    return 'Not divisible by 3'",
-      "hint": "Use the modulo operator (%) to check if the remainder when divided by 3 is 0.",
-      "test_inputs": [[9], [10], [0]]
-    },
-    {
-      "function_name": "begins_with_a",
-      "parameters": ["text"],
-      "description": "Write a function that checks if a string starts with the letter 'A' (case-insensitive). Return 'Starts with A' if it does, or 'Does not start with A' otherwise. Use string methods like lower() or upper() and startswith() in your solution.",
-      "input_type": ["string"],
-      "answer_code": "def begins_with_a(text):\n    if text.lower().startswith('a'):\n        return 'Starts with A'\n    return 'Does not start with A'",
-      "hint": "Convert the string to lowercase using the lower() method, then use the startswith() method to check the first character.",
-      "test_inputs": [["Apple"], ["Banana"], ["apple"]]
-    },
-    {
-      "function_name": "score_validity",
-      "parameters": ["score"],
-      "description": "Write a function that checks if a test score is valid (between 0 and 100 inclusive). Return 'Valid score' if it is valid, or 'Invalid score' otherwise. Use comparison operators and consider using a combined comparison (0 <= score <= 100).",
-      "input_type": ["float"],
-      "answer_code": "def score_validity(score):\n    if 0 <= score <= 100:\n        return 'Valid score'\n    return 'Invalid score'",
-      "hint": "Use a combined comparison to check if the score is between 0 and 100 inclusive.",
-      "test_inputs": [[85], [-5], [105]]
-    },
-    {
-      "function_name": "get_letter_grade",
-      "parameters": ["score"],
-      "description": "Write a function that converts a numerical score to a letter grade. Use the following scale: A (90-100), B (80-89), C (70-79), D (60-69), F (below 60). Use if-elif-else statements to check the score ranges.",
-      "input_type": ["float"],
-      "answer_code": "def get_letter_grade(score):\n    if score >= 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    elif score >= 70:\n        return 'C'\n    elif score >= 60:\n        return 'D'\n    else:\n        return 'F'",
-      "hint": "Use if-elif-else statements to check the score ranges, starting from the highest grade.",
-      "test_inputs": [[85], [95], [75], [65], [55]]
-    },
-    {
-      "function_name": "can_enter_castle",
-      "parameters": ["has_key", "is_boss_defeated"],
-      "description": "Return True if 'has_key' is True and 'is_boss_defeated' is True, else return False.",
-      "input_type": ["bool", "bool"],
-      "answer_code": "def can_enter_castle(has_key, is_boss_defeated):\n    return has_key and is_boss_defeated",
-      "hint": "Use the logical 'and' operator.",
-      "test_inputs": [
-        [true, true],
-        [true, false],
-        [false, true],
-        [false, false],
-        [true, true]
-      ]
-    },
-    {
-      "function_name": "select_character",
-      "parameters": ["choice"],
-      "description": "Return 'Mario' if 'choice' is 1, 'Luigi' if 'choice' is 2, else 'Toad'.",
-      "input_type": "int",
-      "answer_code": "def select_character(choice):\n    if choice == 1:\n        return 'Mario'\n    elif choice == 2:\n        return 'Luigi'\n    else:\n        return 'Toad'",
-      "hint": "Use if, elif, else to handle different choices.",
-      "test_inputs": [
-        1,
-        2,
-        3,
-        0,
-        -1
-      ]
-    },
-    {
-      "function_name": "compare_numbers",
-      "parameters": ["a", "b"],
-      "description": "Write a function that compares two numbers and returns 'greater', 'equal', or 'less' if the first number is greater than, equal to, or less than the second number. Use if-elif-else statements with comparison operators (>, ==, <).",
-      "input_type": ["int", "int"],
-      "answer_code": "def compare_numbers(a, b):\n    if a > b:\n        return 'greater'\n    elif a == b:\n        return 'equal'\n    else:\n        return 'less'",
-      "hint": "Use if-elif-else statements to compare the two numbers with >, ==, and < operators.",
-      "test_inputs": [[5, 3], [3, 5], [4, 4]]
-    },
-    {
-      "function_name": "water_state",
-      "parameters": ["temperature"],
-      "description": "Write a function that determines the state of water at a given temperature in Celsius. Return 'solid' if below 0, 'liquid' if between 0 and 100 (inclusive), and 'gas' if above 100. Use if-elif-else statements with appropriate comparison operators.",
-      "input_type": ["float"],
-      "answer_code": "def water_state(temperature):\n    if temperature < 0:\n        return 'solid'\n    elif temperature <= 100:\n        return 'liquid'\n    else:\n        return 'gas'",
-      "hint": "Use if-elif-else statements to check the temperature ranges for each state of water.",
-      "test_inputs": [[25], [-10], [100], [101]]
-    },
-    {
-      "function_name": "ticket_price",
-      "parameters": ["age"],
-      "description": "Write a function that calculates the ticket price based on age. Children (under 13) pay $5, teens (13-17) pay $8, adults (18-64) pay $12, and seniors (65+) pay $6. Use if-elif-else statements to handle the different age categories.",
-      "input_type": ["int"],
-      "answer_code": "def ticket_price(age):\n    if age < 13:\n        return 5\n    elif age <= 17:\n        return 8\n    elif age <= 64:\n        return 12\n    else:\n        return 6",
-      "hint": "Use if-elif-else statements to check the age ranges for each ticket price category.",
-      "test_inputs": [[10], [15], [20], [70]]
-    },
-    {
-      "function_name": "check_password",
-      "parameters": ["password"],
-      "description": "Write a function that checks if a password is valid. A valid password must be at least 8 characters long. Return 'Valid' if it's valid, or 'Too short' if it's too short. Use the len() function to get the string length and if-else statements.",
-      "input_type": ["string"],
-      "answer_code": "def check_password(password):\n    if len(password) >= 8:\n        return 'Valid'\n    else:\n        return 'Too short'",
-      "hint": "Use the len() function to get the length of the password, then check if it's at least 8 characters with an if-else statement.",
-      "test_inputs": [["secure123"], ["pass"], ["password123"]]
-    },
-    {
-      "function_name": "sum_numbers",
-      "parameters": ["n"],
-      "description": "Write a function that calculates the sum of all integers from 1 to n (inclusive). Use a for loop with range() to iterate through the numbers and keep a running total with the += operator.",
-      "input_type": ["int"],
-      "answer_code": "def sum_numbers(n):\n    total = 0\n    for i in range(1, n+1):\n        total += i\n    return total",
-      "hint": "Use a for loop with range() to iterate from 1 to n, adding each number to a running total.",
-      "test_inputs": [[4], [1], [10]]
-    },
-     {
-      "function_name": "yellow_brick_road",
-      "parameters": ["steps"],
-      "description": "Return a string of 'yellow' and 'brick' alternating 'steps' number of times.",
-      "input_type": "integer",
-      "answer_code": "def yellow_brick_road(steps):\n    result = []\n    for i in range(steps):\n        if i % 2 == 0:\n            result.append('yellow')\n        else:\n            result.append('brick')\n    return ' '.join(result)",
-      "hint": "Use a for loop and modulo operator to alternate between 'yellow' and 'brick'.",
-      "test_inputs": [
-        3,
-        5,
-        0,
-        1,
-        8
-      ]
-    },
-    {
-      "function_name": "count_munchkins",
-      "parameters": ["munchkin_heights"],
-      "description": "Count how many munchkins are shorter than 4 feet (input heights are in inches).",
-      "input_type": "list of integers",
-      "answer_code": "def count_munchkins(munchkin_heights):\n    count = 0\n    for height in munchkin_heights:\n        if height < 48:  # 4 feet = 48 inches\n            count += 1\n    return count",
-      "hint": "Use a for loop to iterate through the list and an if statement to check height.",
-      "test_inputs": [
-        [36, 42, 50, 45, 38],
-        [49, 52, 47, 50, 48],
-        [30, 35, 40],
-        [60, 55, 58],
-        []
-      ]
-    },
-    {
-      "function_name": "multiply_range",
-      "parameters": ["start", "end"],
-      "description": "Write a function that calculates the product of all integers from start to end (inclusive). Use a for loop with range() to iterate through the numbers and keep a running product with the *= operator.",
-      "input_type": ["int", "int"],
-      "answer_code": "def multiply_range(start, end):\n    product = 1\n    for i in range(start, end+1):\n        product *= i\n    return product",
-      "hint": "Use a for loop with range() to iterate from start to end, multiplying each number to a running product.",
-      "test_inputs": [[2, 4], [1, 5], [5, 7]]
-    },
-    {
-      "function_name": "repeat_char",
-      "parameters": ["char", "n"],
-      "description": "Write a function that repeats a character n times, creating a string. Use a for loop with range() and string concatenation with the += operator. Do not use the string multiplication operator (*).",
-      "input_type": ["string", "int"],
-      "answer_code": "def repeat_char(char, n):\n    result = ''\n    for i in range(n):\n        result += char\n    return result",
-      "hint": "Use a for loop with range() to append the character to a result string n times.",
-      "test_inputs": [["*", 3], ["A", 5], ["x", 0]]
-    },
-    {
-      "function_name": "sum_even_numbers",
-      "parameters": ["n"],
-      "description": "Write a function that calculates the sum of all even numbers from 2 to n (inclusive). Use a for loop with range() and its step parameter to get only even numbers, and keep a running total with the += operator.",
-      "input_type": ["int"],
-      "answer_code": "def sum_even_numbers(n):\n    total = 0\n    for i in range(2, n+1, 2):\n        total += i\n    return total",
-      "hint": "Use a for loop with range() starting at 2, ending at n, with a step of 2 to get only even numbers.",
-      "test_inputs": [[8], [2], [10]]
-    },
-    {
-      "function_name": "character_at_position",
-      "parameters": ["text", "position"],
-      "description": "Write a function that returns the character at a specific position in a string. If the position is out of range (negative or beyond the string length), return an empty string. Use if statements and string indexing.",
-      "input_type": ["string", "int"],
-      "answer_code": "def character_at_position(text, position):\n    if position < 0 or position >= len(text):\n        return ''\n    return text[position]",
-      "hint": "Check if the position is valid using if statements, then use string indexing with square brackets to get the character.",
-      "test_inputs": [["hello", 1], ["python", 0], ["code", 10]]
-    },
-    {
-      "function_name": "count_divisible_by_n",
-      "parameters": ["start", "end", "divisor"],
-      "description": "Write a function that counts how many integers from start to end (inclusive) are divisible by a given divisor. Use a for loop with range(), the modulo operator (%), and a counter variable that increments with the += operator.",
-      "input_type": ["int", "int", "int"],
-      "answer_code": "def count_divisible_by_n(start, end, divisor):\n    count = 0\n    for num in range(start, end + 1):\n        if num % divisor == 0:\n            count += 1\n    return count",
-      "hint": "Loop through the range of numbers and use the modulo operator (%) to check if each number is divisible by the divisor.",
-      "test_inputs": [[1, 10, 2], [5, 20, 5], [10, 30, 7]]
-    },
-    {
-      "function_name": "reverse_string",
-      "parameters": ["text"],
-      "description": "Write a function that reverses a string using a loop. Do not use the built-in reversed() function or string slicing with [::-1]. Use a for loop to iterate through the string and string concatenation, adding each character to the beginning of a new string.",
-      "input_type": ["string"],
-      "answer_code": "def reverse_string(text):\n    reversed_text = ''\n    for char in text:\n        reversed_text = char + reversed_text\n    return reversed_text",
-      "hint": "Loop through each character in the string and add it to the beginning of a new string.",
-      "test_inputs": [["hello"], ["python"], ["racecar"]]
-    },
-    {
-      "function_name": "fizz_buzz",
-      "parameters": ["n"],
-      "description": "Implement the FizzBuzz problem for a single number n. Return 'Fizz' if n is divisible by 3, 'Buzz' if n is divisible by 5, 'FizzBuzz' if n is divisible by both 3 and 5, or the number as a string otherwise. Use if-elif-else statements, the modulo operator (%), and the str() function to convert the number to a string.",
-      "input_type": ["int"],
-      "answer_code": "def fizz_buzz(n):\n    if n % 3 == 0 and n % 5 == 0:\n        return 'FizzBuzz'\n    elif n % 3 == 0:\n        return 'Fizz'\n    elif n % 5 == 0:\n        return 'Buzz'\n    else:\n        return str(n)",
-      "hint": "Use if-elif-else statements with the modulo operator to check divisibility by 3 and 5.",
-      "test_inputs": [[15], [3], [5], [7]]
-    },
-    {
-      "function_name": "sum_digits",
-      "parameters": ["number"],
-      "description": "Write a function that calculates the sum of the digits in a non-negative integer. Use a while loop, the modulo operator (%) to extract the last digit, integer division (//) to remove the last digit, and a variable to keep a running total.",
-      "input_type": ["int"],
-      "answer_code": "def sum_digits(number):\n    total = 0\n    while number > 0:\n        digit = number % 10\n        total += digit\n        number //= 10\n    return total",
-      "hint": "Use a while loop. In each iteration, get the last digit with % 10, add it to the total, and remove it from the number with integer division //= 10.",
-      "test_inputs": [[123], [9], [1000]]
-    }
-  ]
+"questions": [
+{
+"function_name": "find_book",
+"parameters": ["bookshelf", "title"],
+"description": "Write a function that checks if a specific book title is in a bookshelf list. Return True if the book is found, False otherwise. Use the 'in' operator.",
+"input_type": ["list", "str"],
+"answer_code": "def find_book(bookshelf, title):\n    return title in bookshelf",
+"hint": "The 'in' operator checks if an element exists in a list and returns a boolean.",
+"test_inputs": [[["Moby Dick", "Pride and Prejudice", "1984"], "1984"], [["Harry Potter", "Lord of the Rings"], "Dune"], [[], "The Great Gatsby"], [["To Kill a Mockingbird"], "To Kill a Mockingbird"]]
+},
+{
+"function_name": "first_mineral",
+"parameters": ["rock_collection"],
+"description": "Write a function that returns the alphabetically first mineral name from a rock collection list. If the list is empty, return an empty string.",
+"input_type": ["list"],
+"answer_code": "def first_mineral(rock_collection):\n    if not rock_collection:\n        return ''\n    return sorted(rock_collection)[0]",
+"hint": "Use the sorted() function to create a sorted copy of the list and then return the first element.",
+"test_inputs": [[["Quartz", "Amethyst", "Diamond", "Ruby"]], [["Granite", "Basalt", "Limestone"]], [[]], [["Gold"]]]
+},
+{
+"function_name": "search_element",
+"parameters": ["periodic_table", "element"],
+"description": "Write a function that finds the position (index) of a chemical element in a periodic table list. Return -1 if the element is not found.",
+"input_type": ["list", "str"],
+"answer_code": "def search_element(periodic_table, element):\n    try:\n        return periodic_table.index(element)\n    except ValueError:\n        return -1",
+"hint": "Use the index() method to find the position of the element. Handle the ValueError exception that occurs when the element is not found.",
+"test_inputs": [[["Hydrogen", "Helium", "Lithium", "Beryllium"], "Lithium"], [["Carbon", "Nitrogen", "Oxygen"], "Fluorine"], [[], "Neon"], [["Gold", "Silver", "Copper"], "Silver"]]
+},
+{
+"function_name": "sort_temperatures",
+"parameters": ["daily_readings"],
+"description": "Write a function that sorts a list of temperature readings in ascending order. Return the sorted list.",
+"input_type": ["list"],
+"answer_code": "def sort_temperatures(daily_readings):\n    return sorted(daily_readings)",
+"hint": "Use the sorted() function to create a new sorted list of temperature readings.",
+"test_inputs": [[[22.5, 19.8, 25.1, 20.3]], [[]], [[98.6]], [[-10.5, 15.0, 5.2, -5.8]]]
+},
+{
+"function_name": "highest_score",
+"parameters": ["game_scores"],
+"description": "Write a function that finds and returns the highest score from a list of game scores. Return 0 if the list is empty.",
+"input_type": ["list"],
+"answer_code": "def highest_score(game_scores):\n    if not game_scores:\n        return 0\n    return max(game_scores)",
+"hint": "Use the max() function to find the highest score in the list. Handle the empty list case separately.",
+"test_inputs": [[[105, 92, 98, 117, 85]], [[]], [[42]], [[10, 10, 10, 10]]]
+},
+{
+"function_name": "sort_movies_by_year",
+"parameters": ["movie_years", "movie_titles"],
+"description": "Write a function that sorts movie titles based on their release years. Return the sorted titles list. Assume the lists are of equal length and years are unique.",
+"input_type": ["list", "list"],
+"answer_code": "def sort_movies_by_year(movie_years, movie_titles):\n    pairs = sorted(zip(movie_years, movie_titles))\n    return [title for year, title in pairs]",
+"hint": "Use zip() to pair years with titles, then sort based on years. Extract just the titles from the sorted pairs.",
+"test_inputs": [[[1977, 1980, 1983], ["Star Wars", "Empire Strikes Back", "Return of the Jedi"]], [[2008, 2012, 2010], ["Iron Man", "Avengers", "Iron Man 2"]], [[], []], [[1997], ["Titanic"]]]
+},
+{
+"function_name": "count_occurrences",
+"parameters": ["bird_sightings", "bird_species"],
+"description": "Write a function that counts how many times a specific bird species appears in a list of bird sightings. Return the count.",
+"input_type": ["list", "str"],
+"answer_code": "def count_occurrences(bird_sightings, bird_species):\n    return bird_sightings.count(bird_species)",
+"hint": "Use the count() method to count how many times the bird species appears in the list.",
+"test_inputs": [[["Robin", "Bluejay", "Cardinal", "Robin", "Robin"], "Robin"], [["Eagle", "Hawk", "Falcon"], "Owl"], [[], "Sparrow"], [["Penguin", "Penguin"], "Penguin"]]
+},
+{
+"function_name": "find_smallest_positive",
+"parameters": ["numbers"],
+"description": "Write a function that finds the smallest positive number in a list. Return -1 if there are no positive numbers.",
+"input_type": ["list"],
+"answer_code": "def find_smallest_positive(numbers):\n    positives = [num for num in numbers if num > 0]\n    if not positives:\n        return -1\n    return min(positives)",
+"hint": "Filter the list to include only positive numbers, then find the minimum value. Return -1 if the filtered list is empty.",
+"test_inputs": [[[3, -1, 5, 2, -4]], [[-2, -5, -1]], [[]], [[0, -3, 8, 4]]]
+},
+{
+"function_name": "alphabetize_patients",
+"parameters": ["waiting_list"],
+"description": "Write a function that returns a new list with patient names alphabetized for a clinic's waiting room. Return an empty list if the input is empty.",
+"input_type": ["list"],
+"answer_code": "def alphabetize_patients(waiting_list):\n    return sorted(waiting_list)",
+"hint": "Use the sorted() function to create a new list with patient names in alphabetical order.",
+"test_inputs": [[["Smith", "Jones", "Williams", "Taylor"]], [["Patel", "Garcia", "Kim"]], [[]], [["Nguyen"]]]
+},
+{
+"function_name": "top_three_scores",
+"parameters": ["student_scores"],
+"description": "Write a function that returns the top three highest scores from a list. If the list has fewer than three scores, return all scores in descending order.",
+"input_type": ["list"],
+"answer_code": "def top_three_scores(student_scores):\n    return sorted(student_scores, reverse=True)[:3]",
+"hint": "Sort the scores in descending order using sorted() with reverse=True, then get the first three elements using list slicing.",
+"test_inputs": [[[85, 92, 78, 95, 88]], [[91, 84]], [[]], [[100, 99, 98, 97, 96]]]
+},
+{
+"function_name": "find_products_under_price",
+"parameters": ["product_prices", "products", "max_price"],
+"description": "Write a function that returns a list of product names that are under a specified maximum price. Assumes prices and products lists are of equal length.",
+"input_type": ["list", "list", "float"],
+"answer_code": "def find_products_under_price(product_prices, products, max_price):\n    affordable_products = []\n    for i in range(len(product_prices)):\n        if product_prices[i] < max_price:\n            affordable_products.append(products[i])\n    return affordable_products",
+"hint": "Iterate through the prices and corresponding products, adding products to a new list when their price is below the maximum.",
+"test_inputs": [[[5.99, 10.50, 3.25, 7.80], ["Bread", "Cheese", "Apples", "Milk"], 6.00], [[100, 50, 75], ["Shoes", "Shirt", "Pants"], 80], [[], [], 20], [[15.99], ["Book"], 10.00]]
+},
+{
+"function_name": "binary_search_city",
+"parameters": ["city_list", "target_city"],
+"description": "Write a function that performs a binary search for a city name in an alphabetically sorted list of cities. Return True if found, False otherwise.",
+"input_type": ["list", "str"],
+"answer_code": "def binary_search_city(city_list, target_city):\n    low = 0\n    high = len(city_list) - 1\n    \n    while low <= high:\n        mid = (low + high) // 2\n        if city_list[mid] == target_city:\n            return True\n        elif city_list[mid] < target_city:\n            low = mid + 1\n        else:\n            high = mid - 1\n            \n    return False",
+"hint": "Implement binary search by repeatedly dividing the sorted list in half. Keep track of the low and high bounds and compare the middle element with the target city.",
+"test_inputs": [[["Boston", "Chicago", "Dallas", "Miami", "Seattle"], "Dallas"], [["Atlanta", "Denver", "Phoenix"], "New York"], [[], "Paris"], [["London"], "London"]]
+},
+{
+"function_name": "sort_by_length",
+"parameters": ["song_titles"],
+"description": "Write a function that sorts a list of song titles based on their length (shortest to longest). If two titles have the same length, maintain their original order (stable sort).",
+"input_type": ["list"],
+"answer_code": "def sort_by_length(song_titles):\n    return sorted(song_titles, key=len)",
+"hint": "Use sorted() with the key parameter set to len to sort based on string length.",
+"test_inputs": [[["Bohemian Rhapsody", "Hey Jude", "Let It Be", "Yesterday"]], [["Imagine", "Thriller", "Respect"]], [[]], [["Supercalifragilisticexpialidocious"]]]
+},
+{
+"function_name": "merge_sorted_lists",
+"parameters": ["list1", "list2"],
+"description": "Write a function that merges two already-sorted lists of numbers into a single sorted list. The returned list should also be sorted.",
+"input_type": ["list", "list"],
+"answer_code": "def merge_sorted_lists(list1, list2):\n    merged_list = list1 + list2\n    return sorted(merged_list)",
+"hint": "Concatenate the two lists using the + operator, then sort the combined list using sorted().",
+"test_inputs": [[[1, 3, 5], [2, 4, 6]], [[10, 20, 30], [15, 25, 35]], [[], [1, 2, 3]], [[5, 10, 15], []]]
+},
+{
+"function_name": "reverse_sort_grades",
+"parameters": ["student_grades"],
+"description": "Write a function that sorts a list of student grades in descending order (highest to lowest). Return the sorted list.",
+"input_type": ["list"],
+"answer_code": "def reverse_sort_grades(student_grades):\n    return sorted(student_grades, reverse=True)",
+"hint": "Use sorted() with the reverse parameter set to True to sort in descending order.",
+"test_inputs": [[[85, 92, 78, 95, 88]], [[100, 65, 82]], [[]], [[77]]]
+},
+{
+"function_name": "find_closest_planet",
+"parameters": ["distances", "planet_names"],
+"description": "Write a function that finds the name of the planet that is closest to Earth based on a list of distances. Assume distances and planet_names are of equal length and non-empty.",
+"input_type": ["list", "list"],
+"answer_code": "def find_closest_planet(distances, planet_names):\n    min_index = distances.index(min(distances))\n    return planet_names[min_index]",
+"hint": "Find the minimum distance using min(), then find its index using index(). Use this index to retrieve the corresponding planet name.",
+"test_inputs": [[[149.6, 227.9, 778.5, 1427.0], ["Venus", "Mars", "Jupiter", "Saturn"]], [[57.9, 108.2], ["Mercury", "Venus"]], [[384.4], ["Moon"]], [[0.0, 54.6, 78.3], ["Earth", "Mercury", "Venus"]]]
+},
+{
+"function_name": "find_all_occurrences",
+"parameters": ["dna_sequence", "motif"],
+"description": "Write a function that finds all starting indices where a DNA motif occurs in a DNA sequence string. Return a list of indices.",
+"input_type": ["str", "str"],
+"answer_code": "def find_all_occurrences(dna_sequence, motif):\n    indices = []\n    start = 0\n    while True:\n        start = dna_sequence.find(motif, start)\n        if start == -1:\n            break\n        indices.append(start)\n        start += 1\n    return indices",
+"hint": "Use a loop with the find() method to locate occurrences. Start searching from the position after each match until no more matches are found.",
+"test_inputs": [["ACGTACGTACGT", "ACG"], ["AAAAAA", "AA"], ["GATTACA", "ZZZ"], ["", "A"]]
+},
+{
+"function_name": "sort_multi_field",
+"parameters": ["player_scores", "player_names"],
+"description": "Write a function that sorts players primarily by their scores (highest to lowest) and secondarily by their names (alphabetically) when scores are equal. Return a list of player names in the sorted order.",
+"input_type": ["list", "list"],
+"answer_code": "def sort_multi_field(player_scores, player_names):\n    # Create pairs of (score, name)\n    pairs = list(zip(player_scores, player_names))\n    # Sort by score (descending) and then by name (ascending)\n    sorted_pairs = sorted(pairs, key=lambda x: (-x[0], x[1]))\n    # Extract just the names from the sorted pairs\n    return [name for score, name in sorted_pairs]",
+"hint": "Create pairs of (score, name) using zip(), then sort using a custom key function that sorts by negative score (for descending order) and then by name.",
+"test_inputs": [[[100, 95, 95, 90], ["Dave", "Alice", "Bob", "Charlie"]], [[85, 85, 85], ["Zach", "Maya", "Alex"]], [[], []], [[500], ["Player1"]]]
+},
+{
+"function_name": "filter_and_sort_tasks",
+"parameters": ["tasks", "priority_level"],
+"description": "Write a function that filters a list of task strings to include only those containing the specified priority level (e.g., 'HIGH', 'MEDIUM', 'LOW') and then sorts them alphabetically.",
+"input_type": ["list", "str"],
+"answer_code": "def filter_and_sort_tasks(tasks, priority_level):\n    filtered_tasks = [task for task in tasks if priority_level in task]\n    return sorted(filtered_tasks)",
+"hint": "Use a list comprehension to filter tasks containing the priority level, then sort the filtered list alphabetically.",
+"test_inputs": [[["Buy groceries (HIGH)", "Call mom (LOW)", "Finish report (HIGH)", "Exercise (MEDIUM)"], "HIGH"], [["Study for exam (MEDIUM)", "Clean room (LOW)"], "HIGH"], [[], "MEDIUM"], [["Single task (LOW)"], "LOW"]]
+},
+{
+"function_name": "bubble_sort_animals",
+"parameters": ["animal_list"],
+"description": "Write a function that implements the bubble sort algorithm to sort a list of animal names alphabetically. Return the sorted list.",
+"input_type": ["list"],
+"answer_code": "def bubble_sort_animals(animal_list):\n    n = len(animal_list)\n    for i in range(n):\n        for j in range(0, n - i - 1):\n            if animal_list[j] > animal_list[j + 1]:\n                animal_list[j], animal_list[j + 1] = animal_list[j + 1], animal_list[j]\n    return animal_list",
+"hint": "Implement bubble sort by comparing adjacent elements and swapping them if they are in the wrong order, repeating until the list is sorted.",
+"test_inputs": [[["Zebra", "Lion", "Elephant", "Giraffe"]], [["Tiger", "Bear"]], [[]], [["Kangaroo"]]]
+}
+]
 }
