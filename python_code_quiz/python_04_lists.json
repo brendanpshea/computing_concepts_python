@@ -10,15 +10,6 @@
       "test_inputs": [["Sirius", "Vega", "Polaris"], ["Betelgeuse", "Rigel", "Aldebaran"], ["Antares", "Arcturus", "Deneb"], ["Altair", "Capella", "Castor"]]
     },
     {
-      "function_name": "create_journey_stages",
-      "parameters": ["destination", "num_stages"],
-      "description": "Write a function that creates a list with stages of a journey to a destination. Each stage should be numbered (e.g., 'Stage 1: Rome', 'Stage 2: Rome'). The list should contain 'num_stages' elements.",
-      "input_type": ["str", "int"],
-      "answer_code": "def create_journey_stages(destination, num_stages):\n    journey = []\n    for i in range(1, num_stages + 1):\n        journey.append(f'Stage {i}: {destination}')\n    return journey",
-      "hint": "Initialize an empty list, then use a for loop with range() and the append() method to add each stage with its number.",
-      "test_inputs": [["Rome", 3], ["Machu Picchu", 5], ["Great Barrier Reef", 1], ["Mount Everest", 7]]
-    },
-    {
       "function_name": "parse_genome_sequence",
       "parameters": ["dna_string"],
       "description": "Write a function that takes a string of DNA nucleotides (e.g., 'ATCG') and converts it to a list where each nucleotide is a separate element.",
