@@ -225,15 +225,6 @@
       "answer_code": "def reverse_playlist(songs):\n    return songs[::-1]",
       "hint": "Use list slicing with a negative step ([::-1]) to create a reversed copy of the list.",
       "test_inputs": [[["Bohemian Rhapsody", "Stairway to Heaven", "Hotel California", "Sweet Child O' Mine"]], [["Imagine", "Let It Be"]], [[]], [["Moonlight Sonata"]]]
-    },
-    {
-      "function_name": "count_artifacts_by_era",
-      "parameters": ["artifacts", "target_era"],
-      "description": "Write a function that counts how many artifacts in a museum belong to a specific historical era. Each artifact is represented as a tuple of (name, era, year). Return the count of artifacts from the target era.",
-      "input_type": ["list", "str"],
-      "answer_code": "def count_artifacts_by_era(artifacts, target_era):\n    count = 0\n    for artifact in artifacts:\n        if artifact[1] == target_era:\n            count += 1\n    return count",
-      "hint": "Iterate through the list of artifact tuples, check if the era (second element of each tuple) matches the target era, and increment a counter if it does.",
-      "test_inputs": [[[("Vase", "Ancient Greek", -500), ("Statue", "Roman", 100), ("Coin", "Ancient Greek", -300), ("Manuscript", "Medieval", 1200)], "Ancient Greek"], [[("Sword", "Medieval", 1100), ("Armor", "Medieval", 1250), ("Chalice", "Renaissance", 1500)], "Renaissance"], [[], "Ancient Egyptian"], [[("Mask", "Maya", 800), ("Pottery", "Inca", 1300), ("Jewelry", "Aztec", 1400)], "Maya"]]
     }
   ]
 }
