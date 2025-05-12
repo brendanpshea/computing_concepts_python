@@ -188,10 +188,10 @@
       "answer_code": "import math\n\ndef calculate_game_damage(base_damage, critical_hit):\n    if critical_hit:\n        return math.floor(base_damage * 2.5)\n    return base_damage",
       "hint": "Import the math module and use math.floor() to round down the result when there's a critical hit.",
       "test_inputs": [
-        [10.0, True], 
-        [25.5, False], 
-        [7.8, True], 
-        [100.0, True]
+        [10.0, true], 
+        [25.5, false], 
+        [7.8, true], 
+        [100.0, true]
       ]
     },
     
