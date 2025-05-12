@@ -151,7 +151,7 @@
       "input_type": ["str"],
       "answer_code": "def atbash_cipher(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            if char.isupper():\n                result += chr(155 - ord(char))  # 155 = ord('A') + ord('Z')\n            else:\n                result += chr(219 - ord(char))  # 219 = ord('a') + ord('z')\n        else:\n            result += char\n    return result",
       "hint": "For each letter, calculate its position from the opposite end of the alphabet using the formula: (first_letter + last_letter) - current_letter. Use ord('A')+ord('Z') for uppercase and ord('a')+ord('z') for lowercase.",
-      "test_inputs": [["Secret message"], ["Agent in the field"], ["Mission accomplished"], ["Extract at 0200 hours"]] non-alphabetic characters unchanged.",
+      "test_inputs": [["Secret message"], ["Agent in the field"], ["Mission accomplished"], ["Extract at 0200 hours"]] 
       "input_type": ["str"],
       "answer_code": "def atbash_cipher(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            if char.isupper():\n                result += chr(155 - ord(char))  # 155 = ord('A') + ord('Z')\n            else:\n                result += chr(219 - ord(char))  # 219 = ord('a') + ord('z')\n        else:\n            result += char\n    return result",
       "hint": "For each letter, calculate its position from the opposite end of the alphabet using the formula: (first_letter + last_letter) - current_letter. Use ord('A')+ord('Z') for uppercase and ord('a')+ord('z') for lowercase.",
