@@ -151,7 +151,7 @@
       "input_type": ["list"],
       "answer_code": "def organize_library_shelf(books_and_genres):\n    shelf = {}\n    for item in books_and_genres:\n        book, genre = item.split(':', 1)\n        book = book.strip()\n        genre = genre.strip()\n        if genre in shelf:\n            shelf[genre].append(book)\n        else:\n            shelf[genre] = [book]\n    return shelf",
       "hint": "Create an empty dictionary, split each string to get the book and genre, then append each book to a list under its corresponding genre key.",
-      "test_inputs": [[["Dune:Science Fiction", "Murder on the Orient Express:Mystery", "Neuromancer:Science Fiction"]], [["Pride and Prejudice:Classic", "Jane Eyre:Classic", "Wuthering Heights:Classic"]], [["The Shining:Horror", "It:Horror", "Dracula:Horror", "Frankenstein:Horror"]], [["The Hobbit:Fantasy", "Sapiens:Non-Fiction", "The Da Vinci Code:Thriller", "A Brief History of Time:Science"]]]]
+      "test_inputs": [[["Dune:Science Fiction", "Murder on the Orient Express:Mystery", "Neuromancer:Science Fiction"]], [["Pride and Prejudice:Classic", "Jane Eyre:Classic", "Wuthering Heights:Classic"]], [["The Shining:Horror", "It:Horror", "Dracula:Horror", "Frankenstein:Horror"]], [["The Hobbit:Fantasy", "Sapiens:Non-Fiction", "The Da Vinci Code:Thriller", "A Brief History of Time:Science"]]]
     },
     {
       "function_name": "find_available_books",
