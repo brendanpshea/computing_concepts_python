@@ -1,0 +1,273 @@
+{
+  "questions": [
+    {
+      "function_name": "add_player_health",
+      "parameters": ["current_health", "health_bonus"],
+      "description": "Write a function that adds a health bonus to a player's current health. Return the total health as an integer.",
+      "input_type": ["int", "int"],
+      "answer_code": "def add_player_health(current_health, health_bonus):\n    return current_health + health_bonus",
+      "hint": "Simply add the two numbers together and return the result.",
+      "test_inputs": [
+        [50, 20], 
+        [100, 0], 
+        [75, 25], 
+        [10, 90]
+      ]
+    },
+    
+    {
+      "function_name": "calculate_damage_multiplier",
+      "parameters": ["base_damage", "multiplier"],
+      "description": "Write a function that multiplies the base damage by a multiplier and returns the result as an integer (rounded down).",
+      "input_type": ["int", "float"],
+      "answer_code": "import math\n\ndef calculate_damage_multiplier(base_damage, multiplier):\n    return math.floor(base_damage * multiplier)",
+      "hint": "Import the math module and use math.floor() to round down the result.",
+      "test_inputs": [
+        [10, 1.5], 
+        [25, 2.0], 
+        [7, 3.5], 
+        [100, 0.5]
+      ]
+    },
+    
+    {
+      "function_name": "get_distance",
+      "parameters": ["x1", "y1", "x2", "y2"],
+      "description": "Write a function that calculates the Euclidean distance between two points (x1, y1) and (x2, y2) in a 2D game world. Use the math module's sqrt function. Return the distance rounded to 2 decimal places.",
+      "input_type": ["int", "int", "int", "int"],
+      "answer_code": "import math\n\ndef get_distance(x1, y1, x2, y2):\n    return round(math.sqrt((x2 - x1)**2 + (y2 - y1)**2), 2)",
+      "hint": "Use the distance formula: sqrt((x2-x1)^2 + (y2-y1)^2) and round the result to 2 decimal places.",
+      "test_inputs": [
+        [0, 0, 3, 4], 
+        [1, 1, 4, 5], 
+        [10, 10, 13, 14], 
+        [-2, -3, 3, 4]
+      ]
+    },
+    
+    {
+      "function_name": "roll_dice",
+      "parameters": ["num_dice", "sides"],
+      "description": "Write a function that simulates rolling a specified number of dice with the given number of sides. Return the sum of all dice rolls. Use the random module and set random.seed(42) at the beginning of your function.",
+      "input_type": ["int", "int"],
+      "answer_code": "import random\n\ndef roll_dice(num_dice, sides):\n    random.seed(42)\n    return sum(random.randint(1, sides) for _ in range(num_dice))",
+      "hint": "Import the random module, set the seed to 42, and use random.randint() to generate dice rolls.",
+      "test_inputs": [
+        [2, 6], 
+        [1, 20], 
+        [3, 4], 
+        [5, 10]
+      ]
+    },
+    
+    {
+      "function_name": "is_critical_hit",
+      "parameters": ["probability"],
+      "description": "Write a function that determines if an attack is a critical hit based on the given probability (0-1). Return True if a random number (0-1) is less than the probability, False otherwise. Use the random module and set random.seed(42) at the beginning of your function.",
+      "input_type": ["float"],
+      "answer_code": "import random\n\ndef is_critical_hit(probability):\n    random.seed(42)\n    return random.random() < probability",
+      "hint": "Import the random module, set the seed to 42, and use random.random() to generate a number between 0 and 1.",
+      "test_inputs": [
+        [0.1], 
+        [0.5], 
+        [0.75], 
+        [0.0]
+      ]
+    },
+    
+    {
+      "function_name": "get_current_game_time",
+      "parameters": [],
+      "description": "Write a function that returns the current time as a string in the format 'HH:MM:SS'. Use the datetime module.",
+      "input_type": [],
+      "answer_code": "from datetime import datetime\n\ndef get_current_game_time():\n    now = datetime.now()\n    return now.strftime('%H:%M:%S')",
+      "hint": "Import datetime from the datetime module, use datetime.now() to get the current time, and format it with strftime().",
+      "test_inputs": [
+        [], 
+        [], 
+        [], 
+        []
+      ]
+    },
+    
+    {
+      "function_name": "calculate_cooldown_end",
+      "parameters": ["seconds"],
+      "description": "Write a function that calculates when an ability cooldown will end. Given the cooldown duration in seconds, return a string showing the time after that many seconds from now in the format 'HH:MM:SS'. Use the datetime module.",
+      "input_type": ["int"],
+      "answer_code": "from datetime import datetime, timedelta\n\ndef calculate_cooldown_end(seconds):\n    now = datetime.now()\n    cooldown_end = now + timedelta(seconds=seconds)\n    return cooldown_end.strftime('%H:%M:%S')",
+      "hint": "Import datetime and timedelta, add the seconds to the current time, and format the result with strftime().",
+      "test_inputs": [
+        [30], 
+        [60], 
+        [300], 
+        [3600]
+      ]
+    },
+    
+    {
+      "function_name": "get_player_level",
+      "parameters": ["experience_points"],
+      "description": "Write a function that determines a player's level based on their experience points. The level is calculated as the integer part of the square root of (experience_points / 100). Use the math module.",
+      "input_type": ["int"],
+      "answer_code": "import math\n\ndef get_player_level(experience_points):\n    return math.floor(math.sqrt(experience_points / 100))",
+      "hint": "Import the math module, calculate the square root of (experience_points / 100), and use math.floor() to get the integer part.",
+      "test_inputs": [
+        [100], 
+        [1000], 
+        [2500], 
+        [10000]
+      ]
+    },
+    
+    {
+      "function_name": "choose_random_item",
+      "parameters": ["item_list"],
+      "description": "Write a function that randomly selects and returns an item from a list of items. Use the random module and set random.seed(42) at the beginning of your function.",
+      "input_type": ["list"],
+      "answer_code": "import random\n\ndef choose_random_item(item_list):\n    random.seed(42)\n    return random.choice(item_list)",
+      "hint": "Import the random module, set the seed to 42, and use random.choice() to select a random item from the list.",
+      "test_inputs": [
+        [["sword", "shield", "potion"]], 
+        [["fire", "water", "earth", "air"]], 
+        [["legendary sword", "epic shield", "rare potion"]], 
+        [["bow", "arrow", "quiver"]]
+      ]
+    },
+    
+    {
+      "function_name": "format_game_time",
+      "parameters": ["minutes", "seconds"],
+      "description": "Write a function that formats a game time given in minutes and seconds as a string in the format 'MM:SS'. Ensure that seconds are displayed with leading zeros if less than 10.",
+      "input_type": ["int", "int"],
+      "answer_code": "def format_game_time(minutes, seconds):\n    return f'{minutes}:{seconds:02d}'",
+      "hint": "Use an f-string with the :02d format specifier for seconds to ensure a leading zero when necessary.",
+      "test_inputs": [
+        [5, 30], 
+        [2, 5], 
+        [10, 0], 
+        [0, 42]
+      ]
+    },
+    
+    {
+      "function_name": "calculate_game_damage",
+      "parameters": ["base_damage", "critical_hit"],
+      "description": "Using the math module, write a function that calculates damage in a video game. If critical_hit is True, multiply the base_damage by 2.5 and round down to the nearest integer using math.floor(). Otherwise, return the base_damage as is.",
+      "input_type": ["float", "bool"],
+      "answer_code": "import math\n\ndef calculate_game_damage(base_damage, critical_hit):\n    if critical_hit:\n        return math.floor(base_damage * 2.5)\n    return base_damage",
+      "hint": "Import the math module and use math.floor() to round down the result when there's a critical hit.",
+      "test_inputs": [
+        [10.0, True], 
+        [25.5, False], 
+        [7.8, True], 
+        [100.0, True]
+      ]
+    },
+    
+    {
+      "function_name": "generate_random_loot",
+      "parameters": ["loot_table", "num_items"],
+      "description": "Using the random module, write a function that selects random items from a loot_table (a list of strings). The function should return a list of num_items randomly chosen from the loot_table. Items can be selected more than once. Make sure to set random.seed(42) at the beginning of your function to ensure consistent results for grading.",
+      "input_type": ["list", "int"],
+      "answer_code": "import random\n\ndef generate_random_loot(loot_table, num_items):\n    random.seed(42)\n    return [random.choice(loot_table) for _ in range(num_items)]",
+      "hint": "Import the random module, set the seed to 42, and use random.choice() in a list comprehension to select random items.",
+      "test_inputs": [
+        [["sword", "shield", "potion", "gold"], 3], 
+        [["rare gem", "ancient scroll", "mystic orb"], 5], 
+        [["health potion", "mana potion"], 4], 
+        [["copper coin", "silver coin", "gold coin", "platinum coin"], 6]
+      ]
+    },
+    
+    {
+      "function_name": "format_player_stats",
+      "parameters": ["player_name", "health", "mana", "level"],
+      "description": "Create a function that returns a formatted string displaying a player's stats in a video game. The stats should be formatted as: 'PLAYER NAME | HP: health/100 | MP: mana/50 | LVL: level'. Use string formatting to ensure health and mana are displayed with exactly 1 decimal place.",
+      "input_type": ["str", "float", "float", "int"],
+      "answer_code": "def format_player_stats(player_name, health, mana, level):\n    return f'{player_name.upper()} | HP: {health:.1f}/100 | MP: {mana:.1f}/50 | LVL: {level}'",
+      "hint": "Use an f-string with the .upper() method for the player name and :.1f format specifiers for floating-point values.",
+      "test_inputs": [
+        ["warrior", 75.5, 30.0, 5], 
+        ["mage", 45.75, 85.25, 7], 
+        ["ranger", 60.0, 40.0, 6], 
+        ["paladin", 90.333, 60.667, 8]
+      ]
+    },
+    
+    {
+      "function_name": "count_inventory_items",
+      "parameters": ["inventory"],
+      "description": "Write a function that uses the collections module's Counter class to count the occurrences of each item in an inventory list. Return a dictionary with items as keys and their counts as values, sorted by count in descending order then by item name alphabetically for items with the same count.",
+      "input_type": ["list"],
+      "answer_code": "from collections import Counter\n\ndef count_inventory_items(inventory):\n    item_counts = Counter(inventory)\n    return dict(sorted(item_counts.items(), key=lambda x: (-x[1], x[0])))",
+      "hint": "Import Counter from collections, use it to count items, then sort the results using a lambda function with a tuple key (-count, name).",
+      "test_inputs": [
+        [["potion", "sword", "potion", "shield", "potion", "sword"]], 
+        [["health potion", "mana potion", "health potion", "antidote"]], 
+        [["gold coin", "gold coin", "gold coin", "gold coin"]], 
+        [["bow", "arrow", "arrow", "bow", "quiver", "arrow", "bow"]]
+      ]
+    },
+    
+    {
+      "function_name": "calculate_game_time",
+      "parameters": ["seconds"],
+      "description": "Using the datetime module, write a function that converts a number of seconds into a formatted game time string. Return a string in the format 'HH:MM:SS'. Use timedelta and strftime to format the time correctly.",
+      "input_type": ["int"],
+      "answer_code": "from datetime import datetime, timedelta\n\ndef calculate_game_time(seconds):\n    time_obj = datetime(1, 1, 1) + timedelta(seconds=seconds)\n    return time_obj.strftime('%H:%M:%S')",
+      "hint": "Create a datetime object, add the seconds as a timedelta, then use strftime with the '%H:%M:%S' format.",
+      "test_inputs": [
+        [3665], 
+        [7200], 
+        [90], 
+        [54321]
+      ]
+    },
+    
+    {
+      "function_name": "rotate_game_character",
+      "parameters": ["current_direction", "turns"],
+      "description": "Write a function that simulates rotating a video game character. The character can face four directions: 'north', 'east', 'south', or 'west'. Given the current_direction and number of 90-degree clockwise turns, return the new direction. Use the deque class from the collections module to create a circular list of directions.",
+      "input_type": ["str", "int"],
+      "answer_code": "from collections import deque\n\ndef rotate_game_character(current_direction, turns):\n    directions = deque(['north', 'east', 'south', 'west'])\n    while directions[0] != current_direction:\n        directions.rotate(-1)\n    directions.rotate(turns)\n    return directions[0]",
+      "hint": "Create a deque with the four directions, rotate it until the current direction is at index 0, then rotate by the number of turns.",
+      "test_inputs": [
+        ["north", 1], 
+        ["east", 2], 
+        ["south", 3], 
+        ["west", 4]
+      ]
+    },
+    
+    {
+      "function_name": "compress_game_data",
+      "parameters": ["data"],
+      "description": "Write a function that uses the zlib module to compress a string of game data. Convert the string to bytes using utf-8 encoding, compress it with zlib.compress(), and return the length of the compressed data as an integer.",
+      "input_type": ["str"],
+      "answer_code": "import zlib\n\ndef compress_game_data(data):\n    data_bytes = data.encode('utf-8')\n    compressed_data = zlib.compress(data_bytes)\n    return len(compressed_data)",
+      "hint": "Convert the string to bytes with encode('utf-8'), compress it with zlib.compress(), then return the length of the compressed bytes.",
+      "test_inputs": [
+        ["Player position: x=100, y=200, health=100, inventory=['sword', 'shield', 'potion']"], 
+        ["Game state: level=5, enemies=20, bosses=2, chests=10, secret_areas=3"], 
+        ["Character stats: strength=15, dexterity=12, intelligence=8, charisma=10, constitution=14"], 
+        ["Map data: XXXX.XXXX.XXXX.XXXX.XXXX.XXXX.XXXX.XXXX.XXXX.XXXX.XXXX.XXXX.XXXX"]
+      ]
+    },
+    
+    {
+      "function_name": "calculate_experience_points",
+      "parameters": ["monster_levels"],
+      "description": "Write a function that calculates the total experience points earned from defeating monsters. For each monster level in the list, the XP earned is level^2 * 10. Use the pow() function from the math module for the calculation and return the total XP as an integer.",
+      "input_type": ["list"],
+      "answer_code": "import math\n\ndef calculate_experience_points(monster_levels):\n    total_xp = 0\n    for level in monster_levels:\n        total_xp += int(math.pow(level, 2) * 10)\n    return total_xp",
+      "hint": "Import the math module, use math.pow(level, 2) to square each level, multiply by 10, and sum all values.",
+      "test_inputs": [
+        [[1, 2, 3]], 
+        [[5, 5, 5]], 
+        [[10]], 
+        [[2, 4, 6, 8]]
+      ]
+    }
+  ]
+}
