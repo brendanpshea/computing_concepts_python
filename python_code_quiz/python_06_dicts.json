@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "function_name": "create_book",
+      "parameters": ["title", "author"],
+      "description": "Write a function that creates a dictionary representing a book with keys 'title' and 'author' based on the provided parameters.",
+      "input_type": ["str", "str"],
+      "answer_code": "def create_book(title, author):\n    return {'title': title, 'author': author}",
+      "hint": "Use curly braces {} and key-value pairs with a colon between them to create a dictionary.",
+      "test_inputs": [["The Hobbit", "J.R.R. Tolkien"], ["Pride and Prejudice", "Jane Austen"], ["To Kill a Mockingbird", "Harper Lee"], ["1984", "George Orwell"]]
+    },
+    {
+      "function_name": "add_publication_year",
+      "parameters": ["book_title", "author", "year"],
+      "description": "Write a function that creates a dictionary for a book with keys 'title', 'author', and 'year' using the provided parameters.",
+      "input_type": ["str", "str", "int"],
+      "answer_code": "def add_publication_year(book_title, author, year):\n    return {'title': book_title, 'author': author, 'year': year}",
+      "hint": "Create a dictionary with three key-value pairs using the provided parameters.",
+      "test_inputs": [["The Great Gatsby", "F. Scott Fitzgerald", 1925], ["Harry Potter", "J.K. Rowling", 1997], ["The Catcher in the Rye", "J.D. Salinger", 1951], ["Brave New World", "Aldous Huxley", 1932]]
+    },
+    {
+      "function_name": "get_book_title",
+      "parameters": ["book_dict"],
+      "description": "Write a function that takes a string representation of a book dictionary and returns just the title. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name'}\". You'll need to use 'import ast' and ast.literal_eval(book_dict) to convert the string to a dictionary first.",
+      "input_type": ["str"],
+      "answer_code": "def get_book_title(book_dict):\n    import ast\n    book = ast.literal_eval(book_dict)\n    return book['title']",
+      "hint": "Use ast.literal_eval() to convert the string to a dictionary, then access the 'title' key.",
+      "test_inputs": [["{'title': 'Moby Dick', 'author': 'Herman Melville'}"], ["{'title': 'The Odyssey', 'author': 'Homer'}"], ["{'title': 'Don Quixote', 'author': 'Miguel de Cervantes'}"], ["{'title': 'War and Peace', 'author': 'Leo Tolstoy'}"]]
+    },
+    {
+      "function_name": "get_book_author",
+      "parameters": ["book_string"],
+      "description": "Write a function that extracts and returns the author from a string representation of a book dictionary. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name'}\". You'll need to use 'import ast' and ast.literal_eval(book_string) to convert the string to a dictionary first.",
+      "input_type": ["str"],
+      "answer_code": "def get_book_author(book_string):\n    import ast\n    book_dict = ast.literal_eval(book_string)\n    return book_dict['author']",
+      "hint": "Convert the string to a dictionary using ast.literal_eval(), then retrieve the value associated with the 'author' key.",
+      "test_inputs": [["{'title': 'Jane Eyre', 'author': 'Charlotte Bronte'}"], ["{'title': 'The Lord of the Rings', 'author': 'J.R.R. Tolkien'}"], ["{'title': 'Crime and Punishment', 'author': 'Fyodor Dostoevsky'}"], ["{'title': 'The Alchemist', 'author': 'Paulo Coelho'}"]]
+    },
+    {
+      "function_name": "count_books_by_author",
+      "parameters": ["author_name", "book_titles"],
+      "description": "Write a function that creates a dictionary with the author name as the key and the number of their books (from the provided list) as the value.",
+      "input_type": ["str", "list"],
+      "answer_code": "def count_books_by_author(author_name, book_titles):\n    return {author_name: len(book_titles)}",
+      "hint": "Create a dictionary with a single key-value pair, where the key is the author name and the value is the length of the book_titles list.",
+      "test_inputs": [["Stephen King", ["It", "The Shining", "Misery"]], ["Agatha Christie", ["Murder on the Orient Express", "Death on the Nile"]], ["J.K. Rowling", ["Harry Potter and the Philosopher's Stone"]], ["Ernest Hemingway", []]]
+    },
+    {
+      "function_name": "create_library_card",
+      "parameters": ["card_number", "name", "books_borrowed"],
+      "description": "Write a function that creates a library card as a dictionary with keys 'card_number', 'name', and 'books_borrowed' with the provided values.",
+      "input_type": ["int", "str", "int"],
+      "answer_code": "def create_library_card(card_number, name, books_borrowed):\n    return {'card_number': card_number, 'name': name, 'books_borrowed': books_borrowed}",
+      "hint": "Create a dictionary with three key-value pairs using the corresponding parameters.",
+      "test_inputs": [[12345, "Alice Smith", 3], [67890, "Bob Johnson", 0], [54321, "Charlie Brown", 7], [98765, "Diana Prince", 2]]
+    },
+    {
+      "function_name": "update_checkout_status",
+      "parameters": ["book_title", "is_checked_out"],
+      "description": "Write a function that creates a dictionary for a book with its checkout status. The dictionary should have keys 'title' and 'checked_out' with the corresponding values.",
+      "input_type": ["str", "bool"],
+      "answer_code": "def update_checkout_status(book_title, is_checked_out):\n    return {'title': book_title, 'checked_out': is_checked_out}",
+      "hint": "Create a dictionary with the book title and checkout status as key-value pairs.",
+      "test_inputs": [["The Hobbit", True], ["Animal Farm", False], ["Fahrenheit 451", True], ["The Giver", False]]
+    },
+    {
+      "function_name": "merge_book_info",
+      "parameters": ["title", "author", "genre"],
+      "description": "Write a function that creates a dictionary containing information about a book, including its title, author, and genre.",
+      "input_type": ["str", "str", "str"],
+      "answer_code": "def merge_book_info(title, author, genre):\n    return {'title': title, 'author': author, 'genre': genre}",
+      "hint": "Create a dictionary with three key-value pairs for title, author, and genre.",
+      "test_inputs": [["Dune", "Frank Herbert", "Science Fiction"], ["The Silent Patient", "Alex Michaelides", "Thriller"], ["Little Women", "Louisa May Alcott", "Classic"], ["The Hunger Games", "Suzanne Collins", "Young Adult"]]
+    },
+    {
+      "function_name": "extract_book_genres",
+      "parameters": ["book_info"],
+      "description": "Write a function that takes a string representation of a book dictionary and extracts the genre. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name', 'genre': 'Genre'}\". You'll need to use 'import ast' and ast.literal_eval(book_info) to convert the string to a dictionary first.",
+      "input_type": ["str"],
+      "answer_code": "def extract_book_genres(book_info):\n    import ast\n    book_dict = ast.literal_eval(book_info)\n    return book_dict['genre']",
+      "hint": "Use ast.literal_eval() to convert the string to a dictionary, then access the 'genre' key.",
+      "test_inputs": [["{'title': 'The Martian', 'author': 'Andy Weir', 'genre': 'Science Fiction'}"], ["{'title': 'Gone Girl', 'author': 'Gillian Flynn', 'genre': 'Mystery'}"], ["{'title': 'The Fault in Our Stars', 'author': 'John Green', 'genre': 'Young Adult'}"], ["{'title': 'The Road', 'author': 'Cormac McCarthy', 'genre': 'Post-Apocalyptic'}"]]
+    },
+    {
+      "function_name": "categorize_books",
+      "parameters": ["fiction_titles", "nonfiction_titles"],
+      "description": "Write a function that creates a dictionary categorizing books as 'fiction' and 'nonfiction', with the provided lists as values.",
+      "input_type": ["list", "list"],
+      "answer_code": "def categorize_books(fiction_titles, nonfiction_titles):\n    return {'fiction': fiction_titles, 'nonfiction': nonfiction_titles}",
+      "hint": "Create a dictionary with two keys, 'fiction' and 'nonfiction', mapping to the corresponding lists of titles.",
+      "test_inputs": [[["The Great Gatsby", "1984"], ["Sapiens", "In Cold Blood"]], [["Harry Potter"], ["Brief History of Time", "Freakonomics"]], [[], ["The Diary of Anne Frank"]], [["The Lord of the Rings", "Pride and Prejudice", "Dracula"], ["A Short History of Nearly Everything"]]]
+    },
+    {
+      "function_name": "check_book_availability",
+      "parameters": ["book_title", "available_books"],
+      "description": "Write a function that checks if a book is in the available_books list and returns a dictionary with the book title as key and a boolean availability status as value.",
+      "input_type": ["str", "list"],
+      "answer_code": "def check_book_availability(book_title, available_books):\n    return {book_title: book_title in available_books}",
+      "hint": "Create a dictionary with the book title as the key and the result of checking if the title is in the available_books list as the value.",
+      "test_inputs": [["To Kill a Mockingbird", ["To Kill a Mockingbird", "1984", "Brave New World"]], ["The Great Gatsby", ["Moby Dick", "Jane Eyre", "Wuthering Heights"]], ["The Catcher in the Rye", []], ["Animal Farm", ["Animal Farm", "Fahrenheit 451"]]]
+    },
+    {
+      "function_name": "build_author_dictionary",
+      "parameters": ["author_first_name", "author_last_name", "birth_year"],
+      "description": "Write a function that creates a dictionary with information about an author, including their first name, last name, and birth year.",
+      "input_type": ["str", "str", "int"],
+      "answer_code": "def build_author_dictionary(author_first_name, author_last_name, birth_year):\n    return {'first_name': author_first_name, 'last_name': author_last_name, 'birth_year': birth_year}",
+      "hint": "Create a dictionary with three key-value pairs for the author's first name, last name, and birth year.",
+      "test_inputs": [["Ernest", "Hemingway", 1899], ["Virginia", "Woolf", 1882], ["Gabriel", "García Márquez", 1927], ["Toni", "Morrison", 1931]]
+    },
+    {
+      "function_name": "calculate_late_fees",
+      "parameters": ["book_titles", "days_overdue"],
+      "description": "Write a function that creates a dictionary mapping each book title to its late fee, calculated as $0.25 times the number of days overdue.",
+      "input_type": ["list", "int"],
+      "answer_code": "def calculate_late_fees(book_titles, days_overdue):\n    return {title: days_overdue * 0.25 for title in book_titles}",
+      "hint": "Use a dictionary comprehension to create a dictionary where each book title maps to the late fee.",
+      "test_inputs": [[["Moby Dick", "The Odyssey"], 3], [["War and Peace"], 7], [["The Iliad", "The Divine Comedy", "Hamlet"], 2], [[], 5]]
+    },
+    {
+      "function_name": "count_books_by_genre",
+      "parameters": ["genre_list"],
+      "description": "Write a function that takes a list of book genres and returns a dictionary counting the occurrences of each genre.",
+      "input_type": ["list"],
+      "answer_code": "def count_books_by_genre(genre_list):\n    genre_count = {}\n    for genre in genre_list:\n        if genre in genre_count:\n            genre_count[genre] += 1\n        else:\n            genre_count[genre] = 1\n    return genre_count",
+      "hint": "Create an empty dictionary, then iterate through the genre list, incrementing the count for each genre or setting it to 1 if it's not already in the dictionary.",
+      "test_inputs": [[["Fantasy", "Mystery", "Fantasy", "Science Fiction", "Mystery"]], [["Romance", "Romance", "Romance"]], [["Biography", "History", "Science", "Fiction", "Science"]], [[]]]
+    },
+    {
+      "function_name": "get_longest_book_title",
+      "parameters": ["title_length_string"],
+      "description": "Write a function that takes a string representation of a dictionary mapping book titles to their lengths, and returns the title of the longest book. The string will be in the format: \"{'Title1': length1, 'Title2': length2}\". You'll need to use 'import ast' and ast.literal_eval(title_length_string) to convert the string to a dictionary first.",
+      "input_type": ["str"],
+      "answer_code": "def get_longest_book_title(title_length_string):\n    import ast\n    title_length_dict = ast.literal_eval(title_length_string)\n    return max(title_length_dict, key=title_length_dict.get)",
+      "hint": "Convert the string to a dictionary using ast.literal_eval(), then use the max() function with the 'key' parameter to find the key with the maximum value.",
+      "test_inputs": [["{'War and Peace': 1225, 'The Great Gatsby': 180, 'Hamlet': 104}"], ["{'Moby Dick': 635, 'Pride and Prejudice': 432}"], ["{'The Hobbit': 295, 'The Lord of the Rings': 1178, 'The Silmarillion': 365}"], ["{'Animal Farm': 112}"]]
+    },
+    {
+      "function_name": "find_books_by_author_initial",
+      "parameters": ["author_initial", "book_authors"],
+      "description": "Write a function that takes an author's initial (a single letter) and a list of book-author pairs as strings, and returns a dictionary of books whose author's name starts with that initial. Each book-author pair string will be in the format: 'Book Title:Author Name'.",
+      "input_type": ["str", "list"],
+      "answer_code": "def find_books_by_author_initial(author_initial, book_authors):\n    result = {}\n    for item in book_authors:\n        book, author = item.split(':', 1)\n        if author.strip().startswith(author_initial):\n            result[book.strip()] = author.strip()\n    return result",
+      "hint": "Split each string in the list to separate book title and author, then check if the author's name starts with the given initial.",
+      "test_inputs": [["J", ["The Hobbit:J.R.R. Tolkien", "Pride and Prejudice:Jane Austen", "Oliver Twist:Charles Dickens"]], ["M", ["One Hundred Years of Solitude:Gabriel García Márquez", "Beloved:Toni Morrison", "1984:George Orwell"]], ["A", ["Emma:Jane Austen", "The Sun Also Rises:Ernest Hemingway", "And Then There Were None:Agatha Christie"]], ["H", ["The Old Man and the Sea:Ernest Hemingway", "Brave New World:Aldous Huxley", "Frankenstein:Mary Shelley"]]]
+    },
+    {
+      "function_name": "organize_library_shelf",
+      "parameters": ["books_and_genres"],
+      "description": "Write a function that organizes books by genre. Input is a list of strings in the format 'Book Title:Genre'. Return a dictionary where each key is a genre and each value is a list of book titles in that genre.",
+      "input_type": ["list"],
+      "answer_code": "def organize_library_shelf(books_and_genres):\n    shelf = {}\n    for item in books_and_genres:\n        book, genre = item.split(':', 1)\n        book = book.strip()\n        genre = genre.strip()\n        if genre in shelf:\n            shelf[genre].append(book)\n        else:\n            shelf[genre] = [book]\n    return shelf",
+      "hint": "Create an empty dictionary, split each string to get the book and genre, then append each book to a list under its corresponding genre key.",
+      "test_inputs": [[["Dune:Science Fiction", "Murder on the Orient Express:Mystery", "Neuromancer:Science Fiction"]], [["Pride and Prejudice:Classic", "Jane Eyre:Classic", "Wuthering Heights:Classic"]], [["The Shining:Horror", "It:Horror", "Dracula:Horror", "Frankenstein:Horror"]], [["The Hobbit:Fantasy", "Sapiens:Non-Fiction", "The Da Vinci Code:Thriller", "A Brief History of Time:Science"]]]]
+    },
+    {
+      "function_name": "find_available_books",
+      "parameters": ["book_status_list"],
+      "description": "Write a function that finds available books based on a list of strings in the format 'Book Title:Available' or 'Book Title:Checked Out'. Return a dictionary with book titles as keys and True/False availability as values.",
+      "input_type": ["list"],
+      "answer_code": "def find_available_books(book_status_list):\n    book_availability = {}\n    for item in book_status_list:\n        book, status = item.split(':', 1)\n        book = book.strip()\n        status = status.strip()\n        book_availability[book] = (status == 'Available')\n    return book_availability",
+      "hint": "Split each string to get the book title and status, then create a dictionary entry with the book title as key and a boolean value (True if 'Available', False otherwise).",
+      "test_inputs": [[["The Great Gatsby:Available", "1984:Checked Out", "To Kill a Mockingbird:Available"]], [["Moby Dick:Checked Out", "War and Peace:Checked Out"]], [["Harry Potter:Available"], ["The Odyssey:Available", "Don Quixote:Available", "Hamlet:Checked Out", "Macbeth:Available"]]]
+    },
+    {
+      "function_name": "create_reading_log",
+      "parameters": ["book_titles", "completion_dates"],
+      "description": "Write a function that creates a reading log as a dictionary mapping book titles to their completion dates. Both input lists have the same length and corresponding elements represent a book and its completion date.",
+      "input_type": ["list", "list"],
+      "answer_code": "def create_reading_log(book_titles, completion_dates):\n    return {book_titles[i]: completion_dates[i] for i in range(len(book_titles))}",
+      "hint": "Use a dictionary comprehension to create key-value pairs from corresponding elements in the two lists.",
+      "test_inputs": [[["Pride and Prejudice", "The Hobbit"], ["2024-01-15", "2024-02-20"]], [["The Catcher in the Rye", "To Kill a Mockingbird", "1984"], ["2023-12-10", "2024-01-05", "2024-03-15"]], [["Moby Dick"], ["2024-04-01"]], [[], []]]
+    },
+    {
+      "function_name": "filter_books_by_rating",
+      "parameters": ["book_ratings_string", "min_rating"],
+      "description": "Write a function that filters books by their ratings. It takes a string representation of a dictionary mapping book titles to their ratings, and a minimum rating. You'll need to use 'import ast' and ast.literal_eval(book_ratings_string) to convert the string to a dictionary first. Return a dictionary with only the books that have ratings greater than or equal to the minimum rating.",
+      "input_type": ["str", "float"],
+      "answer_code": "def filter_books_by_rating(book_ratings_string, min_rating):\n    import ast\n    book_ratings = ast.literal_eval(book_ratings_string)\n    return {book: rating for book, rating in book_ratings.items() if rating >= min_rating}",
+      "hint": "Use ast.literal_eval() to convert the string to a dictionary, then use a dictionary comprehension to filter books by their ratings.",
+      "test_inputs": [["{'The Hobbit': 4.5, 'Twilight': 3.0, 'To Kill a Mockingbird': 4.8}", 4.0], ["{'Moby Dick': 4.2, 'Pride and Prejudice': 4.3, 'Wuthering Heights': 3.8}", 4.0], ["{'The Great Gatsby': 4.0, '1984': 4.6, 'Animal Farm': 4.1}", 4.5], ["{'War and Peace': 4.9}", 5.0]]
+    }
+  ]
+}
