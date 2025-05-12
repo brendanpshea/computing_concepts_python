@@ -61,7 +61,7 @@
       "input_type": ["str", "bool"],
       "answer_code": "def update_checkout_status(book_title, is_checked_out):\n    return {'title': book_title, 'checked_out': is_checked_out}",
       "hint": "Create a dictionary with the book title and checkout status as key-value pairs.",
-      "test_inputs": [["The Hobbit", True], ["Animal Farm", False], ["Fahrenheit 451", True], ["The Giver", False]]
+      "test_inputs": [["The Hobbit", true], ["Animal Farm", false], ["Fahrenheit 451", true], ["The Giver", false]]
     },
     {
       "function_name": "merge_book_info",
@@ -160,7 +160,7 @@
       "input_type": ["list"],
       "answer_code": "def find_available_books(book_status_list):\n    book_availability = {}\n    for item in book_status_list:\n        book, status = item.split(':', 1)\n        book = book.strip()\n        status = status.strip()\n        book_availability[book] = (status == 'Available')\n    return book_availability",
       "hint": "Split each string to get the book title and status, then create a dictionary entry with the book title as key and a boolean value (True if 'Available', False otherwise).",
-      "test_inputs": [[["The Great Gatsby:Available", "1984:Checked Out", "To Kill a Mockingbird:Available"]], [["Moby Dick:Checked Out", "War and Peace:Checked Out"]], [["Harry Potter:Available"], ["The Odyssey:Available", "Don Quixote:Available", "Hamlet:Checked Out", "Macbeth:Available"]]]
+      "test_inputs": [[["The Great Gatsby:Available", "1984:Checked Out", "To Kill a Mockingbird:Available"]], [["Moby Dick:Checked Out", "War and Peace:Checked Out"]], [["Harry Potter:Available"]], [["The Odyssey:Available", "Don Quixote:Available", "Hamlet:Checked Out", "Macbeth:Available"]]]
     },
     {
       "function_name": "create_reading_log",
