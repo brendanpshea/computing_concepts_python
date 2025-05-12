@@ -21,7 +21,7 @@
     {
       "function_name": "get_book_title",
       "parameters": ["book_dict"],
-      "description": "Write a function that takes a string representation of a book dictionary and returns just the title. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name'}\". You'll need to use 'import ast' and ast.literal_eval(book_dict) to convert the string to a dictionary first.",
+      "description": "Write a function that takes a string representation of a book dictionary and returns just the title. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name'}\". You'll need to use 'import ast' and book_dict = ast.literal_eval(book_dict) to convert the string to a dictionary first.",
       "input_type": ["str"],
       "answer_code": "def get_book_title(book_dict):\n    import ast\n    book = ast.literal_eval(book_dict)\n    return book['title']",
       "hint": "Use ast.literal_eval() to convert the string to a dictionary, then access the 'title' key.",
@@ -30,7 +30,7 @@
     {
       "function_name": "get_book_author",
       "parameters": ["book_string"],
-      "description": "Write a function that extracts and returns the author from a string representation of a book dictionary. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name'}\". You'll need to use 'import ast' and ast.literal_eval(book_string) to convert the string to a dictionary first.",
+      "description": "Write a function that extracts and returns the author from a string representation of a book dictionary. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name'}\". You'll need to use 'import ast' and book_dict = ast.literal_eval(book_string) to convert the string to a dictionary first.",
       "input_type": ["str"],
       "answer_code": "def get_book_author(book_string):\n    import ast\n    book_dict = ast.literal_eval(book_string)\n    return book_dict['author']",
       "hint": "Convert the string to a dictionary using ast.literal_eval(), then retrieve the value associated with the 'author' key.",
@@ -75,7 +75,7 @@
     {
       "function_name": "extract_book_genres",
       "parameters": ["book_info"],
-      "description": "Write a function that takes a string representation of a book dictionary and extracts the genre. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name', 'genre': 'Genre'}\". You'll need to use 'import ast' and ast.literal_eval(book_info) to convert the string to a dictionary first.",
+      "description": "Write a function that takes a string representation of a book dictionary and extracts the genre. The string will be in the format: \"{'title': 'Book Title', 'author': 'Author Name', 'genre': 'Genre'}\". You'll need to use 'import ast' and book_dict = ast.literal_eval(book_info) to convert the string to a dictionary first.",
       "input_type": ["str"],
       "answer_code": "def extract_book_genres(book_info):\n    import ast\n    book_dict = ast.literal_eval(book_info)\n    return book_dict['genre']",
       "hint": "Use ast.literal_eval() to convert the string to a dictionary, then access the 'genre' key.",
@@ -129,7 +129,7 @@
     {
       "function_name": "get_longest_book_title",
       "parameters": ["title_length_string"],
-      "description": "Write a function that takes a string representation of a dictionary mapping book titles to their lengths, and returns the title of the longest book. The string will be in the format: \"{'Title1': length1, 'Title2': length2}\". You'll need to use 'import ast' and ast.literal_eval(title_length_string) to convert the string to a dictionary first.",
+      "description": "Write a function that takes a string representation of a dictionary mapping book titles to their lengths, and returns the title of the longest book. The string will be in the format: \"{'Title1': length1, 'Title2': length2}\". You'll need to use 'import ast' and title_length_dict =  ast.literal_eval(title_length_string) to convert the string to a dictionary first.",
       "input_type": ["str"],
       "answer_code": "def get_longest_book_title(title_length_string):\n    import ast\n    title_length_dict = ast.literal_eval(title_length_string)\n    return max(title_length_dict, key=title_length_dict.get)",
       "hint": "Convert the string to a dictionary using ast.literal_eval(), then use the max() function with the 'key' parameter to find the key with the maximum value.",
