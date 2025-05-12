@@ -346,21 +346,6 @@
     },
     
     {
-      "function_name": "safe_parse_enemy_data",
-      "parameters": ["enemy_json"],
-      "description": "Write a function that tries to parse enemy data from a JSON string using json.loads(). If the string is not valid JSON, return the string 'Invalid enemy data format'. Use a try-except block with the json module.",
-      "input_type": ["str"],
-      "answer_code": "import json\n\ndef safe_parse_enemy_data(enemy_json):\n    try:\n        return json.loads(enemy_json)\n    except json.JSONDecodeError:\n        return 'Invalid enemy data format'",
-      "hint": "Import the json module and use a try-except block to catch json.JSONDecodeError when using json.loads().",
-      "test_inputs": [
-        ['{\"name\": \"Dragon\", \"health\": 1000, \"attack\": 50}'], 
-        ['Not a JSON string'], 
-        ['{\"level\": 5, \"abilities\": [\"fire breath\", \"tail swipe\"]}'], 
-        ['{missing quotes: \"value\"}']
-      ]
-    },
-    
-    {
       "function_name": "safe_get_game_setting",
       "parameters": ["settings", "setting_name"],
       "description": "Write a function that tries to retrieve a game setting from a settings dictionary. If the setting doesn't exist in the dictionary, return the string 'Setting not found'. Use a try-except block to handle KeyError.",
