@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "function_name": "count_characters",
+      "parameters": ["text"],
+      "description": "Write a function that counts the number of characters in a string. Return the count as an integer.",
+      "input_type": ["str"],
+      "answer_code": "def count_characters(text):\n    return len(text)",
+      "hint": "Use the len() function to find the length of the string.",
+      "test_inputs": [["The name is Bond, James Bond", ""], ["Your mission, should you choose to accept it", ""], ["Agent 007 has been compromised", ""], ["Shaken, not stirred", ""]]
+    },
+    {
+      "function_name": "reverse_string",
+      "parameters": ["text"],
+      "description": "Write a function that reverses a string. For example, 'Hello' should become 'olleH'.",
+      "input_type": ["str"],
+      "answer_code": "def reverse_string(text):\n    return text[::-1]",
+      "hint": "Use string slicing with a negative step to reverse the string: text[::-1]",
+      "test_inputs": [["The eagle has landed", ""], ["Rendezvous at midnight", ""], ["This message will self-destruct", ""], ["The package has been delivered", ""]]
+    },
+    {
+      "function_name": "to_uppercase",
+      "parameters": ["text"],
+      "description": "Write a function that converts all characters in a string to uppercase.",
+      "input_type": ["str"],
+      "answer_code": "def to_uppercase(text):\n    return text.upper()",
+      "hint": "Use the upper() method of strings to convert to uppercase.",
+      "test_inputs": [["For your eyes only", ""], ["Operation Treadstone is active", ""], ["Meet at the safe house", ""], ["The enemy is listening", ""]]
+    },
+    {
+      "function_name": "to_lowercase",
+      "parameters": ["text"],
+      "description": "Write a function that converts all characters in a string to lowercase.",
+      "input_type": ["str"],
+      "answer_code": "def to_lowercase(text):\n    return text.lower()",
+      "hint": "Use the lower() method of strings to convert to lowercase.",
+      "test_inputs": [["CODE NAME: SKYFALL", ""], ["TOP SECRET: BURN AFTER READING", ""], ["CLASSIFIED INTEL: EYES ONLY", ""], ["AGENT STATUS: DEEP COVER", ""]]
+    },
+    {
+      "function_name": "remove_spaces",
+      "parameters": ["text"],
+      "description": "Write a function that removes all spaces from a string.",
+      "input_type": ["str"],
+      "answer_code": "def remove_spaces(text):\n    return text.replace(' ', '')",
+      "hint": "Use the replace() method to replace all spaces with empty strings.",
+      "test_inputs": [["The red fox jumps at midnight", ""], ["Secure the perimeter at 0800 hours", ""], ["Dead drop location: third bench in central park", ""], ["Q branch has new equipment", ""]]
+    },
+    {
+      "function_name": "count_vowels",
+      "parameters": ["text"],
+      "description": "Write a function that counts the number of vowels (a, e, i, o, u) in a string, ignoring case.",
+      "input_type": ["str"],
+      "answer_code": "def count_vowels(text):\n    vowels = 'aeiou'\n    count = 0\n    for char in text.lower():\n        if char in vowels:\n            count += 1\n    return count",
+      "hint": "Convert the string to lowercase, then iterate through each character and check if it's a vowel.",
+      "test_inputs": [["The spy who loved me", ""], ["License to kill", ""], ["A view to a kill", ""], ["GoldenEye", ""]]
+    },
+    {
+      "function_name": "is_alphabetic",
+      "parameters": ["text"],
+      "description": "Write a function that checks if a string contains only alphabetic characters (a-z, A-Z). Return True if it does, False otherwise.",
+      "input_type": ["str"],
+      "answer_code": "def is_alphabetic(text):\n    return text.isalpha()",
+      "hint": "Use the isalpha() method to check if all characters in the string are alphabetic.",
+      "test_inputs": [["Spectre", ""], ["Agent007", ""], ["MI6", ""], ["From Russia With Love", ""]]
+    },
+    {
+      "function_name": "character_code",
+      "parameters": ["char"],
+      "description": "Write a function that takes a single character and returns its ASCII code as an integer.",
+      "input_type": ["str"],
+      "answer_code": "def character_code(char):\n    return ord(char)",
+      "hint": "Use the ord() function to get the ASCII code of a character.",
+      "test_inputs": [["M", ""], ["Q", ""], ["X", ""], ["7", ""]]
+    },
+    {
+      "function_name": "code_to_character",
+      "parameters": ["code"],
+      "description": "Write a function that takes an ASCII code (integer) and returns the corresponding character.",
+      "input_type": ["int"],
+      "answer_code": "def code_to_character(code):\n    return chr(code)",
+      "hint": "Use the chr() function to convert an ASCII code to a character.",
+      "test_inputs": [[77, ""], [81, ""], [88, ""], [48, ""]]
+    },
+    {
+      "function_name": "shift_character",
+      "parameters": ["char", "shift"],
+      "description": "Write a function that shifts a single alphabetic character forward in the alphabet by the specified number of positions. Wrap around if necessary (e.g., shifting 'z' by 1 gives 'a'). Preserve the case and return the original character if it's not a letter.",
+      "input_type": ["str", "int"],
+      "answer_code": "def shift_character(char, shift):\n    if not char.isalpha():\n        return char\n        \n    if char.isupper():\n        return chr((ord(char) - ord('A') + shift) % 26 + ord('A'))\n    else:\n        return chr((ord(char) - ord('a') + shift) % 26 + ord('a'))",
+      "hint": "First check if the character is a letter. Then, convert it to a number (A=0, Z=25 or a=0, z=25), add the shift, use modulo 26 to wrap around, and convert back to a character.",
+      "test_inputs": [["S", 3], ["z", 13], ["M", 7], ["X", 2], ["4", 10]]
+    },
+    {
+      "function_name": "substitute_character",
+      "parameters": ["char", "original", "replacement"],
+      "description": "Write a function that substitutes one character for another. If the input character matches 'original', return 'replacement'; otherwise, return the input character as is.",
+      "input_type": ["str", "str", "str"],
+      "answer_code": "def substitute_character(char, original, replacement):\n    if char == original:\n        return replacement\n    return char",
+      "hint": "Use a simple conditional to check if the character matches the original, and return the appropriate value.",
+      "test_inputs": [["M", "M", "X"], ["I", "I", "6"], ["Q", "M", "X"], ["0", "0", "O"], ["B", "M", "K"]]
+    },
+    {
+      "function_name": "convert_to_binary",
+      "parameters": ["text"],
+      "description": "Write a function that converts each character in a string to its binary representation (8 bits), with spaces between each character's binary code.",
+      "input_type": ["str"],
+      "answer_code": "def convert_to_binary(text):\n    binary_parts = []\n    for char in text:\n        binary = format(ord(char), '08b')\n        binary_parts.append(binary)\n    return ' '.join(binary_parts)",
+      "hint": "For each character, use ord() to get its ASCII code, then format() with '08b' to convert to an 8-bit binary string. Join all binary strings with spaces.",
+      "test_inputs": [["BOND", ""], ["MI6", ""], ["007", ""], ["CIA", ""]]
+    },
+    {
+      "function_name": "flip_case",
+      "parameters": ["text"],
+      "description": "Write a function that flips the case of each alphabetic character in a string. Uppercase becomes lowercase and vice versa. Non-alphabetic characters remain unchanged.",
+      "input_type": ["str"],
+      "answer_code": "def flip_case(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            if char.isupper():\n                result += char.lower()\n            else:\n                result += char.upper()\n        else:\n            result += char\n    return result",
+      "hint": "For each character, check if it's a letter. If it is, convert uppercase to lowercase and vice versa using the upper() and lower() methods.",
+      "test_inputs": [["Secret Agent", ""], ["CLASSIFIED", ""], ["007 Bond", ""], ["cOdE nAmE: sHaDow", ""]]
+    },
+    {
+      "function_name": "reverse_case",
+      "parameters": ["text"],
+      "description": "Write a function that reverses the string and flips the case of all letters. For example, 'Hello' should become 'OLLEh'.",
+      "input_type": ["str"],
+      "answer_code": "def reverse_case(text):\n    reversed_text = text[::-1]\n    result = ''\n    for char in reversed_text:\n        if char.isupper():\n            result += char.lower()\n        elif char.islower():\n            result += char.upper()\n        else:\n            result += char\n    return result",
+      "hint": "First reverse the string using slicing, then iterate through each character and flip its case.",
+      "test_inputs": [["Spy Game", ""], ["Double Agent", ""], ["Undercover", ""], ["Top Secret: 42", ""]]
+    },
+    {
+      "function_name": "alternating_case",
+      "parameters": ["text"],
+      "description": "Write a function that converts a string to alternating case. The first character should be lowercase, the second uppercase, the third lowercase, and so on. Ignore non-alphabetic characters when determining the alternating pattern, but keep them in the result.",
+      "input_type": ["str"],
+      "answer_code": "def alternating_case(text):\n    result = ''\n    count = 0\n    for char in text:\n        if char.isalpha():\n            if count % 2 == 0:\n                result += char.lower()\n            else:\n                result += char.upper()\n            count += 1\n        else:\n            result += char\n    return result",
+      "hint": "Keep a counter for the alphabetic characters. For each letter, make it lowercase if the counter is even, uppercase if odd, then increment the counter.",
+      "test_inputs": [["Operation Moonraker", ""], ["Agent down! Requesting backup", ""], ["Quantum of Solace", ""], ["License to kill: 007", ""]]
+    },
+    {
+      "function_name": "caesar_cipher",
+      "parameters": ["text", "shift"],
+      "description": "Implement a Caesar cipher. Each letter in the text should be shifted forward in the alphabet by the shift amount. Preserve case (uppercase stays uppercase, lowercase stays lowercase) and leave non-alphabetic characters unchanged. For example, with shift=3: 'abc' becomes 'def', and 'xyz' becomes 'abc'.",
+      "input_type": ["str", "int"],
+      "answer_code": "def caesar_cipher(text, shift):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            ascii_offset = ord('A') if char.isupper() else ord('a')\n            shifted = (ord(char) - ascii_offset + shift) % 26 + ascii_offset\n            result += chr(shifted)\n        else:\n            result += char\n    return result",
+      "hint": "For each character, check if it's a letter. If it is, determine the offset ('A' for uppercase, 'a' for lowercase), shift the character, and handle wrapping with modulo 26.",
+      "test_inputs": [["Meet me at the embassy", 3], ["The package is in the red car", 7], ["BOND, JAMES BOND", 13], ["Rendezvous at 0900 hours", 5]]
+    },
+    {
+      "function_name": "atbash_cipher",
+      "parameters": ["text"],
+      "description": "Implement the Atbash cipher, which maps each letter to its opposite in the alphabet. 'A' becomes 'Z', 'B' becomes 'Y', etc. Preserve case and leave non-alphabetic characters unchanged.",
+      "input_type": ["str"],
+      "answer_code": "def atbash_cipher(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            if char.isupper():\n                result += chr(155 - ord(char))  # 155 = ord('A') + ord('Z')\n            else:\n                result += chr(219 - ord(char))  # 219 = ord('a') + ord('z')\n        else:\n            result += char\n    return result",
+      "hint": "For each letter, calculate its position from the opposite end of the alphabet using the formula: (first_letter + last_letter) - current_letter. Use ord('A')+ord('Z') for uppercase and ord('a')+ord('z') for lowercase.",
+      "test_inputs": [["Secret message", ""], ["Agent in the field", ""], ["Mission accomplished", ""], ["Extract at 0200 hours", ""]]
+    },
+    {
+      "function_name": "rot13_cipher",
+      "parameters": ["text"],
+      "description": "Implement the ROT13 cipher, which shifts each letter 13 positions in the alphabet. Since 26/2 = 13, applying ROT13 twice returns the original text. Preserve case and leave non-alphabetic characters unchanged.",
+      "input_type": ["str"],
+      "answer_code": "def rot13_cipher(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            ascii_offset = ord('A') if char.isupper() else ord('a')\n            shifted = (ord(char) - ascii_offset + 13) % 26 + ascii_offset\n            result += chr(shifted)\n        else:\n            result += char\n    return result",
+      "hint": "ROT13 is a special case of the Caesar cipher with a shift of 13. For each letter, determine the offset ('A' for uppercase, 'a' for lowercase), shift by 13, and handle wrapping with modulo 26.",
+      "test_inputs": [["Kingsman: The Secret Service", ""], ["Safe house compromised", ""], ["Martini. Shaken, not stirred", ""], ["Codename: Skyfall", ""]]
+    },
+    {
+      "function_name": "simple_checksum",
+      "parameters": ["text"],
+      "description": "Create a simple checksum function that computes the sum of ASCII values of all characters in the input string and returns the sum.",
+      "input_type": ["str"],
+      "answer_code": "def simple_checksum(text):\n    return sum(ord(char) for char in text)",
+      "hint": "Use a list comprehension or generator expression with ord() to get the ASCII value of each character, and sum() to add them all together.",
+      "test_inputs": [["M sends regards", ""], ["Dead drop at Victoria Station", ""], ["Burn after reading", ""], ["Eyes only: Operation Thunderball", ""]]
+    },
+    {
+      "function_name": "simple_substitution",
+      "parameters": ["text", "alphabet", "cipher_alphabet"],
+      "description": "Implement a simple substitution cipher where each letter in the alphabet is replaced by the corresponding letter in the cipher alphabet. Only encrypt letters and preserve case; leave non-alphabetic characters unchanged.",
+      "input_type": ["str", "str", "str"],
+      "answer_code": "def simple_substitution(text, alphabet, cipher_alphabet):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            if char.isupper():\n                idx = alphabet.upper().find(char)\n                if idx != -1:\n                    result += cipher_alphabet.upper()[idx]\n                else:\n                    result += char\n            else:\n                idx = alphabet.lower().find(char)\n                if idx != -1:\n                    result += cipher_alphabet.lower()[idx]\n                else:\n                    result += char\n        else:\n            result += char\n    return result",
+      "hint": "For each character, find its index in the regular alphabet, then use that index to find the corresponding character in the cipher alphabet. Handle uppercase and lowercase separately.",
+      "test_inputs": [["MI6 headquarters", "abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqponmlkjihgfedcba"], ["Agent 007", "abcdefghijklmnopqrstuvwxyz", "bcdefghijklmnopqrstuvwxyza"], ["Operation Trident", "abcdefghijklmnopqrstuvwxyz", "nopqrstuvwxyzabcdefghijklm"], ["Covert mission: 0800", "abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqponmlkjihgfedcba"]]
+    }
+  ]
+}
