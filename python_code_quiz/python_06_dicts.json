@@ -1,5 +1,32 @@
 {
   "questions": [
+     {
+      "function_name": "create_empty_library",
+      "parameters": [],
+      "description": "Write a function that creates and returns an empty dictionary. This will represent an empty library catalog.",
+      "input_type": [],
+      "answer_code": "def create_empty_library():\n    return {}",
+      "hint": "Use empty curly braces {} to create an empty dictionary.",
+      "test_inputs": [[]]
+    },
+    {
+      "function_name": "create_book_info",
+      "parameters": [],
+      "description": "Write a function that creates and returns a dictionary containing information about a book. The dictionary should have keys 'title', 'author', and 'pages' with values 'The Hobbit', 'J.R.R. Tolkien', and 295 respectively.",
+      "input_type": [],
+      "answer_code": "def create_book_info():\n    return {'title': 'The Hobbit', 'author': 'J.R.R. Tolkien', 'pages': 295}",
+      "hint": "Create a dictionary with three key-value pairs using the specified keys and values.",
+      "test_inputs": [[]]
+    },
+    {
+      "function_name": "create_genre_list",
+      "parameters": [],
+      "description": "Write a function that creates and returns a dictionary mapping book genres to lists of example books. Include 'Fantasy': ['The Hobbit', 'Harry Potter'], 'Science Fiction': ['Dune', 'Ender\\'s Game'], and 'Mystery': ['Murder on the Orient Express', 'The Hound of the Baskervilles'].",
+      "input_type": [],
+      "answer_code": "def create_genre_list():\n    return {\n        'Fantasy': ['The Hobbit', 'Harry Potter'],\n        'Science Fiction': ['Dune', 'Ender\\'s Game'],\n        'Mystery': ['Murder on the Orient Express', 'The Hound of the Baskervilles']\n    }",
+      "hint": "Create a dictionary with three keys, where each value is a list of book titles.",
+      "test_inputs": [[]]
+    },
     {
       "function_name": "create_book",
       "parameters": ["title", "author"],
