@@ -7,7 +7,7 @@
       "input_type": ["str"],
       "answer_code": "def count_characters(text):\n    return len(text)",
       "hint": "Use the len() function to find the length of the string.",
-      "test_inputs": [["The name is Bond, James Bond", ""], ["Your mission, should you choose to accept it", ""], ["Agent 007 has been compromised", ""], ["Shaken, not stirred", ""]]
+      "test_inputs": [["The name is Bond, James Bond"], ["Your mission, should you choose to accept it"], ["Agent 007 has been compromised"], ["Shaken, not stirred"]]
     },
     {
       "function_name": "reverse_string",
@@ -16,7 +16,7 @@
       "input_type": ["str"],
       "answer_code": "def reverse_string(text):\n    return text[::-1]",
       "hint": "Use string slicing with a negative step to reverse the string: text[::-1]",
-      "test_inputs": [["The eagle has landed", ""], ["Rendezvous at midnight", ""], ["This message will self-destruct", ""], ["The package has been delivered", ""]]
+      "test_inputs": [["The eagle has landed"], ["Rendezvous at midnight"], ["This message will self-destruct"], ["The package has been delivered"]]
     },
     {
       "function_name": "to_uppercase",
@@ -25,7 +25,7 @@
       "input_type": ["str"],
       "answer_code": "def to_uppercase(text):\n    return text.upper()",
       "hint": "Use the upper() method of strings to convert to uppercase.",
-      "test_inputs": [["For your eyes only", ""], ["Operation Treadstone is active", ""], ["Meet at the safe house", ""], ["The enemy is listening", ""]]
+      "test_inputs": [["For your eyes only"], ["Operation Treadstone is active"], ["Meet at the safe house"], ["The enemy is listening"]]
     },
     {
       "function_name": "to_lowercase",
@@ -34,7 +34,7 @@
       "input_type": ["str"],
       "answer_code": "def to_lowercase(text):\n    return text.lower()",
       "hint": "Use the lower() method of strings to convert to lowercase.",
-      "test_inputs": [["CODE NAME: SKYFALL", ""], ["TOP SECRET: BURN AFTER READING", ""], ["CLASSIFIED INTEL: EYES ONLY", ""], ["AGENT STATUS: DEEP COVER", ""]]
+      "test_inputs": [["CODE NAME: SKYFALL"], ["TOP SECRET: BURN AFTER READING"], ["CLASSIFIED INTEL: EYES ONLY"], ["AGENT STATUS: DEEP COVER"]]
     },
     {
       "function_name": "remove_spaces",
@@ -43,7 +43,7 @@
       "input_type": ["str"],
       "answer_code": "def remove_spaces(text):\n    return text.replace(' ', '')",
       "hint": "Use the replace() method to replace all spaces with empty strings.",
-      "test_inputs": [["The red fox jumps at midnight", ""], ["Secure the perimeter at 0800 hours", ""], ["Dead drop location: third bench in central park", ""], ["Q branch has new equipment", ""]]
+      "test_inputs": [["The red fox jumps at midnight"], ["Secure the perimeter at 0800 hours"], ["Dead drop location: third bench in central park"], ["Q branch has new equipment"]]
     },
     {
       "function_name": "count_vowels",
@@ -52,7 +52,7 @@
       "input_type": ["str"],
       "answer_code": "def count_vowels(text):\n    vowels = 'aeiou'\n    count = 0\n    for char in text.lower():\n        if char in vowels:\n            count += 1\n    return count",
       "hint": "Convert the string to lowercase, then iterate through each character and check if it's a vowel.",
-      "test_inputs": [["The spy who loved me", ""], ["License to kill", ""], ["A view to a kill", ""], ["GoldenEye", ""]]
+      "test_inputs": [["The spy who loved me"], ["License to kill"], ["A view to a kill"], ["GoldenEye"]]
     },
     {
       "function_name": "is_alphabetic",
@@ -61,7 +61,7 @@
       "input_type": ["str"],
       "answer_code": "def is_alphabetic(text):\n    return text.isalpha()",
       "hint": "Use the isalpha() method to check if all characters in the string are alphabetic.",
-      "test_inputs": [["Spectre", ""], ["Agent007", ""], ["MI6", ""], ["From Russia With Love", ""]]
+      "test_inputs": [["Spectre"], ["Agent007"], ["MI6"], ["From Russia With Love"]]
     },
     {
       "function_name": "character_code",
@@ -70,7 +70,7 @@
       "input_type": ["str"],
       "answer_code": "def character_code(char):\n    return ord(char)",
       "hint": "Use the ord() function to get the ASCII code of a character.",
-      "test_inputs": [["M", ""], ["Q", ""], ["X", ""], ["7", ""]]
+      "test_inputs": [["M"], ["Q"], ["X"], ["7"]]
     },
     {
       "function_name": "code_to_character",
@@ -79,7 +79,7 @@
       "input_type": ["int"],
       "answer_code": "def code_to_character(code):\n    return chr(code)",
       "hint": "Use the chr() function to convert an ASCII code to a character.",
-      "test_inputs": [[77, ""], [81, ""], [88, ""], [48, ""]]
+      "test_inputs": [[77], [81], [88], [48]]
     },
     {
       "function_name": "shift_character",
@@ -106,7 +106,7 @@
       "input_type": ["str"],
       "answer_code": "def convert_to_binary(text):\n    binary_parts = []\n    for char in text:\n        binary = format(ord(char), '08b')\n        binary_parts.append(binary)\n    return ' '.join(binary_parts)",
       "hint": "For each character, use ord() to get its ASCII code, then format() with '08b' to convert to an 8-bit binary string. Join all binary strings with spaces.",
-      "test_inputs": [["BOND", ""], ["MI6", ""], ["007", ""], ["CIA", ""]]
+      "test_inputs": [["BOND"], ["MI6"], ["007"], ["CIA"]]
     },
     {
       "function_name": "flip_case",
@@ -115,7 +115,7 @@
       "input_type": ["str"],
       "answer_code": "def flip_case(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            if char.isupper():\n                result += char.lower()\n            else:\n                result += char.upper()\n        else:\n            result += char\n    return result",
       "hint": "For each character, check if it's a letter. If it is, convert uppercase to lowercase and vice versa using the upper() and lower() methods.",
-      "test_inputs": [["Secret Agent", ""], ["CLASSIFIED", ""], ["007 Bond", ""], ["cOdE nAmE: sHaDow", ""]]
+      "test_inputs": [["Secret Agent"], ["CLASSIFIED"], ["007 Bond"], ["cOdE nAmE: sHaDow"]]
     },
     {
       "function_name": "reverse_case",
@@ -124,7 +124,7 @@
       "input_type": ["str"],
       "answer_code": "def reverse_case(text):\n    reversed_text = text[::-1]\n    result = ''\n    for char in reversed_text:\n        if char.isupper():\n            result += char.lower()\n        elif char.islower():\n            result += char.upper()\n        else:\n            result += char\n    return result",
       "hint": "First reverse the string using slicing, then iterate through each character and flip its case.",
-      "test_inputs": [["Spy Game", ""], ["Double Agent", ""], ["Undercover", ""], ["Top Secret: 42", ""]]
+      "test_inputs": [["Spy Game"], ["Double Agent"], ["Undercover"], ["Top Secret: 42"]]
     },
     {
       "function_name": "alternating_case",
@@ -133,7 +133,7 @@
       "input_type": ["str"],
       "answer_code": "def alternating_case(text):\n    result = ''\n    count = 0\n    for char in text:\n        if char.isalpha():\n            if count % 2 == 0:\n                result += char.lower()\n            else:\n                result += char.upper()\n            count += 1\n        else:\n            result += char\n    return result",
       "hint": "Keep a counter for the alphabetic characters. For each letter, make it lowercase if the counter is even, uppercase if odd, then increment the counter.",
-      "test_inputs": [["Operation Moonraker", ""], ["Agent down! Requesting backup", ""], ["Quantum of Solace", ""], ["License to kill: 007", ""]]
+      "test_inputs": [["Operation Moonraker"], ["Agent down! Requesting backup"], ["Quantum of Solace"], ["License to kill: 007"]]
     },
     {
       "function_name": "caesar_cipher",
@@ -151,6 +151,10 @@
       "input_type": ["str"],
       "answer_code": "def atbash_cipher(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            if char.isupper():\n                result += chr(155 - ord(char))  # 155 = ord('A') + ord('Z')\n            else:\n                result += chr(219 - ord(char))  # 219 = ord('a') + ord('z')\n        else:\n            result += char\n    return result",
       "hint": "For each letter, calculate its position from the opposite end of the alphabet using the formula: (first_letter + last_letter) - current_letter. Use ord('A')+ord('Z') for uppercase and ord('a')+ord('z') for lowercase.",
+      "test_inputs": [["Secret message"], ["Agent in the field"], ["Mission accomplished"], ["Extract at 0200 hours"]] non-alphabetic characters unchanged.",
+      "input_type": ["str"],
+      "answer_code": "def atbash_cipher(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            if char.isupper():\n                result += chr(155 - ord(char))  # 155 = ord('A') + ord('Z')\n            else:\n                result += chr(219 - ord(char))  # 219 = ord('a') + ord('z')\n        else:\n            result += char\n    return result",
+      "hint": "For each letter, calculate its position from the opposite end of the alphabet using the formula: (first_letter + last_letter) - current_letter. Use ord('A')+ord('Z') for uppercase and ord('a')+ord('z') for lowercase.",
       "test_inputs": [["Secret message", ""], ["Agent in the field", ""], ["Mission accomplished", ""], ["Extract at 0200 hours", ""]]
     },
     {
@@ -160,7 +164,7 @@
       "input_type": ["str"],
       "answer_code": "def rot13_cipher(text):\n    result = ''\n    for char in text:\n        if char.isalpha():\n            ascii_offset = ord('A') if char.isupper() else ord('a')\n            shifted = (ord(char) - ascii_offset + 13) % 26 + ascii_offset\n            result += chr(shifted)\n        else:\n            result += char\n    return result",
       "hint": "ROT13 is a special case of the Caesar cipher with a shift of 13. For each letter, determine the offset ('A' for uppercase, 'a' for lowercase), shift by 13, and handle wrapping with modulo 26.",
-      "test_inputs": [["Kingsman: The Secret Service", ""], ["Safe house compromised", ""], ["Martini. Shaken, not stirred", ""], ["Codename: Skyfall", ""]]
+      "test_inputs": [["Kingsman: The Secret Service"], ["Safe house compromised"], ["Martini. Shaken, not stirred"], ["Codename: Skyfall"]]
     },
     {
       "function_name": "simple_checksum",
@@ -169,7 +173,7 @@
       "input_type": ["str"],
       "answer_code": "def simple_checksum(text):\n    return sum(ord(char) for char in text)",
       "hint": "Use a list comprehension or generator expression with ord() to get the ASCII value of each character, and sum() to add them all together.",
-      "test_inputs": [["M sends regards", ""], ["Dead drop at Victoria Station", ""], ["Burn after reading", ""], ["Eyes only: Operation Thunderball", ""]]
+      "test_inputs": [["M sends regards"], ["Dead drop at Victoria Station"], ["Burn after reading"], ["Eyes only: Operation Thunderball"]]
     },
     {
       "function_name": "simple_substitution",
