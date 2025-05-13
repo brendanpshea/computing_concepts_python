@@ -5,10 +5,14 @@ import unittest
 import traceback
 import json
 from typing import Dict, List, Any
+import urllib.request
 
 class QuestSystem:
-    def __init__(self, quest_file: str = 'quests.json'):
-        self.quests = self.load_quests(quest_file)
+    def __init__(self, quest_source: str = 'quests.json'):
+        """
+        quest_source: path to a local JSON file or an HTTP/HTTPS URL returning the same structure.
+        """
+        self.quests = self.load_quests(quest_source)
         self.current_quest_idx = 0
         self.style_loaded = False
         # **Output** pane for all messages
@@ -16,11 +20,20 @@ class QuestSystem:
         self.setup_styles()
         self.create_ui()
 
-    def load_quests(self, quest_file: str) -> List[Dict[str, Any]]:
-        with open(quest_file, 'r') as f:
-            data = json.load(f)
+    def load_quests(self, source: str) -> List[Dict[str, Any]]:
+        """
+        Load quests from a JSON file or URL.
+        If source starts with http:// or https://, perform an HTTP GET.
+        """
+        if source.startswith(('http://', 'https://')):
+            with urllib.request.urlopen(source) as response:
+                raw = response.read().decode('utf-8')
+                data = json.loads(raw)
+        else:
+            with open(source, 'r', encoding='utf-8') as f:
+                data = json.load(f)
         return data['quests']
-
+    
     def setup_styles(self):
         if self.style_loaded:
             return
