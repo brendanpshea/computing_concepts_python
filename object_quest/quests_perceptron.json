@@ -1,0 +1,101 @@
+{
+  "quests": [
+    {
+      "title": "Define the Perceptron Class",
+      "description": "Write a module that defines a `Perceptron` class. The class must be instantiable via `Perceptron()` and should have an empty `__init__` method ready to hold attributes.",
+      "success_message": "Good: your Perceptron class exists!",
+      "initial_code": "class Perceptron:\n    def __init__(self):\n        # we'll add weights, bias, and learning_rate later\n        pass",
+      "test_code": "import unittest\n\nclass TestClassExists(unittest.TestCase):\n    def test_class_definition(self):\n        p = Perceptron()\n        self.assertIsInstance(p, Perceptron, \"Perceptron should be instantiable\")",
+      "hints": [
+        "Use `class Perceptron:` at top level",
+        "Define an `__init__(self)` method so that `Perceptron()` creates an object without error"
+      ]
+    },
+    {
+      "title": "Initialize Weights and Bias",
+      "description": "Modify your `Perceptron` so that in `__init__` it sets `self.weights = []` and `self.bias = 0`, allowing `p = Perceptron()` to produce those two attributes.",
+      "success_message": "Weights and bias initialized!",
+      "initial_code": "class Perceptron:\n    def __init__(self):\n        # set up an empty list of weights\n        self.weights = []\n        # set initial bias to zero\n        self.bias = 0",
+      "test_code": "import unittest\n\nclass TestInit(unittest.TestCase):\n    def test_weights_and_bias(self):\n        p = Perceptron()\n        self.assertEqual(p.weights, [], \"Weights should start as empty list\")\n        self.assertEqual(p.bias, 0, \"Bias should start at zero\")",
+      "hints": [
+        "Inside `__init__`, assign `self.weights = []`",
+        "Then assign `self.bias = 0` so `p.bias` exists"
+      ]
+    },
+    {
+      "title": "Set Learning Rate",
+      "description": "Extend `__init__` to accept a `learning_rate: float` parameter (default `0.1`) and store it in `self.learning_rate`, so that writing `p = Perceptron(learning_rate=0.5)` sets the rate correctly.",
+      "success_message": "Learning rate set!",
+      "initial_code": "class Perceptron:\n    def __init__(self, learning_rate: float = 0.1):\n        self.weights = []\n        self.bias = 0\n        # store the learning rate for later updates\n        self.learning_rate = learning_rate",
+      "test_code": "import unittest\n\nclass TestLearningRate(unittest.TestCase):\n    def test_default_lr(self):\n        p = Perceptron()\n        self.assertEqual(p.learning_rate, 0.1)\n\n    def test_custom_lr(self):\n        p = Perceptron(learning_rate=0.5)\n        self.assertEqual(p.learning_rate, 0.5)",
+      "hints": [
+        "Add `learning_rate` as a parameter to `__init__` with default `0.1`",
+        "Inside `__init__`, assign `self.learning_rate = learning_rate`"
+      ]
+    },
+    {
+      "title": "Activation Function",
+      "description": "Inside the `Perceptron` class, implement a method `_activate(self, x: float) -> int` that returns `1` if `x >= 0`, else `0`. This lets you test threshold behavior.",
+      "success_message": "Activation function works!",
+      "initial_code": "class Perceptron:\n    def __init__(self, learning_rate: float = 0.1):\n        self.weights = []\n        self.bias = 0\n        self.learning_rate = learning_rate\n\n    def _activate(self, x: float) -> int:\n        # return 1 when input is non-negative, else 0\n        pass",
+      "test_code": "import unittest\n\nclass TestActivation(unittest.TestCase):\n    def test_activate(self):\n        p = Perceptron()\n        self.assertEqual(p._activate(0.5), 1)\n        self.assertEqual(p._activate(0), 1)\n        self.assertEqual(p._activate(-0.1), 0)",
+      "hints": [
+        "Inside `_activate`, use `if x >= 0: return 1`",
+        "Otherwise, return `0`"
+      ]
+    },
+    {
+      "title": "Predict Method",
+      "description": "Add `predict(self, inputs: list)` to compute `sum(weights[i] * inputs[i] for i)` plus `bias`, then apply `_activate`. Instantiate `p = Perceptron()` and set `p.weights = [...]` and `p.bias` to test.",
+      "success_message": "Predict returns correct labels!",
+      "initial_code": "class Perceptron:\n    def __init__(self, learning_rate: float = 0.1):\n        self.weights = []\n        self.bias = 0\n        self.learning_rate = learning_rate\n\n    def _activate(self, x: float) -> int:\n        return 1 if x >= 0 else 0\n\n    def predict(self, inputs: list) -> int:\n        # compute weighted sum then activation\n        pass",
+      "test_code": "import unittest\n\nclass TestPredict(unittest.TestCase):\n    def test_simple_predict(self):\n        p = Perceptron()\n        p.weights = [1, -1]\n        p.bias = 0\n        self.assertEqual(p.predict([2, 1]), 1)\n        self.assertEqual(p.predict([1, 2]), 0)",
+      "hints": [
+        "Compute `total = sum(w * i for w, i in zip(self.weights, inputs)) + self.bias`",
+        "Return `self._activate(total)`"
+      ]
+    },
+    {
+      "title": "Initialize Weight Vector",
+      "description": "Implement `initialize(self, n_features: int)` so that `p.initialize(3)` sets `p.weights = [0,0,0]`. This prepares your perceptron for data of given dimensionality.",
+      "success_message": "Weights initialized to zeros!",
+      "initial_code": "class Perceptron:\n    # previous methods...\n\n    def initialize(self, n_features: int):\n        # create zero weights for each feature\n        pass",
+      "test_code": "import unittest\n\nclass TestInitialize(unittest.TestCase):\n    def test_weights_length(self):\n        p = Perceptron()\n        p.initialize(3)\n        self.assertEqual(p.weights, [0, 0, 0])",
+      "hints": [
+        "Use `self.weights = [0] * n_features`"
+      ]
+    },
+    {
+      "title": "Perceptron Update Rule",
+      "description": "Add `update(self, inputs: list, target: int)` that computes `error = target - self.predict(inputs)`, then updates each weight by `η * error * input` and `self.bias += η * error`.",
+      "success_message": "Update rule implemented!",
+      "initial_code": "class Perceptron:\n    # previous methods...\n\n    def update(self, inputs: list, target: int):\n        # adjust weights and bias according to perceptron rule\n        pass",
+      "test_code": "import unittest\n\nclass TestUpdate(unittest.TestCase):\n    def test_update(self):\n        p = Perceptron(learning_rate=0.5)\n        p.weights = [0, 0]\n        p.bias = 0\n        # when target equals predict, no change\n        p.update([1,1], 1)\n        self.assertEqual(p.weights, [0, 0])\n        self.assertEqual(p.bias, 0)\n        # when target=0 but predict=1, error=-1\n        p.update([1,1], 0)\n        self.assertEqual(p.weights, [-0.5, -0.5])\n        self.assertEqual(p.bias, -0.5)",
+      "hints": [
+        "Compute `error = target - self.predict(inputs)`",
+        "Then for each `i`, do `self.weights[i] += self.learning_rate * error * inputs[i]`",
+        "Finally update `self.bias += self.learning_rate * error`"
+      ]
+    },
+    {
+      "title": "Train for One Epoch",
+      "description": "Create `train_epoch(self, data: list[list], labels: list[int])` that loops `for inputs, target in zip(data, labels): self.update(inputs, target)` to train over one pass.",
+      "success_message": "Training epoch complete!",
+      "initial_code": "class Perceptron:\n    # previous methods...\n\n    def train_epoch(self, data: list, labels: list):\n        # run update rule on each sample\n        pass",
+      "test_code": "import unittest\n\nclass TestTrainEpoch(unittest.TestCase):\n    def test_and_gate(self):\n        X = [[0,0],[0,1],[1,0],[1,1]]\n        y = [0,0,0,1]\n        p = Perceptron(learning_rate=1)\n        p.initialize(2)\n        p.train_epoch(X, y)\n        # weights must have changed from zeros\n        self.assertNotEqual(p.weights, [0,0])",
+      "hints": [
+        "Loop over `zip(data, labels)` and call `self.update(inputs, target)` each time"
+      ]
+    },
+    {
+      "title": "Compute Accuracy",
+      "description": "Implement `score(self, data: list[list], labels: list[int]) -> float` that returns the fraction of correctly predicted labels over the dataset.",
+      "success_message": "Accuracy calculation ready!",
+      "initial_code": "class Perceptron:\n    # previous methods...\n\n    def score(self, data: list, labels: list) -> float:\n        # return correct_count / total_samples\n        pass",
+      "test_code": "import unittest\n\nclass TestScore(unittest.TestCase):\n    def test_perfect_score(self):\n        p = Perceptron()\n        p.predict = lambda x: 1\n        X = [[0],[1]]\n        y = [1,1]\n        self.assertEqual(p.score(X, y), 1.0)\n\n    def test_half_score(self):\n        p.predict = lambda x: 1\n        y = [1,0]\n        self.assertEqual(p.score(X, y), 0.5)",
+      "hints": [
+        "Count how many times `self.predict(x) == y[i]`, then divide by `len(labels)`"
+      ]
+    }
+  ]
+}
