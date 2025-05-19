@@ -1,6 +1,6 @@
 from IPython.display import display, Javascript
 import json, random, itertools, io, urllib.request, contextlib
-from HTML import html
+from html import HTML
 from copy import deepcopy
 import numpy as np, pandas as pd, html
 import ipywidgets as widgets
