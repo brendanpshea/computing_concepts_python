@@ -5,66 +5,6 @@ https://brendanpshea.github.io/computing_concepts_python/
 
 Welcome to **Computing Concepts with Python**, an open-access textbook designed to introduce students to the foundational concepts of computer science. The textbook includes Jupyter notebooks with interactive exercises, real-world examples, and practical coding exercises using Python.
 
-## Textbook Chapters
-
-### 0. Introduction to Colab
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_00_Intro_to_Colab.ipynb)  
-This chapter introduces you to **Google Colab**, the platform you will be using for running Python code in this textbook.
-
-### 1. Computers and Hardware
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_01_ComputersHardware.ipynb)  
-An introduction to the fundamental concepts of computer hardware.
-
-### 2. File Formats and Pac-Man
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_02_FileFormats_PacMan.ipynb)  
-Explore different **file formats** using the classic game **Pac-Man** as an example.
-
-### 3. Networks
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_03_Networks.ipynb)  
-Learn about computer networks and internet communication.
-
-### 4. Introduction to Python Strings
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_04_PythonStrings.ipynb)  
-Start your Python journey with string manipulation.
-
-### 5. Integers, Floats, and Functions
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_05_IntsFloatsFunctions.ipynb)  
-Learn about numerical data types and functions in Python.
-
-### 6. Conditionals and Logic
-[Open In Colab](https://github.com/brendanpshea/computing_concepts_python/blob/main/IntroCS_06_LogicConditionals.ipynb)  
-Explore conditional statements and logical operators.
-
-### 7. Algorithms and Loops
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_07_Algorithms_and_Loops.ipynb)  
-Implement algorithms using loops in Python.
-
-### 8. Cybersecurity
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_08_CyberSecurity.ipynb)  
-An introduction to cybersecurity concepts.
-
-### 9. Data and Databases
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_09_DatabaseSQL.ipynb)   
-Learn about databases and SQL.
-
-### 10. Dictionaries, Objects, and Tests
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_10_DictionariesObjectsTests.ipynb)  
-Explore Python dictionaries, objects, and unit testing.
-
-### 11. The Birth of AI
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_11_BirthOfAI.ipynb)  
-Dive into the history and development of artificial intelligence.
-
-### 12. Neural Networks
-[Open In Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/IntroCS_12_NeuralNets.ipynb)  
-Learn about neural networks and build a simple one using Python.
-
-## Case Studies
-
-This textbook is complemented by a collection of case studies that delve deeper into the foundational concepts of computer science. The case studies examine real-world examples, historical developments, and ethical considerations to provide students with a holistic understanding of key topics. Topics include cybersecurity, open-source software, abstraction, programming paradigms, artificial intelligence, and more.
-
-For a detailed list of case studies and their descriptions, refer to the [case studies README](https://github.com/brendanpshea/computing_concepts_python/tree/main/case_studies).
-
 ## Interactive Learning Tools
 
 ### PyQuiz
