@@ -272,7 +272,9 @@ This is the recommended structure. The cell counts in parentheses are targets �
 ```markdown
 # Notebook N: [Title]
 ### COMP 1150 — Computer Science Concepts
+**Brendan Shea, PhD**
 ```
+Attribution is to **Brendan Shea, PhD** — never the college. The course is *offered at* RCTC, but the notebooks are the author's copyrighted work.
 
 ### 2. Lecture video placeholder (1 cell, markdown)
 ```markdown
@@ -347,7 +349,15 @@ Alphabetical list of the technical terms introduced in the notebook. Each entry:
 1–2 sentences bridging to the next notebook. What problem is left open? What will we build on?
 
 ### 45. Credits / License (1 cell, markdown)
-Standard footer. Same across all notebooks.
+Standard footer, identical across all notebooks. Copyright is **Brendan Shea's**, not the college's:
+
+```markdown
+---
+*COMP 1150 — Computer Science Concepts · Brendan Shea, PhD*  
+*Content licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*
+```
+
+Do not attribute the notebooks to Rochester Community and Technical College anywhere — title, footer, or body.
 
 ---
 
