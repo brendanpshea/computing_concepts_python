@@ -1,0 +1,63 @@
+/*-- scss:defaults --*/
+
+// COMP 1150 case-study palette (matches the graphviz figure colors)
+$case-glance-bg:   #f4f7fb;
+$case-glance-edge: #2c5f8a;
+$case-context-bg:  #eef3f8;
+$case-context-edge:#3d7ab0;
+$case-argument-bg: #fbf6ec;
+$case-argument-edge:#b07d2c;
+$case-keyterm:     #7a4f00;
+
+/*-- scss:rules --*/
+
+// "Case at a glance" — the orientation box at the top
+.case-at-a-glance {
+  background: $case-glance-bg;
+  border: 1px solid darken($case-glance-bg, 8%);
+  border-left: 6px solid $case-glance-edge;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0 2rem;
+  font-size: 0.97rem;
+
+  ul { margin-bottom: 0; }
+  li { margin-bottom: 0.35rem; }
+}
+
+// "Context box" — where a notebook concept is taught in-line
+.context-box {
+  background: $case-context-bg;
+  border-left: 5px solid $case-context-edge;
+  border-radius: 0 6px 6px 0;
+  padding: 0.85rem 1.15rem;
+  margin: 1.5rem 0;
+
+  p:first-child { margin-top: 0; }
+  p:last-child  { margin-bottom: 0; }
+}
+
+// "Argument" — a numbered premise→conclusion reconstruction
+.argument {
+  background: $case-argument-bg;
+  border: 1px solid darken($case-argument-bg, 10%);
+  border-left: 5px solid $case-argument-edge;
+  border-radius: 0 6px 6px 0;
+  padding: 0.85rem 1.25rem 0.85rem 1.4rem;
+  margin: 1.5rem 0;
+
+  p:first-child {            // the bold "The X Argument" label
+    margin-top: 0;
+    font-variant: small-caps;
+    letter-spacing: 0.02em;
+  }
+  ol { margin-bottom: 0.25rem; }
+  li { margin-bottom: 0.3rem; }
+}
+
+// Inline key term — first use of a glossary word
+.key-term {
+  color: $case-keyterm;
+  font-weight: 600;
+  border-bottom: 1px dotted rgba($case-keyterm, 0.5);
+}

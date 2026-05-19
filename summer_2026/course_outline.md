@@ -184,20 +184,22 @@ Each case study pairs with a notebook and is designed around the RCTC Critical T
 
 | # | Title | Pairs with | Status |
 |---|-------|-----------|--------|
-| 1 | Turing, Lovelace & the Birth of Computing | NB 1 | New (adapts old "What Is CS?") |
-| 2 | Chip Wars & Moore's Law — TSMC, export controls, silicon geopolitics | NB 2 | New |
-| 3 | Grace Hopper and the First Compilers — abstraction as invention | NB 3 | New |
-| 4 | The Therac-25 Disaster — when control flow kills | NB 4 | New |
-| 5 | Zero, Infinity & Data Representation | NB 5 | Adapted from old "Number Zero" |
-| 6 | Alan Kay, Smalltalk & the OOP Vision | NB 6 | New |
-| 7 | The Halting Problem & the Limits of Machines | NB 7 | New |
-| 8 | Linus, Linux & the Git Revolution | NB 8 | New (absorbs old Open Source + Waterfall/Agile) |
-| 9 | From SQL to NoSQL — Why Google Built Bigtable | NB 9 | New |
-| 10 | ARPANET to AWS — the Cloud as Infrastructure | NB 10 | New |
-| 11 | The Equifax Breach | NB 11 | Keep existing |
-| 12 | COMPAS, Facial Recognition & AI Accountability | NB 12 | Replaces old "AI Ethics" |
+| 1 | The Lovelace–Turing Debate: Can Machines Think — and Who Gets to Build Them? | NB 1 | New. Focus = the "can machines think / what follows" argument + who is counted into CS (women & minorities). Avoids hagiography by staying on the debate. |
+| 2 | Chip Wars & Moore's Law — TSMC, export controls, silicon geopolitics | NB 2 | New. Tighten the data-representation/architecture link so NB 2 concepts are load-bearing. |
+| 3 | Grace Hopper, Compilers & the Abstraction Bargain | NB 3 | New. Abstraction that hides danger — runs from the first compilers through to LLM code generation. |
+| 4 | The Therac-25 Disaster — when control flow kills | NB 4 | New. **Template pilot.** |
+| 5 | How We Represent People: ADTs and the Ethics of Data Modeling | NB 5 | Replaces old "Number Zero." ADT/collection design as a moral choice (name, gender, race, `null`); incorporates AI training-data categories. |
+| 6 | Was OOP a Mistake? Alan Kay, Smalltalk & the Backlash | NB 6 | New. Reframed from "the OOP vision" into the genuine two-sided OOP debate. |
+| 7 | The Halting Problem & the Limits of Machines | NB 7 | New. |
+| 8 | Open Source & the Code an AI Learned From — Linux, Git & Copilot | NB 8 | New, narrowed. Open-source labor/sustainability + the Copilot/training-data copyright fight. Waterfall/Agile stays notebook-only content, not a case. |
+| 9 | From SQL to NoSQL — Why Google Built Bigtable | NB 9 | New. |
+| 10 | Three Companies Own the Internet — ARPANET to the Cloud Oligopoly | NB 10 | New. Sharpened from a history tour to the centralization/fragility debate. |
+| 11 | The Equifax Breach | NB 11 | Keep existing. |
+| 12 | COMPAS, Facial Recognition & AI Accountability | NB 12 | Replaces old "AI Ethics." |
 
-**Dropped from prior set:** Functionalism (philosophy detour not aligned to new LOs), War and Technology (coverage absorbed into Chip Wars + Turing).
+**Dropped from prior set:** Functionalism (philosophy detour not aligned to new LOs), War and Technology (coverage absorbed into Chip Wars + the Lovelace–Turing case). **Waterfall/Agile** is no longer a standalone case — it lives as NB 8 notebook content; the NB 8 case now spends its discussion budget on open source + AI-trained-on-open-source instead.
+
+**AI as a through-line in the cases:** beyond NB 12, the AI/LLM debate is deliberately threaded through Cases 1 (can machines think), 3 (abstraction hiding danger → LLM codegen), 5 (training-data categories), and 8 (Copilot & open-source code). This mirrors the notebooks' "AI-assisted development from day one" spine so the cases interrogate the tool the course itself uses.
 
 ---
 

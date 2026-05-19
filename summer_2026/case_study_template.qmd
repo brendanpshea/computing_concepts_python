@@ -1,0 +1,221 @@
+---
+title: "[Punchy Title]: [The Concept or Tension at Stake]"
+subtitle: "[A short, human framing line] — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+# Format, bibliography, and styling are inherited from _quarto.yml
+# (HTML + DOCX, refs.bib, _case-styles.scss). Override here only if a
+# single case needs something special.
+---
+
+<!--
+====================================================================
+COMP 1150 CASE STUDY TEMPLATE  (Summer 2026)
+Read case_study_style_guide.md before drafting. Quick reminders:
+
+  - ~3,000 words of core prose (The Case + the argument dialogue);
+    ~5,000 all-in once context boxes, figure, questions, refs are added.
+  - Pairs with exactly one notebook (see course_outline.md table).
+  - Two jobs, both required:
+      (1) explain & APPLY some concept(s) from the paired notebook;
+      (2) open a real history / ethics / current-practice debate that
+          can spark discussion — not "recall the right answer."
+  - The intellectual spine is "The Argument ___ Started": a connected
+    dialogue of named .argument blocks, each answering the prior one.
+    This is where the RCTC critical-thinking outcome lives.
+  - Attribution: Brendan Shea, PhD. Never the college.
+  - Delete every HTML comment before publishing.
+
+Custom callout classes used below (.case-at-a-glance, .context-box,
+.argument) need styling. A starter _case-styles.scss is referenced in
+the style guide; until it exists they render as plain divs, which is
+fine for drafting.
+====================================================================
+-->
+
+::: {.case-at-a-glance}
+- **Who:** [The named people / system / organization at the center. Concrete.]
+- **What:** [One sentence: the event, decision, or artifact and what went wrong or was at stake.]
+- **Where / When:** [Place(s) and dates. Be specific enough to ground the story.]
+- **Why it matters:** [Why this is *the* canonical example of the tension. Name the two
+  forces that collide using [key-term]{.key-term} spans — e.g.
+  [correctness]{.key-term} vs. [delivery pressure]{.key-term}.]
+- **Pairs with:** [Notebook N — Title] · **Concepts applied:** [list the
+  notebook concepts this case makes students actually use]
+:::
+
+## The Case
+
+<!--
+The narrative. ~1,200–1,500 words. Tell it like the Dax case: real
+people doing recognizable things, present-tense stakes, no editorializing
+yet. The reader should care before any argument starts. Plant — but do
+not yet resolve — the technical facts the later arguments will turn on.
+
+Use .context-box callouts to teach the notebook concept exactly when the
+story needs it, so the CS content is load-bearing, not bolted on. Bold
+new technical terms and mark them with [term]{.key-term} for the glossary
+/ styling.
+-->
+
+[Open in a scene. Establish the people and the system. Build to the
+decision or failure.]
+
+::: {.context-box}
+**[The concept the paired notebook teaches, explained here because the story needs it.]**
+[2–5 sentences. Define each [technical term]{.key-term} in plain language.
+Tie it to what the reader just saw happen. This is the bridge between the
+notebook's mechanics and the case's stakes — e.g. for NB 4, what a
+[race condition]{.key-term} is and why a reused [flag variable]{.key-term}
+in the control flow made it possible.]
+:::
+
+[Continue the narrative. What was tried, who objected, what the
+institution did. End the section on the unresolved human question — not a
+verdict. State plainly that the *outcome* is not the interesting part;
+*whose call it was / what we should have known / what we owed* is.]
+
+## The Argument [X] Started
+
+<!--
+The spine of the case study. ~1,500–1,800 words.
+
+A *connected* dialogue: each .argument block answers the one before it.
+Reconstruct real positions (engineers, historians, ethicists, courts,
+companies) — steelman every side. Aim for 3–5 linked moves:
+
+  1. The clean opening argument (often the "obvious" modern view).
+  2. The strongest reply that attacks ONE shared premise.
+  3. A counter that repairs or redirects.
+  4. (optional) A reframing move that changes the question.
+  5. The unresolved / empirical turn — where the debate actually rests
+     today, with current-practice evidence.
+
+Between blocks, write the connective prose that says which premise is
+under attack and why. Use .context-box for the CS/historical background
+a reader needs to evaluate a move. End not at an answer but a sharper
+question.
+-->
+
+### [The opening argument — a short heading naming the move]
+
+[1–2 paragraphs of setup: whose position this is and in their own words
+(quote + @citekey where possible).]
+
+::: {.argument}
+**The [Name] Argument**
+
+1. [Premise 1.]
+2. [Premise 2 — usually the one the reply will attack.]
+3. Therefore, [conclusion].
+:::
+
+[Say which premise carries the weight, and hand off to the reply.]
+
+::: {.context-box}
+**[Background concept needed to judge this argument.]**
+[Define [terms]{.key-term}. Keep it tight. Cite history/standards with
+@citekey where relevant — e.g. when a standard or technique was actually
+new, so the reader judges the actors by what they could have known.]
+:::
+
+### [The reply — names the premise it denies]
+
+[Setup prose: this side does not deny premise 1; it denies premise 2,
+because…]
+
+::: {.argument}
+**The [Name] Reply**
+
+1. [Premise.]
+2. [Premise.]
+3. [Premise.]
+4. Therefore, [conclusion].
+:::
+
+[Name the soft spot in the reply — the move the next block exploits.]
+
+### [The counter]
+
+::: {.argument}
+**The [Name] Objection**
+
+1. [Premise.]
+2. [Premise.]
+3. Therefore, [conclusion].
+:::
+
+<!-- Add a reframing block and/or the empirical-turn block as the case
+demands. Keep each tied to the one before. -->
+
+### [The argument that hasn't ended: the current-practice turn]
+
+[Where does this rest *today*? Use current evidence: a recent incident,
+a standard that did/didn't get adopted, what industry actually does now
+vs. what the tidy lesson says. Close on the sharper question, not a
+resolution.]
+
+<!--
+OPTIONAL FIGURE. Use a {dot} graphviz block when a decision/process is
+the cleanest way to show a position (cf. the Arnold–Menzel diagram).
+All figures generated by code, fully labeled, with a fig-cap that
+explains how to read it. Delete this block if unused.
+-->
+
+```{dot}
+//| label: fig-decision
+//| fig-cap: "[One sentence saying what the diagram shows and how to read it — the gold node is the pivot, the green node is the endpoint, etc. Cite the source it is adapted from.]"
+digraph G {
+  rankdir=TB;
+  node [shape=box, style="rounded,filled", fillcolor="#eef3f8",
+        fontname="Helvetica", fontsize=11, margin="0.18,0.10"];
+  edge [fontname="Helvetica", fontsize=10];
+
+  start [label="[Starting situation]", fillcolor="#dde8f0"];
+  pivot [label="[The decisive question]", shape=diamond, fillcolor="#f3e9d8"];
+  endp  [label="[The endpoint]", fillcolor="#e3efe1"];
+
+  start -> pivot;
+  pivot -> endp [label="  [condition]"];
+}
+```
+
+## Discussion Questions
+
+<!--
+5 questions. RCTC critical-thinking outcome: students must evaluate
+competing claims, not recall answers. At least one should make them
+reconstruct two arguments and find the shared disputed premise. At least
+one should put them inside the scenario as a decision-maker. At least
+one should connect to a paired-notebook concept they can actually run
+code on. No question should have a single correct answer.
+-->
+
+1. Reconstruct **The [X] Argument** and **The [Y] Reply** in your own words.
+   Identify the one premise they actually disagree about, and say what kind
+   of evidence — technical, historical, ethical — could settle it.
+2. [A "this is not a contradiction / turned out fine ≠ was right" question,
+   using a concept named in the case.]
+3. [A question pressing on a generalization, standard, or trade-off the case
+   used — when is it legitimate to apply it here?]
+4. You are [a specific role inside the scenario] at the moment [the decision].
+   Drawing on [a concept from NB N], what do you do, and what do you owe that
+   the institution does not?
+5. Apply [the framework / procedure / standard] to [a second, contrasting
+   real case]. Does it yield the outcome that case's people endorse? If not,
+   is that a flaw in the framework, a difference between the cases, or
+   evidence the debate is unresolved?
+
+## Further Reading
+
+<!-- 3–5 entries: the documentaries / primary reports / key essays /
+authoritative journalism. Each with an @citekey that exists in refs.bib. -->
+
+- [Primary source — report, paper, or documentary] [@citekey].
+- [Key secondary analysis] [@citekey].
+- [Accessible journalism or retrospective] [@citekey].
+
+## References
+
+::: {#refs}
+:::

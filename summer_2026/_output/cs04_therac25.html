@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-05-19">
+
+<title>The Therac-25: When Control Flow Kills</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="cs04_therac25_files/libs/clipboard/clipboard.min.js"></script>
+<script src="cs04_therac25_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="cs04_therac25_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="cs04_therac25_files/libs/quarto-html/popper.min.js"></script>
+<script src="cs04_therac25_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="cs04_therac25_files/libs/quarto-html/anchor.min.js"></script>
+<link href="cs04_therac25_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="cs04_therac25_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="cs04_therac25_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="cs04_therac25_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="cs04_therac25_files/libs/bootstrap/bootstrap-2ac362403d094d8278b3438d41982ebe.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-case" id="toc-the-case" class="nav-link active" data-scroll-target="#the-case">The Case</a></li>
+  <li><a href="#the-argument-therac-25-started" id="toc-the-argument-therac-25-started" class="nav-link" data-scroll-target="#the-argument-therac-25-started">The Argument Therac-25 Started</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cs04_therac25.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Therac-25: When Control Flow Kills</h1>
+<p class="subtitle lead">A machine that healed thousands and irradiated a handful — a COMP 1150 case study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 19, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="case-at-a-glance">
+<ul>
+<li><strong>Who:</strong> Atomic Energy of Canada Limited (AECL), the engineers who built the Therac-25 radiation-therapy machine, the radiotherapy technicians who ran it, and at least six cancer patients in the United States and Canada</li>
+<li><strong>What:</strong> A medical linear accelerator delivered radiation overdoses roughly a hundred times the intended dose; at least three patients died and others were maimed, because of how the machine’s software handled the <em>order</em> and <em>timing</em> of operator input</li>
+<li><strong>Where / When:</strong> Marietta GA, Hamilton ON, Yakima WA, and Tyler TX, between June 1985 and January 1987</li>
+<li><strong>Why it matters:</strong> Therac-25 is the canonical example of software killing people not through one dramatic “bug” but through a chain of ordinary control-flow decisions, reused code, and organizational confidence. It is where the question collides: who is responsible when <span class="key-term">correctness</span> fails under <span class="key-term">delivery pressure</span>, and is writing software that can kill an act of <span class="key-term">engineering</span> at all?</li>
+<li><strong>Pairs with:</strong> NB 4 — Control Flow &amp; Functions · <strong>Concepts applied:</strong> conditionals, loops, shared mutable state, race conditions, the order of operations in a program</li>
+</ul>
+</div>
+<section id="the-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-case">The Case</h2>
+<p>In the spring of 1986, the East Texas Cancer Center in Tyler ran one of the most advanced radiation-therapy machines in the world. The Therac-25, built by the Canadian Crown corporation AECL, could treat tumors two ways from one device. In <em>electron mode</em> it fired a low-current beam straight at shallow tumors. In <em>X-ray mode</em> it generated a beam roughly a hundred times more powerful, then slid a thick metal target into the beam’s path; the target absorbed the brutal raw beam and emitted the gentler X-rays that actually reached the patient. The whole therapeutic idea depended on one physical fact: <strong>the high-energy beam must never reach a patient with the target out of the way.</strong></p>
+<p>On March 21, 1986, a technician we’ll call the operator set up a routine electron treatment for a man named Ray Cox. She was fast — she ran many patients a day and typed the prescription from memory. She entered “x” for X-ray by habit, noticed the mistake, moved the cursor up, changed it to “e” for electron, and pressed return to proceed. The screen said the prescription was set. She pressed the beam-on key.</p>
+<p>Cox, alone in the shielded treatment room, felt what he later described as an electric burning in his back — far more pain than any treatment he had had. He tried to get up. In the control room the console displayed <code>MALFUNCTION 54</code> and a “treatment pause,” which the operator had seen many times; it usually meant the machine had delivered <em>too little</em> dose. The Therac-25 produced dozens of numbered malfunction codes and the manual explained almost none of them; a “pause,” unlike a “halt,” invited the operator to continue with a single keystroke, and the machine paused so routinely that proceeding through one had become ordinary muscle memory. The intercom and video monitor to the room were not working that day. She did what the workflow trained her to do with a low-dose pause: she pressed “P” to proceed and deliver the rest. The machine fired again. Cox was struck a second time before he could reach the door and pound on it.</p>
+<p>Ray Cox received something on the order of 100 times his prescribed dose to a small area of his body. He lost the use of an arm, then the function of organs in the path of the beam, and died about five months later. He was not the first. A patient in Marietta, Georgia, had been burned in June 1985; a woman in Hamilton, Ontario, in July 1985; the pattern would continue in Yakima, Washington. Three weeks after Cox, at the <em>same Tyler clinic</em>, a man named Verdon Kidd was overdosed in nearly identical circumstances and died within weeks — the first death attributed to a software-driven radiation accident.</p>
+<div class="context-box">
+<p><strong>Why typing speed could kill: shared state and a race in the control flow.</strong> The Therac-25’s software ran several tasks that talked to each other through <em>shared variables</em> — including a <span class="key-term">flag variable</span>, a single value one task sets to signal “data entry is complete” and another task reads before moving the beam hardware. Setting up X-ray mode meant rotating the heavy target into place and adjusting magnets, which took about <strong>eight seconds</strong>. The bug was a <span class="key-term">race condition</span>: a defect where the outcome depends on the <em>relative timing</em> of operations that are assumed to happen in a fixed order. If the operator edited the prescription from X-ray to electron <em>fast enough</em> — within that eight-second window — the data-entry task set the “complete” flag and the treatment proceeded, while the magnet/target task never finished repositioning. The console showed electron mode. The machine was still configured to fire the X-ray-strength beam <strong>with the target retracted</strong>. Nothing in the control flow forced the steps back into the safe order; a slow typist never hit it, and an expert typist hit it often. NB 4’s lesson lands here: in software that shares state, <em>the order and timing of operations is itself a safety property</em>, not a detail.</p>
+</div>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-edit-race" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-edit-race-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="672" height="480" viewbox="0.00 0.00 438.38 345.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 341.2)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-341.2 434.38,-341.2 434.38,4 -4,4"></polygon>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<path fill="#dde8f0" stroke="black" d="M258.6,-337.4C258.6,-337.4 124.22,-337.4 124.22,-337.4 118.22,-337.4 112.22,-331.4 112.22,-325.4 112.22,-325.4 112.22,-308.6 112.22,-308.6 112.22,-302.6 118.22,-296.6 124.22,-296.6 124.22,-296.6 258.6,-296.6 258.6,-296.6 264.6,-296.6 270.6,-302.6 270.6,-308.6 270.6,-308.6 270.6,-325.4 270.6,-325.4 270.6,-331.4 264.6,-337.4 258.6,-337.4"></path>
+<text text-anchor="middle" x="191.41" y="-320.3" font-family="Helvetica,sans-Serif" font-size="11.00">Operator selects X-ray,</text>
+<text text-anchor="middle" x="191.41" y="-307.1" font-family="Helvetica,sans-Serif" font-size="11.00">then edits to electron mode</text>
+</g>
+<!-- race -->
+<g id="node2" class="node">
+<title>race</title>
+<path fill="#f3e9d8" stroke="black" d="M179.67,-257.23C179.67,-257.23 11.83,-221.87 11.83,-221.87 5.96,-220.64 5.96,-218.16 11.83,-216.93 11.83,-216.93 179.67,-181.57 179.67,-181.57 185.54,-180.34 197.28,-180.34 203.15,-181.57 203.15,-181.57 370.98,-216.93 370.98,-216.93 376.85,-218.16 376.85,-220.64 370.98,-221.87 370.98,-221.87 203.15,-257.23 203.15,-257.23 197.28,-258.46 185.54,-258.46 179.67,-257.23"></path>
+<text text-anchor="middle" x="191.41" y="-222.7" font-family="Helvetica,sans-Serif" font-size="11.00">Edit completed BEFORE the</text>
+<text text-anchor="middle" x="191.41" y="-209.5" font-family="Helvetica,sans-Serif" font-size="11.00">~8s magnet/target setup finishes?</text>
+</g>
+<!-- start&#45;&gt;race -->
+<g id="edge1" class="edge">
+<title>start-&gt;race</title>
+<path fill="none" stroke="black" d="M191.41,-296.65C191.41,-288.88 191.41,-279.53 191.41,-270.08"></path>
+<polygon fill="black" stroke="black" points="194.91,-269.86 191.41,-259.86 187.91,-269.86 194.91,-269.86"></polygon>
+</g>
+<!-- safe -->
+<g id="node3" class="node">
+<title>safe</title>
+<path fill="#e3efe1" stroke="black" d="M216.87,-131.2C216.87,-131.2 71.95,-131.2 71.95,-131.2 65.95,-131.2 59.95,-125.2 59.95,-119.2 59.95,-119.2 59.95,-102.4 59.95,-102.4 59.95,-96.4 65.95,-90.4 71.95,-90.4 71.95,-90.4 216.87,-90.4 216.87,-90.4 222.87,-90.4 228.87,-96.4 228.87,-102.4 228.87,-102.4 228.87,-119.2 228.87,-119.2 228.87,-125.2 222.87,-131.2 216.87,-131.2"></path>
+<text text-anchor="middle" x="144.41" y="-114.1" font-family="Helvetica,sans-Serif" font-size="11.00">Steps stay in assumed order;</text>
+<text text-anchor="middle" x="144.41" y="-100.9" font-family="Helvetica,sans-Serif" font-size="11.00">target in place; correct dose</text>
+</g>
+<!-- race&#45;&gt;safe -->
+<g id="edge2" class="edge">
+<title>race-&gt;safe</title>
+<path fill="none" stroke="black" d="M175.5,-182.31C169.47,-168.64 162.7,-153.28 157.01,-140.39"></path>
+<polygon fill="black" stroke="black" points="160.15,-138.83 152.91,-131.09 153.74,-141.65 160.15,-138.83"></polygon>
+<text text-anchor="middle" x="201.53" y="-152" font-family="Helvetica,sans-Serif" font-size="10.00"> &nbsp;no (slow typist)</text>
+</g>
+<!-- flag -->
+<g id="node4" class="node">
+<title>flag</title>
+<path fill="#eef3f8" stroke="black" d="M405.68,-131.2C405.68,-131.2 259.14,-131.2 259.14,-131.2 253.14,-131.2 247.14,-125.2 247.14,-119.2 247.14,-119.2 247.14,-102.4 247.14,-102.4 247.14,-96.4 253.14,-90.4 259.14,-90.4 259.14,-90.4 405.68,-90.4 405.68,-90.4 411.68,-90.4 417.68,-96.4 417.68,-102.4 417.68,-102.4 417.68,-119.2 417.68,-119.2 417.68,-125.2 411.68,-131.2 405.68,-131.2"></path>
+<text text-anchor="middle" x="332.41" y="-114.1" font-family="Helvetica,sans-Serif" font-size="11.00">"Data entry complete" flag set</text>
+<text text-anchor="middle" x="332.41" y="-100.9" font-family="Helvetica,sans-Serif" font-size="11.00">while target still retracted</text>
+</g>
+<!-- race&#45;&gt;flag -->
+<g id="edge3" class="edge">
+<title>race-&gt;flag</title>
+<path fill="none" stroke="black" d="M232.19,-187.57C253.26,-171.64 278.65,-152.44 298.61,-137.35"></path>
+<polygon fill="black" stroke="black" points="300.94,-139.98 306.8,-131.16 296.71,-134.4 300.94,-139.98"></polygon>
+<text text-anchor="middle" x="318.8" y="-152" font-family="Helvetica,sans-Serif" font-size="10.00"> &nbsp;yes (fast typist)</text>
+</g>
+<!-- over -->
+<g id="node5" class="node">
+<title>over</title>
+<path fill="#f3dcdc" stroke="black" d="M418.35,-53.4C418.35,-53.4 246.47,-53.4 246.47,-53.4 240.47,-53.4 234.47,-47.4 234.47,-41.4 234.47,-41.4 234.47,-12.2 234.47,-12.2 234.47,-6.2 240.47,-0.2 246.47,-0.2 246.47,-0.2 418.35,-0.2 418.35,-0.2 424.35,-0.2 430.35,-6.2 430.35,-12.2 430.35,-12.2 430.35,-41.4 430.35,-41.4 430.35,-47.4 424.35,-53.4 418.35,-53.4"></path>
+<text text-anchor="middle" x="332.41" y="-36.7" font-family="Helvetica,sans-Serif" font-size="11.00">X-ray-strength beam fires with</text>
+<text text-anchor="middle" x="332.41" y="-23.5" font-family="Helvetica,sans-Serif" font-size="11.00">no target: ~100x overdose;</text>
+<text text-anchor="middle" x="332.41" y="-10.3" font-family="Helvetica,sans-Serif" font-size="11.00">console shows MALFUNCTION 54</text>
+</g>
+<!-- flag&#45;&gt;over -->
+<g id="edge4" class="edge">
+<title>flag-&gt;over</title>
+<path fill="none" stroke="black" d="M332.41,-90.37C332.41,-82.38 332.41,-72.88 332.41,-63.71"></path>
+<polygon fill="black" stroke="black" points="335.91,-63.61 332.41,-53.61 328.91,-63.61 335.91,-63.61"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-edit-race-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The Therac-25 edit race. Read it as one operator action that forks on a timing question (gold diamond): did the prescription edit finish <em>before</em> the eight-second magnet/target setup? On the slow path the steps stay in their assumed order and the patient is treated safely (green). On the fast path the ‘data entry complete’ flag is set while the target is still retracted, so the console reports electron mode while the X-ray-strength beam fires unattenuated — a ~100× overdose (red). The defect is not a wrong calculation; it is an unenforced ordering. Adapted from Leveson &amp; Turner (1993).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>What makes Therac-25 more than a horror story is what AECL <em>did</em> with these reports. For more than a year the company maintained that an overdose was effectively impossible. Its hazard analysis had assigned the probability of “computer selects wrong energy” a value like 10⁻¹¹ — a number with no basis, because the analysis treated software as a thing that does not fail. When Tyler’s own physicist, Fritz Hager, reproduced the fault on the clinic’s machine and called AECL, he was told no other accidents had occurred and that the machine could not overdose. A second, <em>unrelated</em> defect — a one-byte counter that bypassed a position check every 256th time an operator pressed a key — caused a further accident in Yakima in 1987. The Therac-25 was finally declared defective by the U.S. Food and Drug Administration only after the body count and an independent investigation forced the issue.</p>
+<p>The machine had treated thousands of patients successfully. The earlier Therac-20 had run the <em>same</em> core code for years with no such deaths. Both facts were true, and both, it turned out, were part of the trap. The story everyone could agree on ended here. The argument about what it <em>meant</em> did not.</p>
+</section>
+<section id="the-argument-therac-25-started" class="level2">
+<h2 class="anchored" data-anchor-id="the-argument-therac-25-started">The Argument Therac-25 Started</h2>
+<p>Therac-25 did not just enter the engineering curriculum; it created a fault line in how the field talks about failure. The positions below were built, attacked, and repaired over thirty years, mostly through the work of Nancy Leveson, whose 1993 investigation with Clark Turner remains the primary source <span class="citation" data-cites="leveson1993">(<a href="#ref-leveson1993" role="doc-biblioref">Leveson and Turner 1993</a>)</span>. Read them as a single argument, each move answering the one before.</p>
+<section id="the-programmer-blame-argument" class="level3">
+<h3 class="anchored" data-anchor-id="the-programmer-blame-argument">The programmer-blame argument</h3>
+<p>The first instinct — the newspapers’, the lawyers’, and many engineers’ — was to find the line of code that did it and, with it, the person at fault. There <em>was</em> a racy flag and an overflowing counter; one programmer, working largely alone in PDP-11 assembly, had written them.</p>
+<div class="argument">
+<p><strong>The Programmer-Blame Argument</strong></p>
+<ol type="1">
+<li>The overdoses were caused by specific defects in specific lines of code (the edit race and the counter overflow).</li>
+<li>Those lines were written by an identifiable programmer who failed to handle ordering and overflow correctly.</li>
+<li>Whoever authored the defective code that caused the harm is the party responsible for it.</li>
+<li>Therefore, responsibility for the Therac-25 deaths rests with the programmer who wrote the faulty code.</li>
+</ol>
+</div>
+<p>Premise 1 is essentially true and premise 2 is largely true. The whole weight falls on <strong>premise 3</strong> — the assumption that locating the faulty line <em>locates the responsibility</em>. That is exactly where Leveson attacked.</p>
+<div class="context-box">
+<p><strong>The second bug, in NB 4 terms.</strong> The Yakima 1987 accident came from a different defect. A subroutine ran a setup test inside a loop and used a one-byte variable — call it <code>safety_counter</code> — incremented on each pass. A position check was skipped whenever <code>safety_counter == 0</code>, on the assumption that zero meant “first pass, not yet relevant.” But a one-byte counter wraps: <code>255 + 1</code> rolls back to <code>0</code>. Every 256th increment, <code>safety_counter</code> was zero again <em>mid-treatment</em>. If the operator pressed “set” at that instant, the <code>if safety_counter == 0:</code> branch skipped the check that the beam-shaping hardware was correctly positioned. This is a pure NB 4 hazard: a loop, a counter, a conditional, and an integer that silently overflows — none of it exotic, all of it lethal in context.</p>
+</div>
+</section>
+<section id="the-systems-reply-there-was-no-single-cause" class="level3">
+<h3 class="anchored" data-anchor-id="the-systems-reply-there-was-no-single-cause">The systems reply: there was no single cause</h3>
+<p>Leveson’s central finding was not “a better programmer would have prevented this.” It was that <em>accidents in complex systems are not caused by single components</em> — they emerge from the interaction of many decisions, most of them not coding decisions at all.</p>
+<div class="argument">
+<p><strong>The Systems Reply</strong></p>
+<ol type="1">
+<li>The same core software ran for years on the Therac-20 with no deaths — because the Therac-20 kept independent <strong>hardware interlocks</strong> that physically stopped a mispositioned beam.</li>
+<li>The Therac-25 removed those hardware interlocks and asked software alone to enforce safety, a management/engineering decision, not a coding one.</li>
+<li>Further independent decisions — no independent safety review, a hazard analysis that excluded software, cryptic error messages, a workflow that trained operators to “proceed” through pauses, and a year of denied incident reports — were each necessary links in every accident.</li>
+<li>When harm requires the conjunction of many independent failures, no single component (or person) is “the cause.”</li>
+<li>Therefore, blaming the programmer is a category error: Therac-25 was a system failure, not a software bug.</li>
+</ol>
+</div>
+<p>This is now close to orthodoxy in safety engineering, and Leveson spent the next two decades formalizing it <span class="citation" data-cites="leveson2011 leveson2017">(<a href="#ref-leveson2011" role="doc-biblioref">Leveson 2011</a>, <a href="#ref-leveson2017" role="doc-biblioref">2017</a>)</span>. The reused code is the sharpest illustration. The code was trusted <em>because</em> it had a track record — but its track record had been silently underwritten by hardware that the Therac-25 threw away. The history that made the software look safe was the very thing that made reusing it dangerous.</p>
+<div class="context-box">
+<p><strong>What “software engineering” was in 1985.</strong> The phrase <em>software engineering</em> was coined at a 1968 NATO conference convened because large software projects routinely failed — the so-called “software crisis” <span class="citation" data-cites="naur1969">(<a href="#ref-naur1969" role="doc-biblioref">Naur and Randell 1969</a>)</span>. By the mid-1980s there was still no licensure for software engineers, no requirement for independent safety review of medical-device code, and minimal FDA regulation of software specifically; Therac-25 is one of the cases that changed that. The <span class="key-term">reuse fallacy</span> — “this code is proven because it ran before” — had no professional check against it. An engineer signing off on a bridge had a regime of liability and review that the Therac-25 software had not.</p>
+</div>
+<p>But the systems reply has a soft spot, and Leveson herself flagged it. If “the system did it,” it is dangerously easy to slide to “no one did it.” Diffuse causation can become diffused accountability — a comfort to every organization that would prefer no name attached to a death.</p>
+</section>
+<section id="the-accountability-objection-diffuse-cause-is-not-no-cause" class="level3">
+<h3 class="anchored" data-anchor-id="the-accountability-objection-diffuse-cause-is-not-no-cause">The accountability objection: diffuse cause is not no cause</h3>
+<div class="argument">
+<p><strong>The Accountability Objection</strong></p>
+<ol type="1">
+<li>Granting the Systems Reply, the accidents still required <em>specific people</em> to make <em>specific decisions</em>: to delete the hardware interlocks, to assign 10⁻¹¹ to a failure mode no one had analyzed, and — after the first injuries — to tell clinics that overdose was impossible.</li>
+<li>A decision can be blameworthy even when it is only one link in a causal chain.</li>
+<li>“It was the system” describes how the harm happened; it does not discharge the duty of those who made the system what it was.</li>
+<li>Therefore, rejecting programmer-blame does not dissolve responsibility — it relocates it to the engineering and management decisions that built and defended the system.</li>
+</ol>
+</div>
+<p>This is the move that keeps the Systems Reply honest. It accepts premise-for-premise that no single line of code “did it,” and still refuses the conclusion that therefore no one is answerable. The most damning material in Leveson’s account is not the race condition; it is the year in which a manufacturer, holding injury reports, continued to assure hospitals the machine could not do what it had already done. No buffer overflow explains that. It reframes the whole debate: the question is not <em>coder vs.&nbsp;system</em> but <em>which decisions, by whom, under what duty.</em></p>
+</section>
+<section id="the-professional-engineering-reframe" class="level3">
+<h3 class="anchored" data-anchor-id="the-professional-engineering-reframe">The professional-engineering reframe</h3>
+<p>If the failures were decisions, the next question is what standard those decisions should have been held to — and that turns Therac-25 into an argument about whether software work is <em>engineering</em> in the regulated, accountable sense.</p>
+<div class="argument">
+<p><strong>The Professional-Engineering Reframe</strong></p>
+<ol type="1">
+<li>We license and legally bind the engineers who design bridges, elevators, and aircraft, because their errors kill people who never consented to the risk.</li>
+<li>Therac-25 software killed people who never consented to the risk, in exactly that way.</li>
+<li>Whatever discipline produces life-critical artifacts should carry enforceable standards of practice, independent review, and personal accountability.</li>
+<li>Therefore, life-critical software should be held to professional-engineering standards, not treated as an unregulated craft.</li>
+</ol>
+</div>
+<p>The counter is the “software is different” claim, and it is not frivolous: software has no continuous physics to reason over, its state space is astronomically larger than a bridge’s, and you cannot test every path. Defenders of the reframe answer that this is an argument for <em>more</em> rigor and humility, not less — precisely the inference AECL declined to make when it modeled software as incapable of failure. This dispute is alive: most jurisdictions still do not require licensure to write medical-device or avionics code, and “software is different” is still the load-bearing premise on both sides.</p>
+</section>
+<section id="the-argument-that-hasnt-ended-did-we-actually-learn" class="level3">
+<h3 class="anchored" data-anchor-id="the-argument-that-hasnt-ended-did-we-actually-learn">The argument that hasn’t ended: did we actually learn?</h3>
+<p>The tidy version of Therac-25 — <em>don’t trust reused code, keep independent safety checks, don’t blame the operator</em> — is taught everywhere. The uncomfortable question is whether the field absorbed the lesson or just the slogan.</p>
+<p>The pattern recurs with unsettling fidelity. Boeing’s 737 MAX MCAS system trusted a single sensor, was added to avoid a costly redesign, and produced two crashes; the Congressional investigation describes removed redundancy, optimistic hazard assessment, and pilots blamed before the design <span class="citation" data-cites="faa737max2020">(<a href="#ref-faa737max2020" role="doc-biblioref">U.S. House Committee on Transportation and Infrastructure 2020</a>)</span>. An Uber automated test vehicle killed a pedestrian in Tempe after the system repeatedly reclassified her and a safety driver was treated as the backstop for a known gap <span class="citation" data-cites="ntsb2019uber">(<a href="#ref-ntsb2019uber" role="doc-biblioref">National Transportation Safety Board 2019</a>)</span>. Each is Therac-25 with new nouns: reused or under-reviewed logic, optimistic risk numbers, redundancy removed under cost pressure, the human operator positioned to absorb the blame.</p>
+<p>Then the course’s own thread sharpens it one turn further. COMP 1150 teaches you to develop <em>with</em> AI from the first notebook. Suppose the racy flag or the overflowing counter is now <em>suggested by a code assistant</em>, trained on millions of repositories, and merged under deadline because it looked plausible and the tests passed — the same way the Therac-20 history made the original code look proven. Who authored it? The model has no professional duty, no license to revoke, and the litigation over what such models may even learn from is unresolved <span class="citation" data-cites="butterick2022copilot">(<a href="#ref-butterick2022copilot" role="doc-biblioref">Butterick and Joseph Saveri Law Firm 2022</a>)</span>. The Programmer-Blame Argument assumed you could at least <em>find</em> the author. Forty years after Tyler, the argument Therac-25 started is not closed; it has lost even that assumption, and the duty the Professional-Engineering Reframe wants to assign now has no obvious place to land.</p>
+</section>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>Reconstruct <strong>The Programmer-Blame Argument</strong> and <strong>The Systems Reply</strong> in your own words. They share premises 1 and 2; identify the single premise they actually disagree about, and say what kind of evidence — technical, organizational, or ethical — could settle that disagreement.</li>
+<li>AECL pointed out, truthfully, that the Therac-25 had treated thousands of patients successfully and that the same code had run for years on the Therac-20 without deaths. Explain, using the <span class="key-term">reuse fallacy</span>, why “it worked before” did not show the code was safe — and what this implies for judging any system that “turned out fine” most of the time.</li>
+<li>The hazard analysis applied a generalization — <em>catastrophic software failure is vanishingly rare</em> — to this specific machine, encoded as a probability like 10⁻¹¹. When, if ever, is it legitimate to apply a statistical generalization about software reliability to the particular system in front of you? What would have to be true for that number to mean anything?</li>
+<li>You are the operator in Tyler. The console shows <code>MALFUNCTION 54</code>, which your training says means an <em>underdose</em>, and the workflow expects you to press “P” to proceed. The video and intercom to the room are down. Drawing on the idea that <strong>order and timing of operations is a safety property</strong> (NB 4) and on the Accountability Objection, what do you do — and what does this case say about designing a system that puts that decision on you?</li>
+<li>Apply the <strong>Professional-Engineering Reframe</strong> to one modern case: the 737 MAX, the Uber Tempe collision, or AI-suggested code merged under deadline. Does the Reframe yield a clear assignment of responsibility in your chosen case? If it does not, is that a flaw in the Reframe, a real difference from Therac-25, or evidence that the argument is still unresolved?</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li>Nancy G. Leveson and Clark S. Turner, “An Investigation of the Therac-25 Accidents,” <em>IEEE Computer</em> (1993) — the definitive technical and organizational account <span class="citation" data-cites="leveson1993">(<a href="#ref-leveson1993" role="doc-biblioref">Leveson and Turner 1993</a>)</span>.</li>
+<li>Nancy G. Leveson, “The Therac-25: 30 Years Later,” <em>IEEE Computer</em> (2017) — what the field did and did not learn <span class="citation" data-cites="leveson2017">(<a href="#ref-leveson2017" role="doc-biblioref">Leveson 2017</a>)</span>.</li>
+<li>Jonathan Jacky, “Programmed for Disaster,” <em>The Sciences</em> (1989) — an early, accessible warning written while the lessons were fresh <span class="citation" data-cites="jacky1989">(<a href="#ref-jacky1989" role="doc-biblioref">Jacky 1989</a>)</span>.</li>
+<li>U.S. House Committee on Transportation and Infrastructure, <em>The Design, Development, and Certification of the Boeing 737 MAX</em> (2020) — read alongside Therac-25 for the recurring pattern <span class="citation" data-cites="faa737max2020">(<a href="#ref-faa737max2020" role="doc-biblioref">U.S. House Committee on Transportation and Infrastructure 2020</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-butterick2022copilot" class="csl-entry" role="listitem">
+Butterick, Matthew, and Joseph Saveri Law Firm. 2022. <em><span>GitHub Copilot</span> Litigation: Class-Action Complaint (<span class="nocase">Doe v. GitHub</span>)</em>. Githubcopilotlitigation.com. <a href="https://githubcopilotlitigation.com/">https://githubcopilotlitigation.com/</a>.
+</div>
+<div id="ref-jacky1989" class="csl-entry" role="listitem">
+Jacky, Jonathan. 1989. <span>“Programmed for Disaster: Software Errors That Imperil Lives.”</span> <em>The Sciences</em> 29 (5): 22–27.
+</div>
+<div id="ref-leveson2011" class="csl-entry" role="listitem">
+Leveson, Nancy G. 2011. <em>Engineering a Safer World: Systems Thinking Applied to Safety</em>. MIT Press.
+</div>
+<div id="ref-leveson2017" class="csl-entry" role="listitem">
+Leveson, Nancy G. 2017. <span>“The <span>Therac-25</span>: 30 Years Later.”</span> <em>IEEE Computer</em> 50 (11): 8–11. <a href="https://doi.org/10.1109/MC.2017.4041349">https://doi.org/10.1109/MC.2017.4041349</a>.
+</div>
+<div id="ref-leveson1993" class="csl-entry" role="listitem">
+Leveson, Nancy G., and Clark S. Turner. 1993. <span>“An Investigation of the <span>Therac-25</span> Accidents.”</span> <em>IEEE Computer</em> 26 (7): 18–41. <a href="https://doi.org/10.1109/MC.1993.274940">https://doi.org/10.1109/MC.1993.274940</a>.
+</div>
+<div id="ref-ntsb2019uber" class="csl-entry" role="listitem">
+National Transportation Safety Board. 2019. <em>Collision Between Vehicle Controlled by Developmental Automated Driving System and Pedestrian, <span>Tempe, Arizona, March 18, 2018</span></em>. HAR-19/03. NTSB. <a href="https://www.ntsb.gov/investigations/AccidentReports/Reports/HAR1903.pdf">https://www.ntsb.gov/investigations/AccidentReports/Reports/HAR1903.pdf</a>.
+</div>
+<div id="ref-naur1969" class="csl-entry" role="listitem">
+Naur, Peter, and Brian Randell, eds. 1969. <em>Software Engineering: Report of a Conference Sponsored by the <span>NATO</span> Science Committee, Garmisch, 1968</em>. NATO Scientific Affairs Division.
+</div>
+<div id="ref-faa737max2020" class="csl-entry" role="listitem">
+U.S. House Committee on Transportation and Infrastructure. 2020. <em>The Design, Development, and Certification of the <span>Boeing</span> 737 <span>MAX</span></em>. U.S. House of Representatives. <a href="https://transportation.house.gov/committee-activity/boeing-737-max-investigation">https://transportation.house.gov/committee-activity/boeing-737-max-investigation</a>.
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

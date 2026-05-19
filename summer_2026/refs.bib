@@ -1,0 +1,142 @@
+% ============================================================
+% COMP 1150 — Summer 2026 Case Studies
+% Shared bibliography. One file for all 12 case studies.
+%
+% Conventions
+%   - Cite key: firstauthorlastnameYEAR (lowercase), e.g. leveson1993.
+%     Disambiguate with a letter: leveson1993a, leveson1993b.
+%   - Prefer @article / @book / @techreport / @misc with a url + urldate
+%     for web sources. Always give a usable url for journalism and reports.
+%   - Group entries by case study with a comment banner so the file stays
+%     navigable as it grows to 12 cases' worth of references.
+%   - Keep an entry the first time it's used; reuse the key across cases.
+% ============================================================
+
+
+% --- Example entries (format reference — replace/extend per case) -----------
+
+@article{leveson1993,
+  author  = {Leveson, Nancy G. and Turner, Clark S.},
+  title   = {An Investigation of the {Therac-25} Accidents},
+  journal = {IEEE Computer},
+  volume  = {26},
+  number  = {7},
+  pages   = {18--41},
+  year    = {1993},
+  doi     = {10.1109/MC.1993.274940}
+}
+
+@book{leveson1995,
+  author    = {Leveson, Nancy G.},
+  title     = {Safeware: System Safety and Computers},
+  publisher = {Addison-Wesley},
+  address   = {Reading, MA},
+  year      = {1995}
+}
+
+@techreport{nist2017equifax,
+  author      = {{U.S. Government Accountability Office}},
+  title       = {Data Protection: Actions Taken by {Equifax} and Federal
+                 Agencies in Response to the 2017 Breach},
+  institution = {GAO},
+  number      = {GAO-18-559},
+  year        = {2018},
+  url         = {https://www.gao.gov/products/gao-18-559},
+  urldate     = {2026-05-19}
+}
+
+@misc{turing1936,
+  author = {Turing, Alan M.},
+  title  = {On Computable Numbers, with an Application to the
+            {Entscheidungsproblem}},
+  year   = {1936},
+  note   = {Proc. London Math. Soc., ser. 2, vol. 42, pp. 230--265}
+}
+
+% --- CS 01 — Turing, Lovelace & the Birth of Computing ---------------------
+% (add entries here)
+
+% --- CS 04 — The Therac-25 Disaster ----------------------------------------
+% uses: leveson1993, leveson1995
+
+@book{leveson2011,
+  author    = {Leveson, Nancy G.},
+  title     = {Engineering a Safer World: Systems Thinking Applied to Safety},
+  publisher = {MIT Press},
+  address   = {Cambridge, MA},
+  year      = {2011}
+}
+
+@article{leveson2017,
+  author  = {Leveson, Nancy G.},
+  title   = {The {Therac-25}: 30 Years Later},
+  journal = {IEEE Computer},
+  volume  = {50},
+  number  = {11},
+  pages   = {8--11},
+  year    = {2017},
+  doi     = {10.1109/MC.2017.4041349}
+}
+
+@article{jacky1989,
+  author  = {Jacky, Jonathan},
+  title   = {Programmed for Disaster: Software Errors That Imperil Lives},
+  journal = {The Sciences},
+  volume  = {29},
+  number  = {5},
+  pages   = {22--27},
+  year    = {1989}
+}
+
+@misc{fda1987therac,
+  author       = {{U.S. Food and Drug Administration}},
+  title        = {Recall and Corrective Action Plan: {Therac-25} Medical
+                  Linear Accelerator ({AECL})},
+  howpublished = {FDA Center for Devices and Radiological Health},
+  year         = {1987}
+}
+
+@misc{naur1969,
+  editor       = {Naur, Peter and Randell, Brian},
+  title        = {Software Engineering: Report of a Conference Sponsored by
+                  the {NATO} Science Committee, Garmisch, 1968},
+  howpublished = {NATO Scientific Affairs Division},
+  year         = {1969}
+}
+
+% --- Shared: the AI-as-through-line strand (cases 1, 3, 5, 8, 12) -----------
+
+@techreport{faa737max2020,
+  author      = {{U.S. House Committee on Transportation and Infrastructure}},
+  title       = {The Design, Development, and Certification of the
+                 {Boeing} 737 {MAX}},
+  institution = {U.S. House of Representatives},
+  year        = {2020},
+  url         = {https://transportation.house.gov/committee-activity/boeing-737-max-investigation},
+  urldate     = {2026-05-19}
+}
+
+@techreport{ntsb2019uber,
+  author      = {{National Transportation Safety Board}},
+  title       = {Collision Between Vehicle Controlled by Developmental
+                 Automated Driving System and Pedestrian, {Tempe, Arizona,
+                 March 18, 2018}},
+  institution = {NTSB},
+  number      = {HAR-19/03},
+  year        = {2019},
+  url         = {https://www.ntsb.gov/investigations/AccidentReports/Reports/HAR1903.pdf},
+  urldate     = {2026-05-19}
+}
+
+@misc{butterick2022copilot,
+  author       = {Butterick, Matthew and {Joseph Saveri Law Firm}},
+  title        = {{GitHub Copilot} Litigation: Class-Action Complaint
+                  ({Doe v. GitHub})},
+  howpublished = {githubcopilotlitigation.com},
+  year         = {2022},
+  url          = {https://githubcopilotlitigation.com/},
+  urldate      = {2026-05-19}
+}
+
+% --- CS 11 — The Equifax Breach --------------------------------------------
+% uses: nist2017equifax

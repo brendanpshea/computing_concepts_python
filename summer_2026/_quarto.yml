@@ -1,0 +1,28 @@
+project:
+  title: "COMP 1150 Case Studies — Summer 2026"
+  output-dir: _output
+
+# Shared settings for every case study in this folder.
+# Render one:   quarto render cs04_therac25.qmd
+# Render all:   quarto render
+
+bibliography: refs.bib
+csl: https://www.zotero.org/styles/chicago-author-date
+
+format:
+  html:
+    theme: [cosmo, _case-styles.scss]
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    fig-cap-location: bottom
+    link-external-newwindow: true
+  docx:
+    toc: false
+    number-sections: false
+    highlight-style: github
+    # Drop a reference.docx here later for institutional styling:
+    # reference-doc: _reference.docx
+
+execute:
+  freeze: auto
