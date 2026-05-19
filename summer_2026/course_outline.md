@@ -67,11 +67,11 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 - AI-assisted translation exercises ("here's my pseudocode, generate Python, I verify")
 - Reading code the AI produces and catching errors
 
-### NB 4 — Control Flow & Problem Decomposition
-**LOs:** 4, 6
+### NB 4 — Control Flow & Functions
+**LOs:** 4, 6, 8
 - Conditionals, loops (for/while), nested logic, break/continue
 - Decomposing problems into subproblems
-- AI-assisted debugging workflow (reproduce, hypothesize, verify)
+- Functions, parameters, return values, scope
 - Testing your logic with edge cases
 
 ### NB 5 — Collections & Abstract Data Types
@@ -81,9 +81,8 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 - Abstract data types as a concept: interface vs. implementation
 - Choosing the right data structure for a task
 
-### NB 6 — Functions, Modules & Object-Oriented Design
+### NB 6 — Modules & Object-Oriented Design
 **LOs:** 6, 8
-- Functions, parameters, return values, scope
 - Modules and imports
 - Classes, objects, attributes, methods
 - Inheritance and encapsulation at an introductory level
@@ -91,7 +90,7 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 
 ### NB 7 — Algorithms, Complexity & the Limits of Computation
 **LOs:** 4, 13
-- Linear and binary search; bubble, insertion, and merge sort
+- Linear and binary search; bubble, insertion, and merge sort. 
 - Big O notation (conceptual, not heavy math)
 - **Philosophical treatment of computability:**
   - Turing machines as a thought experiment
