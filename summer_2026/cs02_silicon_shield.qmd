@@ -1,0 +1,164 @@
+---
+title: "The Silicon Shield: TSMC, Moore's Law, and the New Chip Wars"
+subtitle: "Why almost every chip in the world is made on one island — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+---
+
+::: {.case-at-a-glance}
+- **Who:** Morris Chang, the engineer who founded the Taiwan Semiconductor Manufacturing Company (TSMC) in 1987; the chip designers who depend on him to actually make their chips; and the U.S. and Chinese governments now fighting over which chips can be sold where
+- **What:** A single foundry on a single island makes most of the world's most advanced chips. In 2022, the U.S. imposed the largest peacetime export controls in a generation on what those chips can be sold for, and to whom.
+- **Where / When:** Hsinchu, Taiwan (TSMC, 1987–present); Washington, Beijing, and The Hague (export-control fights, 2019–2025); Pasadena and Palo Alto (the VLSI design revolution, mid-1970s)
+- **Why it matters:** The story of computing is the story of [bits per chip]{.key-term}. Doubling them was Moore's Law. Where you double them — and who is allowed to buy the results — has become the largest economic and security question of the decade.
+- **Concepts at play:** binary representation, bit width, address space, numerical precision, exponential growth, and how physical scale (nanometers of transistor) sets what software can do
+:::
+
+## The Case
+
+In 1985, Morris Chang received a phone call from the Taiwanese government with an unusual offer. Chang was fifty-four. He had spent twenty-five years at Texas Instruments, rising to vice president. He had then run, briefly and unhappily, the company General Instrument. He had been born in Ningbo on the Chinese mainland in 1931. He fled the war as a teenager, studied mechanical engineering at MIT, then moved to electrical engineering at Stanford for a PhD. He had run semiconductor factories on three continents. Taiwan, the caller said, wanted to build a chip industry. Would he come and lead it?
+
+Chang accepted. The plan he proposed in 1987 was not the obvious one. Every important chip company in the world made its own chips. Intel designed and fabricated. IBM designed and fabricated. Texas Instruments designed and fabricated. The factory (the [fab]{.key-term}) and the design office sat under the same roof, with the same management. This model was called the [IDM]{.key-term} — integrated device manufacturer — and it had been the only model for thirty years.
+
+Chang's proposal was to invert it. His new company, the Taiwan Semiconductor Manufacturing Company, would not design any chips at all. It would only manufacture chips that other companies designed. He called this a [pure-play foundry]{.key-term}. The pitch was unusual in two ways:
+
+- A pure-play foundry would never compete with its customers. A design company could trust TSMC with its most valuable secrets — its circuit layouts — because TSMC had no products of its own to defend.
+- A pure-play foundry could specialise in *making*. It could pour every dollar of capital into ever-better factories, instead of splitting its budget with a design organisation.
+
+Many of his American colleagues told him it would not work. Designing and manufacturing were too tightly coupled, they said. The economics did not add up. Chang opened TSMC's first factory in Hsinchu in 1987. Backing came from the Taiwanese government and from Philips of the Netherlands. He was already past the age most engineers retire.
+
+He had not invented the idea of separating design from manufacturing alone. Two American researchers had spent the previous decade making that separation technically possible. Carver Mead at Caltech and Lynn Conway at Xerox PARC published a textbook in 1980 called *Introduction to VLSI Systems* [@meadConway1980]. Their key contribution was a set of standardised [design rules]{.key-term}. A published grammar described how to lay out a chip so that any fab could build it. They paired this with a service, MOSIS, that let a university student send a design and receive working silicon a few weeks later. Before Mead and Conway, designing a chip was something you did inside a factory. After them, it was something you could do at a desk.
+
+The Mead–Conway revolution and Chang's foundry model fit together like a key in a lock. Designers could now design without owning a factory. Factories could now manufacture without owning a design team. A whole new kind of company became possible — the [fabless]{.key-term} chip company. Nvidia (founded 1993), Qualcomm, Apple Silicon, and almost every artificial-intelligence chip you have heard of are fabless companies. They do not own a fab. Most of them have their chips made by TSMC.
+
+Thirty-five years later, this arrangement has produced a remarkable concentration. By 2024, TSMC made:
+
+- about 60% of the world's chips by foundry revenue
+- more than 90% of the world's most advanced chips (those built on processes 7nm and smaller)
+- essentially 100% of the chips used in top-end smartphones, AI accelerators, and graphics processors
+
+These chips are made on a single island. Taiwan sits roughly 100 miles off the coast of mainland China. The People's Republic of China claims the island as its own territory. American defense analysts gave the situation a name: the [silicon shield]{.key-term}. The argument went that no major power would risk a war over Taiwan. Destroying TSMC would destroy the modern world economy with it. Whether the shield protects Taiwan, or paints a target on it, is a question the case will return to.
+
+Then, on October 7, 2022, the United States government published a new rule. The Bureau of Industry and Security restricted the export of advanced chips to China [@bis2022]. Specifically, it restricted chips above certain compute and bandwidth thresholds — the kind used to train modern AI models. It also restricted the sale of the machines used to make those chips. The most important of those machines are [EUV lithography]{.key-term} tools. They are built by a single Dutch company, ASML. The United States persuaded the Dutch government to join the restrictions.
+
+The chips affected included Nvidia's H100 and A100 graphics processors. These are the engines of nearly every large AI model trained outside China. Nvidia responded by designing slower variants for the Chinese market: the A800, then the H800, then a further-throttled H20. Each new variant ran into a new restriction. The dance has continued ever since.
+
+China responded by investing — on a scale of roughly $150 billion — in a domestic semiconductor industry. In September 2023, Huawei released its Mate 60 Pro phone with a chip called the Kirin 9000s. Independent teardowns identified the chip as being made on a 7nm process by SMIC, China's leading foundry [@techinsights2023]. This was not supposed to be possible without EUV. SMIC had managed it with older [DUV]{.key-term} tools and a more complex fabrication process. Then, in January 2025, a Chinese company called DeepSeek released a frontier-grade large language model. It had reportedly been trained on a smaller cluster of H800 chips — the throttled variant the export rules had allowed.
+
+Each of these developments raises the same question. Did the export controls work?
+
+## How It Worked
+
+Behind the geopolitics are two facts about computers that come straight out of [data representation]{.key-term}. The first is what *transistor count* gets you. The second is what *bit width* gets you. Both are stories about powers of two.
+
+Gordon Moore observed in 1965 that the number of transistors on a chip was doubling about every two years. This is exponential growth. Exponential growth destroys our intuitions. If you double something every two years for fifty years, you do not get fifty doublings. You get $2^{25}$ doublings — about 33 million times the original. The Intel 4004 microprocessor of 1971 had 2,300 transistors. A modern Apple M2 Ultra has about 134 billion. The arithmetic is small enough to run in a few lines:
+
+```python
+# Moore's-Law: double transistors every 2 years from the Intel 4004 (1971).
+start_year, start_count = 1971, 2_300
+target = 100_000_000_000     # 100 billion transistors
+
+year, count = start_year, start_count
+while count < target:
+    year += 2
+    count *= 2
+print(f"At Moore's rate, 100 B transistors arrives in {year}.")
+print(f"Predicted count that year: {count:,}.")
+
+# Reality has bent the curve. Compare to actual milestones:
+real = {1971: 2_300, 1985: 275_000, 1999: 9_500_000,
+        2010: 1_170_000_000, 2024: 134_000_000_000}
+for y, c in sorted(real.items()):
+    print(f"{y}: {c:>15,} transistors")
+```
+
+Run it. The pure Moore prediction reaches 100 billion transistors in the late 2020s. The actual milestones show how close — and where — the curve bent in the 2010s. Moore's Law has been slowing for about a decade. Each additional doubling now costs more dollars and more physics. This is part of why the leading-edge fab is so concentrated. Only a handful of companies can afford to chase the next node. As of 2025, only one — TSMC — is making the very latest chips in volume.
+
+The second fact is what those transistors *let you represent*. A chip stores and moves data in bits. The [bit width]{.key-term} of its memory addresses sets a hard ceiling on what software can do. A few lines make the ceiling visible:
+
+```python
+# What can you reach with N-bit memory addresses (one byte per address)?
+def reach(n_bits):
+    n_addresses = 2 ** n_bits
+    for unit, size in [("EB", 2**60), ("TB", 2**40),
+                       ("GB", 2**30), ("MB", 2**20), ("KB", 2**10)]:
+        if n_addresses >= size:
+            return f"{n_addresses // size} {unit}"
+    return f"{n_addresses} bytes"
+
+for n in [8, 16, 32, 64]:
+    print(f"{n}-bit addresses can reach {reach(n)}")
+```
+
+The output is a small lesson in scale:
+
+- An 8-bit machine can address 256 bytes.
+- A 16-bit machine can address 64 KB.
+- A 32-bit machine can address 4 GB.
+- A 64-bit machine can address 16 EB — 16 billion gigabytes.
+
+The 1970s microprocessors lived inside 8-bit and 16-bit windows. They could not hold a modern photo in memory if they wanted to. The reason your phone can run a multi-billion-parameter language model is not magic. It is sixty years of doubling, packed into 64-bit address space and 5nm transistors.
+
+The same arithmetic applies to *numerical precision*. A floating-point number stored in 32 bits (FP32) takes twice the space of one in 16 bits (FP16). FP16 takes twice the space of FP8. A 70-billion-parameter language model in FP32 needs 280 GB of memory. In FP8 it needs 70 GB. That difference is the difference between a chip that can serve such a model and one that cannot. The 2022 export controls set numerical thresholds on compute and on memory bandwidth. Those thresholds map almost directly onto which AI workloads a chip can run. The geopolitics is downstream of the bit accounting.
+
+## The Argument The Silicon Shield Started
+
+The American export controls of October 2022 are the largest peacetime restrictions on a technology in living memory. The argument they triggered has two unusually steel-manable sides.
+
+### The export-control case
+
+::: {.argument}
+**The Export-Control Argument**
+
+1. Modern AI systems require very high-precision, high-bandwidth chips that only a few firms — TSMC, Samsung, and the designers Nvidia, AMD, and a handful of others — can produce.
+2. Those systems are dual-use: the same hardware that trains a language model can train a weapons-guidance or surveillance model.
+3. The United States and its allies have a national-security interest in slowing the rate at which a strategic competitor acquires this capability.
+4. Targeted controls on the most advanced chips and the tools that make them are the least drastic instrument that materially slows that acquisition.
+5. Therefore, the 2022 BIS controls are justified — and probably overdue.
+:::
+
+The argument's strongest premise is 2. Modern AI systems really are dual-use. The United States really does have a strategic interest in not handing an adversary the most advanced commercial compute available. The weight falls on premise 4 — that the controls *materially slow* what they are meant to slow. That is where the reply attacks.
+
+### The fragmentation reply
+
+::: {.argument}
+**The Fragmentation Reply**
+
+1. Export controls do not stop a determined competitor; they redirect investment toward indigenous capability. Huawei's Kirin 9000s and SMIC's 7nm process are direct evidence.
+2. Restricted firms innovate around the restrictions. Nvidia produced the A800, then the H800, then the H20. Each version did most of what its predecessor did under the new rules.
+3. The controls fragment the supply chain on which the controlling country's own firms depend. They raise costs and slow innovation everywhere — including at home.
+4. By making advanced compute a national-security asset, the controls invite reciprocal action — restrictions on critical minerals, on machine tools, on data — and a long-running technology cold war that benefits no one.
+5. Therefore, the controls do not buy security at a reasonable cost. They buy a slower, costlier, more dangerous version of the same competition.
+:::
+
+The reply does not deny the dual-use premise. It denies premise 4 of the original argument — that controls materially slow what they target. Two pieces of evidence sit in its favour. The first is the Huawei 7nm chip in September 2023. The second is DeepSeek's frontier-class model, trained in January 2025 on a smaller cluster of *export-permitted* H800s. Each says, in different words, that the target found a way.
+
+**The silicon-shield reframe.** Both arguments above assume the question is *which restrictions to impose*. A third move asks whether the underlying arrangement should exist at all. Most of the world's leading-edge chips are made on a single island claimed by a nuclear power. Defenders of the *silicon shield* hold that the concentration in Taiwan is itself the deterrent. No major power would risk a conflict that destroys TSMC, because the rest of the world's economy depends on its output. Critics answer that the same concentration is a single point of catastrophic failure — a target that paints itself. The reframe does not solve the dispute. It widens it. The export-control fight becomes the same fight as the diversification fight — the U.S. CHIPS Act, the EU Chips Act, the Arizona TSMC fab now under construction — an effort to make the world less dependent on Hsinchu without bankrupting itself [@miller2022chipwar].
+
+**Where the argument rests now.** Three things are simultaneously true:
+
+- The export controls have, in fact, slowed the very top end of Chinese AI compute. The fastest chips legally available in China lag the global frontier by a generation.
+- They have not stopped the frontier. Huawei is making 7nm chips. DeepSeek-class models are being trained on permitted hardware. A government willing to spend $150 billion is generating its own capability.
+- TSMC's Arizona fab is years behind schedule and costs billions more than its Taiwan equivalents. The duplication the controls implicitly demand is expensive enough to test the political will that produced them.
+
+The neat lesson would be that the controls "worked" or "failed." The honest answer is that they did some of what they were intended to do, at a cost we do not yet know how to count. The question they were meant to settle — whether advanced compute should be a national-security strategic asset at all — is still open.
+
+## Discussion Questions
+
+1. Run the Moore's-Law snippet. Change the doubling period from 2 years to 3 years. By what year does the prediction reach 100 billion transistors? What does this tell you about exponential growth?
+2. Modify the `reach` function to count *FP32 floats* (4 bytes each) instead of single bytes. About how many FP32 parameters fit in a 16 GB GPU? How many FP16? How many FP8?
+3. Write **The Export-Control Argument** and **The Fragmentation Reply** in your own words. What is the one thing they really disagree about?
+4. You are at the U.S. Bureau of Industry and Security in March 2026. Your draft rule restricts a new chip. Huawei is expected to respond with its own version within a year. Do you publish the rule? Why?
+5. Pick one: the phone in your pocket, a U.S. F-35 fighter, a chatbot you have used. Trace its dependence on TSMC. What would change about it if TSMC stopped shipping tomorrow?
+
+## Further Reading
+
+- Chris Miller, *Chip War: The Fight for the World's Most Critical Technology* (Scribner, 2022) — the standard one-volume history [@miller2022chipwar].
+- Carver Mead and Lynn Conway, *Introduction to VLSI Systems* (Addison-Wesley, 1980) — the textbook that made the fabless industry possible [@meadConway1980].
+- U.S. Bureau of Industry and Security, "Implementation of Additional Export Controls" (October 7, 2022) — the rule itself [@bis2022].
+- TechInsights, "Huawei Mate 60 Pro Teardown: Kirin 9000s 7nm Process" (September 2023) — the teardown that surprised analysts [@techinsights2023].
+- Morris Chang, oral history interview, Computer History Museum (2007) [@changCHM2007].
+
+## References
+
+::: {#refs}
+:::

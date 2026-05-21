@@ -11,22 +11,42 @@ date: last-modified
 - **Who:** Atomic Energy of Canada Limited (AECL), the engineers who built the Therac-25 radiation-therapy machine, the radiotherapy technicians who ran it, and at least six cancer patients in the United States and Canada
 - **What:** A medical linear accelerator delivered radiation overdoses roughly a hundred times the intended dose; at least three patients died and others were maimed, because of how the machine's software handled the *order* and *timing* of operator input
 - **Where / When:** Marietta GA, Hamilton ON, Yakima WA, and Tyler TX, between June 1985 and January 1987
-- **Why it matters:** Therac-25 is the canonical example of software killing people not through one dramatic "bug" but through a chain of ordinary control-flow decisions, reused code, and organizational confidence. It is where the question collides: who is responsible when [correctness]{.key-term} fails under [delivery pressure]{.key-term}, and is writing software that can kill an act of [engineering]{.key-term} at all?
-- **Pairs with:** NB 4 — Control Flow & Functions · **Concepts applied:** conditionals, loops, shared mutable state, race conditions, the order of operations in a program
+- **Why it matters:** Therac-25 is the canonical example of software killing people. Not through one dramatic "bug" — through a chain of ordinary control-flow decisions, reused code, and organizational confidence. Two hard questions collide here. Who is responsible when [correctness]{.key-term} fails under [delivery pressure]{.key-term}? And is writing software that can kill an act of [engineering]{.key-term} at all?
+- **Concepts at play:** conditionals, loops, shared mutable state, race conditions, integer overflow, and the order of operations in a program
 :::
 
 ## The Case
 
-In the spring of 1986, the East Texas Cancer Center in Tyler ran one of the most advanced radiation-therapy machines in the world. The Therac-25, built by the Canadian Crown corporation AECL, could treat tumors two ways from one device. In *electron mode* it fired a low-current beam straight at shallow tumors. In *X-ray mode* it generated a beam roughly a hundred times more powerful, then slid a thick metal target into the beam's path; the target absorbed the brutal raw beam and emitted the gentler X-rays that actually reached the patient. The whole therapeutic idea depended on one physical fact: **the high-energy beam must never reach a patient with the target out of the way.**
+In the spring of 1986, the East Texas Cancer Center in Tyler ran one of the most advanced radiation-therapy machines in the world. The Therac-25, built by the Canadian Crown corporation AECL, could treat tumors two ways from one device:
+
+- **Electron mode** fired a low-current beam straight at shallow tumors.
+- **X-ray mode** generated a beam roughly a hundred times more powerful. A thick metal target slid into the beam's path. The target absorbed the raw beam and emitted the gentler X-rays that reached the patient.
+
+The whole therapeutic idea depended on one physical fact: **the high-energy beam must never reach a patient with the target out of the way.**
 
 On March 21, 1986, a technician we'll call the operator set up a routine electron treatment for a man named Ray Cox. She was fast — she ran many patients a day and typed the prescription from memory. She entered "x" for X-ray by habit, noticed the mistake, moved the cursor up, changed it to "e" for electron, and pressed return to proceed. The screen said the prescription was set. She pressed the beam-on key.
 
-Cox, alone in the shielded treatment room, felt what he later described as an electric burning in his back — far more pain than any treatment he had had. He tried to get up. In the control room the console displayed `MALFUNCTION 54` and a "treatment pause," which the operator had seen many times; it usually meant the machine had delivered *too little* dose. The Therac-25 produced dozens of numbered malfunction codes and the manual explained almost none of them; a "pause," unlike a "halt," invited the operator to continue with a single keystroke, and the machine paused so routinely that proceeding through one had become ordinary muscle memory. The intercom and video monitor to the room were not working that day. She did what the workflow trained her to do with a low-dose pause: she pressed "P" to proceed and deliver the rest. The machine fired again. Cox was struck a second time before he could reach the door and pound on it.
+Cox, alone in the shielded treatment room, felt what he later described as an electric burning in his back. It was far more pain than any treatment he had had. He tried to get up. In the control room the console displayed `MALFUNCTION 54` and a "treatment pause." The operator had seen this many times. It usually meant the machine had delivered *too little* dose. The Therac-25 produced dozens of numbered malfunction codes, and the manual explained almost none of them. A "pause," unlike a "halt," let the operator continue with one keystroke. The machine paused so often that proceeding through one had become muscle memory. The intercom and video monitor to the room were not working that day. She did what the workflow trained her to do with a low-dose pause. She pressed "P" to proceed. The machine fired again. Cox was struck a second time before he could reach the door and pound on it.
 
-Ray Cox received something on the order of 100 times his prescribed dose to a small area of his body. He lost the use of an arm, then the function of organs in the path of the beam, and died about five months later. He was not the first. A patient in Marietta, Georgia, had been burned in June 1985; a woman in Hamilton, Ontario, in July 1985; the pattern would continue in Yakima, Washington. Three weeks after Cox, at the *same Tyler clinic*, a man named Verdon Kidd was overdosed in nearly identical circumstances and died within weeks — the first death attributed to a software-driven radiation accident.
+Ray Cox received something on the order of 100 times his prescribed dose to a small area of his body. He lost the use of an arm, then the function of organs in the path of the beam, and died about five months later. He was not the first. The pattern had already shown up at several other clinics:
+
+- A patient in Marietta, Georgia, had been burned in June 1985.
+- A woman in Hamilton, Ontario, was overdosed in July 1985.
+- Yakima, Washington, would see two accidents (1985 and 1987).
+
+Three weeks after Cox, at the *same Tyler clinic*, a man named Verdon Kidd was overdosed in nearly identical circumstances. He died within weeks. He was the first death attributed to a software-driven radiation accident.
 
 ::: {.context-box}
-**Why typing speed could kill: shared state and a race in the control flow.** The Therac-25's software ran several tasks that talked to each other through *shared variables* — including a [flag variable]{.key-term}, a single value one task sets to signal "data entry is complete" and another task reads before moving the beam hardware. Setting up X-ray mode meant rotating the heavy target into place and adjusting magnets, which took about **eight seconds**. The bug was a [race condition]{.key-term}: a defect where the outcome depends on the *relative timing* of operations that are assumed to happen in a fixed order. If the operator edited the prescription from X-ray to electron *fast enough* — within that eight-second window — the data-entry task set the "complete" flag and the treatment proceeded, while the magnet/target task never finished repositioning. The console showed electron mode. The machine was still configured to fire the X-ray-strength beam **with the target retracted**. Nothing in the control flow forced the steps back into the safe order; a slow typist never hit it, and an expert typist hit it often. NB 4's lesson lands here: in software that shares state, *the order and timing of operations is itself a safety property*, not a detail.
+**Why typing speed could kill.** Several pieces of the Therac-25's software talked to each other through *shared variables*. One was a [flag variable]{.key-term}: a single value that one task sets to mean "data entry is complete." Another task reads it before moving the beam hardware. Setting up X-ray mode meant rotating the heavy target into place and adjusting magnets. That took about **eight seconds**.
+
+The bug was a [race condition]{.key-term} — a defect where the outcome depends on the *timing* of operations the programmer assumed would happen in a fixed order. Here is how it played out:
+
+1. The operator selected X-ray. The target started moving into place.
+2. Within eight seconds, the operator edited the prescription to electron.
+3. The data-entry task set the "complete" flag.
+4. The treatment proceeded — while the target was still moving.
+
+The console showed electron mode. The machine was still set to fire the X-ray-strength beam **with the target retracted**. A slow typist never hit it. An expert typist hit it often. In software that shares state, *the order and timing of operations is itself a safety property*.
 :::
 
 ```{dot}
@@ -53,9 +73,53 @@ digraph G {
 }
 ```
 
-What makes Therac-25 more than a horror story is what AECL *did* with these reports. For more than a year the company maintained that an overdose was effectively impossible. Its hazard analysis had assigned the probability of "computer selects wrong energy" a value like 10⁻¹¹ — a number with no basis, because the analysis treated software as a thing that does not fail. When Tyler's own physicist, Fritz Hager, reproduced the fault on the clinic's machine and called AECL, he was told no other accidents had occurred and that the machine could not overdose. A second, *unrelated* defect — a one-byte counter that bypassed a position check every 256th time an operator pressed a key — caused a further accident in Yakima in 1987. The Therac-25 was finally declared defective by the U.S. Food and Drug Administration only after the body count and an independent investigation forced the issue.
+What makes Therac-25 more than a horror story is what AECL *did* with these reports. For more than a year the company held that an overdose was effectively impossible. Its hazard analysis had assigned the probability of "computer selects wrong energy" a value like 10⁻¹¹ — a number with no basis. The analysis treated software as something that does not fail.
+
+Tyler's own physicist, Fritz Hager, reproduced the fault on the clinic's machine. He called AECL. He was told that no other accidents had occurred, and that the machine could not overdose.
+
+Then a second, *unrelated* defect surfaced. A one-byte counter bypassed a position check every 256th time an operator pressed a key. It caused another accident in Yakima in 1987. The Therac-25 was finally declared defective by the U.S. Food and Drug Administration — only after the body count and an independent investigation forced the issue.
 
 The machine had treated thousands of patients successfully. The earlier Therac-20 had run the *same* core code for years with no such deaths. Both facts were true, and both, it turned out, were part of the trap. The story everyone could agree on ended here. The argument about what it *meant* did not.
+
+## How It Worked: A Race and an Overflow
+
+Therac-25's failures came from two technically ordinary defects that almost any introductory programmer can be made to see. Both turn on small choices about *when* and *how often* code runs — exactly the kind of choice that looks innocent on the page and is not.
+
+The **edit race** is the one in the Cox case. Two pieces of code shared a single boolean flag:
+
+- One task set it to `True` when the operator finished entering the prescription.
+- Another task read it to decide whether the beam-shaping hardware was safely in position.
+
+The flag was never *locked* between writers and readers. If a fast operator finished editing before the magnet/target task finished moving, the "ready" flag was set while the machine was not yet ready. The bug is not in any one line. It is in the missing rule that the two lines have to happen in order.
+
+The **counter overflow** is the second defect. It caused the 1987 Yakima accident. A subroutine ran a setup test once per operator keypress. It used a one-byte variable — call it `safety_counter` — to track how many passes it had made. A position check was skipped whenever the counter equaled zero. The assumption was that zero meant "first time through, nothing to check yet."
+
+But a one-byte counter wraps. 255 + 1 rolls back to 0. Every 256th pass, the counter was zero *mid-treatment*. The safety check was skipped exactly when it was most needed. We can watch the failure happen:
+
+```python
+# safety_counter is a one-byte (8-bit) variable, so it wraps at 256.
+# The position check is skipped whenever the counter is 0 — fine
+# on the very first pass, lethal every 256 passes after that.
+safety_counter = 0
+
+def setup_pass():
+    global safety_counter
+    safety_counter = (safety_counter + 1) % 256        # 8-bit rollover
+    if safety_counter == 0:
+        return "SKIP position check"                   # the bug
+    return "verify collimator position"
+
+for press in range(260):
+    result = setup_pass()
+    if result.startswith("SKIP"):
+        print(f"keypress {press:>3}: {result}")
+```
+
+Run this and the loop prints exactly once, at keypress 255 — the 256th increment, when the counter wraps to zero. In a hospital control room, that is one keypress in 256 where the machine quietly stops checking whether the radiation-shaping hardware is in position. The bug is the [conditional]{.key-term} `if safety_counter == 0:` combined with a [counter]{.key-term} whose [integer overflow]{.key-term} behavior the conditional silently relies on. Each piece — the loop, the condition, the wrap-around — is something a first-week programmer can write. The defect is in how the three meet.
+
+Both bugs share a deeper feature worth naming. They are not arithmetic mistakes. Every individual operation produces the value its author intended. They are mistakes about *control flow* — which code runs, in what order, how often, and on what assumption about state it has not itself established.
+
+The same shape recurs across most software disasters: not a wrong answer, but a right answer computed at the wrong moment — or skipped at the wrong moment — by code whose author could not see the gap their own assumptions had left.
 
 ## The Argument Therac-25 Started
 
@@ -76,10 +140,6 @@ The first instinct — the newspapers', the lawyers', and many engineers' — wa
 
 Premise 1 is essentially true and premise 2 is largely true. The whole weight falls on **premise 3** — the assumption that locating the faulty line *locates the responsibility*. That is exactly where Leveson attacked.
 
-::: {.context-box}
-**The second bug, in NB 4 terms.** The Yakima 1987 accident came from a different defect. A subroutine ran a setup test inside a loop and used a one-byte variable — call it `safety_counter` — incremented on each pass. A position check was skipped whenever `safety_counter == 0`, on the assumption that zero meant "first pass, not yet relevant." But a one-byte counter wraps: `255 + 1` rolls back to `0`. Every 256th increment, `safety_counter` was zero again *mid-treatment*. If the operator pressed "set" at that instant, the `if safety_counter == 0:` branch skipped the check that the beam-shaping hardware was correctly positioned. This is a pure NB 4 hazard: a loop, a counter, a conditional, and an integer that silently overflows — none of it exotic, all of it lethal in context.
-:::
-
 ### The systems reply: there was no single cause
 
 Leveson's central finding was not "a better programmer would have prevented this." It was that *accidents in complex systems are not caused by single components* — they emerge from the interaction of many decisions, most of them not coding decisions at all.
@@ -97,10 +157,16 @@ Leveson's central finding was not "a better programmer would have prevented this
 This is now close to orthodoxy in safety engineering, and Leveson spent the next two decades formalizing it [@leveson2011; @leveson2017]. The reused code is the sharpest illustration. The code was trusted *because* it had a track record — but its track record had been silently underwritten by hardware that the Therac-25 threw away. The history that made the software look safe was the very thing that made reusing it dangerous.
 
 ::: {.context-box}
-**What "software engineering" was in 1985.** The phrase *software engineering* was coined at a 1968 NATO conference convened because large software projects routinely failed — the so-called "software crisis" [@naur1969]. By the mid-1980s there was still no licensure for software engineers, no requirement for independent safety review of medical-device code, and minimal FDA regulation of software specifically; Therac-25 is one of the cases that changed that. The [reuse fallacy]{.key-term} — "this code is proven because it ran before" — had no professional check against it. An engineer signing off on a bridge had a regime of liability and review that the Therac-25 software had not.
+**What "software engineering" was in 1985.** The phrase *software engineering* was coined at a 1968 NATO conference. The conference had been called because large software projects routinely failed — the so-called "software crisis" [@naur1969]. By the mid-1980s, several things still did not exist:
+
+- licensure for software engineers
+- a requirement for independent safety review of medical-device code
+- meaningful FDA regulation of software in particular
+
+Therac-25 is one of the cases that changed that. The [reuse fallacy]{.key-term} — "this code is proven because it ran before" — had no professional check against it. An engineer signing off on a bridge worked inside a regime of liability and review that the Therac-25 software did not.
 :::
 
-But the systems reply has a soft spot, and Leveson herself flagged it. If "the system did it," it is dangerously easy to slide to "no one did it." Diffuse causation can become diffused accountability — a comfort to every organization that would prefer no name attached to a death.
+But the systems reply has a soft spot, and Leveson herself flagged it. If "the system did it," it becomes dangerously easy to slide to "no one did it." Diffuse causation can become diffused accountability. That is a comfort to every organization that would prefer no name attached to a death.
 
 ### The accountability objection: diffuse cause is not no cause
 
@@ -115,36 +181,38 @@ But the systems reply has a soft spot, and Leveson herself flagged it. If "the s
 
 This is the move that keeps the Systems Reply honest. It accepts premise-for-premise that no single line of code "did it," and still refuses the conclusion that therefore no one is answerable. The most damning material in Leveson's account is not the race condition; it is the year in which a manufacturer, holding injury reports, continued to assure hospitals the machine could not do what it had already done. No buffer overflow explains that. It reframes the whole debate: the question is not *coder vs. system* but *which decisions, by whom, under what duty.*
 
-### The professional-engineering reframe
+**The professional-engineering reframe.** If the failures were decisions, the next question is what standard those decisions should have been held to. We license and legally bind the engineers who design bridges, elevators, and aircraft. Their errors kill people who never consented to the risk. Therac-25 killed people in exactly that way. The reframe says life-critical software should sit inside the same regulated profession — with enforceable standards, independent review, and personal accountability — not be treated as an unregulated craft.
 
-If the failures were decisions, the next question is what standard those decisions should have been held to — and that turns Therac-25 into an argument about whether software work is *engineering* in the regulated, accountable sense.
+The counter is the "software is different" claim, and it is not frivolous:
 
-::: {.argument}
-**The Professional-Engineering Reframe**
+- Software has no continuous physics to reason over.
+- Its state space is astronomically larger than a bridge's.
+- You cannot test every path.
 
-1. We license and legally bind the engineers who design bridges, elevators, and aircraft, because their errors kill people who never consented to the risk.
-2. Therac-25 software killed people who never consented to the risk, in exactly that way.
-3. Whatever discipline produces life-critical artifacts should carry enforceable standards of practice, independent review, and personal accountability.
-4. Therefore, life-critical software should be held to professional-engineering standards, not treated as an unregulated craft.
-:::
-
-The counter is the "software is different" claim, and it is not frivolous: software has no continuous physics to reason over, its state space is astronomically larger than a bridge's, and you cannot test every path. Defenders of the reframe answer that this is an argument for *more* rigor and humility, not less — precisely the inference AECL declined to make when it modeled software as incapable of failure. This dispute is alive: most jurisdictions still do not require licensure to write medical-device or avionics code, and "software is different" is still the load-bearing premise on both sides.
+Defenders of the reframe answer that this is an argument for *more* rigor and humility, not less. It is precisely the inference AECL declined to make when it modeled software as incapable of failure. Most jurisdictions still do not require licensure to write medical-device or avionics code. "Software is different" is still doing load-bearing work on both sides.
 
 ### The argument that hasn't ended: did we actually learn?
 
 The tidy version of Therac-25 — *don't trust reused code, keep independent safety checks, don't blame the operator* — is taught everywhere. The uncomfortable question is whether the field absorbed the lesson or just the slogan.
 
-The pattern recurs with unsettling fidelity. Boeing's 737 MAX MCAS system trusted a single sensor, was added to avoid a costly redesign, and produced two crashes; the Congressional investigation describes removed redundancy, optimistic hazard assessment, and pilots blamed before the design [@faa737max2020]. An Uber automated test vehicle killed a pedestrian in Tempe after the system repeatedly reclassified her and a safety driver was treated as the backstop for a known gap [@ntsb2019uber]. Each is Therac-25 with new nouns: reused or under-reviewed logic, optimistic risk numbers, redundancy removed under cost pressure, the human operator positioned to absorb the blame.
+The pattern recurs with unsettling fidelity.
 
-Then the course's own thread sharpens it one turn further. COMP 1150 teaches you to develop *with* AI from the first notebook. Suppose the racy flag or the overflowing counter is now *suggested by a code assistant*, trained on millions of repositories, and merged under deadline because it looked plausible and the tests passed — the same way the Therac-20 history made the original code look proven. Who authored it? The model has no professional duty, no license to revoke, and the litigation over what such models may even learn from is unresolved [@butterick2022copilot]. The Programmer-Blame Argument assumed you could at least *find* the author. Forty years after Tyler, the argument Therac-25 started is not closed; it has lost even that assumption, and the duty the Professional-Engineering Reframe wants to assign now has no obvious place to land.
+- **Boeing 737 MAX.** The MCAS system trusted a single sensor. It was added to avoid a costly redesign. It produced two crashes. The Congressional investigation describes removed redundancy, optimistic hazard assessment, and pilots blamed before the design [@faa737max2020].
+- **Uber, Tempe.** An automated test vehicle killed a pedestrian. The system had repeatedly reclassified her. A safety driver was treated as the backstop for a known gap [@ntsb2019uber].
+
+Each is Therac-25 with new nouns: reused or under-reviewed logic, optimistic risk numbers, redundancy removed under cost pressure, the human operator positioned to absorb the blame.
+
+Now the argument turns one degree further. Imagine the racy flag or the overflowing counter is not written by a programmer at all. It is *suggested by a code assistant*, trained on millions of repositories. A developer merges it under deadline because it looked plausible and the tests passed — the same way the Therac-20 history made the original code look proven.
+
+Who authored it? The model has no professional duty and no license to revoke. The litigation over what such models may even learn from is unresolved [@butterick2022copilot]. The Programmer-Blame Argument assumed you could at least *find* the author. Forty years after Tyler, the argument Therac-25 started is not closed. It has lost even that starting assumption. The duty the Professional-Engineering Reframe wants to assign now has no obvious place to land.
 
 ## Discussion Questions
 
-1. Reconstruct **The Programmer-Blame Argument** and **The Systems Reply** in your own words. They share premises 1 and 2; identify the single premise they actually disagree about, and say what kind of evidence — technical, organizational, or ethical — could settle that disagreement.
-2. AECL pointed out, truthfully, that the Therac-25 had treated thousands of patients successfully and that the same code had run for years on the Therac-20 without deaths. Explain, using the [reuse fallacy]{.key-term}, why "it worked before" did not show the code was safe — and what this implies for judging any system that "turned out fine" most of the time.
-3. The hazard analysis applied a generalization — *catastrophic software failure is vanishingly rare* — to this specific machine, encoded as a probability like 10⁻¹¹. When, if ever, is it legitimate to apply a statistical generalization about software reliability to the particular system in front of you? What would have to be true for that number to mean anything?
-4. You are the operator in Tyler. The console shows `MALFUNCTION 54`, which your training says means an *underdose*, and the workflow expects you to press "P" to proceed. The video and intercom to the room are down. Drawing on the idea that **order and timing of operations is a safety property** (NB 4) and on the Accountability Objection, what do you do — and what does this case say about designing a system that puts that decision on you?
-5. Apply the **Professional-Engineering Reframe** to one modern case: the 737 MAX, the Uber Tempe collision, or AI-suggested code merged under deadline. Does the Reframe yield a clear assignment of responsibility in your chosen case? If it does not, is that a flaw in the Reframe, a real difference from Therac-25, or evidence that the argument is still unresolved?
+1. Run the `setup_pass` snippet. It skips the position check once every 256 keypresses. Change the code so the check is *never* skipped. What does your version print for 260 keypresses?
+2. The edit race happened because two pieces of code ran in the wrong order. Name one way to stop the bug — for example, a lock, a hardware interlock, or a "wait until ready" signal. Which would you choose? Why?
+3. Write **The Programmer-Blame Argument** and **The Systems Reply** in your own words. What is the one thing they really disagree about? What evidence could settle it?
+4. You are the operator in Tyler. The console says `MALFUNCTION 54`. Your training says this means *underdose*. The intercom to the patient is broken. Do you press "P" to continue? Why? What does your answer say about a system that puts this choice on you?
+5. Pick one modern case: the 737 MAX, the Uber self-driving crash in Tempe, or AI-suggested code merged under deadline. Who is responsible? Is your answer easier or harder than for Therac-25?
 
 ## Further Reading
 

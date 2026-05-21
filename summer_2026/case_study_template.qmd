@@ -16,13 +16,18 @@ Read case_study_style_guide.md before drafting. Quick reminders:
   - ~3,000 words of core prose (The Case + the argument dialogue);
     ~5,000 all-in once context boxes, figure, questions, refs are added.
   - Pairs with exactly one notebook (see course_outline.md table).
-  - Two jobs, both required:
-      (1) explain & APPLY some concept(s) from the paired notebook;
-      (2) open a real history / ethics / current-practice debate that
-          can spark discussion — not "recall the right answer."
-  - The intellectual spine is "The Argument ___ Started": a connected
-    dialogue of named .argument blocks, each answering the prior one.
-    This is where the RCTC critical-thinking outcome lives.
+  - Three jobs, all required:
+      (1) tell the story;
+      (2) make the reader UNDERSTAND & APPLY the core CS concept(s) —
+          reinforcing material they are encountering elsewhere in the
+          course, WITHOUT NAMING where ("no NB 4," no "as in lecture");
+      (3) open a real ethics/governance/practice debate.
+  - "How It Worked" carries job (2). Short Python snippets (5–25
+    lines, runnable) are welcome wherever the reader benefits from
+    seeing the concept work.
+  - The argument section carries job (3). Use 2–3 formal .argument
+    blocks for the central tension; demote other positions to labeled
+    prose so it does not read as a philosophy paper.
   - Attribution: Brendan Shea, PhD. Never the college.
   - Delete every HTML comment before publishing.
 
@@ -40,8 +45,9 @@ fine for drafting.
 - **Why it matters:** [Why this is *the* canonical example of the tension. Name the two
   forces that collide using [key-term]{.key-term} spans — e.g.
   [correctness]{.key-term} vs. [delivery pressure]{.key-term}.]
-- **Pairs with:** [Notebook N — Title] · **Concepts applied:** [list the
-  notebook concepts this case makes students actually use]
+- **Concepts at play:** [list the core CS concepts the case turns on
+  — the things the reader will leave more fluent in. No notebook or
+  lecture references.]
 :::
 
 ## The Case
@@ -52,48 +58,80 @@ people doing recognizable things, present-tense stakes, no editorializing
 yet. The reader should care before any argument starts. Plant — but do
 not yet resolve — the technical facts the later arguments will turn on.
 
-Use .context-box callouts to teach the notebook concept exactly when the
-story needs it, so the CS content is load-bearing, not bolted on. Bold
-new technical terms and mark them with [term]{.key-term} for the glossary
-/ styling.
+Use .context-box callouts to teach the core CS concept exactly when the
+story needs it, so the CS content is load-bearing, not bolted on. Save
+the deeper "how it actually works" walk-through for the "How It Worked"
+section below. Bold new technical terms and mark them with
+[term]{.key-term} for the glossary / styling. Never reference notebooks,
+lectures, or the course.
 -->
 
 [Open in a scene. Establish the people and the system. Build to the
 decision or failure.]
 
 ::: {.context-box}
-**[The concept the paired notebook teaches, explained here because the story needs it.]**
-[2–5 sentences. Define each [technical term]{.key-term} in plain language.
-Tie it to what the reader just saw happen. This is the bridge between the
-notebook's mechanics and the case's stakes — e.g. for NB 4, what a
-[race condition]{.key-term} is and why a reused [flag variable]{.key-term}
-in the control flow made it possible.]
+**[The core CS concept, explained here because the story needs it.]**
+[2–5 sentences. Define each [technical term]{.key-term} in plain
+language. Tie it to what the reader just saw happen. Keep it tight —
+the longer walk-through belongs in "How It Worked" below.]
 :::
 
 [Continue the narrative. What was tried, who objected, what the
-institution did. End the section on the unresolved human question — not a
+institution did. End the section on the unresolved question — not a
 verdict. State plainly that the *outcome* is not the interesting part;
 *whose call it was / what we should have known / what we owed* is.]
+
+## How It Worked
+
+<!--
+The CS-at-play section. ~500–800 words.
+
+This is where the reader gets fluent in the core technical concept the
+case turns on — not by being told history, but by walking through the
+mechanism and (where it helps) running a small piece of code. Job (2)
+of the three jobs lives here.
+
+  - Walk through the technical mechanism step by step.
+  - Include 0–3 short Python snippets (5–25 lines, runnable) when the
+    reader benefits from seeing the concept work — a tiny demo of the
+    bug, the algorithm, the data structure, the overflow. Comment the
+    snippet sparingly; let the prose do the explaining.
+  - Prose-only is acceptable when code would be contrived (e.g., a
+    case about geopolitics or governance).
+  - Use [key-term]{.key-term} spans on terms first introduced here.
+  - Do NOT reference notebooks, lectures, or the course.
+-->
+
+[Walk the reader through the mechanism in plain language. State what
+the system was supposed to do, what it actually did, and where the
+[concept]{.key-term} entered.]
+
+```python
+# A small, runnable demonstration of the concept at the heart of the
+# case. Keep it short. Output something the reader can predict and
+# then check.
+```
+
+[Brief explanation of what the snippet shows and why it matches the
+real-world failure / decision / behavior in the case. If a second
+snippet helps — e.g., the buggy version vs. the fixed version — add
+it. If not, stop.]
 
 ## The Argument [X] Started
 
 <!--
-The spine of the case study. ~1,500–1,800 words.
+The ethics/governance spine. ~1,000–1,500 words.
 
-A *connected* dialogue: each .argument block answers the one before it.
-Reconstruct real positions (engineers, historians, ethicists, courts,
-companies) — steelman every side. Aim for 3–5 linked moves:
+A *connected* dialogue. Reconstruct real positions (engineers,
+historians, ethicists, courts, companies) — steelman every side. Aim
+for 2–4 linked moves total, with at most 2–3 in formal .argument
+blocks; the rest are prose paragraphs with a short bold label
+("**The accountability objection.**"). Stacking four or five formal
+blocks is the philosophy-paper shape this template is deliberately
+avoiding.
 
-  1. The clean opening argument (often the "obvious" modern view).
-  2. The strongest reply that attacks ONE shared premise.
-  3. A counter that repairs or redirects.
-  4. (optional) A reframing move that changes the question.
-  5. The unresolved / empirical turn — where the debate actually rests
-     today, with current-practice evidence.
-
-Between blocks, write the connective prose that says which premise is
-under attack and why. Use .context-box for the CS/historical background
-a reader needs to evaluate a move. End not at an answer but a sharper
+Whatever the shape, each move must say what it challenges in the
+prior one. End on the current-practice / empirical turn and a sharper
 question.
 -->
 
@@ -183,28 +221,37 @@ digraph G {
 ## Discussion Questions
 
 <!--
-5 questions. RCTC critical-thinking outcome: students must evaluate
-competing claims, not recall answers. At least one should make them
-reconstruct two arguments and find the shared disputed premise. At least
-one should put them inside the scenario as a decision-maker. At least
-one should connect to a paired-notebook concept they can actually run
-code on. No question should have a single correct answer.
+5 questions. Mix technical and ethical — at least 2 of each. Critical-
+thinking outcome: students must evaluate competing claims, not recall
+answers. Required coverage:
+  - ≥1 makes them WORK THE CS (modify a snippet, predict output,
+    apply the concept to a fresh scenario).
+  - ≥1 makes them reconstruct two positions and name what they
+    actually disagree about.
+  - ≥1 puts them inside the scenario as a decision-maker.
+  - ≥1 applies the case's framework or technique to a second
+    contrasting case.
+No question should have a single correct answer. No question should
+mention notebooks, lectures, or the course.
 -->
 
-1. Reconstruct **The [X] Argument** and **The [Y] Reply** in your own words.
-   Identify the one premise they actually disagree about, and say what kind
-   of evidence — technical, historical, ethical — could settle it.
-2. [A "this is not a contradiction / turned out fine ≠ was right" question,
-   using a concept named in the case.]
-3. [A question pressing on a generalization, standard, or trade-off the case
-   used — when is it legitimate to apply it here?]
-4. You are [a specific role inside the scenario] at the moment [the decision].
-   Drawing on [a concept from NB N], what do you do, and what do you owe that
-   the institution does not?
-5. Apply [the framework / procedure / standard] to [a second, contrasting
-   real case]. Does it yield the outcome that case's people endorse? If not,
-   is that a flaw in the framework, a difference between the cases, or
-   evidence the debate is unresolved?
+<!--
+Keep each question SHORT. Plain words, short sentences, one main idea
+per sentence. Many students read in their second language. A good
+question is 1–3 short sentences. Cut everything else.
+-->
+
+1. Run the snippet from "How It Worked." Change [one thing] so [outcome].
+   What does your version print?
+2. Pick one design choice that would have stopped the failure. Sketch it
+   in a few lines of pseudocode. Why this one?
+3. Write **The [X] Argument** and **The [Y] Reply** in your own words.
+   What is the one thing they really disagree about? What evidence could
+   settle it?
+4. You are [a specific role] at the moment [the decision]. What do you do?
+   Why? What does your answer say about a system that puts this choice on you?
+5. Pick one modern case: [example A], [example B], or [example C]. Who is
+   responsible? Is your answer easier or harder than for this case?
 
 ## Further Reading
 
