@@ -38,10 +38,11 @@ There is no answer key — the discussion questions are for thinking and
 arguing about with other people, not for looking up.
 
 See the [case studies index](cases/index.qmd) for the full list. The
-three drafted so far:
+four drafted so far:
 
 - [Lovelace and Turing: Can a Machine Originate?](cases/cs01_lovelace_turing.qmd)
 - [The Silicon Shield: TSMC, Moore's Law, and the New Chip Wars](cases/cs02_silicon_shield.qmd)
+- [Grace Hopper, Compilers & the Abstraction Bargain](cases/cs03_hopper_compilers.qmd)
 - [The Therac-25: When Control Flow Kills](cases/cs04_therac25.qmd)
 
 ## How the pieces fit together

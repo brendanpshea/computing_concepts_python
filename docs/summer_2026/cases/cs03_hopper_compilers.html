@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-05-22">
+
+<title>Grace Hopper, Compilers and the Abstraction Bargain – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/index.html"> 
+<span class="menu-text">Course</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-case" id="toc-the-case" class="nav-link active" data-scroll-target="#the-case">The Case</a></li>
+  <li><a href="#how-it-worked" id="toc-how-it-worked" class="nav-link" data-scroll-target="#how-it-worked">How It Worked</a></li>
+  <li><a href="#the-argument-hopper-started" id="toc-the-argument-hopper-started" class="nav-link" data-scroll-target="#the-argument-hopper-started">The Argument Hopper Started</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cs03_hopper_compilers.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Grace Hopper, Compilers and the Abstraction Bargain</h1>
+<p class="subtitle lead">From punched tape to LLM code — what we trade when the machine writes itself — a COMP 1150 case study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="case-at-a-glance">
+<ul>
+<li><strong>Who:</strong> Grace Murray Hopper (1906–1992), U.S. Navy reservist, mathematician, and the engineer behind the first working compiler; the women who hand-coded the early machines; and the engineers who, eighty years later, accept code from large language models.</li>
+<li><strong>What:</strong> Hopper built a tool that let a programmer write in symbols a person could read and let the machine translate those symbols into its own instructions. The tool worked. People did not want it. Then they did. Each layer of translation built on top of hers makes coding easier — and hides more of what the machine actually does.</li>
+<li><strong>Where / When:</strong> Harvard, 1944 (Mark I). Eckert–Mauchly / Remington Rand, Philadelphia, 1949–1955 (the A-0 compiler and FLOW-MATIC). The CODASYL committee, 1959 (COBOL). And the global software supply chain, 2024–2026 (the rise of AI-generated code).</li>
+<li><strong>Why it matters:</strong> The bargain Hopper offered the field — give up direct control of the machine in exchange for wider access — is the same bargain on offer right now. Each new layer of <span class="key-term">abstraction</span> brings new people in. Each one also moves the human further from the consequence.</li>
+<li><strong>Concepts at play:</strong> algorithm, pseudocode, compiler, programming language, abstraction, supply chain, AI-generated code</li>
+</ul>
+</div>
+<section id="the-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-case">The Case</h2>
+<p>In July 1944, a Navy lieutenant named Grace Hopper reported for duty at Harvard’s Cruft Laboratory. She was thirty-seven, a Vassar mathematics professor on leave, and one of the first three programmers on the Mark I — a fifty-one-foot electromechanical machine built by IBM for the Navy. Howard Aiken, the officer in charge, gave her a code book and told her to get to work. She did not yet know what <em>programming</em> meant. Almost nobody did.</p>
+<p>The Mark I ran on instructions punched into paper tape. To make it compute anything, you had to know what every relay did, in what order, with what timing. A mistake in the sequence meant the machine produced nonsense, jammed, or stopped. The programmers — most of them women, recruited from mathematics and physics departments — built up by hand the routines for ballistics tables, mine-sweeping calculations, and a long classified problem from Los Alamos that they were not told the purpose of. The work was meticulous. The tools were the machine and a pencil.</p>
+<div class="context-box">
+<p><strong>What an algorithm is, and what programming the early machines was.</strong> An <span class="key-term">algorithm</span> is a finite list of unambiguous steps that, followed exactly, produces a result. <span class="key-term">Pseudocode</span> is an algorithm written in plain words so a human can read it. The early machine programmers had pseudocode in their heads, or in pencil on graph paper. They then translated it — by hand, one operation at a time — into the numbered instructions the machine could execute. Most of a programmer’s day was that translation. It was slow. It was the bottleneck.</p>
+</div>
+<p>On 9 September 1947, a relay in the Mark II failed. The team opened the panel and found a moth wedged in the contacts. Hopper taped the moth into the operations log with the note, “First actual case of bug being found.” The word <em>bug</em> for a machine fault was older than the moth; the joke was that this time the bug was literal <span class="citation" data-cites="hopperchm1980">(<a href="#ref-hopperchm1980" role="doc-biblioref">Hopper 1980</a>)</span>. The story is told often. The reason it is worth telling here is more boring. Even at the level of a single relay, a person could <em>see</em> what the machine was doing. The whole system was at human scale. You opened the panel; you found the moth.</p>
+<p>That scale did not last. After the war, Hopper moved to the Eckert–Mauchly Computer Corporation in Philadelphia, the company building the first commercial computers. By 1949 the machine was the UNIVAC I. Hopper had a theory she could not get her colleagues to take seriously. A programmer, she thought, should be able to write instructions in something close to ordinary symbols. The machine itself should do the translating. She called the tool that would do this a <span class="key-term">compiler</span>.</p>
+<p>The reception was hostile. In a 1980 oral history she remembered it this way:</p>
+<blockquote class="blockquote">
+<p>Nobody believed that. I had a running compiler and nobody would touch it. They told me computers could only do arithmetic <span class="citation" data-cites="hopperchm1980">(<a href="#ref-hopperchm1980" role="doc-biblioref">Hopper 1980</a>)</span>.</p>
+</blockquote>
+<p>Her A-0 compiler ran in 1952. It took a program written in a symbolic language and produced the machine instructions to execute it. It was slow and limited. It worked. By 1955 she and her team had a better one, the B-0 (later renamed FLOW-MATIC), aimed at business data — payrolls, inventories, billing. FLOW-MATIC let an accountant write something close to English: <code>IF INVENTORY IS GREATER THAN 100, MOVE OVERFLOW TO STORAGE</code>. The compiler turned that into UNIVAC instructions. The accountant did not need to know what the UNIVAC instructions looked like.</p>
+<p>In 1959 a Pentagon-backed committee, CODASYL, met at the Pentagon and in conference rooms in Washington to design a standard business language. Hopper was a technical adviser. The language they produced was COBOL, the Common Business-Oriented Language. It borrowed heavily from FLOW-MATIC. By 1970, COBOL ran the back offices of the United States and much of the world — banks, airlines, the Internal Revenue Service, the Social Security Administration, the Department of Defense <span class="citation" data-cites="beyer2009">(<a href="#ref-beyer2009" role="doc-biblioref">Beyer 2009</a>)</span>. A great deal of it still does.</p>
+<p>This is where the bargain set. A generation of programmers learned COBOL. They did not learn what their compiler emitted underneath. They did not need to, until they did. In 1999, the Y2K remediation effort discovered that the people who could read the actual machine code behind decades-old COBOL systems had mostly retired. The fix worked, in the end. It cost an estimated several hundred billion dollars worldwide. The lesson, told inside the profession, was double-edged. Abstraction had let the world’s payroll run for thirty years without most programmers ever touching a register. Abstraction had also let the world forget that the registers were there <span class="citation" data-cites="beyer2009">(<a href="#ref-beyer2009" role="doc-biblioref">Beyer 2009</a>)</span>.</p>
+<p>The bargain did not stop at COBOL. Each decade added another layer. Assembly languages translated to machine code. Higher-level languages — Fortran, C, Java, Python — translated to assembly or to a virtual machine. Frameworks generated boilerplate code from a few configuration lines. Each layer brought more people in. Each layer moved the human further from the silicon.</p>
+<p>In 2021, GitHub released Copilot — a tool that generated code from a natural-language prompt, trained on billions of lines of public source code. By 2025, similar tools from Anthropic, OpenAI, Google, and others were standard in working developers’ editors. A 2024 GitHub survey reported that more than three quarters of developers were using AI assistance at least some of the time. The pitch was Hopper’s, ported forward eighty years. <em>You should not have to write the boilerplate. You should describe what you want. The tool should produce the code.</em></p>
+<div class="context-box">
+<p><strong>Two ways the tool can be wrong.</strong> A traditional <span class="key-term">compiler</span> translates by fixed rules. Given the same input, it produces the same output. If the input is valid, the output runs. A <span class="key-term">large language model</span>, or LLM, translates by <em>statistical guess</em>. It produces what looks like plausible code, which is usually code that works — and is sometimes code that does not exist, or refers to a library that does not exist, or contains a subtle security flaw that the model saw in its training data and copied <span class="citation" data-cites="pearce2025">(<a href="#ref-pearce2025" role="doc-biblioref">Pearce et al. 2025</a>)</span>. The two tools sit at the same layer of the stack. They are not the same tool.</p>
+</div>
+<p>Hopper died in 1992, before any of this. She did not see the Y2K crisis she helped set up. She did not see Copilot. She did see, in her own career, the moment her tool went from <em>unthinkable</em> to <em>invisible</em>. By the end she was used in recruiting posters. The Navy named a guided-missile destroyer after her in 1996, the USS <em>Hopper</em>. The story is usually told as a triumph. The triumph is real. So is the unresolved question. Each time the field has accepted a new layer of translation, the answer has been the same: <em>yes, this is worth it.</em> The case is not whether the answers were right. The case is what we agreed to, each time, without quite naming it.</p>
+</section>
+<section id="how-it-worked" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-worked">How It Worked</h2>
+<p>To see what Hopper was offering, and what each generation has accepted since, walk a single task down the stack. Take a simple problem: a restaurant bill of $50.00 with a 20% tip. What does the total come to?</p>
+<p>The pseudocode is short:</p>
+<pre><code>Procedure: total_with_tip(bill, percent)
+
+1. Let tip       ← bill × (percent / 100).
+2. Let total     ← bill + tip.
+3. Return total.</code></pre>
+<p>A reader can do this by hand. Tip is $10.00. Total is $60.00. The pseudocode does not care what machine runs it.</p>
+<p>One layer down, the same procedure in Python:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> total_with_tip(bill, percent):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    tip <span class="op">=</span> bill <span class="op">*</span> (percent <span class="op">/</span> <span class="dv">100</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> bill <span class="op">+</span> tip</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total_with_tip(<span class="fl">50.00</span>, <span class="dv">20</span>))   <span class="co"># 60.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Three lines of logic. The Python interpreter — itself a program — turns these lines into a sequence of operations its own runtime understands. A modern Python program never directly touches the processor. The interpreter does, on the program’s behalf.</p>
+<p>One layer further down, the same operation in assembly — the symbolic language that maps one-to-one with machine instructions. A simplified fragment of the multiplication step might look like this:</p>
+<pre><code>LOAD   R1, bill        ; put the bill into register 1
+LOAD   R2, percent     ; put the percent into register 2
+DIV    R2, 100         ; R2 ← R2 / 100
+MUL    R1, R2          ; R1 ← R1 × R2   (this is the tip)
+ADD    R1, bill        ; R1 ← R1 + bill (this is the total)
+STORE  R1, total       ; save the total back to memory</code></pre>
+<p>This is what <code>tip = bill * (percent / 100)</code> becomes, in spirit, after the Python interpreter and a chain of other translators have done their work. A 1950s programmer writing for the UNIVAC wrote at roughly this layer, by hand. Hopper’s compiler did the translation from a higher-level form <em>to</em> this layer automatically. That was the bargain — give up writing the bottom layer; trust the translator.</p>
+<p>Now run the bargain forward to today. The same task, given to an LLM:</p>
+<blockquote class="blockquote">
+<p><strong>Prompt:</strong> <em>Write a Python function that calculates a restaurant total including tip.</em></p>
+</blockquote>
+<p>A modern model produces a function much like the one above. It may also produce something more ambitious without being asked — adding tax, handling split bills, importing a library:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tip_utils                       <span class="co"># this line is the trap</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> total_with_tip(bill, percent):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tip_utils.compute(bill, percent)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The function looks fine. The import looks fine. The trap is that <code>tip_utils</code> may not exist. Or it may exist <em>because</em> an attacker, knowing that LLMs sometimes invent package names that sound right, registered a malicious package under that name and waited <span class="citation" data-cites="spracklen2024 socket2025">(<a href="#ref-spracklen2024" role="doc-biblioref">Spracklen et al. 2025</a>; <a href="#ref-socket2025" role="doc-biblioref">Socket Research Team 2025</a>)</span>. The bottom of the stack — the layer the programmer is no longer reading — is no longer just <em>opaque</em>. It is now a layer where someone else can plant something.</p>
+<p>The structure of the bargain has not changed since 1952. The number of layers has. So has who, or what, sits between the human and the silicon.</p>
+</section>
+<section id="the-argument-hopper-started" class="level2">
+<h2 class="anchored" data-anchor-id="the-argument-hopper-started">The Argument Hopper Started</h2>
+<p>The argument over Hopper’s compiler is, in form, the argument the field is having now about LLM code generation. The three positions below are not arranged in chronological order. They are arranged in the order in which each one challenges the last.</p>
+<section id="the-hopper-position-abstraction-expands-who-can-build" class="level3">
+<h3 class="anchored" data-anchor-id="the-hopper-position-abstraction-expands-who-can-build">The Hopper position: abstraction expands who can build</h3>
+<p>Hopper’s case for the compiler was practical, not philosophical. Most of the people who needed to use computers were not going to learn to write machine code. If computing was going to matter outside research laboratories — in banks, hospitals, schools, governments — then ordinary technical workers had to be able to program. A compiler made that possible. The cost of the abstraction was that programmers no longer wrote directly to the machine. The benefit was that there were now far more programmers.</p>
+<div class="argument">
+<p><strong>The Hopper Argument</strong></p>
+<ol type="1">
+<li>A field that requires every user to operate at the lowest level of the system stays small.</li>
+<li>A tool that translates from a higher level to a lower level lets more people use the system, while preserving correctness for the cases the tool was built to handle.</li>
+<li>Computing — like writing, like accounting — is more valuable to a society the more people can take part in it.</li>
+<li>Therefore, building such tools (compilers, languages, code generators) is a net good, and resistance to them mostly reflects the interests of the existing specialists.</li>
+</ol>
+</div>
+<p>The weight of the argument is on premise 2 — <em>preserving correctness for the cases the tool was built to handle</em>. Hopper’s compilers, and the languages built on them, did preserve correctness in that sense. Given valid input, the output ran. The question is whether the same premise holds when the translator is no longer deterministic.</p>
+</section>
+<section id="the-dijkstra-reply-every-hidden-layer-is-a-place-errors-live" class="level3">
+<h3 class="anchored" data-anchor-id="the-dijkstra-reply-every-hidden-layer-is-a-place-errors-live">The Dijkstra reply: every hidden layer is a place errors live</h3>
+<p>The most quoted opponent of the Hopper bargain is the Dutch computer scientist Edsger Dijkstra. In a 1975 lecture he wrote that “the use of COBOL cripples the mind; its teaching should, therefore, be regarded as a criminal offense” <span class="citation" data-cites="dijkstra1975">(<a href="#ref-dijkstra1975" role="doc-biblioref">Dijkstra 1975</a>)</span>. The line is famous for being rude. The argument under it is serious. Dijkstra’s claim was not that high-level languages are useless. It was that hiding the machine from the programmer makes some kinds of error invisible — not gone, just unseeable from where the programmer now stands.</p>
+<div class="argument">
+<p><strong>The Dijkstra Reply</strong></p>
+<ol type="1">
+<li>Every layer of abstraction is a place where the behaviour of the system below it is summarised, and summaries leave things out.</li>
+<li>The things a summary leaves out are exactly the things programmers can no longer reason about — security flaws, performance cliffs, undefined behaviour, dependencies that are not what they appear to be.</li>
+<li>A field that hides its lower layers does not eliminate the dangers at those layers; it relocates them, into places where fewer and fewer people can find them.</li>
+<li>Therefore, the Hopper bargain trades a visible problem (programmers must learn the machine) for an invisible one (programmers cannot diagnose what they no longer see), and the invisible problem compounds with each new layer.</li>
+</ol>
+</div>
+<p>The reply does not deny premise 1 or premise 3 of Hopper’s argument. It denies premise 2. It says that <em>preserves correctness</em> is doing more work than Hopper’s case allows — that some errors only appear once the abstraction is in place, and that those errors are by construction the hardest to find.</p>
+</section>
+<section id="the-labor-reply-abstraction-also-hides-workers" class="level3">
+<h3 class="anchored" data-anchor-id="the-labor-reply-abstraction-also-hides-workers">The labor reply: abstraction also hides workers</h3>
+<p>A third position has been on the table since the 1950s and has rarely been argued in technical journals. It does not deny either side above. It says that the cost-benefit ledger has been drawn too narrowly. Compilers, like every productivity tool, do not only change <em>what</em> gets done. They change <em>who does it</em>, and on what terms.</p>
+<p>The historical case is direct. The original “computers” were human — most of them women — who did calculations by hand. As mechanical and then electronic computers arrived, that job category disappeared. The next generation of women, including Hopper’s Mark I colleagues, worked as machine programmers. Then compilers arrived. The skill needed to be a programmer shifted; the wages and prestige of programming rose; the field’s gender composition shifted, too. By the 1980s programming was coded as a male profession in a way it had not been in the 1950s <span class="citation" data-cites="hicks2017 ensmenger2010">(<a href="#ref-hicks2017" role="doc-biblioref">Hicks 2017</a>; <a href="#ref-ensmenger2010" role="doc-biblioref">Ensmenger 2010</a>)</span>. The bargain delivered Hopper’s expansion of access — and selected, at each step, who got to walk through the door.</p>
+<div class="argument">
+<p><strong>The Labor Reply</strong></p>
+<ol type="1">
+<li>Every successful abstraction in software has displaced a category of worker: hand calculators, hand coders, assembly programmers, junior developers writing boilerplate.</li>
+<li>The benefits of the abstraction (lower cost, broader reach) flow mostly to the firms deploying it; the costs (lost work, devalued skills, changed entry paths) fall on a specific group of workers.</li>
+<li>Judging the abstraction only by whether the <em>code</em> is correct ignores who paid for the transition and who reaps the surplus.</li>
+<li>Therefore, the Hopper–Dijkstra debate, even taken on its own terms, is incomplete: the question is not only <em>does this tool work?</em> but <em>for whom does it work, and at whose expense?</em></li>
+</ol>
+</div>
+<p>The labor reply challenges both prior positions. Against Hopper, it concedes that more people can program but asks who counts as a programmer once the tool ships. Against Dijkstra, it concedes that hidden layers create technical danger but adds that those layers also hide the negotiation over labor that produced them.</p>
+</section>
+<section id="where-the-argument-rests-now-slopsquatting-and-the-new-bottom-of-the-stack" class="level3">
+<h3 class="anchored" data-anchor-id="where-the-argument-rests-now-slopsquatting-and-the-new-bottom-of-the-stack">Where the argument rests now: slopsquatting and the new bottom of the stack</h3>
+<p>The current evidence is unkind to the cleanest version of the Hopper bargain.</p>
+<p>In 2024 a research team led by Joe Spracklen tested a range of code-generating LLMs and found that they invent package names at significant rates. Across more than half a million generated code samples, the team identified roughly 200,000 unique <em>hallucinated</em> package names — names that look real, sound real, and do not exist <span class="citation" data-cites="spracklen2024">(<a href="#ref-spracklen2024" role="doc-biblioref">Spracklen et al. 2025</a>)</span>. Open-source models invented packages in around one of every five samples. Commercial models, including GPT-4-class systems, did so in around one of every twenty.</p>
+<p>Security researcher Seth Larson named the resulting attack class <em>slopsquatting</em> — registering a malicious package under a name the model is known to hallucinate, and waiting for a developer to install it <span class="citation" data-cites="socket2025">(<a href="#ref-socket2025" role="doc-biblioref">Socket Research Team 2025</a>)</span>. By late 2025 the technique had moved from demonstrations to live cases. One hallucinated PyPI package, <code>huggingface-cli</code>, drew more than 30,000 downloads after a major firm pasted an AI-suggested install command into a public README, even though no real <code>huggingface-cli</code> existed at that name <span class="citation" data-cites="aikido2025">(<a href="#ref-aikido2025" role="doc-biblioref">Aikido Security 2025</a>)</span>. In January 2026 a researcher published a working demonstration on npm against <code>react-codeshift</code>, a name the model suggested for a real-sounding tool that had no author and no prior registration <span class="citation" data-cites="nesbitt2025">(<a href="#ref-nesbitt2025" role="doc-biblioref">Nesbitt 2025</a>)</span>.</p>
+<p>The slopsquatting case is the cleanest test of the three positions in the dialogue.</p>
+<p>It is <em>consistent</em> with Hopper’s argument — more people are writing code, including code that touches package managers, than ever before. It <em>vindicates</em> Dijkstra’s reply — the danger is at a layer the new programmer is not reading, and is by construction the layer the new programmer is least equipped to verify. And it <em>underwrites</em> the labor reply — the firms shipping the LLMs capture the productivity gains, while the costs of triage, incident response, and (in the worst case) breach fall on whoever is downstream.</p>
+<p>None of this is an argument for ripping out the compilers, or the languages, or the LLMs. The bargain has been struck before and the field did not regret it. The question this case poses, eighty years after Hopper’s first compiler, is the question every layer has eventually forced. <em>If you cannot read what the layer below you is doing, in what sense is the code yours?</em></p>
+</section>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>Run <code>total_with_tip(50.00, 20)</code> from the snippet by hand. Now change one line so the function also charges 7% tax on the bill <em>before</em> the tip. What is the new line? What does the function return for a $50 bill at 20% tip?</li>
+<li>An LLM gives you Python that starts <code>import quickstats</code>. You search PyPI and a package called <code>quickstats</code> exists. Should you install it? List three things you would check first, and say what each check is protecting you from.</li>
+<li>Write <strong>The Hopper Argument</strong> and <strong>The Dijkstra Reply</strong> in your own words. What is the one thing they really disagree about? What kind of evidence could settle it?</li>
+<li>You manage a small team in 1955. A salesperson from Remington Rand is pitching you Hopper’s compiler. You do not trust it. Write the three questions you would ask before letting your team use it. Now rewrite the same three questions for a salesperson pitching you an AI code assistant in 2026. What stayed the same?</li>
+<li>Pick one of these tools: a spreadsheet macro recorder, a website builder that produces HTML from drag-and-drop, or an LLM that writes SQL from a plain-English question. Apply the labor reply to it. Who used to do this work? Who does it now? Who benefits, and who pays?</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li>Kurt W. Beyer, <em>Grace Hopper and the Invention of the Information Age</em> (MIT Press, 2009) — the careful biography, with detail on the A-0 compiler’s reception and the FLOW-MATIC-to-COBOL line <span class="citation" data-cites="beyer2009">(<a href="#ref-beyer2009" role="doc-biblioref">Beyer 2009</a>)</span>.</li>
+<li>Grace Hopper, <em>Oral History</em> (Computer History Museum, 1980) — Hopper in her own words on the resistance to the first compiler <span class="citation" data-cites="hopperchm1980">(<a href="#ref-hopperchm1980" role="doc-biblioref">Hopper 1980</a>)</span>.</li>
+<li>Edsger W. Dijkstra, “How Do We Tell Truths That Might Hurt?” (EWD 498, 1975) — the source of the COBOL line, and a serious argument under it <span class="citation" data-cites="dijkstra1975">(<a href="#ref-dijkstra1975" role="doc-biblioref">Dijkstra 1975</a>)</span>.</li>
+<li>Mar Hicks, <em>Programmed Inequality</em> (MIT Press, 2017) — how Britain lost its early lead in computing by pushing women out of the programming workforce; the most concrete case for the labor reply <span class="citation" data-cites="hicks2017">(<a href="#ref-hicks2017" role="doc-biblioref">Hicks 2017</a>)</span>.</li>
+<li>Joseph Spracklen et al., “We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code-Generating LLMs” (USENIX Security, 2025) — the empirical study of hallucinated dependencies that gave the slopsquatting attack its name <span class="citation" data-cites="spracklen2024">(<a href="#ref-spracklen2024" role="doc-biblioref">Spracklen et al. 2025</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-aikido2025" class="csl-entry" role="listitem">
+Aikido Security. 2025. <em>Slopsquatting: The <span>AI</span> Package Hallucination Attack Already Happening</em>. Aikido blog. <a href="https://www.aikido.dev/blog/slopsquatting-ai-package-hallucination-attacks">https://www.aikido.dev/blog/slopsquatting-ai-package-hallucination-attacks</a>.
+</div>
+<div id="ref-beyer2009" class="csl-entry" role="listitem">
+Beyer, Kurt W. 2009. <em>Grace Hopper and the Invention of the Information Age</em>. MIT Press.
+</div>
+<div id="ref-dijkstra1975" class="csl-entry" role="listitem">
+Dijkstra, Edsger W. 1975. <em>How Do We Tell Truths That Might Hurt? (<span>EWD</span> 498)</em>. E. W. Dijkstra Archive, University of Texas at Austin. <a href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD04xx/EWD498.html">https://www.cs.utexas.edu/users/EWD/transcriptions/EWD04xx/EWD498.html</a>.
+</div>
+<div id="ref-ensmenger2010" class="csl-entry" role="listitem">
+Ensmenger, Nathan. 2010. <em>The Computer Boys Take over: Computers, Programmers, and the Politics of Technical Expertise</em>. MIT Press.
+</div>
+<div id="ref-hicks2017" class="csl-entry" role="listitem">
+Hicks, Marie. 2017. <em>Programmed Inequality: How Britain Discarded Women Technologists and Lost Its Edge in Computing</em>. MIT Press.
+</div>
+<div id="ref-hopperchm1980" class="csl-entry" role="listitem">
+Hopper, Grace M. 1980. <em>Oral History of <span>Grace Murray Hopper</span></em>. Interviewed by Angeline Pantages, Computer History Museum. <a href="https://www.computerhistory.org/collections/catalog/102702026">https://www.computerhistory.org/collections/catalog/102702026</a>.
+</div>
+<div id="ref-nesbitt2025" class="csl-entry" role="listitem">
+Nesbitt, Andrew. 2025. <em>Slopsquatting Meets Dependency Confusion</em>. Nesbitt.io. <a href="https://nesbitt.io/2025/12/10/slopsquatting-meets-dependency-confusion.html">https://nesbitt.io/2025/12/10/slopsquatting-meets-dependency-confusion.html</a>.
+</div>
+<div id="ref-pearce2025" class="csl-entry" role="listitem">
+Pearce, Hammond, Baleegh Ahmad, Benjamin Tan, Brendan Dolan-Gavitt, and Ramesh Karri. 2025. <span>“Asleep at the Keyboard? <span>Assessing</span> the Security of <span>GitHub</span> <span>Copilot</span>’s Code Contributions.”</span> <em>Communications of the ACM</em> 68 (2): 86–94. <a href="https://doi.org/10.1145/3610721">https://doi.org/10.1145/3610721</a>.
+</div>
+<div id="ref-socket2025" class="csl-entry" role="listitem">
+Socket Research Team. 2025. <em>The Rise of Slopsquatting: How <span>AI</span> Hallucinations Are Fueling a New Class of Supply-Chain Attacks</em>. Socket blog. <a href="https://socket.dev/blog/slopsquatting-how-ai-hallucinations-are-fueling-a-new-class-of-supply-chain-attacks">https://socket.dev/blog/slopsquatting-how-ai-hallucinations-are-fueling-a-new-class-of-supply-chain-attacks</a>.
+</div>
+<div id="ref-spracklen2024" class="csl-entry" role="listitem">
+Spracklen, Joseph, Raveen Wijewickrama, A. H. M. Nazmus Sakib, Anindya Maiti, Bimal Viswanath, and Murtuza Jadliwala. 2025. <span>“We Have a Package for You! <span>A</span> Comprehensive Analysis of Package Hallucinations by Code-Generating <span>LLMs</span>.”</span> <em>Proceedings of the 34th <span>USENIX</span> Security Symposium</em>.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

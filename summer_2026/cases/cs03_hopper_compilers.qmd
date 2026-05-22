@@ -1,0 +1,193 @@
+---
+title: "Grace Hopper, Compilers and the Abstraction Bargain"
+subtitle: "From punched tape to LLM code — what we trade when the machine writes itself — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+---
+
+::: {.case-at-a-glance}
+- **Who:** Grace Murray Hopper (1906–1992), U.S. Navy reservist, mathematician, and the engineer behind the first working compiler; the women who hand-coded the early machines; and the engineers who, eighty years later, accept code from large language models.
+- **What:** Hopper built a tool that let a programmer write in symbols a person could read and let the machine translate those symbols into its own instructions. The tool worked. People did not want it. Then they did. Each layer of translation built on top of hers makes coding easier — and hides more of what the machine actually does.
+- **Where / When:** Harvard, 1944 (Mark I). Eckert–Mauchly / Remington Rand, Philadelphia, 1949–1955 (the A-0 compiler and FLOW-MATIC). The CODASYL committee, 1959 (COBOL). And the global software supply chain, 2024–2026 (the rise of AI-generated code).
+- **Why it matters:** The bargain Hopper offered the field — give up direct control of the machine in exchange for wider access — is the same bargain on offer right now. Each new layer of [abstraction]{.key-term} brings new people in. Each one also moves the human further from the consequence.
+- **Concepts at play:** algorithm, pseudocode, compiler, programming language, abstraction, supply chain, AI-generated code
+:::
+
+## The Case
+
+In July 1944, a Navy lieutenant named Grace Hopper reported for duty at Harvard's Cruft Laboratory. She was thirty-seven, a Vassar mathematics professor on leave, and one of the first three programmers on the Mark I — a fifty-one-foot electromechanical machine built by IBM for the Navy. Howard Aiken, the officer in charge, gave her a code book and told her to get to work. She did not yet know what *programming* meant. Almost nobody did.
+
+The Mark I ran on instructions punched into paper tape. To make it compute anything, you had to know what every relay did, in what order, with what timing. A mistake in the sequence meant the machine produced nonsense, jammed, or stopped. The programmers — most of them women, recruited from mathematics and physics departments — built up by hand the routines for ballistics tables, mine-sweeping calculations, and a long classified problem from Los Alamos that they were not told the purpose of. The work was meticulous. The tools were the machine and a pencil.
+
+::: {.context-box}
+**What an algorithm is, and what programming the early machines was.** An [algorithm]{.key-term} is a finite list of unambiguous steps that, followed exactly, produces a result. [Pseudocode]{.key-term} is an algorithm written in plain words so a human can read it. The early machine programmers had pseudocode in their heads, or in pencil on graph paper. They then translated it — by hand, one operation at a time — into the numbered instructions the machine could execute. Most of a programmer's day was that translation. It was slow. It was the bottleneck.
+:::
+
+On 9 September 1947, a relay in the Mark II failed. The team opened the panel and found a moth wedged in the contacts. Hopper taped the moth into the operations log with the note, "First actual case of bug being found." The word *bug* for a machine fault was older than the moth; the joke was that this time the bug was literal [@hopperchm1980]. The story is told often. The reason it is worth telling here is more boring. Even at the level of a single relay, a person could *see* what the machine was doing. The whole system was at human scale. You opened the panel; you found the moth.
+
+That scale did not last. After the war, Hopper moved to the Eckert–Mauchly Computer Corporation in Philadelphia, the company building the first commercial computers. By 1949 the machine was the UNIVAC I. Hopper had a theory she could not get her colleagues to take seriously. A programmer, she thought, should be able to write instructions in something close to ordinary symbols. The machine itself should do the translating. She called the tool that would do this a [compiler]{.key-term}.
+
+The reception was hostile. In a 1980 oral history she remembered it this way:
+
+> Nobody believed that. I had a running compiler and nobody would touch it. They told me computers could only do arithmetic [@hopperchm1980].
+
+Her A-0 compiler ran in 1952. It took a program written in a symbolic language and produced the machine instructions to execute it. It was slow and limited. It worked. By 1955 she and her team had a better one, the B-0 (later renamed FLOW-MATIC), aimed at business data — payrolls, inventories, billing. FLOW-MATIC let an accountant write something close to English: `IF INVENTORY IS GREATER THAN 100, MOVE OVERFLOW TO STORAGE`. The compiler turned that into UNIVAC instructions. The accountant did not need to know what the UNIVAC instructions looked like.
+
+In 1959 a Pentagon-backed committee, CODASYL, met at the Pentagon and in conference rooms in Washington to design a standard business language. Hopper was a technical adviser. The language they produced was COBOL, the Common Business-Oriented Language. It borrowed heavily from FLOW-MATIC. By 1970, COBOL ran the back offices of the United States and much of the world — banks, airlines, the Internal Revenue Service, the Social Security Administration, the Department of Defense [@beyer2009]. A great deal of it still does.
+
+This is where the bargain set. A generation of programmers learned COBOL. They did not learn what their compiler emitted underneath. They did not need to, until they did. In 1999, the Y2K remediation effort discovered that the people who could read the actual machine code behind decades-old COBOL systems had mostly retired. The fix worked, in the end. It cost an estimated several hundred billion dollars worldwide. The lesson, told inside the profession, was double-edged. Abstraction had let the world's payroll run for thirty years without most programmers ever touching a register. Abstraction had also let the world forget that the registers were there [@beyer2009].
+
+The bargain did not stop at COBOL. Each decade added another layer. Assembly languages translated to machine code. Higher-level languages — Fortran, C, Java, Python — translated to assembly or to a virtual machine. Frameworks generated boilerplate code from a few configuration lines. Each layer brought more people in. Each layer moved the human further from the silicon.
+
+In 2021, GitHub released Copilot — a tool that generated code from a natural-language prompt, trained on billions of lines of public source code. By 2025, similar tools from Anthropic, OpenAI, Google, and others were standard in working developers' editors. A 2024 GitHub survey reported that more than three quarters of developers were using AI assistance at least some of the time. The pitch was Hopper's, ported forward eighty years. *You should not have to write the boilerplate. You should describe what you want. The tool should produce the code.*
+
+::: {.context-box}
+**Two ways the tool can be wrong.** A traditional [compiler]{.key-term} translates by fixed rules. Given the same input, it produces the same output. If the input is valid, the output runs. A [large language model]{.key-term}, or LLM, translates by *statistical guess*. It produces what looks like plausible code, which is usually code that works — and is sometimes code that does not exist, or refers to a library that does not exist, or contains a subtle security flaw that the model saw in its training data and copied [@pearce2025]. The two tools sit at the same layer of the stack. They are not the same tool.
+:::
+
+Hopper died in 1992, before any of this. She did not see the Y2K crisis she helped set up. She did not see Copilot. She did see, in her own career, the moment her tool went from *unthinkable* to *invisible*. By the end she was used in recruiting posters. The Navy named a guided-missile destroyer after her in 1996, the USS *Hopper*. The story is usually told as a triumph. The triumph is real. So is the unresolved question. Each time the field has accepted a new layer of translation, the answer has been the same: *yes, this is worth it.* The case is not whether the answers were right. The case is what we agreed to, each time, without quite naming it.
+
+## How It Worked
+
+To see what Hopper was offering, and what each generation has accepted since, walk a single task down the stack. Take a simple problem: a restaurant bill of $50.00 with a 20% tip. What does the total come to?
+
+The pseudocode is short:
+
+```
+Procedure: total_with_tip(bill, percent)
+
+1. Let tip       ← bill × (percent / 100).
+2. Let total     ← bill + tip.
+3. Return total.
+```
+
+A reader can do this by hand. Tip is $10.00. Total is $60.00. The pseudocode does not care what machine runs it.
+
+One layer down, the same procedure in Python:
+
+```python
+def total_with_tip(bill, percent):
+    tip = bill * (percent / 100)
+    total = bill + tip
+    return total
+
+print(total_with_tip(50.00, 20))   # 60.0
+```
+
+Three lines of logic. The Python interpreter — itself a program — turns these lines into a sequence of operations its own runtime understands. A modern Python program never directly touches the processor. The interpreter does, on the program's behalf.
+
+One layer further down, the same operation in assembly — the symbolic language that maps one-to-one with machine instructions. A simplified fragment of the multiplication step might look like this:
+
+```
+LOAD   R1, bill        ; put the bill into register 1
+LOAD   R2, percent     ; put the percent into register 2
+DIV    R2, 100         ; R2 ← R2 / 100
+MUL    R1, R2          ; R1 ← R1 × R2   (this is the tip)
+ADD    R1, bill        ; R1 ← R1 + bill (this is the total)
+STORE  R1, total       ; save the total back to memory
+```
+
+This is what `tip = bill * (percent / 100)` becomes, in spirit, after the Python interpreter and a chain of other translators have done their work. A 1950s programmer writing for the UNIVAC wrote at roughly this layer, by hand. Hopper's compiler did the translation from a higher-level form *to* this layer automatically. That was the bargain — give up writing the bottom layer; trust the translator.
+
+Now run the bargain forward to today. The same task, given to an LLM:
+
+> **Prompt:** *Write a Python function that calculates a restaurant total including tip.*
+
+A modern model produces a function much like the one above. It may also produce something more ambitious without being asked — adding tax, handling split bills, importing a library:
+
+```python
+import tip_utils                       # this line is the trap
+
+def total_with_tip(bill, percent):
+    return tip_utils.compute(bill, percent)
+```
+
+The function looks fine. The import looks fine. The trap is that `tip_utils` may not exist. Or it may exist *because* an attacker, knowing that LLMs sometimes invent package names that sound right, registered a malicious package under that name and waited [@spracklen2024; @socket2025]. The bottom of the stack — the layer the programmer is no longer reading — is no longer just *opaque*. It is now a layer where someone else can plant something.
+
+The structure of the bargain has not changed since 1952. The number of layers has. So has who, or what, sits between the human and the silicon.
+
+## The Argument Hopper Started
+
+The argument over Hopper's compiler is, in form, the argument the field is having now about LLM code generation. The three positions below are not arranged in chronological order. They are arranged in the order in which each one challenges the last.
+
+### The Hopper position: abstraction expands who can build
+
+Hopper's case for the compiler was practical, not philosophical. Most of the people who needed to use computers were not going to learn to write machine code. If computing was going to matter outside research laboratories — in banks, hospitals, schools, governments — then ordinary technical workers had to be able to program. A compiler made that possible. The cost of the abstraction was that programmers no longer wrote directly to the machine. The benefit was that there were now far more programmers.
+
+::: {.argument}
+**The Hopper Argument**
+
+1. A field that requires every user to operate at the lowest level of the system stays small.
+2. A tool that translates from a higher level to a lower level lets more people use the system, while preserving correctness for the cases the tool was built to handle.
+3. Computing — like writing, like accounting — is more valuable to a society the more people can take part in it.
+4. Therefore, building such tools (compilers, languages, code generators) is a net good, and resistance to them mostly reflects the interests of the existing specialists.
+:::
+
+The weight of the argument is on premise 2 — *preserving correctness for the cases the tool was built to handle*. Hopper's compilers, and the languages built on them, did preserve correctness in that sense. Given valid input, the output ran. The question is whether the same premise holds when the translator is no longer deterministic.
+
+### The Dijkstra reply: every hidden layer is a place errors live
+
+The most quoted opponent of the Hopper bargain is the Dutch computer scientist Edsger Dijkstra. In a 1975 lecture he wrote that "the use of COBOL cripples the mind; its teaching should, therefore, be regarded as a criminal offense" [@dijkstra1975]. The line is famous for being rude. The argument under it is serious. Dijkstra's claim was not that high-level languages are useless. It was that hiding the machine from the programmer makes some kinds of error invisible — not gone, just unseeable from where the programmer now stands.
+
+::: {.argument}
+**The Dijkstra Reply**
+
+1. Every layer of abstraction is a place where the behaviour of the system below it is summarised, and summaries leave things out.
+2. The things a summary leaves out are exactly the things programmers can no longer reason about — security flaws, performance cliffs, undefined behaviour, dependencies that are not what they appear to be.
+3. A field that hides its lower layers does not eliminate the dangers at those layers; it relocates them, into places where fewer and fewer people can find them.
+4. Therefore, the Hopper bargain trades a visible problem (programmers must learn the machine) for an invisible one (programmers cannot diagnose what they no longer see), and the invisible problem compounds with each new layer.
+:::
+
+The reply does not deny premise 1 or premise 3 of Hopper's argument. It denies premise 2. It says that *preserves correctness* is doing more work than Hopper's case allows — that some errors only appear once the abstraction is in place, and that those errors are by construction the hardest to find.
+
+### The labor reply: abstraction also hides workers
+
+A third position has been on the table since the 1950s and has rarely been argued in technical journals. It does not deny either side above. It says that the cost-benefit ledger has been drawn too narrowly. Compilers, like every productivity tool, do not only change *what* gets done. They change *who does it*, and on what terms.
+
+The historical case is direct. The original "computers" were human — most of them women — who did calculations by hand. As mechanical and then electronic computers arrived, that job category disappeared. The next generation of women, including Hopper's Mark I colleagues, worked as machine programmers. Then compilers arrived. The skill needed to be a programmer shifted; the wages and prestige of programming rose; the field's gender composition shifted, too. By the 1980s programming was coded as a male profession in a way it had not been in the 1950s [@hicks2017; @ensmenger2010]. The bargain delivered Hopper's expansion of access — and selected, at each step, who got to walk through the door.
+
+::: {.argument}
+**The Labor Reply**
+
+1. Every successful abstraction in software has displaced a category of worker: hand calculators, hand coders, assembly programmers, junior developers writing boilerplate.
+2. The benefits of the abstraction (lower cost, broader reach) flow mostly to the firms deploying it; the costs (lost work, devalued skills, changed entry paths) fall on a specific group of workers.
+3. Judging the abstraction only by whether the *code* is correct ignores who paid for the transition and who reaps the surplus.
+4. Therefore, the Hopper–Dijkstra debate, even taken on its own terms, is incomplete: the question is not only *does this tool work?* but *for whom does it work, and at whose expense?*
+:::
+
+The labor reply challenges both prior positions. Against Hopper, it concedes that more people can program but asks who counts as a programmer once the tool ships. Against Dijkstra, it concedes that hidden layers create technical danger but adds that those layers also hide the negotiation over labor that produced them.
+
+### Where the argument rests now: slopsquatting and the new bottom of the stack
+
+The current evidence is unkind to the cleanest version of the Hopper bargain.
+
+In 2024 a research team led by Joe Spracklen tested a range of code-generating LLMs and found that they invent package names at significant rates. Across more than half a million generated code samples, the team identified roughly 200,000 unique *hallucinated* package names — names that look real, sound real, and do not exist [@spracklen2024]. Open-source models invented packages in around one of every five samples. Commercial models, including GPT-4-class systems, did so in around one of every twenty.
+
+Security researcher Seth Larson named the resulting attack class *slopsquatting* — registering a malicious package under a name the model is known to hallucinate, and waiting for a developer to install it [@socket2025]. By late 2025 the technique had moved from demonstrations to live cases. One hallucinated PyPI package, `huggingface-cli`, drew more than 30,000 downloads after a major firm pasted an AI-suggested install command into a public README, even though no real `huggingface-cli` existed at that name [@aikido2025]. In January 2026 a researcher published a working demonstration on npm against `react-codeshift`, a name the model suggested for a real-sounding tool that had no author and no prior registration [@nesbitt2025].
+
+The slopsquatting case is the cleanest test of the three positions in the dialogue.
+
+It is *consistent* with Hopper's argument — more people are writing code, including code that touches package managers, than ever before. It *vindicates* Dijkstra's reply — the danger is at a layer the new programmer is not reading, and is by construction the layer the new programmer is least equipped to verify. And it *underwrites* the labor reply — the firms shipping the LLMs capture the productivity gains, while the costs of triage, incident response, and (in the worst case) breach fall on whoever is downstream.
+
+None of this is an argument for ripping out the compilers, or the languages, or the LLMs. The bargain has been struck before and the field did not regret it. The question this case poses, eighty years after Hopper's first compiler, is the question every layer has eventually forced. *If you cannot read what the layer below you is doing, in what sense is the code yours?*
+
+## Discussion Questions
+
+1. Run `total_with_tip(50.00, 20)` from the snippet by hand. Now change one line so the function also charges 7% tax on the bill *before* the tip. What is the new line? What does the function return for a $50 bill at 20% tip?
+2. An LLM gives you Python that starts `import quickstats`. You search PyPI and a package called `quickstats` exists. Should you install it? List three things you would check first, and say what each check is protecting you from.
+3. Write **The Hopper Argument** and **The Dijkstra Reply** in your own words. What is the one thing they really disagree about? What kind of evidence could settle it?
+4. You manage a small team in 1955. A salesperson from Remington Rand is pitching you Hopper's compiler. You do not trust it. Write the three questions you would ask before letting your team use it. Now rewrite the same three questions for a salesperson pitching you an AI code assistant in 2026. What stayed the same?
+5. Pick one of these tools: a spreadsheet macro recorder, a website builder that produces HTML from drag-and-drop, or an LLM that writes SQL from a plain-English question. Apply the labor reply to it. Who used to do this work? Who does it now? Who benefits, and who pays?
+
+## Further Reading
+
+- Kurt W. Beyer, *Grace Hopper and the Invention of the Information Age* (MIT Press, 2009) — the careful biography, with detail on the A-0 compiler's reception and the FLOW-MATIC-to-COBOL line [@beyer2009].
+- Grace Hopper, *Oral History* (Computer History Museum, 1980) — Hopper in her own words on the resistance to the first compiler [@hopperchm1980].
+- Edsger W. Dijkstra, "How Do We Tell Truths That Might Hurt?" (EWD 498, 1975) — the source of the COBOL line, and a serious argument under it [@dijkstra1975].
+- Mar Hicks, *Programmed Inequality* (MIT Press, 2017) — how Britain lost its early lead in computing by pushing women out of the programming workforce; the most concrete case for the labor reply [@hicks2017].
+- Joseph Spracklen et al., "We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code-Generating LLMs" (USENIX Security, 2025) — the empirical study of hallucinated dependencies that gave the slopsquatting attack its name [@spracklen2024].
+
+## References
+
+::: {#refs}
+:::

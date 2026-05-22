@@ -15,7 +15,7 @@ can trace by hand, and an unresolved debate worth your own opinion on.
 |---|---|---|
 | 1 | [Lovelace and Turing: Can a Machine Originate?](cs01_lovelace_turing.qmd) | **Available** |
 | 2 | [The Silicon Shield: TSMC, Moore's Law, and the New Chip Wars](cs02_silicon_shield.qmd) | **Available** |
-| 3 | Grace Hopper, Compilers & the Abstraction Bargain | *In progress* |
+| 3 | [Grace Hopper, Compilers & the Abstraction Bargain](cs03_hopper_compilers.qmd) | **Available** |
 | 4 | [The Therac-25: When Control Flow Kills](cs04_therac25.qmd) | **Available** |
 | 5 | How We Represent People: ADTs and the Ethics of Data Modeling | *In progress* |
 | 6 | Was OOP a Mistake? Alan Kay, Smalltalk & the Backlash | *In progress* |
