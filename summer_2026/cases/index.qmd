@@ -1,0 +1,41 @@
+---
+title: "Case Studies"
+subtitle: "COMP 1150 — Computer Science Concepts, Summer 2026"
+author: "Brendan Shea, PhD"
+date: last-modified
+toc: false
+---
+
+Twelve short case studies on the people, decisions, and arguments that
+made the field of computer science what it is — and the ones it is still
+having. Each piece is built around a real story, a short algorithm you
+can trace by hand, and an unresolved debate worth your own opinion on.
+
+| # | Case study | Status |
+|---|---|---|
+| 1 | [Lovelace and Turing: Can a Machine Originate?](cs01_lovelace_turing.qmd) | **Available** |
+| 2 | [The Silicon Shield: TSMC, Moore's Law, and the New Chip Wars](cs02_silicon_shield.qmd) | **Available** |
+| 3 | Grace Hopper, Compilers & the Abstraction Bargain | *In progress* |
+| 4 | [The Therac-25: When Control Flow Kills](cs04_therac25.qmd) | **Available** |
+| 5 | How We Represent People: ADTs and the Ethics of Data Modeling | *In progress* |
+| 6 | Was OOP a Mistake? Alan Kay, Smalltalk & the Backlash | *In progress* |
+| 7 | The Halting Problem & the Limits of Machines | *In progress* |
+| 8 | Open Source & the Code an AI Learned From — Linux, Git & Copilot | *In progress* |
+| 9 | From SQL to NoSQL — Why Google Built Bigtable | *In progress* |
+| 10 | Three Companies Own the Internet — ARPANET to the Cloud Oligopoly | *In progress* |
+| 11 | The Equifax Breach | *In progress* |
+| 12 | COMPAS, Facial Recognition & AI Accountability | *In progress* |
+
+## How to read these
+
+Each case follows the same shape:
+
+- **The Case** — what actually happened, with the people and the stakes.
+- **How It Worked** — the technical mechanism, with a short algorithm to trace.
+- **The Argument** — the debate the case opened, with positions to weigh against each other.
+- **Discussion Questions** — five questions, none with a single right answer.
+
+A case takes about twenty to thirty minutes to read carefully, plus the
+time you spend on the algorithm and the discussion questions. There is
+no answer key. The discussion questions are for thinking and arguing
+about with other people — not for looking up.

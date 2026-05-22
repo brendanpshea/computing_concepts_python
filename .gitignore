@@ -1,0 +1,14 @@
+# Quarto
+/.quarto/
+**/.quarto/
+**/_freeze/
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+**/*.quarto_ipynb

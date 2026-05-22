@@ -1,0 +1,8 @@
+# Per-directory settings for the case studies.
+# Each case renders to HTML (for the site) and DOCX (for printing / instructors).
+
+format:
+  html: default
+  docx: default
+
+bibliography: refs.bib

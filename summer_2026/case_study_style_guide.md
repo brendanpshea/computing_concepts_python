@@ -19,7 +19,7 @@ argument dialogue, then discussion.
 | Source format | Quarto `.qmd` → HTML + PDF |
 | Bibliography | shared `refs.bib`, BibTeX, `@citekey` |
 | Argument blocks | 2–4, **connected** (each answers the prior); not all need formal premise/conclusion form |
-| Code snippets | 0–3 short Python blocks (5–25 lines), runnable, used to *let students see the concept work* — not required, but welcome when the CS rewards it |
+| Algorithm shown | At least one short algorithm (5–20 lines) — pseudocode by default; Python only when running the code teaches something prose cannot |
 | Discussion questions | 5, no single right answer; mix of technical and ethical |
 | Figures | 0–1, graphviz `{dot}`, only if a process/decision needs it |
 | Images | avoid; if used, generated or public-domain with credit |
@@ -31,14 +31,15 @@ argument dialogue, then discussion.
 1. **Tell the story.** Real named people, recognizable stakes,
    present tension. Earn the reader before any analysis. The history
    is the hook; do not skip it for the moral.
-2. **Reinforce the CS.** The case must make the reader *understand
-   and apply* the core technical concept(s) it turns on — race
-   conditions, hash vs. encryption, schema choice, undecidability,
-   Big-O, whatever the case is built around. A `.context-box` teaches
-   the concept where the story needs it; a short Python snippet (5–25
-   lines, runnable) is welcome wherever the reader benefits from
-   *seeing the concept run*. The reader should leave more fluent in
-   the technique, not just informed about an incident.
+2. **Reinforce the CS, and show an algorithm.** The case must make
+   the reader *understand and apply* the core technical concept(s) it
+   turns on — race conditions, hash vs. encryption, schema choice,
+   undecidability, Big-O, whatever the case is built around. A
+   `.context-box` teaches the concept where the story needs it.
+   **Every case shows at least one short algorithm** — pseudocode by
+   default, Python only when running the code teaches something prose
+   cannot. The reader should leave more fluent in the technique, not
+   just informed about an incident.
 
    **Reinforces ideas the reader is encountering elsewhere in the
    course — but never name where.** No "as we saw in the notebook,"
@@ -99,11 +100,12 @@ think-piece. The case must do all three, fused.
 4. **`## How It Worked`** *(or a case-fitting variant: "The Race and
    the Counter," "What the Code Was Doing," etc.)* — ~500–800 words.
    The CS-at-play section. Walk through the mechanism in enough
-   detail that the reader can apply the concept later. Include 0–3
-   short Python snippets where the reader benefits from *running* the
-   idea — a tiny demo of the bug, the algorithm, the data structure,
-   the overflow. Prose-only is acceptable when code would be
-   contrived.
+   detail that the reader can apply the concept later. **Show at
+   least one short algorithm** — pseudocode by default (rendered as a
+   plain code block), executable Python only when running the code
+   teaches something prose cannot. A small table is often clearer
+   than a chart for "compare numbers across categories." Reach for a
+   chart only when shape is the lesson.
 5. **`## The Argument [X] Started`** *(or "What's Still Argued," "The
    Open Question," etc.)* — ~1,000–1,500 words. 2–4 *connected*
    positions in tension, with connective prose naming what each move
@@ -180,7 +182,8 @@ think-piece. The case must do all three, fused.
 - [ ] **No mention of notebooks, lectures, or the course** anywhere in the case body (the pairing is authoring metadata only)
 - [ ] Concepts at play are named in the at-a-glance box
 - [ ] CS concept is load-bearing — taught in a `.context-box` and/or worked through in a "How It Worked" section
-- [ ] Python snippets (if any) are short, runnable, and let the reader *see the concept work*
+- [ ] At least one short algorithm shown — pseudocode by default; executable code only when it teaches something prose cannot
+- [ ] Tables preferred to charts unless *shape* is the lesson
 - [ ] Narrative earns investment before any analysis; no early editorializing
 - [ ] 2–4 connected positions in the argument section, every side steelmanned; no more than 2–3 formal `.argument` blocks
 - [ ] Includes a current-practice / empirical turn; ends on a sharper question

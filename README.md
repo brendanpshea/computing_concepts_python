@@ -1,27 +1,81 @@
-# Computing Concepts Reimagined: Case Studies, Coding, and the Foundations of Computer Science
-### Brendan Shea, PhD | Brendan.Shea@rctc.edu
+# Computing Concepts with Python
 
-https://brendanpshea.github.io/computing_concepts_python/
+Open-access course materials for an introductory computer-science class
+— twelve Jupyter notebooks, twelve short case studies, and a few small
+interactive tools. Used in **COMP 1150** at Rochester Community and
+Technical College and freely adaptable elsewhere.
 
-Welcome to **Computing Concepts with Python**, an open-access textbook designed to introduce students to the foundational concepts of computer science. The textbook includes Jupyter notebooks with interactive exercises, real-world examples, and practical coding exercises using Python.
+**Live site:** <https://brendanpshea.github.io/computing_concepts_python/>
 
-## Interactive Learning Tools
+**Author:** Brendan Shea, PhD ([brendan.shea@rctc.edu](mailto:brendan.shea@rctc.edu))
 
-### PyQuiz
-PyQuiz is an interactive Python coding practice tool designed to help students learn and practice Python programming through a series of coding questions. It provides a user-friendly interface using IPython widgets, making it ideal for use in Jupyter notebooks or similar interactive Python environments.
+**License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — adapt and remix freely with credit.
 
-[Learn more about PyQuiz](python_code_quiz/readme.md)
+---
 
-### Loop of the Recursive Dragon
-Loop of the Recursive Dragon is an interactive quiz game that combines elements of role-playing games with educational quizzes. Students can battle monsters by answering questions correctly, earning gold, and upgrading their equipment as they progress through the game.
+## For students
 
-[Learn more about Loop of the Recursive Dragon](lotr/readme.md)
+Start at the [course page](https://brendanpshea.github.io/computing_concepts_python/summer_2026/).
+Each week pairs a **notebook** with a short **case study**:
 
-## License
-This open-access textbook and associated tools are licensed under the MIT License. Case studies are licensed under the GNU Public License (GPL). For more details, refer to the LICENSE file in this repository.
+- The notebook is a Jupyter notebook. Open it in Google Colab, run the
+  cells, and try the exercises.
+- The case study is a 20–30 minute read about the people, history, and
+  arguments behind the technical material. The discussion questions
+  have no answer key — they are for arguing about with other people.
 
-## A Note on the Use of AI Tools
-These chapters were initially developed as the "generative AI" explosion took off (starting with OpenAI's GPT 3.0). The author has experimented with many of these tools—including successive versions of ChatGPT, Google Gemini, Claude, CoPilot, Mistral, and others—in helping to turn lecture notes into a proper book. While these tools can be helpful, they are not a replacement for the expertise and effort required to produce quality, meaningful educational content.
+## For instructors
 
-## About the Author
-Brendan Shea, PhD, is Professor of Philosophy and Computer Science at Rochester Community and Technical College and a Resident Fellow at the Minnesota Center for Philosophy of Science at the University of Minnesota-Twin Cities. He also serves as the Public Member of the Institutional Biosafety Committee at Mayo Clinic-Rochester. His main research and teaching interests lie in the philosophy of science, data modeling, applied ethics, and in the areas where these overlap (such as bioethics and the ethics of artificial intelligence). You can find out more about his research here: [Brendan Shea's PhilPeople Profile](https://philpeople.org/profiles/brendan-shea).
+Everything is CC BY 4.0. Adapt, remix, fork. The
+[course outline](summer_2026/course_outline.md) shows the twelve-week
+sequence, the design rationale, and the through-lines that connect the
+case studies to the notebooks.
+
+Case studies are written in [Quarto](https://quarto.org/) so they can
+be re-rendered to HTML, DOCX, or PDF, and re-skinned for a different
+course. See [`summer_2026/case_study_style_guide.md`](summer_2026/case_study_style_guide.md)
+for the conventions; [`summer_2026/cases/case_study_template.qmd`](summer_2026/cases/case_study_template.qmd)
+is a fill-in-the-blanks template.
+
+To build the site locally:
+
+```bash
+# install Quarto: https://quarto.org/docs/get-started/
+quarto render            # builds the whole site into ./docs/
+quarto preview           # local server with live reload
+```
+
+---
+
+## Repo layout
+
+```
+.
+├── index.qmd                       site landing page
+├── summer_2026/                    CURRENT COURSE
+│   ├── index.qmd                   course landing
+│   ├── notebooks/                  twelve Jupyter notebooks
+│   ├── cases/                      twelve case studies (Quarto)
+│   ├── course_outline.md           sequence, rationale, design notes
+│   ├── notebook_template.md        notebook authoring guide
+│   └── case_study_style_guide.md   case-study authoring guide
+├── archive/                        previous versions (2024)
+├── tools/                          small interactive tools
+│   ├── python_code_quiz/           PyQuiz — IPython-widget practice
+│   └── object_quest/               RPG-style quiz game
+├── docs/                           rendered HTML (served by GitHub Pages)
+├── _quarto.yml                     site configuration
+└── LICENSE
+```
+
+## Interactive tools
+
+- **[PyQuiz](tools/python_code_quiz/readme.md)** — a Python coding-practice
+  tool built on IPython widgets, runs in any Jupyter environment.
+- **[ObjectQuest](tools/object_quest/)** — a small RPG-style quiz game
+  for object-oriented practice.
+
+## Contributing
+
+Issues and pull requests welcome. For substantive changes to the
+case-study content or pedagogy, please open an issue first.

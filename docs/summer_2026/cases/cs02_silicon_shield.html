@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-05-22">
+
+<title>The Silicon Shield: TSMC, Moore’s Law, and the New Chip Wars – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/index.html"> 
+<span class="menu-text">Course</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-case" id="toc-the-case" class="nav-link active" data-scroll-target="#the-case">The Case</a></li>
+  <li><a href="#how-it-worked" id="toc-how-it-worked" class="nav-link" data-scroll-target="#how-it-worked">How It Worked</a></li>
+  <li><a href="#the-argument-the-silicon-shield-started" id="toc-the-argument-the-silicon-shield-started" class="nav-link" data-scroll-target="#the-argument-the-silicon-shield-started">The Argument The Silicon Shield Started</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cs02_silicon_shield.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Silicon Shield: TSMC, Moore’s Law, and the New Chip Wars</h1>
+<p class="subtitle lead">Why almost every chip in the world is made on one island — a COMP 1150 case study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="case-at-a-glance">
+<ul>
+<li><strong>Who:</strong> Morris Chang, the engineer who founded the Taiwan Semiconductor Manufacturing Company (TSMC) in 1987; the chip designers who depend on him to actually make their chips; and the U.S. and Chinese governments now fighting over which chips can be sold where</li>
+<li><strong>What:</strong> A single foundry on a single island makes most of the world’s most advanced chips. In 2022, the U.S. imposed the largest peacetime export controls in a generation on what those chips can be sold for, and to whom.</li>
+<li><strong>Where / When:</strong> Hsinchu, Taiwan (TSMC, 1987–present); Washington, Beijing, and The Hague (export-control fights, 2019–2025); Pasadena and Palo Alto (the VLSI design revolution, mid-1970s)</li>
+<li><strong>Why it matters:</strong> The story of computing is the story of <span class="key-term">bits per chip</span>. Doubling them was Moore’s Law. Where you double them — and who is allowed to buy the results — has become the largest economic and security question of the decade.</li>
+<li><strong>Concepts at play:</strong> binary representation, bit width, address space, numerical precision, exponential growth, and how physical scale (nanometers of transistor) sets what software can do</li>
+</ul>
+</div>
+<section id="the-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-case">The Case</h2>
+<p>In 1985, Morris Chang received a phone call from the Taiwanese government with an unusual offer. Chang was fifty-four. He had spent twenty-five years at Texas Instruments, rising to vice president. He had then run, briefly and unhappily, the company General Instrument. He had been born in Ningbo on the Chinese mainland in 1931. He fled the war as a teenager, studied mechanical engineering at MIT, then moved to electrical engineering at Stanford for a PhD. He had run semiconductor factories on three continents. Taiwan, the caller said, wanted to build a chip industry. Would he come and lead it?</p>
+<p>Chang accepted. The plan he proposed in 1987 was not the obvious one. Every important chip company in the world made its own chips. Intel designed and fabricated. IBM designed and fabricated. Texas Instruments designed and fabricated. The factory (the <span class="key-term">fab</span>) and the design office sat under the same roof, with the same management. This model was called the <span class="key-term">IDM</span> — integrated device manufacturer — and it had been the only model for thirty years.</p>
+<p>Chang’s proposal was to invert it. His new company, the Taiwan Semiconductor Manufacturing Company, would not design any chips at all. It would only manufacture chips that other companies designed. He called this a <span class="key-term">pure-play foundry</span>. The pitch was unusual in two ways:</p>
+<ul>
+<li>A pure-play foundry would never compete with its customers. A design company could trust TSMC with its most valuable secrets — its circuit layouts — because TSMC had no products of its own to defend.</li>
+<li>A pure-play foundry could specialise in <em>making</em>. It could pour every dollar of capital into ever-better factories, instead of splitting its budget with a design organisation.</li>
+</ul>
+<p>Many of his American colleagues told him it would not work. Designing and manufacturing were too tightly coupled, they said. The economics did not add up. Chang opened TSMC’s first factory in Hsinchu in 1987. Backing came from the Taiwanese government and from Philips of the Netherlands. He was already past the age most engineers retire.</p>
+<p>He had not invented the idea of separating design from manufacturing alone. Two American researchers had spent the previous decade making that separation technically possible. Carver Mead at Caltech and Lynn Conway at Xerox PARC published a textbook in 1980 called <em>Introduction to VLSI Systems</em> <span class="citation" data-cites="meadConway1980">(<a href="#ref-meadConway1980" role="doc-biblioref">Mead and Conway 1980</a>)</span>. Their key contribution was a set of standardised <span class="key-term">design rules</span>. A published grammar described how to lay out a chip so that any fab could build it. They paired this with a service, MOSIS, that let a university student send a design and receive working silicon a few weeks later. Before Mead and Conway, designing a chip was something you did inside a factory. After them, it was something you could do at a desk.</p>
+<p>The Mead–Conway revolution and Chang’s foundry model fit together like a key in a lock. Designers could now design without owning a factory. Factories could now manufacture without owning a design team. A whole new kind of company became possible — the <span class="key-term">fabless</span> chip company. Nvidia (founded 1993), Qualcomm, Apple Silicon, and almost every artificial-intelligence chip you have heard of are fabless companies. They do not own a fab. Most of them have their chips made by TSMC.</p>
+<p>Thirty-five years later, this arrangement has produced a remarkable concentration. By 2024, TSMC made:</p>
+<ul>
+<li>about 60% of the world’s chips by foundry revenue</li>
+<li>more than 90% of the world’s most advanced chips (those built on processes 7nm and smaller)</li>
+<li>essentially 100% of the chips used in top-end smartphones, AI accelerators, and graphics processors</li>
+</ul>
+<p>These chips are made on a single island. Taiwan sits roughly 100 miles off the coast of mainland China. The People’s Republic of China claims the island as its own territory. American defense analysts gave the situation a name: the <span class="key-term">silicon shield</span>. The argument went that no major power would risk a war over Taiwan. Destroying TSMC would destroy the modern world economy with it. Whether the shield protects Taiwan, or paints a target on it, is a question the case will return to.</p>
+<p>Then, on October 7, 2022, the United States government published a new rule. The Bureau of Industry and Security restricted the export of advanced chips to China <span class="citation" data-cites="bis2022">(<a href="#ref-bis2022" role="doc-biblioref">U.S. Bureau of Industry and Security 2022</a>)</span>. Specifically, it restricted chips above certain compute and bandwidth thresholds — the kind used to train modern AI models. It also restricted the sale of the machines used to make those chips. The most important of those machines are <span class="key-term">EUV lithography</span> tools. They are built by a single Dutch company, ASML. The United States persuaded the Dutch government to join the restrictions.</p>
+<p>The chips affected included Nvidia’s H100 and A100 graphics processors. These are the engines of nearly every large AI model trained outside China. Nvidia responded by designing slower variants for the Chinese market: the A800, then the H800, then a further-throttled H20. Each new variant ran into a new restriction. The dance has continued ever since.</p>
+<p>China responded by investing — on a scale of roughly $150 billion — in a domestic semiconductor industry. In September 2023, Huawei released its Mate 60 Pro phone with a chip called the Kirin 9000s. Independent teardowns identified the chip as being made on a 7nm process by SMIC, China’s leading foundry <span class="citation" data-cites="techinsights2023">(<a href="#ref-techinsights2023" role="doc-biblioref">TechInsights 2023</a>)</span>. This was not supposed to be possible without EUV. SMIC had managed it with older <span class="key-term">DUV</span> tools and a more complex fabrication process. Then, in January 2025, a Chinese company called DeepSeek released a frontier-grade large language model. It had reportedly been trained on a smaller cluster of H800 chips — the throttled variant the export rules had allowed.</p>
+<p>Each of these developments raises the same question. Did the export controls work?</p>
+</section>
+<section id="how-it-worked" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-worked">How It Worked</h2>
+<p>Behind the geopolitics are two facts about computers that come straight out of <span class="key-term">data representation</span>. The first is what <em>transistor count</em> gets you. The second is what <em>bit width</em> gets you. Both are stories about powers of two.</p>
+<p>Gordon Moore observed in 1965 that the number of transistors on a chip was doubling about every two years. This is exponential growth. Exponential growth destroys our intuitions. If you double something every two years for fifty years, you do not get fifty doublings. You get <span class="math inline">\(2^{25}\)</span> — about 33 million times the original. The prediction itself is one of the shortest algorithms anyone has ever published:</p>
+<pre><code>Procedure: Moore-predict(start_year, start_count, years_ahead)
+Predicts the transistor count a given number of years out.
+
+1. Let year ← start_year and count ← start_count.
+2. Repeat (years_ahead ÷ 2) times:
+       year  ← year + 2
+       count ← count × 2
+3. Return count.</code></pre>
+<p>Run the procedure on paper from the Intel 4004 (1971, 2,300 transistors) and compare with the actual headline chips of each era:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Chip</th>
+<th>Moore prediction</th>
+<th>Actual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1971</td>
+<td>Intel 4004</td>
+<td>2,300</td>
+<td>2,300</td>
+</tr>
+<tr class="even">
+<td>1985</td>
+<td>Intel 80386</td>
+<td>≈ 294,000</td>
+<td>≈ 275,000</td>
+</tr>
+<tr class="odd">
+<td>1999</td>
+<td>AMD Athlon</td>
+<td>≈ 38 million</td>
+<td>≈ 9.5 million</td>
+</tr>
+<tr class="even">
+<td>2010</td>
+<td>Intel Sandy Bridge</td>
+<td>≈ 1.2 billion</td>
+<td>≈ 1.17 billion</td>
+</tr>
+<tr class="odd">
+<td>2024</td>
+<td>Apple M2 Ultra</td>
+<td>≈ 154 billion</td>
+<td>≈ 134 billion</td>
+</tr>
+</tbody>
+</table>
+<p>The headline transistor count has tracked Moore’s prediction surprisingly well for half a century. What has <em>not</em> held is the economics. Each new doubling now requires a fab that costs tens of billions of dollars to build. The rate of cost-per-transistor decline that defined the industry for decades flattened around 2010. The famous “end of Moore’s Law” is mostly an end of the cheap doubling. It is also the reason the leading-edge fab is so concentrated. Only a handful of companies can afford to chase the next node. As of 2025, only one — TSMC — is making the very latest chips in volume.</p>
+<p>The second fact is what those transistors <em>let you represent</em>. A chip stores and moves data in bits. The <span class="key-term">bit width</span> of its memory addresses sets a hard ceiling on what software can do. The rule is one line:</p>
+<pre><code>reach(n_bits) = 2 ^ n_bits   bytes      (if one byte per address)</code></pre>
+<p>Each step up the staircase is not a doubling of the previous reach. It is a <em>squaring</em> of it:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 40%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Width</th>
+<th>Reach</th>
+<th>What this looked like in practice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8-bit</td>
+<td>256 bytes</td>
+<td>Atari 2600, the Apple II family</td>
+</tr>
+<tr class="even">
+<td>16-bit</td>
+<td>64 KB</td>
+<td>The original IBM PC</td>
+</tr>
+<tr class="odd">
+<td>32-bit</td>
+<td>4 GB</td>
+<td>The desktop era</td>
+</tr>
+<tr class="even">
+<td>64-bit</td>
+<td>16 EB (16 billion gigabytes)</td>
+<td>Every phone and laptop made today</td>
+</tr>
+</tbody>
+</table>
+<p>The 1970s microprocessors lived inside 8-bit and 16-bit windows. They could not hold a modern photo in memory if they wanted to. The reason your phone can run a multi-billion-parameter language model is not magic. It is sixty years of doubling, packed into 64-bit address space and 5nm transistors.</p>
+<p>The same arithmetic applies to <em>numerical precision</em>. A floating-point number stored in 32 bits (FP32) takes twice the space of one in 16 bits (FP16). FP16 takes twice the space of FP8. A 70-billion-parameter language model in FP32 needs 280 GB of memory. In FP8 it needs 70 GB. That difference is the difference between a chip that can serve such a model and one that cannot. The 2022 export controls set numerical thresholds on compute and on memory bandwidth. Those thresholds map almost directly onto which AI workloads a chip can run. The geopolitics is downstream of the bit accounting.</p>
+</section>
+<section id="the-argument-the-silicon-shield-started" class="level2">
+<h2 class="anchored" data-anchor-id="the-argument-the-silicon-shield-started">The Argument The Silicon Shield Started</h2>
+<p>The American export controls of October 2022 are the largest peacetime restrictions on a technology in living memory. The argument they triggered has two unusually steel-manable sides.</p>
+<section id="the-export-control-case" class="level3">
+<h3 class="anchored" data-anchor-id="the-export-control-case">The export-control case</h3>
+<div class="argument">
+<p><strong>The Export-Control Argument</strong></p>
+<ol type="1">
+<li>Modern AI systems require very high-precision, high-bandwidth chips that only a few firms — TSMC, Samsung, and the designers Nvidia, AMD, and a handful of others — can produce.</li>
+<li>Those systems are dual-use: the same hardware that trains a language model can train a weapons-guidance or surveillance model.</li>
+<li>The United States and its allies have a national-security interest in slowing the rate at which a strategic competitor acquires this capability.</li>
+<li>Targeted controls on the most advanced chips and the tools that make them are the least drastic instrument that materially slows that acquisition.</li>
+<li>Therefore, the 2022 BIS controls are justified — and probably overdue.</li>
+</ol>
+</div>
+<p>The argument’s strongest premise is 2. Modern AI systems really are dual-use. The United States really does have a strategic interest in not handing an adversary the most advanced commercial compute available. The weight falls on premise 4 — that the controls <em>materially slow</em> what they are meant to slow. That is where the reply attacks.</p>
+</section>
+<section id="the-fragmentation-reply" class="level3">
+<h3 class="anchored" data-anchor-id="the-fragmentation-reply">The fragmentation reply</h3>
+<div class="argument">
+<p><strong>The Fragmentation Reply</strong></p>
+<ol type="1">
+<li>Export controls do not stop a determined competitor; they redirect investment toward indigenous capability. Huawei’s Kirin 9000s and SMIC’s 7nm process are direct evidence.</li>
+<li>Restricted firms innovate around the restrictions. Nvidia produced the A800, then the H800, then the H20. Each version did most of what its predecessor did under the new rules.</li>
+<li>The controls fragment the supply chain on which the controlling country’s own firms depend. They raise costs and slow innovation everywhere — including at home.</li>
+<li>By making advanced compute a national-security asset, the controls invite reciprocal action — restrictions on critical minerals, on machine tools, on data — and a long-running technology cold war that benefits no one.</li>
+<li>Therefore, the controls do not buy security at a reasonable cost. They buy a slower, costlier, more dangerous version of the same competition.</li>
+</ol>
+</div>
+<p>The reply does not deny the dual-use premise. It denies premise 4 of the original argument — that controls materially slow what they target. Two pieces of evidence sit in its favour. The first is the Huawei 7nm chip in September 2023. The second is DeepSeek’s frontier-class model, trained in January 2025 on a smaller cluster of <em>export-permitted</em> H800s. Each says, in different words, that the target found a way.</p>
+<p><strong>The silicon-shield reframe.</strong> Both arguments above assume the question is <em>which restrictions to impose</em>. A third move asks whether the underlying arrangement should exist at all. Most of the world’s leading-edge chips are made on a single island claimed by a nuclear power. Defenders of the <em>silicon shield</em> hold that the concentration in Taiwan is itself the deterrent. No major power would risk a conflict that destroys TSMC, because the rest of the world’s economy depends on its output. Critics answer that the same concentration is a single point of catastrophic failure — a target that paints itself. The reframe does not solve the dispute. It widens it. The export-control fight becomes the same fight as the diversification fight — the U.S. CHIPS Act, the EU Chips Act, the Arizona TSMC fab now under construction — an effort to make the world less dependent on Hsinchu without bankrupting itself <span class="citation" data-cites="miller2022chipwar">(<a href="#ref-miller2022chipwar" role="doc-biblioref">Miller 2022</a>)</span>.</p>
+<p><strong>Where the argument rests now.</strong> Three things are simultaneously true:</p>
+<ul>
+<li>The export controls have, in fact, slowed the very top end of Chinese AI compute. The fastest chips legally available in China lag the global frontier by a generation.</li>
+<li>They have not stopped the frontier. Huawei is making 7nm chips. DeepSeek-class models are being trained on permitted hardware. A government willing to spend $150 billion is generating its own capability.</li>
+<li>TSMC’s Arizona fab is years behind schedule and costs billions more than its Taiwan equivalents. The duplication the controls implicitly demand is expensive enough to test the political will that produced them.</li>
+</ul>
+<p>The neat lesson would be that the controls “worked” or “failed.” The honest answer is that they did some of what they were intended to do, at a cost we do not yet know how to count. The question they were meant to settle — whether advanced compute should be a national-security strategic asset at all — is still open.</p>
+</section>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>Trace the Moore-predict procedure by hand, but with a doubling period of 3 years instead of 2. Start at 2,300 transistors in 1971. In what year does the count first pass 100 billion? Roughly how many years later is that than the original 2-year prediction?</li>
+<li>Apply the <code>reach</code> rule for FP32 floats (4 bytes each) instead of single bytes. About how many FP32 numbers fit in a 16 GB GPU? How many FP16 numbers (2 bytes each)? How many FP8 (1 byte each)?</li>
+<li>Write <strong>The Export-Control Argument</strong> and <strong>The Fragmentation Reply</strong> in your own words. What is the one thing they really disagree about?</li>
+<li>You are at the U.S. Bureau of Industry and Security in March 2026. Your draft rule restricts a new chip. Huawei is expected to respond with its own version within a year. Do you publish the rule? Why?</li>
+<li>Pick one: the phone in your pocket, a U.S. F-35 fighter, a chatbot you have used. Trace its dependence on TSMC. What would change about it if TSMC stopped shipping tomorrow?</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li>Chris Miller, <em>Chip War: The Fight for the World’s Most Critical Technology</em> (Scribner, 2022) — the standard one-volume history <span class="citation" data-cites="miller2022chipwar">(<a href="#ref-miller2022chipwar" role="doc-biblioref">Miller 2022</a>)</span>.</li>
+<li>Carver Mead and Lynn Conway, <em>Introduction to VLSI Systems</em> (Addison-Wesley, 1980) — the textbook that made the fabless industry possible <span class="citation" data-cites="meadConway1980">(<a href="#ref-meadConway1980" role="doc-biblioref">Mead and Conway 1980</a>)</span>.</li>
+<li>U.S. Bureau of Industry and Security, “Implementation of Additional Export Controls” (October 7, 2022) — the rule itself <span class="citation" data-cites="bis2022">(<a href="#ref-bis2022" role="doc-biblioref">U.S. Bureau of Industry and Security 2022</a>)</span>.</li>
+<li>TechInsights, “Huawei Mate 60 Pro Teardown: Kirin 9000s 7nm Process” (September 2023) — the teardown that surprised analysts <span class="citation" data-cites="techinsights2023">(<a href="#ref-techinsights2023" role="doc-biblioref">TechInsights 2023</a>)</span>.</li>
+<li>Morris Chang, oral history interview, Computer History Museum (2007) <span class="citation" data-cites="changCHM2007">(<a href="#ref-changCHM2007" role="doc-biblioref">Chang 2007</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-changCHM2007" class="csl-entry" role="listitem">
+Chang, Morris. 2007. <em>Oral History of <span>Morris Chang</span></em>. Interviewed by Alan Patterson, Computer History Museum. <a href="https://www.computerhistory.org/collections/catalog/102702238">https://www.computerhistory.org/collections/catalog/102702238</a>.
+</div>
+<div id="ref-meadConway1980" class="csl-entry" role="listitem">
+Mead, Carver, and Lynn Conway. 1980. <em>Introduction to <span>VLSI</span> Systems</em>. Addison-Wesley.
+</div>
+<div id="ref-miller2022chipwar" class="csl-entry" role="listitem">
+Miller, Chris. 2022. <em>Chip War: The Fight for the World’s Most Critical Technology</em>. Scribner.
+</div>
+<div id="ref-techinsights2023" class="csl-entry" role="listitem">
+TechInsights. 2023. <em><span>Huawei Mate 60 Pro</span> Teardown: <span>Kirin 9000s</span> on <span>SMIC</span> n+2 (7nm-Class) Process</em>. TechInsights report. <a href="https://www.techinsights.com/">https://www.techinsights.com/</a>.
+</div>
+<div id="ref-bis2022" class="csl-entry" role="listitem">
+U.S. Bureau of Industry and Security. 2022. <em>Implementation of Additional Export Controls: Certain Advanced Computing and Semiconductor Manufacturing Items (<span>Federal Register</span> 87 FR 62186)</em>. <a href="https://www.federalregister.gov/documents/2022/10/13/2022-21658/">https://www.federalregister.gov/documents/2022/10/13/2022-21658/</a>.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

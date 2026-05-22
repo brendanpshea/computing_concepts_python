@@ -1,0 +1,61 @@
+---
+title: "Computing Concepts with Python"
+subtitle: "Open-access course materials by Brendan Shea, PhD"
+toc: false
+---
+
+A free, open-access introduction to computer science, built around Python
+notebooks, short case studies, and small interactive tools. Used in
+**COMP 1150** at Rochester Community and Technical College and freely
+adaptable elsewhere under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Start here
+
+::: {.grid}
+
+::: {.g-col-md-6 .g-col-12}
+### For students
+
+Read the [course landing page](summer_2026/index.qmd) for the current
+semester. It links the notebooks (one per week) and the case studies
+(one per notebook). Each notebook is a Jupyter notebook you can open in
+Google Colab; each case study is a short read with a runnable algorithm
+and a debate to think about.
+:::
+
+::: {.g-col-md-6 .g-col-12}
+### For instructors
+
+Everything here is licensed CC BY 4.0 — adapt and remix freely. The
+[course outline](summer_2026/index.qmd) shows the twelve-week sequence
+and the design rationale. Source for every notebook and case study is on
+[GitHub](https://github.com/brendanpshea/computing_concepts_python);
+case studies are written in Quarto so you can edit, re-render, and
+re-skin them for your own course.
+:::
+
+:::
+
+## What's here
+
+- **[Summer 2026 course](summer_2026/index.qmd)** — twelve notebooks
+  and twelve case studies covering algorithms, data representation,
+  databases, networks, security, and AI ethics. The current version.
+- **[Case studies](summer_2026/cases/index.qmd)** — short, discussion-
+  ready pieces on the history, ethics, and unresolved arguments behind
+  the technical material.
+- **[Interactive tools](https://github.com/brendanpshea/computing_concepts_python/tree/main/tools)**
+  — PyQuiz (Python practice via widgets) and ObjectQuest (a small
+  RPG-style quiz game). Source on GitHub.
+- **[Archive](archive/index.qmd)** — the earlier 2024 version of the
+  course (twelve PDF case studies plus the original notebooks),
+  preserved for anyone with existing links.
+
+## License & contact
+
+Content is licensed under
+[Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) —
+share and adapt freely with credit.
+
+Brendan Shea, PhD · brendan.shea@rctc.edu ·
+[github.com/brendanpshea](https://github.com/brendanpshea)
