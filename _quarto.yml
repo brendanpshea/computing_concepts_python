@@ -6,6 +6,7 @@ project:
     - "summer_2026/index.qmd"
     - "summer_2026/cases/index.qmd"
     - "summer_2026/cases/cs*.qmd"
+    - "summer_2026/notebooks/*.ipynb"
     - "archive/index.qmd"
     - "!summer_2026/cases/case_study_template.qmd"
   resources:
