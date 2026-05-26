@@ -278,29 +278,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Dot Mainframe</strong>, the studio’s hardware engineer — who named her cat “Cache” — starts at the bottom.</p>
 <p>A <strong>transistor</strong> is a tiny electrical switch with no moving parts. It has two states: current flows (call it <strong>1</strong>) or it doesn’t (call it <strong>0</strong>). That’s it. That’s the whole physical foundation of computing. A modern chip has <em>billions</em> of these switches; the PixelBox 8 has a few thousand.</p>
 <p>One switch isn’t interesting. The magic starts when you wire a few together so their combined behavior follows a <em>rule</em>. A small bundle of transistors wired to follow one logical rule is called a <strong>logic gate</strong>.</p>
-<div id="nb2-08-gates-graphviz" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The four gates you must know. Each takes inputs (0 or 1) and produces one output.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> graphviz <span class="im">import</span> Digraph</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>g.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> [<span class="st">"AND"</span>, <span class="st">"OR"</span>, <span class="st">"XOR"</span>]:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    g.node(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_A"</span>, <span class="st">"A"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    g.node(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_B"</span>, <span class="st">"B"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    g.node(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_G"</span>, <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ch">\n</span><span class="ss">gate"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    g.node(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_Y"</span>, <span class="st">"output"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    g.edge(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_A"</span>, <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_G"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    g.edge(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_B"</span>, <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_G"</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    g.edge(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_G"</span>, <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_Y"</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>g.node(<span class="st">"NOT_A"</span>, <span class="st">"A"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>g.node(<span class="st">"NOT_G"</span>, <span class="st">"NOT</span><span class="ch">\n</span><span class="st">gate"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>g.node(<span class="st">"NOT_Y"</span>, <span class="st">"output"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>g.edge(<span class="st">"NOT_A"</span>, <span class="st">"NOT_G"</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>g.edge(<span class="st">"NOT_G"</span>, <span class="st">"NOT_Y"</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-08-gates-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-tags="[&quot;remove-input&quot;]" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@title 📊 Logic gates diagram (click to show code)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The four gates you must know. Each takes inputs (0 or 1) and produces one output.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> graphviz <span class="im">import</span> Digraph</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>g.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> [<span class="st">"AND"</span>, <span class="st">"OR"</span>, <span class="st">"XOR"</span>]:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    g.node(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_A"</span>, <span class="st">"A"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    g.node(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_B"</span>, <span class="st">"B"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    g.node(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_G"</span>, <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ch">\n</span><span class="ss">gate"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    g.node(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_Y"</span>, <span class="st">"output"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    g.edge(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_A"</span>, <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_G"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    g.edge(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_B"</span>, <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_G"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    g.edge(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_G"</span>, <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_Y"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>g.node(<span class="st">"NOT_A"</span>, <span class="st">"A"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>g.node(<span class="st">"NOT_G"</span>, <span class="st">"NOT</span><span class="ch">\n</span><span class="st">gate"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>g.node(<span class="st">"NOT_Y"</span>, <span class="st">"output"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>g.edge(<span class="st">"NOT_A"</span>, <span class="st">"NOT_G"</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>g.edge(<span class="st">"NOT_G"</span>, <span class="st">"NOT_Y"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 <figure class="figure">
@@ -408,22 +409,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>1 AND 1 = 1</code> → that’s the <strong>carry digit</strong> (the 1 you carry into the next column)</li>
 </ul>
 <p>So an XOR gate and an AND gate, side by side, <em>add two bits</em>: XOR gives the result digit, AND gives the carry. This pairing is called a <strong>half-adder</strong>. You don’t need to build one — just hold onto the idea: <strong>arithmetic is just gates wired cleverly.</strong></p>
-<div id="nb2-11-halfadder-graphviz" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conceptual view of a half-adder: the same two input bits feed two gates.</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ha <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ha.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"A"</span>, <span class="st">"bit A"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"B"</span>, <span class="st">"bit B"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"X"</span>, <span class="st">"XOR"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"N"</span>, <span class="st">"AND"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"S"</span>, <span class="st">"SUM digit"</span>,   shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"C"</span>, <span class="st">"CARRY digit"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>ha.edge(<span class="st">"A"</span>, <span class="st">"X"</span>)<span class="op">;</span> ha.edge(<span class="st">"B"</span>, <span class="st">"X"</span>)<span class="op">;</span> ha.edge(<span class="st">"X"</span>, <span class="st">"S"</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ha.edge(<span class="st">"A"</span>, <span class="st">"N"</span>)<span class="op">;</span> ha.edge(<span class="st">"B"</span>, <span class="st">"N"</span>)<span class="op">;</span> ha.edge(<span class="st">"N"</span>, <span class="st">"C"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ha</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-11-halfadder-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-tags="[&quot;remove-input&quot;]" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@title 📊 Half-adder diagram (click to show code)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Conceptual view of a half-adder: the same two input bits feed two gates.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ha <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ha.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"A"</span>, <span class="st">"bit A"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"B"</span>, <span class="st">"bit B"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"X"</span>, <span class="st">"XOR"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"N"</span>, <span class="st">"AND"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"S"</span>, <span class="st">"SUM digit"</span>,   shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ha.node(<span class="st">"C"</span>, <span class="st">"CARRY digit"</span>, shape<span class="op">=</span><span class="st">"circle"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ha.edge(<span class="st">"A"</span>, <span class="st">"X"</span>)<span class="op">;</span> ha.edge(<span class="st">"B"</span>, <span class="st">"X"</span>)<span class="op">;</span> ha.edge(<span class="st">"X"</span>, <span class="st">"S"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>ha.edge(<span class="st">"A"</span>, <span class="st">"N"</span>)<span class="op">;</span> ha.edge(<span class="st">"B"</span>, <span class="st">"N"</span>)<span class="op">;</span> ha.edge(<span class="st">"N"</span>, <span class="st">"C"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ha</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 <figure class="figure">
@@ -507,25 +509,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>When the CPU needs something from memory, it puts the address on the <strong>address bus</strong> and the data travels back on the <strong>data bus</strong> — think of buses as the hallways between the cook and the counter.</p>
-<div id="nb2-19-vn-graphviz" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The von Neumann machine with the CPU opened up.</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vn <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>vn.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> vn.subgraph(name<span class="op">=</span><span class="st">"cluster_cpu"</span>) <span class="im">as</span> c:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    c.attr(label<span class="op">=</span><span class="st">"CPU"</span>, style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"oldlace"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    c.node(<span class="st">"CU"</span>,  <span class="st">"Control Unit"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    c.node(<span class="st">"ALU"</span>, <span class="st">"ALU"</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    c.node(<span class="st">"REG"</span>, <span class="st">"Registers</span><span class="ch">\n</span><span class="st">(PC, IR, accumulator)"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    c.edge(<span class="st">"CU"</span>, <span class="st">"ALU"</span>)<span class="op">;</span> c.edge(<span class="st">"CU"</span>, <span class="st">"REG"</span>)<span class="op">;</span> c.edge(<span class="st">"ALU"</span>, <span class="st">"REG"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>vn.node(<span class="st">"MEM"</span>, <span class="st">"Memory (RAM)</span><span class="ch">\n</span><span class="st">program + data"</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>vn.node(<span class="st">"IO"</span>,  <span class="st">"Input / Output"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>vn.edge(<span class="st">"CU"</span>, <span class="st">"MEM"</span>, label<span class="op">=</span><span class="st">" address bus "</span>, <span class="bu">dir</span><span class="op">=</span><span class="st">"both"</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>vn.edge(<span class="st">"REG"</span>, <span class="st">"MEM"</span>, label<span class="op">=</span><span class="st">" data bus "</span>, <span class="bu">dir</span><span class="op">=</span><span class="st">"both"</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>vn.edge(<span class="st">"IO"</span>, <span class="st">"MEM"</span>, <span class="bu">dir</span><span class="op">=</span><span class="st">"both"</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>vn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-19-vn-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-tags="[&quot;remove-input&quot;]" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@title 📊 Von Neumann machine diagram (click to show code)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The von Neumann machine with the CPU opened up.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>vn <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>vn.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> vn.subgraph(name<span class="op">=</span><span class="st">"cluster_cpu"</span>) <span class="im">as</span> c:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    c.attr(label<span class="op">=</span><span class="st">"CPU"</span>, style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"oldlace"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    c.node(<span class="st">"CU"</span>,  <span class="st">"Control Unit"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    c.node(<span class="st">"ALU"</span>, <span class="st">"ALU"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    c.node(<span class="st">"REG"</span>, <span class="st">"Registers</span><span class="ch">\n</span><span class="st">(PC, IR, accumulator)"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    c.edge(<span class="st">"CU"</span>, <span class="st">"ALU"</span>)<span class="op">;</span> c.edge(<span class="st">"CU"</span>, <span class="st">"REG"</span>)<span class="op">;</span> c.edge(<span class="st">"ALU"</span>, <span class="st">"REG"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>vn.node(<span class="st">"MEM"</span>, <span class="st">"Memory (RAM)</span><span class="ch">\n</span><span class="st">program + data"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>vn.node(<span class="st">"IO"</span>,  <span class="st">"Input / Output"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>vn.edge(<span class="st">"CU"</span>, <span class="st">"MEM"</span>, label<span class="op">=</span><span class="st">" address bus "</span>, <span class="bu">dir</span><span class="op">=</span><span class="st">"both"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>vn.edge(<span class="st">"REG"</span>, <span class="st">"MEM"</span>, label<span class="op">=</span><span class="st">" data bus "</span>, <span class="bu">dir</span><span class="op">=</span><span class="st">"both"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>vn.edge(<span class="st">"IO"</span>, <span class="st">"MEM"</span>, <span class="bu">dir</span><span class="op">=</span><span class="st">"both"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>vn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 <figure class="figure">
@@ -603,19 +606,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Every part did exactly one small job. Nothing “understood” addition — the gates from the previous section just produced 8. That is the entire trick of computing.</p>
-<div id="nb2-21-fde-graphviz" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same four stages, drawn as the endless loop the CPU actually runs.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fde <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fde.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>fde.node(<span class="st">"F"</span>, <span class="st">"FETCH</span><span class="ch">\n</span><span class="st">read instruction at PC"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fde.node(<span class="st">"D"</span>, <span class="st">"DECODE</span><span class="ch">\n</span><span class="st">Control Unit reads the IR"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>fde.node(<span class="st">"E"</span>, <span class="st">"EXECUTE</span><span class="ch">\n</span><span class="st">ALU / registers do the work"</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>fde.node(<span class="st">"S"</span>, <span class="st">"ADVANCE PC</span><span class="ch">\n</span><span class="st">to the next instruction"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>fde.edge(<span class="st">"F"</span>, <span class="st">"D"</span>)<span class="op">;</span> fde.edge(<span class="st">"D"</span>, <span class="st">"E"</span>)<span class="op">;</span> fde.edge(<span class="st">"E"</span>, <span class="st">"S"</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>fde.edge(<span class="st">"S"</span>, <span class="st">"F"</span>, label<span class="op">=</span><span class="st">" repeat "</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>fde</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-21-fde-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-tags="[&quot;remove-input&quot;]" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@title 📊 Fetch-decode-execute loop (click to show code)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The same four stages, drawn as the endless loop the CPU actually runs.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fde <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>fde.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fde.node(<span class="st">"F"</span>, <span class="st">"FETCH</span><span class="ch">\n</span><span class="st">read instruction at PC"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>fde.node(<span class="st">"D"</span>, <span class="st">"DECODE</span><span class="ch">\n</span><span class="st">Control Unit reads the IR"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>fde.node(<span class="st">"E"</span>, <span class="st">"EXECUTE</span><span class="ch">\n</span><span class="st">ALU / registers do the work"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>fde.node(<span class="st">"S"</span>, <span class="st">"ADVANCE PC</span><span class="ch">\n</span><span class="st">to the next instruction"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>fde.edge(<span class="st">"F"</span>, <span class="st">"D"</span>)<span class="op">;</span> fde.edge(<span class="st">"D"</span>, <span class="st">"E"</span>)<span class="op">;</span> fde.edge(<span class="st">"E"</span>, <span class="st">"S"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>fde.edge(<span class="st">"S"</span>, <span class="st">"F"</span>, label<span class="op">=</span><span class="st">" repeat "</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>fde</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 <figure class="figure">
@@ -732,19 +736,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Reaching all the way to a hard disk, in human terms, is the difference between answering a question now and answering it next spring. That gap is <em>why</em> games have loading screens, and why “is the data already in RAM?” is one of the most important questions in performance.</p>
-<div id="nb2-25-latency-chart" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>levels <span class="op">=</span> [<span class="st">"Register"</span>, <span class="st">"L2 cache"</span>, <span class="st">"RAM"</span>, <span class="st">"SSD"</span>, <span class="st">"Hard disk"</span>]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>nanoseconds <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">100</span>, <span class="dv">100_000</span>, <span class="dv">10_000_000</span>]   <span class="co"># rough order-of-magnitude</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.bar(levels, nanoseconds, color<span class="op">=</span><span class="st">"indianred"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)                                <span class="co"># log scale: each gap is ~10x+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"access time (nanoseconds, log scale)"</span>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Each step away from the CPU is dramatically slower"</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-25-latency-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-tags="[&quot;remove-input&quot;]" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@title 📈 Memory-hierarchy chart (click to show code)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>levels <span class="op">=</span> [<span class="st">"Register"</span>, <span class="st">"L2 cache"</span>, <span class="st">"RAM"</span>, <span class="st">"SSD"</span>, <span class="st">"Hard disk"</span>]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>nanoseconds <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">100</span>, <span class="dv">100_000</span>, <span class="dv">10_000_000</span>]   <span class="co"># rough order-of-magnitude</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.bar(levels, nanoseconds, color<span class="op">=</span><span class="st">"indianred"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)                                <span class="co"># log scale: each gap is ~10x+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"access time (nanoseconds, log scale)"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Each step away from the CPU is dramatically slower"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
