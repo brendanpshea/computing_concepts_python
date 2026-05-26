@@ -42,7 +42,7 @@ browser), **Run** (open in Google Colab to execute and edit), and
 
 Short, discussion-ready pieces on the history, ethics, and unresolved
 arguments behind the technical material. About twenty to thirty
-minutes each. The four drafted so far:
+minutes each. The five drafted so far:
 
 - [Lovelace and Turing: Can a Machine Originate?](v2/cases/cs01_lovelace_turing.qmd) —
   paired with Notebook 1.
@@ -52,6 +52,8 @@ minutes each. The four drafted so far:
   paired with Notebook 3.
 - [The Therac-25: When Control Flow Kills](v2/cases/cs04_therac25.qmd) —
   paired with Notebook 4.
+- [How We Represent People: ADTs and the Ethics of Data Modeling](v2/cases/cs05_representing_people.qmd) —
+  paired with Notebook 5.
 
 The full [case studies index](v2/cases/index.qmd) lists all twelve
 planned cases with brief descriptions.

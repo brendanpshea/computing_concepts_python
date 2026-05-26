@@ -419,7 +419,7 @@ That distinction will matter a great deal this semester.</code></pre>
 <section id="picture-it-the-analytical-engine" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-analytical-engine">Picture It: the Analytical Engine</h3>
 <p>Babbage’s design maps cleanly onto a modern computer. The diagram below shows the four parts from the table above and how data and instructions flow between them.</p>
-<div id="5aa42e07" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:195}}" data-outputid="22cc0e38-440c-416b-fe0d-49742a46a498">
+<div id="5aa42e07" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:195}}" data-outputid="22cc0e38-440c-416b-fe0d-49742a46a498">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Flowchart of Babbage's Analytical Engine Architecture</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> graphviz <span class="im">import</span> Digraph</span>
@@ -471,7 +471,7 @@ OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
        3b. APPEND running_product to results
 4. RETURN results</code></pre>
 <p>Notice what pseudocode is <em>not</em>: it isn’t Python. There are no colons, no parentheses, no particular syntax. It’s a way of thinking clearly about the steps before committing to a language.</p>
-<div id="cell-16-lovelace-flowchart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:688}}" data-outputid="cfeb476c-14ac-4b57-cb37-d8ce25237f90">
+<div id="cell-16-lovelace-flowchart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:688}}" data-outputid="cfeb476c-14ac-4b57-cb37-d8ce25237f90">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A flowchart of the same algorithm. We'll use `graphviz` — a tool for drawing</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># diagrams from code. You'll see it throughout this course.</span></span>
@@ -543,7 +543,7 @@ OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
 <section id="picture-it-how-fast-factorials-grow" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-how-fast-factorials-grow">Picture It: How Fast Factorials Grow</h3>
 <p>Numbers from a loop can balloon fast. The chart below plots 1! through 10! on a log scale so the explosive growth is visible.</p>
-<div id="cell-19-lovelace-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:424}}" data-outputid="15766047-2248-4d18-bc56-6ce9caf2638d">
+<div id="cell-19-lovelace-chart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:424}}" data-outputid="15766047-2248-4d18-bc56-6ce9caf2638d">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A bar chart showing factorials 1! to 10!</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -729,7 +729,7 @@ OUTPUT:    a dictionary mapping each value of that field to its count
 <section id="picture-it-the-tally-charted" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-tally-charted">Picture It: the Tally, Charted</h3>
 <p>The same <code>count_by_field</code> function answers two different questions. The bars below show its output grouped by state and by occupation, side by side.</p>
-<div id="cell-28-hollerith-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:407}}" data-outputid="55112c37-3dda-424e-ad8c-04c6877050ed">
+<div id="cell-28-hollerith-chart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:407}}" data-outputid="55112c37-3dda-424e-ad8c-04c6877050ed">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize both tallies side by side.</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -987,7 +987,7 @@ OUTPUT:    a string response
               2d. RETURN the filled-in template
 3. RETURN a generic fallback response</code></pre>
 <p>That’s the whole algorithm. Nine lines of pseudocode. No model of the world; no memory of the conversation; no understanding of any word.</p>
-<div id="cell-44-eliza-flowchart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:713}}" data-outputid="22193a5d-6e4c-445d-f33b-48a229bc02b9">
+<div id="cell-44-eliza-flowchart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:713}}" data-outputid="22193a5d-6e4c-445d-f33b-48a229bc02b9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ELIZA's logic as a flowchart.</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>

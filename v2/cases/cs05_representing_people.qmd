@@ -1,0 +1,170 @@
+---
+title: "How We Represent People: ADTs and the Ethics of Data Modeling"
+subtitle: "Names, genders, and the categories a system can see — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+---
+
+::: {.case-at-a-glance}
+- **Who:** Dana Lone Hill (Lakota writer), the engineers who designed Facebook's name-verification system in the early 2010s, Patrick McKenzie (the software engineer who in 2010 made a list of forty things programmers wrongly believe about names), and the researchers who, a decade later, found those same assumptions baked into the training data for face-recognition systems.
+- **What:** A schema — the choice of fields, types, and allowed values in a system that stores information about people — is not a neutral technical artifact. It is a claim about who counts as a normal case and who does not. When the schema and a real person disagree, the system, by default, wins.
+- **Where / When:** Menlo Park, California, and the wider internet, 2010–2026. Specific incidents from 2014–2015 (Facebook's "real names" enforcement), 2018 (the *Gender Shades* face-recognition audit), 2019 (the ImageNet "person" subtree cleanup), and 2024–2025 (the most recent face-recognition benchmarks and the *Nine Lives of ImageNet* retrospective).
+- **Why it matters:** Every system that stores people has to commit to *some* representation. The commitment shapes what the system can ever see, count, or serve. The same commitment now flows downstream into the datasets that train large machine-learning models, which means the schema decisions of a decade ago are the perception limits of today's [AI]{.key-term}.
+- **Concepts at play:** abstract data type, schema, enum, `null`, interface vs. implementation, training data, label
+:::
+
+## The Case
+
+In February 2015, Dana Lone Hill — a Lakota writer living in South Dakota — tried to log into Facebook and could not. The site told her that her account had been locked because her name appeared to be fake. To get it back she would need to submit identification. She did. Facebook unlocked the account. Over the next year, other Native users reported the same lockout — Shane Creepingbear, Robin Kills The Enemy, Lance Brown Eyes — sometimes more than once, sometimes for weeks at a time [@hunt2015]. The system that flagged them had been built to fight impersonation and spam. The thing it actually did, at scale, was reject names that did not look like the names its designers had imagined.
+
+The lockouts were not new in 2015. The same enforcement had hit drag performers in September 2014. The drag community organized; Facebook apologized; the policy got cosmetic edits and kept running [@bbc2014]. The point worth keeping is not the apology. It is what made the lockouts possible in the first place. Somewhere in the system was a model of what a name looks like. The model was wrong about a great many people, in a patterned way.
+
+::: {.context-box}
+**What a schema is, and why it counts as a decision.** A [schema]{.key-term} is the structure a system uses to store information — the fields, the types, the values each field is allowed to take. A user table with `first_name VARCHAR(50)`, `last_name VARCHAR(50)`, and `gender CHAR(1)` is a schema. So is a JSON document with the same fields. The schema is what the rest of the system can see. Anything the schema does not have a place for, the system cannot remember. Anything the schema constrains — sixty characters, two genders, no spaces in the last name — the system will refuse, or quietly mangle, when reality does not cooperate.
+:::
+
+Five years earlier, in June 2010, an engineer named Patrick McKenzie had written a short blog post called "Falsehoods Programmers Believe About Names." It was forty bullet points. Each one was an assumption about names that real systems were built on, and each one was wrong for some real category of person [@mckenzie2010]. A small sample:
+
+- People have exactly one canonical full name.
+- People have exactly one canonical first name and one canonical last name.
+- People's names fit within a certain defined amount of space.
+- People's names are written in any single character set.
+- People's names are case-sensitive in the same way.
+- People's names are all mapped in Unicode code points.
+- People's names do not change.
+
+McKenzie wrote the post out of frustration. He was an American engineer living in Japan, where his own name regularly broke Japanese systems and Japanese names regularly broke American ones. The post went viral inside the profession. It spawned a genre — *Falsehoods Programmers Believe About Addresses*, *About Time Zones*, *About Gender*, *About Geography*. Each list was a record of schema choices that had crashed on contact with the world.
+
+The schemas the lists complained about did not stay where they were written. They moved. A name field designed for a 1990s billing system got copied into a 2000s user database, then into a 2010s social-media table, then exported into a 2020s training set for a system that reads names off scanned documents. The decision made once propagated forward, layer by layer, into systems whose designers had no idea where the constraint had originally come from.
+
+The same pattern is clearest with the gender field. For most of the history of databases, the field was a single character: `M` or `F`. Around 2014, several large platforms expanded it. Facebook added a custom-gender text field in February 2014, with around fifty suggested options [@bbc2014b]. OkCupid expanded its dropdown to twenty-two options later that year. Some systems moved to free text against a controlled vocabulary. Others added a third checkbox for "non-binary" or "other." Many — airline booking systems, government identification, hospital admission forms — did not change at all, because the underlying schema was tied to a contract or a regulation or a legacy mainframe that nobody wanted to touch. A user might present as non-binary on Facebook in the morning and be forced to pick `M` or `F` to board a plane in the afternoon. Both systems were correct, by their own schemas. The user was the part that did not fit.
+
+The unresolved question the case turns on is not *which schema is right*. Every system has to commit to some representation. You cannot store an unbounded thing. The question is *who is at the table when the commitment is made*, and *what is owed to the people the commitment leaves out*. Dana Lone Hill got her account back. The schema that locked her out was patched, then patched again, then quietly rebuilt under a different name. The class of error did not go away. It changed addresses.
+
+## How It Worked
+
+The technical heart of the case is the [abstract data type]{.key-term}, or ADT — the idea that a thing in a program can be described by *what you can do with it* (its interface) without committing yet to *how it is stored* (its implementation). A `Person` is an ADT. So is a `Name`. So is a `Gender`. The schema is the implementation that backs the interface. The case is about what each implementation choice quietly forecloses.
+
+Take three honest attempts at representing a person, each more flexible than the last.
+
+```python
+# Implementation 1: flat strings.
+person = {
+    "name":   "Janice Smith",
+    "gender": "F",
+}
+```
+
+This is what most early systems looked like. It is small and fast. `name` is one string; `gender` is one character. The implementation works perfectly until someone has one name (Madonna, Sukarno, Teller), or two given names neither of which is "middle," or a name written in a script the field's character set cannot store, or a gender that is not `M` or `F`. None of these cases are exotic. They are common worldwide.
+
+```python
+# Implementation 2: structured record with enums.
+person = {
+    "given_name":  "Janice",
+    "family_name": "Smith",
+    "gender":      "female",   # one of: "male", "female", "other"
+}
+```
+
+This is what many systems moved to in the 2000s. It can answer more questions — *what is this person's family name?* — but only because it has committed to a particular shape: every person has exactly one given name and exactly one family name. A person with the patronymic name *Sigríður Jónsdóttir* fits awkwardly: *Jónsdóttir* is not a family name, it is a description of who her father was. A person named simply *Prince* fits not at all. The `gender` enum is wider, but adding a fourth value means a database migration that touches every system that reads the table.
+
+```python
+# Implementation 3: list of name-parts, plus dual gender fields.
+person = {
+    "name_parts": [
+        {"part": "Janice", "kind": "given"},
+        {"part": "Smith",  "kind": "family"},
+    ],
+    "gender":       "non-binary",  # free text, validated against a vocabulary
+    "gender_legal": "F",           # for forms that require a legal-document value
+}
+```
+
+This implementation can hold mononyms, patronymics, multiple given names, names in any script, and a gender separate from whatever a government document happens to say. It pays for that flexibility: a query like *"show me all people whose last name is Smith"* is no longer one column lookup. It is a scan through a list, with a decision about what counts as "last."
+
+The point of laying the three side by side is not that the third is best. It is that *every* implementation is a commitment. The interface — `get_display_name(person)`, `get_legal_gender(person)` — can hide the storage, but only if the storage is rich enough to answer the question. The schema decides what questions can ever be asked.
+
+The conversions between the three are mostly one-way. Going from implementation 3 down to 1 is easy:
+
+```python
+def flatten(person):
+    return {
+        "name":   " ".join(p["part"] for p in person["name_parts"]),
+        "gender": person["gender_legal"],
+    }
+```
+
+Going from 1 back up to 3 is not. The information was thrown away on the way down. Once a system stores "Janice Smith" as a single string with a single `F`, it cannot later reconstruct that *Janice* was the given name, or that the person uses *non-binary* anywhere except on legal forms. The schema is lossy in a direction. The losses fall on the people whose lives did not fit the shorter form.
+
+This matters for one more reason. A schema does not stay in the database where it was born. It gets exported as a CSV. The CSV gets used as a [training set]{.key-term} — a labeled collection of examples — for a machine-learning model. The model's output categories are exactly the [labels]{.key-term} in the training set. If the training set's gender column has two values, the model has two output classes. If the training set's "person" categories were inherited from a 1985 lexical database, the model's perception of a person is bounded by 1985's lexical categories. The schema climbed the stack.
+
+## The Argument Over Who Counts
+
+Two positions have organized the debate over data modeling for at least three decades. The labels here are mine; the positions are not.
+
+### The Universalist position
+
+The Universalist view is the working assumption of most production engineering. A schema is a tool. Tools have edges. The job of the schema designer is to pick the representation that handles the vast majority of cases cleanly and to provide an exception path for the rest. Adding a field, widening an enum, or making a column nullable carries real costs — migrations, slower queries, more code paths, more bugs. The cost is borne by the system; the benefit accrues to a small number of users. A well-run platform should be willing to inconvenience those users in exchange for keeping the system maintainable for everyone else.
+
+::: {.argument}
+**The Universalist Argument**
+
+1. Every schema is a finite approximation of an infinite world; some users will always be on the edges.
+2. Each additional field, value, or branch in the schema increases the cost of building, maintaining, and querying the system.
+3. The right tradeoff is to pick the representation that fits the majority cleanly and handle the edges by exception (manual review, customer support, override flags).
+4. Therefore, complaints about schema exclusion are real but are best addressed at the exception layer, not by rebuilding the schema around the edge cases.
+:::
+
+The weight of the argument is on premise 3 — the claim that an *exception path* can do the work of accommodating the people the main path excludes. Whether that is true is an empirical question, and it is the question the reply joins.
+
+### The Pluralist reply
+
+The Pluralist position has a long pedigree in information studies. Geoffrey Bowker and Susan Leigh Star's 1999 book *Sorting Things Out* made the canonical case: classification systems are infrastructure, and infrastructure is political [@bowker1999]. What gets a category gets counted, funded, served, and recognized. What does not gets handled by exception — which in practice means delayed, denied, or quietly mangled. The same patterned group ends up on the exception path of one system after another, because the edges of one schema tend to align with the edges of all of them.
+
+::: {.argument}
+**The Pluralist Reply**
+
+1. The "exception layer" is not a neutral fallback; it imposes real costs on the user — extra steps, ID verification, denial of service, exposure to manual reviewers — that the default path does not.
+2. These costs fall on a predictable group of people, because the categories a schema fails to represent in one system are usually the same categories it fails to represent in others.
+3. Treating the schema as a technical decision and the exceptions as someone else's problem hides this distributional fact from the people who could change it.
+4. Therefore, the choice of schema is a decision about who the system is built for, not only a decision about how it is stored, and it should be made with that in view.
+:::
+
+The reply does not deny premise 1 or premise 2 of the Universalist argument. It denies that premise 3 is a real solution. It says: the exception path is itself a kind of representation — a way of marking certain users as not-quite-users — and pretending otherwise is the move that lets the schema's costs stay invisible to the people who chose it.
+
+**Where engineering responsibility actually sits.** A common engineer reply to both positions is: *I just build what the product manager asks for; the schema is not my call.* The reply is half true. The product manager rarely writes the migration. The engineer is the person who knows whether `gender` is a `CHAR(1)` or an `ENUM` or a free-text column, knows what changing it would cost, and is the only person in the room when the question first comes up. The literature on professional ethics in software engineering — running from the ACM Code of Ethics to recent organizing inside large platforms — treats this as a shared responsibility, not a delegated one [@acm2018]. *Who chose the schema?* is rarely a question with one name attached.
+
+### Where the argument rests now: better models, same ontology
+
+For most of the 2010s, the strongest empirical evidence for the Pluralist reply came from machine learning. In 2018, Joy Buolamwini and Timnit Gebru published *Gender Shades*, an audit of three commercial face-classification systems. The systems performed well on light-skinned men and poorly on darker-skinned women — the worst error rate was 34.7%, compared with 0.8% for the best-served group [@buolamwini2018]. The same year, Os Keyes argued that the entire research field of "automatic gender recognition" was built on a binary, immutable model of gender that the trans community had spent decades disproving [@keyes2018]. A year later, the ImageNet team removed roughly 600,000 images from the "person" subtree of their dataset after Kate Crawford and Trevor Paglen's *Excavating AI* project documented racist, sexist, and dehumanizing labels in the category structure [@crawford2019]. The Universalist position had a hard time on the public record.
+
+Seven years on, the empirical record is more complicated, and the Universalist position now has its own evidence.
+
+The U.S. National Institute of Standards and Technology runs continuous evaluations of commercial face-recognition systems (the program was renamed from FRVT to FRTE in 2023). The most recent results show that the top-performing algorithms have largely closed the demographic accuracy gap that *Gender Shades* identified. The median deployed system still shows the old pattern; the best vendors do not. A 2025 review by Kotwal and colleagues argues that the residual gap on top systems is now better explained by confounders — illumination, image quality, hairstyle occlusion of the face — than by any intrinsic property of the demographic group [@kotwal2025]. On the dataset side, ImageNet's cleanup removed the worst labels; subsequent work has moved toward consent-based and synthetic alternatives.
+
+The cleanest Universalist reading of this evidence is: *the system works now; the early audits did their job; the schema question was a transitional problem.*
+
+The cleanest Pluralist reading is sharper, and is what most of the 2024–2025 literature actually says. The accuracy gap closed, but it closed *within the original ontology*. Gender stayed binary in the benchmarks that vendors optimized against. Skin tone stayed Fitzpatrick. ImageNet's category structure — inherited from a 1985 lexical database called WordNet — stayed; the cleanup edited rows, not the schema. A 2024 retrospective titled *The Nine Lives of ImageNet* argues that this is the deep lesson of the whole episode: you cannot fix a dataset whose central operation, labeling a person by visual category, was the thing under critique [@denton2024]. Making the classifier more accurate at a binary task does not address whether the task should be binary. Better models inside the old ontology are still better models inside the old ontology.
+
+This puts the case in a sharper place than it sat in 2018. The pure technical objection — *the model doesn't work for these people* — is increasingly answerable on the vendor's terms. The schema objection — *the categories the model can ever recognize are themselves a worldview* — is not. *If the categories in your dataset are the only categories your model can ever recognize, and we now know how to make models very accurate within those categories, does the technical success make the schema question more urgent, or less?*
+
+## Discussion Questions
+
+1. Take the `Person` dict from Implementation 1 in "How It Worked." Rewrite it so it can also store someone who uses one name only (for example, a person named "Madonna"). What did you change? Now write a `display_name(person)` function that works for both the old and the new records.
+2. An LLM returns a SQL schema for a new app that includes `gender CHAR(1)`. You ask it to support more gender options. It gives you `gender VARCHAR(20)` with a CHECK constraint listing three values. List three things this still gets wrong about real users, and one new problem the change has introduced.
+3. Write **The Universalist Argument** and **The Pluralist Reply** in your own words. What is the one thing they really disagree about? What kind of evidence could settle it?
+4. You are the engineer designing the user profile table for a new dating app launching in thirty countries. Sketch the schema for `name`, `gender`, and `nationality`. Defend each choice in one sentence — including what each choice will *not* be able to represent.
+5. The U.S. Census added a "two or more races" option in 2000 and let people pick multiple boxes in a way the system actually used in 2020. A face-recognition vendor in 2026 still classifies users into six skin-tone categories from a 1975 dermatology scale. Apply the Universalist/Pluralist frame to both. Which one is doing the harder thing, and why?
+
+## Further Reading
+
+- Geoffrey C. Bowker and Susan Leigh Star, *Sorting Things Out: Classification and Its Consequences* (MIT Press, 1999) — the canonical treatment of why classification systems are political infrastructure [@bowker1999].
+- Patrick McKenzie, "Falsehoods Programmers Believe About Names" (2010) — the post that named the genre and is still the first thing handed to new engineers building a user table [@mckenzie2010].
+- Joy Buolamwini and Timnit Gebru, "Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification" (FAccT 2018) — the audit that put demographic bias in face recognition on the public record [@buolamwini2018].
+- Os Keyes, "The Misgendering Machines: Trans/HCI Implications of Automatic Gender Recognition" (CSCW 2018) — the most direct argument that the schema of gender recognition is the problem, not the model's accuracy on that schema [@keyes2018].
+- Emily Denton et al., "The Nine Lives of ImageNet: A Sociotechnical Retrospective" (2024) — the long retrospective on what the ImageNet cleanups did, what they could not do, and why [@denton2024].
+
+## References
+
+::: {#refs}
+:::
