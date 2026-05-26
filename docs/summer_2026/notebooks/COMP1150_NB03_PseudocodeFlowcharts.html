@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>comp1150_nb03_pseudocodeflowcharts – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/index.html"> 
+<span class="menu-text">Course</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/index.html#notebooks"> 
+<span class="menu-text">Notebooks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notebook-3-python-basics-via-pseudocode-flowcharts" id="toc-notebook-3-python-basics-via-pseudocode-flowcharts" class="nav-link active" data-scroll-target="#notebook-3-python-basics-via-pseudocode-flowcharts">Notebook 3: Python Basics via Pseudocode &amp; Flowcharts</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#the-counting-house" id="toc-the-counting-house" class="nav-link" data-scroll-target="#the-counting-house">The Counting-House</a></li>
+  <li><a href="#the-roadmap" id="toc-the-roadmap" class="nav-link" data-scroll-target="#the-roadmap">The Roadmap</a></li>
+  <li><a href="#how-to-experiment-in-this-notebook" id="toc-how-to-experiment-in-this-notebook" class="nav-link" data-scroll-target="#how-to-experiment-in-this-notebook">How to Experiment in This Notebook</a></li>
+  <li><a href="#variables-named-boxes" id="toc-variables-named-boxes" class="nav-link" data-scroll-target="#variables-named-boxes">Variables: Named Boxes</a></li>
+  <li><a href="#data-types-what-kind-of-value" id="toc-data-types-what-kind-of-value" class="nav-link" data-scroll-target="#data-types-what-kind-of-value">Data Types: What Kind of Value?</a></li>
+  <li><a href="#operators-expressions" id="toc-operators-expressions" class="nav-link" data-scroll-target="#operators-expressions">Operators &amp; Expressions</a></li>
+  <li><a href="#basic-python-math-functions-counting-house-toolkit" id="toc-basic-python-math-functions-counting-house-toolkit" class="nav-link" data-scroll-target="#basic-python-math-functions-counting-house-toolkit">Basic Python Math Functions (Counting-House Toolkit)</a></li>
+  <li><a href="#input-output" id="toc-input-output" class="nav-link" data-scroll-target="#input-output">Input &amp; Output</a></li>
+  <li><a href="#printing-well" id="toc-printing-well" class="nav-link" data-scroll-target="#printing-well">Printing Well</a></li>
+  <li><a href="#the-workflow-problem-pseudocode-flowchart-python" id="toc-the-workflow-problem-pseudocode-flowchart-python" class="nav-link" data-scroll-target="#the-workflow-problem-pseudocode-flowchart-python">The Workflow: Problem → Pseudocode → Flowchart → Python</a></li>
+  <li><a href="#building-with-ai-plan-first-then-code" id="toc-building-with-ai-plan-first-then-code" class="nav-link" data-scroll-target="#building-with-ai-plan-first-then-code">Building With AI (Plan First, Then Code)</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/summer_2026/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb">View on GitHub</a></p>
+<section id="notebook-3-python-basics-via-pseudocode-flowcharts" class="level1">
+<h1>Notebook 3: Python Basics via Pseudocode &amp; Flowcharts</h1>
+<section id="comp-1150-computer-science-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
+<p><strong>Brendan Shea, PhD</strong></p>
+<p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
+</section>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li><strong>Declare</strong> variables and identify the four core data types (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>)</li>
+<li><strong>Evaluate</strong> expressions using arithmetic, comparison, and boolean operators, including compound conditions</li>
+<li><strong>Format</strong> output using f-strings, escape characters, and string methods</li>
+<li><strong>Convert</strong> between types correctly and read input</li>
+<li><strong>Write</strong> clear pseudocode and read a flowchart</li>
+<li><strong>Follow</strong> the workflow problem → pseudocode → flowchart → Python on a real problem</li>
+<li><strong>Trace</strong> a short program by hand and use AI as a reviewer of your plan</li>
+</ul>
+<p><em>Maps to course LOs: 5 (pseudocode &amp; flowcharts) and 6 (constructing Python to implement algorithmic solutions)</em></p>
+</section>
+<section id="the-counting-house" class="level2">
+<h2 class="anchored" data-anchor-id="the-counting-house">The Counting-House</h2>
+<p>Welcome to the counting-house of <strong>Scrooge &amp; Marley</strong>, where the ledgers are long, the candles are short, and a single misplaced number has consequences.</p>
+<p><strong>Ebenezer Scrooge</strong>, the managing partner — who rounds every total in the firm’s favour — has a complaint. His clerk, <strong>Bob Cratchit</strong>, computes every sum by hand, by candlelight, and humans make mistakes. Scrooge wants the arithmetic done by machine: exactly, repeatably, the same way every time.</p>
+<p>So far you’ve <em>read</em> code. Notebooks 1 and 2 both ended with the same promise: you’d learn the workflow this whole course runs on — <strong>problem → pseudocode → flowchart → Python</strong>. This is that notebook. By the end you will take a plain-English problem from Scrooge and turn it into working code, deliberately, step by step — the way Cratchit’s colleague <strong>Esther Summerson</strong> does it: she writes down exactly what she intends to do <em>before</em> she does any of it.</p>
+</section>
+<section id="the-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>What you’ll learn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Variables &amp; types</td>
+<td>How a program stores a value, and what kind it is</td>
+</tr>
+<tr class="even">
+<td>Operators &amp; expressions</td>
+<td>Arithmetic, comparison, and compound boolean logic</td>
+</tr>
+<tr class="odd">
+<td>Input &amp; output</td>
+<td>How a program talks to a person (and the #1 beginner bug)</td>
+</tr>
+<tr class="even">
+<td>Printing well</td>
+<td>Escape characters, f-string formatting, string methods</td>
+</tr>
+<tr class="odd">
+<td>The workflow</td>
+<td>Problem → pseudocode → flowchart → Python, start to finish</td>
+</tr>
+<tr class="even">
+<td>Building with AI</td>
+<td>Plan by hand, let the AI critique the plan, then build</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scope note:</strong> this notebook is <strong>sequential only</strong> — every program runs straight down, top to bottom. <em>Decisions</em> and <em>repetition</em> (if-statements and loops) are Notebook 4. We’ll point at that door but not walk through it.</p>
+<p>One idea carries over from Notebook 2 and runs through everything below: <strong>a value lives in a box of a fixed kind.</strong> There, the box was a byte. Here, the box has a <em>name</em> — and the name is how your program reaches it.</p>
+</section>
+<section id="how-to-experiment-in-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-experiment-in-this-notebook">How to Experiment in This Notebook</h2>
+<p>This is a <strong>tinkering</strong> notebook, not a reading one. Most code cells start with a block like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>coins <span class="op">=</span> <span class="dv">50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Change the values, press Shift + Enter, and watch what happens.</strong> That is how you actually learn what code does — by poking it. We also teach the <code>input()</code> function, because it’s a real tool and a real source of bugs, but while you’re <em>learning</em>, editing the values directly is faster and won’t pause the notebook waiting for you to type.</p>
+</section>
+<section id="variables-named-boxes" class="level2">
+<h2 class="anchored" data-anchor-id="variables-named-boxes">Variables: Named Boxes</h2>
+<p>A <strong>variable</strong> is a labelled box that holds one value. You put a value in with the <strong>assignment operator</strong>, <code>=</code>.</p>
+<p>Read <code>=</code> as <em>“gets”</em>, not <em>“equals”</em>. <code>coins = 50</code> means <strong>“the box named <code>coins</code> gets the value 50.”</strong> It is an instruction, not a statement of fact.</p>
+<p>Scrooge likes this: a named box can be checked, reused, and corrected in exactly one place. Cratchit’s hand-written totals were scattered down a page; a variable is one labelled box he can always find.</p>
+<div id="nb3-09-var-code" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coins <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>debts <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>coins <span class="op">=</span> coins <span class="op">-</span> debts    <span class="co"># compute on the right, store back into 'coins'</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>38</code></pre>
+</div>
+</div>
+<section id="understanding-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code">Understanding the Code</h3>
+<ul>
+<li><code>coins = 50</code> — create the box <code>coins</code>, put <code>50</code> in it.</li>
+<li><code>coins = coins - debts</code> — the line beginners misread. The <strong>right side runs first</strong>: Python computes <code>50 - 12 = 38</code>. <em>Then</em> the result is stored back into <code>coins</code>, replacing the old value.</li>
+<li>A variable always holds whatever was assigned <strong>most recently</strong>. Earlier values are gone.</li>
+<li>Try it: set <code>debts = 60</code> and re-run. <code>coins</code> goes negative — the program doesn’t object. Numbers are just numbers to it.</li>
+</ul>
+</section>
+<section id="picture-it-the-right-side-runs-first" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-right-side-runs-first">Picture It: the Right Side Runs First</h3>
+<p>The diagram below shows what <code>coins = coins - debts</code> actually does: Python computes the expression on the right, <em>then</em> drops the result into the named box.</p>
+<div id="nb3-11-var-box" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> graphviz <span class="im">import</span> Digraph</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>d.node(<span class="st">"E"</span>, <span class="st">"coins - debts</span><span class="ch">\n</span><span class="st">(50 - 12)"</span>, shape<span class="op">=</span><span class="st">"box"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>d.node(<span class="st">"B"</span>, <span class="st">"coins</span><span class="ch">\n</span><span class="st">―――</span><span class="ch">\n</span><span class="st">38"</span>, shape<span class="op">=</span><span class="st">"box"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>       style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>d.edge(<span class="st">"E"</span>, <span class="st">"B"</span>, label<span class="op">=</span><span class="st">" result stored into the box "</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB03_PseudocodeFlowcharts_files/figure-html/cell-3-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> the yellow box is the expression Python evaluates first; the arrow is the assignment; the green box is <code>coins</code> after it’s been updated. <code>=</code> always flows right → left.</p>
+</section>
+</section>
+<section id="data-types-what-kind-of-value" class="level2">
+<h2 class="anchored" data-anchor-id="data-types-what-kind-of-value">Data Types: What Kind of Value?</h2>
+<p>Every value has a <strong>type</strong>. <strong>Mr.&nbsp;Gradgrind</strong>, who runs a nearby school on Facts and refuses to believe a child can be 2.5 children, insists you always know which type you’re holding. The four you need now:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Name</th>
+<th>Example</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>int</code></td>
+<td>integer</td>
+<td><code>42</code>, <code>-7</code></td>
+<td>whole numbers (counts, pennies)</td>
+</tr>
+<tr class="even">
+<td><code>float</code></td>
+<td>floating-point</td>
+<td><code>3.14</code>, <code>2.0</code></td>
+<td>numbers with a decimal point</td>
+</tr>
+<tr class="odd">
+<td><code>str</code></td>
+<td>string</td>
+<td><code>"Cratchit"</code></td>
+<td>text, in quotes</td>
+</tr>
+<tr class="even">
+<td><code>bool</code></td>
+<td>boolean</td>
+<td><code>True</code>, <code>False</code></td>
+<td>yes/no answers</td>
+</tr>
+</tbody>
+</table>
+<p>The type decides what operations make sense. Python’s <code>type()</code> function tells you what you’re holding.</p>
+<div id="nb3-13-types-code" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">42</span>))            <span class="co"># whole number</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="fl">3.14</span>))          <span class="co"># has a decimal point</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"Cratchit"</span>))    <span class="co"># in quotes -&gt; text</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">7</span> <span class="op">&gt;</span> <span class="dv">3</span>))         <span class="co"># a comparison -&gt; True/False</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"42"</span>))          <span class="co"># quotes! looks numeric, is text</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS and re-run to test your own guess:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>mystery <span class="op">=</span> <span class="fl">9.0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mystery is:"</span>, <span class="bu">type</span>(mystery))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;
+&lt;class 'bool'&gt;
+&lt;class 'str'&gt;
+mystery is: &lt;class 'float'&gt;</code></pre>
+</div>
+</div>
+<section id="understanding-the-code-1" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-1">Understanding the Code</h3>
+<ul>
+<li><code>type(42)</code> is <code>int</code>; <code>type(3.14)</code> is <code>float</code>. The <strong>decimal point</strong> is the whole difference — <code>2</code> is an <code>int</code>, <code>2.0</code> is a <code>float</code>.</li>
+<li><code>type("Cratchit")</code> is <code>str</code>. <strong>Quotes make it text</strong>, always.</li>
+<li><code>type(7 &gt; 3)</code> is <code>bool</code>. Comparisons evaluate to <code>True</code>/<code>False</code> — the same 1/0 logic-gate outputs from Notebook 2, now with names.</li>
+<li><code>type("42")</code> is <code>str</code>, <strong>not</strong> <code>int</code>. This is Gradgrind’s nightmare and the source of the most common beginner bug. <em>Quotes win.</em></li>
+</ul>
+<p>Two habits, starting now: (1) when a program misbehaves, ask <em>“what type is this, really?”</em> first; (2) never trust that something is a number just because it looks like one.</p>
+</section>
+</section>
+<section id="operators-expressions" class="level2">
+<h2 class="anchored" data-anchor-id="operators-expressions">Operators &amp; Expressions</h2>
+<p>An <strong>expression</strong> is anything that computes a value. <code>coins - debts</code> is an expression; so is <code>7 &gt; 3</code>.</p>
+<p><strong>Arithmetic:</strong> <code>+  -  *  /</code> and three you must not skip:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>/</code></td>
+<td>true division (always a <code>float</code>)</td>
+<td><code>7 / 2</code></td>
+<td><code>3.5</code></td>
+</tr>
+<tr class="even">
+<td><code>//</code></td>
+<td>floor division (whole part only)</td>
+<td><code>7 // 2</code></td>
+<td><code>3</code></td>
+</tr>
+<tr class="odd">
+<td><code>%</code></td>
+<td>modulo (the remainder)</td>
+<td><code>7 % 2</code></td>
+<td><code>1</code></td>
+</tr>
+<tr class="even">
+<td><code>**</code></td>
+<td>exponent</td>
+<td><code>2 ** 3</code></td>
+<td><code>8</code></td>
+</tr>
+</tbody>
+</table>
+<div id="nb3-17-ops-arith-code" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pennies <span class="op">=</span> <span class="dv">47</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pennies <span class="op">/</span> <span class="dv">10</span>)     <span class="co"># true division -&gt; 4.7   (a float)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pennies <span class="op">//</span> <span class="dv">10</span>)    <span class="co"># floor division -&gt; 4    (whole tens)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pennies <span class="op">%</span> <span class="dv">10</span>)     <span class="co"># modulo -&gt; 7            (leftover pennies)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pennies <span class="op">**</span> <span class="dv">2</span>)     <span class="co"># exponent -&gt; 2209</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.7
+4
+7
+2209</code></pre>
+</div>
+</div>
+<section id="understanding-the-code-2" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-2">Understanding the Code</h3>
+<ul>
+<li><code>pennies / 10</code> is <code>4.7</code> — <code>/</code> <strong>always</strong> gives a <code>float</code>, even when it divides evenly (<code>10 / 5</code> is <code>5.0</code>).</li>
+<li><code>pennies // 10</code> is <code>4</code> and <code>pennies % 10</code> is <code>7</code>. Together they answer <em>“how many whole tens, and how many left over?”</em> — <code>4</code> tens, <code>7</code> spare pennies. This pair is the heart of today’s worked example, so make sure it clicks.</li>
+<li>Vocabulary: the whole line is a <strong>statement</strong>; the part producing a value is an <strong>expression</strong>; <code>+</code>, <code>//</code>, <code>**</code> are <strong>operators</strong>; the values they act on are <strong>operands</strong>.</li>
+</ul>
+</section>
+</section>
+<section id="basic-python-math-functions-counting-house-toolkit" class="level2">
+<h2 class="anchored" data-anchor-id="basic-python-math-functions-counting-house-toolkit">Basic Python Math Functions (Counting-House Toolkit)</h2>
+<p>Scrooge likes operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>), but a clerk also needs a few <strong>built-in math functions</strong> for tidy ledger work.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>What it does</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>abs(x)</code></td>
+<td>Absolute value (distance from 0)</td>
+<td><code>abs(coins)</code></td>
+<td><code>38</code></td>
+</tr>
+<tr class="even">
+<td><code>round(x, n)</code></td>
+<td>Round to <code>n</code> decimal places</td>
+<td><code>round(price, 1)</code></td>
+<td><code>19.5</code></td>
+</tr>
+<tr class="odd">
+<td><code>min(...)</code></td>
+<td>Smallest value</td>
+<td><code>min(hours, debts, qty)</code></td>
+<td><code>8</code></td>
+</tr>
+<tr class="even">
+<td><code>max(...)</code></td>
+<td>Largest value</td>
+<td><code>max(hours, debts, qty)</code></td>
+<td><code>40</code></td>
+</tr>
+<tr class="odd">
+<td><code>pow(a, b)</code></td>
+<td>Exponent (<code>a</code> to the power <code>b</code>)</td>
+<td><code>pow(heirs, 2)</code></td>
+<td><code>16</code></td>
+</tr>
+<tr class="even">
+<td><code>sum([...])</code></td>
+<td>Add a collection of numbers</td>
+<td><code>sum([qty, debts, heirs])</code></td>
+<td><code>24</code></td>
+</tr>
+<tr class="odd">
+<td><code>divmod(a, b)</code></td>
+<td>Quotient and remainder together</td>
+<td><code>divmod(total, heirs)</code></td>
+<td><code>(810, 3)</code></td>
+</tr>
+</tbody>
+</table>
+<section id="why-this-matters-in-our-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-matters-in-our-workflow">Why this matters in our workflow</h3>
+<ul>
+<li>These functions are just like operators: they <strong>compute values</strong> you can store in variables.</li>
+<li><code>divmod(total, heirs)</code> is the one-line form of the estate split (<code>//</code> and <code>%</code>) used later in this notebook.</li>
+<li>In reporting cells, combine these with f-strings to present clean, readable results.</li>
+</ul>
+<div id="3748cc28" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code demonstratin math functions from previous cell</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">pow</span>(<span class="dv">5</span>, <span class="dv">3</span>))       <span class="co"># 5 to the power of 3 -&gt; 125</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">abs</span>(<span class="op">-</span><span class="dv">42</span>))       <span class="co"># absolute value -&gt; 42</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>))  <span class="co"># round to 2 decimal places</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">max</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>))   <span class="co"># maximum of the numbers -&gt; 20</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">min</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>))   <span class="co"># minimum of the numbers -&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>125
+42
+3.14
+20
+5</code></pre>
+</div>
+</div>
+</section>
+<section id="comparison-boolean-operators" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-boolean-operators">Comparison &amp; Boolean Operators</h3>
+<p><strong>Comparison</strong> operators evaluate two values and return a boolean result (<code>True</code> or <code>False</code>).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>==</code></td>
+<td>equal to</td>
+<td><code>7 == 7</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>not equal to</td>
+<td><code>7 != 5</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>less than</td>
+<td><code>3 &lt; 2</code></td>
+<td><code>False</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>greater than</td>
+<td><code>10 &gt; 4</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td>less than or equal to</td>
+<td><code>5 &lt;= 5</code></td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td>greater than or equal to</td>
+<td><code>9 &gt;= 12</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can store comparison results in variables (for example, <code>passed = score &gt;= 50</code>) and combine them with boolean operators in the next section.</p>
+<blockquote class="blockquote">
+<p>Important: <code>==</code> checks whether two values are equal, while <code>=</code> assigns a value to a variable.<br>
+<code>score == 50</code> is a test; <code>score = 50</code> is an assignment.</p>
+</blockquote>
+<p><strong>Boolean</strong> operators combine <code>True</code>/<code>False</code> values — they are the AND/OR/NOT gates from Notebook 2, spelled as words:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><code>A</code></th>
+<th><code>B</code></th>
+<th><code>A and B</code></th>
+<th><code>A or B</code></th>
+<th><code>not A</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr class="odd">
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr class="even">
+<td>T</td>
+<td>T</td>
+<td><strong>T</strong></td>
+<td><strong>T</strong></td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>and</code> — True only if <strong>both</strong> sides are True</li>
+<li><code>or</code> — True if <strong>either</strong> side is True</li>
+<li><code>not</code> — flips it</li>
+</ul>
+<div id="nb3-20-logical-code" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> <span class="dv">72</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>has_bonus <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(score <span class="op">&gt;=</span> <span class="dv">50</span>)                      <span class="co"># one comparison -&gt; bool</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(score <span class="op">&gt;=</span> <span class="dv">50</span> <span class="kw">and</span> score <span class="op">&lt;=</span> <span class="dv">100</span>)     <span class="co"># both must be True</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(score <span class="op">&lt;</span> <span class="dv">50</span> <span class="kw">or</span> has_bonus)          <span class="co"># either is enough</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span> has_bonus)                    <span class="co"># flip it</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span> (score <span class="op">&gt;=</span> <span class="dv">50</span> <span class="kw">and</span> has_bonus))  <span class="co"># parentheses first</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+True
+True
+False
+False</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-3" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-3">Understanding the Code</h3>
+<p>Evaluate a compound condition the way Python does — <strong>innermost and simplest first</strong>. With <code>score = 72</code>, <code>has_bonus = True</code>:</p>
+<ul>
+<li><code>score &gt;= 50 and score &lt;= 100</code>
+<ol type="1">
+<li><code>72 &gt;= 50</code> → <code>True</code></li>
+<li><code>72 &lt;= 100</code> → <code>True</code></li>
+<li><code>True and True</code> → <strong><code>True</code></strong></li>
+</ol></li>
+<li><code>not (score &gt;= 50 and has_bonus)</code>
+<ol type="1">
+<li><code>72 &gt;= 50</code> → <code>True</code>; <code>has_bonus</code> is <code>True</code></li>
+<li><code>True and True</code> → <code>True</code></li>
+<li><code>not True</code> → <strong><code>False</code></strong></li>
+</ol></li>
+</ul>
+<p><strong>Precedence (what binds tightest):</strong> arithmetic → comparisons → <code>not</code> → <code>and</code> → <code>or</code>. When in doubt, add parentheses; Python evaluates the innermost ones first, and so should you.</p>
+</section>
+<section id="a-practice-game-trace-arcade" class="level3">
+<h3 class="anchored" data-anchor-id="a-practice-game-trace-arcade">A Practice Game: Trace Arcade</h3>
+<p>Tracing code — running it in your head, line by line — is the single most important skill for the rest of this course. The game below has <strong>three modes</strong>:</p>
+<ul>
+<li><code>"trace"</code> — a short program is shown; predict what it prints</li>
+<li><code>"type"</code> — a value is shown; name its type</li>
+<li><code>"bool"</code> — a compound condition is shown; answer <code>True</code> or <code>False</code></li>
+</ul>
+<p>Every round is <strong>randomly generated</strong>, so it never runs out. Run the cell, read the walk-through, then do the exercise.</p>
+<div id="nb3-23-arcade-code" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _make_trace_question():</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Build a random sequential snippet and compute its own answer."""</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">20</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">12</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    kind <span class="op">=</span> random.choice([<span class="st">"accumulate"</span>, <span class="st">"reassign"</span>, <span class="st">"intdiv"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"mod"</span>, <span class="st">"strnum"</span>, <span class="st">"mixed"</span>])</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> kind <span class="op">==</span> <span class="st">"accumulate"</span>:</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        lines  <span class="op">=</span> [<span class="ss">f"a = </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">"</span>, <span class="ss">f"b = </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>, <span class="st">"a = a + b"</span>, <span class="st">"print(a)"</span>]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">=</span> <span class="bu">str</span>(a <span class="op">+</span> b)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> kind <span class="op">==</span> <span class="st">"reassign"</span>:</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        lines  <span class="op">=</span> [<span class="ss">f"x = </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">"</span>, <span class="ss">f"x = </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>, <span class="st">"print(x)"</span>]</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">=</span> <span class="bu">str</span>(b)                       <span class="co"># last assignment wins</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> kind <span class="op">==</span> <span class="st">"intdiv"</span>:</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        lines  <span class="op">=</span> [<span class="ss">f"print(</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> // </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">)"</span>]</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">=</span> <span class="bu">str</span>(a <span class="op">//</span> b)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> kind <span class="op">==</span> <span class="st">"mod"</span>:</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        lines  <span class="op">=</span> [<span class="ss">f"print(</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> % </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">)"</span>]</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">=</span> <span class="bu">str</span>(a <span class="op">%</span> b)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> kind <span class="op">==</span> <span class="st">"strnum"</span>:</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        lines  <span class="op">=</span> [<span class="ss">f'print("</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">" + "</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">")'</span>]    <span class="co"># string glue, not math</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>a<span class="sc">}{</span>b<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">9</span>)</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        lines  <span class="op">=</span> [<span class="ss">f"p = </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">"</span>, <span class="ss">f"q = </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>, <span class="ss">f"print(p * q - </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">)"</span>]</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>        answer <span class="op">=</span> <span class="bu">str</span>(a <span class="op">*</span> b <span class="op">-</span> c)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(lines), answer</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _make_type_question():</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Show a random value; correct type is known by construction."""</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">99</span>)</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    kind <span class="op">=</span> random.choice([<span class="st">"int"</span>, <span class="st">"floatlit"</span>, <span class="st">"string"</span>, <span class="st">"truediv"</span>,</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"floordiv"</span>, <span class="st">"compare"</span>, <span class="st">"strnum"</span>, <span class="st">"boolean"</span>])</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>        <span class="st">"int"</span>:      (<span class="bu">str</span>(n),      <span class="st">"int"</span>),</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>        <span class="st">"floatlit"</span>: (<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">.0"</span>,    <span class="st">"float"</span>),</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">"string"</span>:   (<span class="st">'"hello"'</span>,   <span class="st">"str"</span>),</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>        <span class="st">"truediv"</span>:  (<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> / 2"</span>,  <span class="st">"float"</span>),   <span class="co"># / always floats</span></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>        <span class="st">"floordiv"</span>: (<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> // 2"</span>, <span class="st">"int"</span>),</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>        <span class="st">"compare"</span>:  (<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> &gt; 50"</span>, <span class="st">"bool"</span>),</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>        <span class="st">"strnum"</span>:   (<span class="ss">f'"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"'</span>,    <span class="st">"str"</span>),     <span class="co"># quotes win</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>        <span class="st">"boolean"</span>:  (random.choice([<span class="st">"True"</span>, <span class="st">"False"</span>]), <span class="st">"bool"</span>),</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>    }[kind]</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _cmp(x, op, y):</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"&gt;"</span>: x <span class="op">&gt;</span> y, <span class="st">"&lt;"</span>: x <span class="op">&lt;</span> y, <span class="st">"&gt;="</span>: x <span class="op">&gt;=</span> y,</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>            <span class="st">"&lt;="</span>: x <span class="op">&lt;=</span> y, <span class="st">"=="</span>: x <span class="op">==</span> y, <span class="st">"!="</span>: x <span class="op">!=</span> y}[op]</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _make_bool_question():</span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Random compound condition; answer computed, not eval'd."""</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>    a, b, c, e <span class="op">=</span> (random.randint(<span class="dv">1</span>, <span class="dv">20</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>))</span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>    op1, op2 <span class="op">=</span> (random.choice([<span class="st">"&gt;"</span>, <span class="st">"&lt;"</span>, <span class="st">"&gt;="</span>, <span class="st">"&lt;="</span>, <span class="st">"=="</span>, <span class="st">"!="</span>])</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>))</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>    conn <span class="op">=</span> random.choice([<span class="st">"and"</span>, <span class="st">"or"</span>])</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>    left, right <span class="op">=</span> _cmp(a, op1, b), _cmp(c, op2, e)</span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> (left <span class="kw">and</span> right) <span class="cf">if</span> conn <span class="op">==</span> <span class="st">"and"</span> <span class="cf">else</span> (left <span class="kw">or</span> right)</span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>op1<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>conn<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>op2<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>, <span class="bu">str</span>(result)</span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> trace_arcade(mode<span class="op">=</span><span class="st">"trace"</span>, rounds<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Self-study practice. mode is 'trace', 'type', or 'bool'."""</span></span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> streak <span class="op">=</span> best <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, rounds <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> mode <span class="op">==</span> <span class="st">"trace"</span>:</span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>            shown, answer <span class="op">=</span> _make_trace_question()</span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss"> — what does this print?</span><span class="ch">\n\n</span><span class="sc">{</span>shown<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>            guess <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Output: "</span>).strip()</span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> mode <span class="op">==</span> <span class="st">"type"</span>:</span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>            shown, answer <span class="op">=</span> _make_type_question()</span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss"> — what TYPE is:  </span><span class="sc">{</span>shown<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>            guess <span class="op">=</span> <span class="bu">input</span>(<span class="st">"int / float / str / bool: "</span>).strip()</span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> mode <span class="op">==</span> <span class="st">"bool"</span>:</span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>            shown, answer <span class="op">=</span> _make_bool_question()</span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss"> — True or False?  </span><span class="sc">{</span>shown<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>            guess <span class="op">=</span> <span class="bu">input</span>(<span class="st">"True / False: "</span>).strip().capitalize()</span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Unknown mode. Use 'trace', 'type', or 'bool'."</span>)</span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> guess <span class="op">==</span> answer:</span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>            score <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span> streak <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span> best <span class="op">=</span> <span class="bu">max</span>(best, streak)</span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"✅ Correct!"</span>)</span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>            streak <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"❌ Not quite — the answer was: </span><span class="sc">{</span>answer<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">[</span><span class="sc">{</span>mode<span class="sc">}</span><span class="ss">] score: </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>rounds<span class="sc">}</span><span class="ss">   best streak: </span><span class="sc">{</span>best<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on ONE line below, then run this cell.</span></span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a><span class="co"># trace_arcade("trace")</span></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a><span class="co"># trace_arcade("type")</span></span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a><span class="co"># trace_arcade("bool")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="understanding-the-code-4" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-4">Understanding the Code</h3>
+<ul>
+<li><strong>The answer key is computed, never typed.</strong> Each <code>_make_*</code> helper picks random values, builds the text to show, and computes the answer by doing <em>the same operation</em>. The displayed question and the answer can’t disagree, because Python produced both.</li>
+<li><strong>The snippet is shown, not run.</strong> <code>trace_arcade</code> only <code>print</code>s text — <em>you</em> are the processor. The machine deliberately doesn’t trace it for you.</li>
+<li><strong><code>_make_bool_question</code> evaluates each comparison with <code>_cmp</code>, then combines</strong> — it never <code>eval</code>s the displayed string. Same safety principle as the other modes.</li>
+<li>Same shape as <code>gate_arcade</code> / <code>base_arcade</code> from Notebook 2: pick a mode, loop rounds, track score and streak.</li>
+</ul>
+</section>
+<section id="exercise-1-extend-the-trace-arcade" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-extend-the-trace-arcade">✏️ Exercise 1 — Extend the Trace Arcade</h3>
+<p><strong>Self-study:</strong> play all three modes until you can hit a streak of 5. This is your trainer for the rest of the course — replay it any time.</p>
+<p><strong>Coding task — pick one:</strong> - Add a new template to <code>_make_trace_question</code> (e.g., an exponent: <code>print({a} ** 2)</code> with the matching computed answer), <strong>or</strong> - Add a third comparison to <code>_make_bool_question</code> so it shows expressions like <code>A &gt; B and C &lt; D or E == F</code>.</p>
+<p>Then play your improved version and paste your score into a new markdown cell.</p>
+<p><strong>Using AI here:</strong> if stuck, ask Gemini <em>“add one exponent template to this function, keeping the same style.”</em> Then <strong>trace two of its generated questions by hand</strong> to confirm the computed answer is right before trusting it. <em>AI is a fast first draft; you verify.</em></p>
+</section>
+</section>
+<section id="input-output" class="level2">
+<h2 class="anchored" data-anchor-id="input-output">Input &amp; Output</h2>
+<p>Two built-in functions, both seen earlier, now made precise:</p>
+<ul>
+<li><strong><code>print(...)</code></strong> — display a value to the user.</li>
+<li><strong><code>input(prompt)</code></strong> — show a prompt, wait for the user to type a line, hand it back <strong>as a string</strong>.</li>
+</ul>
+<p><strong>Betsey Trotwood</strong>, who manages estates with brisk decisiveness and no patience for ambiguity, wants clean prompts and clearly labelled output. The run-and-edit habit from earlier means we mostly <em>set values directly</em> while learning — but <code>input()</code> is real, and its one surprise causes the most common bug in the course.</p>
+<div id="nb3-27-io-code" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This single cell demonstrates input() — it WILL pause for you to type.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (Every other example in this notebook uses editable values instead.)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>typed <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Type any number: "</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(typed, <span class="st">"has type"</span>, <span class="bu">type</span>(typed))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4 has type &lt;class 'str'&gt;</code></pre>
+</div>
+</div>
+<section id="understanding-the-code-5" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-5">Understanding the Code</h3>
+<ul>
+<li>Even if you type <code>42</code>, <code>typed</code> holds the <strong>string</strong> <code>"42"</code>, not the number. Read the output: <code>type(typed)</code> says <code>str</code>.</li>
+<li>In Colab, <code>input()</code> <strong>pauses the cell</strong> until you type and press Enter. If you “Run all,” the notebook waits here — that’s expected, not a freeze. This is exactly why we prefer editable value blocks while learning.</li>
+</ul>
+</section>
+<section id="the-1-beginner-bug" class="level3">
+<h3 class="anchored" data-anchor-id="the-1-beginner-bug">The #1 Beginner Bug</h3>
+<p>Because <code>input()</code> returns a string, doing math on it goes wrong in a way that <em>looks</em> almost right:</p>
+<div id="nb3-30-io-gotcha-code" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">"5"</span>     <span class="co"># pretend these came from input()</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="st">"3"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">+</span> b)              <span class="co"># NOT 8</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">int</span>(a) <span class="op">+</span> <span class="bu">int</span>(b))    <span class="co"># 8  — fixed with int()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>53
+8</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-6" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-6">Understanding the Code</h3>
+<ul>
+<li><code>"5" + "3"</code> is <code>"53"</code>. With strings, <code>+</code> means <strong>glue together</strong>, not add. No error appears — it just silently does the wrong thing, which is the dangerous kind of bug.</li>
+<li><code>int("5")</code> converts the string into the number <code>5</code>. This is <strong>type casting</strong>. <code>int(...)</code>, <code>float(...)</code>, <code>str(...)</code> are the casts you’ll use most.</li>
+<li><strong>The rule:</strong> any number from <code>input()</code> must be wrapped in <code>int(...)</code> (or <code>float(...)</code>) before arithmetic.</li>
+</ul>
+</section>
+</section>
+<section id="printing-well" class="level2">
+<h2 class="anchored" data-anchor-id="printing-well">Printing Well</h2>
+<p>Scrooge doesn’t want raw numbers — he wants a <em>readable report</em>. Three tools turn output from a dump into a document: escape characters, f-string formatting, and string methods.</p>
+<section id="escape-characters" class="level3">
+<h3 class="anchored" data-anchor-id="escape-characters">Escape Characters</h3>
+<p>Inside a string, a backslash starts an <strong>escape character</strong> — a special instruction:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Escape</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\n</code></td>
+<td>new line</td>
+</tr>
+<tr class="even">
+<td><code>\t</code></td>
+<td>tab (a column jump)</td>
+</tr>
+<tr class="odd">
+<td><code>\"</code></td>
+<td>a literal double-quote</td>
+</tr>
+<tr class="even">
+<td><code>\\</code></td>
+<td>a literal backslash</td>
+</tr>
+</tbody>
+</table>
+<div id="nb3-33-escape-code" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Line one</span><span class="ch">\n</span><span class="st">Line two"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Name:</span><span class="ch">\t</span><span class="st">Cratchit"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Scrooge said </span><span class="ch">\"</span><span class="st">bah, humbug</span><span class="ch">\"</span><span class="st">"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Folder: C:</span><span class="ch">\\</span><span class="st">ledgers"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Line one
+Line two
+Name:   Cratchit
+Scrooge said "bah, humbug"
+Folder: C:\ledgers</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-7" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-7">Understanding the Code</h3>
+<ul>
+<li><code>\n</code> breaks the line — one <code>print</code> produced two lines.</li>
+<li><code>\t</code> jumps to the next tab stop; it’s the quick way to line up columns.</li>
+<li><code>\"</code> lets you put a double-quote <em>inside</em> a double-quoted string without ending it early.</li>
+<li><code>\\</code> prints a single backslash. (One backslash in the output needs two in the code.)</li>
+</ul>
+</section>
+<section id="f-string-formatting" class="level3">
+<h3 class="anchored" data-anchor-id="f-string-formatting">f-string Formatting</h3>
+<p>An <strong>f-string</strong> (prefix <code>f</code>) drops variables into text inside <code>{ }</code>. After a colon you can add a <strong>format specifier</strong> — the <em>same machinery</em> as Notebook 2’s <code>{n:08b}</code> and <code>{n:02X}</code>, just different codes:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Spec</th>
+<th>Effect</th>
+<th>Example →</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:.2f</code></td>
+<td>2 decimal places (money!)</td>
+<td><code>19.5</code> → <code>19.50</code></td>
+</tr>
+<tr class="even">
+<td><code>:&gt;10</code></td>
+<td>right-align in 10 columns</td>
+<td><code>[      Bob]</code></td>
+</tr>
+<tr class="odd">
+<td><code>:&lt;10</code></td>
+<td>left-align in 10 columns</td>
+<td><code>[Bob      ]</code></td>
+</tr>
+<tr class="even">
+<td><code>:^10</code></td>
+<td>centre in 10 columns</td>
+<td><code>[   Bob   ]</code></td>
+</tr>
+<tr class="odd">
+<td><code>:,</code></td>
+<td>thousands separators</td>
+<td><code>1234567</code> → <code>1,234,567</code></td>
+</tr>
+</tbody>
+</table>
+<div id="nb3-36-fstring-code" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="fl">19.5</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>name  <span class="op">=</span> <span class="st">"cratchit"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">1234567</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total: £</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss">"</span>)     <span class="co"># money -&gt; 19.50</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"[</span><span class="sc">{</span>name<span class="sc">:&gt;12}</span><span class="ss">]"</span>)            <span class="co"># right-aligned</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"[</span><span class="sc">{</span>name<span class="sc">:&lt;12}</span><span class="ss">]"</span>)            <span class="co"># left-aligned</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"[</span><span class="sc">{</span>name<span class="sc">:^12}</span><span class="ss">]"</span>)            <span class="co"># centred</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Coins: </span><span class="sc">{</span>count<span class="sc">:,}</span><span class="ss">"</span>)        <span class="co"># 1,234,567</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total: £19.50
+[    cratchit]
+[cratchit    ]
+[  cratchit  ]
+Coins: 1,234,567</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-8" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-8">Understanding the Code</h3>
+<ul>
+<li><code>{price:.2f}</code> forces exactly two decimals — essential for money, where <code>19.5</code> should read <code>£19.50</code>.</li>
+<li><code>:&gt;12</code>, <code>:&lt;12</code>, <code>:^12</code> pad a value to 12 characters so columns line up. The <code>[ ]</code> brackets just make the padding visible.</li>
+<li>This is the identical tool you used for binary and hex in Notebook 2 — <em>the colon-code controls how a value prints, never the value itself.</em></li>
+</ul>
+</section>
+<section id="string-methods" class="level3">
+<h3 class="anchored" data-anchor-id="string-methods">String Methods</h3>
+<p>Strings come with built-in <strong>methods</strong>: small tools you call with a dot, like <code>text.upper()</code>.</p>
+<p>Two key ideas:</p>
+<ul>
+<li><strong>Strings are immutable</strong>: methods return a <strong>new</strong> string; they do not change the original.</li>
+<li>Methods can be <strong>chained</strong> left-to-right, e.g.&nbsp;<code>raw.strip().title()</code>.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>What it does</th>
+<th>Example</th>
+<th>Result</th>
+<th>Why it helps</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.upper()</code></td>
+<td>Converts all letters to uppercase</td>
+<td><code>"Scrooge".upper()</code></td>
+<td><code>"SCROOGE"</code></td>
+<td>Headings, labels, firm banners</td>
+</tr>
+<tr class="even">
+<td><code>.lower()</code></td>
+<td>Converts all letters to lowercase</td>
+<td><code>"CrAtChIt".lower()</code></td>
+<td><code>"cratchit"</code></td>
+<td>Standardize text before comparing</td>
+</tr>
+<tr class="odd">
+<td><code>.title()</code></td>
+<td>Capitalizes each word</td>
+<td><code>"ebenezer scrooge".title()</code></td>
+<td><code>"Ebenezer Scrooge"</code></td>
+<td>Names and titles in reports</td>
+</tr>
+<tr class="even">
+<td><code>.strip()</code></td>
+<td>Removes spaces at both ends</td>
+<td><code>"  Bob  ".strip()</code></td>
+<td><code>"Bob"</code></td>
+<td>Clean user input / messy text</td>
+</tr>
+<tr class="odd">
+<td><code>.replace(old, new)</code></td>
+<td>Replaces matching text</td>
+<td><code>"Scrooge".replace("oo","ee")</code></td>
+<td><code>"Screege"</code></td>
+<td>Quick edits and corrections</td>
+</tr>
+<tr class="even">
+<td><code>len(s)</code></td>
+<td>Counts characters in a string</td>
+<td><code>len("Bob")</code></td>
+<td><code>3</code></td>
+<td>Width checks, validation, formatting</td>
+</tr>
+<tr class="odd">
+<td><code>"x" * n</code></td>
+<td>Repeats a string <code>n</code> times</td>
+<td><code>"-" * 10</code></td>
+<td><code>"----------"</code></td>
+<td>Divider lines and borders</td>
+</tr>
+</tbody>
+</table>
+<p>Use these methods together with f-strings to produce clean, readable output.</p>
+<div id="nb3-39-strfn-code" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="st">"  ebenezer scrooge  "</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raw.strip())                    <span class="co"># 'ebenezer scrooge'</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raw.strip().title())            <span class="co"># 'Ebenezer Scrooge'</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raw.upper())                    <span class="co"># '  EBENEZER SCROOGE  '</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raw.replace(<span class="st">"scrooge"</span>, <span class="st">"Marley"</span>))</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"length:"</span>, <span class="bu">len</span>(raw.strip()))</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">30</span>)                       <span class="co"># a separator line</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ebenezer scrooge
+Ebenezer Scrooge
+  EBENEZER SCROOGE  
+  ebenezer Marley  
+length: 16
+==============================</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-9" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-9">Understanding the Code</h3>
+<ul>
+<li>Methods are <strong>called with a dot</strong>: <code>raw.strip()</code>. They <strong>return a new string</strong> — <code>raw</code> itself is unchanged (strings can’t be edited in place).</li>
+<li>They <strong>chain left to right</strong>: <code>raw.strip().title()</code> trims <em>then</em> title-cases the trimmed result.</li>
+<li><code>"=" * 30</code> repeats <code>=</code> thirty times. With <code>\n</code> and f-string alignment, repetition is how you build banners and rule-off lines in a report.</li>
+</ul>
+</section>
+<section id="putting-it-all-together-a-formatted-receipt" class="level3">
+<h3 class="anchored" data-anchor-id="putting-it-all-together-a-formatted-receipt">Putting It All Together: a Formatted Receipt</h3>
+<p>Escape characters, f-string alignment, and string methods are most useful <em>combined</em>. The next cell builds a real receipt from all three at once — this is the model for the capstone exercise.</p>
+<div id="nb3-41-receipt-demo" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A formatted receipt — every tool from this section, working together.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>firm <span class="op">=</span> <span class="st">"scrooge &amp; marley"</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> <span class="st">"tallow candles"</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>qty  <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>unit <span class="op">=</span> <span class="fl">0.75</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> qty <span class="op">*</span> unit</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>line  <span class="op">=</span> <span class="st">"-"</span> <span class="op">*</span> <span class="dv">32</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(line)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>firm<span class="sc">.</span>upper()<span class="sc">:^32}</span><span class="ss">"</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(line)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item<span class="sc">.</span>title()<span class="sc">:&lt;22}{</span>qty<span class="sc">:&gt;2}</span><span class="ss"> @ £</span><span class="sc">{</span>unit<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'TOTAL'</span><span class="sc">:&lt;22}</span><span class="ss">£</span><span class="sc">{</span>total<span class="sc">:&gt;7.2f}</span><span class="ss">"</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>--------------------------------
+        SCROOGE &amp; MARLEY        
+--------------------------------
+Tallow Candles         8 @ £0.75
+TOTAL                 £   6.00
+--------------------------------</code></pre>
+</div>
+</div>
+<p>Read that cell against its output: a repeated-character rule, a centred upper-cased banner, left-aligned labels, a right-aligned money column with two decimals. Nothing advanced — just the four tools combined deliberately. You’ll build your own version in the final exercise. Change <code>firm</code> to your name and re-run; the banner re-centres itself, because the width (<code>32</code>) is fixed and <code>:^32</code> does the maths.</p>
+</section>
+</section>
+<section id="the-workflow-problem-pseudocode-flowchart-python" class="level2">
+<h2 class="anchored" data-anchor-id="the-workflow-problem-pseudocode-flowchart-python">The Workflow: Problem → Pseudocode → Flowchart → Python</h2>
+<p>This is the method the whole course uses. Esther Summerson never touches a ledger before writing down what she means to do. Four steps:</p>
+<ol type="1">
+<li><strong>Problem</strong> — state what’s needed, in plain English, including inputs and outputs.</li>
+<li><strong>Pseudocode</strong> — the steps, in structured plain language. Language-neutral.</li>
+<li><strong>Flowchart</strong> — the same steps as a picture, so the shape is obvious.</li>
+<li><strong>Python</strong> — translate the pseudocode line by line, then <strong>verify</strong>.</li>
+</ol>
+<p>Skipping to step 4 is the most common reason beginners get stuck. The first three steps are where the thinking happens; Python is just the transcription.</p>
+<section id="pseudocode-conventions-used-all-course" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode-conventions-used-all-course">Pseudocode Conventions (used all course)</h3>
+<p>No official language exists — a consistent house style keeps it readable:</p>
+<ul>
+<li>A header naming the <strong>ALGORITHM</strong>, its <strong>INPUT</strong>, and its <strong>OUTPUT</strong></li>
+<li><strong>Numbered steps</strong>, one action each</li>
+<li>Keywords in capitals: <strong>READ</strong>, <strong>SET</strong>, <strong>PRINT</strong> (and later <strong>IF</strong>, <strong>REPEAT</strong>)</li>
+<li>Plain arithmetic words or symbols — whatever is clearest</li>
+<li>Indent sub-steps</li>
+</ul>
+<p>It is <em>not</em> Python: no colons, no quotes, no syntax rules. If you can read it aloud and a non-programmer follows along, it’s good pseudocode.</p>
+</section>
+<section id="flowchart-notation" class="level3">
+<h3 class="anchored" data-anchor-id="flowchart-notation">Flowchart Notation</h3>
+<p>A flowchart draws the same algorithm. Four shapes cover everything; you need three today.</p>
+<div id="nb3-46-flowchart-legend" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>legend <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>legend.node(<span class="st">"S"</span>, <span class="st">"Start / End"</span>, shape<span class="op">=</span><span class="st">"ellipse"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>legend.node(<span class="st">"I"</span>, <span class="st">"Input / Output"</span>, shape<span class="op">=</span><span class="st">"parallelogram"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>legend.node(<span class="st">"P"</span>, <span class="st">"Process</span><span class="ch">\n</span><span class="st">(a calculation)"</span>, shape<span class="op">=</span><span class="st">"box"</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>legend.node(<span class="st">"D"</span>, <span class="st">"Decision</span><span class="ch">\n</span><span class="st">(← Notebook 4, not yet)"</span>, shape<span class="op">=</span><span class="st">"diamond"</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"mistyrose"</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>legend.edge(<span class="st">"S"</span>, <span class="st">"I"</span>, style<span class="op">=</span><span class="st">"invis"</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>legend.edge(<span class="st">"I"</span>, <span class="st">"P"</span>, style<span class="op">=</span><span class="st">"invis"</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>legend.edge(<span class="st">"P"</span>, <span class="st">"D"</span>, style<span class="op">=</span><span class="st">"invis"</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>legend</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB03_PseudocodeFlowcharts_files/figure-html/cell-15-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> ellipse = Start/End, parallelogram = Input/Output, rectangle = a Process step. The diamond (Decision) is shown greyed-out as a preview — you’ll use it in Notebook 4.</p>
+</section>
+<section id="step-1-the-problem" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-the-problem">Step 1 — The Problem</h3>
+<p>Betsey Trotwood brings the counting-house a job:</p>
+<blockquote class="blockquote">
+<p><em>An estate worth a whole number of pounds must be divided <strong>evenly</strong> among the heirs. Each heir gets an equal whole-pound share. Any pounds that don’t divide evenly are held back by the estate. Report each heir’s share and the amount held back.</em></p>
+</blockquote>
+<p>Pinned down precisely:</p>
+<ul>
+<li><strong>Inputs:</strong> <code>total</code> (whole pounds, an integer), <code>heirs</code> (a count, an integer)</li>
+<li><strong>Outputs:</strong> <code>share</code> (whole pounds per heir), <code>leftover</code> (pounds held back)</li>
+<li><strong>Relationship:</strong> the <em>“how many whole groups, and how much left over”</em> question — <code>//</code> and <code>%</code>.</li>
+</ul>
+</section>
+<section id="step-2-pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-pseudocode">Step 2 — Pseudocode</h3>
+<pre class="text"><code>ALGORITHM: split_estate
+INPUT:   total  — the estate value in whole pounds
+         heirs  — the number of heirs
+OUTPUT:  share     — whole pounds each heir receives
+         leftover  — pounds that cannot be divided evenly
+
+1. READ total
+2. READ heirs
+3. SET share    = total // heirs      (whole pounds each)
+4. SET leftover = total % heirs       (the remainder)
+5. PRINT share
+6. PRINT leftover</code></pre>
+<p>Six numbered steps, plain language, no Python syntax. Anyone could follow this — including a future you debugging at midnight.</p>
+</section>
+<section id="step-2½-the-flowchart" class="level3">
+<h3 class="anchored" data-anchor-id="step-2½-the-flowchart">Step 2½ — The Flowchart</h3>
+<p>Same six steps as the pseudocode, drawn as a picture so the straight-line shape is obvious: Start, two inputs, two calculations, one output, End.</p>
+<div id="nb3-49-worked-flowchart" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fc <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>fc.node(<span class="st">"S"</span>,  <span class="st">"Start"</span>,                    shape<span class="op">=</span><span class="st">"ellipse"</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>fc.node(<span class="st">"R1"</span>, <span class="st">"READ total"</span>,               shape<span class="op">=</span><span class="st">"parallelogram"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>fc.node(<span class="st">"R2"</span>, <span class="st">"READ heirs"</span>,               shape<span class="op">=</span><span class="st">"parallelogram"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>fc.node(<span class="st">"P1"</span>, <span class="st">"share = total // heirs"</span>,   shape<span class="op">=</span><span class="st">"box"</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>fc.node(<span class="st">"P2"</span>, <span class="st">"leftover = total </span><span class="sc">% he</span><span class="st">irs"</span>, shape<span class="op">=</span><span class="st">"box"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>fc.node(<span class="st">"O"</span>,  <span class="st">"PRINT share, leftover"</span>,    shape<span class="op">=</span><span class="st">"parallelogram"</span>,</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>fc.node(<span class="st">"E"</span>,  <span class="st">"End"</span>,                      shape<span class="op">=</span><span class="st">"ellipse"</span>,</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">"filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>fc.edges([(<span class="st">"S"</span>,<span class="st">"R1"</span>), (<span class="st">"R1"</span>,<span class="st">"R2"</span>), (<span class="st">"R2"</span>,<span class="st">"P1"</span>),</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>          (<span class="st">"P1"</span>,<span class="st">"P2"</span>), (<span class="st">"P2"</span>,<span class="st">"O"</span>), (<span class="st">"O"</span>,<span class="st">"E"</span>)])</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>fc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB03_PseudocodeFlowcharts_files/figure-html/cell-16-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> the flow runs top to bottom with no branches — every estate split is the same actions in the same order. That’s what “sequential” looks like; Notebook 4 adds the first fork.</p>
+</section>
+<section id="step-3-python" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-python">Step 3 — Python</h3>
+<p>Translate the pseudocode <strong>line for line</strong>. Editable values first, so the output is reproducible and we can check it by hand; the interactive version comes right after.</p>
+<div id="nb3-51-worked-python" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">1000</span>        <span class="co"># step 1: READ total</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>heirs <span class="op">=</span> <span class="dv">7</span>           <span class="co"># step 2: READ heirs</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>share    <span class="op">=</span> total <span class="op">//</span> heirs      <span class="co"># step 3</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>leftover <span class="op">=</span> total <span class="op">%</span> heirs       <span class="co"># step 4</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Each heir receives £</span><span class="sc">{</span>share<span class="sc">}</span><span class="ss">."</span>)               <span class="co"># step 5</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"£</span><span class="sc">{</span>leftover<span class="sc">}</span><span class="ss"> is held back by the estate."</span>)    <span class="co"># step 6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Each heir receives £142.
+£6 is held back by the estate.</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4-verify-by-hand" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-verify-by-hand">Step 4 — Verify by Hand</h3>
+<p>Never trust output you haven’t checked. With <code>total = 1000</code>, <code>heirs = 7</code>:</p>
+<ul>
+<li><code>1000 // 7</code> → 7 goes into 1000 <strong>142</strong> times (142 × 7 = 994)</li>
+<li><code>1000 % 7</code> → leftover is <code>1000 − 994 =</code> <strong>6</strong></li>
+<li><strong>Cross-check:</strong> 142 × 7 + 6 = 994 + 6 = <strong>1000</strong> ✓ — shares plus held-back must equal the whole estate. They do.</li>
+</ul>
+<p>This <code>(quotient × divisor) + remainder = original</code> check works for <em>any</em> <code>//</code> and <code>%</code> pair. Use it on the quiz.</p>
+<div id="nb3-53-worked-interactive" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The real version: ask the user. Note int(...) around each input —</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># without it, total and heirs are strings and // would error.</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Estate value in whole pounds: "</span>))</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>heirs <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Number of heirs: "</span>))</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>share    <span class="op">=</span> total <span class="op">//</span> heirs</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>leftover <span class="op">=</span> total <span class="op">%</span> heirs</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Each heir receives £</span><span class="sc">{</span>share<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"£</span><span class="sc">{</span>leftover<span class="sc">}</span><span class="ss"> is held back by the estate."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Each heir receives £810.
+£3 is held back by the estate.</code></pre>
+</div>
+</div>
+<p>The interactive version is just the pseudocode with <code>int(input(...))</code> wired into steps 1–2 — the type-casting rule applied. The <em>thinking</em> was finished before a line of Python was written. That is the entire method.</p>
+</section>
+<section id="exercise-2-run-the-whole-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-run-the-whole-pipeline">✏️ Exercise 2 — Run the Whole Pipeline</h3>
+<p>Take this through <strong>all four steps</strong> yourself.</p>
+<blockquote class="blockquote">
+<p><em>Cratchit is owed a number of whole pennies. Convert it to pounds and leftover pennies, where 1 pound = 100 pennies. Report the pounds and the pennies.</em></p>
+</blockquote>
+<ol type="1">
+<li><strong>Problem:</strong> write down inputs and outputs.</li>
+<li><strong>Pseudocode:</strong> in a markdown cell, house conventions.</li>
+<li><strong>Flowchart:</strong> describe it in words, <em>or</em> copy the graphviz cell above and adapt it.</li>
+<li><strong>Python:</strong> in a code cell with an editable value block, then <strong>verify by hand</strong> with one example (show the cross-check).</li>
+</ol>
+<p>No solution is provided — that’s the point. <em>Hint: same <code>//</code> and <code>%</code> shape as the estate split.</em></p>
+</section>
+<section id="exercise-3-translate-my-pseudocode-ai-assisted" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-translate-my-pseudocode-ai-assisted">✏️ Exercise 3 — Translate My Pseudocode &nbsp; 🤖 <em>AI-Assisted</em></h3>
+<ol type="1">
+<li><p>Write <strong>pseudocode</strong> (only — no Python yet) for this problem:</p>
+<blockquote class="blockquote">
+<p><em>A shopkeeper takes a price in pounds and a whole-number percentage discount. Compute and print the amount saved and the final price, both to 2 decimals.</em></p>
+</blockquote></li>
+<li><p>Paste your pseudocode into Gemini: <em>“Translate this pseudocode into Python. Do not add features I didn’t specify.”</em></p></li>
+<li><p>Run the AI’s code in a new cell. <strong>Verify it</strong> against a hand-calculation you do yourself (e.g., £80 at 25% off → saved £20.00, final £60.00).</p></li>
+<li><p>In a markdown cell: did it match? Name <strong>one</strong> thing the AI got wrong, added uninvited, or could improve — and fix it.</p></li>
+</ol>
+<p>The skill being graded is the <em>verification</em>, not the AI’s first draft.</p>
+</section>
+</section>
+<section id="building-with-ai-plan-first-then-code" class="level2">
+<h2 class="anchored" data-anchor-id="building-with-ai-plan-first-then-code">Building With AI (Plan First, Then Code)</h2>
+<p>Notebook 1 ended on this: an AI predicts <em>plausible-looking</em> text. The defence isn’t to avoid AI — it’s to <strong>do the thinking first</strong> and use the AI to pressure-test your thinking.</p>
+<p>A verification checklist for any code (yours or an AI’s):</p>
+<ol type="1">
+<li><strong>Does it run?</strong> Errors are the easy case — Python tells you.</li>
+<li><strong>Test a known input.</strong> Feed it something you worked out by hand. Does it match?</li>
+<li><strong>Read every line.</strong> Is <code>input()</code> cast with <code>int()</code>? Is it <code>//</code> or <code>/</code>? Is it <code>==</code> or <code>=</code>?</li>
+<li><strong>Does it match the pseudocode?</strong> Without a plan to compare against, you only know it didn’t crash — not that it’s right.</li>
+</ol>
+<section id="exercise-4-build-a-counting-house-report-capstone-ai-assisted" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-build-a-counting-house-report-capstone-ai-assisted">✏️ Exercise 4 — Build a Counting-House Report (Capstone) &nbsp; 🤖 <em>AI-Assisted</em></h3>
+<p>Build <strong>one</strong> of these. Both are sequential and use the printing tools from this notebook:</p>
+<ul>
+<li><strong>Cratchit’s Pay Receipt</strong> <em>(recommended)</em> — inputs: <code>hours</code>, <code>rate</code>, <code>advance</code> (money already taken). Compute gross pay (<code>hours × rate</code>) and amount due (<code>gross − advance</code>). Print a formatted receipt: a repeated-character rule, a centred upper-cased firm banner, left-aligned labels, and a right-aligned money column to 2 decimals.</li>
+<li><strong>The Counting-House Calling Card</strong> <em>(lighter on maths)</em> — inputs: <code>name</code>, <code>title</code>, <code>firm</code>. Print a bordered card: the name title-cased and centred, the border drawn with string repetition sized so it always fits.</li>
+</ul>
+<p><strong>Follow the workflow — this is what’s being graded:</strong></p>
+<ol type="1">
+<li><strong>Write pseudocode by hand</strong> in a markdown cell (house conventions). No Python yet.</li>
+<li><strong>Ask the AI to critique your pseudocode</strong>, not write code: <em>“Here is my pseudocode for X. What’s missing, unclear, or out of order? Do not write any code.”</em></li>
+<li><strong>Revise your pseudocode</strong> based on the critique.</li>
+<li><strong>Translate it to Python yourself</strong> in the scaffold cell below.</li>
+<li><strong>Test</strong> by editing the value block (checklist steps 1–2), then <strong>reflect</strong> in a markdown cell: what did the AI’s critique catch that you missed?</li>
+</ol>
+<div id="nb3-59-ex4-scaffold" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Exercise 4 — build your report here, AFTER writing and revising pseudocode.</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>hours   <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>rate    <span class="op">=</span> <span class="fl">1.25</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>advance <span class="op">=</span> <span class="fl">5.00</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: translate YOUR revised pseudocode into Python below.</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the printing toolkit: f-strings, :.2f, alignment (:^ :&lt; :&gt;),</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># escape characters, and "-" * n for separator lines.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Variable</strong> — A named box that holds one value.</li>
+<li><strong>Assignment (<code>=</code>)</strong> — Stores the right-hand value into the variable; read it as “gets.”</li>
+<li><strong>Data type</strong> — The kind of a value: <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>.</li>
+<li><strong>int / float</strong> — Whole number vs.&nbsp;number with a decimal point.</li>
+<li><strong>str / bool</strong> — Text in quotes; a truth value (<code>True</code>/<code>False</code>).</li>
+<li><strong>Expression / statement</strong> — Code that computes a value vs.&nbsp;a complete instruction.</li>
+<li><strong>Operator / operand</strong> — The verb (<code>+</code>, <code>//</code>, <code>and</code>) and the values it acts on.</li>
+<li><strong>Floor division (<code>//</code>) / modulo (<code>%</code>)</strong> — Whole part of a division / the remainder.</li>
+<li><strong>Comparison operators</strong> — <code>== != &lt; &gt; &lt;= &gt;=</code>; each produces a <code>bool</code>.</li>
+<li><strong>Boolean operators</strong> — <code>and</code>, <code>or</code>, <code>not</code>; combine truth values.</li>
+<li><strong>Operator precedence</strong> — The order operators resolve: arithmetic → comparison → <code>not</code> → <code>and</code> → <code>or</code>.</li>
+<li><strong>Type casting</strong> — Deliberately converting a value’s type, e.g.&nbsp;<code>int("5")</code>.</li>
+<li><strong>Escape character</strong> — A backslash code inside a string: <code>\n</code>, <code>\t</code>, <code>\"</code>, <code>\\</code>.</li>
+<li><strong>f-string / format specifier</strong> — <code>f"..."</code> text with <code>{var}</code>; <code>:.2f</code>, <code>:&gt;10</code>, <code>:,</code> control how a value prints.</li>
+<li><strong>String method</strong> — A function called on a string with a dot: <code>.upper()</code>, <code>.strip()</code>, <code>.replace()</code>.</li>
+<li><strong>Pseudocode</strong> — Structured, language-neutral plain English describing an algorithm.</li>
+<li><strong>Flowchart</strong> — A diagram of an algorithm: ellipse = start/end, parallelogram = I/O, box = process, diamond = decision.</li>
+<li><strong>Trace</strong> — To run code in your head, line by line, predicting each result.</li>
+<li><strong>Comment (<code>#</code>)</strong> — A note for humans; Python ignores it.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>A <strong>variable</strong> is a named box; <code>=</code> stores into it, and the <strong>right side runs first</strong>.</li>
+<li>Every value has a <strong>type</strong>; quotes always mean <code>str</code>, and <code>input()</code> always returns <code>str</code>.</li>
+<li><code>/</code> always gives a <code>float</code>; <code>//</code> and <code>%</code> answer <em>“how many whole groups, how much left over.”</em></li>
+<li><strong>Boolean</strong> expressions follow precedence; evaluate the innermost, simplest part first.</li>
+<li><strong>Printing well</strong> = escape characters + f-string specifiers (<code>:.2f</code>, alignment) + string methods + repetition.</li>
+<li>The course workflow is <strong>problem → pseudocode → flowchart → Python → verify</strong>. Plan by hand; let the AI critique the <em>plan</em>, not hand you the answer.</li>
+</ul>
+<p>Write it down before you write it up. Esther Summerson would insist.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p>Every program here ran straight down, top to bottom. <strong>Notebook 4</strong> brings the shape greyed-out in our flowchart legend: the <strong>decision diamond</strong>. Programs will start making choices and repeating work — <code>if</code>, <code>else</code>, and loops. Madame Defarge keeps her records by knitting the same stitch over and over; soon you’ll write the loop that does it for her.</p>
+<p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em><br>
+<em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

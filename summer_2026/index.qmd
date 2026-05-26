@@ -13,16 +13,17 @@ case studies ask you to think about what that code does in the world.
 
 ## Notebooks
 
-The notebooks are Jupyter notebooks. The Colab link opens each one
-ready to run; the GitHub link previews it in the browser.
+Each notebook is available three ways: **Read** (accessible HTML in the
+browser), **Run** (open in Google Colab to execute and edit), and
+**Download** (the raw `.ipynb`).
 
-| # | Notebook | Open |
-|---|---|---|
-| 1 | What Is Computing? | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB01_WhatIsComputing.ipynb) · [GitHub](https://github.com/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB01_WhatIsComputing.ipynb) |
-| 2 | Machine Architecture & Data Representation | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB02_MachineArchitecture.ipynb) · [GitHub](https://github.com/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB02_MachineArchitecture.ipynb) |
-| 3 | Python via Pseudocode & Flowcharts | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb) · [GitHub](https://github.com/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb) |
-| 4 | Control Flow & Functions | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb) · [GitHub](https://github.com/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb) |
-| 5 | Collections & ADTs | *in progress* |
+| # | Notebook | Read | Run | Download |
+|---|---|---|---|---|
+| 1 | What Is Computing? | [HTML](notebooks/COMP1150_NB01_WhatIsComputing.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB01_WhatIsComputing.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/summer_2026/notebooks/COMP1150_NB01_WhatIsComputing.ipynb) |
+| 2 | Machine Architecture & Data Representation | [HTML](notebooks/COMP1150_NB02_MachineArchitecture.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB02_MachineArchitecture.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/summer_2026/notebooks/COMP1150_NB02_MachineArchitecture.ipynb) |
+| 3 | Python via Pseudocode & Flowcharts | [HTML](notebooks/COMP1150_NB03_PseudocodeFlowcharts.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/summer_2026/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb) |
+| 4 | Control Flow & Functions | [HTML](notebooks/COMP1150_NB04_ControlFlowFunctions.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/summer_2026/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb) |
+| 5 | Collections & ADTs | [HTML](notebooks/COMP1150_NB05_CollectionsADTs.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB05_CollectionsADTs.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/summer_2026/notebooks/COMP1150_NB05_CollectionsADTs.ipynb) |
 | 6 | Functions, Modules & OOP | *in progress* |
 | 7 | Algorithms & the Limits of Computation | *in progress* |
 | 8 | Software Engineering, Git & AI-Assisted Dev | *in progress* |

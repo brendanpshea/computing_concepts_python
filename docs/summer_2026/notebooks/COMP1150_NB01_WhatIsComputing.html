@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>comp1150_nb01_whatiscomputing – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/index.html"> 
+<span class="menu-text">Course</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/index.html#notebooks"> 
+<span class="menu-text">Notebooks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../summer_2026/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notebook-1-what-is-computing-a-story-of-four-algorithms" id="toc-notebook-1-what-is-computing-a-story-of-four-algorithms" class="nav-link active" data-scroll-target="#notebook-1-what-is-computing-a-story-of-four-algorithms">Notebook 1: What Is Computing? A Story of Four Algorithms</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#what-is-computer-science" id="toc-what-is-computer-science" class="nav-link" data-scroll-target="#what-is-computer-science">What Is Computer Science?</a></li>
+  <li><a href="#the-four-algorithms-well-study" id="toc-the-four-algorithms-well-study" class="nav-link" data-scroll-target="#the-four-algorithms-well-study">The Four Algorithms We’ll Study</a></li>
+  <li><a href="#a-hundred-and-twenty-years-of-hardware" id="toc-a-hundred-and-twenty-years-of-hardware" class="nav-link" data-scroll-target="#a-hundred-and-twenty-years-of-hardware">A Hundred and Twenty Years of Hardware</a></li>
+  <li><a href="#getting-set-up-google-colab" id="toc-getting-set-up-google-colab" class="nav-link" data-scroll-target="#getting-set-up-google-colab">Getting Set Up: Google Colab</a></li>
+  <li><a href="#your-ai-pair-programmer" id="toc-your-ai-pair-programmer" class="nav-link" data-scroll-target="#your-ai-pair-programmer">Your AI Pair-Programmer</a></li>
+  <li><a href="#algorithm-1-lovelaces-sequence-1843" id="toc-algorithm-1-lovelaces-sequence-1843" class="nav-link" data-scroll-target="#algorithm-1-lovelaces-sequence-1843">Algorithm 1 — Lovelace’s Sequence (1843)</a></li>
+  <li><a href="#algorithm-2-holleriths-tabulator-1890" id="toc-algorithm-2-holleriths-tabulator-1890" class="nav-link" data-scroll-target="#algorithm-2-holleriths-tabulator-1890">Algorithm 2 — Hollerith’s Tabulator (1890)</a></li>
+  <li><a href="#algorithm-3-turings-codebreaker-1940s" id="toc-algorithm-3-turings-codebreaker-1940s" class="nav-link" data-scroll-target="#algorithm-3-turings-codebreaker-1940s">Algorithm 3 — Turing’s Codebreaker (1940s)</a></li>
+  <li><a href="#algorithm-4-weizenbaums-eliza-1966" id="toc-algorithm-4-weizenbaums-eliza-1966" class="nav-link" data-scroll-target="#algorithm-4-weizenbaums-eliza-1966">Algorithm 4 — Weizenbaum’s ELIZA (1966)</a></li>
+  <li><a href="#closing-the-pattern-across-the-four" id="toc-closing-the-pattern-across-the-four" class="nav-link" data-scroll-target="#closing-the-pattern-across-the-four">Closing: The Pattern Across the Four</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB01_WhatIsComputing.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/summer_2026/notebooks/COMP1150_NB01_WhatIsComputing.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/summer_2026/notebooks/COMP1150_NB01_WhatIsComputing.ipynb">View on GitHub</a></p>
+<section id="notebook-1-what-is-computing-a-story-of-four-algorithms" class="level1">
+<h1>Notebook 1: What Is Computing? A Story of Four Algorithms</h1>
+<section id="comp-1150-computer-science-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
+<p><strong>Brendan Shea, PhD</strong></p>
+<p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
+</section>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li><strong>Define</strong> an algorithm and explain why algorithms — not computers — are the central idea in computer science</li>
+<li><strong>Read</strong> pseudocode and a simple flowchart, and translate between pseudocode and Python</li>
+<li><strong>Trace</strong> a small Python program line by line and predict its output</li>
+<li><strong>Describe</strong> how computing hardware evolved from mechanical gears (1840s) to integrated circuits (1960s) and what each generation made newly possible</li>
+<li><strong>Use</strong> an AI assistant to draft or modify code, and verify the result before trusting it</li>
+</ul>
+</section>
+<section id="what-is-computer-science" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-computer-science">What Is Computer Science?</h2>
+<p>A common first guess: <em>computer science is about computers</em>. That’s close — but it’s a bit like saying astronomy is about telescopes. The telescope is the tool; the stars are the subject.</p>
+<p><strong>Computer science is the study of algorithms — step-by-step procedures for solving problems.</strong> Computers are the machines we use to run algorithms quickly, but the algorithms themselves are older than any electronic computer. Some of the most important ones were invented on paper, by hand, long before a machine existed to execute them.</p>
+<p><strong>The field has several major branches:</strong></p>
+<ul>
+<li><strong>Theory</strong> — what problems <em>can</em> be solved by a machine? How efficiently?</li>
+<li><strong>Systems</strong> — how do we build hardware and software that runs algorithms reliably?</li>
+<li><strong>Data</strong> — how do we store, retrieve, and make sense of information?</li>
+<li><strong>Intelligence</strong> — can we write algorithms that learn from experience?</li>
+<li><strong>Security</strong> — how do we protect systems and the people who depend on them?</li>
+</ul>
+<p>In this notebook, we’ll meet four landmark algorithms, trace how they worked, and see what kind of machine each one ran on. That machine matters: the hardware of each era shaped what algorithms were even imaginable.</p>
+</section>
+<section id="the-four-algorithms-well-study" class="level2">
+<h2 class="anchored" data-anchor-id="the-four-algorithms-well-study">The Four Algorithms We’ll Study</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Algorithm</th>
+<th>Year</th>
+<th>What it did</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Lovelace’s Note G</td>
+<td>1843</td>
+<td>Computed a mathematical sequence on a proposed mechanical engine</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Hollerith’s Tabulator</td>
+<td>1890</td>
+<td>Counted and grouped millions of census records</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Turing’s Bombe</td>
+<td>1940s</td>
+<td>Broke Nazi military encryption</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Weizenbaum’s ELIZA</td>
+<td>1966</td>
+<td>Held a typed conversation by pattern-matching</td>
+</tr>
+</tbody>
+</table>
+<p>Each one solved a real, urgent problem. Each one also pushed the boundaries of what contemporary hardware could do — often before the hardware was even finished being built.</p>
+</section>
+<section id="a-hundred-and-twenty-years-of-hardware" class="level2">
+<h2 class="anchored" data-anchor-id="a-hundred-and-twenty-years-of-hardware">A Hundred and Twenty Years of Hardware</h2>
+<p>The four algorithms didn’t run on laptops. They ran on fundamentally different machines, and the hardware shaped what was possible.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Era</th>
+<th>Switching element</th>
+<th>How it stored data</th>
+<th>Rough speed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1840s</td>
+<td>Mechanical gears (steam-powered)</td>
+<td>Positions of brass wheels</td>
+<td>~1 calculation / second <em>(designed)</em></td>
+</tr>
+<tr class="even">
+<td>1890s</td>
+<td>Electromechanical relays</td>
+<td>Punch cards + mechanical counters</td>
+<td>~1 card / second</td>
+</tr>
+<tr class="odd">
+<td>1940s</td>
+<td>Vacuum tubes + rotors</td>
+<td>Paper tape, plugboards</td>
+<td>~5,000 operations / second</td>
+</tr>
+<tr class="even">
+<td>1960s</td>
+<td>Transistors, integrated circuits</td>
+<td>Magnetic core + tape</td>
+<td>~300,000 operations / second</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Each generation was roughly 1,000× faster than the last.</strong> A 2026 smartphone runs billions of operations per second — another ~10,000× jump beyond the 1960s. Yet the basic <em>ideas</em> — loops, conditions, lookup tables, pattern matching — have barely changed since Lovelace wrote them down.</p>
+</section>
+<section id="getting-set-up-google-colab" class="level2">
+<h2 class="anchored" data-anchor-id="getting-set-up-google-colab">Getting Set Up: Google Colab</h2>
+<p>This course runs in <strong>Google Colab</strong> — a free, browser-based Python environment. No installation required. You need a Google account.</p>
+<p><strong>A Colab notebook is made of cells:</strong> - <strong>Text cells</strong> — formatted prose like this one (Markdown format) - <strong>Code cells</strong> — Python you can run with <strong>Shift + Enter</strong> or the ▶ button</p>
+<p><strong>To save your work:</strong> <strong>File → Save a copy in Drive.</strong> Colab also auto-saves as you go.</p>
+<p>Run the code cell below.</p>
+<div id="cell-08-firstcode" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ed0a82dc-c5ba-4e5f-fd6c-2af1b9a3675a">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The # symbol starts a comment. Python ignores comments — they're for human readers.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello. I am a computer. I follow instructions."</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"I do not understand what those instructions mean."</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"That distinction will matter a great deal this semester."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello. I am a computer. I follow instructions.
+I do not understand what those instructions mean.
+That distinction will matter a great deal this semester.</code></pre>
+</div>
+</div>
+<p><strong>What just happened, line by line:</strong></p>
+<ul>
+<li><code>print(...)</code> is a <strong>built-in function</strong> — code that comes with Python. It displays whatever you put inside the parentheses.</li>
+<li>The text in quotes is a <strong>string</strong> — a sequence of characters.</li>
+<li>Python executed the three lines <strong>in order, top to bottom</strong>. That sequential execution is the most fundamental property of an algorithm: the steps happen in a defined order.</li>
+</ul>
+</section>
+<section id="your-ai-pair-programmer" class="level2">
+<h2 class="anchored" data-anchor-id="your-ai-pair-programmer">Your AI Pair-Programmer</h2>
+<p>Colab has a built-in AI assistant (<strong>Gemini</strong> — the ✨ icon or the button in the top-right corner). You can also use <strong>Claude</strong> (claude.ai) or <strong>ChatGPT</strong> (chat.openai.com) in a separate tab.</p>
+<p><strong>The single most important rule:</strong></p>
+<blockquote class="blockquote">
+<p><em>AI is a fast first draft, not a final answer. Your job is to verify.</em></p>
+</blockquote>
+<p><strong>You verify by:</strong> - <strong>Running</strong> the code and checking the output - <strong>Testing</strong> it on inputs where you already know the right answer - <strong>Reading</strong> it carefully enough to spot something suspicious - <strong>Asking yourself:</strong> does this do what I asked, or just something that <em>sounds</em> like it?</p>
+<p>Every notebook in this course will include AI-assisted exercises. You’ll get fast at this.</p>
+<div id="cell-11-gemini-try" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open Gemini (or Claude / ChatGPT) and send this prompt:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   "Write a Python function that takes a name as input and returns</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    a greeting string. Include a type hint and a one-line docstring."</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Paste the result below this line, run it, and check the output.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="algorithm-1-lovelaces-sequence-1843" class="level2">
+<h2 class="anchored" data-anchor-id="algorithm-1-lovelaces-sequence-1843">Algorithm 1 — Lovelace’s Sequence (1843)</h2>
+<section id="the-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem">The Problem</h3>
+<p>Nineteenth-century science needed long, accurate tables of numbers — logarithms, ship navigation tables, insurance calculations. These tables were computed by hand, by rooms of human “computers” (that was a job title, not a machine). Humans made mistakes. Mistakes in a navigation table could wreck a ship.</p>
+<p><strong>Charles Babbage</strong> proposed to fix this with a mechanical calculator. His second design, the <strong>Analytical Engine</strong>, was far more ambitious than the first: it would be <em>general-purpose</em> — not a single-task calculator but a machine that could follow any sequence of instructions fed to it.</p>
+<p><strong>Ada Lovelace</strong>, a mathematician and Babbage’s correspondent, wrote a set of notes describing what the engine could do. In her longest note — <em>Note G</em> — she included a detailed procedure for computing a mathematical sequence called the <strong>Bernoulli numbers</strong>. This is widely regarded as the world’s first computer program.</p>
+</section>
+<section id="the-hardware-babbages-analytical-engine" class="level3">
+<h3 class="anchored" data-anchor-id="the-hardware-babbages-analytical-engine">The Hardware: Babbage’s Analytical Engine</h3>
+<p>The Analytical Engine was never completed — it was too complex to build with Victorian manufacturing. But Babbage’s design describes a machine shockingly close to a modern computer.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modern name</th>
+<th>Babbage’s name</th>
+<th>What it did</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPU</td>
+<td>The <em>Mill</em></td>
+<td>Performed arithmetic on numbers</td>
+</tr>
+<tr class="even">
+<td>RAM</td>
+<td>The <em>Store</em></td>
+<td>Held 1,000 numbers of 40 digits each</td>
+</tr>
+<tr class="odd">
+<td>Program input</td>
+<td>Operation cards</td>
+<td>Punched cards telling the Mill what to do</td>
+</tr>
+<tr class="even">
+<td>Data input</td>
+<td>Variable cards</td>
+<td>Punched cards telling it which numbers to use</td>
+</tr>
+<tr class="odd">
+<td>Output</td>
+<td>Printer + card punch</td>
+<td>Printed results; punched cards for reuse</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Physical reality:</strong> - Would have been the size of a small locomotive - Powered by a <strong>steam engine</strong> turning brass gears - Expected speed: roughly <strong>one multiplication per minute</strong> - The punch-card idea came from the <strong>Jacquard loom</strong>, a French weaving machine that used cards to select thread patterns</p>
+<p>Lovelace’s program was written on paper for a machine that did not yet exist — and would not exist in her lifetime.</p>
+</section>
+<section id="picture-it-the-analytical-engine" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-analytical-engine">Picture It: the Analytical Engine</h3>
+<p>Babbage’s design maps cleanly onto a modern computer. The diagram below shows the four parts from the table above and how data and instructions flow between them.</p>
+<div id="5aa42e07" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:195}}" data-outputid="22cc0e38-440c-416b-fe0d-49742a46a498">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Flowchart of Babbage's Analytical Engine Architecture</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> graphviz <span class="im">import</span> Digraph</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightgray"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Inputs</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"OpCards"</span>, <span class="st">"Operation Cards</span><span class="ch">\n</span><span class="st">(Program Instructions)"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"VarCards"</span>, <span class="st">"Variable Cards</span><span class="ch">\n</span><span class="st">(Initial Data)"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Core Components</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"Store"</span>, <span class="st">"The Store</span><span class="ch">\n</span><span class="st">(Memory / Variables)"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"Mill"</span>, <span class="st">"The Mill</span><span class="ch">\n</span><span class="st">(Arithmetic / CPU)"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Output</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"Output"</span>, <span class="st">"Printer &amp; Card Punch</span><span class="ch">\n</span><span class="st">(Results)"</span>, fillcolor<span class="op">=</span><span class="st">"plum"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Connections</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"OpCards"</span>, <span class="st">"Mill"</span>, label<span class="op">=</span><span class="st">" Tells the Mill</span><span class="ch">\n</span><span class="st">what to do"</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"VarCards"</span>, <span class="st">"Store"</span>, label<span class="op">=</span><span class="st">" Loads data"</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"Store"</span>, <span class="st">"Mill"</span>, label<span class="op">=</span><span class="st">" Numbers</span><span class="ch">\n</span><span class="st">to calculate"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"Mill"</span>, <span class="st">"Store"</span>, label<span class="op">=</span><span class="st">" New results"</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"Store"</span>, <span class="st">"Output"</span>, label<span class="op">=</span><span class="st">" Final answers"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> the <em>Mill</em> is the CPU and the <em>Store</em> is memory; operation cards bring the program, variable cards bring the data, and results flow back out — the von Neumann shape, a century early.</p>
+</section>
+<section id="the-algorithm-in-pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="the-algorithm-in-pseudocode">The Algorithm in Pseudocode</h3>
+<p>Bernoulli numbers are complicated. For our purposes, we’ll use a simpler sequence that captures the same <em>structure</em>: the <strong>factorials</strong> (1! = 1, 2! = 2, 3! = 6, 4! = 24, …). Factorials have the same kind of structure as Bernoulli: each term builds on the previous one.</p>
+<p>Before we write Python, we write <strong>pseudocode</strong> — plain-English steps, structured clearly enough that any programmer could translate them into any language.</p>
+<pre class="text"><code>ALGORITHM: compute_factorials
+INPUT:     n — a positive integer
+OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
+
+1. CREATE an empty list called results
+2. SET running_product = 1
+3. FOR each number i from 1 to n:
+       3a. MULTIPLY running_product by i
+       3b. APPEND running_product to results
+4. RETURN results</code></pre>
+<p>Notice what pseudocode is <em>not</em>: it isn’t Python. There are no colons, no parentheses, no particular syntax. It’s a way of thinking clearly about the steps before committing to a language.</p>
+<div id="cell-16-lovelace-flowchart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:688}}" data-outputid="cfeb476c-14ac-4b57-cb37-d8ce25237f90">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A flowchart of the same algorithm. We'll use `graphviz` — a tool for drawing</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># diagrams from code. You'll see it throughout this course.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> graphviz <span class="im">import</span> Digraph</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"S"</span>, <span class="st">"START"</span>,                                fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"A"</span>, <span class="st">"results = [ ]</span><span class="ch">\n</span><span class="st">running_product = 1"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"B"</span>, <span class="st">"i = 1"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"C"</span>, <span class="st">"i ≤ n ?"</span>,                              shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"D"</span>, <span class="st">"running_product = running_product × i"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"E"</span>, <span class="st">"append running_product</span><span class="ch">\n</span><span class="st">to results"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"F"</span>, <span class="st">"i = i + 1"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"G"</span>, <span class="st">"return results"</span>,                       fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>dot.edges([(<span class="st">"S"</span>,<span class="st">"A"</span>), (<span class="st">"A"</span>,<span class="st">"B"</span>), (<span class="st">"B"</span>,<span class="st">"C"</span>)])</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"D"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"E"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"E"</span>, <span class="st">"F"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"F"</span>, <span class="st">"C"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"G"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-5-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> the diamond is the loop test; the back-arrow is the repetition; <code>running_product</code> is multiplied each pass. The Python next is a line-for-line translation of this.</p>
+<div id="cell-17-lovelace-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a21abfcc-6132-40ca-f433-45a1cce39f16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same algorithm in Python.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_factorials(n):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return a list of factorials from 1! to n!."""</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    running_product <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        running_product <span class="op">=</span> running_product <span class="op">*</span> i</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        results.append(running_product)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_factorials(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 6, 24, 120, 720]</code></pre>
+</div>
+</div>
+</section>
+<section id="walking-through-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="walking-through-the-code">Walking Through the Code</h3>
+<ul>
+<li><code>def compute_factorials(n):</code> — defines a <strong>function</strong> named <code>compute_factorials</code> that takes one input, <code>n</code>. A function is a named, reusable block of code.</li>
+<li><code>results = []</code> — creates an empty <strong>list</strong>. Lists hold sequences of values. This is where we’ll collect the factorials as we compute them.</li>
+<li><code>running_product = 1</code> — our <strong>accumulator</strong>: a variable that carries a value from one loop step to the next. It starts at 1 because multiplying anything by 1 leaves it unchanged.</li>
+<li><code>for i in range(1, n + 1):</code> — a <strong>loop</strong>. <code>range(1, n + 1)</code> generates the numbers 1, 2, 3, …, n.&nbsp;(The <code>+ 1</code> is because <code>range</code> <em>stops before</em> the second number, so <code>range(1, 7)</code> gives 1–6.)</li>
+<li><code>running_product = running_product * i</code> — update the accumulator. On the third pass, this computes 1 × 1 × 2 × 3 = 6 = 3!.</li>
+<li><code>results.append(running_product)</code> — add the current value to the end of the list.</li>
+<li><code>return results</code> — when the loop is done, hand the list back to whoever called the function.</li>
+</ul>
+<p><strong>Two core patterns</strong> to watch for all semester: - <strong>Accumulator</strong> — a variable that builds up a result across loop iterations - <strong>Function</strong> — a named, reusable block of instructions (Lovelace’s <em>subroutine</em>)</p>
+</section>
+<section id="picture-it-how-fast-factorials-grow" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-how-fast-factorials-grow">Picture It: How Fast Factorials Grow</h3>
+<p>Numbers from a loop can balloon fast. The chart below plots 1! through 10! on a log scale so the explosive growth is visible.</p>
+<div id="cell-19-lovelace-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:424}}" data-outputid="15766047-2248-4d18-bc56-6ce9caf2638d">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A bar chart showing factorials 1! to 10!</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>factorials <span class="op">=</span> compute_factorials(n)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">!"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.bar(labels, factorials, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Factorials 1! through 10! (log scale)"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"value"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"10! = </span><span class="sc">{</span>factorials[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10! = 3,628,800</code></pre>
+</div>
+</div>
+<p>The values grow <em>explosively</em> — 10! is already over three million. That’s the accumulator compounding at every step. Small algorithms can produce enormous outputs; this will be true throughout the course.</p>
+<blockquote class="blockquote">
+<p><strong>Cultural note.</strong> Twenty-five years before <em>Note G</em>, Lovelace’s friend Mary Shelley published <em>Frankenstein</em> — a novel about what happens when a maker brings something into the world and can’t control what it does next. Lovelace was quietly designing the mathematical version of the same question: a machine that follows instructions without a human deciding each step. We’ll return to that question throughout the semester.</p>
+</blockquote>
+</section>
+<section id="exercise-1-lovelaces-table-ai-assisted" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-lovelaces-table-ai-assisted">✏️ Exercise 1 — Lovelace’s Table &nbsp; 🤖 <em>AI-Assisted</em></h3>
+<p>Open Gemini (or Claude / ChatGPT) and send it this prompt:</p>
+<blockquote class="blockquote">
+<p><em>“I have a Python function <code>compute_factorials(n)</code> that returns a list of factorials from 1! to n!. Extend it to print a formatted table with three columns: n, n!, and the ratio n! / (n − 1)!. Use f-strings for column alignment.”</em></p>
+</blockquote>
+<p><strong>Then:</strong> 1. Paste the AI-generated function into a new code cell and run it for <code>n = 8</code>. 2. Find <strong>one thing</strong> you’d improve — formatting, variable names, an edge case. 3. Fix it and re-run. 4. In a markdown cell, write 2–3 sentences: what did you change, and why?</p>
+</section>
+<section id="algorithms-for-mathematics-from-lovelace-to-the-present" class="level3">
+<h3 class="anchored" data-anchor-id="algorithms-for-mathematics-from-lovelace-to-the-present">Algorithms for Mathematics from Lovelace to the Present</h3>
+<p>Ada Lovelace’s <em>Note G</em> envisioned a machine that could weave algebraic patterns just as the Jacquard loom wove flowers and leaves. Her focus on computing the Bernoulli numbers was just the beginning. Over the next century and a half, the evolution of computing hardware allowed mathematicians to solve increasingly complex problems, proving that algorithms are as essential to modern mathematics as the telescope is to astronomy.</p>
+<p>Here are five major milestones where computers were used to push the boundaries of mathematics:</p>
+<ol type="1">
+<li><strong>Artillery Trajectories (1940s):</strong> The ENIAC, one of the first electronic general-purpose computers, was initially designed to calculate complex differential equations for artillery firing tables during WWII.</li>
+<li><strong>Monte Carlo Methods (1940s):</strong> Stanislaw Ulam and John von Neumann developed randomized algorithms to simulate neutron diffusion, birthing computational probability and modern simulation.</li>
+<li><strong>The Fast Fourier Transform (1965):</strong> An algorithm popularized by Cooley and Tukey that dramatically reduced the time needed to compute the discrete Fourier transform, revolutionizing digital signal processing and applied mathematics.</li>
+<li><strong>The Four Color Theorem (1976):</strong> The first major mathematical theorem proved using a computer. The program checked 1,936 distinct configurations to show that any map can be colored with just four colors without adjacent regions sharing a color.</li>
+<li><strong>AI-Assisted Theorem Proving (2020s):</strong> Today, systems like Lean (a formal proof assistant) and AI models are being used not just to verify human proofs, but to help discover new mathematical insights, theorems, and bounds in fields like combinatorics and geometry.</li>
+</ol>
+</section>
+</section>
+<section id="algorithm-2-holleriths-tabulator-1890" class="level2">
+<h2 class="anchored" data-anchor-id="algorithm-2-holleriths-tabulator-1890">Algorithm 2 — Hollerith’s Tabulator (1890)</h2>
+<section id="the-problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-1">The Problem</h3>
+<p>The US Constitution requires a census every ten years. The 1880 census took <strong>eight years</strong> to process by hand — nearly obsolete by the time it was published. If the 1890 census took any longer, the results wouldn’t be ready before 1900.</p>
+<p><strong>Herman Hollerith</strong>, a young statistician who had worked on the 1880 count, proposed a radical solution:</p>
+<ul>
+<li>Record each person’s answers as <strong>holes punched in a card</strong> — one card per person</li>
+<li>Feed cards into a machine that <strong>senses the holes electrically</strong></li>
+<li>Let the machine <strong>count and sort</strong> faster than any human</li>
+</ul>
+<p>The 1890 census was complete in <strong>one year</strong>. Hollerith’s company eventually became IBM.</p>
+</section>
+<section id="the-hardware-punch-cards-and-electromechanical-relays" class="level3">
+<h3 class="anchored" data-anchor-id="the-hardware-punch-cards-and-electromechanical-relays">The Hardware: Punch Cards and Electromechanical Relays</h3>
+<p>Hollerith’s system had three parts:</p>
+<ol type="1">
+<li><strong>The card.</strong> A piece of stiff paper about the size of a dollar bill. Specific hole positions represented specific answers (age ranges, occupation categories, state of birth, and so on). A card was essentially a <strong>fixed-width record</strong> — the same concept used by every modern database.</li>
+<li><strong>The tabulator.</strong> An operator placed a card in a press. Metal pins dropped toward the card. Where there was a hole, a pin passed through and dipped into a cup of mercury below, <strong>completing an electrical circuit</strong>. Each circuit advanced a mechanical counter for that category.</li>
+<li><strong>The sorter.</strong> A separate machine used the same electrical sensing to drop cards into different physical bins based on any chosen hole position — allowing the operator to regroup the data and count it again by some other criterion.</li>
+</ol>
+<p><strong>Why this was a huge leap:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Human clerks</th>
+<th>Hollerith’s machines</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Medium</td>
+<td>Paper tally sheets</td>
+<td>Punch cards</td>
+</tr>
+<tr class="even">
+<td>Error rate</td>
+<td>Tired clerks miscount</td>
+<td>Electrical pins are consistent</td>
+</tr>
+<tr class="odd">
+<td>Re-grouping data</td>
+<td>Re-sort all paper</td>
+<td>Re-run cards through the sorter</td>
+</tr>
+<tr class="even">
+<td>Speed</td>
+<td>Days to months</td>
+<td>Hours</td>
+</tr>
+</tbody>
+</table>
+<p>Hollerith’s machines couldn’t run arbitrary programs — they were hardwired for counting and sorting. But the <em>data format</em> (a record with fixed fields) is the direct ancestor of the dictionaries and database rows you’ll use for the rest of your career.</p>
+</section>
+<section id="the-algorithm-in-pseudocode-1" class="level3">
+<h3 class="anchored" data-anchor-id="the-algorithm-in-pseudocode-1">The Algorithm in Pseudocode</h3>
+<p>We’re going to replicate Hollerith’s core operation: <strong>group records by a category, count each group.</strong></p>
+<pre class="text"><code>ALGORITHM: count_by_field
+INPUT:     records — a list of records (each with the same fields)
+           field   — the name of the field to group by
+OUTPUT:    a dictionary mapping each value of that field to its count
+
+1. CREATE an empty dictionary called tally
+2. FOR each record in records:
+       2a. LOOK UP the record's value for the given field → call it key
+       2b. IF key is already in tally:
+              ADD 1 to tally[key]
+           OTHERWISE:
+              SET tally[key] = 1
+3. RETURN tally</code></pre>
+<p>Notice: the <em>mechanical</em> version (Hollerith) used pins, circuits, and counters. The <em>Python</em> version uses a dictionary. The logic is identical.</p>
+<div id="cell-26-hollerith-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f1334601-b416-4bb6-8d83-a78a0f434b06">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Each person is a Python dictionary (like one of Hollerith's cards).</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The whole list is our "stack of cards."</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>census_records <span class="op">=</span> [</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Mary Shelley"</span>,    <span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"writer"</span>},</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Ada Lovelace"</span>,    <span class="st">"state"</span>: <span class="st">"MA"</span>, <span class="st">"occupation"</span>: <span class="st">"mathematician"</span>},</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Herman Hollerith"</span>,<span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"engineer"</span>},</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Frederick Law"</span>,   <span class="st">"state"</span>: <span class="st">"MA"</span>, <span class="st">"occupation"</span>: <span class="st">"farmer"</span>},</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Clara Barton"</span>,    <span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"nurse"</span>},</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Thomas Edison"</span>,   <span class="st">"state"</span>: <span class="st">"NJ"</span>, <span class="st">"occupation"</span>: <span class="st">"engineer"</span>},</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Ida B. Wells"</span>,    <span class="st">"state"</span>: <span class="st">"IL"</span>, <span class="st">"occupation"</span>: <span class="st">"journalist"</span>},</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"George Pullman"</span>,  <span class="st">"state"</span>: <span class="st">"IL"</span>, <span class="st">"occupation"</span>: <span class="st">"industrialist"</span>},</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_by_field(records, field):</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Group records by `field` and return counts."""</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    tally <span class="op">=</span> {}</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> record <span class="kw">in</span> records:</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        key <span class="op">=</span> record[field]</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> key <span class="kw">in</span> tally:</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>            tally[key] <span class="op">=</span> tally[key] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            tally[key] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tally</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count_by_field(census_records, <span class="st">"state"</span>))</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count_by_field(census_records, <span class="st">"occupation"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'NY': 3, 'MA': 2, 'NJ': 1, 'IL': 2}
+{'writer': 1, 'mathematician': 1, 'engineer': 2, 'farmer': 1, 'nurse': 1, 'journalist': 1, 'industrialist': 1}</code></pre>
+</div>
+</div>
+</section>
+<section id="walking-through-the-code-1" class="level3">
+<h3 class="anchored" data-anchor-id="walking-through-the-code-1">Walking Through the Code</h3>
+<ul>
+<li><code>census_records = [...]</code> — a <strong>list of dictionaries</strong>. Each <code>{...}</code> is one person; each person has three labeled fields.</li>
+<li><code>def count_by_field(records, field):</code> — this function takes <strong>two inputs</strong>: the list of records, and the name of the field to group by (a string like <code>"state"</code>).</li>
+<li><code>tally = {}</code> — an empty <strong>dictionary</strong>. Dictionaries store values by named keys, not by position.</li>
+<li><code>for record in records:</code> — loop through the records one at a time. Each pass, <code>record</code> is one person’s dictionary.</li>
+<li><code>key = record[field]</code> — look up that person’s value for the field. If <code>field</code> is <code>"state"</code> and the record is Ada Lovelace’s, <code>key</code> becomes <code>"MA"</code>.</li>
+<li><code>if key in tally:</code> — have we seen this category before?
+<ul>
+<li><strong>Yes:</strong> <code>tally[key] = tally[key] + 1</code> — increment the existing count.</li>
+<li><strong>No:</strong> <code>tally[key] = 1</code> — create a new entry starting at 1.</li>
+</ul></li>
+<li><code>return tally</code> — once every record has been processed, return the finished dictionary.</li>
+</ul>
+<p><strong>Two new Python ideas here:</strong> - <strong>Dictionary</strong> — a lookup table: keys map to values (<code>{"NY": 3, "MA": 2}</code>). Dictionaries are everywhere: JSON, database records, config files, function arguments. - <strong>List of dictionaries</strong> — a mini database table. One of the most useful structures you’ll meet this semester.</p>
+</section>
+<section id="picture-it-the-tally-charted" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-tally-charted">Picture It: the Tally, Charted</h3>
+<p>The same <code>count_by_field</code> function answers two different questions. The bars below show its output grouped by state and by occupation, side by side.</p>
+<div id="cell-28-hollerith-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:407}}" data-outputid="55112c37-3dda-424e-ad8c-04c6877050ed">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize both tallies side by side.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>by_state <span class="op">=</span> count_by_field(census_records, <span class="st">"state"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>by_occ   <span class="op">=</span> count_by_field(census_records, <span class="st">"occupation"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>ax1.bar(by_state.keys(), by_state.values(), color<span class="op">=</span><span class="st">"coral"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Records by State"</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>ax2.bar(by_occ.keys(), by_occ.values(), color<span class="op">=</span><span class="st">"mediumseagreen"</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Records by Occupation"</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The same function answered two different questions about the same data. Hollerith’s machines worked the same way — you changed which hole positions they read, and the same hardware counted something different. Writing a <strong>general</strong> function (not a <code>count_by_state</code> <em>and</em> a <code>count_by_occupation</code>) is called <strong>abstraction</strong>, and it’s one of the most powerful ideas in programming.</p>
+<blockquote class="blockquote">
+<p><strong>Cultural note.</strong> In 1872, Samuel Butler’s novel <em>Erewhon</em> imagined a civilization that had banned its machines out of fear they were slowly evolving toward consciousness. When Hollerith’s tabulator replaced a room of clerks eighteen years later, Butler’s readers could be forgiven for feeling vindicated. The machines weren’t smarter — just faster. This time, at counting people.</p>
+</blockquote>
+</section>
+<section id="exercise-2-holleriths-percentage-report" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-holleriths-percentage-report">✏️ Exercise 2 — Hollerith’s Percentage Report</h3>
+<p>Modify <code>count_by_field</code> so that each value in the returned dictionary is a <strong>tuple <code>(count, percentage)</code></strong> instead of just a count. The percentage should be each group’s share of all records, rounded to one decimal place.</p>
+<p><strong>Requirements:</strong> - Test on <code>census_records</code> with <code>"state"</code>. - Percentages should sum to approximately 100. - Print the results clearly.</p>
+<p><em>Hint: <code>len(records)</code> gives the total number of records.</em></p>
+</section>
+<section id="computers-for-data-analysis-from-hollerith-to-the-present" class="level3">
+<h3 class="anchored" data-anchor-id="computers-for-data-analysis-from-hollerith-to-the-present">Computers for Data Analysis from Hollerith to the Present</h3>
+<p>Herman Hollerith’s punch card tabulator revolutionized data processing by drastically reducing the time needed to tabulate the 1890 census. This foundational idea of representing data as structured, machine-readable records paved the way for the modern data ecosystem. Over the next century, breakthroughs in hardware storage and software abstraction transformed how we collect, store, and analyze information.</p>
+<p>Here are five major milestones in the evolution of computers for data analysis:</p>
+<ol type="1">
+<li><strong>Magnetic Storage (1950s):</strong> The invention of magnetic tape and the first hard disk drives (like the IBM RAMAC) replaced bulky punch cards, allowing for vastly greater storage density and faster, random access to records.</li>
+<li><strong>Relational Databases (1970s):</strong> Edgar F. Codd invented the relational database model at IBM. This shifted data storage from rigid, physical hierarchies into flexible tables linked by common fields, laying the groundwork for SQL and modern data management.</li>
+<li><strong>The Electronic Spreadsheet (1979):</strong> The release of VisiCalc (and later Excel) brought intuitive, interactive data analysis to personal computers, allowing users to instantly recalculate entire sheets when a single variable changed.</li>
+<li><strong>Distributed Computing &amp; Big Data (2000s):</strong> As internet traffic and data collection exploded, distributed file systems and processing frameworks (like Hadoop and MapReduce) were created to store and analyze petabytes of unstructured data across thousands of commodity servers.</li>
+<li><strong>Cloud Data and DataFrames (2010s–Present):</strong> The rise of cloud data warehouses (like Snowflake or BigQuery) combined with powerful, open-source software abstractions (like Python’s <code>pandas</code> library) democratized data science, enabling analysts to process massive datasets with just a few lines of code.</li>
+</ol>
+</section>
+</section>
+<section id="algorithm-3-turings-codebreaker-1940s" class="level2">
+<h2 class="anchored" data-anchor-id="algorithm-3-turings-codebreaker-1940s">Algorithm 3 — Turing’s Codebreaker (1940s)</h2>
+<section id="the-problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-2">The Problem</h3>
+<p>During World War II, Nazi Germany encrypted its military communications with a device called <strong>Enigma</strong>. Each day, operators set their machines to a new configuration — a <em>key</em> — before transmitting. Without the key, messages looked like random letters. With the key, they decoded instantly.</p>
+<p><strong>The search space was astronomical:</strong> - Enigma had ~<strong>158 million million million</strong> (1.58 × 10²⁰) possible settings - That’s more settings than grains of sand on all the beaches on Earth - Testing them one at a time, even at one per second, would take longer than the age of the universe</p>
+<p><strong>Alan Turing’s key insight:</strong> don’t try every setting — <em>eliminate the wrong ones fast</em>. German messages had predictable content (weather reports started with weather words; routine messages ended with stock phrases). If you knew what a few plaintext words <em>should</em> look like, you could rule out most settings almost immediately.</p>
+</section>
+<section id="the-hardware-enigma-the-bombe-and-colossus" class="level3">
+<h3 class="anchored" data-anchor-id="the-hardware-enigma-the-bombe-and-colossus">The Hardware: Enigma, the Bombe, and Colossus</h3>
+<p>Three machines sat at the heart of this story:</p>
+<p><strong>1. The Enigma machine (Germany, 1920s–1940s).</strong> A typewriter-sized device with three rotating wheels (<strong>rotors</strong>), a <strong>plugboard</strong> of swappable wires, and a <strong>reflector</strong>. Pressing a key sent electricity through the rotors and plugboard; a lamp lit up the encrypted letter. After each keystroke, the rotors advanced — so the same letter typed twice produced two <em>different</em> ciphertexts.</p>
+<p><strong>2. The Bombe (Bletchley Park, 1940).</strong> Turing’s codebreaking device. Not a general computer — a special-purpose electromechanical machine built to test Enigma configurations rapidly. Roughly 6 feet tall, 7 feet wide, filled with rotating drums that simulated Enigma wheels. It could check thousands of settings per minute.</p>
+<p><strong>3. Colossus (Bletchley Park, 1943).</strong> Used against a <em>different</em> German cipher, not Enigma. But worth knowing: Colossus was the world’s first <strong>programmable electronic digital computer</strong>. It used about 1,500 vacuum tubes — fragile glass bulbs acting as electronic switches. Vacuum tubes were 1,000× faster than the mechanical relays of Hollerith’s era.</p>
+<p><strong>The hardware shift that mattered:</strong> mechanical parts (moving) → electromechanical relays (switching magnetically) → <strong>vacuum tubes</strong> (switching electronically, with no moving parts). Each step made computing faster and made algorithms that used to take weeks feasible in hours.</p>
+</section>
+<section id="the-algorithm-in-pseudocode-2" class="level3">
+<h3 class="anchored" data-anchor-id="the-algorithm-in-pseudocode-2">The Algorithm in Pseudocode</h3>
+<p>Enigma is complicated. We’ll study the <strong>Caesar cipher</strong> — a much simpler cipher that shares Enigma’s core idea: shift each letter by some amount. Break the Caesar cipher, and you understand the shape of the problem Turing was solving at scale.</p>
+<pre class="text"><code>ALGORITHM: caesar_encrypt
+INPUT:     plaintext — a string of letters and other characters
+           shift     — an integer between 0 and 25
+OUTPUT:    the encrypted string
+
+1. SET result = empty string
+2. FOR each character c in plaintext:
+       2a. IF c is a letter:
+              shift c by `shift` positions in the alphabet
+              wrap around from Z back to A
+              APPEND the new letter to result
+           OTHERWISE:
+              APPEND c to result unchanged
+3. RETURN result</code></pre>
+<div id="cell-35-enigma-encrypt" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="20db070a-7ef4-4326-d18f-4acb0c0eab45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caesar_encrypt(plaintext, shift):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Encrypt a string by shifting each letter by `shift` positions."""</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> plaintext.upper():</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c.isalpha():</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            shifted <span class="op">=</span> (<span class="bu">ord</span>(c) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">'A'</span>) <span class="op">+</span> shift) <span class="op">%</span> <span class="dv">26</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> result <span class="op">+</span> <span class="bu">chr</span>(shifted <span class="op">+</span> <span class="bu">ord</span>(<span class="st">'A'</span>))</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> result <span class="op">+</span> c</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>message   <span class="op">=</span> <span class="st">"THE EAGLE HAS LANDED"</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>encrypted <span class="op">=</span> caesar_encrypt(message, <span class="dv">13</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original:  </span><span class="sc">{</span>message<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Encrypted: </span><span class="sc">{</span>encrypted<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Original:  THE EAGLE HAS LANDED
+Encrypted: GUR RNTYR UNF YNAQRQ</code></pre>
+</div>
+</div>
+</section>
+<section id="walking-through-the-code-2" class="level3">
+<h3 class="anchored" data-anchor-id="walking-through-the-code-2">Walking Through the Code</h3>
+<p>Three new Python tools appear here:</p>
+<ul>
+<li><strong><code>ord(c)</code></strong> — returns the numeric code of a character. <code>ord('A')</code> is 65, <code>ord('B')</code> is 66, <code>ord('Z')</code> is 90.</li>
+<li><strong><code>chr(n)</code></strong> — the reverse: <code>chr(65)</code> is <code>'A'</code>.</li>
+<li><strong><code>%</code></strong> — the <strong>modulo operator</strong>, which returns the remainder after division. <code>27 % 26 = 1</code>, <code>52 % 26 = 0</code>. This is what wraps letters around: if you shift <code>Z</code> by 1, you get <code>A</code>, not some off-the-end character.</li>
+</ul>
+<p><strong>Line by line:</strong> - <code>for c in plaintext.upper():</code> — loop through each character of the uppercased input. - <code>if c.isalpha():</code> — only shift letters; leave spaces and punctuation alone. - <code>shifted = (ord(c) - ord('A') + shift) % 26</code> — this is four operations: 1. <code>ord(c) - ord('A')</code> — convert the letter to a 0-based index (A=0, B=1, …, Z=25) 2. <code>+ shift</code> — move it forward by <code>shift</code> positions 3. <code>% 26</code> — wrap around if we went past Z 4. (The result is still a number 0–25) - <code>chr(shifted + ord('A'))</code> — convert back to a letter (add 65 to get back into ASCII, then <code>chr</code> gives us the character).</p>
+<div id="cell-37-enigma-bruteforce" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4986c545-dd23-496f-a753-cc5e1330b20f">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turing's move, in miniature: try every possible shift, and let a human</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spot the one that reads like English.</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caesar_brute_force(ciphertext):</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Print all 25 possible decryptions."""</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Ciphertext: </span><span class="sc">{</span>ciphertext<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> shift <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">26</span>):</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        attempt <span class="op">=</span> caesar_encrypt(ciphertext, <span class="dv">26</span> <span class="op">-</span> shift)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Shift </span><span class="sc">{</span>shift<span class="sc">:2d}</span><span class="ss">: </span><span class="sc">{</span>attempt<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>caesar_brute_force(encrypted)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Ciphertext: GUR RNTYR UNF YNAQRQ
+
+Shift  1: FTQ QMSXQ TME XMZPQP
+Shift  2: ESP PLRWP SLD WLYOPO
+Shift  3: DRO OKQVO RKC VKXNON
+Shift  4: CQN NJPUN QJB UJWMNM
+Shift  5: BPM MIOTM PIA TIVLML
+Shift  6: AOL LHNSL OHZ SHUKLK
+Shift  7: ZNK KGMRK NGY RGTJKJ
+Shift  8: YMJ JFLQJ MFX QFSIJI
+Shift  9: XLI IEKPI LEW PERHIH
+Shift 10: WKH HDJOH KDV ODQGHG
+Shift 11: VJG GCING JCU NCPFGF
+Shift 12: UIF FBHMF IBT MBOEFE
+Shift 13: THE EAGLE HAS LANDED
+Shift 14: SGD DZFKD GZR KZMCDC
+Shift 15: RFC CYEJC FYQ JYLBCB
+Shift 16: QEB BXDIB EXP IXKABA
+Shift 17: PDA AWCHA DWO HWJZAZ
+Shift 18: OCZ ZVBGZ CVN GVIYZY
+Shift 19: NBY YUAFY BUM FUHXYX
+Shift 20: MAX XTZEX ATL ETGWXW
+Shift 21: LZW WSYDW ZSK DSFVWV
+Shift 22: KYV VRXCV YRJ CREUVU
+Shift 23: JXU UQWBU XQI BQDTUT
+Shift 24: IWT TPVAT WPH APCSTS
+Shift 25: HVS SOUZS VOG ZOBRSR</code></pre>
+</div>
+</div>
+<p>Scan the output. Exactly one line reads like English. A human spots it immediately; a simple dictionary-check program could spot it automatically. That’s the shape of codebreaking:</p>
+<ol type="1">
+<li><strong>Generate</strong> every possible answer systematically</li>
+<li><strong>Filter</strong> out the ones that are obviously wrong</li>
+<li><strong>Let a human</strong> (or a simple checker) recognize the right one</li>
+</ol>
+<p>Turing’s Bombe did a more sophisticated version of the same three steps — at thousands of configurations per minute. Historians estimate this work <strong>shortened the war in Europe by two to four years</strong> and saved millions of lives. Turing received no public recognition during his lifetime; he was prosecuted in 1952 for being gay and died in 1954 at age forty-one.</p>
+<blockquote class="blockquote">
+<p><strong>Cultural note.</strong> In the same year Colossus was dismantled on Churchill’s orders, George Orwell finished <em>Nineteen Eighty-Four</em> — a novel about a state that watches every communication. The math Turing used to defeat a surveillance regime is the same math a surveillance regime would use against its own citizens. Both uses are still with us.</p>
+</blockquote>
+</section>
+<section id="exercise-3-breaking-caesar-with-a-hint-ai-assisted" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-breaking-caesar-with-a-hint-ai-assisted">✏️ Exercise 3 — Breaking Caesar with a Hint &nbsp; 🤖 <em>AI-Assisted</em></h3>
+<p>Ask Gemini to modify <code>caesar_brute_force</code> to add an English-plausibility check: print <code>&lt;&lt;&lt; POSSIBLE MATCH</code> next to any decryption that contains <strong>at least three</strong> of these common words:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"the"</span>, <span class="st">"and"</span>, <span class="st">"is"</span>, <span class="st">"to"</span>, <span class="st">"a"</span>, <span class="st">"in"</span>, <span class="st">"of"</span>, <span class="st">"it"</span>, <span class="st">"you"</span>, <span class="st">"that"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Then:</strong> 1. Encrypt a sentence of your own and run the modified brute-forcer. 2. Does the marker appear on the correct line? Any false positives? 3. In a markdown cell: what kind of message would fool this heuristic?</p>
+</section>
+<section id="communications-and-secret-keeping-from-turing-to-the-present" class="level3">
+<h3 class="anchored" data-anchor-id="communications-and-secret-keeping-from-turing-to-the-present">Communications and Secret-Keeping from Turing to the Present</h3>
+<p>Alan Turing’s work on the Bombe during WWII proved that machines could break complex ciphers by searching for patterns and eliminating impossibilities at high speed. As computers evolved and communication moved to digital networks, the arms race between cryptography and cryptanalysis transformed the world, shifting encryption from a purely military domain to a foundation of everyday life.</p>
+<p>Here are five major milestones in the evolution of digital secret-keeping:</p>
+<ol type="1">
+<li><strong>Public-Key Cryptography (1970s):</strong> The invention of asymmetric cryptography (such as RSA by Rivest, Shamir, and Adleman) allowed two parties to share secrets over an insecure channel without meeting beforehand to exchange keys, enabling modern digital trust and e-commerce.</li>
+<li><strong>The Data Encryption Standard (1977):</strong> The US government adopted DES as a standard for unclassified data, accelerating the commercial use of encryption and spurring global academic research into cryptanalysis.</li>
+<li><strong>The Web and SSL/TLS (1990s):</strong> The creation of the Secure Sockets Layer (SSL) allowed encrypted traffic over the World Wide Web, ensuring that passwords, credit card numbers, and private data could be safely transmitted across the internet.</li>
+<li><strong>End-to-End Encryption (2010s):</strong> Messaging apps like Signal and WhatsApp adopted protocols where only the communicating users can read the messages. This means not even the service providers have the keys to decrypt the conversations.</li>
+<li><strong>Post-Quantum Cryptography (Present):</strong> With the theoretical advent of quantum computers—which could break RSA and other traditional encryption instantly using algorithms like Shor’s—researchers and governments are actively developing and standardizing new cryptographic algorithms resistant to quantum attacks.</li>
+</ol>
+</section>
+</section>
+<section id="algorithm-4-weizenbaums-eliza-1966" class="level2">
+<h2 class="anchored" data-anchor-id="algorithm-4-weizenbaums-eliza-1966">Algorithm 4 — Weizenbaum’s ELIZA (1966)</h2>
+<section id="the-problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-3">The Problem</h3>
+<p>By the mid-1960s, computers could process text quickly enough to respond to a human typing at a keyboard. The open question was: could a program hold a <em>conversation</em>?</p>
+<p><strong>Joseph Weizenbaum</strong> at MIT wrote <strong>ELIZA</strong> to demonstrate how hard natural language was. His goal was to show that a program with no understanding could produce convincing responses <em>only</em> in narrow, highly scripted domains — like a psychotherapist who mostly reflects what the patient says.</p>
+<p><strong>What actually happened</strong> surprised him:</p>
+<ul>
+<li>His own secretary — who <em>knew</em> ELIZA was a program — asked him to leave the room so she could talk to it privately</li>
+<li>Other users reported feeling “understood”</li>
+<li>Some psychiatrists seriously proposed using ELIZA for actual patients</li>
+</ul>
+<p>Weizenbaum spent the rest of his career warning that humans project understanding onto anything that reflects their words back at them. He called this the <strong>ELIZA effect</strong>. It’s still the main reason modern chatbots feel smarter than they are.</p>
+</section>
+<section id="the-hardware-mainframes-and-time-sharing" class="level3">
+<h3 class="anchored" data-anchor-id="the-hardware-mainframes-and-time-sharing">The Hardware: Mainframes and Time-Sharing</h3>
+<p>ELIZA ran on MIT’s <strong>IBM 7094</strong> mainframe under a new operating system called <strong>CTSS</strong> — the Compatible Time-Sharing System. Three big things had changed since Turing’s day:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Turing era (1940s)</th>
+<th>ELIZA era (1960s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Switching element</td>
+<td>Vacuum tubes (fragile)</td>
+<td><strong>Transistors</strong> (tiny, reliable, cool)</td>
+</tr>
+<tr class="even">
+<td>Circuits</td>
+<td>Hand-wired, one-off</td>
+<td><strong>Integrated circuits</strong> — many transistors on one chip</td>
+</tr>
+<tr class="odd">
+<td>How you used it</td>
+<td>Book the whole machine for hours</td>
+<td><strong>Time-sharing</strong> — many users, seemingly simultaneously</td>
+</tr>
+<tr class="even">
+<td>How you typed</td>
+<td>Paper tape, plugboards</td>
+<td>Electric teletype connected to the mainframe</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why this matters for ELIZA specifically:</strong> time-sharing meant a user could type a sentence and get an instant reply — the mainframe juggled dozens of users, giving each a tiny slice of attention. Before time-sharing, an interactive chatbot would have been nonsensical — who runs the whole multimillion-dollar machine for a conversation? After time-sharing, interactive programs became the norm.</p>
+<p>ELIZA itself was written in <strong>SLIP</strong>, a list-processing language — an ancestor of the data structures (lists, dictionaries) you’re using right now.</p>
+</section>
+<section id="the-algorithm-in-pseudocode-3" class="level3">
+<h3 class="anchored" data-anchor-id="the-algorithm-in-pseudocode-3">The Algorithm in Pseudocode</h3>
+<p>ELIZA’s core trick was <strong>pattern matching with templated responses</strong>. Stripped to essentials:</p>
+<pre class="text"><code>ALGORITHM: eliza_respond
+INPUT:     user_input — a sentence the user typed
+           rules      — a list of (trigger, response_template) pairs
+OUTPUT:    a string response
+
+1. CONVERT user_input to lowercase
+2. FOR each (trigger, template) in rules:
+       2a. IF trigger appears in user_input:
+              2b. EXTRACT the text after the trigger → call it rest
+              2c. FILL the template with rest
+              2d. RETURN the filled-in template
+3. RETURN a generic fallback response</code></pre>
+<p>That’s the whole algorithm. Nine lines of pseudocode. No model of the world; no memory of the conversation; no understanding of any word.</p>
+<div id="cell-44-eliza-flowchart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:713}}" data-outputid="22193a5d-6e4c-445d-f33b-48a229bc02b9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ELIZA's logic as a flowchart.</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"A"</span>, <span class="st">"user_input"</span>,                         fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"B"</span>, <span class="st">"lowercase it"</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"C"</span>, <span class="st">"more rules</span><span class="ch">\n</span><span class="st">to check?"</span>,              shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"D"</span>, <span class="st">"does trigger</span><span class="ch">\n</span><span class="st">appear in input?"</span>,     shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"E"</span>, <span class="st">"extract text after trigger</span><span class="ch">\n</span><span class="st">fill into template"</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"F"</span>, <span class="st">"return response"</span>,                    fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"G"</span>, <span class="st">'return "Please go on."'</span>,             fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>dot.edges([(<span class="st">"A"</span>,<span class="st">"B"</span>), (<span class="st">"B"</span>,<span class="st">"C"</span>)])</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"D"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"G"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"E"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"C"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"E"</span>, <span class="st">"F"</span>)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-12-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> every path ends at a returned string — match a rule and fill its template, or fall through to the default. No box anywhere ‘understands’ the sentence. The Python next implements exactly this.</p>
+<div id="cell-45-eliza-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ea56e2b0-2625-45a2-e592-82c709f8e94b">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A minimal ELIZA. Each rule is a pair: (trigger phrase, response template).</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ELIZA_RULES <span class="op">=</span> [</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i feel"</span>,    <span class="st">"Why do you feel </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i am"</span>,      <span class="st">"How long have you been </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i need"</span>,    <span class="st">"What would it mean to you if you got </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my mother"</span>, <span class="st">"Tell me more about your family."</span>),</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my father"</span>, <span class="st">"Tell me more about your family."</span>),</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i think"</span>,   <span class="st">"Do you really think </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"because"</span>,   <span class="st">"Is that the real reason?"</span>),</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"always"</span>,    <span class="st">"Can you think of a specific example?"</span>),</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"everyone"</span>,  <span class="st">"Really — everyone?"</span>),</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eliza_respond(user_input, rules<span class="op">=</span>ELIZA_RULES):</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    lowered <span class="op">=</span> user_input.lower().strip()</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> trigger, template <span class="kw">in</span> rules:</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> trigger <span class="kw">in</span> lowered:</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>            rest <span class="op">=</span> lowered.split(trigger, <span class="dv">1</span>)[<span class="dv">1</span>].strip()</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> template.<span class="bu">format</span>(rest<span class="op">=</span>rest)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Please go on."</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"My name is ELIZA. How are you feeling today? (Type 'quit' to exit)"</span>)</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    line <span class="op">=</span> <span class="bu">input</span>(<span class="st">"You:   "</span>)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> line.lower() <span class="kw">in</span> [<span class="st">'quit'</span>, <span class="st">'exit'</span>]:</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"ELIZA: Goodbye!"</span>)</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(line)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>My name is ELIZA. How are you feeling today? (Type 'quit' to exit)
+You:   quit
+ELIZA: Goodbye!</code></pre>
+</div>
+</div>
+</section>
+<section id="walking-through-the-code-3" class="level3">
+<h3 class="anchored" data-anchor-id="walking-through-the-code-3">Walking Through the Code</h3>
+<ul>
+<li><code>ELIZA_RULES = [ ... ]</code> — a <strong>list of tuples</strong>. Each tuple has two parts: a trigger phrase and a response template with a <code>{rest}</code> placeholder.</li>
+<li><code>def eliza_respond(user_input, rules=ELIZA_RULES):</code> — the <code>rules=ELIZA_RULES</code> is a <strong>default argument</strong>: if the caller doesn’t supply rules, we use our predefined ones.</li>
+<li><code>lowered = user_input.lower().strip()</code> — lowercase (so <code>"I Feel"</code> matches <code>"i feel"</code>) and strip off leading/trailing whitespace.</li>
+<li><code>for trigger, template in rules:</code> — loop through the rules, unpacking each tuple into two variables.</li>
+<li><code>if trigger in lowered:</code> — does the trigger appear anywhere in the user’s input?</li>
+<li><code>rest = lowered.split(trigger, 1)[1].strip()</code> — split the input <em>once</em> at the trigger; take everything after it. (For <code>"i feel lonely"</code> with trigger <code>"i feel"</code>, <code>rest</code> becomes <code>"lonely"</code>.)</li>
+<li><code>return template.format(rest=rest)</code> — fill in the template and return. <code>"Why do you feel {rest}?"</code> becomes <code>"Why do you feel lonely?"</code>.</li>
+<li><code>return "Please go on."</code> — if <em>no</em> rule matched, the universal therapist hedge.</li>
+</ul>
+<p><strong>The key insight:</strong> the program never looked up the meaning of <code>"lonely"</code>. It substituted a string. The sense of being understood came entirely from the human reader’s brain filling in meaning that wasn’t there.</p>
+<p><strong>Modern LLMs (Gemini, Claude, GPT) are vastly more sophisticated than ELIZA</strong> — trained on hundreds of billions of words, capable of fluent responses on any topic. But they share ELIZA’s fundamental property: they predict <strong>plausible-sounding text</strong> without having a model of what the text <em>refers to</em>.</p>
+<ul>
+<li>ELIZA had no model of what <code>"lonely"</code> means; it just substituted the word</li>
+<li>An LLM has no model of what a running program <em>does</em>; it predicts plausible code</li>
+<li>When an LLM writes a function that doesn’t work, it isn’t careless — it’s predicting text that <em>looks</em> like working code</li>
+</ul>
+<p><strong>Your job as a programmer is to tell correct code from plausible-looking code.</strong> The verification habits we introduced in the opening — run, test, read carefully — are the only reliable defense.</p>
+<blockquote class="blockquote">
+<p><strong>Cultural note.</strong> Two years after ELIZA debuted, Kubrick’s <em>2001: A Space Odyssey</em> introduced HAL 9000 — a spaceship computer that speaks calmly, reasons apparently, and eventually kills the crew. ELIZA and HAL asked the same question: <em>how would you know if the machine actually understood?</em> The answer matters less for your homework than you might think. It matters enormously for everything else.</p>
+</blockquote>
+</section>
+<section id="exercise-4-giving-eliza-a-fictional-personality" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-giving-eliza-a-fictional-personality">✏️ Exercise 4 — Giving ELIZA a Fictional Personality</h3>
+<p>Create a NEW version of Eliza (in a new code cell) with at least <strong>ten new rules</strong> (replacing current) <code>ELIZA_RULES</code> that give ELIZA the personality of your <strong>favorite fictional character</strong>. You can use AI to help.</p>
+<p>Here are 10 examples of characters you could choose to get you thinking: 1. <strong>Yoda</strong> — “Why do you feel {rest}, hmmm?” 2. <strong>Darth Vader</strong> — “I find your need for {rest} disturbing.” 3. <strong>Gollum</strong> — “We wants {rest}, precious, yes we does!” 4. <strong>Sherlock Holmes</strong> — “It is elementary that you think {rest}.” 5. <strong>Hermione Granger</strong> — “According to the books, {rest} is clearly wrong. Have you done your research?” 6. <strong>Michael Scott</strong> — “That’s what she said about {rest}!” 7. <strong>Homer Simpson</strong> — “Mmm… {rest}…” 8. <strong>GLaDOS</strong> — “I am generating a deadly neurotoxin because you feel {rest}.” 9. <strong>Ron Swanson</strong> — “I have no interest in {rest}. Give me all the bacon and eggs you have.” 10. <strong>Spock</strong> — “It is highly illogical that you need {rest}.” 11. <strong>Katniss Everdeen</strong> — “I’m not interested in {rest}. I just want to survive.” 12. <strong>Leslie Knope</strong> — “I am <em>so</em> excited that you care about {rest}! This is amazing!”</p>
+<p><strong>Requirements:</strong> 1. Your triggers must not already appear in <code>ELIZA_RULES</code>. 2. Write a test conversation of at least six exchanges interacting with your character. 3. In a markdown cell: - Did the illusion of understanding feel stronger or weaker than the original? - What would a user have to type to <em>break</em> the illusion?</p>
+</section>
+</section>
+<section id="closing-the-pattern-across-the-four" class="level2">
+<h2 class="anchored" data-anchor-id="closing-the-pattern-across-the-four">Closing: The Pattern Across the Four</h2>
+<p>Each algorithm solved a specific, urgent problem with the hardware of its era:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Algorithm</th>
+<th>Era’s hardware</th>
+<th>Core idea you learned</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lovelace (1843)</td>
+<td>Gears, steam, punch cards</td>
+<td>Loops + accumulator + functions</td>
+</tr>
+<tr class="even">
+<td>Hollerith (1890)</td>
+<td>Electromechanical relays</td>
+<td>Dictionaries + lists of records</td>
+</tr>
+<tr class="odd">
+<td>Turing (1940s)</td>
+<td>Vacuum tubes + rotors</td>
+<td>String manipulation + brute-force search</td>
+</tr>
+<tr class="even">
+<td>Weizenbaum (1966)</td>
+<td>Transistors + time-sharing</td>
+<td>Pattern matching + templated substitution</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The pattern underneath:</strong> every algorithm is a precise sequence of steps that a machine can follow <em>without understanding</em>. The hardware changes by many orders of magnitude. The basic ideas — loops, conditions, functions, lookups, patterns — barely change at all.</p>
+<p>When you ask Gemini to write code later this week, you are standing on this entire stack. The machine is faster than Babbage imagined by a factor of a trillion. The algorithmic ideas are the ones Lovelace, Hollerith, Turing, and Weizenbaum already had.</p>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Abstraction</strong> — Hiding specific details behind a general interface, so the same tool handles many cases (e.g., <code>count_by_field</code> works on any field).</li>
+<li><strong>Accumulator</strong> — A variable used inside a loop to build up a result across iterations.</li>
+<li><strong>Algorithm</strong> — A precise, step-by-step procedure for solving a problem. The central object of study in computer science.</li>
+<li><strong>Analytical Engine</strong> — Babbage’s proposed (never built) mechanical general-purpose computer; the target of Lovelace’s first program.</li>
+<li><strong>Brute-force search</strong> — A strategy that systematically tries all possible options.</li>
+<li><strong>Caesar cipher</strong> — A simple substitution cipher that shifts each letter a fixed number of positions.</li>
+<li><strong>Dictionary</strong> — A Python data structure that stores values indexed by keys.</li>
+<li><strong>ELIZA effect</strong> — Humans’ tendency to attribute understanding to a program that is doing simple pattern-matching.</li>
+<li><strong>Flowchart</strong> — A visual diagram of an algorithm’s steps and decisions.</li>
+<li><strong>Function</strong> — A named, reusable block of code that takes inputs and optionally returns a value.</li>
+<li><strong>Integrated circuit</strong> — Many transistors fabricated on a single chip; the foundation of modern hardware (1958 onward).</li>
+<li><strong>Large Language Model (LLM)</strong> — An AI trained on massive text to generate plausible language (Gemini, Claude, GPT).</li>
+<li><strong>List of dictionaries</strong> — A Python structure shaped like a database table; each dictionary is a row.</li>
+<li><strong>Modulo (<code>%</code>)</strong> — Remainder after division; used here to wrap letter shifts around the alphabet.</li>
+<li><strong>Pattern matching</strong> — Checking whether an input contains a specified keyword or phrase.</li>
+<li><strong>Pseudocode</strong> — Language-neutral, structured plain English describing an algorithm.</li>
+<li><strong>Punch card</strong> — A stiff paper card storing data as hole positions; the dominant input medium from the 1890s to the 1970s.</li>
+<li><strong>Time-sharing</strong> — An operating-system technique that lets many users share one mainframe as if each had it alone.</li>
+<li><strong>Transistor</strong> — A solid-state electronic switch; replaced vacuum tubes starting in the 1950s.</li>
+<li><strong>Vacuum tube</strong> — A glass-bulb electronic switch used in early computers; fragile, hot, fast.</li>
+<li><strong>Verification</strong> — Checking that code actually does what it claims, by running and testing it.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p><strong>The big idea:</strong> Computer science is the study of algorithms — not computers. Algorithms are older than computers, and they outlive any specific machine.</p>
+<p><strong>The authoring workflow this course will use:</strong> problem → pseudocode → flowchart → Python → verify. We practiced all four steps in this notebook.</p>
+<p><strong>The AI habit to build now:</strong> AI is a fast first draft. Run it, test it, verify it before you trust it.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p>In <strong>Notebook 2</strong> we go <em>inside</em> the machine: how does a CPU actually execute instructions, how does memory work, and how does everything — text, images, sound — reduce to 0s and 1s? The hardware evolution we sketched in this notebook will become concrete: you’ll see, in detail, how a transistor becomes a logic gate, a logic gate becomes an adder, and an adder becomes a computer.</p>
+<p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em><br>
+<em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. </em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -27,6 +27,8 @@ website:
         href: index.qmd
       - text: "Course"
         href: summer_2026/index.qmd
+      - text: "Notebooks"
+        href: summer_2026/index.qmd#notebooks
       - text: "Case Studies"
         href: summer_2026/cases/index.qmd
     right:

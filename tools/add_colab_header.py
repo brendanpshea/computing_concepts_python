@@ -41,11 +41,27 @@ def make_cell(rel_path: str) -> dict:
     }
 
 
+def strip_dividers(source: list[str]) -> list[str]:
+    """Remove standalone `---` lines (markdown horizontal rules / cell dividers).
+
+    These break Quarto's YAML parser when notebooks are rendered, and the
+    author doesn't want them. Lines containing only `---` (with optional
+    surrounding whitespace) are dropped. Preserves trailing newlines on
+    neighboring lines.
+    """
+    return [ln for ln in source if ln.strip() != "---"]
+
+
 def update_notebook(path: Path, repo_root: Path) -> bool:
     rel_path = path.relative_to(repo_root).as_posix()
-    nb = json.loads(path.read_text(encoding="utf-8"))
+    original = path.read_text(encoding="utf-8")
+    nb = json.loads(original)
     cells = nb.get("cells", [])
     new_cell = make_cell(rel_path)
+
+    for c in cells:
+        if c.get("cell_type") == "markdown" and MARKER not in "".join(c.get("source", [])):
+            c["source"] = strip_dividers(c.get("source", []))
 
     existing_idx = next(
         (i for i, c in enumerate(cells)
@@ -57,15 +73,13 @@ def update_notebook(path: Path, repo_root: Path) -> bool:
     if existing_idx is None:
         cells.insert(0, new_cell)
     else:
-        if cells[existing_idx].get("source") == new_cell["source"]:
-            return False
         cells[existing_idx] = new_cell
 
     nb["cells"] = cells
-    path.write_text(
-        json.dumps(nb, indent=1, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+    new_text = json.dumps(nb, indent=1, ensure_ascii=False) + "\n"
+    if new_text == original:
+        return False
+    path.write_text(new_text, encoding="utf-8")
     return True
 
 
