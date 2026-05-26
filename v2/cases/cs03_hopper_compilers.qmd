@@ -173,11 +173,11 @@ None of this is an argument for ripping out the compilers, or the languages, or 
 
 ## Discussion Questions
 
-1. Run `total_with_tip(50.00, 20)` from the snippet by hand. Now change one line so the function also charges 7% tax on the bill *before* the tip. What is the new line? What does the function return for a $50 bill at 20% tip?
+1. Hopper's bargain was: trust the compiler so more people can write code. Describe a bargain like this from a field outside computing — accepting a layer of automation in exchange for wider access to some skill or service. What did people give up, and was it worth it? Use an example of your own, not one from the case.
 2. An LLM gives you Python that starts `import quickstats`. You search PyPI and a package called `quickstats` exists. Should you install it? List three things you would check first, and say what each check is protecting you from.
 3. Write **The Hopper Argument** and **The Dijkstra Reply** in your own words. What is the one thing they really disagree about? What kind of evidence could settle it?
 4. You manage a small team in 1955. A salesperson from Remington Rand is pitching you Hopper's compiler. You do not trust it. Write the three questions you would ask before letting your team use it. Now rewrite the same three questions for a salesperson pitching you an AI code assistant in 2026. What stayed the same?
-5. Pick one of these tools: a spreadsheet macro recorder, a website builder that produces HTML from drag-and-drop, or an LLM that writes SQL from a plain-English question. Apply the labor reply to it. Who used to do this work? Who does it now? Who benefits, and who pays?
+5. Pick one of these tools: a spreadsheet macro recorder, a website builder that produces HTML from drag-and-drop, or an LLM that writes SQL from a plain-English question. Apply the labor reply to it. Who used to do this work? Who does it now? The case notes that programming was largely women's work in the 1950s and largely men's by the 1980s — does the pattern you traced echo that shift, reverse it, or do something different?
 
 ## Further Reading
 

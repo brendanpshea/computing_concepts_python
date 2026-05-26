@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-05-21">
+<meta name="dcterms.date" content="2026-05-26">
 
 <title>The Therac-25: When Control Flow Kills – Computing Concepts with Python</title>
 <style>
@@ -217,7 +217,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 21, 2026</p>
+      <p class="date">May 26, 2026</p>
     </div>
   </div>
   
@@ -464,7 +464,7 @@ Figure&nbsp;1: The Therac-25 edit race. Read it as one operator action that fork
 <section id="discussion-questions" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
 <ol type="1">
-<li>Run the <code>setup_pass</code> snippet. It skips the position check once every 256 keypresses. Change the code so the check is <em>never</em> skipped. What does your version print for 260 keypresses?</li>
+<li>Explain to a friend with no programming background what a “race condition” is, using an analogy from outside computing — kitchens, traffic, sports, anything you know well. What does your analogy get right about what happened with the Therac-25? Where does the analogy break down?</li>
 <li>The edit race happened because two pieces of code ran in the wrong order. Name one way to stop the bug — for example, a lock, a hardware interlock, or a “wait until ready” signal. Which would you choose? Why?</li>
 <li>Write <strong>The Programmer-Blame Argument</strong> and <strong>The Systems Reply</strong> in your own words. What is the one thing they really disagree about? What evidence could settle it?</li>
 <li>You are the operator in Tyler. The console says <code>MALFUNCTION 54</code>. Your training says this means <em>underdose</em>. The intercom to the patient is broken. Do you press “P” to continue? Why? What does your answer say about a system that puts this choice on you?</li>

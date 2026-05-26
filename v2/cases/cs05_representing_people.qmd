@@ -150,7 +150,7 @@ This puts the case in a sharper place than it sat in 2018. The pure technical ob
 
 ## Discussion Questions
 
-1. Take the `Person` dict from Implementation 1 in "How It Worked." Rewrite it so it can also store someone who uses one name only (for example, a person named "Madonna"). What did you change? Now write a `display_name(person)` function that works for both the old and the new records.
+1. Pick a category you have personally seen a form or website handle badly — a name, a relationship, a country, a profession, anything. Describe what the form assumed about you, and what happened when your case did not fit. What would the schema have needed to look like to handle you without an exception path?
 2. An LLM returns a SQL schema for a new app that includes `gender CHAR(1)`. You ask it to support more gender options. It gives you `gender VARCHAR(20)` with a CHECK constraint listing three values. List three things this still gets wrong about real users, and one new problem the change has introduced.
 3. Write **The Universalist Argument** and **The Pluralist Reply** in your own words. What is the one thing they really disagree about? What kind of evidence could settle it?
 4. You are the engineer designing the user profile table for a new dating app launching in thirty countries. Sketch the schema for `name`, `gender`, and `nationality`. Defend each choice in one sentence — including what each choice will *not* be able to represent.

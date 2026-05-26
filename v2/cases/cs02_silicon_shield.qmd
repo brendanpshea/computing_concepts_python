@@ -138,10 +138,10 @@ The neat lesson would be that the controls "worked" or "failed." The honest answ
 
 ## Discussion Questions
 
-1. Trace the Moore-predict procedure by hand, but with a doubling period of 3 years instead of 2. Start at 2,300 transistors in 1971. In what year does the count first pass 100 billion? Roughly how many years later is that than the original 2-year prediction?
-2. Apply the `reach` rule for FP32 floats (4 bytes each) instead of single bytes. About how many FP32 numbers fit in a 16 GB GPU? How many FP16 numbers (2 bytes each)? How many FP8 (1 byte each)?
+1. Moore's Law was a prediction that became a target — the industry organized itself for sixty years to make the prediction come true. Pick another field (sports records, life expectancy, internet speed, anything) where a forecast or schedule seems to have become self-fulfilling in this way. What did the field gain by committing to the target, and what got distorted because of it?
+2. Explain to a friend who knows nothing about chips why a country might treat one company (TSMC) as more strategically important than several of its own military bases. Use plain words and no jargon. What is the single fact your friend has to accept before the rest of your explanation makes sense?
 3. Write **The Export-Control Argument** and **The Fragmentation Reply** in your own words. What is the one thing they really disagree about?
-4. You are at the U.S. Bureau of Industry and Security in March 2026. Your draft rule restricts a new chip. Huawei is expected to respond with its own version within a year. Do you publish the rule? Why?
+4. You are at the U.S. Bureau of Industry and Security in March 2026. Your draft rule restricts a new chip — and a parallel rule tightens visa scrutiny for Chinese graduate students in semiconductor research at U.S. universities. Most of those students have no link to Chinese military programs. Do you publish both rules together, split them apart, or pull the visa rule entirely? Defend your choice.
 5. Pick one: the phone in your pocket, a U.S. F-35 fighter, a chatbot you have used. Trace its dependence on TSMC. What would change about it if TSMC stopped shipping tomorrow?
 
 ## Further Reading

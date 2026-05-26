@@ -208,7 +208,7 @@ Who authored it? The model has no professional duty and no license to revoke. Th
 
 ## Discussion Questions
 
-1. Run the `setup_pass` snippet. It skips the position check once every 256 keypresses. Change the code so the check is *never* skipped. What does your version print for 260 keypresses?
+1. Explain to a friend with no programming background what a "race condition" is, using an analogy from outside computing — kitchens, traffic, sports, anything you know well. What does your analogy get right about what happened with the Therac-25? Where does the analogy break down?
 2. The edit race happened because two pieces of code ran in the wrong order. Name one way to stop the bug — for example, a lock, a hardware interlock, or a "wait until ready" signal. Which would you choose? Why?
 3. Write **The Programmer-Blame Argument** and **The Systems Reply** in your own words. What is the one thing they really disagree about? What evidence could settle it?
 4. You are the operator in Tyler. The console says `MALFUNCTION 54`. Your training says this means *underdose*. The intercom to the patient is broken. Do you press "P" to continue? Why? What does your answer say about a system that puts this choice on you?

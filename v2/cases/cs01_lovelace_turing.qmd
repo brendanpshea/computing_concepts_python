@@ -154,8 +154,8 @@ Neither side has gone away. The disagreement was never really about machines. It
 
 ## Discussion Questions
 
-1. Follow the factorial procedure by hand for $n = 6$. Then change one line so it computes $1 + 2 + 3 + \ldots + n$ instead. What is the new line? What is the new output for $n = 6$?
-2. The interpreter only knows `+`, `*`, and numbers. Extend the pseudocode so it also handles `-` (subtract). Write one short program in the new instruction set. What is its output?
+1. Lovelace insisted that *designing* a procedure was the original work and that the machine's execution was only the carrying-out. Use an example from outside computing — a recipe being cooked, a piece of music being performed, an athlete following a coach's plan — to argue for or against her view. Where in your example does the "originating" actually happen?
+2. Lovelace was schooled in mathematics partly to keep her from her father's temperament, published under her initials, and was barred from the Royal Society her whole life. Turing was prosecuted for his sexuality and may have died by suicide as a result. Pick one of them. Does the institutional and personal context they worked inside change how you should read their technical argument about machines? What would you lose by treating the work as separable from the life?
 3. Write **The Lovelace Objection** and **Turing's Reply** in your own words. What is the one thing they really disagree about?
 4. You are a 2026 conference reviewer. A paper claims its new model "thinks." What three short questions would you ask the authors before deciding?
 5. Pick one: ChatGPT, a self-driving car, a chess engine. Does it pass Turing's test? Does passing the test matter for whether *you* would call it thinking?

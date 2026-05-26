@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-05-25">
+<meta name="dcterms.date" content="2026-05-26">
 
 <title>How We Represent People: ADTs and the Ethics of Data Modeling – Computing Concepts with Python</title>
 <style>
@@ -217,7 +217,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 25, 2026</p>
+      <p class="date">May 26, 2026</p>
     </div>
   </div>
   
@@ -342,7 +342,7 @@ div.csl-indent {
 <section id="discussion-questions" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
 <ol type="1">
-<li>Take the <code>Person</code> dict from Implementation 1 in “How It Worked.” Rewrite it so it can also store someone who uses one name only (for example, a person named “Madonna”). What did you change? Now write a <code>display_name(person)</code> function that works for both the old and the new records.</li>
+<li>Pick a category you have personally seen a form or website handle badly — a name, a relationship, a country, a profession, anything. Describe what the form assumed about you, and what happened when your case did not fit. What would the schema have needed to look like to handle you without an exception path?</li>
 <li>An LLM returns a SQL schema for a new app that includes <code>gender CHAR(1)</code>. You ask it to support more gender options. It gives you <code>gender VARCHAR(20)</code> with a CHECK constraint listing three values. List three things this still gets wrong about real users, and one new problem the change has introduced.</li>
 <li>Write <strong>The Universalist Argument</strong> and <strong>The Pluralist Reply</strong> in your own words. What is the one thing they really disagree about? What kind of evidence could settle it?</li>
 <li>You are the engineer designing the user profile table for a new dating app launching in thirty countries. Sketch the schema for <code>name</code>, <code>gender</code>, and <code>nationality</code>. Defend each choice in one sentence — including what each choice will <em>not</em> be able to represent.</li>

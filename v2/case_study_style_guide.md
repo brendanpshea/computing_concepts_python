@@ -148,16 +148,27 @@ think-piece. The case must do all three, fused.
   inside parentheticals, no "drawing on X and Y, do Z" stacking. Many
   students read in their second language; if a sentence has more than
   ~20 words, split it.
+- **Discussion-shaped, not exercise-shaped.** Every question must pass
+  the "could 30 students give substantively different defensible
+  answers" test. These cases are used in large lectures and async
+  online forums; a question like *"modify the function to compute X"*
+  or *"what does this code return?"* collapses the moment one student
+  posts the answer. The CS-fluency check belongs in "How It Worked,"
+  not here. Favor: explain in your own words, draw an analogy,
+  connect to other course material or to your own experience, take
+  and defend a position, do open-ended problem solving with multiple
+  defensible answers.
 - 5 questions, none with a single correct answer. Mix technical and
   ethical — at least 2 of each across the set.
-- ≥1 asks students to **work the CS** — modify the snippet, predict
-  output, design a small change, or apply the concept to a fresh
-  scenario.
+- ≥1 asks students to **explain the core CS concept** — in their own
+  words, via an analogy, or by connecting it to something else they
+  know. (No "predict the output" or "modify the snippet.")
 - ≥1 makes students **reconstruct two positions and name what they
   actually disagree about**.
-- ≥1 puts the student **inside the scenario as a decision-maker**.
+- ≥1 puts the student **inside the scenario as a decision-maker**,
+  with a justification they have to argue for.
 - ≥1 applies the case's framework or technique to a **second
-  contrasting case**.
+  contrasting case** the student picks or is offered options for.
 
 ---
 
