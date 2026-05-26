@@ -58,39 +58,51 @@ def strip_dividers(source) -> list[str]:
 def normalize_form_cells(cells: list) -> None:
     """Sync metadata for `#@title`-marked code cells across Colab + Quarto.
 
-    A code cell whose first non-blank line starts with `#@title` is treated
-    as a hide-by-default helper cell (diagrams, arcade generators, etc.):
+    A code cell whose `#@title` line appears anywhere in its leading
+    comments is treated as a hide-by-default helper cell (diagrams,
+    arcade generators, etc.). The function:
 
-      - Colab:  metadata.cellView = "form" + jupyter.source_hidden = True
-                → renders as a clickable title bar; click reveals code.
-      - Quarto: cell tag "remove-input" if the cell has saved outputs
-                (keeps the diagram, hides the code) — otherwise
-                "remove-cell" (drops the cell entirely, used for
-                interactive helpers like the trace arcade that produce
-                no static output).
+      - Sets Colab metadata (`cellView: form` + `jupyter.source_hidden`)
+        so the cell collapses to a title bar in Colab.
+      - Injects a Quarto cell directive on line 1 — `#| echo: false`
+        for cells with saved outputs (keeps the diagram, hides the
+        code) or `#| include: false` for output-less cells (drops the
+        cell entirely, used for interactive arcades).
 
-    When the marker is removed from a cell, this cleanup also undoes the
-    metadata so the script is fully reversible/idempotent.
+    The Quarto directive must be the first line of the cell, so the
+    `#@title` line is pushed to line 2. Colab's form mode is triggered
+    by `cellView: form` (metadata, not source order), so this still
+    collapses correctly in Colab.
+
+    When the `#@title` line is removed, the cleanup undoes both the
+    metadata and the injected directive, so the script is reversible
+    and idempotent.
     """
     QUARTO_TAGS = ("remove-input", "remove-cell")
+    MANAGED_DIRECTIVES = ("#| echo: false", "#| include: false")
     for c in cells:
         if c.get("cell_type") != "code":
             continue
         src = c.get("source", "")
         text = "".join(src) if isinstance(src, list) else src
-        first_real = next((ln for ln in text.splitlines() if ln.strip()), "")
-        is_form = first_real.lstrip().startswith("#@title")
+        lines = text.splitlines(keepends=True)
+
+        # Strip any previously-managed directive so re-runs don't stack.
+        while lines and lines[0].strip() in MANAGED_DIRECTIVES:
+            lines.pop(0)
+
+        has_title = any(
+            ln.lstrip().startswith("#@title") for ln in lines[:5]
+        )
 
         md = c.setdefault("metadata", {})
-        tags = list(md.get("tags", []))
+        tags = [t for t in md.get("tags", []) if t not in QUARTO_TAGS]
 
-        if is_form:
+        if has_title:
             md["cellView"] = "form"
             md.setdefault("jupyter", {})["source_hidden"] = True
-            wanted = "remove-input" if c.get("outputs") else "remove-cell"
-            tags = [t for t in tags if t not in QUARTO_TAGS]
-            tags.append(wanted)
-            md["tags"] = tags
+            directive = "#| echo: false\n" if c.get("outputs") else "#| include: false\n"
+            lines.insert(0, directive)
         else:
             md.pop("cellView", None)
             jup = md.get("jupyter") or {}
@@ -99,11 +111,12 @@ def normalize_form_cells(cells: list) -> None:
                 md.pop("jupyter", None)
             else:
                 md["jupyter"] = jup
-            tags = [t for t in tags if t not in QUARTO_TAGS]
-            if tags:
-                md["tags"] = tags
-            else:
-                md.pop("tags", None)
+
+        if tags:
+            md["tags"] = tags
+        else:
+            md.pop("tags", None)
+        c["source"] = lines
 
 
 def update_notebook(path: Path, repo_root: Path) -> bool:
