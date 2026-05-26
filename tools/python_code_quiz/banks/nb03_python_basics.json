@@ -1,0 +1,158 @@
+{
+  "_notes": "PyQuiz bank for Notebook 3: Python Basics via Pseudocode & Flowcharts. Covers values, types, arithmetic, comparison/boolean, strings, and a few built-ins. Avoids conditionals, loops, and collections — those are introduced in NB4 and NB5.",
+  "questions": [
+    {
+      "function_name": "hello_world",
+      "parameters": [],
+      "description": "Your first function. Return the string 'Hello, World!' exactly — same capitalization, comma, and exclamation mark.",
+      "input_type": [],
+      "answer_code": "def hello_world():\n    return 'Hello, World!'",
+      "hint": "No parameters needed. Just `return 'Hello, World!'`.",
+      "test_inputs": [[]]
+    },
+    {
+      "function_name": "add_numbers",
+      "parameters": ["a", "b"],
+      "description": "Return the sum of the two numbers. add_numbers(3, 4) should return 7.",
+      "input_type": ["int", "int"],
+      "answer_code": "def add_numbers(a, b):\n    return a + b",
+      "hint": "Use the + operator.",
+      "test_inputs": [[3, 4], [10, 5], [0, 0], [-2, 7]]
+    },
+    {
+      "function_name": "double_number",
+      "parameters": ["number"],
+      "description": "Return double the given number. double_number(5) should return 10.",
+      "input_type": ["int"],
+      "answer_code": "def double_number(number):\n    return number * 2",
+      "hint": "Multiply by 2.",
+      "test_inputs": [[5], [0], [100], [-3]]
+    },
+    {
+      "function_name": "calculate_area",
+      "parameters": ["length", "width"],
+      "description": "Return the area of a rectangle given its length and width. calculate_area(4, 5) should return 20.",
+      "input_type": ["int", "int"],
+      "answer_code": "def calculate_area(length, width):\n    return length * width",
+      "hint": "Area = length × width.",
+      "test_inputs": [[4, 5], [10, 2], [7, 7], [1, 1]]
+    },
+    {
+      "function_name": "remainder_division",
+      "parameters": ["a", "b"],
+      "description": "Return the remainder when a is divided by b. Use the modulo operator (%). remainder_division(10, 3) should return 1.",
+      "input_type": ["int", "int"],
+      "answer_code": "def remainder_division(a, b):\n    return a % b",
+      "hint": "The % operator gives the remainder of integer division.",
+      "test_inputs": [[10, 3], [7, 2], [8, 4], [20, 6]]
+    },
+    {
+      "function_name": "absolute_value",
+      "parameters": ["number"],
+      "description": "Return the absolute value of a number, using the built-in abs() function. absolute_value(-5) should return 5.",
+      "input_type": ["int"],
+      "answer_code": "def absolute_value(number):\n    return abs(number)",
+      "hint": "Call abs() on the parameter.",
+      "test_inputs": [[-5], [5], [0], [-100]]
+    },
+    {
+      "function_name": "round_number",
+      "parameters": ["number"],
+      "description": "Round the number to the nearest integer using the built-in round() function. round_number(4.7) should return 5.",
+      "input_type": ["float"],
+      "answer_code": "def round_number(number):\n    return round(number)",
+      "hint": "Use round().",
+      "test_inputs": [[4.7], [3.2], [5.5], [-2.6]]
+    },
+    {
+      "function_name": "max_number",
+      "parameters": ["a", "b"],
+      "description": "Return the larger of two numbers, using the built-in max() function. max_number(5, 10) should return 10.",
+      "input_type": ["int", "int"],
+      "answer_code": "def max_number(a, b):\n    return max(a, b)",
+      "hint": "max(a, b) returns the larger one.",
+      "test_inputs": [[5, 10], [10, 5], [7, 7], [-3, -8]]
+    },
+    {
+      "function_name": "string_length",
+      "parameters": ["text"],
+      "description": "Return the number of characters in the string, using the built-in len() function. string_length('hello') should return 5.",
+      "input_type": ["string"],
+      "answer_code": "def string_length(text):\n    return len(text)",
+      "hint": "len() works on strings too.",
+      "test_inputs": [["hello"], [""], ["python is fun"]]
+    },
+    {
+      "function_name": "combine_strings",
+      "parameters": ["first_name", "last_name"],
+      "description": "Return the two names joined with a single space between them. combine_strings('Ada', 'Lovelace') should return 'Ada Lovelace'.",
+      "input_type": ["string", "string"],
+      "answer_code": "def combine_strings(first_name, last_name):\n    return first_name + ' ' + last_name",
+      "hint": "Concatenate with + and include a space in the middle.",
+      "test_inputs": [["Ada", "Lovelace"], ["Grace", "Hopper"], ["Alan", "Turing"]]
+    },
+    {
+      "function_name": "repeat_string",
+      "parameters": ["text", "times"],
+      "description": "Return the string repeated the given number of times. repeat_string('ab', 3) should return 'ababab'. In Python, multiplying a string by an integer repeats it: 'a' * 3 is 'aaa'.",
+      "input_type": ["string", "int"],
+      "answer_code": "def repeat_string(text, times):\n    return text * times",
+      "hint": "Use * between the string and the number.",
+      "test_inputs": [["ab", 3], ["hello", 2], ["x", 5], ["", 4]]
+    },
+    {
+      "function_name": "alien_greeting",
+      "parameters": ["name"],
+      "description": "Return the string 'Welcome to Earth, NAME!' where NAME is the input. alien_greeting('Spock') should return 'Welcome to Earth, Spock!'.",
+      "input_type": "string",
+      "answer_code": "def alien_greeting(name):\n    return f'Welcome to Earth, {name}!'",
+      "hint": "Use an f-string: f'Welcome to Earth, {name}!'.",
+      "test_inputs": ["Spock", "Klaatu", "Yoda", "E.T."]
+    },
+    {
+      "function_name": "convert_to_celsius",
+      "parameters": ["fahrenheit"],
+      "description": "Convert a Fahrenheit temperature to Celsius using the formula C = (F - 32) * 5/9. convert_to_celsius(32) should return 0.",
+      "input_type": ["float"],
+      "answer_code": "def convert_to_celsius(fahrenheit):\n    return (fahrenheit - 32) * 5/9",
+      "hint": "Watch operator precedence — subtract first, then multiply by 5/9.",
+      "test_inputs": [[32], [212], [68], [0]]
+    },
+    {
+      "function_name": "calculate_tip",
+      "parameters": ["bill_amount", "tip_percentage"],
+      "description": "Return the tip amount given a bill and a percentage (as a whole number — 15 means 15%). calculate_tip(50, 15) should return 7.5.",
+      "input_type": ["float", "int"],
+      "answer_code": "def calculate_tip(bill_amount, tip_percentage):\n    return bill_amount * (tip_percentage / 100)",
+      "hint": "Divide the percentage by 100 to turn it into a decimal, then multiply by the bill.",
+      "test_inputs": [[50, 15], [100, 20], [75, 18], [40, 10]]
+    },
+    {
+      "function_name": "calculate_bmi",
+      "parameters": ["weight_kg", "height_m"],
+      "description": "Return Body Mass Index given weight (kg) and height (m). Formula: BMI = weight / (height * height). calculate_bmi(70, 1.75) returns about 22.86.",
+      "input_type": ["float", "float"],
+      "answer_code": "def calculate_bmi(weight_kg, height_m):\n    return weight_kg / (height_m * height_m)",
+      "hint": "Divide weight by height squared. Parentheses matter.",
+      "test_inputs": [[70, 1.75], [60, 1.6], [80, 1.8], [55, 1.65]]
+    },
+    {
+      "function_name": "is_positive",
+      "parameters": ["number"],
+      "description": "Return True if the number is greater than zero, otherwise False. is_positive(5) returns True; is_positive(-3) returns False. (You can return a comparison directly — no `if` needed.)",
+      "input_type": ["int"],
+      "answer_code": "def is_positive(number):\n    return number > 0",
+      "hint": "`number > 0` is itself a Boolean. Just return it.",
+      "test_inputs": [[5], [0], [-3], [100]]
+    },
+    {
+      "function_name": "is_even",
+      "parameters": ["number"],
+      "description": "Return True if the number is even, otherwise False. Hint: a number is even when its remainder mod 2 is 0.",
+      "input_type": ["int"],
+      "answer_code": "def is_even(number):\n    return number % 2 == 0",
+      "hint": "Combine % with ==.",
+      "test_inputs": [[4], [7], [0], [-2]]
+    }
+  ]
+}

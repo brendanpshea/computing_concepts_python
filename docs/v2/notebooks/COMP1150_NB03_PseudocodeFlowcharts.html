@@ -178,6 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#printing-well" id="toc-printing-well" class="nav-link" data-scroll-target="#printing-well">Printing Well</a></li>
   <li><a href="#the-workflow-problem-pseudocode-flowchart-python" id="toc-the-workflow-problem-pseudocode-flowchart-python" class="nav-link" data-scroll-target="#the-workflow-problem-pseudocode-flowchart-python">The Workflow: Problem → Pseudocode → Flowchart → Python</a></li>
   <li><a href="#building-with-ai-plan-first-then-code" id="toc-building-with-ai-plan-first-then-code" class="nav-link" data-scroll-target="#building-with-ai-plan-first-then-code">Building With AI (Plan First, Then Code)</a></li>
+  <li><a href="#practice-pyquiz" id="toc-practice-pyquiz" class="nav-link" data-scroll-target="#practice-pyquiz">Practice: PyQuiz</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -1346,6 +1347,45 @@ OUTPUT:  share     — whole pounds each heir receives
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: translate YOUR revised pseudocode into Python below.</span></span>
 <span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the printing toolkit: f-strings, :.2f, alignment (:^ :&lt; :&gt;),</span></span>
 <span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># escape characters, and "-" * n for separator lines.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="practice-pyquiz" class="level2">
+<h2 class="anchored" data-anchor-id="practice-pyquiz">Practice: PyQuiz</h2>
+<p>You’ve now seen Python’s basics — values, types, operators, strings. Time to <strong>write some code yourself</strong>. We’ll use a small tool called <strong>PyQuiz</strong> that gives you short problems, lets you write a solution, and checks it against several test inputs.</p>
+<section id="a-quick-note-on-functions" class="level3">
+<h3 class="anchored" data-anchor-id="a-quick-note-on-functions">A quick note on functions</h3>
+<p>PyQuiz frames every problem the same way: you write a <strong>function</strong> that takes some inputs and returns an answer. You’ll learn <code>def</code> properly in Notebook 4, but the pattern is simple — here it is in full:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> double_number(number):       <span class="co"># name and inputs</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> number <span class="op">*</span> <span class="dv">2</span>            <span class="co"># the answer to return</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The line starting with <code>def</code> names the function and lists its <strong>parameters</strong> (the inputs).</li>
+<li>The indented <code>return</code> line says <strong>what value to give back</strong>.</li>
+<li>That’s it. No <code>print()</code> — PyQuiz reads the return value directly.</li>
+</ul>
+<p>PyQuiz provides the <code>def</code> line for you. You just fill in the body.</p>
+</section>
+<section id="how-to-use-it" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-use-it">How to use it</h3>
+<p>For each problem:</p>
+<ol type="1">
+<li>Read the description and the sample runs.</li>
+<li>Edit the code in the box (the <code>def</code> line is already there).</li>
+<li>Click <strong>Run Tests</strong> to see how your code does on the test inputs.</li>
+<li>If you’re stuck, click <strong>Hint</strong>. Use <strong>Next</strong> to move on, or the dropdown to jump around. Your code is graded <strong>per test case</strong>, so partial credit shows up clearly.</li>
+</ol>
+<p>Run the cell below to start. <em>(The first time you run it, it downloads <code>pyquiz.py</code> from this course’s GitHub repo — you’ll see a brief pause, then the practice tool appears.)</em></p>
+<div id="cell-70" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PyQuiz bootstrap — works in Colab or any local Jupyter.</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, urllib.request</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main"</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">"pyquiz.py"</span>):</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    urllib.request.urlretrieve(<span class="ss">f"</span><span class="sc">{</span>REPO<span class="sc">}</span><span class="ss">/tools/python_code_quiz/pyquiz.py"</span>, <span class="st">"pyquiz.py"</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyquiz <span class="im">import</span> PracticeTool</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>practice_tool <span class="op">=</span> PracticeTool(</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    json_url<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>REPO<span class="sc">}</span><span class="ss">/tools/python_code_quiz/banks/nb03_python_basics.json"</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
