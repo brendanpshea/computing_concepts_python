@@ -492,6 +492,87 @@ That's the rhythm. Short cells, a named character with a real-feeling problem, c
 
 ---
 
+## Build Tooling & Conventions
+
+The site is rendered with Quarto and served from GitHub Pages. A small Python script normalizes notebooks on each render — author against the conventions below and let the script do the rest.
+
+### Run before each render
+
+```bash
+python tools/add_colab_header.py
+quarto render
+```
+
+The script is idempotent (safe to re-run) and handles three things across every notebook in `v2/notebooks/`:
+
+1. **Injects/refreshes a Colab header cell at the top** — "Open in Colab", "Download .ipynb", "View on GitHub". **Don't write this cell by hand;** the script keeps it in sync with the file's path. The skeleton's "Title banner" cell goes immediately *after* this auto-injected header.
+2. **Strips bare `---` divider lines** from markdown cells. They break Quarto's YAML parser when notebooks render, and we don't want them anyway. **Don't use `---` as a section divider in markdown** — rely on headings.
+3. **Normalizes `#@title`-marked code cells** for both Colab and Quarto (see next subsection).
+
+### Hiding helper cells: the `#@title` marker
+
+Some code cells are scaffolding the student doesn't need to read — diagram generators, randomized practice-game generators, lookup tables. Mark these by making the first non-blank line:
+
+```python
+#@title 📊 Short label shown on the bar (click to show)
+... rest of code ...
+```
+
+After running the script, the cell will:
+
+- **In Colab:** collapse to a clickable title bar; the student can click to expand and read the source if curious.
+- **In the rendered Quarto HTML:**
+  - if the cell has saved outputs (a diagram, a chart) → the **code is hidden, the output is shown**
+  - if the cell has no saved outputs (an interactive game like the arcades) → the **cell is removed entirely**
+
+Remove the `#@title` line later and re-run the script — the metadata is cleaned up automatically.
+
+**Use it for:** graphviz flowchart code, matplotlib figure scaffolding that isn't pedagogically interesting, randomized arcade generators, any "trust me, this draws the picture" helper.
+
+**Don't use it for:** code students are meant to read, modify, or copy as a model. That's most cells.
+
+### PyQuiz integration
+
+The course includes an in-notebook practice tool (`pyquiz.py`) backed by per-notebook JSON question banks under `tools/python_code_quiz/banks/`. Use it for notebooks where the natural practice format is "write a function that does X" (NB3–NB7, NB11). Skip it where that frame is forced (DB, networks, AI-ethics).
+
+**Where it fits in the notebook:** as the last practice section, just before "## Key Terms". Two cells:
+
+1. **Markdown intro.** Longer the first time, short on repeat visits.
+   - **NB3 (first use):** explain the `def name(params): return ...` template, since students haven't formally seen functions yet.
+   - **NB4 onward:** a 2–3 line "same drill" reminder. Surface any pattern the new bank leans on (e.g., NB4 mentions the sum-vs-product accumulator distinction).
+2. **Code bootstrap.** Fixed pattern — copy verbatim and only change the bank filename:
+
+```python
+# PyQuiz bootstrap — works in Colab or any local Jupyter.
+import os, urllib.request
+REPO = "https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main"
+if not os.path.exists("pyquiz.py"):
+    urllib.request.urlretrieve(f"{REPO}/tools/python_code_quiz/pyquiz.py", "pyquiz.py")
+
+from pyquiz import PracticeTool
+practice_tool = PracticeTool(
+    json_url=f"{REPO}/tools/python_code_quiz/banks/nbNN_topic.json"
+)
+```
+
+(`urllib.request` rather than `!wget` — works on Windows-local students too, and idempotent.)
+
+**Bank naming:** `nbNN_topic.json` (`nb03_python_basics.json`, `nb04_control_flow.json`, …).
+
+**Bank scope:** stick to concepts already introduced. NB4's bank can use `if` and loops; it must not use dictionaries (NB5 introduces those). PyQuiz is a closing self-check, not a stretch goal.
+
+**Bank size:** aim for ~15–18 problems, ramping in difficulty. Include early gimmes (one-line returns) so students get the rhythm before the harder ones.
+
+### Arcade cells
+
+Notebooks 2 onward use the "arcade" pattern: a hidden generator cell producing an infinite stream of randomized practice questions (`trace_arcade`, `flow_arcade`, …). Conventions:
+
+- Mark the generator with `#@title 🎮 Arcade name — generator code (click to show)`. The build script removes it from Quarto HTML and collapses it in Colab.
+- **Keep** the intro markdown cell — short description of what the arcade does, what modes exist, ending in "Run the cell and play."
+- **Do not add** an "Understanding the Code" walk-through or an "Extend the Arcade" exercise after the arcade cell. Both are tangents — the generator is a tool, not a teaching object.
+
+---
+
 ## Checklist Before Publishing a Notebook
 
 - [ ] Title, LOs, lecture-link placeholder, opening hook all present
@@ -506,6 +587,10 @@ That's the rhythm. Short cells, a named character with a real-feeling problem, c
 - [ ] **Slide-view rhythm:** every code & figure cell has a setup slide before and a payoff/`**Reading it:**` slide after â€” no cold or uncaptioned cells
 - [ ] Word count ~6,000; cell count ~45
 - [ ] Read through at projector resolution â€” no cell overflows a screen
+- [ ] No bare `---` divider lines anywhere in markdown cells
+- [ ] Diagram and arcade-generator cells marked with `#@title`; arcades have no walk-through or extension exercise after them
+- [ ] `python tools/add_colab_header.py` run after edits (refreshes Colab header, strips dividers, normalizes hidden cells)
+- [ ] If using PyQuiz: `## Practice: PyQuiz` section is the last section before "Key Terms", with the standard bootstrap and a `banks/nbNN_*.json` bank scoped to concepts already introduced
 
 ---
 

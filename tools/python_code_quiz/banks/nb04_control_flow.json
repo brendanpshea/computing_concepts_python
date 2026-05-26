@@ -1,0 +1,164 @@
+{
+  "_notes": "PyQuiz bank for Notebook 4: Control Flow & Functions. Covers if/elif/else, compound conditions (and/or), for + range, while, accumulators, and looping over a list. No dicts, no slicing tricks (those land in NB5).",
+  "questions": [
+    {
+      "function_name": "number_sign",
+      "parameters": ["number"],
+      "description": "Return 'Negative' if the number is less than zero, otherwise 'Non-negative'. number_sign(-3) → 'Negative'; number_sign(0) → 'Non-negative'.",
+      "input_type": ["int"],
+      "answer_code": "def number_sign(number):\n    if number < 0:\n        return 'Negative'\n    return 'Non-negative'",
+      "hint": "One `if` and a final `return`. No `else` needed because the `if` returns early.",
+      "test_inputs": [[-5], [0], [10], [-100]]
+    },
+    {
+      "function_name": "divisibility_by_three",
+      "parameters": ["number"],
+      "description": "Return 'Divisible by 3' if the number is divisible by 3, otherwise 'Not divisible by 3'. Use the modulo operator (%).",
+      "input_type": ["int"],
+      "answer_code": "def divisibility_by_three(number):\n    if number % 3 == 0:\n        return 'Divisible by 3'\n    return 'Not divisible by 3'",
+      "hint": "`number % 3 == 0` is True when 3 divides evenly.",
+      "test_inputs": [[9], [10], [0], [17]]
+    },
+    {
+      "function_name": "compare_numbers",
+      "parameters": ["a", "b"],
+      "description": "Return 'greater' if a > b, 'equal' if a == b, or 'less' if a < b.",
+      "input_type": ["int", "int"],
+      "answer_code": "def compare_numbers(a, b):\n    if a > b:\n        return 'greater'\n    elif a == b:\n        return 'equal'\n    else:\n        return 'less'",
+      "hint": "Three branches: if / elif / else.",
+      "test_inputs": [[5, 3], [3, 5], [4, 4], [-1, 1]]
+    },
+    {
+      "function_name": "is_mario_brother",
+      "parameters": ["name"],
+      "description": "Return True if name is 'Mario' or 'Luigi', otherwise False.",
+      "input_type": "string",
+      "answer_code": "def is_mario_brother(name):\n    return name == 'Mario' or name == 'Luigi'",
+      "hint": "Combine two `==` comparisons with the keyword `or`. You can return the comparison directly — no `if` required.",
+      "test_inputs": ["Mario", "Luigi", "Peach", "Toad", "Bowser"]
+    },
+    {
+      "function_name": "can_enter_castle",
+      "parameters": ["has_key", "is_boss_defeated"],
+      "description": "Return True only if BOTH has_key and is_boss_defeated are True. Otherwise return False.",
+      "input_type": ["bool", "bool"],
+      "answer_code": "def can_enter_castle(has_key, is_boss_defeated):\n    return has_key and is_boss_defeated",
+      "hint": "The keyword `and` is True when both sides are True.",
+      "test_inputs": [[true, true], [true, false], [false, true], [false, false]]
+    },
+    {
+      "function_name": "water_state",
+      "parameters": ["temperature"],
+      "description": "Given a temperature in °C, return 'solid' if below 0, 'liquid' if 0 to 100 inclusive, or 'gas' if above 100.",
+      "input_type": ["float"],
+      "answer_code": "def water_state(temperature):\n    if temperature < 0:\n        return 'solid'\n    elif temperature <= 100:\n        return 'liquid'\n    else:\n        return 'gas'",
+      "hint": "Order matters — handle the lowest range first, then `elif`s narrow the rest.",
+      "test_inputs": [[25], [-10], [0], [100], [101]]
+    },
+    {
+      "function_name": "ticket_price",
+      "parameters": ["age"],
+      "description": "Return the ticket price for a given age: under 13 → 5, 13–17 → 8, 18–64 → 12, 65 or older → 6.",
+      "input_type": ["int"],
+      "answer_code": "def ticket_price(age):\n    if age < 13:\n        return 5\n    elif age <= 17:\n        return 8\n    elif age <= 64:\n        return 12\n    else:\n        return 6",
+      "hint": "An if/elif chain handles the brackets in order from youngest to oldest.",
+      "test_inputs": [[10], [15], [20], [70], [13], [65]]
+    },
+    {
+      "function_name": "get_letter_grade",
+      "parameters": ["score"],
+      "description": "Convert a numerical score to a letter grade: 90+ → 'A', 80+ → 'B', 70+ → 'C', 60+ → 'D', else → 'F'.",
+      "input_type": ["float"],
+      "answer_code": "def get_letter_grade(score):\n    if score >= 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    elif score >= 70:\n        return 'C'\n    elif score >= 60:\n        return 'D'\n    else:\n        return 'F'",
+      "hint": "Test highest first; each `elif` only runs if the earlier checks were False.",
+      "test_inputs": [[85], [95], [75], [65], [55], [100]]
+    },
+    {
+      "function_name": "check_password",
+      "parameters": ["password"],
+      "description": "Return 'Valid' if the password is at least 8 characters, otherwise 'Too short'.",
+      "input_type": ["string"],
+      "answer_code": "def check_password(password):\n    if len(password) >= 8:\n        return 'Valid'\n    return 'Too short'",
+      "hint": "`len(password)` gives the character count.",
+      "test_inputs": [["secure123"], ["pass"], ["password123"], [""]]
+    },
+    {
+      "function_name": "fizz_buzz",
+      "parameters": ["n"],
+      "description": "Classic FizzBuzz for a single number. Return 'FizzBuzz' if n is divisible by both 3 and 5, 'Fizz' if only by 3, 'Buzz' if only by 5, otherwise the number as a string.",
+      "input_type": ["int"],
+      "answer_code": "def fizz_buzz(n):\n    if n % 3 == 0 and n % 5 == 0:\n        return 'FizzBuzz'\n    elif n % 3 == 0:\n        return 'Fizz'\n    elif n % 5 == 0:\n        return 'Buzz'\n    else:\n        return str(n)",
+      "hint": "Check the most specific case first (divisible by both), then the rest.",
+      "test_inputs": [[15], [3], [5], [7], [30], [1]]
+    },
+    {
+      "function_name": "sum_numbers",
+      "parameters": ["n"],
+      "description": "Return the sum of all integers from 1 to n inclusive. sum_numbers(4) → 10 (because 1+2+3+4).",
+      "input_type": ["int"],
+      "answer_code": "def sum_numbers(n):\n    total = 0\n    for i in range(1, n + 1):\n        total += i\n    return total",
+      "hint": "Start `total = 0`. Loop `for i in range(1, n+1)` and add each `i` to `total`.",
+      "test_inputs": [[4], [1], [10], [100]]
+    },
+    {
+      "function_name": "multiply_range",
+      "parameters": ["start", "end"],
+      "description": "Return the product of all integers from start to end inclusive. multiply_range(2, 4) → 24 (because 2*3*4).",
+      "input_type": ["int", "int"],
+      "answer_code": "def multiply_range(start, end):\n    product = 1\n    for i in range(start, end + 1):\n        product *= i\n    return product",
+      "hint": "Start the accumulator at 1 (not 0) since you're multiplying. Use `*=` inside the loop.",
+      "test_inputs": [[2, 4], [1, 5], [5, 7], [3, 3]]
+    },
+    {
+      "function_name": "repeat_char",
+      "parameters": ["char", "n"],
+      "description": "Return a string of `char` repeated `n` times, built with a for loop. repeat_char('*', 3) → '***'. (Don't use `char * n` — practice the loop.)",
+      "input_type": ["string", "int"],
+      "answer_code": "def repeat_char(char, n):\n    result = ''\n    for i in range(n):\n        result += char\n    return result",
+      "hint": "Start `result = ''` and append `char` inside the loop.",
+      "test_inputs": [["*", 3], ["A", 5], ["x", 0], ["-", 10]]
+    },
+    {
+      "function_name": "sum_even_numbers",
+      "parameters": ["n"],
+      "description": "Return the sum of every even number from 2 to n inclusive. sum_even_numbers(8) → 20 (2+4+6+8).",
+      "input_type": ["int"],
+      "answer_code": "def sum_even_numbers(n):\n    total = 0\n    for i in range(2, n + 1, 2):\n        total += i\n    return total",
+      "hint": "`range(2, n+1, 2)` steps by 2, hitting only the even numbers.",
+      "test_inputs": [[8], [2], [10], [1]]
+    },
+    {
+      "function_name": "count_munchkins",
+      "parameters": ["heights"],
+      "description": "Given a list of heights in inches, count how many are shorter than 48 (i.e. under 4 feet). Return the count.",
+      "input_type": "list",
+      "answer_code": "def count_munchkins(heights):\n    count = 0\n    for h in heights:\n        if h < 48:\n            count += 1\n    return count",
+      "hint": "Loop over the list directly with `for h in heights:` and increment `count` when the condition is True.",
+      "test_inputs": [
+        [[36, 42, 50, 45, 38]],
+        [[49, 52, 47, 50, 48]],
+        [[30, 35, 40]],
+        [[60, 55, 58]],
+        [[]]
+      ]
+    },
+    {
+      "function_name": "reverse_string",
+      "parameters": ["text"],
+      "description": "Return the string reversed, using a for loop. reverse_string('hello') → 'olleh'. (Don't use slicing `[::-1]` or `reversed()` — practice the loop.)",
+      "input_type": ["string"],
+      "answer_code": "def reverse_string(text):\n    reversed_text = ''\n    for char in text:\n        reversed_text = char + reversed_text\n    return reversed_text",
+      "hint": "For each character, prepend it: `reversed_text = char + reversed_text`.",
+      "test_inputs": [["hello"], ["python"], ["racecar"], [""]]
+    },
+    {
+      "function_name": "sum_digits",
+      "parameters": ["number"],
+      "description": "Return the sum of the digits of a non-negative integer. sum_digits(123) → 6.",
+      "input_type": ["int"],
+      "answer_code": "def sum_digits(number):\n    total = 0\n    while number > 0:\n        total += number % 10\n        number //= 10\n    return total",
+      "hint": "`number % 10` gives the last digit; `number //= 10` chops it off. Loop while the number is greater than 0.",
+      "test_inputs": [[123], [9], [1000], [54321]]
+    }
+  ]
+}

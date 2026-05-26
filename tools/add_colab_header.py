@@ -41,15 +41,69 @@ def make_cell(rel_path: str) -> dict:
     }
 
 
-def strip_dividers(source: list[str]) -> list[str]:
+def strip_dividers(source) -> list[str]:
     """Remove standalone `---` lines (markdown horizontal rules / cell dividers).
 
-    These break Quarto's YAML parser when notebooks are rendered, and the
-    author doesn't want them. Lines containing only `---` (with optional
-    surrounding whitespace) are dropped. Preserves trailing newlines on
-    neighboring lines.
+    Notebook `source` may be a single string OR a list of line strings;
+    normalize before splitting so we never iterate over characters.
     """
-    return [ln for ln in source if ln.strip() != "---"]
+    if isinstance(source, str):
+        text = source
+    else:
+        text = "".join(source)
+    lines = text.splitlines(keepends=True)
+    return [ln for ln in lines if ln.strip() != "---"]
+
+
+def normalize_form_cells(cells: list) -> None:
+    """Sync metadata for `#@title`-marked code cells across Colab + Quarto.
+
+    A code cell whose first non-blank line starts with `#@title` is treated
+    as a hide-by-default helper cell (diagrams, arcade generators, etc.):
+
+      - Colab:  metadata.cellView = "form" + jupyter.source_hidden = True
+                → renders as a clickable title bar; click reveals code.
+      - Quarto: cell tag "remove-input" if the cell has saved outputs
+                (keeps the diagram, hides the code) — otherwise
+                "remove-cell" (drops the cell entirely, used for
+                interactive helpers like the trace arcade that produce
+                no static output).
+
+    When the marker is removed from a cell, this cleanup also undoes the
+    metadata so the script is fully reversible/idempotent.
+    """
+    QUARTO_TAGS = ("remove-input", "remove-cell")
+    for c in cells:
+        if c.get("cell_type") != "code":
+            continue
+        src = c.get("source", "")
+        text = "".join(src) if isinstance(src, list) else src
+        first_real = next((ln for ln in text.splitlines() if ln.strip()), "")
+        is_form = first_real.lstrip().startswith("#@title")
+
+        md = c.setdefault("metadata", {})
+        tags = list(md.get("tags", []))
+
+        if is_form:
+            md["cellView"] = "form"
+            md.setdefault("jupyter", {})["source_hidden"] = True
+            wanted = "remove-input" if c.get("outputs") else "remove-cell"
+            tags = [t for t in tags if t not in QUARTO_TAGS]
+            tags.append(wanted)
+            md["tags"] = tags
+        else:
+            md.pop("cellView", None)
+            jup = md.get("jupyter") or {}
+            jup.pop("source_hidden", None)
+            if not jup:
+                md.pop("jupyter", None)
+            else:
+                md["jupyter"] = jup
+            tags = [t for t in tags if t not in QUARTO_TAGS]
+            if tags:
+                md["tags"] = tags
+            else:
+                md.pop("tags", None)
 
 
 def update_notebook(path: Path, repo_root: Path) -> bool:
@@ -62,6 +116,8 @@ def update_notebook(path: Path, repo_root: Path) -> bool:
     for c in cells:
         if c.get("cell_type") == "markdown" and MARKER not in "".join(c.get("source", [])):
             c["source"] = strip_dividers(c.get("source", []))
+
+    normalize_form_cells(cells)
 
     existing_idx = next(
         (i for i, c in enumerate(cells)
