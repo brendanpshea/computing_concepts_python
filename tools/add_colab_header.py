@@ -16,7 +16,7 @@ from pathlib import Path
 
 REPO = "brendanpshea/computing_concepts_python"
 BRANCH = "main"
-NOTEBOOK_DIRS = ["summer_2026/notebooks"]
+NOTEBOOK_DIRS = ["v2/notebooks"]
 MARKER = "<!-- COLAB-BADGE -->"
 
 

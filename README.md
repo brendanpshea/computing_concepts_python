@@ -15,7 +15,7 @@ Technical College and freely adaptable elsewhere.
 
 ## For students
 
-Start at the [course page](https://brendanpshea.github.io/computing_concepts_python/summer_2026/).
+Start at the [course site](https://brendanpshea.github.io/computing_concepts_python/).
 Each week pairs a **notebook** with a short **case study**:
 
 - The notebook is a Jupyter notebook. Open it in Google Colab, run the
@@ -27,14 +27,14 @@ Each week pairs a **notebook** with a short **case study**:
 ## For instructors
 
 Everything is CC BY 4.0. Adapt, remix, fork. The
-[course outline](summer_2026/course_outline.md) shows the twelve-week
+[course outline](v2/course_outline.md) shows the twelve-week
 sequence, the design rationale, and the through-lines that connect the
 case studies to the notebooks.
 
 Case studies are written in [Quarto](https://quarto.org/) so they can
 be re-rendered to HTML, DOCX, or PDF, and re-skinned for a different
-course. See [`summer_2026/case_study_style_guide.md`](summer_2026/case_study_style_guide.md)
-for the conventions; [`summer_2026/cases/case_study_template.qmd`](summer_2026/cases/case_study_template.qmd)
+course. See [`v2/case_study_style_guide.md`](v2/case_study_style_guide.md)
+for the conventions; [`v2/cases/case_study_template.qmd`](v2/cases/case_study_template.qmd)
 is a fill-in-the-blanks template.
 
 To build the site locally:
@@ -52,8 +52,7 @@ quarto preview           # local server with live reload
 ```
 .
 ├── index.qmd                       site landing page
-├── summer_2026/                    CURRENT COURSE
-│   ├── index.qmd                   course landing
+├── v2/                             CURRENT COURSE (Second Edition, 2.0)
 │   ├── notebooks/                  twelve Jupyter notebooks
 │   ├── cases/                      twelve case studies (Quarto)
 │   ├── course_outline.md           sequence, rationale, design notes

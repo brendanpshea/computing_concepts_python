@@ -1,61 +1,70 @@
 ---
 title: "Computing Concepts with Python"
-subtitle: "Open-access course materials by Brendan Shea, PhD"
+subtitle: "Second Edition (2.0)"
+author: "Brendan Shea, PhD"
+date: last-modified
 toc: false
 ---
 
-A free, open-access introduction to computer science, built around Python
-notebooks, short case studies, and small interactive tools. Used in
-**COMP 1150** at Rochester Community and Technical College and freely
-adaptable elsewhere under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+A free, open-access introduction to computer science. Each week pairs a
+hands-on Jupyter notebook with a short case study on the people,
+arguments, and history behind the technical material. The notebooks
+teach you to write Python with the help of an AI pair-programmer; the
+case studies ask you to think about what that code does in the world.
+Used in **COMP 1150** at Rochester Community and Technical College and
+freely adaptable elsewhere under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The
+materials here are the second edition (2.0); the original 2024
+edition is preserved in the [archive](archive/index.qmd).
 
-## Start here
+## Notebooks
 
-::: {.grid}
+Each notebook is available three ways: **Read** (accessible HTML in the
+browser), **Run** (open in Google Colab to execute and edit), and
+**Download** (the raw `.ipynb`).
 
-::: {.g-col-md-6 .g-col-12}
-### For students
+| # | Notebook | Read | Run | Download |
+|---|---|---|---|---|
+| 1 | What Is Computing? | [HTML](v2/notebooks/COMP1150_NB01_WhatIsComputing.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB01_WhatIsComputing.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB01_WhatIsComputing.ipynb) |
+| 2 | Machine Architecture & Data Representation | [HTML](v2/notebooks/COMP1150_NB02_MachineArchitecture.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB02_MachineArchitecture.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB02_MachineArchitecture.ipynb) |
+| 3 | Python via Pseudocode & Flowcharts | [HTML](v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb) |
+| 4 | Control Flow & Functions | [HTML](v2/notebooks/COMP1150_NB04_ControlFlowFunctions.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb) |
+| 5 | Collections & ADTs | [HTML](v2/notebooks/COMP1150_NB05_CollectionsADTs.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB05_CollectionsADTs.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB05_CollectionsADTs.ipynb) |
+| 6 | Functions, Modules & OOP | *in progress* | | |
+| 7 | Algorithms & the Limits of Computation | *in progress* | | |
+| 8 | Software Engineering, Git & AI-Assisted Dev | *in progress* | | |
+| 9 | Databases: Relational & Non-Relational | *in progress* | | |
+| 10 | OS, Networks, Cloud & the Web | *in progress* | | |
+| 11 | Cybersecurity & Secure Software Development | *in progress* | | |
+| 12 | AI, Machine Learning & Ethics | *in progress* | | |
 
-Read the [course landing page](summer_2026/index.qmd) for the current
-semester. It links the notebooks (one per week) and the case studies
-(one per notebook). Each notebook is a Jupyter notebook you can open in
-Google Colab; each case study is a short read with a runnable algorithm
-and a debate to think about.
-:::
+## Case studies
 
-::: {.g-col-md-6 .g-col-12}
-### For instructors
+Short, discussion-ready pieces on the history, ethics, and unresolved
+arguments behind the technical material. About twenty to thirty
+minutes each. The four drafted so far:
 
-Everything here is licensed CC BY 4.0 — adapt and remix freely. The
-[course outline](summer_2026/index.qmd) shows the twelve-week sequence
-and the design rationale. Source for every notebook and case study is on
-[GitHub](https://github.com/brendanpshea/computing_concepts_python);
-case studies are written in Quarto so you can edit, re-render, and
-re-skin them for your own course.
-:::
+- [Lovelace and Turing: Can a Machine Originate?](v2/cases/cs01_lovelace_turing.qmd) —
+  paired with Notebook 1.
+- [The Silicon Shield: TSMC, Moore's Law, and the New Chip Wars](v2/cases/cs02_silicon_shield.qmd) —
+  paired with Notebook 2.
+- [Grace Hopper, Compilers & the Abstraction Bargain](v2/cases/cs03_hopper_compilers.qmd) —
+  paired with Notebook 3.
+- [The Therac-25: When Control Flow Kills](v2/cases/cs04_therac25.qmd) —
+  paired with Notebook 4.
 
-:::
+The full [case studies index](v2/cases/index.qmd) lists all twelve
+planned cases with brief descriptions.
 
-## What's here
+## How the pieces fit together
 
-- **[Summer 2026 course](summer_2026/index.qmd)** — twelve notebooks
-  and twelve case studies covering algorithms, data representation,
-  databases, networks, security, and AI ethics. The current version.
-- **[Case studies](summer_2026/cases/index.qmd)** — short, discussion-
-  ready pieces on the history, ethics, and unresolved arguments behind
-  the technical material.
-- **[Interactive tools](https://github.com/brendanpshea/computing_concepts_python/tree/main/tools)**
-  — PyQuiz (Python practice via widgets) and ObjectQuest (a small
-  RPG-style quiz game). Source on GitHub.
-- **[Archive](archive/index.qmd)** — the earlier 2024 version of the
-  course (twelve PDF case studies plus the original notebooks),
-  preserved for anyone with existing links.
+- **Read the notebook first.** Run the code. Do the exercises.
+- **Then read the paired case study.** It tells the human story behind
+  what you just learned and opens a debate worth your own opinion on.
+- **Bring both to class.** The discussion questions are written to be
+  argued out loud.
 
-## License & contact
+## For instructors
 
-Content is licensed under
-[Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) —
-share and adapt freely with credit.
-
-Brendan Shea, PhD · brendan.shea@rctc.edu ·
-[github.com/brendanpshea](https://github.com/brendanpshea)
+Everything here is CC BY 4.0 — adapt and remix freely. See
+[About](about.qmd) for adoption notes, source layout, and contact info.

@@ -1,0 +1,71 @@
+---
+title: "About"
+subtitle: "For instructors, contributors, and the curious"
+author: "Brendan Shea, PhD"
+date: last-modified
+---
+
+## What this is
+
+A free, open-access introduction to computer science taught at
+Rochester Community and Technical College as **COMP 1150 — Computer
+Science Concepts**. The Second Edition (2.0) is a full rewrite for
+summer 2026: twelve Python notebooks paired with twelve short case
+studies on the history, ethics, and unresolved arguments behind the
+technical material.
+
+## Design principles
+
+1. **AI-assisted development from day one.** Students begin using an
+   LLM as a coding partner in Notebook 1 and build explicit skills in
+   prompt craft, verification, and critical evaluation of AI output
+   across the semester.
+2. **Critical thinking as a through-line.** Every notebook pairs with
+   a case study that demands systematic analysis before accepting
+   conclusions.
+3. **Everything builds toward a Flask app.** Databases, APIs,
+   security, and AI features are introduced with an eye toward their
+   role in the final project.
+4. **Philosophical, not mathematical, treatment of computability.**
+   The limits of computation are presented as conceptual boundaries,
+   not formal proofs.
+
+## Using these materials
+
+Everything is licensed
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — adapt,
+remix, and redistribute with attribution. Adoption notes:
+
+- **Notebooks** are Jupyter `.ipynb` files. They run unmodified in
+  Google Colab (link at the top of each notebook). No local Python
+  install required for students.
+- **Case studies** are Quarto `.qmd` files. They re-render to HTML,
+  PDF, or DOCX with `quarto render`. Edit them in any text editor.
+- **No LMS lock-in.** The site is static HTML served from GitHub
+  Pages. Link directly, copy into your LMS, or fork the whole repo.
+- **The 2024 edition** is preserved in the
+  [archive](archive/index.qmd) for anyone with existing links.
+
+## Source layout
+
+```
+v2/
+  notebooks/   — Jupyter notebooks (one per week)
+  cases/       — Quarto case studies (one per notebook)
+archive/       — 2024 edition (PDF case studies + original notebooks)
+tools/         — Build helpers (e.g., Colab-header injection)
+docs/          — Rendered site (GitHub Pages serves this)
+```
+
+To rebuild locally: install [Quarto](https://quarto.org), then run
+`python tools/add_colab_header.py && quarto render` from the repo
+root.
+
+## Contact
+
+Brendan Shea, PhD ·
+[brendan.shea@rctc.edu](mailto:brendan.shea@rctc.edu) ·
+[github.com/brendanpshea](https://github.com/brendanpshea)
+
+Issues, pull requests, and adoption questions all welcome on
+[GitHub](https://github.com/brendanpshea/computing_concepts_python).

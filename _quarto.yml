@@ -3,12 +3,12 @@ project:
   output-dir: docs
   render:
     - "index.qmd"
-    - "summer_2026/index.qmd"
-    - "summer_2026/cases/index.qmd"
-    - "summer_2026/cases/cs*.qmd"
-    - "summer_2026/notebooks/*.ipynb"
+    - "about.qmd"
+    - "v2/cases/index.qmd"
+    - "v2/cases/cs*.qmd"
+    - "v2/notebooks/*.ipynb"
     - "archive/index.qmd"
-    - "!summer_2026/cases/case_study_template.qmd"
+    - "!v2/cases/case_study_template.qmd"
   resources:
     - "archive/2024_intro_cs_notebooks/*.ipynb"
     - "archive/2024_case_studies/*.pdf"
@@ -25,12 +25,10 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Course"
-        href: summer_2026/index.qmd
-      - text: "Notebooks"
-        href: summer_2026/index.qmd#notebooks
       - text: "Case Studies"
-        href: summer_2026/cases/index.qmd
+        href: v2/cases/index.qmd
+      - text: "About"
+        href: about.qmd
     right:
       - text: "Archive"
         href: archive/index.qmd
@@ -43,14 +41,14 @@ website:
 
 format:
   html:
-    theme: [cosmo, summer_2026/cases/_case-styles.scss]
+    theme: [cosmo, v2/cases/_case-styles.scss]
     toc: true
     toc-depth: 2
     fig-cap-location: bottom
     link-external-newwindow: true
     code-overflow: wrap
 
-bibliography: summer_2026/cases/refs.bib
+bibliography: v2/cases/refs.bib
 csl: https://www.zotero.org/styles/chicago-author-date
 
 execute:

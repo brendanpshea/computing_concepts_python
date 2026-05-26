@@ -4,14 +4,15 @@ subtitle: "Earlier versions of these materials"
 toc: false
 ---
 
-The current course lives at the [Summer 2026 page](../summer_2026/index.qmd).
-This page preserves the previous version of the course so existing links
-keep working.
+The current course lives at the [home page](../index.qmd). This page
+preserves the previous version of the course so existing links keep
+working.
 
 ## 2024 — Intro to Computer Science notebooks
 
 Twelve Jupyter notebooks from the prior course. The current course
-(Summer 2026) is a substantial redesign; these are kept for reference.
+(Second Edition, 2.0) is a substantial redesign; these are kept for
+reference.
 
 - [Browse the 2024 notebooks on GitHub](https://github.com/brendanpshea/computing_concepts_python/tree/main/archive/2024_intro_cs_notebooks)
 
@@ -19,7 +20,7 @@ Twelve Jupyter notebooks from the prior course. The current course
 
 Twelve case studies authored for the 2024 course, distributed as PDFs.
 Most of the topics live on in different form in the
-[current case studies](../summer_2026/cases/index.qmd); two
+[current case studies](../v2/cases/index.qmd); two
 (Functionalism, War & Technology) have been dropped from the new
 sequence.
 
