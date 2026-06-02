@@ -760,11 +760,15 @@ OUTPUT:    a dictionary mapping each value of that field to its count
 <p><strong>Cultural note.</strong> In 1872, Samuel Butler’s novel <em>Erewhon</em> imagined a civilization that had banned its machines out of fear they were slowly evolving toward consciousness. When Hollerith’s tabulator replaced a room of clerks eighteen years later, Butler’s readers could be forgiven for feeling vindicated. The machines weren’t smarter — just faster. This time, at counting people.</p>
 </blockquote>
 </section>
-<section id="exercise-2-holleriths-percentage-report" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2-holleriths-percentage-report">✏️ Exercise 2 — Hollerith’s Percentage Report</h3>
-<p>Modify <code>count_by_field</code> so that each value in the returned dictionary is a <strong>tuple <code>(count, percentage)</code></strong> instead of just a count. The percentage should be each group’s share of all records, rounded to one decimal place.</p>
-<p><strong>Requirements:</strong> - Test on <code>census_records</code> with <code>"state"</code>. - Percentages should sum to approximately 100. - Print the results clearly.</p>
-<p><em>Hint: <code>len(records)</code> gives the total number of records.</em></p>
+<section id="exercise-2-holleriths-census-your-way" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-holleriths-census-your-way">✏️ Exercise 2 — Hollerith’s Census, Your Way</h3>
+<p>No new code to write here. You’ll <em>use</em> the <code>count_by_field</code> function from above and watch how its answers change as you poke at it.</p>
+<ol type="1">
+<li><strong>Ask a different question.</strong> In a new code cell, run <code>count_by_field(census_records, "occupation")</code> and print the result. How is this answer different from grouping by <code>"state"</code>?</li>
+<li><strong>Add yourself to the census.</strong> In the <code>census_records</code> cell, copy one of the <code>{...}</code> record lines and change the name, state, and occupation to your own (invent any state you like). Re-run that cell, then re-run your call from step 1. Which count went up by one?</li>
+<li><strong>Predict, then check.</strong> <em>Before</em> running, write a one-line prediction in a markdown cell: if you change your record’s state to <code>"NY"</code>, what will the <code>"NY"</code> count become? Then run it and see whether you were right.</li>
+</ol>
+<p>That’s the whole point of this function: one small piece of code answers many questions, on data that keeps changing. Reusing one tool across many cases like this is called <strong>abstraction</strong> — an idea you’ll meet again and again.</p>
 </section>
 <section id="computers-for-data-analysis-from-hollerith-to-the-present" class="level3">
 <h3 class="anchored" data-anchor-id="computers-for-data-analysis-from-hollerith-to-the-present">Computers for Data Analysis from Hollerith to the Present</h3>
@@ -896,11 +900,23 @@ Shift 25: HVS SOUZS VOG ZOBRSR</code></pre>
 <p><strong>Cultural note.</strong> In the same year Colossus was dismantled on Churchill’s orders, George Orwell finished <em>Nineteen Eighty-Four</em> — a novel about a state that watches every communication. The math Turing used to defeat a surveillance regime is the same math a surveillance regime would use against its own citizens. Both uses are still with us.</p>
 </blockquote>
 </section>
-<section id="exercise-3-breaking-caesar-with-a-hint-ai-assisted" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3-breaking-caesar-with-a-hint-ai-assisted">✏️ Exercise 3 — Breaking Caesar with a Hint &nbsp; 🤖 <em>AI-Assisted</em></h3>
-<p>Ask Gemini to modify <code>caesar_brute_force</code> to add an English-plausibility check: print <code>&lt;&lt;&lt; POSSIBLE MATCH</code> next to any decryption that contains <strong>at least three</strong> of these common words:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"the"</span>, <span class="st">"and"</span>, <span class="st">"is"</span>, <span class="st">"to"</span>, <span class="st">"a"</span>, <span class="st">"in"</span>, <span class="st">"of"</span>, <span class="st">"it"</span>, <span class="st">"you"</span>, <span class="st">"that"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Then:</strong> 1. Encrypt a sentence of your own and run the modified brute-forcer. 2. Does the marker appear on the correct line? Any false positives? 3. In a markdown cell: what kind of message would fool this heuristic?</p>
+<section id="exercise-3-driving-the-caesar-cipher" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-driving-the-caesar-cipher">✏️ Exercise 3 — Driving the Caesar Cipher</h3>
+<p>No code to write here. You’ll <em>call</em> the <code>caesar_encrypt</code> function over and over with different inputs and watch what comes back. Feeding a function things and reading its output is how programmers learn what it really does.</p>
+<p><strong>How to call it.</strong> The function takes two inputs: the text, and the <em>shift</em> (how many letters to move each one). In a new code cell, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(caesar_encrypt(<span class="st">"HELLO"</span>, <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should get <code>KHOOR</code> — every letter moved forward 3 places (H→K, E→H, L→O, …).</p>
+<p><strong>How to decrypt.</strong> Encrypting shifts <em>forward</em>. To get the message back, shift the same amount <em>backward</em> by using a <strong>negative</strong> key:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>secret <span class="op">=</span> caesar_encrypt(<span class="st">"HELLO"</span>, <span class="dv">3</span>)     <span class="co"># encrypt with 3</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(caesar_encrypt(secret, <span class="op">-</span><span class="dv">3</span>))        <span class="co"># decrypt with -3  →  HELLO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Now experiment.</strong> Run each of these in a new code cell. For each one, write a sentence in a markdown cell saying what you saw and why:</p>
+<ol type="1">
+<li><strong>Your own messages.</strong> Encrypt three different sentences of your own, each with a different key (try 5, then 10, then 20). Then decrypt each one back to the original using the negative key.</li>
+<li><strong>A key bigger than 26.</strong> Compare <code>caesar_encrypt("PYTHON", 1)</code> with <code>caesar_encrypt("PYTHON", 27)</code>, then try <code>53</code>. Are they the same? What do you think the number 26 has to do with it?</li>
+<li><strong>A key of 0, and a key of 26.</strong> What does each one do to the text? Why are they the same?</li>
+<li><strong>Negative keys.</strong> Compare <code>caesar_encrypt("ABC", -1)</code> with <code>caesar_encrypt("ABC", 25)</code>. Same result? Explain what happens at the very start of the alphabet.</li>
+</ol>
+<p><strong>Then, in a markdown cell:</strong> the function never checks that the key is between 0 and 25 — yet keys like <code>53</code> and <code>-1</code> still work and never crash. Which part of the code makes that possible? <em>(Look closely at the line with <code>% 26</code>.)</em></p>
 </section>
 <section id="communications-and-secret-keeping-from-turing-to-the-present" class="level3">
 <h3 class="anchored" data-anchor-id="communications-and-secret-keeping-from-turing-to-the-present">Communications and Secret-Keeping from Turing to the Present</h3>
@@ -988,28 +1004,28 @@ OUTPUT:    a string response
 3. RETURN a generic fallback response</code></pre>
 <p>That’s the whole algorithm. Nine lines of pseudocode. No model of the world; no memory of the conversation; no understanding of any word.</p>
 <div id="cell-44-eliza-flowchart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:713}}" data-outputid="22193a5d-6e4c-445d-f33b-48a229bc02b9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ELIZA's logic as a flowchart.</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"A"</span>, <span class="st">"user_input"</span>,                         fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"B"</span>, <span class="st">"lowercase it"</span>)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"C"</span>, <span class="st">"more rules</span><span class="ch">\n</span><span class="st">to check?"</span>,              shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"D"</span>, <span class="st">"does trigger</span><span class="ch">\n</span><span class="st">appear in input?"</span>,     shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"E"</span>, <span class="st">"extract text after trigger</span><span class="ch">\n</span><span class="st">fill into template"</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"F"</span>, <span class="st">"return response"</span>,                    fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"G"</span>, <span class="st">'return "Please go on."'</span>,             fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>dot.edges([(<span class="st">"A"</span>,<span class="st">"B"</span>), (<span class="st">"B"</span>,<span class="st">"C"</span>)])</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"D"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"G"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"E"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"C"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"E"</span>, <span class="st">"F"</span>)</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ELIZA's logic as a flowchart.</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"A"</span>, <span class="st">"user_input"</span>,                         fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"B"</span>, <span class="st">"lowercase it"</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"C"</span>, <span class="st">"more rules</span><span class="ch">\n</span><span class="st">to check?"</span>,              shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"D"</span>, <span class="st">"does trigger</span><span class="ch">\n</span><span class="st">appear in input?"</span>,     shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"E"</span>, <span class="st">"extract text after trigger</span><span class="ch">\n</span><span class="st">fill into template"</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"F"</span>, <span class="st">"return response"</span>,                    fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"G"</span>, <span class="st">'return "Please go on."'</span>,             fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>dot.edges([(<span class="st">"A"</span>,<span class="st">"B"</span>), (<span class="st">"B"</span>,<span class="st">"C"</span>)])</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"D"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"G"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"E"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"C"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"E"</span>, <span class="st">"F"</span>)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <figure class="figure">
@@ -1020,44 +1036,33 @@ OUTPUT:    a string response
 </div>
 <p><strong>Reading it:</strong> every path ends at a returned string — match a rule and fill its template, or fall through to the default. No box anywhere ‘understands’ the sentence. The Python next implements exactly this.</p>
 <div id="cell-45-eliza-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ea56e2b0-2625-45a2-e592-82c709f8e94b">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A minimal ELIZA. Each rule is a pair: (trigger phrase, response template).</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ELIZA_RULES <span class="op">=</span> [</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i feel"</span>,    <span class="st">"Why do you feel </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i am"</span>,      <span class="st">"How long have you been </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i need"</span>,    <span class="st">"What would it mean to you if you got </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my mother"</span>, <span class="st">"Tell me more about your family."</span>),</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my father"</span>, <span class="st">"Tell me more about your family."</span>),</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i think"</span>,   <span class="st">"Do you really think </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"because"</span>,   <span class="st">"Is that the real reason?"</span>),</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"always"</span>,    <span class="st">"Can you think of a specific example?"</span>),</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"everyone"</span>,  <span class="st">"Really — everyone?"</span>),</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eliza_respond(user_input, rules<span class="op">=</span>ELIZA_RULES):</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    lowered <span class="op">=</span> user_input.lower().strip()</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> trigger, template <span class="kw">in</span> rules:</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> trigger <span class="kw">in</span> lowered:</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>            rest <span class="op">=</span> lowered.split(trigger, <span class="dv">1</span>)[<span class="dv">1</span>].strip()</span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> template.<span class="bu">format</span>(rest<span class="op">=</span>rest)</span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Please go on."</span></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick test (no typing needed) — this runs automatically:</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sample <span class="kw">in</span> [<span class="st">"I feel lonely"</span>, <span class="st">"My mother never listens"</span>, <span class="st">"The weather is nice"</span>]:</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"You:   </span><span class="sc">{</span>sample<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(sample)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="co"># --- LIVE CHAT ---</span></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="co"># To actually talk to ELIZA, REMOVE the # from each line below and run the cell.</span></span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="co"># (It waits for you to type, so it's left commented out to avoid blocking the notebook.)</span></span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="co"># print("My name is ELIZA. How are you feeling today? (Type 'quit' to exit)")</span></span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="co"># while True:</span></span>
-<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="co">#     line = input("You:   ")</span></span>
-<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a><span class="co">#     if line.lower() in ['quit', 'exit']:</span></span>
-<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a><span class="co">#         print("ELIZA: Goodbye!")</span></span>
-<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a><span class="co">#         break</span></span>
-<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(f"ELIZA: {eliza_respond(line)}\n")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A minimal ELIZA. Each rule is a pair: (trigger phrase, response template).</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ELIZA_RULES <span class="op">=</span> [</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i feel"</span>,    <span class="st">"Why do you feel </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i am"</span>,      <span class="st">"How long have you been </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i need"</span>,    <span class="st">"What would it mean to you if you got </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my mother"</span>, <span class="st">"Tell me more about your family."</span>),</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my father"</span>, <span class="st">"Tell me more about your family."</span>),</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i think"</span>,   <span class="st">"Do you really think </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"because"</span>,   <span class="st">"Is that the real reason?"</span>),</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"always"</span>,    <span class="st">"Can you think of a specific example?"</span>),</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"everyone"</span>,  <span class="st">"Really — everyone?"</span>),</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eliza_respond(user_input, rules<span class="op">=</span>ELIZA_RULES):</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    lowered <span class="op">=</span> user_input.lower().strip()</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> trigger, template <span class="kw">in</span> rules:</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> trigger <span class="kw">in</span> lowered:</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>            rest <span class="op">=</span> lowered.split(trigger, <span class="dv">1</span>)[<span class="dv">1</span>].strip()</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> template.<span class="bu">format</span>(rest<span class="op">=</span>rest)</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Please go on."</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick test (no typing needed) — this runs automatically:</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sample <span class="kw">in</span> [<span class="st">"I feel lonely"</span>, <span class="st">"My mother never listens"</span>, <span class="st">"The weather is nice"</span>]:</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"You:   </span><span class="sc">{</span>sample<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(sample)<span class="sc">}</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="er">")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="walking-through-the-code-3" class="level3">
@@ -1073,6 +1078,24 @@ OUTPUT:    a string response
 <li><code>return "Please go on."</code> — if <em>no</em> rule matched, the universal therapist hedge.</li>
 </ul>
 <p><strong>The key insight:</strong> the program never looked up the meaning of <code>"lonely"</code>. It substituted a string. The sense of being understood came entirely from the human reader’s brain filling in meaning that wasn’t there.</p>
+</section>
+<section id="talk-to-eliza-yourself-optional" class="level3">
+<h3 class="anchored" data-anchor-id="talk-to-eliza-yourself-optional">Talk to ELIZA Yourself (Optional)</h3>
+<p>The function below wraps ELIZA in a live chat loop. Running it <strong>pauses the notebook</strong> and waits for you to type, so the call on the last line is left commented out. To try it, delete the <code>#</code> on that one line and run the cell — type <code>quit</code> to stop.</p>
+<div id="3e86628b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chat_with_eliza():</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My name is ELIZA. How are you feeling today? (Type 'quit' to exit)"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        line <span class="op">=</span> <span class="bu">input</span>(<span class="st">"You:   "</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line.lower() <span class="kw">in</span> [<span class="st">"quit"</span>, <span class="st">"exit"</span>]:</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"ELIZA: Goodbye!"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(line)<span class="sc">}</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="er">")</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="er"># Remove the # below to start chatting:</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># chat_with_eliza()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p><strong>Modern LLMs (Gemini, Claude, GPT) are vastly more sophisticated than ELIZA</strong> — trained on hundreds of billions of words, capable of fluent responses on any topic. But they share ELIZA’s fundamental property: they predict <strong>plausible-sounding text</strong> without having a model of what the text <em>refers to</em>.</p>
 <ul>
 <li>ELIZA had no model of what <code>"lonely"</code> means; it just substituted the word</li>
