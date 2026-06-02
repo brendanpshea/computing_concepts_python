@@ -324,13 +324,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="lists-ordered-things-you-can-still-change">Lists: Ordered Things You Can Still Change</h2>
 <p><strong>Gwendolen Fairfax</strong> runs Fairfax Stationery on Mayfair High Street. Customers ring through orders all day, and Gwendolen wants them recorded <strong>in the order they arrived</strong> — first come, first served, no exceptions. She also reserves the right to cross items off, add a forgotten one, or revise a misheard request.</p>
 <p>That is a <strong>list</strong>: a row of items kept in order, with a position (an <strong>index</strong>) for each one, and free permission to change the contents later.</p>
-<div id="cell-7" class="cell">
+<div id="f7aa11df" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:50.412164Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:50.411493Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:50.431751Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:50.428386Z&quot;}}" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>todays_orders <span class="op">=</span> [<span class="st">"monogrammed cards"</span>, <span class="st">"ink, midnight blue"</span>, <span class="st">"two journals"</span>, <span class="st">"wax seals"</span>]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(todays_orders)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"How many orders today?"</span>, <span class="bu">len</span>(todays_orders))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['monogrammed cards', 'ink, midnight blue', 'two journals', 'wax seals']
+How many orders today? 4</code></pre>
+</div>
 </div>
 <section id="understanding-the-code" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-the-code">Understanding the Code</h3>
@@ -347,14 +351,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reading-and-slicing" class="level3">
 <h3 class="anchored" data-anchor-id="reading-and-slicing">Reading and Slicing</h3>
 <p>Gwendolen wants the very first order (the urgent one) and the last (the most recent). She can ask Python by <strong>index</strong>.</p>
-<div id="cell-11" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS INDEX, THEN RE-RUN</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>position <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Item at position"</span>, position, <span class="st">"→"</span>, todays_orders[position])</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Last item       →"</span>, todays_orders[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First two       →"</span>, todays_orders[:<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d32fb655" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:50.439394Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:50.438777Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:50.450021Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:50.447430Z&quot;}}" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS INDEX, THEN RE-RUN</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>position <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Item at position"</span>, position, <span class="st">"→"</span>, todays_orders[position])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Last item       →"</span>, todays_orders[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First two       →"</span>, todays_orders[:<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Item at position 0 → monogrammed cards
+Last item       → wax seals
+First two       → ['monogrammed cards', 'ink, midnight blue']</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-1" class="level3">
@@ -367,14 +376,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="changing-the-list" class="level3">
 <h3 class="anchored" data-anchor-id="changing-the-list">Changing the List</h3>
 <p>Lists are <strong>mutable</strong>: you can rewrite a slot, append to the end, or remove an item by value. Gwendolen does all three before lunch.</p>
-<div id="cell-14" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> [<span class="st">"monogrammed cards"</span>, <span class="st">"ink, midnight blue"</span>, <span class="st">"two journals"</span>, <span class="st">"wax seals"</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>orders.append(<span class="st">"calligraphy pen"</span>)     <span class="co"># add to the end</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>orders[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"ink, oxblood"</span>           <span class="co"># correct a misheard order</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>orders.remove(<span class="st">"wax seals"</span>)           <span class="co"># the customer changed her mind</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(orders)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fd404a0b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:50.457220Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:50.456520Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:50.465815Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:50.463849Z&quot;}}" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> [<span class="st">"monogrammed cards"</span>, <span class="st">"ink, midnight blue"</span>, <span class="st">"two journals"</span>, <span class="st">"wax seals"</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>orders.append(<span class="st">"calligraphy pen"</span>)     <span class="co"># add to the end</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>orders[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"ink, oxblood"</span>           <span class="co"># correct a misheard order</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>orders.remove(<span class="st">"wax seals"</span>)           <span class="co"># the customer changed her mind</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(orders)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['monogrammed cards', 'ink, oxblood', 'two journals', 'calligraphy pen']</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-2" class="level3">
@@ -390,32 +402,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-trap-two-names-for-the-same-list" class="level2">
 <h2 class="anchored" data-anchor-id="a-trap-two-names-for-the-same-list">A Trap: Two Names for the Same List</h2>
 <p>Gwendolen writes her morning list, then makes a “copy” before tweaking it for her evening shift. Or so she thinks.</p>
-<div id="cell-17" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>morning <span class="op">=</span> [<span class="st">"cards"</span>, <span class="st">"ink"</span>, <span class="st">"journals"</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>evening <span class="op">=</span> morning              <span class="co"># NOT a copy!</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>evening.append(<span class="st">"wax seals"</span>)    <span class="co"># editing evening...</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"evening :"</span>, evening)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"morning :"</span>, morning)    <span class="co"># ...but morning changed too!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bd813349" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:50.471770Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:50.471203Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:50.480811Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:50.478390Z&quot;}}" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>morning <span class="op">=</span> [<span class="st">"cards"</span>, <span class="st">"ink"</span>, <span class="st">"journals"</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>evening <span class="op">=</span> morning              <span class="co"># NOT a copy!</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>evening.append(<span class="st">"wax seals"</span>)    <span class="co"># editing evening...</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"evening :"</span>, evening)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"morning :"</span>, morning)    <span class="co"># ...but morning changed too!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>evening : ['cards', 'ink', 'journals', 'wax seals']
+morning : ['cards', 'ink', 'journals', 'wax seals']</code></pre>
+</div>
 </div>
 <section id="understanding-the-code-3" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-the-code-3">Understanding the Code</h3>
 <p><code>evening = morning</code> does <strong>not</strong> make a new list. It makes a second <strong>name</strong> that points at the <em>same</em> list in memory. Editing through one name shows up through the other. Python calls this <strong>aliasing</strong>, and it catches every beginner.</p>
 <p>The diagram below is the picture of what just happened — two arrows, one list.</p>
+<div id="b513b347" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB05_CollectionsADTs_files/figure-html/cell-6-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p><strong>Reading it:</strong> the two yellow ellipses are <em>names</em>; the blue box is the <em>list</em>. Both names point at the same list, so a change made through either name shows up through both.</p>
 </section>
 <section id="the-fix-make-a-real-copy" class="level3">
 <h3 class="anchored" data-anchor-id="the-fix-make-a-real-copy">The Fix: Make a Real Copy</h3>
 <p>When Gwendolen genuinely wants an independent second list, she uses <code>.copy()</code> (or the full slice <code>morning[:]</code>, or <code>list(morning)</code> — all three do the same job).</p>
-<div id="cell-22" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>morning <span class="op">=</span> [<span class="st">"cards"</span>, <span class="st">"ink"</span>, <span class="st">"journals"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>evening <span class="op">=</span> morning.copy()       <span class="co"># NEW list with the same contents</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>evening.append(<span class="st">"wax seals"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"evening :"</span>, evening)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"morning :"</span>, morning)    <span class="co"># untouched</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1ec45b8d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.672438Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.671708Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.680204Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.678384Z&quot;}}" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>morning <span class="op">=</span> [<span class="st">"cards"</span>, <span class="st">"ink"</span>, <span class="st">"journals"</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>evening <span class="op">=</span> morning.copy()       <span class="co"># NEW list with the same contents</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>evening.append(<span class="st">"wax seals"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"evening :"</span>, evening)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"morning :"</span>, morning)    <span class="co"># untouched</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>evening : ['cards', 'ink', 'journals', 'wax seals']
+morning : ['cards', 'ink', 'journals']</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-4" class="level3">
@@ -431,15 +460,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="predict-before-you-run-1" class="level3">
 <h3 class="anchored" data-anchor-id="predict-before-you-run-1">🔮 Predict Before You Run</h3>
 <p>In the next cell, <code>applicant</code> is a tuple of four items in the order <strong>(name, age, address, income)</strong>. After unpacking, what will the two <code>print</code> lines show? Predict, then run.</p>
-<div id="cell-26" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE FIELDS, THEN RE-RUN</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>applicant <span class="op">=</span> (<span class="st">"Jack Worthing"</span>, <span class="dv">29</span>, <span class="st">"Belgrave Square"</span>, <span class="dv">7000</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>name, age, address, income <span class="op">=</span> applicant      <span class="co"># unpacking</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name, <span class="st">"is"</span>, age, <span class="st">"years old."</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Annual income:"</span>, income, <span class="st">"pounds."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4fa8a9c0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.686287Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.685391Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.694861Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.693052Z&quot;}}" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE FIELDS, THEN RE-RUN</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>applicant <span class="op">=</span> (<span class="st">"Jack Worthing"</span>, <span class="dv">29</span>, <span class="st">"Belgrave Square"</span>, <span class="dv">7000</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>name, age, address, income <span class="op">=</span> applicant      <span class="co"># unpacking</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(name, <span class="st">"is"</span>, age, <span class="st">"years old."</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Annual income:"</span>, income, <span class="st">"pounds."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Jack Worthing is 29 years old.
+Annual income: 7000 pounds.</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-5" class="level3">
@@ -453,16 +486,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returning-two-things-at-once" class="level3">
 <h3 class="anchored" data-anchor-id="returning-two-things-at-once">Returning Two Things at Once</h3>
 <p>A function can only return one value — but that one value can be a tuple, which is how Python returns “two things” without fuss. Augusta asks her vetting function for <strong>both</strong> the verdict and a reason.</p>
-<div id="cell-29" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vet(income):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> income <span class="op">&gt;=</span> <span class="dv">5000</span>:</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="st">"approved"</span>, <span class="st">"income meets the threshold"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="st">"declined"</span>, <span class="st">"income below threshold"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>verdict, reason <span class="op">=</span> vet(<span class="dv">7000</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Verdict:"</span>, verdict)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reason :"</span>, reason)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c5b9917e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.700185Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.699725Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.709073Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.707328Z&quot;}}" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vet(income):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> income <span class="op">&gt;=</span> <span class="dv">5000</span>:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="st">"approved"</span>, <span class="st">"income meets the threshold"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="st">"declined"</span>, <span class="st">"income below threshold"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>verdict, reason <span class="op">=</span> vet(<span class="dv">7000</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Verdict:"</span>, verdict)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reason :"</span>, reason)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Verdict: approved
+Reason : income meets the threshold</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-6" class="level3">
@@ -478,17 +515,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="dictionaries-look-it-up-by-name">Dictionaries: Look It Up by Name</h2>
 <p><strong>Algernon Moncrieff</strong> caters Mayfair’s small parties. His menu has a dozen items, and at any moment a customer may ask the price of one. Algernon used to scan a printed list with his finger. Now he asks Python.</p>
 <p>A <strong>dictionary</strong> stores <strong>key–value pairs</strong>. Give it the key, and it hands back the value in a single step — no scanning, no counting positions, no order to remember.</p>
-<div id="cell-32" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE PRICES, THEN RE-RUN</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>menu <span class="op">=</span> {</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cucumber sandwich"</span>:  <span class="fl">0.75</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"muffin"</span>:             <span class="fl">0.50</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tea, Earl Grey"</span>:     <span class="fl">0.40</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"champagne, glass"</span>:   <span class="fl">3.00</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A muffin costs:"</span>, menu[<span class="st">"muffin"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3cd33173" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.714888Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.714280Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.723667Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.721647Z&quot;}}" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE PRICES, THEN RE-RUN</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>menu <span class="op">=</span> {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cucumber sandwich"</span>:  <span class="fl">0.75</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"muffin"</span>:             <span class="fl">0.50</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tea, Earl Grey"</span>:     <span class="fl">0.40</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"champagne, glass"</span>:   <span class="fl">3.00</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A muffin costs:"</span>, menu[<span class="st">"muffin"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A muffin costs: 0.5</code></pre>
+</div>
 </div>
 <section id="understanding-the-code-7" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-the-code-7">Understanding the Code</h3>
@@ -501,15 +541,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="adding-updating-and-checking-first" class="level3">
 <h3 class="anchored" data-anchor-id="adding-updating-and-checking-first">Adding, Updating, and Checking First</h3>
 <p>Algernon adds a new item and corrects a price using the same <code>key = value</code> syntax. He also checks whether something is on the menu <em>before</em> trying to read it — looking up a key that isn’t there is an error.</p>
-<div id="cell-35" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>menu[<span class="st">"scone"</span>] <span class="op">=</span> <span class="fl">0.60</span>            <span class="co"># add a new key</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>menu[<span class="st">"muffin"</span>] <span class="op">=</span> <span class="fl">0.55</span>           <span class="co"># update an existing one</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"cucumber sandwich"</span> <span class="kw">in</span> menu:</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Cucumber sandwich:"</span>, menu[<span class="st">"cucumber sandwich"</span>])</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"caviar"</span> <span class="kw">not</span> <span class="kw">in</span> menu:</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No caviar on this menu — Algernon would never."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0e20a2b3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.730912Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.729898Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.739516Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.737521Z&quot;}}" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>menu[<span class="st">"scone"</span>] <span class="op">=</span> <span class="fl">0.60</span>            <span class="co"># add a new key</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>menu[<span class="st">"muffin"</span>] <span class="op">=</span> <span class="fl">0.55</span>           <span class="co"># update an existing one</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"cucumber sandwich"</span> <span class="kw">in</span> menu:</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Cucumber sandwich:"</span>, menu[<span class="st">"cucumber sandwich"</span>])</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"caviar"</span> <span class="kw">not</span> <span class="kw">in</span> menu:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No caviar on this menu — Algernon would never."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cucumber sandwich: 0.75
+No caviar on this menu — Algernon would never.</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-8" class="level3">
@@ -522,10 +566,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="safer-lookup-.get" class="level3">
 <h3 class="anchored" data-anchor-id="safer-lookup-.get">Safer Lookup: <code>.get()</code></h3>
 <p><code>menu["caviar"]</code> crashes when caviar isn’t on the menu. Often that is what Algernon wants — but sometimes “missing” should quietly mean <em>zero</em> or <em>not available</em>. The <code>.get()</code> method gives him that option.</p>
-<div id="cell-38" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(menu.get(<span class="st">"scone"</span>))              <span class="co"># found → returns 0.60</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(menu.get(<span class="st">"caviar"</span>))             <span class="co"># missing → returns None</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(menu.get(<span class="st">"caviar"</span>, <span class="fl">0.00</span>))       <span class="co"># missing → returns the default we supply</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="00fc462e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.746534Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.745889Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.754800Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.752725Z&quot;}}" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(menu.get(<span class="st">"scone"</span>))              <span class="co"># found → returns 0.60</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(menu.get(<span class="st">"caviar"</span>))             <span class="co"># missing → returns None</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(menu.get(<span class="st">"caviar"</span>, <span class="fl">0.00</span>))       <span class="co"># missing → returns the default we supply</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6
+None
+0.0</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-9" class="level3">
@@ -539,9 +588,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="walking-the-whole-menu" class="level3">
 <h3 class="anchored" data-anchor-id="walking-the-whole-menu">Walking the Whole Menu</h3>
 <p>Sometimes Algernon does want every item — for example, to print the whole price list. The <code>.items()</code> view yields each key and its value together.</p>
-<div id="cell-41" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item, price <span class="kw">in</span> menu.items():</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item<span class="sc">:&lt;22}</span><span class="ss"> £</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="59b70569" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.760304Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.759701Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.768288Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.765995Z&quot;}}" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item, price <span class="kw">in</span> menu.items():</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item<span class="sc">:&lt;22}</span><span class="ss"> £</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cucumber sandwich      £0.75
+muffin                 £0.55
+tea, Earl Grey         £0.40
+champagne, glass       £3.00
+scone                  £0.60</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-10" class="level3">
@@ -554,11 +610,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sorting-from-most-expensive-down" class="level3">
 <h3 class="anchored" data-anchor-id="sorting-from-most-expensive-down">Sorting: From Most Expensive Down</h3>
 <p>Algernon prints a price list ordered from most to least expensive. The built-in <code>sorted()</code> returns a new sorted list — and it works on a dictionary’s <code>.items()</code> view too.</p>
-<div id="cell-44" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>priciest <span class="op">=</span> <span class="bu">sorted</span>(menu.items(), key<span class="op">=</span><span class="kw">lambda</span> kv: kv[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item, price <span class="kw">in</span> priciest:</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item<span class="sc">:&lt;22}</span><span class="ss"> £</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bc37963e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.774567Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.773924Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.784731Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.782390Z&quot;}}" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>priciest <span class="op">=</span> <span class="bu">sorted</span>(menu.items(), key<span class="op">=</span><span class="kw">lambda</span> kv: kv[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item, price <span class="kw">in</span> priciest:</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>item<span class="sc">:&lt;22}</span><span class="ss"> £</span><span class="sc">{</span>price<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>champagne, glass       £3.00
+cucumber sandwich      £0.75
+scone                  £0.60
+muffin                 £0.55
+tea, Earl Grey         £0.40</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-11" class="level3">
@@ -576,16 +639,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="sets-membership-overlap-uniqueness">Sets: Membership, Overlap, Uniqueness</h2>
 <p><strong>Cecily Cardew</strong> runs a small country school. Today she has two cohorts — the morning Latin class and the afternoon French class — and one urgent question from the bursar: <strong>which students are in <em>both</em>?</strong></p>
 <p>A <strong>set</strong> is a collection with two strict rules: <strong>no duplicates</strong>, and <strong>no order</strong>. What sets are extraordinarily good at is comparing memberships — who’s in A, who’s in B, who’s in both, who’s only in one.</p>
-<div id="cell-47" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE ROSTERS, THEN RE-RUN</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>latin   <span class="op">=</span> {<span class="st">"Ada"</span>, <span class="st">"Beatrice"</span>, <span class="st">"Cyril"</span>, <span class="st">"Dorian"</span>, <span class="st">"Esme"</span>}</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>french  <span class="op">=</span> {<span class="st">"Beatrice"</span>, <span class="st">"Cyril"</span>, <span class="st">"Felix"</span>, <span class="st">"Gwendolen"</span>}</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"In both classes :"</span>, latin <span class="op">&amp;</span> french)        <span class="co"># intersection</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"In either class :"</span>, latin <span class="op">|</span> french)        <span class="co"># union</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Latin only      :"</span>, latin <span class="op">-</span> french)        <span class="co"># difference</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exactly one     :"</span>, latin <span class="op">^</span> french)        <span class="co"># symmetric difference</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e5650e33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.790810Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.789980Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.800885Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.799117Z&quot;}}" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE ROSTERS, THEN RE-RUN</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>latin   <span class="op">=</span> {<span class="st">"Ada"</span>, <span class="st">"Beatrice"</span>, <span class="st">"Cyril"</span>, <span class="st">"Dorian"</span>, <span class="st">"Esme"</span>}</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>french  <span class="op">=</span> {<span class="st">"Beatrice"</span>, <span class="st">"Cyril"</span>, <span class="st">"Felix"</span>, <span class="st">"Gwendolen"</span>}</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"In both classes :"</span>, latin <span class="op">&amp;</span> french)        <span class="co"># intersection</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"In either class :"</span>, latin <span class="op">|</span> french)        <span class="co"># union</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Latin only      :"</span>, latin <span class="op">-</span> french)        <span class="co"># difference</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exactly one     :"</span>, latin <span class="op">^</span> french)        <span class="co"># symmetric difference</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>In both classes : {'Beatrice', 'Cyril'}
+In either class : {'Beatrice', 'Cyril', 'Felix', 'Esme', 'Ada', 'Dorian', 'Gwendolen'}
+Latin only      : {'Ada', 'Esme', 'Dorian'}
+Exactly one     : {'Ada', 'Esme', 'Felix', 'Dorian', 'Gwendolen'}</code></pre>
+</div>
 </div>
 <section id="understanding-the-code-12" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-the-code-12">Understanding the Code</h3>
@@ -598,13 +667,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="predict-before-you-run-2" class="level3">
 <h3 class="anchored" data-anchor-id="predict-before-you-run-2">🔮 Predict Before You Run</h3>
 <p>The next cell builds a set from a messy list with six entries — but only four distinct names. <strong>Predict</strong> two things before you run it: (1) what will <code>len(guests_unique)</code> print? (2) Will the unique guests print in the same order as the original list, or not?</p>
-<div id="cell-50" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>guests_messy <span class="op">=</span> [<span class="st">"Ada"</span>, <span class="st">"Beatrice"</span>, <span class="st">"Ada"</span>, <span class="st">"Cyril"</span>, <span class="st">"Beatrice"</span>, <span class="st">"Dorian"</span>]</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>guests_unique <span class="op">=</span> <span class="bu">set</span>(guests_messy)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original :"</span>, guests_messy)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique   :"</span>, guests_unique)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"How many distinct guests?"</span>, <span class="bu">len</span>(guests_unique))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bbcea74e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.806854Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.805924Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.815825Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.813810Z&quot;}}" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>guests_messy <span class="op">=</span> [<span class="st">"Ada"</span>, <span class="st">"Beatrice"</span>, <span class="st">"Ada"</span>, <span class="st">"Cyril"</span>, <span class="st">"Beatrice"</span>, <span class="st">"Dorian"</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>guests_unique <span class="op">=</span> <span class="bu">set</span>(guests_messy)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original :"</span>, guests_messy)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unique   :"</span>, guests_unique)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"How many distinct guests?"</span>, <span class="bu">len</span>(guests_unique))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Original : ['Ada', 'Beatrice', 'Ada', 'Cyril', 'Beatrice', 'Dorian']
+Unique   : {'Ada', 'Beatrice', 'Dorian', 'Cyril'}
+How many distinct guests? 4</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-13" class="level3">
@@ -662,16 +736,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="nested-collections-real-data-has-shape">Nested Collections: Real Data Has Shape</h2>
 <p>So far each example has been <strong>flat</strong> — one list, or one dictionary, or one set. Real data is almost never that simple. Algernon caters a dinner party tonight, and every guest has a <strong>name</strong>, an <strong>age</strong>, <em>and</em> a <strong>dietary restriction</strong>. That is three facts per person — one row, three columns.</p>
 <p>The standard Python answer is a <strong>list of dictionaries</strong>: a list (one entry per guest) where each entry is a dict (one key per fact). This is exactly the shape of nearly every API response, every spreadsheet row, every database query you will meet in NB09 and NB10.</p>
-<div id="cell-54" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>party <span class="op">=</span> [</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Augusta"</span>,  <span class="st">"age"</span>: <span class="dv">60</span>, <span class="st">"diet"</span>: <span class="st">"no shellfish"</span>},</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Cecily"</span>,   <span class="st">"age"</span>: <span class="dv">18</span>, <span class="st">"diet"</span>: <span class="st">"vegetarian"</span>},</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Algernon"</span>, <span class="st">"age"</span>: <span class="dv">27</span>, <span class="st">"diet"</span>: <span class="st">"none"</span>},</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Jack"</span>,     <span class="st">"age"</span>: <span class="dv">29</span>, <span class="st">"diet"</span>: <span class="st">"no nuts"</span>},</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(party[<span class="dv">0</span>])                 <span class="co"># a whole guest record</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(party[<span class="dv">0</span>][<span class="st">"name"</span>])         <span class="co"># one field of one guest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="42a2272f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.821936Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.821301Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.833440Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.830929Z&quot;}}" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>party <span class="op">=</span> [</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Augusta"</span>,  <span class="st">"age"</span>: <span class="dv">60</span>, <span class="st">"diet"</span>: <span class="st">"no shellfish"</span>},</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Cecily"</span>,   <span class="st">"age"</span>: <span class="dv">18</span>, <span class="st">"diet"</span>: <span class="st">"vegetarian"</span>},</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Algernon"</span>, <span class="st">"age"</span>: <span class="dv">27</span>, <span class="st">"diet"</span>: <span class="st">"none"</span>},</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Jack"</span>,     <span class="st">"age"</span>: <span class="dv">29</span>, <span class="st">"diet"</span>: <span class="st">"no nuts"</span>},</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(party[<span class="dv">0</span>])                 <span class="co"># a whole guest record</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(party[<span class="dv">0</span>][<span class="st">"name"</span>])         <span class="co"># one field of one guest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'name': 'Augusta', 'age': 60, 'diet': 'no shellfish'}
+Augusta</code></pre>
+</div>
 </div>
 <section id="understanding-the-code-14" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-the-code-14">Understanding the Code</h3>
@@ -684,14 +762,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="walking-and-filtering-the-party" class="level3">
 <h3 class="anchored" data-anchor-id="walking-and-filtering-the-party">Walking and Filtering the Party</h3>
 <p>A <code>for</code> loop over the list gives Algernon one full guest record at a time. Inside the loop, each <code>guest</code> is a dictionary — so guest fields use the dict syntax <code>guest["name"]</code>.</p>
-<div id="cell-57" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> guest <span class="kw">in</span> party:</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>guest[<span class="st">'name'</span>]<span class="sc">:&lt;10}</span><span class="ss"> (age </span><span class="sc">{</span>guest[<span class="st">'age'</span>]<span class="sc">:&gt;2}</span><span class="ss">) — </span><span class="sc">{</span>guest[<span class="st">'diet'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter: who is vegetarian?</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>vegetarians <span class="op">=</span> [g[<span class="st">"name"</span>] <span class="cf">for</span> g <span class="kw">in</span> party <span class="cf">if</span> g[<span class="st">"diet"</span>] <span class="op">==</span> <span class="st">"vegetarian"</span>]</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Vegetarians:"</span>, vegetarians)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c0727ae1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.838603Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.838067Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.849256Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.845946Z&quot;}}" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> guest <span class="kw">in</span> party:</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>guest[<span class="st">'name'</span>]<span class="sc">:&lt;10}</span><span class="ss"> (age </span><span class="sc">{</span>guest[<span class="st">'age'</span>]<span class="sc">:&gt;2}</span><span class="ss">) — </span><span class="sc">{</span>guest[<span class="st">'diet'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter: who is vegetarian?</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>vegetarians <span class="op">=</span> [g[<span class="st">"name"</span>] <span class="cf">for</span> g <span class="kw">in</span> party <span class="cf">if</span> g[<span class="st">"diet"</span>] <span class="op">==</span> <span class="st">"vegetarian"</span>]</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Vegetarians:"</span>, vegetarians)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Augusta    (age 60) — no shellfish
+Cecily     (age 18) — vegetarian
+Algernon   (age 27) — none
+Jack       (age 29) — no nuts
+
+Vegetarians: ['Cecily']</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-15" class="level3">
@@ -705,7 +791,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="exercise-1-gwendolens-order-cleanup" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1-gwendolens-order-cleanup">✏️ Exercise 1 — Gwendolen’s Order Cleanup</h3>
 <p>Gwendolen hands you the morning’s list and three corrections.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> [<span class="st">"cards"</span>, <span class="st">"ink"</span>, <span class="st">"journals"</span>, <span class="st">"wax seals"</span>, <span class="st">"ink"</span>, <span class="st">"pen"</span>, <span class="st">"journals"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>orders <span class="op">=</span> [<span class="st">"cards"</span>, <span class="st">"ink"</span>, <span class="st">"journals"</span>, <span class="st">"wax seals"</span>, <span class="st">"ink"</span>, <span class="st">"pen"</span>, <span class="st">"journals"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In a fresh code cell:</p>
 <ol type="1">
 <li>Replace the <strong>second</strong> <code>"ink"</code> (only the second one) with <code>"ink, oxblood"</code>.</li>
@@ -718,12 +804,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="exercise-2-augustas-records-ai-assisted" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2-augustas-records-ai-assisted">✏️ Exercise 2 — Augusta’s Records &nbsp; 🤖 <em>AI-Assisted</em></h3>
 <p>Augusta Bracknell has four applicants and one rule: each record is a tuple <code>(name, age, address, income)</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>applicants <span class="op">=</span> [</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Jack Worthing"</span>,      <span class="dv">29</span>, <span class="st">"Belgrave Square"</span>, <span class="dv">7000</span>),</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Algernon Moncrieff"</span>, <span class="dv">27</span>, <span class="st">"Half-Moon Street"</span>, <span class="dv">4500</span>),</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Cecily Cardew"</span>,      <span class="dv">18</span>, <span class="st">"Hertfordshire"</span>,   <span class="dv">8000</span>),</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Gwendolen Fairfax"</span>,  <span class="dv">24</span>, <span class="st">"Mayfair"</span>,         <span class="dv">6200</span>),</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>applicants <span class="op">=</span> [</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Jack Worthing"</span>,      <span class="dv">29</span>, <span class="st">"Belgrave Square"</span>, <span class="dv">7000</span>),</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Algernon Moncrieff"</span>, <span class="dv">27</span>, <span class="st">"Half-Moon Street"</span>, <span class="dv">4500</span>),</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Cecily Cardew"</span>,      <span class="dv">18</span>, <span class="st">"Hertfordshire"</span>,   <span class="dv">8000</span>),</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Gwendolen Fairfax"</span>,  <span class="dv">24</span>, <span class="st">"Mayfair"</span>,         <span class="dv">6200</span>),</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ask an AI assistant (Gemini / Claude / ChatGPT) to write a function <code>summarise(applicants)</code> that returns a tuple <code>(approved_count, declined_count)</code>, where “approved” means income ≥ 5000.</p>
 <p>Then, in your notebook:</p>
 <ol type="1">
@@ -735,8 +821,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="exercise-3-cecilys-cohort-overlap" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3-cecilys-cohort-overlap">✏️ Exercise 3 — Cecily’s Cohort Overlap</h3>
 <p>Cecily’s bursar wants three numbers about the two cohorts below.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>latin  <span class="op">=</span> {<span class="st">"Ada"</span>, <span class="st">"Beatrice"</span>, <span class="st">"Cyril"</span>, <span class="st">"Dorian"</span>, <span class="st">"Esme"</span>, <span class="st">"Felix"</span>}</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>french <span class="op">=</span> {<span class="st">"Beatrice"</span>, <span class="st">"Felix"</span>, <span class="st">"Gwendolen"</span>, <span class="st">"Henry"</span>, <span class="st">"Ada"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>latin  <span class="op">=</span> {<span class="st">"Ada"</span>, <span class="st">"Beatrice"</span>, <span class="st">"Cyril"</span>, <span class="st">"Dorian"</span>, <span class="st">"Esme"</span>, <span class="st">"Felix"</span>}</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>french <span class="op">=</span> {<span class="st">"Beatrice"</span>, <span class="st">"Felix"</span>, <span class="st">"Gwendolen"</span>, <span class="st">"Henry"</span>, <span class="st">"Ada"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Write code that prints:</p>
 <ol type="1">
 <li>The names of students in <strong>both</strong> classes.</li>
@@ -775,26 +861,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   METHOD size():
     RETURN the length of line</code></pre>
 <p>Each method is one tiny operation on <code>line</code>. The Python below is the same pseudocode in working code.</p>
-<div id="cell-64" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerQueue:</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._line <span class="op">=</span> []                      <span class="co"># storage — a list</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add(<span class="va">self</span>, name):</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._line.append(name)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> next_customer(<span class="va">self</span>):</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._line.pop(<span class="dv">0</span>)             <span class="co"># remove + return the front</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> size(<span class="va">self</span>):</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>._line)</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> CustomerQueue()</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>q.add(<span class="st">"Gwendolen"</span>)<span class="op">;</span> q.add(<span class="st">"Algernon"</span>)<span class="op">;</span> q.add(<span class="st">"Cecily"</span>)</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Waiting:"</span>, q.size())</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Now serving:"</span>, q.next_customer())</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Still waiting:"</span>, q.size())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="938356b8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:51.858582Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:51.857561Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:51.873780Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:51.871180Z&quot;}}" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerQueue:</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._line <span class="op">=</span> []                      <span class="co"># storage — a list</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add(<span class="va">self</span>, name):</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._line.append(name)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> next_customer(<span class="va">self</span>):</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._line.pop(<span class="dv">0</span>)             <span class="co"># remove + return the front</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> size(<span class="va">self</span>):</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>._line)</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> CustomerQueue()</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>q.add(<span class="st">"Gwendolen"</span>)<span class="op">;</span> q.add(<span class="st">"Algernon"</span>)<span class="op">;</span> q.add(<span class="st">"Cecily"</span>)</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Waiting:"</span>, q.size())</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Now serving:"</span>, q.next_customer())</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Still waiting:"</span>, q.size())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Waiting: 3
+Now serving: Gwendolen
+Still waiting: 2</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-16" class="level3">
@@ -808,28 +899,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="picture-it-one-interface-two-implementations" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-one-interface-two-implementations">Picture It: One Interface, Two Implementations</h3>
 <p>The diagram below shows the same <code>CustomerQueue</code> interface sitting above two different storage choices. The point isn’t the diagram — it’s that the box on top doesn’t care which box on the bottom you pick.</p>
+<div id="7c0c79ed" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB05_CollectionsADTs_files/figure-html/cell-20-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p><strong>Reading it:</strong> the yellow box is the public promise — the three method names. The grey boxes are two different ways to keep the data. Code that uses the queue only touches the yellow box, so changing the grey box is free.</p>
 </section>
 <section id="a-cleaner-way-to-build-a-collection-comprehensions" class="level3">
 <h3 class="anchored" data-anchor-id="a-cleaner-way-to-build-a-collection-comprehensions">A Cleaner Way to Build a Collection: Comprehensions</h3>
 <p><strong>Arthur Goring</strong>, the bespoke tailor next door, has a list of inseam measurements and a small rule from his master cutter: add 2 cm to every measurement for the seam allowance. He <em>could</em> write a loop. He prefers a <strong>list comprehension</strong> — one line that builds a new list from an old one.</p>
-<div id="cell-70" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>inseams <span class="op">=</span> [<span class="dv">78</span>, <span class="dv">81</span>, <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">79</span>]</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Old way: loop + append</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>adjusted_loop <span class="op">=</span> []</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> inseams:</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    adjusted_loop.append(m <span class="op">+</span> <span class="dv">2</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprehension way: one line</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>adjusted <span class="op">=</span> [m <span class="op">+</span> <span class="dv">2</span> <span class="cf">for</span> m <span class="kw">in</span> inseams]</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"loop way        :"</span>, adjusted_loop)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"comprehension   :"</span>, adjusted)</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># A dict comprehension — same idea, key:value shape</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>labelled <span class="op">=</span> {<span class="ss">f"client_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>: m <span class="op">+</span> <span class="dv">2</span> <span class="cf">for</span> i, m <span class="kw">in</span> <span class="bu">enumerate</span>(inseams, start<span class="op">=</span><span class="dv">1</span>)}</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"labelled        :"</span>, labelled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="94a3816d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:52.895012Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:52.894068Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:23:52.905356Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:23:52.903326Z&quot;}}" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>inseams <span class="op">=</span> [<span class="dv">78</span>, <span class="dv">81</span>, <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">79</span>]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Old way: loop + append</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>adjusted_loop <span class="op">=</span> []</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> m <span class="kw">in</span> inseams:</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    adjusted_loop.append(m <span class="op">+</span> <span class="dv">2</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprehension way: one line</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>adjusted <span class="op">=</span> [m <span class="op">+</span> <span class="dv">2</span> <span class="cf">for</span> m <span class="kw">in</span> inseams]</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"loop way        :"</span>, adjusted_loop)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"comprehension   :"</span>, adjusted)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="co"># A dict comprehension — same idea, key:value shape</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>labelled <span class="op">=</span> {<span class="ss">f"client_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>: m <span class="op">+</span> <span class="dv">2</span> <span class="cf">for</span> i, m <span class="kw">in</span> <span class="bu">enumerate</span>(inseams, start<span class="op">=</span><span class="dv">1</span>)}</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"labelled        :"</span>, labelled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>loop way        : [80, 83, 77, 86, 81]
+comprehension   : [80, 83, 77, 86, 81]
+labelled        : {'client_1': 80, 'client_2': 83, 'client_3': 77, 'client_4': 86, 'client_5': 81}</code></pre>
+</div>
 </div>
 </section>
 <section id="understanding-the-code-17" class="level3">
@@ -844,6 +949,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="one-last-picture-why-the-right-collection-matters" class="level3">
 <h3 class="anchored" data-anchor-id="one-last-picture-why-the-right-collection-matters">One Last Picture: Why the Right Collection Matters</h3>
 <p>Algernon’s menu has hundreds of items some days. Searching a list means checking each entry until you find a match; a dictionary jumps straight there. The chart below times both as the menu grows.</p>
+<div id="3498aebb" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB05_CollectionsADTs_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p><strong>Reading it:</strong> both axes are log-scaled, so a straight diagonal means <em>“grows with the data”</em> and a flat line means <em>“doesn’t care how big the data is.”</em> The list line climbs. The dict line barely moves. That gap is why we picked a dict for the menu and not a list — and it’s exactly the kind of trade-off Notebook 7 will study under the name <strong>Big O</strong>.</p>
 </section>
 <section id="exercise-4-jacks-customer-queue-ai-assisted" class="level3">
@@ -995,23 +1109,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="practice-pyquiz" class="level2">
 <h2 class="anchored" data-anchor-id="practice-pyquiz">Practice: PyQuiz</h2>
 <p>More practice — collections edition. This bank exercises every collection from the notebook: lists, tuples, dicts, and sets. Two patterns worth keeping in mind:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look something up in a dict, defaulting to 0 when the key is missing</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> menu.get(item, <span class="dv">0</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># count distinct values in a list — convert to set, then take len</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>distinct <span class="op">=</span> <span class="bu">len</span>(<span class="bu">set</span>(items))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look something up in a dict, defaulting to 0 when the key is missing</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> menu.get(item, <span class="dv">0</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># count distinct values in a list — convert to set, then take len</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>distinct <span class="op">=</span> <span class="bu">len</span>(<span class="bu">set</span>(items))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Run the cell to load the tool.</p>
-<div id="cell-78" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PyQuiz bootstrap — works in Colab or any local Jupyter.</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, urllib.request</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main"</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">"pyquiz.py"</span>):</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    urllib.request.urlretrieve(<span class="ss">f"</span><span class="sc">{</span>REPO<span class="sc">}</span><span class="ss">/tools/python_code_quiz/pyquiz.py"</span>, <span class="st">"pyquiz.py"</span>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyquiz <span class="im">import</span> PracticeTool</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>practice_tool <span class="op">=</span> PracticeTool(</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    json_url<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>REPO<span class="sc">}</span><span class="ss">/tools/python_code_quiz/banks/nb05_collections.json"</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="105532ea" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:23:58.193161Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:23:58.191949Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:24:01.068858Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:24:01.064850Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PyQuiz bootstrap — works in Colab or any local Jupyter.</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, urllib.request</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main"</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">"pyquiz.py"</span>):</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    urllib.request.urlretrieve(<span class="ss">f"</span><span class="sc">{</span>REPO<span class="sc">}</span><span class="ss">/tools/python_code_quiz/pyquiz.py"</span>, <span class="st">"pyquiz.py"</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyquiz <span class="im">import</span> PracticeTool</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>practice_tool <span class="op">=</span> PracticeTool(</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    json_url<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>REPO<span class="sc">}</span><span class="ss">/tools/python_code_quiz/banks/nb05_collections.json"</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="key-terms" class="level2">

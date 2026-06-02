@@ -1,0 +1,184 @@
+---
+title: "Was Object-Oriented Programming a Mistake?"
+subtitle: "Alan Kay, Barbara Liskov, and the forty-year argument over how to build software — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+bibliography: refs.bib
+---
+
+::: {.case-at-a-glance}
+- **Who:** Alan Kay (b. 1940), who coined the term *object-oriented* and built Smalltalk; Barbara Liskov (b. 1939), the MIT computer scientist whose rule about inheritance is now taught everywhere; and the language designers who spread, defended, and later attacked the idea — Bjarne Stroustrup (C++), James Gosling (Java), Joe Armstrong (Erlang), and Rich Hickey (Clojure).
+- **What:** One idea — bundle data together with the code that acts on it, into a thing called an *object* — went from a research toy to the way most of the world's software was built. Then a generation of programmers turned around and asked whether the idea had cost more than it was worth.
+- **Where / When:** Xerox PARC, California, 1972 (Smalltalk). MIT, 1987 (Liskov's keynote). Bell Labs and Sun Microsystems, 1985–1995 (C++ and Java). And the running argument among working programmers, 2009–2026.
+- **Why it matters:** For thirty years, "good design" and "object-oriented design" meant nearly the same thing in industry. If the most-taught way to organize a program was partly a mistake, that affects how millions of programs were built — and how the next generation is taught to think.
+- **Concepts at play:** object, class, [encapsulation]{.key-term}, [inheritance]{.key-term}, [polymorphism]{.key-term}, [composition]{.key-term}, [message passing]{.key-term}, paradigm
+:::
+
+## The Case
+
+In 1972, at Xerox's Palo Alto Research Center, a young researcher named Alan Kay was trying to picture a different kind of computer. Not a big machine that ran one program at a time, but a personal one a child could use. He needed a way to organize the software inside it. The metaphor he reached for came from biology.
+
+Kay had studied molecular biology before computing. He thought about cells. A living body is made of billions of cells. Each cell hides its own messy chemistry behind a wall. Cells do not reach inside one another. They communicate by sending chemical *messages*. The system is robust because no single cell can corrupt the insides of another.
+
+What if software worked that way? Kay imagined a program as a community of small, self-contained units. Each one would hide its own data behind a wall. None could reach inside another. They would cooperate only by sending [messages]{.key-term} — requests that an object could choose how to answer. He called these units *objects*, and the style of building with them [object-oriented programming]{.key-term}, or OOP.
+
+::: {.context-box}
+**The vocabulary of objects.** An **object** bundles some data together with the operations that act on that data. A **class** is the blueprint that says what a kind of object holds and can do. [Encapsulation]{.key-term} is the wall: the object's inner data is hidden, and outside code must go through the object's own operations to touch it. [Message passing]{.key-term} is the original way objects were meant to interact — you *ask* an object to do something, and it decides how. These four ideas are the part of OOP almost nobody argues against.
+:::
+
+Kay's team built the idea into a language called Smalltalk. It was small, uniform, and strange for its time. Everything was an object, even a number. You did not "call a function" on data; you "sent a message" to an object. Smalltalk never became popular itself. But the idea inside it spread — and as it spread, it changed.
+
+The version that conquered the world was not Kay's. In 1979 a Danish engineer named Bjarne Stroustrup, at Bell Labs, began adding objects to the C language. He wanted the speed of C with a way to organize large programs. His language, later named C++, kept one feature Kay had not emphasized and the language Simula had pioneered years earlier: [inheritance]{.key-term}. With inheritance, you could define one class as a special kind of another — a `SportsCar` that automatically gets everything a `Car` has, plus extras. It felt powerful. It felt like modeling the real world.
+
+Kay watched C++ become the public face of "object-oriented" and did not like it. In a 1997 talk he said flatly: "I invented the term object-oriented, and I can tell you I did not have C++ in mind" [@kay1997]. To Kay, the heart of OOP was messaging and encapsulation — autonomous cells. The industry had seized on a different part, inheritance and class hierarchies, and called *that* the main idea.
+
+::: {.context-box}
+**Inheritance and polymorphism, the parts under dispute.** [Inheritance]{.key-term} lets a *child* class reuse and extend a *parent* class. A `Manager` class might inherit from an `Employee` class, getting its data and behavior for free, then add more. [Polymorphism]{.key-term} means one instruction can do the right thing for many kinds of object: tell any `Employee` to `pay()`, and a `Manager` and a `Clerk` each respond in their own way. Polymorphism is widely loved. Deep inheritance is the feature the next forty years of argument circle around.
+:::
+
+Then came Java. In 1995, Sun Microsystems released a language built around classes from the ground up. Its promise — "write once, run anywhere" — and its strict, everything-is-a-class structure made it the language of the corporate world. Universities taught Java first. Job listings demanded it. By 2005, to most working programmers, "good software design" and "object-oriented design" meant almost the same thing.
+
+With the boom came a strange artifact. In 1994, four engineers — later nicknamed the "Gang of Four" — published *Design Patterns*, a catalog of standard solutions to recurring problems in object-oriented code [@gof1994]. It became one of the best-selling programming books ever. To its fans, it was hard-won wisdom. To its critics, the long list of patterns with names like *AbstractFactory* and *VisitorDecorator* was a warning sign: if a paradigm needs a thick book of workarounds, maybe the paradigm is fighting you.
+
+The backlash arrived in force in the 2010s. Programmers who had spent careers in deep class hierarchies started writing essays with titles like "Object-Oriented Programming is Bad." A satirical project called *FizzBuzz Enterprise Edition* solved a problem a beginner can do in five lines using dozens of Java classes and interfaces — a joke that landed because it was barely an exaggeration. Erlang's creator Joe Armstrong put the complaint in one image: "You wanted a banana but what you got was a gorilla holding the banana and the entire jungle" [@seibel2009]. Ask an object for one thing, and you drag along everything it is attached to.
+
+The criticism was loudest about exactly the feature Stroustrup had kept and Kay had downplayed: inheritance. And here the argument stopped being a matter of taste. There was a real, provable problem hiding inside the most natural-sounding inheritance anyone could write.
+
+## How It Worked
+
+The problem has a precise form, and you can see it with grade-school geometry. It is the reason one MIT researcher's name is now attached to a rule every working programmer is supposed to know.
+
+Start with a `Rectangle`. It has a width and a height, and you can ask for its area.
+
+```
+CLASS Rectangle
+  set_width(w):   width  ← w
+  set_height(h):  height ← h
+  area():         RETURN width × height
+```
+
+Now, a square *is a* rectangle — every square is a rectangle whose sides happen to be equal. That sentence sounds like a green light for inheritance. So we make `Square` a child of `Rectangle`. To keep its sides equal, setting the width must also set the height, and the reverse.
+
+```
+CLASS Square EXTENDS Rectangle
+  set_width(w):   width ← w;  height ← w
+  set_height(h):  width ← h;  height ← h
+```
+
+This looks careful and correct. It is not. The trouble shows up in code that was written for rectangles and never heard of squares:
+
+```
+Procedure: stretch_and_check(r)   // r is supposed to be a Rectangle
+  1. r.set_width(5)
+  2. r.set_height(4)
+  3. RETURN r.area()              // expect 5 × 4 = 20
+```
+
+Pass this a plain `Rectangle` and it returns `20`, as expected. Pass it a `Square` and step 2 quietly changes the width too. Both sides become `4`. The area comes back `16`. The procedure did nothing wrong. It set a width and a height and asked for the area. The `Square` broke a promise the `Rectangle` had made — that width and height move independently.
+
+::: {.context-box}
+**The Liskov Substitution Principle.** In a 1987 keynote, and then in precise form with Jeannette Wing in 1994, Barbara Liskov stated the rule the `Square` violates [@liskov1987; @liskovwing1994]. In plain words: *if code works for a parent type, it must keep working when you hand it a child type instead.* A child class is only a valid subtype if it can stand in for its parent everywhere, with no surprises. A `Square` that secretly couples its sides cannot stand in for a `Rectangle`. So "a square is a rectangle," true in geometry, is **false as an inheritance claim**. The is-a sentence is not enough.
+:::
+
+The fix is not more clever inheritance. It is to stop using inheritance here at all. Instead of saying a shape *is a* special rectangle, you let each shape *have* its own dimensions and report its own area:
+
+```
+CLASS Rectangle
+  has width, height
+  area():  RETURN width × height
+
+CLASS Square
+  has side
+  area():  RETURN side × side
+```
+
+Now nothing pretends to be a kind of something it cannot replace. Each shape stands on its own. This move — building from parts an object *has*, rather than a parent it *is* — is called [composition]{.key-term}. The contrast between the two strategies is the whole debate in miniature:
+
+| Question | Inheritance ("is-a") | Composition ("has-a") |
+|---|---|---|
+| How are things related? | child *is a kind of* parent | object *has* other objects as parts |
+| What does the child get? | everything the parent has, automatically | only what you choose to give it |
+| Can you change it later? | parent is fixed when the child is written | parts can be swapped while the program runs |
+| Main risk | a child that can't truly replace its parent | a little more wiring to write by hand |
+
+Inheritance is not always wrong. When a child can *genuinely* replace its parent, it is clean and powerful. The danger is that "is-a" sentences are easy to say and often false in the one way that matters — substitutability. That is why the slogan that eventually won was not "never inherit." It was milder, and it came from inside the OOP world itself.
+
+## The Argument Kay Started
+
+The positions below are not in time order. They are in the order in which each one challenges the last.
+
+### The Kay position: we never really tried it
+
+Kay's defense of OOP is also an attack on what OOP became. The good idea, he argues, was always encapsulation and messaging — autonomous objects that hide their state and cooperate by request. Inheritance-heavy, class-obsessed languages took a small part of the vision and made it the whole thing.
+
+::: {.argument}
+**The Kay Argument**
+
+1. The valuable core of OOP is encapsulation and message passing: objects that hide their own state and interact only through requests.
+2. The mainstream languages that spread under the OOP name (C++, Java) emphasized class inheritance, which was never the core.
+3. The problems people blame on OOP — rigid hierarchies, fragile base classes, gorilla-and-jungle coupling — come from that inherited-class emphasis, not from objects as such.
+4. Therefore, OOP was not a mistake. The industry adopted a shallow version and then blamed the idea for the version's faults.
+:::
+
+The strength here is premise 1. Almost nobody argues against encapsulation. The weakness is premise 4's move: it lets "real" OOP off the hook by defining it as only the parts that worked. If a vision can only be judged by its purest form, no vision can ever fail.
+
+### The pragmatist reply: it shipped the world
+
+Stroustrup, who designed C++, never claimed purity. His languages were tools for getting large systems built by large teams under deadline. Class-based OOP, in this view, earned its place not by being elegant but by being *useful* at scale. It gave teams a shared vocabulary for carving a huge program into named pieces.
+
+::: {.argument}
+**The Pragmatist Reply**
+
+1. The test of a programming idea is whether teams can build and maintain real systems with it, not whether it matches a research vision.
+2. Class-based OOP let large teams divide enormous programs into modular pieces with clear owners, and it ran the banks, phones, and operating systems of an entire era.
+3. Every paradigm has sharp edges; skilled engineers learn to avoid them, as they do in every tool.
+4. Therefore, judging OOP by its worst hierarchies is as unfair as judging it by Kay's ideal. The fair test is the working software, and by that test OOP succeeded.
+:::
+
+This challenges Kay directly. Where Kay says the industry adopted the wrong part, the pragmatist says the industry adopted the *shippable* part, and shippability is the only score that counts. The reply's weak point is premise 3 — "skilled engineers learn to avoid the edges." If the edges are as common and as hidden as the critics claim, then blaming the engineer is blaming the victim of a sharp tool.
+
+### The functional reply: the bundle itself was the bug
+
+The deepest criticism does not care whether you use Kay's OOP or Stroustrup's. It targets the founding move of all of it: bundling *changeable data* together with behavior. Joe Armstrong and Rich Hickey, from the world of functional programming, argue that this bundle is the source of the hardest bugs in software.
+
+::: {.argument}
+**The Functional Reply**
+
+1. The hardest bugs in large systems come from shared, changeable state — data that many parts of a program can alter, where no one can see the full picture.
+2. OOP's core move is to scatter changeable state across many objects, each hiding its own, each able to change in response to a message.
+3. Hidden, scattered, changeable state is exactly the condition in premise 1, multiplied across thousands of objects.
+4. Therefore, the problem is not inheritance alone but the founding bundle: data that changes, glued to behavior. Building from values that do not change, combined by composition, avoids the whole class of bug.
+:::
+
+This challenges both earlier positions. Against Kay, it says encapsulation does not save you — a hidden changing value is still a changing value. Against the pragmatist, it says the "sharp edges" are not edges to be avoided but the center of the tool. Its own weak point is cost: programs do, in the end, have to remember things and change them, and pure approaches can push that difficulty into corners of their own.
+
+### Where the argument rests now
+
+The industry did not answer "OOP: yes or no." It quietly answered a narrower question, and the answer was visible in the new languages.
+
+Go, released by Google in 2009, and Rust, which reached its first stable release in 2015, are both built for large modern systems. Neither has class inheritance at all. Both keep encapsulation. Both build bigger things out of smaller parts by composition. Both lean on something like Kay's messaging — small components talking through clear interfaces. The feature the whole argument circled, deep inheritance, was simply left out.
+
+And the slogan that won was not radical. *Favor composition over inheritance* appears in the Gang of Four's *Design Patterns* — the 1994 bible of object-oriented design itself [@gof1994]. The OOP world had named the cure inside its founding text and then spent twenty years learning to take it.
+
+So was OOP a mistake? The cleanest answer the evidence supports is narrower and stranger than the question. Encapsulation, interfaces, and polymorphism are everywhere and barely disputed. Deep inheritance hierarchies have been quietly abandoned, even by the languages that most loved them. What failed was not exactly OOP. It was the *habit* of taking one good idea and making it the single mandatory shape for all software — the thing every student had to learn, every program had to fit, every design review had to praise. That habit has a cost, and it is not only technical. It shapes who learns to program, what they are taught to value, and how long it takes the next good idea to be heard. The sharper question is not *was this paradigm wrong?* It is: *why does a field that prizes logic keep turning its best ideas into doctrine — and who pays while the doctrine holds?*
+
+## Discussion Questions
+
+1. Alan Kay compared objects to living cells that hide their chemistry and talk only by sending messages. In your own words, explain what "encapsulation" means, and offer a different real-world analogy of your own. What does your analogy capture that the cell one misses?
+2. "A square is a rectangle" is true in math class but causes a bug when used as an inheritance claim. Explain in plain language why the sentence is not enough to justify making `Square` a child of `Rectangle`. What question do you have to ask instead?
+3. Write the **Kay Argument** and the **Functional Reply** in your own words. They do not disagree about whether bugs are bad. What *do* they actually disagree about? What kind of evidence might move someone from one side to the other?
+4. You are leading a new software team in 2026 and must pick a style: inheritance-heavy OOP, composition-first OOP, or a functional approach with values that do not change. Pick one. Give the two strongest reasons for your choice and name the one thing you are most worried you will regret.
+5. The case ends by blaming not OOP but the habit of turning one idea into mandatory doctrine. Pick another field where a single approach became "the only right way" — in education, medicine, business, art, or sports. Describe who benefited while the doctrine held and who paid. Does the pattern match what happened with OOP, or differ?
+
+## Further Reading
+
+- Alan C. Kay, "The Early History of Smalltalk" (1993) — Kay's own account of the biological metaphor and what he meant by objects and messaging [@kay1993].
+- Barbara Liskov and Jeannette Wing, "A Behavioral Notion of Subtyping" (1994) — the precise statement of the substitution rule the `Square` breaks; the 1987 keynote is the readable origin [@liskovwing1994; @liskov1987].
+- Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, *Design Patterns* (1994) — the book that defined object-oriented design for a generation, and the source of "favor composition over inheritance" [@gof1994].
+- Peter Seibel, *Coders at Work* (2009) — interviews including Joe Armstrong's "gorilla holding the banana" critique of object-oriented languages [@seibel2009].
+- Bjarne Stroustrup, *The Design and Evolution of C++* (1994) — the pragmatist case, in the words of the person who made the most-used object-oriented language [@stroustrup1994].
+
+## References
+
+::: {#refs}
+:::

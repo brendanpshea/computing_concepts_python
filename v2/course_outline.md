@@ -134,7 +134,7 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 - Secrets management (environment variables, never-commit rules)
 - Each topic tied directly to what the Flask final needs
 
-### NB 12 — AI, Machine Learning & Ethics
+### NB 12 — AI, Machine Learning & AI
 **LOs:** 10, 11
 - Supervised vs. unsupervised learning
 - Neural networks and the perceptron (conceptual + minimal code)

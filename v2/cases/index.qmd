@@ -6,10 +6,13 @@ date: last-modified
 toc: false
 ---
 
-Twelve short case studies on the people, decisions, and arguments that
-made the field of computer science what it is — and the ones it is still
-having. Each piece is built around a real story, a short algorithm you
-can trace by hand, and an unresolved debate worth your own opinion on.
+Welcome! These are twelve short case studies about the people and choices
+that shaped computer science. Each one tells a true story. Each one shows
+you a small piece of code you can work through by hand. And each one ends
+with a real question that people still argue about — so you can join in.
+
+You do not need to read them in order. Start with whatever sounds
+interesting.
 
 | # | Case study | Status |
 |---|---|---|
@@ -18,7 +21,7 @@ can trace by hand, and an unresolved debate worth your own opinion on.
 | 3 | [Grace Hopper, Compilers & the Abstraction Bargain](cs03_hopper_compilers.qmd) | **Available** |
 | 4 | [The Therac-25: When Control Flow Kills](cs04_therac25.qmd) | **Available** |
 | 5 | [How We Represent People: ADTs and the Ethics of Data Modeling](cs05_representing_people.qmd) | **Available** |
-| 6 | Was OOP a Mistake? Alan Kay, Smalltalk & the Backlash | *In progress* |
+| 6 | [Was OOP a Mistake? Alan Kay, Smalltalk & the Backlash](cs06_oop_mistake.qmd) | **Available** |
 | 7 | The Halting Problem & the Limits of Machines | *In progress* |
 | 8 | Open Source & the Code an AI Learned From — Linux, Git & Copilot | *In progress* |
 | 9 | From SQL to NoSQL — Why Google Built Bigtable | *In progress* |
@@ -28,14 +31,14 @@ can trace by hand, and an unresolved debate worth your own opinion on.
 
 ## How to read these
 
-Each case follows the same shape:
+Every case has the same four parts:
 
-- **The Case** — what actually happened, with the people and the stakes.
-- **How It Worked** — the technical mechanism, with a short algorithm to trace.
-- **The Argument** — the debate the case opened, with positions to weigh against each other.
+- **The Case** — what happened, who was there, and what was at stake.
+- **How It Worked** — the tech behind the story, with a short piece of code to trace.
+- **The Argument** — the debate the case opened up, with both sides laid out.
 - **Discussion Questions** — five questions, none with a single right answer.
 
-A case takes about twenty to thirty minutes to read carefully, plus the
-time you spend on the algorithm and the discussion questions. There is
-no answer key. The discussion questions are for thinking and arguing
-about with other people — not for looking up.
+Plan on about twenty to thirty minutes to read a case, plus more time
+for the code and the questions. There is no answer key. The questions
+are meant for talking and arguing about with other people — not for
+looking up.

@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>comp1150_nb06_modulesoop – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notebook-6-modules-object-oriented-design" id="toc-notebook-6-modules-object-oriented-design" class="nav-link active" data-scroll-target="#notebook-6-modules-object-oriented-design">Notebook 6: Modules &amp; Object-Oriented Design</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#the-problem-too-much-copy-paste" id="toc-the-problem-too-much-copy-paste" class="nav-link" data-scroll-target="#the-problem-too-much-copy-paste">The Problem: Too Much Copy-Paste</a></li>
+  <li><a href="#modules-code-you-dont-have-to-rewrite" id="toc-modules-code-you-dont-have-to-rewrite" class="nav-link" data-scroll-target="#modules-code-you-dont-have-to-rewrite">Modules: Code You Don’t Have to Rewrite</a></li>
+  <li><a href="#what-oop-is-a-way-of-thinking-not-just-syntax" id="toc-what-oop-is-a-way-of-thinking-not-just-syntax" class="nav-link" data-scroll-target="#what-oop-is-a-way-of-thinking-not-just-syntax">What OOP Is: A Way of Thinking, Not Just Syntax</a></li>
+  <li><a href="#classes-objects-blueprints-and-the-things-you-build-from-them" id="toc-classes-objects-blueprints-and-the-things-you-build-from-them" class="nav-link" data-scroll-target="#classes-objects-blueprints-and-the-things-you-build-from-them">Classes &amp; Objects: Blueprints and the Things You Build From Them</a></li>
+  <li><a href="#methods-giving-objects-something-to-do" id="toc-methods-giving-objects-something-to-do" class="nav-link" data-scroll-target="#methods-giving-objects-something-to-do">Methods: Giving Objects Something to Do</a></li>
+  <li><a href="#inheritance-build-once-specialize-later" id="toc-inheritance-build-once-specialize-later" class="nav-link" data-scroll-target="#inheritance-build-once-specialize-later">Inheritance: Build Once, Specialize Later</a></li>
+  <li><a href="#is-a-vs.-has-a-inheritance-isnt-always-the-answer" id="toc-is-a-vs.-has-a-inheritance-isnt-always-the-answer" class="nav-link" data-scroll-target="#is-a-vs.-has-a-inheritance-isnt-always-the-answer">“Is-a” vs.&nbsp;“Has-a”: Inheritance Isn’t Always the Answer</a></li>
+  <li><a href="#designing-with-objects-finding-the-classes" id="toc-designing-with-objects-finding-the-classes" class="nav-link" data-scroll-target="#designing-with-objects-finding-the-classes">Designing with Objects: Finding the Classes</a></li>
+  <li><a href="#abstraction-one-interface-many-implementations" id="toc-abstraction-one-interface-many-implementations" class="nav-link" data-scroll-target="#abstraction-one-interface-many-implementations">Abstraction: One Interface, Many Implementations</a></li>
+  <li><a href="#the-four-pillars-of-oop" id="toc-the-four-pillars-of-oop" class="nav-link" data-scroll-target="#the-four-pillars-of-oop">The Four Pillars of OOP</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb">View on GitHub</a></p>
+<section id="notebook-6-modules-object-oriented-design" class="level1">
+<h1>Notebook 6: Modules &amp; Object-Oriented Design</h1>
+<section id="comp-1150-computer-science-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
+<p><strong>Brendan Shea, PhD</strong></p>
+<p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
+</section>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li><strong>Import</strong> code from Python’s standard library and from your own files, and explain what a <strong>module</strong> and a <strong>namespace</strong> are.</li>
+<li><strong>Define</strong> a class with <code>__init__</code>, create objects from it, and explain the difference between a <strong>class</strong> (the blueprint) and an <strong>object</strong> (a thing built from it).</li>
+<li><strong>Write</strong> methods that use <code>self</code> to act on an object’s own data, and explain what <code>self</code> refers to.</li>
+<li><strong>Use</strong> inheritance and <code>super()</code> to build a specialized class on top of a general one, and <strong>override</strong> a method.</li>
+<li><strong>Explain</strong> encapsulation and abstraction, and implement a small <strong>abstract data type</strong> as a class — picking up the ADT idea from Notebook 5.</li>
+<li><strong>Spot</strong> two classic OOP bugs: forgetting <code>self.</code>, and a mutable class attribute shared across every object.</li>
+</ul>
+<p><em>Maps to course LOs: 6, 8</em></p>
+</section>
+<section id="the-problem-too-much-copy-paste" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-too-much-copy-paste">The Problem: Too Much Copy-Paste</h2>
+<p>Merlin runs <strong>Merlin Advisory</strong>, a small consulting shop just off the main square in Camelot. His team has a habit: every time they start a new client report, somebody copies the last report’s code, pastes it into a fresh file, and changes the numbers. By the third month there are nine slightly different copies of the same “calculate the fee” code, and three of them have different bugs.</p>
+<p>Down the street, <strong>Guinevere</strong> at <strong>Camelot Civic Systems</strong> has the opposite problem. She isn’t repeating code — she’s drowning in <em>loose variables</em>. Every citizen in her system is tracked by a tangle of separate lists: <code>names</code>, <code>ages</code>, <code>wards</code>, <code>balances</code>. To update one person she has to touch four lists and pray the positions still line up.</p>
+<p>Two problems, two fixes — and they’re the two halves of this notebook.</p>
+<ul>
+<li><strong>Modules</strong> solve Merlin’s problem. Write code <em>once</em>, in one file, and <strong>import</strong> it everywhere. Fix a bug in one place; it’s fixed everywhere.</li>
+<li><strong>Objects</strong> solve Guinevere’s problem. Instead of four lists that have to stay in sync, bundle each citizen’s data — <em>and the things you can do to it</em> — into one tidy package called an <strong>object</strong>.</li>
+</ul>
+<p>Object-oriented design (OOP) is the second idea taken seriously: programs built out of objects that each know their own data and their own behavior. By the end you’ll build classes for a security firm, a research lab, and a delivery service — and you’ll see why Guinevere sleeps better at night.</p>
+<section id="the-roadmap" class="level3">
+<h3 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h3>
+<ol type="1">
+<li><strong>Modules &amp; imports</strong> — borrow code from Python, and split your own code into reusable files.</li>
+<li><strong>Classes &amp; objects</strong> — the blueprint and the things you stamp out from it.</li>
+<li><strong>Methods &amp; <code>self</code></strong> — giving objects something to <em>do</em>.</li>
+<li><strong>Inheritance</strong> — build a general class once, then specialize it.</li>
+<li><strong>Abstraction</strong> — hide the storage behind a clean interface (the Notebook 5 ADT idea, now in code).</li>
+</ol>
+<p>A quick reminder before we start: in Notebook 4 you learned to write <strong>functions</strong> — reusable blocks of behavior. Everything here builds on that. A method is just a function that lives inside an object.</p>
+</section>
+</section>
+<section id="modules-code-you-dont-have-to-rewrite" class="level2">
+<h2 class="anchored" data-anchor-id="modules-code-you-dont-have-to-rewrite">Modules: Code You Don’t Have to Rewrite</h2>
+<p>A <strong>module</strong> is just a file of Python code that you can pull into another file. Python ships with hundreds of them — together they’re called the <strong>standard library</strong> — covering math, dates, randomness, files, and more. You don’t install anything; you just <code>import</code> what you need.</p>
+<p>Think of it as Merlin borrowing a colleague’s finished work instead of redoing it. The <code>import</code> statement is how you say “I’d like to use the tools in that file, please.”</p>
+<p>Merlin needs a square root for a risk calculation. Square roots aren’t built into plain Python — they live in the <strong><code>math</code></strong> module. The next cell imports <code>math</code> and uses it.</p>
+<div id="ee1553e8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:10.786515Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:10.785868Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:10.802039Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:10.798228Z&quot;}}" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>risk_score <span class="op">=</span> math.sqrt(<span class="dv">144</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Risk score:"</span>, risk_score)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pi, for good measure:"</span>, math.pi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Risk score: 12.0
+Pi, for good measure: 3.141592653589793</code></pre>
+</div>
+</div>
+<section id="understanding-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code">Understanding the Code</h3>
+<ul>
+<li><code>import math</code> brings the whole <code>math</code> module into reach.</li>
+<li><code>math.sqrt(144)</code> reads as “the <code>sqrt</code> tool <em>that lives inside</em> <code>math</code>.” The dot means “look inside.”</li>
+<li><code>math.pi</code> isn’t a function — it’s a value the module hands you. Modules can offer both.</li>
+</ul>
+<p>Writing <code>math.</code> in front of everything gets tiring. The <code>from ... import ...</code> form lets you pull <em>specific</em> names out of a module and use them bare. Merlin’s assistant wants a random client to spot-check and today’s date for the report header.</p>
+<div id="d69fccd5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:10.809502Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:10.808925Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:10.817616Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:10.815535Z&quot;}}" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>clients <span class="op">=</span> [<span class="st">"Pellinore Estates"</span>, <span class="st">"Astolat Mills"</span>, <span class="st">"Lyonesse Foods"</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Audit this one today:"</span>, choice(clients))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Report date:"</span>, date.today())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Audit this one today: Astolat Mills
+Report date: 2026-06-02</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-1" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-1">Understanding the Code</h3>
+<ul>
+<li><code>from random import choice</code> reaches <em>into</em> <code>random</code> and pulls out just <code>choice</code>. Now you call <code>choice(...)</code> directly — no <code>random.</code> prefix.</li>
+<li><code>choice(clients)</code> picks one item from the list at random.</li>
+<li><code>from datetime import date</code> does the same for the <code>date</code> tool; <code>date.today()</code> returns today’s date.</li>
+<li>The trade-off: <code>from</code> imports are shorter to type, but <code>import math</code> keeps it obvious <em>where</em> a name came from.</li>
+</ul>
+<p>The real payoff is writing your <strong>own</strong> module. The cell below uses Jupyter’s <code>%%writefile</code> to save a small file, <code>camelot_tools.py</code>, holding one function. In a normal project you’d just create that file in your editor.</p>
+<div id="ea7a0bdb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:10.823646Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:10.822997Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:10.836725Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:10.834629Z&quot;}}" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>writefile camelot_tools.py</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> advisory_fee(hours, rate<span class="op">=</span><span class="dv">150</span>):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Merlin's fee: hours x rate, plus a 10% surcharge over 40 hours."""</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    base <span class="op">=</span> hours <span class="op">*</span> rate</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> hours <span class="op">&gt;</span> <span class="dv">40</span>:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        base <span class="op">=</span> base <span class="op">*</span> <span class="fl">1.10</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(base, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Writing camelot_tools.py</code></pre>
+</div>
+</div>
+<p>Now any file — including this notebook — can <code>import</code> that function. Merlin writes the fee rule <strong>once</strong>; every report shares the same copy. Fix it here, and it’s fixed for the whole firm.</p>
+<div id="857d0d48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:10.841427Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:10.841020Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:10.898910Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:10.896088Z&quot;}}" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> camelot_tools <span class="im">import</span> advisory_fee</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Small job:"</span>, advisory_fee(<span class="dv">10</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Big job:"</span>, advisory_fee(<span class="dv">50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Small job: 1500
+Big job: 8250.0</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-2" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-2">Understanding the Code</h3>
+<ul>
+<li><code>%%writefile camelot_tools.py</code> saved everything below it as a real file named <code>camelot_tools.py</code>.</li>
+<li><code>from camelot_tools import advisory_fee</code> imports <em>your</em> function exactly like importing from the standard library — Python doesn’t care that you wrote it.</li>
+<li>That’s the cure for copy-paste: <strong>one definition, many imports.</strong> No more nine drifting copies.</li>
+</ul>
+</section>
+</section>
+<section id="what-oop-is-a-way-of-thinking-not-just-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="what-oop-is-a-way-of-thinking-not-just-syntax">What OOP Is: A Way of Thinking, Not Just Syntax</h2>
+<p>Before we build a single class, step back. The code you wrote in Notebooks 1–5 all followed one style — what computer scientists call a <strong>paradigm</strong>, a basic way of organizing a program. That style was <strong>procedural</strong>: data sits in variables, and functions reach out, grab the data, do something to it, and put it back. The data is passive. The functions are in charge.</p>
+<p><strong>Object-oriented programming (OOP)</strong> turns that around. Instead of passive data and bossy functions, you build <strong>objects</strong> that own their data <em>and</em> the behavior that goes with it. A <code>Citizen</code> object won’t wait for some far-away function to change its balance — it has its own <code>pay</code> method and changes its own balance. Data and behavior travel together.</p>
+<p>Why care? In Guinevere’s old setup, the rule “how do I update a citizen?” lived somewhere far from the citizen’s data, easy to get out of sync. In OOP, that rule lives <em>with</em> the citizen. Big programs stay sane because each object minds its own business.</p>
+<p>This idea isn’t new. It runs back to the <strong>Simula</strong> language in the 1960s and <strong>Smalltalk</strong> in the 1970s, where Alan Kay pictured objects as little machines sending each other messages. (Whether OOP was a <em>good</em> idea is a real debate — that’s the subject of this notebook’s case study. Here we focus on learning to <em>think and design</em> in objects.)</p>
+<p>The contrast is below: procedural code keeps data and functions in separate piles; object-oriented code bundles each thing’s data and behavior into one object.</p>
+<div id="10441405" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-6-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> On the left, data and functions are separate boxes — the functions reach over to act on the data. On the right, each object carries its own data <em>and</em> its own methods in one bundle. That bundling is the whole idea of OOP.</p>
+</section>
+<section id="classes-objects-blueprints-and-the-things-you-build-from-them" class="level2">
+<h2 class="anchored" data-anchor-id="classes-objects-blueprints-and-the-things-you-build-from-them">Classes &amp; Objects: Blueprints and the Things You Build From Them</h2>
+<p>Modules organize <em>code</em>. Now we organize <em>data</em>. Back to Guinevere’s tangle of parallel lists — let’s first see exactly how bad it gets, so the fix feels earned.</p>
+<p>The cell below tracks two citizens the “loose variables” way: separate lists, lined up by position.</p>
+<div id="0e487285" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:12.961584Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:12.960197Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:12.975220Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:12.971758Z&quot;}}" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>names    <span class="op">=</span> [<span class="st">"Elaine Astolat"</span>, <span class="st">"Percival Wales"</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ages     <span class="op">=</span> [<span class="dv">34</span>, <span class="dv">41</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>wards    <span class="op">=</span> [<span class="st">"North"</span>, <span class="st">"Harbor"</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>balances <span class="op">=</span> [<span class="fl">120.00</span>, <span class="fl">0.00</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># To raise Elaine's balance, you must remember she's at index 0 in EVERY list:</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>balances[<span class="dv">0</span>] <span class="op">=</span> balances[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">25</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(names[<span class="dv">0</span>], <span class="st">"owes"</span>, balances[<span class="dv">0</span>], <span class="st">"in"</span>, wards[<span class="dv">0</span>], <span class="st">"ward"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Elaine Astolat owes 145.0 in North ward</code></pre>
+</div>
+</div>
+<p>See the problem? Elaine’s facts are scattered across four lists, held together only by the fragile promise that index <code>0</code> means “Elaine” in all of them. Sort one list, or insert a citizen in the middle, and everything silently misaligns. There has to be a better way — and there is.</p>
+<p>A <strong>class</strong> is a blueprint. It describes what <em>every</em> citizen has. From one blueprint you stamp out as many <strong>objects</strong> as you like, and each object keeps all of its own facts together in one place. Guinevere defines a <code>Citizen</code> class once.</p>
+<div id="143efd27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:12.983671Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:12.982295Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:12.996583Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:12.993272Z&quot;}}" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ward <span class="op">=</span> ward</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>elaine <span class="op">=</span> Citizen(<span class="st">"Elaine Astolat"</span>, <span class="st">"North"</span>, <span class="fl">120.00</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(elaine.name, <span class="st">"is in"</span>, elaine.ward, <span class="st">"ward"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Elaine Astolat is in North ward</code></pre>
+</div>
+</div>
+<section id="understanding-the-code-3" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-3">Understanding the Code</h3>
+<ul>
+<li><code>class Citizen:</code> starts the blueprint. By convention class names use <code>CapWords</code>.</li>
+<li><code>__init__</code> is a special method that runs <strong>automatically</strong> every time you create a Citizen — it’s the setup routine. You never call it by name.</li>
+<li><code>self.name = name</code> stores the value <em>on the object itself</em>, so it travels with that citizen forever.</li>
+<li><code>elaine = Citizen("Elaine Astolat", "North", 120.00)</code> builds one object. Those three arguments line up with <code>__init__</code>’s parameters (after <code>self</code>).</li>
+<li><code>elaine.name</code> reads a fact back. One object, all its facts in one bundle — no parallel lists.</li>
+</ul>
+<p>A class earns its keep when you make <em>many</em> objects from it. Each call to <code>Citizen(...)</code> produces a brand-new, independent object with its own data.</p>
+<div id="e2d95036" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.005563Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.004674Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.017188Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.014477Z&quot;}}" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>percival <span class="op">=</span> Citizen(<span class="st">"Percival Wales"</span>, <span class="st">"Harbor"</span>, <span class="fl">0.00</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> [elaine, percival]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> person <span class="kw">in</span> roster:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(person.name, <span class="st">"—"</span>, person.ward, <span class="st">"ward, balance"</span>, person.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Elaine Astolat — North ward, balance 120.0
+Percival Wales — Harbor ward, balance 0.0</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-4" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-4">Understanding the Code</h3>
+<ul>
+<li><code>percival</code> is a second object built from the same blueprint, with its own values.</li>
+<li>A list of objects (<code>roster</code>) replaces Guinevere’s four parallel lists with <strong>one</strong> list where each entry carries everything about one person.</li>
+<li>Looping over objects and reading <code>person.name</code>, <code>person.ward</code> is far safer than juggling matched indexes.</li>
+</ul>
+</section>
+<section id="predict-before-you-run" class="level3">
+<h3 class="anchored" data-anchor-id="predict-before-you-run">🔮 Predict Before You Run</h3>
+<p><code>elaine</code> and <code>percival</code> were built from the same class. Before running the next cell, predict: if we change <strong>elaine’s</strong> balance, does percival’s balance change too?</p>
+<div id="b746766c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.026020Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.024837Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.037448Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.034539Z&quot;}}" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>elaine.balance <span class="op">=</span> elaine.balance <span class="op">+</span> <span class="dv">50</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Elaine:"</span>, elaine.balance)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percival:"</span>, percival.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Elaine: 170.0
+Percival: 0.0</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-5" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-5">Understanding the Code</h3>
+<ul>
+<li>Changing <code>elaine.balance</code> touched <strong>only</strong> elaine. Percival is untouched.</li>
+<li>Each object has its <strong>own</strong> copy of the data set up in <code>__init__</code>. The class is the shared blueprint; the objects are independent.</li>
+<li>This is the opposite of the aliasing trap from Notebook 5 — separate objects don’t share their instance data.</li>
+</ul>
+</section>
+</section>
+<section id="methods-giving-objects-something-to-do" class="level2">
+<h2 class="anchored" data-anchor-id="methods-giving-objects-something-to-do">Methods: Giving Objects Something to Do</h2>
+<p>So far our objects just <em>hold</em> data. The real power of OOP is bundling data <strong>with the behavior that acts on it</strong>. A function that lives inside a class is called a <strong>method</strong>.</p>
+<p>Here’s the idea everyone trips over first, so we’ll go slow: every method’s first parameter is <code>self</code>, and <code>self</code> means <em>“the particular object this method was called on.”</em></p>
+<p>Guinevere adds a <code>pay</code> method to <code>Citizen</code> so a citizen can reduce their own balance. Watch the <code>self</code>.</p>
+<div id="583870af" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.044641Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.044011Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.057053Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.053987Z&quot;}}" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ward <span class="op">=</span> ward</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> pay(<span class="va">self</span>, amount):</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> <span class="va">self</span>.balance <span class="op">-</span> amount</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.balance</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>elaine <span class="op">=</span> Citizen(<span class="st">"Elaine Astolat"</span>, <span class="st">"North"</span>, <span class="fl">120.00</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After paying 20:"</span>, elaine.pay(<span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>After paying 20: 100.0</code></pre>
+</div>
+</div>
+<section id="understanding-the-code-6" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-6">Understanding the Code</h3>
+<ul>
+<li><code>def pay(self, amount):</code> — <code>self</code> is first, <code>amount</code> is the real argument.</li>
+<li>When you write <code>elaine.pay(20)</code>, Python quietly fills <code>self</code> with <code>elaine</code> and <code>amount</code> with <code>20</code>. <strong>You don’t pass <code>self</code> yourself</strong> — that’s why the call has one argument but the definition lists two.</li>
+<li>Inside the method, <code>self.balance</code> means “<em>this object’s</em> balance.” For this call, that’s elaine’s balance.</li>
+</ul>
+<p>Why does <code>self</code> matter so much? Because the <strong>same method</strong> does different things depending on <strong>which object</strong> you call it on. <code>self</code> is how the method knows whose data to touch.</p>
+<div id="ea6c81ba" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.065890Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.064997Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.078994Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.075605Z&quot;}}" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>percival <span class="op">=</span> Citizen(<span class="st">"Percival Wales"</span>, <span class="st">"Harbor"</span>, <span class="fl">300.00</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>elaine.pay(<span class="dv">20</span>)      <span class="co"># self = elaine</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>percival.pay(<span class="dv">75</span>)    <span class="co"># self = percival</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Elaine:"</span>, elaine.balance)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percival:"</span>, percival.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Elaine: 80.0
+Percival: 225.0</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-7" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-7">Understanding the Code</h3>
+<ul>
+<li>One method definition, two objects, two different results.</li>
+<li>In the first call <code>self</code> <em>is</em> elaine; in the second, <code>self</code> <em>is</em> percival. The code is identical — the object differs.</li>
+<li>That’s the whole trick: methods are written once, but each object brings its own <code>self</code>.</li>
+</ul>
+</section>
+<section id="a-trap-forgetting-self." class="level3">
+<h3 class="anchored" data-anchor-id="a-trap-forgetting-self.">A Trap: Forgetting <code>self.</code></h3>
+<p>Inside a method, you must write <code>self.balance</code>, not bare <code>balance</code>, to touch the object’s data. A bare name just makes a throwaway local variable that vanishes when the method ends. The next cell shows the bug.</p>
+<div id="fa07383e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.087437Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.086449Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.100175Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.096775Z&quot;}}" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BrokenCitizen:</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, balance):</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> pay(<span class="va">self</span>, amount):</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        balance <span class="op">=</span> <span class="va">self</span>.balance <span class="op">-</span> amount   <span class="co"># </span><span class="al">BUG</span><span class="co">: missing self. (writes a local)</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"done"</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> BrokenCitizen(<span class="st">"Test"</span>, <span class="dv">100</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>p.pay(<span class="dv">40</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Balance after paying 40:"</span>, p.balance)   <span class="co"># still 100 — the payment vanished</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Balance after paying 40: 100</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-8" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-8">Understanding the Code</h3>
+<ul>
+<li><code>balance = self.balance - amount</code> created a <em>local</em> variable called <code>balance</code> and threw it away when <code>pay</code> returned.</li>
+<li>The object’s real <code>self.balance</code> was never touched — so it’s still <code>100</code>.</li>
+<li>The fix is one word: <code>self.balance = self.balance - amount</code>. Missing <code>self.</code> is the single most common beginner OOP bug. When an update “doesn’t stick,” check for it first.</li>
+</ul>
+<p>Some data isn’t meant to be poked at from outside. Python has no hard “private” lock, but there’s a strong convention: a leading underscore (<code>_pin</code>) means <em>“internal — please don’t touch directly.”</em> This is <strong>encapsulation</strong>: the object guards its own data and exposes safe methods instead. We’ll also add <code>__str__</code>, a special method that controls how the object prints.</p>
+<div id="0ecff5fd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.108348Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.107407Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.123583Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.119806Z&quot;}}" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Account:</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, owner, pin):</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.owner <span class="op">=</span> owner</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._pin <span class="op">=</span> pin          <span class="co"># leading _ : internal, don't touch from outside</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> check_pin(<span class="va">self</span>, guess):</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> guess <span class="op">==</span> <span class="va">self</span>._pin</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"Account(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>owner<span class="sc">}</span><span class="ss">)"</span>   <span class="co"># note: no PIN leaked</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> Account(<span class="st">"Guinevere"</span>, <span class="dv">4821</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)                     <span class="co"># uses __str__</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a.check_pin(<span class="dv">4821</span>))     <span class="co"># the safe, public way to test the PIN</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Account(Guinevere)
+True</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-9" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-9">Understanding the Code</h3>
+<ul>
+<li><code>self._pin</code> still works exactly like any attribute — the underscore is a <em>message to humans</em>, not a lock. It says “this is internal.”</li>
+<li>Other code is meant to call <code>check_pin(...)</code> rather than read <code>_pin</code> directly. The object controls access — that’s <strong>encapsulation</strong>.</li>
+<li><code>__str__</code> runs whenever the object is printed, giving a clean, readable result instead of <code>&lt;__main__.Account object at 0x...&gt;</code> — and notice it deliberately doesn’t print the PIN.</li>
+</ul>
+</section>
+</section>
+<section id="inheritance-build-once-specialize-later" class="level2">
+<h2 class="anchored" data-anchor-id="inheritance-build-once-specialize-later">Inheritance: Build Once, Specialize Later</h2>
+<p><strong>Arthur Pendragon</strong> runs <strong>Pendragon Security</strong>. He has plain <em>guards</em> and elite <em>knights</em>. Both have a name and clock in for patrol — but knights also carry a rank and lead a squad. He could write two totally separate classes and duplicate the shared parts… but duplication is exactly what we’re trying to kill.</p>
+<p><strong>Inheritance</strong> lets a class build <em>on top of</em> another. The general class is the <strong>parent</strong> (or base); the specialized one is the <strong>child</strong> (or subclass). The child gets everything the parent has, for free, plus its own extras.</p>
+<p>First the parent. A <code>Guard</code> has a name and can report for patrol.</p>
+<div id="ee1dbcf6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.132841Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.131422Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.144988Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.141954Z&quot;}}" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Guard:</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol(<span class="va">self</span>):</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> is on patrol."</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>gareth <span class="op">=</span> Guard(<span class="st">"Gareth"</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gareth.patrol())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gareth is on patrol.</code></pre>
+</div>
+</div>
+<section id="understanding-the-code-10" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-10">Understanding the Code</h3>
+<ul>
+<li>Nothing new yet — <code>Guard</code> is an ordinary class with one attribute and one method.</li>
+<li>The point is what comes next: we won’t rewrite any of this for knights.</li>
+</ul>
+<p>Now the child. <code>class Knight(Guard):</code> means “a Knight <strong>is a</strong> Guard, with more.” Even with an empty body, a Knight already has <code>name</code> and <code>patrol</code> — inherited from Guard.</p>
+<div id="56952291" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.153961Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.153044Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.164552Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.162181Z&quot;}}" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span>   <span class="co"># empty body — but Knight already inherits everything from Guard</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>lancelot <span class="op">=</span> Knight(<span class="st">"Lancelot"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lancelot.patrol())   <span class="co"># works, even though we never defined patrol in Knight</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Lancelot is on patrol.</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-11" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-11">Understanding the Code</h3>
+<ul>
+<li><code>Knight(Guard)</code> puts <code>Guard</code> in parentheses — that’s the inheritance link.</li>
+<li><code>pass</code> means “no extra code,” yet <code>lancelot.patrol()</code> still works. Knight <strong>inherited</strong> <code>__init__</code> and <code>patrol</code>.</li>
+<li>This is the anti-duplication payoff: shared behavior is written once, in the parent.</li>
+</ul>
+<p>Knights need <em>more</em> than guards: a rank. So Knight gets its own <code>__init__</code>. But we don’t want to retype the name-setup — we ask the parent to do its part with <strong><code>super().__init__()</code></strong>, then add the new piece.</p>
+<div id="3a47c6fa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.176272Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.174887Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.189860Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.186221Z&quot;}}" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, rank):</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name)   <span class="co"># let Guard set up self.name</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rank <span class="op">=</span> rank         <span class="co"># then add what's new to Knight</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>lancelot <span class="op">=</span> Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lancelot.patrol())</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rank:"</span>, lancelot.rank)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Lancelot is on patrol.
+Rank: First Knight</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-12" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-12">Understanding the Code</h3>
+<ul>
+<li><code>super()</code> means “the parent class, <code>Guard</code>.” <code>super().__init__(name)</code> runs Guard’s setup, so <code>self.name</code> is handled by the code that already exists.</li>
+<li><code>self.rank = rank</code> adds the part that’s unique to knights.</li>
+<li>Two ideas share one keyword: inheritance <em>gives</em> you the parent’s methods; <code>super()</code> lets you <em>reuse</em> the parent’s setup instead of copying it.</li>
+</ul>
+<p>A child can also <strong>override</strong> a method — define one with the same name as the parent’s, and the child’s version wins for child objects. Knights announce their rank on patrol; guards don’t.</p>
+<div id="f3c58943" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.198085Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.197212Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.210679Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.207425Z&quot;}}" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, rank):</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rank <span class="op">=</span> rank</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol(<span class="va">self</span>):   <span class="co"># same name as Guard.patrol — this version wins for Knights</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>rank<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> leads the patrol."</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Guard(<span class="st">"Gareth"</span>).patrol())</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>).patrol())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gareth is on patrol.
+First Knight Lancelot leads the patrol.</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-13" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-13">Understanding the Code</h3>
+<ul>
+<li>Both classes have a <code>patrol</code> method. Python uses the one belonging to the object’s <em>own</em> class — Guard’s for guards, Knight’s for knights.</li>
+<li>The Knight version <strong>overrides</strong> the inherited one. The Guard version is untouched and still used by guards.</li>
+<li>Same method name, different behavior per class — this is how one line of calling code (<code>x.patrol()</code>) adapts to whatever object <code>x</code> is.</li>
+</ul>
+</section>
+<section id="polymorphism-one-call-many-behaviors" class="level3">
+<h3 class="anchored" data-anchor-id="polymorphism-one-call-many-behaviors">Polymorphism: One Call, Many Behaviors</h3>
+<p>Look again at what just happened. We called <code>.patrol()</code> on a guard and on a knight, and each did the <em>right thing for its own type</em> — and we never checked which was which. That ability has a name: <strong>polymorphism</strong> (Greek for “many shapes”). One method name, many behaviors, chosen automatically by the object.</p>
+<p>It pays off when you have a <em>mix</em> of objects. Arthur’s roster holds guards and knights together. He loops once and calls <code>.patrol()</code> on each — Python runs the correct version every time. The next cell builds a mixed roster and patrols it.</p>
+<div id="b4d65fcb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.217908Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.217106Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.228536Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.226391Z&quot;}}" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> [Guard(<span class="st">"Gareth"</span>), Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>), Guard(<span class="st">"Kay"</span>)]</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> officer <span class="kw">in</span> roster:</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(officer.patrol())   <span class="co"># each object runs its OWN patrol()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Gareth is on patrol.
+First Knight Lancelot leads the patrol.
+Kay is on patrol.</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-14" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-14">Understanding the Code</h3>
+<ul>
+<li>The list mixes two different classes, yet the loop treats every item the same way.</li>
+<li>Each <code>officer.patrol()</code> runs the version belonging to <em>that</em> object’s class — Guard’s for guards, Knight’s for knights.</li>
+<li>We never wrote an <code>if</code> to check the type. That’s the power of <strong>polymorphism</strong>: add a brand-new kind of officer tomorrow, and this loop keeps working untouched.</li>
+</ul>
+</section>
+<section id="picture-it-the-class-family-tree" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-class-family-tree">Picture It: The Class Family Tree</h3>
+<p>The diagram below shows the relationship: <code>Knight</code> inherits from <code>Guard</code>, adding <code>rank</code> and its own <code>patrol</code>. The next cell draws it.</p>
+<div id="24713226" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="19">
+<div class="cell-output cell-output-stderr">
+<pre><code>&lt;&gt;:8: SyntaxWarning: invalid escape sequence '\l'
+&lt;&gt;:8: SyntaxWarning: invalid escape sequence '\l'
+C:\Users\brend\AppData\Local\Temp\claude\ipykernel_75116\1007185676.py:8: SyntaxWarning: invalid escape sequence '\l'
+  g.node("Knight", "{Knight|name (inherited)\lrank (new)|patrol() (overridden)\l}")</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-20-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> The hollow arrow points from child to parent and reads “Knight <em>is a</em> Guard.” Knight keeps <code>name</code> from Guard, adds <code>rank</code>, and replaces <code>patrol</code> with its own version.</p>
+</section>
+<section id="a-trap-a-shared-mutable-class-attribute" class="level3">
+<h3 class="anchored" data-anchor-id="a-trap-a-shared-mutable-class-attribute">A Trap: A Shared Mutable Class Attribute</h3>
+<p>If you put a <strong>mutable</strong> value (like a list) directly in the class body instead of inside <code>__init__</code>, <em>every</em> object shares the one same list. Change it through one object and it changes for all of them. The next cell shows the surprise.</p>
+<div id="3a88c2cf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:16.367719Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:16.366881Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:16.380460Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:16.378054Z&quot;}}" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Squad:</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    members <span class="op">=</span> []          <span class="co"># </span><span class="al">BUG</span><span class="co">: one list shared by ALL squads</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add(<span class="va">self</span>, name):</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members.append(name)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>red <span class="op">=</span> Squad()</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>blue <span class="op">=</span> Squad()</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>red.add(<span class="st">"Gareth"</span>)</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Red squad:"</span>, red.members)</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Blue squad:"</span>, blue.members)   <span class="co"># Gareth leaked into Blue!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Red squad: ['Gareth']
+Blue squad: ['Gareth']</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-15" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-15">Understanding the Code</h3>
+<ul>
+<li><code>members = []</code> sits in the <em>class body</em>, so there is exactly one list, owned by the class and shared by every object.</li>
+<li>Adding to <code>red.members</code> changed the one shared list, so <code>blue.members</code> shows it too.</li>
+<li><strong>The fix:</strong> create the list per-object inside <code>__init__</code> (<code>self.members = []</code>). Anything that should differ between objects belongs in <code>__init__</code>, not the class body. This is the OOP cousin of Notebook 5’s aliasing trap.</li>
+</ul>
+</section>
+</section>
+<section id="is-a-vs.-has-a-inheritance-isnt-always-the-answer" class="level2">
+<h2 class="anchored" data-anchor-id="is-a-vs.-has-a-inheritance-isnt-always-the-answer">“Is-a” vs.&nbsp;“Has-a”: Inheritance Isn’t Always the Answer</h2>
+<p>Inheritance is powerful, and beginners reach for it too often. There’s a simple test. Ask: is this <em>a kind of</em> that, or does this <em>contain</em> that?</p>
+<ul>
+<li><strong>Is-a → inheritance.</strong> A Knight <em>is a</em> kind of Guard, so <code>Knight(Guard)</code> is right.</li>
+<li><strong>Has-a → composition.</strong> A Squad is <em>not</em> a kind of guard — a Squad <em>has</em> guards. You don’t inherit; you store them inside.</li>
+</ul>
+<p>That second pattern — building an object out of other objects — is called <strong>composition</strong>. Arthur’s <code>Squad</code> below <em>has a</em> list of guards and delegates the work to them.</p>
+<div id="bd0d5d20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:16.387567Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:16.386521Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:16.399329Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:16.397001Z&quot;}}" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Squad:</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members <span class="op">=</span> []          <span class="co"># a Squad HAS guards (composition)</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> recruit(<span class="va">self</span>, guard):</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members.append(guard)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol_all(<span class="va">self</span>):</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [g.patrol() <span class="cf">for</span> g <span class="kw">in</span> <span class="va">self</span>.members]</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>watch <span class="op">=</span> Squad(<span class="st">"Night Watch"</span>)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>watch.recruit(Guard(<span class="st">"Gareth"</span>))</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>watch.recruit(Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>))</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(watch.patrol_all())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Gareth is on patrol.', 'First Knight Lancelot leads the patrol.']</code></pre>
+</div>
+</div>
+<section id="understanding-the-code-16" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-16">Understanding the Code</h3>
+<ul>
+<li><code>Squad</code> does <strong>not</strong> inherit from <code>Guard</code> — a squad isn’t a guard. It <em>holds</em> guards in <code>self.members</code>. That’s <strong>composition</strong>.</li>
+<li><code>patrol_all</code> does its job by asking each member to <code>patrol()</code> — the Squad delegates to the objects it contains.</li>
+<li>A famous design guideline says <strong>“favor composition over inheritance.”</strong> Composition is more flexible: you can change a squad’s members while the program runs, but you can’t change a class’s parent. Overusing inheritance is one of the main complaints in this notebook’s case study.</li>
+</ul>
+</section>
+</section>
+<section id="designing-with-objects-finding-the-classes" class="level2">
+<h2 class="anchored" data-anchor-id="designing-with-objects-finding-the-classes">Designing with Objects: Finding the Classes</h2>
+<p>Knowing the syntax is not the same as knowing <em>what classes to build</em>. Deciding that is <strong>design</strong> — and it’s the part that makes OOP a computer-science skill, not just a Python trick. So where do classes come from?</p>
+<p>A reliable way to start is the <strong>noun/verb heuristic</strong>. Write the problem in plain English, then:</p>
+<ul>
+<li><strong>Nouns</strong> (the things) become candidate <strong>classes</strong> and <strong>attributes</strong>.</li>
+<li><strong>Verbs</strong> (the actions) become candidate <strong>methods</strong>.</li>
+</ul>
+<p>It won’t hand you a perfect design, but it gets you off the blank page.</p>
+<p>Here is Nimue describing Lake Logistics in plain words:</p>
+<blockquote class="blockquote">
+<p>“A <strong>dispatch desk</strong> holds <strong>packages</strong> waiting to go out. Each <strong>package</strong> has a <strong>destination</strong> and a <strong>weight</strong>. A <strong>courier</strong> <em>picks up</em> the next package and <em>delivers</em> it.”</p>
+</blockquote>
+<p>Underline the nouns and verbs and the design almost writes itself:</p>
+<ul>
+<li>Nouns → classes: <code>DispatchDesk</code>, <code>Package</code>, <code>Courier</code>. Attributes: a package’s <code>destination</code> and <code>weight</code>.</li>
+<li>Verbs → methods: <code>pick_up</code>, <code>deliver</code>.</li>
+</ul>
+<p>One more pair of ideas tells you whether you carved the classes <em>well</em>.</p>
+<section id="two-words-for-judging-a-design-cohesion-and-coupling" class="level3">
+<h3 class="anchored" data-anchor-id="two-words-for-judging-a-design-cohesion-and-coupling">Two Words for Judging a Design: Cohesion and Coupling</h3>
+<p>Designers judge a set of classes with two ideas worth knowing by name:</p>
+<ul>
+<li><strong>Cohesion</strong> — how focused one class is. A <code>Package</code> that only knows package things has <em>high</em> cohesion. A class that tracks packages <em>and</em> couriers <em>and</em> billing <em>and</em> the weather is doing too much — low cohesion. <strong>Each class should have one clear responsibility.</strong></li>
+<li><strong>Coupling</strong> — how tangled classes are with each other. If changing <code>Package</code> forces you to rewrite <code>Courier</code>, they are <em>tightly</em> coupled, and fragile. Good designs keep coupling <em>low</em>, so you can change one class without breaking the others.</li>
+</ul>
+<p>The goal in one line: <strong>high cohesion, low coupling.</strong> Each object minds one job and talks to the others only through clean methods — exactly the interfaces you have been building.</p>
+<div id="78c57c46" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-23-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> Each box is one class with high cohesion — it owns just its own data and jobs. The arrows are the only links between them (low coupling): a Courier touches a Package only by delivering it, never by reaching inside the DispatchDesk. Change one box and the others barely notice.</p>
+</section>
+</section>
+<section id="abstraction-one-interface-many-implementations" class="level2">
+<h2 class="anchored" data-anchor-id="abstraction-one-interface-many-implementations">Abstraction: One Interface, Many Implementations</h2>
+<p>In Notebook 5 we met <strong>abstract data types (ADTs)</strong>: the idea that a collection’s <em>promise</em> (what it does) is separate from its <em>storage</em> (how it does it). We even used a <code>CustomerQueue</code> without caring how it stored things. Now we build one on purpose — that’s what classes are <em>for</em>.</p>
+<p><strong>Nimue</strong> runs <strong>Lake Logistics</strong>. Her dispatch desk needs a <strong>queue</strong>: packages are handled first-come, first-served. The promise is simple: <em>add a package to the back; take the next one from the front.</em> How it’s stored is her business, not her users’ business.</p>
+<section id="abstraction-the-big-idea-behind-all-of-computer-science" class="level3">
+<h3 class="anchored" data-anchor-id="abstraction-the-big-idea-behind-all-of-computer-science">Abstraction: The Big Idea Behind All of Computer Science</h3>
+<p>Abstraction sounds like a fancy word, but you have leaned on it all semester. <strong>Abstraction means hiding complicated details behind a simple surface, so you can use a thing without knowing how it works inside.</strong></p>
+<p>Trace it through the whole course. The transistors from Notebook 2 hide under <strong>logic gates</strong>. Logic gates hide under the CPU’s <strong>machine code</strong>. Machine code hides under <strong>Python</strong>. And now your <strong>classes</strong> hide their own details under a few method names. Each layer lets the layer above it ignore the mess below.</p>
+<p>That is not a minor convenience — it is <em>the</em> reason software can grow large at all. No human can hold a whole system in mind at the transistor level. Abstraction is how a small mind builds a large machine, one layer resting on the next. A well-designed class is just one more layer in that tower — which is exactly what Nimue’s delivery queue, below, will be.</p>
+<div id="c34330b0" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-24-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> Read top to bottom. Each layer rests on the one beneath it and hides that layer’s detail. You write <code>DeliveryQueue</code> without ever thinking about transistors — every layer below is abstracted away.</p>
+<p>The <code>DeliveryQueue</code> class below stores packages in a list, but hides that behind two methods: <code>enqueue</code> and <code>dequeue</code>. Code that uses the queue never touches the list directly.</p>
+<div id="8081cb60" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:18.917507Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:18.916973Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:18.926883Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:18.924413Z&quot;}}" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeliveryQueue:</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items <span class="op">=</span> []           <span class="co"># storage — hidden behind the methods</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> enqueue(<span class="va">self</span>, package):    <span class="co"># add to the back</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items.append(package)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dequeue(<span class="va">self</span>):             <span class="co"># take from the front</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._items.pop(<span class="dv">0</span>)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_empty(<span class="va">self</span>):</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>._items) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nimue’s dispatcher uses the queue through its <strong>interface</strong> only — <code>enqueue</code>, <code>dequeue</code>, <code>is_empty</code>. They never see the list inside.</p>
+<div id="bbb5c4d9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:18.933184Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:18.932625Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:18.940976Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:18.939293Z&quot;}}" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dispatch <span class="op">=</span> DeliveryQueue()</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Camelot #1"</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Astolat #2"</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Lyonesse #3"</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> dispatch.is_empty():</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Now delivering:"</span>, dispatch.dequeue())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Now delivering: Camelot #1
+Now delivering: Astolat #2
+Now delivering: Lyonesse #3</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code-17" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-17">Understanding the Code</h3>
+<ul>
+<li><code>enqueue</code> adds to the back; <code>dequeue</code> removes from the front — first in, first out.</li>
+<li>The dispatcher’s loop talks only to the <strong>interface</strong> (the method names). It has no idea a Python list is doing the work.</li>
+<li>That’s <strong>abstraction</strong>: Nimue could swap the list for something faster tomorrow, and as long as the four method names behave the same, the dispatcher code doesn’t change at all.</li>
+</ul>
+</section>
+<section id="picture-it-one-interface-two-implementations" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-one-interface-two-implementations">Picture It: One Interface, Two Implementations</h3>
+<p>The diagram makes the point: two completely different storage choices can sit behind the <em>same</em> promise. Callers only ever see the top box.</p>
+<div id="0ad5d85f" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="26">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-27-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> Callers depend only on the top box (the promise). Either storage box below can fulfill it, and swapping them never reaches the caller. Promise on top, storage on the bottom — that’s the ADT idea from Notebook 5, now built by hand.</p>
+</section>
+</section>
+<section id="the-four-pillars-of-oop" class="level2">
+<h2 class="anchored" data-anchor-id="the-four-pillars-of-oop">The Four Pillars of OOP</h2>
+<p>People often boil object-oriented design down to four ideas. You have now met all four in action — here they are by name, so you recognize them on a test, in a textbook, or in a job interview.</p>
+<ol type="1">
+<li><strong>Encapsulation</strong> — bundle data with the methods that guard it. <em>(Guinevere’s <code>Account</code> kept its <code>_pin</code> private and exposed <code>check_pin</code>.)</em></li>
+<li><strong>Abstraction</strong> — hide the <em>how</em> behind a simple interface. <em>(Nimue’s <code>DeliveryQueue</code> hid its list behind <code>enqueue</code>/<code>dequeue</code>.)</em></li>
+<li><strong>Inheritance</strong> — let a child class build on a parent. <em>(A <code>Knight</code> extended a <code>Guard</code>.)</em></li>
+<li><strong>Polymorphism</strong> — one method name behaving correctly for each object. <em>(The mixed patrol roster.)</em></li>
+</ol>
+<p>If you can name these four and give an example of each, you understand what object-oriented design <em>is</em>. Everything after this is practice and judgment — knowing not just <em>how</em> to use each one, but <em>when</em>.</p>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<p>Work these in new code cells. There are no solution cells — that’s on purpose. Test your classes by making objects and printing results.</p>
+<section id="exercise-1-lancelots-athlete-class" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-lancelots-athlete-class">✏️ Exercise 1 — Lancelot’s Athlete Class</h3>
+<p><strong>Lancelot Athletics</strong> tracks athletes. Write a class <code>Athlete</code> with an <code>__init__</code> that stores <code>name</code> and <code>wins</code> (default <code>0</code>), plus a method <code>record_win(self)</code> that adds one to <code>wins</code>. Create two athletes, record a few wins for each, and print both — and confirm that recording a win for one does <strong>not</strong> change the other’s total.</p>
+</section>
+<section id="exercise-2-morgans-researcher-hierarchy-ai-assisted" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-morgans-researcher-hierarchy-ai-assisted">✏️ Exercise 2 — Morgan’s Researcher Hierarchy &nbsp; 🤖 <em>AI-Assisted</em></h3>
+<p><strong>Morgan le Fay</strong> at Avalon Health Sciences wants a base class <code>Researcher</code> (stores <code>name</code>, has a method <code>describe</code> returning <code>"&lt;name&gt; runs experiments."</code>) and a subclass <code>LeadResearcher(Researcher)</code> that adds a <code>team_size</code> and <strong>overrides</strong> <code>describe</code> to also mention the team size.</p>
+<p>Use Gemini, Claude, or ChatGPT to draft both classes. Then: 1. Paste the result into a code cell and run it. Create one <code>Researcher</code> and one <code>LeadResearcher</code> and print both descriptions. 2. Find at least one thing the AI got wrong, missed, or could improve — a common one is forgetting <code>super().__init__()</code> so the lead’s <code>name</code> goes missing. 3. In a markdown cell, write 2–3 sentences on what you changed and why.</p>
+</section>
+<section id="exercise-3-nimues-queue-extended" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-nimues-queue-extended">✏️ Exercise 3 — Nimue’s Queue, Extended</h3>
+<p>Add a method <code>peek(self)</code> to the <code>DeliveryQueue</code> class that returns the next package <strong>without removing it</strong>. (Hint: the front item is <code>self._items[0]</code>.) Build a queue, add three packages, call <code>peek()</code>, then <code>dequeue()</code> once, and show that <code>peek</code> reported the right one without consuming it.</p>
+</section>
+<section id="exercise-4-guineveres-__str__" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-guineveres-__str__">✏️ Exercise 4 — Guinevere’s <code>__str__</code></h3>
+<p>Guinevere wants her <code>Citizen</code> objects to print nicely. Add a <code>__str__</code> method to <code>Citizen</code> that returns something like <code>"Elaine Astolat (North ward): owes 120.0"</code>. Create a citizen and <code>print</code> it to confirm your <code>__str__</code> runs instead of the default <code>&lt;...object at 0x...&gt;</code> text.</p>
+</section>
+<section id="exercise-5-morgans-lab-on-paper" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5-morgans-lab-on-paper">✏️ Exercise 5 — Morgan’s Lab, On Paper</h3>
+<p>You don’t always start at the keyboard. <strong>Morgan le Fay</strong> describes Avalon Health Sciences like this:</p>
+<blockquote class="blockquote">
+<p>“A <strong>study</strong> has a <strong>title</strong> and a list of <strong>participants</strong>. Each <strong>participant</strong> has an <strong>ID</strong> and an <strong>age</strong>. A <strong>researcher</strong> can <em>enroll</em> a participant and <em>count</em> how many are signed up.”</p>
+</blockquote>
+<p>In a markdown cell — <strong>no code required</strong> — use the <strong>noun/verb heuristic</strong> to list (a) the classes you would create, (b) the attributes each one holds, and (c) the methods. Then write one sentence on which class should own the <code>enroll</code> method, and why. (Hint: think about cohesion — which class is <em>responsible</em> for the list of participants?)</p>
+</section>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><p><strong>Abstraction</strong> — Hiding complicated details behind a simple surface, so you can use something without knowing how it works inside.</p></li>
+<li><p><strong>Abstraction layer</strong> — One level in a stack where each layer hides the details of the layer below it (transistors → gates → machine code → Python → your classes).</p></li>
+<li><p><strong>Attribute</strong> — A piece of data stored on an object, e.g.&nbsp;<code>self.name</code>. Read with <code>object.name</code>.</p></li>
+<li><p><strong>Class</strong> — A blueprint that describes the data and methods every object of that type will have.</p></li>
+<li><p><strong>Cohesion</strong> — How focused a class is on a single responsibility. High cohesion is the goal.</p></li>
+<li><p><strong>Composition</strong> — Building an object out of other objects (a “has-a” relationship), as an alternative to inheritance.</p></li>
+<li><p><strong>Coupling</strong> — How dependent classes are on one another. Low coupling is the goal.</p></li>
+<li><p><strong>Encapsulation</strong> — Bundling data with the methods that act on it, and guarding the data so it is changed only through those methods.</p></li>
+<li><p><strong><code>__init__</code></strong> — The setup method that runs automatically when an object is created. You never call it by name.</p></li>
+<li><p><strong>Inheritance</strong> — Building a class (child) on top of another (parent) so the child gets the parent’s attributes and methods for free.</p></li>
+<li><p><strong>Instance</strong> — Another word for an object: one specific thing built from a class.</p></li>
+<li><p><strong>Method</strong> — A function defined inside a class; it acts on an object’s data and takes <code>self</code> as its first parameter.</p></li>
+<li><p><strong>Module</strong> — A file of Python code you can <code>import</code> into another file. The standard library is a big collection of them.</p></li>
+<li><p><strong>Namespace</strong> — The “where a name lives” idea: <code>math.pi</code> says <code>pi</code> lives inside the <code>math</code> namespace.</p></li>
+<li><p><strong>Noun/verb heuristic</strong> — A design starter: nouns in a problem become candidate classes and attributes; verbs become candidate methods.</p></li>
+<li><p><strong>Object</strong> — A thing built from a class, holding its own data. Also called an instance.</p></li>
+<li><p><strong>Object-oriented programming (OOP)</strong> — A paradigm built from objects that own their data <em>and</em> their behavior.</p></li>
+<li><p><strong>Override</strong> — Defining a method in a child class with the same name as the parent’s; the child’s version wins for child objects.</p></li>
+<li><p><strong>Paradigm</strong> — A basic style of organizing a program, such as procedural or object-oriented.</p></li>
+<li><p><strong>Polymorphism</strong> — One method name producing different behavior depending on the object it is called on.</p></li>
+<li><p><strong>Procedural programming</strong> — A paradigm where functions act on passive data, rather than objects owning their own behavior.</p></li>
+<li><p><strong>Responsibility</strong> — The one job a well-designed class is meant to handle.</p></li>
+<li><p><strong><code>self</code></strong> — The first parameter of every method; refers to the particular object the method was called on.</p></li>
+<li><p><strong>Standard library</strong> — The modules that ship with Python (<code>math</code>, <code>random</code>, <code>datetime</code>, …) — no install needed.</p></li>
+<li><p><strong><code>super()</code></strong> — A reference to the parent class, used (e.g.&nbsp;<code>super().__init__(...)</code>) to reuse the parent’s code instead of retyping it.</p></li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li><strong>OOP is a paradigm, not just syntax.</strong> Objects own their data <em>and</em> their behavior — unlike procedural code, where functions act on passive data.</li>
+<li><strong>Modules kill copy-paste.</strong> Write code once in a file, <code>import</code> it everywhere, fix it in one place.</li>
+<li><strong>Classes are blueprints; objects are what you stamp out from them.</strong> Each object keeps its own data together, replacing tangles of parallel lists.</li>
+<li><strong><code>__init__</code> runs automatically</strong> to set an object up; <strong>methods</strong> act on the object’s data and always take <code>self</code> first. <code>self</code> is <em>this</em> object — that’s how one method serves many objects.</li>
+<li><strong>The four pillars:</strong> encapsulation, abstraction, inheritance, and polymorphism — the four ideas that define object-oriented design.</li>
+<li><strong>Design before syntax.</strong> Find classes with the noun/verb heuristic, give each one a single responsibility (<strong>high cohesion</strong>), keep them untangled (<strong>low coupling</strong>), and prefer <strong>composition</strong> (“has-a”) over <strong>inheritance</strong> (“is-a”) when one thing merely contains another.</li>
+<li><strong>Abstraction is the big idea behind all of CS</strong> — each layer hides the one below, which is how small minds build large machines.</li>
+<li><strong>Two bugs to remember:</strong> forgetting <code>self.</code> (your update vanishes) and a mutable class attribute (one list shared by every object).</li>
+</ul>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p>You can now organize <em>code</em> into modules and <em>data + behavior</em> into objects. <strong>Notebook 7</strong> asks a harder question: once you’ve built something, how <em>good</em> is it? We’ll measure algorithms with <strong>Big O</strong>, compare searching and sorting strategies, and then step to the edge of the map — the problems that <strong>no</strong> program, however cleverly written, can ever solve.</p>
+<p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

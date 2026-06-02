@@ -168,6 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#the-counting-house" id="toc-the-counting-house" class="nav-link" data-scroll-target="#the-counting-house">The Counting-House</a></li>
+  <li><a href="#first-a-word-youll-use-all-year-algorithm" id="toc-first-a-word-youll-use-all-year-algorithm" class="nav-link" data-scroll-target="#first-a-word-youll-use-all-year-algorithm">First, a Word You’ll Use All Year: <em>Algorithm</em></a></li>
   <li><a href="#the-roadmap" id="toc-the-roadmap" class="nav-link" data-scroll-target="#the-roadmap">The Roadmap</a></li>
   <li><a href="#how-to-experiment-in-this-notebook" id="toc-how-to-experiment-in-this-notebook" class="nav-link" data-scroll-target="#how-to-experiment-in-this-notebook">How to Experiment in This Notebook</a></li>
   <li><a href="#variables-named-boxes" id="toc-variables-named-boxes" class="nav-link" data-scroll-target="#variables-named-boxes">Variables: Named Boxes</a></li>
@@ -221,6 +222,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Welcome to the counting-house of <strong>Scrooge &amp; Marley</strong>, where the ledgers are long, the candles are short, and a single misplaced number has consequences.</p>
 <p><strong>Ebenezer Scrooge</strong>, the managing partner — who rounds every total in the firm’s favour — has a complaint. His clerk, <strong>Bob Cratchit</strong>, computes every sum by hand, by candlelight, and humans make mistakes. Scrooge wants the arithmetic done by machine: exactly, repeatably, the same way every time.</p>
 <p>So far you’ve <em>read</em> code. Notebooks 1 and 2 both ended with the same promise: you’d learn the workflow this whole course runs on — <strong>problem → pseudocode → flowchart → Python</strong>. This is that notebook. By the end you will take a plain-English problem from Scrooge and turn it into working code, deliberately, step by step — the way Cratchit’s colleague <strong>Esther Summerson</strong> does it: she writes down exactly what she intends to do <em>before</em> she does any of it.</p>
+</section>
+<section id="first-a-word-youll-use-all-year-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="first-a-word-youll-use-all-year-algorithm">First, a Word You’ll Use All Year: <em>Algorithm</em></h2>
+<p>Scrooge wants the arithmetic done “exactly, repeatably, the same way every time.” He has just described an <strong>algorithm</strong> — the single most important word in computer science.</p>
+<p>An <strong>algorithm</strong> is a finite list of clear, unambiguous steps that takes some <strong>input</strong>, does a definite amount of work, and produces an <strong>output</strong>. A recipe is an algorithm. Long division, the way you learned it in grade school, is an algorithm. The steps Cratchit follows to split an estate among heirs is an algorithm. Computers are simply very fast, very literal machines for <em>carrying algorithms out</em>.</p>
+<p>Computer scientists expect four things of a real algorithm:</p>
+<ul>
+<li><strong>Definite</strong> — each step is precise, with no “do whatever seems best.”</li>
+<li><strong>Finite</strong> — it has a fixed number of steps, not an endless list.</li>
+<li><strong>Terminating</strong> — it eventually <em>stops</em> and gives an answer.</li>
+<li><strong>Input and output</strong> — it takes something in and hands something back.</li>
+</ul>
+<p>Two more ideas worth holding onto. First, <strong>one problem can have many algorithms.</strong> There are dozens of ways to sort a list of names; some are fast, some are slow, and choosing well is much of what computer science is about (you’ll see this head-on in Notebook 7). Second, an algorithm is an <em>idea</em>, separate from any one programming language. The same estate-splitting algorithm could be carried out in Python, in another language, or by Cratchit with a pencil.</p>
+<p>That separation is exactly why this notebook teaches a <strong>workflow</strong> rather than just Python syntax. You’ll learn to nail down the algorithm <em>first</em>, in plain language and pictures, and only then translate it to code.</p>
 </section>
 <section id="the-roadmap" class="level2">
 <h2 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h2>
@@ -1018,6 +1033,16 @@ TOTAL                 £   6.00
 <li><strong>Python</strong> — translate the pseudocode line by line, then <strong>verify</strong>.</li>
 </ol>
 <p>Skipping to step 4 is the most common reason beginners get stuck. The first three steps are where the thinking happens; Python is just the transcription.</p>
+<section id="one-algorithm-three-ways-of-writing-it-down" class="level3">
+<h3 class="anchored" data-anchor-id="one-algorithm-three-ways-of-writing-it-down">One Algorithm, Three Ways of Writing It Down</h3>
+<p>Here is the idea that ties the workflow together. Steps 2, 3, and 4 are <em>not</em> three different things — they are the <strong>same algorithm, written three different ways</strong>:</p>
+<ul>
+<li><strong>Pseudocode</strong> writes it in structured words.</li>
+<li><strong>A flowchart</strong> draws it as a picture.</li>
+<li><strong>Python</strong> spells it out in code a machine can run.</li>
+</ul>
+<p>Change the representation and the underlying algorithm stays the same, just as £100 is the same amount whether you write it in numerals, in words, or stack it in coins. This is your first real taste of <strong>abstraction</strong> — separating <em>what</em> a process does from <em>how</em> it happens to be written down. Pseudocode lets you think about the <em>what</em>; Python handles the <em>how</em>. Getting the <em>what</em> right first is why the planning steps matter more than the typing.</p>
+</section>
 <section id="pseudocode-conventions-used-all-course" class="level3">
 <h3 class="anchored" data-anchor-id="pseudocode-conventions-used-all-course">Pseudocode Conventions (used all course)</h3>
 <p>No official language exists — a consistent house style keeps it readable:</p>
@@ -1227,7 +1252,7 @@ OUTPUT:  share     — whole pounds each heir receives
 <li>If you’re stuck, click <strong>Hint</strong>. Use <strong>Next</strong> to move on, or the dropdown to jump around. Your code is graded <strong>per test case</strong>, so partial credit shows up clearly.</li>
 </ol>
 <p>Run the cell below to start. <em>(The first time you run it, it downloads <code>pyquiz.py</code> from this course’s GitHub repo — you’ll see a brief pause, then the practice tool appears.)</em></p>
-<div id="cell-68" class="cell">
+<div id="611ffa9d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PyQuiz bootstrap — works in Colab or any local Jupyter.</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, urllib.request</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main"</span></span>
@@ -1244,30 +1269,35 @@ OUTPUT:  share     — whole pounds each heir receives
 <section id="key-terms" class="level2">
 <h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
 <ul>
-<li><strong>Variable</strong> — A named box that holds one value.</li>
-<li><strong>Assignment (<code>=</code>)</strong> — Stores the right-hand value into the variable; read it as “gets.”</li>
-<li><strong>Data type</strong> — The kind of a value: <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>.</li>
-<li><strong>int / float</strong> — Whole number vs.&nbsp;number with a decimal point.</li>
-<li><strong>str / bool</strong> — Text in quotes; a truth value (<code>True</code>/<code>False</code>).</li>
-<li><strong>Expression / statement</strong> — Code that computes a value vs.&nbsp;a complete instruction.</li>
-<li><strong>Operator / operand</strong> — The verb (<code>+</code>, <code>//</code>, <code>and</code>) and the values it acts on.</li>
-<li><strong>Floor division (<code>//</code>) / modulo (<code>%</code>)</strong> — Whole part of a division / the remainder.</li>
-<li><strong>Comparison operators</strong> — <code>== != &lt; &gt; &lt;= &gt;=</code>; each produces a <code>bool</code>.</li>
-<li><strong>Boolean operators</strong> — <code>and</code>, <code>or</code>, <code>not</code>; combine truth values.</li>
-<li><strong>Operator precedence</strong> — The order operators resolve: arithmetic → comparison → <code>not</code> → <code>and</code> → <code>or</code>.</li>
-<li><strong>Type casting</strong> — Deliberately converting a value’s type, e.g.&nbsp;<code>int("5")</code>.</li>
-<li><strong>Escape character</strong> — A backslash code inside a string: <code>\n</code>, <code>\t</code>, <code>\"</code>, <code>\\</code>.</li>
-<li><strong>f-string / format specifier</strong> — <code>f"..."</code> text with <code>{var}</code>; <code>:.2f</code>, <code>:&gt;10</code>, <code>:,</code> control how a value prints.</li>
-<li><strong>String method</strong> — A function called on a string with a dot: <code>.upper()</code>, <code>.strip()</code>, <code>.replace()</code>.</li>
-<li><strong>Pseudocode</strong> — Structured, language-neutral plain English describing an algorithm.</li>
-<li><strong>Flowchart</strong> — A diagram of an algorithm: ellipse = start/end, parallelogram = I/O, box = process, diamond = decision.</li>
-<li><strong>Trace</strong> — To run code in your head, line by line, predicting each result.</li>
-<li><strong>Comment (<code>#</code>)</strong> — A note for humans; Python ignores it.</li>
+<li><p><strong>Algorithm</strong> — A finite list of clear, definite steps that takes input, does a fixed amount of work, terminates, and produces output.</p></li>
+<li><p><strong>Representation</strong> — One way of writing down an algorithm; pseudocode, a flowchart, and Python code are three representations of the same algorithm.</p></li>
+<li><p><strong>Abstraction</strong> — Separating <em>what</em> a process does from <em>how</em> it is written down or carried out.</p></li>
+<li><p><strong>Variable</strong> — A named box that holds one value.</p></li>
+<li><p><strong>Assignment (<code>=</code>)</strong> — Stores the right-hand value into the variable; read it as “gets.”</p></li>
+<li><p><strong>Data type</strong> — The kind of a value: <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>.</p></li>
+<li><p><strong>int / float</strong> — Whole number vs.&nbsp;number with a decimal point.</p></li>
+<li><p><strong>str / bool</strong> — Text in quotes; a truth value (<code>True</code>/<code>False</code>).</p></li>
+<li><p><strong>Expression / statement</strong> — Code that computes a value vs.&nbsp;a complete instruction.</p></li>
+<li><p><strong>Operator / operand</strong> — The verb (<code>+</code>, <code>//</code>, <code>and</code>) and the values it acts on.</p></li>
+<li><p><strong>Floor division (<code>//</code>) / modulo (<code>%</code>)</strong> — Whole part of a division / the remainder.</p></li>
+<li><p><strong>Comparison operators</strong> — <code>== != &lt; &gt; &lt;= &gt;=</code>; each produces a <code>bool</code>.</p></li>
+<li><p><strong>Boolean operators</strong> — <code>and</code>, <code>or</code>, <code>not</code>; combine truth values.</p></li>
+<li><p><strong>Operator precedence</strong> — The order operators resolve: arithmetic → comparison → <code>not</code> → <code>and</code> → <code>or</code>.</p></li>
+<li><p><strong>Type casting</strong> — Deliberately converting a value’s type, e.g.&nbsp;<code>int("5")</code>.</p></li>
+<li><p><strong>Escape character</strong> — A backslash code inside a string: <code>\n</code>, <code>\t</code>, <code>\"</code>, <code>\\</code>.</p></li>
+<li><p><strong>f-string / format specifier</strong> — <code>f"..."</code> text with <code>{var}</code>; <code>:.2f</code>, <code>:&gt;10</code>, <code>:,</code> control how a value prints.</p></li>
+<li><p><strong>String method</strong> — A function called on a string with a dot: <code>.upper()</code>, <code>.strip()</code>, <code>.replace()</code>.</p></li>
+<li><p><strong>Pseudocode</strong> — Structured, language-neutral plain English describing an algorithm.</p></li>
+<li><p><strong>Flowchart</strong> — A diagram of an algorithm: ellipse = start/end, parallelogram = I/O, box = process, diamond = decision.</p></li>
+<li><p><strong>Trace</strong> — To run code in your head, line by line, predicting each result.</p></li>
+<li><p><strong>Comment (<code>#</code>)</strong> — A note for humans; Python ignores it.</p></li>
 </ul>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <ul>
+<li>An <strong>algorithm</strong> is a finite, definite, terminating recipe of steps from input to output — the central idea of the whole course, and a problem can have many of them.</li>
+<li>Pseudocode, flowcharts, and Python are three <strong>representations</strong> of one algorithm; get the algorithm right first, then translate.</li>
 <li>A <strong>variable</strong> is a named box; <code>=</code> stores into it, and the <strong>right side runs first</strong>.</li>
 <li>Every value has a <strong>type</strong>; quotes always mean <code>str</code>, and <code>input()</code> always returns <code>str</code>.</li>
 <li><code>/</code> always gives a <code>float</code>; <code>//</code> and <code>%</code> answer <em>“how many whole groups, how much left over.”</em></li>

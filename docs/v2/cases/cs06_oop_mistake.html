@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-02">
+
+<title>Was Object-Oriented Programming a Mistake? – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-case" id="toc-the-case" class="nav-link active" data-scroll-target="#the-case">The Case</a></li>
+  <li><a href="#how-it-worked" id="toc-how-it-worked" class="nav-link" data-scroll-target="#how-it-worked">How It Worked</a></li>
+  <li><a href="#the-argument-kay-started" id="toc-the-argument-kay-started" class="nav-link" data-scroll-target="#the-argument-kay-started">The Argument Kay Started</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cs06_oop_mistake.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Was Object-Oriented Programming a Mistake?</h1>
+<p class="subtitle lead">Alan Kay, Barbara Liskov, and the forty-year argument over how to build software — a COMP 1150 case study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 2, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="case-at-a-glance">
+<ul>
+<li><strong>Who:</strong> Alan Kay (b. 1940), who coined the term <em>object-oriented</em> and built Smalltalk; Barbara Liskov (b. 1939), the MIT computer scientist whose rule about inheritance is now taught everywhere; and the language designers who spread, defended, and later attacked the idea — Bjarne Stroustrup (C++), James Gosling (Java), Joe Armstrong (Erlang), and Rich Hickey (Clojure).</li>
+<li><strong>What:</strong> One idea — bundle data together with the code that acts on it, into a thing called an <em>object</em> — went from a research toy to the way most of the world’s software was built. Then a generation of programmers turned around and asked whether the idea had cost more than it was worth.</li>
+<li><strong>Where / When:</strong> Xerox PARC, California, 1972 (Smalltalk). MIT, 1987 (Liskov’s keynote). Bell Labs and Sun Microsystems, 1985–1995 (C++ and Java). And the running argument among working programmers, 2009–2026.</li>
+<li><strong>Why it matters:</strong> For thirty years, “good design” and “object-oriented design” meant nearly the same thing in industry. If the most-taught way to organize a program was partly a mistake, that affects how millions of programs were built — and how the next generation is taught to think.</li>
+<li><strong>Concepts at play:</strong> object, class, <span class="key-term">encapsulation</span>, <span class="key-term">inheritance</span>, <span class="key-term">polymorphism</span>, <span class="key-term">composition</span>, <span class="key-term">message passing</span>, paradigm</li>
+</ul>
+</div>
+<section id="the-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-case">The Case</h2>
+<p>In 1972, at Xerox’s Palo Alto Research Center, a young researcher named Alan Kay was trying to picture a different kind of computer. Not a big machine that ran one program at a time, but a personal one a child could use. He needed a way to organize the software inside it. The metaphor he reached for came from biology.</p>
+<p>Kay had studied molecular biology before computing. He thought about cells. A living body is made of billions of cells. Each cell hides its own messy chemistry behind a wall. Cells do not reach inside one another. They communicate by sending chemical <em>messages</em>. The system is robust because no single cell can corrupt the insides of another.</p>
+<p>What if software worked that way? Kay imagined a program as a community of small, self-contained units. Each one would hide its own data behind a wall. None could reach inside another. They would cooperate only by sending <span class="key-term">messages</span> — requests that an object could choose how to answer. He called these units <em>objects</em>, and the style of building with them <span class="key-term">object-oriented programming</span>, or OOP.</p>
+<div class="context-box">
+<p><strong>The vocabulary of objects.</strong> An <strong>object</strong> bundles some data together with the operations that act on that data. A <strong>class</strong> is the blueprint that says what a kind of object holds and can do. <span class="key-term">Encapsulation</span> is the wall: the object’s inner data is hidden, and outside code must go through the object’s own operations to touch it. <span class="key-term">Message passing</span> is the original way objects were meant to interact — you <em>ask</em> an object to do something, and it decides how. These four ideas are the part of OOP almost nobody argues against.</p>
+</div>
+<p>Kay’s team built the idea into a language called Smalltalk. It was small, uniform, and strange for its time. Everything was an object, even a number. You did not “call a function” on data; you “sent a message” to an object. Smalltalk never became popular itself. But the idea inside it spread — and as it spread, it changed.</p>
+<p>The version that conquered the world was not Kay’s. In 1979 a Danish engineer named Bjarne Stroustrup, at Bell Labs, began adding objects to the C language. He wanted the speed of C with a way to organize large programs. His language, later named C++, kept one feature Kay had not emphasized and the language Simula had pioneered years earlier: <span class="key-term">inheritance</span>. With inheritance, you could define one class as a special kind of another — a <code>SportsCar</code> that automatically gets everything a <code>Car</code> has, plus extras. It felt powerful. It felt like modeling the real world.</p>
+<p>Kay watched C++ become the public face of “object-oriented” and did not like it. In a 1997 talk he said flatly: “I invented the term object-oriented, and I can tell you I did not have C++ in mind” <span class="citation" data-cites="kay1997">(<a href="#ref-kay1997" role="doc-biblioref">Kay 1997</a>)</span>. To Kay, the heart of OOP was messaging and encapsulation — autonomous cells. The industry had seized on a different part, inheritance and class hierarchies, and called <em>that</em> the main idea.</p>
+<div class="context-box">
+<p><strong>Inheritance and polymorphism, the parts under dispute.</strong> <span class="key-term">Inheritance</span> lets a <em>child</em> class reuse and extend a <em>parent</em> class. A <code>Manager</code> class might inherit from an <code>Employee</code> class, getting its data and behavior for free, then add more. <span class="key-term">Polymorphism</span> means one instruction can do the right thing for many kinds of object: tell any <code>Employee</code> to <code>pay()</code>, and a <code>Manager</code> and a <code>Clerk</code> each respond in their own way. Polymorphism is widely loved. Deep inheritance is the feature the next forty years of argument circle around.</p>
+</div>
+<p>Then came Java. In 1995, Sun Microsystems released a language built around classes from the ground up. Its promise — “write once, run anywhere” — and its strict, everything-is-a-class structure made it the language of the corporate world. Universities taught Java first. Job listings demanded it. By 2005, to most working programmers, “good software design” and “object-oriented design” meant almost the same thing.</p>
+<p>With the boom came a strange artifact. In 1994, four engineers — later nicknamed the “Gang of Four” — published <em>Design Patterns</em>, a catalog of standard solutions to recurring problems in object-oriented code <span class="citation" data-cites="gof1994">(<a href="#ref-gof1994" role="doc-biblioref">Gamma et al. 1994</a>)</span>. It became one of the best-selling programming books ever. To its fans, it was hard-won wisdom. To its critics, the long list of patterns with names like <em>AbstractFactory</em> and <em>VisitorDecorator</em> was a warning sign: if a paradigm needs a thick book of workarounds, maybe the paradigm is fighting you.</p>
+<p>The backlash arrived in force in the 2010s. Programmers who had spent careers in deep class hierarchies started writing essays with titles like “Object-Oriented Programming is Bad.” A satirical project called <em>FizzBuzz Enterprise Edition</em> solved a problem a beginner can do in five lines using dozens of Java classes and interfaces — a joke that landed because it was barely an exaggeration. Erlang’s creator Joe Armstrong put the complaint in one image: “You wanted a banana but what you got was a gorilla holding the banana and the entire jungle” <span class="citation" data-cites="seibel2009">(<a href="#ref-seibel2009" role="doc-biblioref">Seibel 2009</a>)</span>. Ask an object for one thing, and you drag along everything it is attached to.</p>
+<p>The criticism was loudest about exactly the feature Stroustrup had kept and Kay had downplayed: inheritance. And here the argument stopped being a matter of taste. There was a real, provable problem hiding inside the most natural-sounding inheritance anyone could write.</p>
+</section>
+<section id="how-it-worked" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-worked">How It Worked</h2>
+<p>The problem has a precise form, and you can see it with grade-school geometry. It is the reason one MIT researcher’s name is now attached to a rule every working programmer is supposed to know.</p>
+<p>Start with a <code>Rectangle</code>. It has a width and a height, and you can ask for its area.</p>
+<pre><code>CLASS Rectangle
+  set_width(w):   width  ← w
+  set_height(h):  height ← h
+  area():         RETURN width × height</code></pre>
+<p>Now, a square <em>is a</em> rectangle — every square is a rectangle whose sides happen to be equal. That sentence sounds like a green light for inheritance. So we make <code>Square</code> a child of <code>Rectangle</code>. To keep its sides equal, setting the width must also set the height, and the reverse.</p>
+<pre><code>CLASS Square EXTENDS Rectangle
+  set_width(w):   width ← w;  height ← w
+  set_height(h):  width ← h;  height ← h</code></pre>
+<p>This looks careful and correct. It is not. The trouble shows up in code that was written for rectangles and never heard of squares:</p>
+<pre><code>Procedure: stretch_and_check(r)   // r is supposed to be a Rectangle
+  1. r.set_width(5)
+  2. r.set_height(4)
+  3. RETURN r.area()              // expect 5 × 4 = 20</code></pre>
+<p>Pass this a plain <code>Rectangle</code> and it returns <code>20</code>, as expected. Pass it a <code>Square</code> and step 2 quietly changes the width too. Both sides become <code>4</code>. The area comes back <code>16</code>. The procedure did nothing wrong. It set a width and a height and asked for the area. The <code>Square</code> broke a promise the <code>Rectangle</code> had made — that width and height move independently.</p>
+<div class="context-box">
+<p><strong>The Liskov Substitution Principle.</strong> In a 1987 keynote, and then in precise form with Jeannette Wing in 1994, Barbara Liskov stated the rule the <code>Square</code> violates <span class="citation" data-cites="liskov1987 liskovwing1994">(<a href="#ref-liskov1987" role="doc-biblioref">B. Liskov 1987</a>; <a href="#ref-liskovwing1994" role="doc-biblioref">B. H. Liskov and Wing 1994</a>)</span>. In plain words: <em>if code works for a parent type, it must keep working when you hand it a child type instead.</em> A child class is only a valid subtype if it can stand in for its parent everywhere, with no surprises. A <code>Square</code> that secretly couples its sides cannot stand in for a <code>Rectangle</code>. So “a square is a rectangle,” true in geometry, is <strong>false as an inheritance claim</strong>. The is-a sentence is not enough.</p>
+</div>
+<p>The fix is not more clever inheritance. It is to stop using inheritance here at all. Instead of saying a shape <em>is a</em> special rectangle, you let each shape <em>have</em> its own dimensions and report its own area:</p>
+<pre><code>CLASS Rectangle
+  has width, height
+  area():  RETURN width × height
+
+CLASS Square
+  has side
+  area():  RETURN side × side</code></pre>
+<p>Now nothing pretends to be a kind of something it cannot replace. Each shape stands on its own. This move — building from parts an object <em>has</em>, rather than a parent it <em>is</em> — is called <span class="key-term">composition</span>. The contrast between the two strategies is the whole debate in miniature:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Inheritance (“is-a”)</th>
+<th>Composition (“has-a”)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How are things related?</td>
+<td>child <em>is a kind of</em> parent</td>
+<td>object <em>has</em> other objects as parts</td>
+</tr>
+<tr class="even">
+<td>What does the child get?</td>
+<td>everything the parent has, automatically</td>
+<td>only what you choose to give it</td>
+</tr>
+<tr class="odd">
+<td>Can you change it later?</td>
+<td>parent is fixed when the child is written</td>
+<td>parts can be swapped while the program runs</td>
+</tr>
+<tr class="even">
+<td>Main risk</td>
+<td>a child that can’t truly replace its parent</td>
+<td>a little more wiring to write by hand</td>
+</tr>
+</tbody>
+</table>
+<p>Inheritance is not always wrong. When a child can <em>genuinely</em> replace its parent, it is clean and powerful. The danger is that “is-a” sentences are easy to say and often false in the one way that matters — substitutability. That is why the slogan that eventually won was not “never inherit.” It was milder, and it came from inside the OOP world itself.</p>
+</section>
+<section id="the-argument-kay-started" class="level2">
+<h2 class="anchored" data-anchor-id="the-argument-kay-started">The Argument Kay Started</h2>
+<p>The positions below are not in time order. They are in the order in which each one challenges the last.</p>
+<section id="the-kay-position-we-never-really-tried-it" class="level3">
+<h3 class="anchored" data-anchor-id="the-kay-position-we-never-really-tried-it">The Kay position: we never really tried it</h3>
+<p>Kay’s defense of OOP is also an attack on what OOP became. The good idea, he argues, was always encapsulation and messaging — autonomous objects that hide their state and cooperate by request. Inheritance-heavy, class-obsessed languages took a small part of the vision and made it the whole thing.</p>
+<div class="argument">
+<p><strong>The Kay Argument</strong></p>
+<ol type="1">
+<li>The valuable core of OOP is encapsulation and message passing: objects that hide their own state and interact only through requests.</li>
+<li>The mainstream languages that spread under the OOP name (C++, Java) emphasized class inheritance, which was never the core.</li>
+<li>The problems people blame on OOP — rigid hierarchies, fragile base classes, gorilla-and-jungle coupling — come from that inherited-class emphasis, not from objects as such.</li>
+<li>Therefore, OOP was not a mistake. The industry adopted a shallow version and then blamed the idea for the version’s faults.</li>
+</ol>
+</div>
+<p>The strength here is premise 1. Almost nobody argues against encapsulation. The weakness is premise 4’s move: it lets “real” OOP off the hook by defining it as only the parts that worked. If a vision can only be judged by its purest form, no vision can ever fail.</p>
+</section>
+<section id="the-pragmatist-reply-it-shipped-the-world" class="level3">
+<h3 class="anchored" data-anchor-id="the-pragmatist-reply-it-shipped-the-world">The pragmatist reply: it shipped the world</h3>
+<p>Stroustrup, who designed C++, never claimed purity. His languages were tools for getting large systems built by large teams under deadline. Class-based OOP, in this view, earned its place not by being elegant but by being <em>useful</em> at scale. It gave teams a shared vocabulary for carving a huge program into named pieces.</p>
+<div class="argument">
+<p><strong>The Pragmatist Reply</strong></p>
+<ol type="1">
+<li>The test of a programming idea is whether teams can build and maintain real systems with it, not whether it matches a research vision.</li>
+<li>Class-based OOP let large teams divide enormous programs into modular pieces with clear owners, and it ran the banks, phones, and operating systems of an entire era.</li>
+<li>Every paradigm has sharp edges; skilled engineers learn to avoid them, as they do in every tool.</li>
+<li>Therefore, judging OOP by its worst hierarchies is as unfair as judging it by Kay’s ideal. The fair test is the working software, and by that test OOP succeeded.</li>
+</ol>
+</div>
+<p>This challenges Kay directly. Where Kay says the industry adopted the wrong part, the pragmatist says the industry adopted the <em>shippable</em> part, and shippability is the only score that counts. The reply’s weak point is premise 3 — “skilled engineers learn to avoid the edges.” If the edges are as common and as hidden as the critics claim, then blaming the engineer is blaming the victim of a sharp tool.</p>
+</section>
+<section id="the-functional-reply-the-bundle-itself-was-the-bug" class="level3">
+<h3 class="anchored" data-anchor-id="the-functional-reply-the-bundle-itself-was-the-bug">The functional reply: the bundle itself was the bug</h3>
+<p>The deepest criticism does not care whether you use Kay’s OOP or Stroustrup’s. It targets the founding move of all of it: bundling <em>changeable data</em> together with behavior. Joe Armstrong and Rich Hickey, from the world of functional programming, argue that this bundle is the source of the hardest bugs in software.</p>
+<div class="argument">
+<p><strong>The Functional Reply</strong></p>
+<ol type="1">
+<li>The hardest bugs in large systems come from shared, changeable state — data that many parts of a program can alter, where no one can see the full picture.</li>
+<li>OOP’s core move is to scatter changeable state across many objects, each hiding its own, each able to change in response to a message.</li>
+<li>Hidden, scattered, changeable state is exactly the condition in premise 1, multiplied across thousands of objects.</li>
+<li>Therefore, the problem is not inheritance alone but the founding bundle: data that changes, glued to behavior. Building from values that do not change, combined by composition, avoids the whole class of bug.</li>
+</ol>
+</div>
+<p>This challenges both earlier positions. Against Kay, it says encapsulation does not save you — a hidden changing value is still a changing value. Against the pragmatist, it says the “sharp edges” are not edges to be avoided but the center of the tool. Its own weak point is cost: programs do, in the end, have to remember things and change them, and pure approaches can push that difficulty into corners of their own.</p>
+</section>
+<section id="where-the-argument-rests-now" class="level3">
+<h3 class="anchored" data-anchor-id="where-the-argument-rests-now">Where the argument rests now</h3>
+<p>The industry did not answer “OOP: yes or no.” It quietly answered a narrower question, and the answer was visible in the new languages.</p>
+<p>Go, released by Google in 2009, and Rust, which reached its first stable release in 2015, are both built for large modern systems. Neither has class inheritance at all. Both keep encapsulation. Both build bigger things out of smaller parts by composition. Both lean on something like Kay’s messaging — small components talking through clear interfaces. The feature the whole argument circled, deep inheritance, was simply left out.</p>
+<p>And the slogan that won was not radical. <em>Favor composition over inheritance</em> appears in the Gang of Four’s <em>Design Patterns</em> — the 1994 bible of object-oriented design itself <span class="citation" data-cites="gof1994">(<a href="#ref-gof1994" role="doc-biblioref">Gamma et al. 1994</a>)</span>. The OOP world had named the cure inside its founding text and then spent twenty years learning to take it.</p>
+<p>So was OOP a mistake? The cleanest answer the evidence supports is narrower and stranger than the question. Encapsulation, interfaces, and polymorphism are everywhere and barely disputed. Deep inheritance hierarchies have been quietly abandoned, even by the languages that most loved them. What failed was not exactly OOP. It was the <em>habit</em> of taking one good idea and making it the single mandatory shape for all software — the thing every student had to learn, every program had to fit, every design review had to praise. That habit has a cost, and it is not only technical. It shapes who learns to program, what they are taught to value, and how long it takes the next good idea to be heard. The sharper question is not <em>was this paradigm wrong?</em> It is: <em>why does a field that prizes logic keep turning its best ideas into doctrine — and who pays while the doctrine holds?</em></p>
+</section>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>Alan Kay compared objects to living cells that hide their chemistry and talk only by sending messages. In your own words, explain what “encapsulation” means, and offer a different real-world analogy of your own. What does your analogy capture that the cell one misses?</li>
+<li>“A square is a rectangle” is true in math class but causes a bug when used as an inheritance claim. Explain in plain language why the sentence is not enough to justify making <code>Square</code> a child of <code>Rectangle</code>. What question do you have to ask instead?</li>
+<li>Write the <strong>Kay Argument</strong> and the <strong>Functional Reply</strong> in your own words. They do not disagree about whether bugs are bad. What <em>do</em> they actually disagree about? What kind of evidence might move someone from one side to the other?</li>
+<li>You are leading a new software team in 2026 and must pick a style: inheritance-heavy OOP, composition-first OOP, or a functional approach with values that do not change. Pick one. Give the two strongest reasons for your choice and name the one thing you are most worried you will regret.</li>
+<li>The case ends by blaming not OOP but the habit of turning one idea into mandatory doctrine. Pick another field where a single approach became “the only right way” — in education, medicine, business, art, or sports. Describe who benefited while the doctrine held and who paid. Does the pattern match what happened with OOP, or differ?</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li>Alan C. Kay, “The Early History of Smalltalk” (1993) — Kay’s own account of the biological metaphor and what he meant by objects and messaging <span class="citation" data-cites="kay1993">(<a href="#ref-kay1993" role="doc-biblioref">Kay 1993</a>)</span>.</li>
+<li>Barbara Liskov and Jeannette Wing, “A Behavioral Notion of Subtyping” (1994) — the precise statement of the substitution rule the <code>Square</code> breaks; the 1987 keynote is the readable origin <span class="citation" data-cites="liskovwing1994 liskov1987">(<a href="#ref-liskovwing1994" role="doc-biblioref">B. H. Liskov and Wing 1994</a>; <a href="#ref-liskov1987" role="doc-biblioref">B. Liskov 1987</a>)</span>.</li>
+<li>Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, <em>Design Patterns</em> (1994) — the book that defined object-oriented design for a generation, and the source of “favor composition over inheritance” <span class="citation" data-cites="gof1994">(<a href="#ref-gof1994" role="doc-biblioref">Gamma et al. 1994</a>)</span>.</li>
+<li>Peter Seibel, <em>Coders at Work</em> (2009) — interviews including Joe Armstrong’s “gorilla holding the banana” critique of object-oriented languages <span class="citation" data-cites="seibel2009">(<a href="#ref-seibel2009" role="doc-biblioref">Seibel 2009</a>)</span>.</li>
+<li>Bjarne Stroustrup, <em>The Design and Evolution of C++</em> (1994) — the pragmatist case, in the words of the person who made the most-used object-oriented language <span class="citation" data-cites="stroustrup1994">(<a href="#ref-stroustrup1994" role="doc-biblioref">Stroustrup 1994</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-gof1994" class="csl-entry" role="listitem">
+Gamma, Erich, Richard Helm, Ralph Johnson, and John Vlissides. 1994. <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.
+</div>
+<div id="ref-kay1993" class="csl-entry" role="listitem">
+Kay, Alan C. 1993. <span>“The Early History of <span>Smalltalk</span>.”</span> In <em>The Second ACM SIGPLAN Conference on History of Programming Languages (HOPL-II)</em>. ACM. <a href="https://doi.org/10.1145/154766.155364">https://doi.org/10.1145/154766.155364</a>.
+</div>
+<div id="ref-kay1997" class="csl-entry" role="listitem">
+Kay, Alan C. 1997. <em>The Computer Revolution Hasn’t Happened yet</em>. Keynote, OOPSLA ’97 (ACM Conference on Object-Oriented Programming).
+</div>
+<div id="ref-liskov1987" class="csl-entry" role="listitem">
+Liskov, Barbara. 1987. <span>“Data Abstraction and Hierarchy.”</span> <em>Addendum to the Proceedings of OOPSLA ’87 (Keynote Address)</em>, 17–34. <a href="https://doi.org/10.1145/62138.62141">https://doi.org/10.1145/62138.62141</a>.
+</div>
+<div id="ref-liskovwing1994" class="csl-entry" role="listitem">
+Liskov, Barbara H., and Jeannette M. Wing. 1994. <span>“A Behavioral Notion of Subtyping.”</span> <em>ACM Transactions on Programming Languages and Systems</em> 16 (6): 1811–41. <a href="https://doi.org/10.1145/197320.197383">https://doi.org/10.1145/197320.197383</a>.
+</div>
+<div id="ref-seibel2009" class="csl-entry" role="listitem">
+Seibel, Peter. 2009. <em>Coders at Work: Reflections on the Craft of Programming</em>. Apress.
+</div>
+<div id="ref-stroustrup1994" class="csl-entry" role="listitem">
+Stroustrup, Bjarne. 1994. <em>The Design and Evolution of <span>C++</span></em>. Addison-Wesley.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

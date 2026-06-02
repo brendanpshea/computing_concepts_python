@@ -137,19 +137,19 @@ Each business gets a "code territory" note â€” the kinds of code examples t
 
 ---
 
-### NB 6 â€” Tolkien (Middle-earth, Modernized)
-*Pairs with: Functions, Modules & OOP. Races, fellowships, and guilds = a natural OOP universe.*
+### NB 6 â€” Arthurian Legend (Camelot, Modernized)
+*Pairs with: Modules & OOP. Knightly orders, lineages, and guilds = a natural OOP universe. (Swapped from Tolkien â€” public-domain cast only. Functions are a quick NB4 callback, not re-taught.)*
 
 | Business | Character (role) | Code territory |
 |---|---|---|
-| LothlÃ³rien Research Institute (academic lab) | **Galadriel**, director | datasets, class hierarchies, research modules |
-| Rohan Security Services (private security) | **Ã‰owyn**, CEO | patrol schedules, incident classes, inheritance (Guard â†’ Ranger) |
-| Rivendell Library Systems (knowledge management) | **Arwen**, chief librarian | catalog objects, tag systems, document classes |
-| Istari Advisory (management consulting) | **Gandalf**, senior partner | client records, advisory modules, reusable playbooks |
-| Shire Logistics (last-mile delivery) | **Frodo Baggins**, junior operations engineer | package objects, route classes, courier methods |
-| Erebor Mining & Materials | **Thorin Oakenshield**, managing director | extraction logs, ore-class hierarchies, shift scheduling |
+| Camelot Civic Systems (govtech platform) | **Guinevere**, CEO | citizen records, the `Citizen` class, parallel-lists-vs-objects |
+| Avalon Health Sciences (research lab) | **Morgan le Fay**, director of research | dataset objects, class hierarchies, inheritance/override |
+| Lake Logistics (last-mile delivery) | **Nimue / Lady of the Lake**, operations lead | package objects, the `DeliveryQueue` ADT, interface vs. implementation |
+| Pendragon Security (private security) | **Arthur Pendragon**, founder | guard/knight classes, inheritance (Guard â†’ Knight), `super()` |
+| Merlin Advisory (management consulting) | **Merlin**, senior partner | modules, imports, reusable helper files |
+| Lancelot Athletics (training academy) | **Lancelot**, head coach | athlete objects, methods, progress tracking |
 
-**Balance:** 3F / 3M.
+**Balance:** 3F / 3M (Guinevere, Morgan, Nimue / Arthur, Merlin, Lancelot). Public-domain cast.
 
 ---
 
@@ -605,7 +605,7 @@ A suggested rotation so no world repeats and the vibe varies session to session.
 | 3 | Python via Pseudocode & Flowcharts | Dickens (clerks, ledgers, methodical work) |
 | 4 | Control Flow & Decomposition | Princess Bride (if/else adventure branching) |
 | 5 | Collections & ADTs | Wilde's Mayfair (drawing-room high street) |
-| 6 | Functions, Modules & OOP | Tolkien (fellowship = module, races = classes) |
+| 6 | Modules & OOP | Arthurian legend (knightly orders = class hierarchy) |
 | 7 | Algorithms & Limits of Computation | Dr. Who (computability + time paradoxes) |
 | 8 | Software Engineering, Git & AI-Assisted Dev | Star Trek (crew coordination, logs, reviews) |
 | 9 | Databases: Relational & Non-Relational | Austen (social networks = relational data) |

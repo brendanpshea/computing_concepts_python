@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1840s</td>
 <td>Mechanical gears (steam-powered)</td>
 <td>Positions of brass wheels</td>
-<td>~1 calculation / second <em>(designed)</em></td>
+<td>~1 addition / second <em>(designed)</em></td>
 </tr>
 <tr class="even">
 <td>1890s</td>
@@ -367,7 +367,7 @@ That distinction will matter a great deal this semester.</code></pre>
 <h3 class="anchored" data-anchor-id="the-problem">The Problem</h3>
 <p>Nineteenth-century science needed long, accurate tables of numbers — logarithms, ship navigation tables, insurance calculations. These tables were computed by hand, by rooms of human “computers” (that was a job title, not a machine). Humans made mistakes. Mistakes in a navigation table could wreck a ship.</p>
 <p><strong>Charles Babbage</strong> proposed to fix this with a mechanical calculator. His second design, the <strong>Analytical Engine</strong>, was far more ambitious than the first: it would be <em>general-purpose</em> — not a single-task calculator but a machine that could follow any sequence of instructions fed to it.</p>
-<p><strong>Ada Lovelace</strong>, a mathematician and Babbage’s correspondent, wrote a set of notes describing what the engine could do. In her longest note — <em>Note G</em> — she included a detailed procedure for computing a mathematical sequence called the <strong>Bernoulli numbers</strong>. This is widely regarded as the world’s first computer program.</p>
+<p><strong>Ada Lovelace</strong>, a mathematician and Babbage’s correspondent, wrote a set of notes describing what the engine could do. In her longest note — <em>Note G</em> — she included a detailed procedure for computing a mathematical sequence called the <strong>Bernoulli numbers</strong>. This is widely regarded as the world’s first computer program, though authorship was collaborative — Babbage drafted earlier procedures, while the Bernoulli table and the broader claims about what the machine could do were Lovelace’s own.</p>
 </section>
 <section id="the-hardware-babbages-analytical-engine" class="level3">
 <h3 class="anchored" data-anchor-id="the-hardware-babbages-analytical-engine">The Hardware: Babbage’s Analytical Engine</h3>
@@ -413,7 +413,7 @@ That distinction will matter a great deal this semester.</code></pre>
 </tr>
 </tbody>
 </table>
-<p><strong>Physical reality:</strong> - Would have been the size of a small locomotive - Powered by a <strong>steam engine</strong> turning brass gears - Expected speed: roughly <strong>one multiplication per minute</strong> - The punch-card idea came from the <strong>Jacquard loom</strong>, a French weaving machine that used cards to select thread patterns</p>
+<p><strong>Physical reality:</strong> - Would have been the size of a small locomotive - Powered by a <strong>steam engine</strong> turning brass gears - Expected speed: roughly <strong>one addition per second</strong> (a multiplication took about a minute) - The punch-card idea came from the <strong>Jacquard loom</strong>, a French weaving machine that used cards to select thread patterns</p>
 <p>Lovelace’s program was written on paper for a machine that did not yet exist — and would not exist in her lifetime.</p>
 </section>
 <section id="picture-it-the-analytical-engine" class="level3">
@@ -1042,18 +1042,22 @@ OUTPUT:    a string response
 <span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> template.<span class="bu">format</span>(rest<span class="op">=</span>rest)</span>
 <span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Please go on."</span></span>
 <span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"My name is ELIZA. How are you feeling today? (Type 'quit' to exit)"</span>)</span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    line <span class="op">=</span> <span class="bu">input</span>(<span class="st">"You:   "</span>)</span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> line.lower() <span class="kw">in</span> [<span class="st">'quit'</span>, <span class="st">'exit'</span>]:</span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"ELIZA: Goodbye!"</span>)</span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(line)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>My name is ELIZA. How are you feeling today? (Type 'quit' to exit)
-You:   quit
-ELIZA: Goodbye!</code></pre>
-</div>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick test (no typing needed) — this runs automatically:</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sample <span class="kw">in</span> [<span class="st">"I feel lonely"</span>, <span class="st">"My mother never listens"</span>, <span class="st">"The weather is nice"</span>]:</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"You:   </span><span class="sc">{</span>sample<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(sample)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="co"># --- LIVE CHAT ---</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="co"># To actually talk to ELIZA, REMOVE the # from each line below and run the cell.</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="co"># (It waits for you to type, so it's left commented out to avoid blocking the notebook.)</span></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="co"># print("My name is ELIZA. How are you feeling today? (Type 'quit' to exit)")</span></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="co"># while True:</span></span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="co">#     line = input("You:   ")</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a><span class="co">#     if line.lower() in ['quit', 'exit']:</span></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a><span class="co">#         print("ELIZA: Goodbye!")</span></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a><span class="co">#         break</span></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(f"ELIZA: {eliza_respond(line)}\n")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="walking-through-the-code-3" class="level3">
@@ -1082,8 +1086,8 @@ ELIZA: Goodbye!</code></pre>
 </section>
 <section id="exercise-4-giving-eliza-a-fictional-personality" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-4-giving-eliza-a-fictional-personality">✏️ Exercise 4 — Giving ELIZA a Fictional Personality</h3>
-<p>Create a NEW version of Eliza (in a new code cell) with at least <strong>ten new rules</strong> (replacing current) <code>ELIZA_RULES</code> that give ELIZA the personality of your <strong>favorite fictional character</strong>. You can use AI to help.</p>
-<p>Here are 10 examples of characters you could choose to get you thinking: 1. <strong>Yoda</strong> — “Why do you feel {rest}, hmmm?” 2. <strong>Darth Vader</strong> — “I find your need for {rest} disturbing.” 3. <strong>Gollum</strong> — “We wants {rest}, precious, yes we does!” 4. <strong>Sherlock Holmes</strong> — “It is elementary that you think {rest}.” 5. <strong>Hermione Granger</strong> — “According to the books, {rest} is clearly wrong. Have you done your research?” 6. <strong>Michael Scott</strong> — “That’s what she said about {rest}!” 7. <strong>Homer Simpson</strong> — “Mmm… {rest}…” 8. <strong>GLaDOS</strong> — “I am generating a deadly neurotoxin because you feel {rest}.” 9. <strong>Ron Swanson</strong> — “I have no interest in {rest}. Give me all the bacon and eggs you have.” 10. <strong>Spock</strong> — “It is highly illogical that you need {rest}.” 11. <strong>Katniss Everdeen</strong> — “I’m not interested in {rest}. I just want to survive.” 12. <strong>Leslie Knope</strong> — “I am <em>so</em> excited that you care about {rest}! This is amazing!”</p>
+<p>Create a NEW version of ELIZA (in a new code cell) with at least <strong>ten new rules</strong> that <em>replace</em> the current <code>ELIZA_RULES</code> and give ELIZA the personality of your <strong>favorite fictional character</strong>. You can use AI to help.</p>
+<p>Here are 12 examples of characters you could choose to get you thinking: 1. <strong>Yoda</strong> — “Why do you feel {rest}, hmmm?” 2. <strong>Darth Vader</strong> — “I find your need for {rest} disturbing.” 3. <strong>Gollum</strong> — “We wants {rest}, precious, yes we does!” 4. <strong>Sherlock Holmes</strong> — “It is elementary that you think {rest}.” 5. <strong>Hermione Granger</strong> — “According to the books, {rest} is clearly wrong. Have you done your research?” 6. <strong>Michael Scott</strong> — “That’s what she said about {rest}!” 7. <strong>Homer Simpson</strong> — “Mmm… {rest}…” 8. <strong>GLaDOS</strong> — “I am generating a deadly neurotoxin because you feel {rest}.” 9. <strong>Ron Swanson</strong> — “I have no interest in {rest}. Give me all the bacon and eggs you have.” 10. <strong>Spock</strong> — “It is highly illogical that you need {rest}.” 11. <strong>Katniss Everdeen</strong> — “I’m not interested in {rest}. I just want to survive.” 12. <strong>Leslie Knope</strong> — “I am <em>so</em> excited that you care about {rest}! This is amazing!”</p>
 <p><strong>Requirements:</strong> 1. Your triggers must not already appear in <code>ELIZA_RULES</code>. 2. Write a test conversation of at least six exchanges interacting with your character. 3. In a markdown cell: - Did the illusion of understanding feel stronger or weaker than the original? - What would a user have to type to <em>break</em> the illusion?</p>
 </section>
 </section>
