@@ -419,33 +419,7 @@ That distinction will matter a great deal this semester.</code></pre>
 <section id="picture-it-the-analytical-engine" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-analytical-engine">Picture It: the Analytical Engine</h3>
 <p>Babbage’s design maps cleanly onto a modern computer. The diagram below shows the four parts from the table above and how data and instructions flow between them.</p>
-<div id="5aa42e07" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:32.062438Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:32.062121Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:33.035226Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:33.033518Z&quot;}}" data-outputid="22cc0e38-440c-416b-fe0d-49742a46a498" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Flowchart of Babbage's Analytical Engine Architecture</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> graphviz <span class="im">import</span> Digraph</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"LR"</span>})</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightgray"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Inputs</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"OpCards"</span>, <span class="st">"Operation Cards</span><span class="ch">\n</span><span class="st">(Program Instructions)"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"VarCards"</span>, <span class="st">"Variable Cards</span><span class="ch">\n</span><span class="st">(Initial Data)"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Core Components</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"Store"</span>, <span class="st">"The Store</span><span class="ch">\n</span><span class="st">(Memory / Variables)"</span>, fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"Mill"</span>, <span class="st">"The Mill</span><span class="ch">\n</span><span class="st">(Arithmetic / CPU)"</span>, fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Output</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"Output"</span>, <span class="st">"Printer &amp; Card Punch</span><span class="ch">\n</span><span class="st">(Results)"</span>, fillcolor<span class="op">=</span><span class="st">"plum"</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Connections</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"OpCards"</span>, <span class="st">"Mill"</span>, label<span class="op">=</span><span class="st">" Tells the Mill</span><span class="ch">\n</span><span class="st">what to do"</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"VarCards"</span>, <span class="st">"Store"</span>, label<span class="op">=</span><span class="st">" Loads data"</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"Store"</span>, <span class="st">"Mill"</span>, label<span class="op">=</span><span class="st">" Numbers</span><span class="ch">\n</span><span class="st">to calculate"</span>)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"Mill"</span>, <span class="st">"Store"</span>, label<span class="op">=</span><span class="st">" New results"</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"Store"</span>, <span class="st">"Output"</span>, label<span class="op">=</span><span class="st">" Final answers"</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5aa42e07" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-outputid="22cc0e38-440c-416b-fe0d-49742a46a498" data-cellview="form" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <figure class="figure">
@@ -471,33 +445,7 @@ OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
        3b. APPEND running_product to results
 4. RETURN results</code></pre>
 <p>Notice what pseudocode is <em>not</em>: it isn’t Python. There are no colons, no parentheses, no particular syntax. It’s a way of thinking clearly about the steps before committing to a language.</p>
-<div id="cell-16-lovelace-flowchart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:33.039103Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:33.038472Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:33.914303Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:33.912079Z&quot;}}" data-outputid="cfeb476c-14ac-4b57-cb37-d8ce25237f90" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A flowchart of the same algorithm. We'll use `graphviz` — a tool for drawing</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># diagrams from code. You'll see it throughout this course.</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> graphviz <span class="im">import</span> Digraph</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"S"</span>, <span class="st">"START"</span>,                                fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"A"</span>, <span class="st">"results = [ ]</span><span class="ch">\n</span><span class="st">running_product = 1"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"B"</span>, <span class="st">"i = 1"</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"C"</span>, <span class="st">"i ≤ n ?"</span>,                              shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"D"</span>, <span class="st">"running_product = running_product × i"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"E"</span>, <span class="st">"append running_product</span><span class="ch">\n</span><span class="st">to results"</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"F"</span>, <span class="st">"i = i + 1"</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"G"</span>, <span class="st">"return results"</span>,                       fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>dot.edges([(<span class="st">"S"</span>,<span class="st">"A"</span>), (<span class="st">"A"</span>,<span class="st">"B"</span>), (<span class="st">"B"</span>,<span class="st">"C"</span>)])</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"D"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"E"</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"E"</span>, <span class="st">"F"</span>)</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"F"</span>, <span class="st">"C"</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"G"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-16-lovelace-flowchart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-outputid="cfeb476c-14ac-4b57-cb37-d8ce25237f90" data-cellview="form" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <figure class="figure">
@@ -508,20 +456,20 @@ OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
 </div>
 <p><strong>Reading it:</strong> the diamond is the loop test; the back-arrow is the repetition; <code>running_product</code> is multiplied each pass. The Python next is a line-for-line translation of this.</p>
 <div id="cell-17-lovelace-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:33.920220Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:33.919422Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:33.929520Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:33.927266Z&quot;}}" data-outputid="a21abfcc-6132-40ca-f433-45a1cce39f16" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same algorithm in Python.</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_factorials(n):</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return a list of factorials from 1! to n!."""</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    running_product <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        running_product <span class="op">=</span> running_product <span class="op">*</span> i</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        results.append(running_product)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_factorials(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same algorithm in Python.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_factorials(n):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return a list of factorials from 1! to n!."""</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    running_product <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        running_product <span class="op">=</span> running_product <span class="op">*</span> i</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        results.append(running_product)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compute_factorials(<span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 2, 6, 24, 120, 720]</code></pre>
 </div>
@@ -543,24 +491,7 @@ OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
 <section id="picture-it-how-fast-factorials-grow" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-how-fast-factorials-grow">Picture It: How Fast Factorials Grow</h3>
 <p>Numbers from a loop can balloon fast. The chart below plots 1! through 10! on a log scale so the explosive growth is visible.</p>
-<div id="cell-19-lovelace-chart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:33.934360Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:33.933786Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:35.685790Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:35.683423Z&quot;}}" data-outputid="15766047-2248-4d18-bc56-6ce9caf2638d" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A bar chart showing factorials 1! to 10!</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>factorials <span class="op">=</span> compute_factorials(n)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">!"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>)]</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.bar(labels, factorials, color<span class="op">=</span><span class="st">"steelblue"</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Factorials 1! through 10! (log scale)"</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"value"</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"10! = </span><span class="sc">{</span>factorials[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-19-lovelace-chart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-outputid="15766047-2248-4d18-bc56-6ce9caf2638d" data-cellview="form" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -676,33 +607,33 @@ OUTPUT:    a dictionary mapping each value of that field to its count
 3. RETURN tally</code></pre>
 <p>Notice: the <em>mechanical</em> version (Hollerith) used pins, circuits, and counters. The <em>Python</em> version uses a dictionary. The logic is identical.</p>
 <div id="cell-26-hollerith-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:35.692207Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:35.691247Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:35.703620Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:35.701547Z&quot;}}" data-outputid="f1334601-b416-4bb6-8d83-a78a0f434b06" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Each person is a Python dictionary (like one of Hollerith's cards).</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The whole list is our "stack of cards."</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>census_records <span class="op">=</span> [</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Mary Shelley"</span>,    <span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"writer"</span>},</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Ada Lovelace"</span>,    <span class="st">"state"</span>: <span class="st">"MA"</span>, <span class="st">"occupation"</span>: <span class="st">"mathematician"</span>},</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Herman Hollerith"</span>,<span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"engineer"</span>},</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Frederick Law"</span>,   <span class="st">"state"</span>: <span class="st">"MA"</span>, <span class="st">"occupation"</span>: <span class="st">"farmer"</span>},</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Clara Barton"</span>,    <span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"nurse"</span>},</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Thomas Edison"</span>,   <span class="st">"state"</span>: <span class="st">"NJ"</span>, <span class="st">"occupation"</span>: <span class="st">"engineer"</span>},</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Ida B. Wells"</span>,    <span class="st">"state"</span>: <span class="st">"IL"</span>, <span class="st">"occupation"</span>: <span class="st">"journalist"</span>},</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"George Pullman"</span>,  <span class="st">"state"</span>: <span class="st">"IL"</span>, <span class="st">"occupation"</span>: <span class="st">"industrialist"</span>},</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_by_field(records, field):</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Group records by `field` and return counts."""</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    tally <span class="op">=</span> {}</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> record <span class="kw">in</span> records:</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        key <span class="op">=</span> record[field]</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> key <span class="kw">in</span> tally:</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>            tally[key] <span class="op">=</span> tally[key] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            tally[key] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tally</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count_by_field(census_records, <span class="st">"state"</span>))</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count_by_field(census_records, <span class="st">"occupation"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Each person is a Python dictionary (like one of Hollerith's cards).</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The whole list is our "stack of cards."</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>census_records <span class="op">=</span> [</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Mary Shelley"</span>,    <span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"writer"</span>},</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Ada Lovelace"</span>,    <span class="st">"state"</span>: <span class="st">"MA"</span>, <span class="st">"occupation"</span>: <span class="st">"mathematician"</span>},</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Herman Hollerith"</span>,<span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"engineer"</span>},</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Frederick Law"</span>,   <span class="st">"state"</span>: <span class="st">"MA"</span>, <span class="st">"occupation"</span>: <span class="st">"farmer"</span>},</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Clara Barton"</span>,    <span class="st">"state"</span>: <span class="st">"NY"</span>, <span class="st">"occupation"</span>: <span class="st">"nurse"</span>},</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Thomas Edison"</span>,   <span class="st">"state"</span>: <span class="st">"NJ"</span>, <span class="st">"occupation"</span>: <span class="st">"engineer"</span>},</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"Ida B. Wells"</span>,    <span class="st">"state"</span>: <span class="st">"IL"</span>, <span class="st">"occupation"</span>: <span class="st">"journalist"</span>},</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"name"</span>: <span class="st">"George Pullman"</span>,  <span class="st">"state"</span>: <span class="st">"IL"</span>, <span class="st">"occupation"</span>: <span class="st">"industrialist"</span>},</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_by_field(records, field):</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Group records by `field` and return counts."""</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    tally <span class="op">=</span> {}</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> record <span class="kw">in</span> records:</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        key <span class="op">=</span> record[field]</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> key <span class="kw">in</span> tally:</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>            tally[key] <span class="op">=</span> tally[key] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            tally[key] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tally</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count_by_field(census_records, <span class="st">"state"</span>))</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count_by_field(census_records, <span class="st">"occupation"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'NY': 3, 'MA': 2, 'NJ': 1, 'IL': 2}
 {'writer': 1, 'mathematician': 1, 'engineer': 2, 'farmer': 1, 'nurse': 1, 'journalist': 1, 'industrialist': 1}</code></pre>
@@ -729,24 +660,7 @@ OUTPUT:    a dictionary mapping each value of that field to its count
 <section id="picture-it-the-tally-charted" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-tally-charted">Picture It: the Tally, Charted</h3>
 <p>The same <code>count_by_field</code> function answers two different questions. The bars below show its output grouped by state and by occupation, side by side.</p>
-<div id="cell-28-hollerith-chart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:35.708670Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:35.708274Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:35.939282Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:35.937859Z&quot;}}" data-outputid="55112c37-3dda-424e-ad8c-04c6877050ed" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize both tallies side by side.</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>by_state <span class="op">=</span> count_by_field(census_records, <span class="st">"state"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>by_occ   <span class="op">=</span> count_by_field(census_records, <span class="st">"occupation"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>ax1.bar(by_state.keys(), by_state.values(), color<span class="op">=</span><span class="st">"coral"</span>)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Records by State"</span>)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>ax2.bar(by_occ.keys(), by_occ.values(), color<span class="op">=</span><span class="st">"mediumseagreen"</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Records by Occupation"</span>)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-28-hollerith-chart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-outputid="55112c37-3dda-424e-ad8c-04c6877050ed" data-cellview="form" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -817,21 +731,21 @@ OUTPUT:    the encrypted string
               APPEND c to result unchanged
 3. RETURN result</code></pre>
 <div id="cell-35-enigma-encrypt" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:35.943553Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:35.943109Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:35.951303Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:35.949724Z&quot;}}" data-outputid="20db070a-7ef4-4326-d18f-4acb0c0eab45" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caesar_encrypt(plaintext, shift):</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Encrypt a string by shifting each letter by `shift` positions."""</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> plaintext.upper():</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c.isalpha():</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            shifted <span class="op">=</span> (<span class="bu">ord</span>(c) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">'A'</span>) <span class="op">+</span> shift) <span class="op">%</span> <span class="dv">26</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> result <span class="op">+</span> <span class="bu">chr</span>(shifted <span class="op">+</span> <span class="bu">ord</span>(<span class="st">'A'</span>))</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> result <span class="op">+</span> c</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>message   <span class="op">=</span> <span class="st">"THE EAGLE HAS LANDED"</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>encrypted <span class="op">=</span> caesar_encrypt(message, <span class="dv">13</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original:  </span><span class="sc">{</span>message<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Encrypted: </span><span class="sc">{</span>encrypted<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caesar_encrypt(plaintext, shift):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Encrypt a string by shifting each letter by `shift` positions."""</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> plaintext.upper():</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c.isalpha():</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>            shifted <span class="op">=</span> (<span class="bu">ord</span>(c) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">'A'</span>) <span class="op">+</span> shift) <span class="op">%</span> <span class="dv">26</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> result <span class="op">+</span> <span class="bu">chr</span>(shifted <span class="op">+</span> <span class="bu">ord</span>(<span class="st">'A'</span>))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> result <span class="op">+</span> c</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>message   <span class="op">=</span> <span class="st">"THE EAGLE HAS LANDED"</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>encrypted <span class="op">=</span> caesar_encrypt(message, <span class="dv">13</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original:  </span><span class="sc">{</span>message<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Encrypted: </span><span class="sc">{</span>encrypted<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Original:  THE EAGLE HAS LANDED
 Encrypted: GUR RNTYR UNF YNAQRQ</code></pre>
@@ -848,17 +762,17 @@ Encrypted: GUR RNTYR UNF YNAQRQ</code></pre>
 </ul>
 <p><strong>Line by line:</strong> - <code>for c in plaintext.upper():</code> — loop through each character of the uppercased input. - <code>if c.isalpha():</code> — only shift letters; leave spaces and punctuation alone. - <code>shifted = (ord(c) - ord('A') + shift) % 26</code> — this is four operations: 1. <code>ord(c) - ord('A')</code> — convert the letter to a 0-based index (A=0, B=1, …, Z=25) 2. <code>+ shift</code> — move it forward by <code>shift</code> positions 3. <code>% 26</code> — wrap around if we went past Z 4. (The result is still a number 0–25) - <code>chr(shifted + ord('A'))</code> — convert back to a letter (add 65 to get back into ASCII, then <code>chr</code> gives us the character).</p>
 <div id="cell-37-enigma-bruteforce" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:35.954647Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:35.954339Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:35.960924Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:35.959933Z&quot;}}" data-outputid="4986c545-dd23-496f-a753-cc5e1330b20f" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turing's move, in miniature: try every possible shift, and let a human</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spot the one that reads like English.</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caesar_brute_force(ciphertext):</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Print all 25 possible decryptions."""</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Ciphertext: </span><span class="sc">{</span>ciphertext<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> shift <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">26</span>):</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        attempt <span class="op">=</span> caesar_encrypt(ciphertext, <span class="dv">26</span> <span class="op">-</span> shift)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Shift </span><span class="sc">{</span>shift<span class="sc">:2d}</span><span class="ss">: </span><span class="sc">{</span>attempt<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>caesar_brute_force(encrypted)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turing's move, in miniature: try every possible shift, and let a human</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spot the one that reads like English.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caesar_brute_force(ciphertext):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Print all 25 possible decryptions."""</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Ciphertext: </span><span class="sc">{</span>ciphertext<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> shift <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">26</span>):</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        attempt <span class="op">=</span> caesar_encrypt(ciphertext, <span class="dv">26</span> <span class="op">-</span> shift)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Shift </span><span class="sc">{</span>shift<span class="sc">:2d}</span><span class="ss">: </span><span class="sc">{</span>attempt<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>caesar_brute_force(encrypted)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ciphertext: GUR RNTYR UNF YNAQRQ
 
@@ -904,11 +818,11 @@ Shift 25: HVS SOUZS VOG ZOBRSR</code></pre>
 <h3 class="anchored" data-anchor-id="exercise-3-driving-the-caesar-cipher">✏️ Exercise 3 — Driving the Caesar Cipher</h3>
 <p>No code to write here. You’ll <em>call</em> the <code>caesar_encrypt</code> function over and over with different inputs and watch what comes back. Feeding a function things and reading its output is how programmers learn what it really does.</p>
 <p><strong>How to call it.</strong> The function takes two inputs: the text, and the <em>shift</em> (how many letters to move each one). In a new code cell, run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(caesar_encrypt(<span class="st">"HELLO"</span>, <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(caesar_encrypt(<span class="st">"HELLO"</span>, <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should get <code>KHOOR</code> — every letter moved forward 3 places (H→K, E→H, L→O, …).</p>
 <p><strong>How to decrypt.</strong> Encrypting shifts <em>forward</em>. To get the message back, shift the same amount <em>backward</em> by using a <strong>negative</strong> key:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>secret <span class="op">=</span> caesar_encrypt(<span class="st">"HELLO"</span>, <span class="dv">3</span>)     <span class="co"># encrypt with 3</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(caesar_encrypt(secret, <span class="op">-</span><span class="dv">3</span>))        <span class="co"># decrypt with -3  →  HELLO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>secret <span class="op">=</span> caesar_encrypt(<span class="st">"HELLO"</span>, <span class="dv">3</span>)     <span class="co"># encrypt with 3</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(caesar_encrypt(secret, <span class="op">-</span><span class="dv">3</span>))        <span class="co"># decrypt with -3  →  HELLO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Now experiment.</strong> Run each of these in a new code cell. For each one, write a sentence in a markdown cell saying what you saw and why:</p>
 <ol type="1">
 <li><strong>Your own messages.</strong> Encrypt three different sentences of your own, each with a different key (try 5, then 10, then 20). Then decrypt each one back to the original using the negative key.</li>
@@ -1003,29 +917,7 @@ OUTPUT:    a string response
               2d. RETURN the filled-in template
 3. RETURN a generic fallback response</code></pre>
 <p>That’s the whole algorithm. Nine lines of pseudocode. No model of the world; no memory of the conversation; no understanding of any word.</p>
-<div id="cell-44-eliza-flowchart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:35.965936Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:35.965433Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:36.459279Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:36.456581Z&quot;}}" data-outputid="22193a5d-6e4c-445d-f33b-48a229bc02b9" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># @title</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ELIZA's logic as a flowchart.</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> Digraph(graph_attr<span class="op">=</span>{<span class="st">"rankdir"</span>: <span class="st">"TB"</span>})</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">"node"</span>, shape<span class="op">=</span><span class="st">"box"</span>, style<span class="op">=</span><span class="st">"rounded,filled"</span>, fillcolor<span class="op">=</span><span class="st">"lightyellow"</span>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"A"</span>, <span class="st">"user_input"</span>,                         fillcolor<span class="op">=</span><span class="st">"lightgreen"</span>)</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"B"</span>, <span class="st">"lowercase it"</span>)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"C"</span>, <span class="st">"more rules</span><span class="ch">\n</span><span class="st">to check?"</span>,              shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"D"</span>, <span class="st">"does trigger</span><span class="ch">\n</span><span class="st">appear in input?"</span>,     shape<span class="op">=</span><span class="st">"diamond"</span>, fillcolor<span class="op">=</span><span class="st">"lightblue"</span>)</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"E"</span>, <span class="st">"extract text after trigger</span><span class="ch">\n</span><span class="st">fill into template"</span>)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"F"</span>, <span class="st">"return response"</span>,                    fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">"G"</span>, <span class="st">'return "Please go on."'</span>,             fillcolor<span class="op">=</span><span class="st">"lightcoral"</span>)</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>dot.edges([(<span class="st">"A"</span>,<span class="st">"B"</span>), (<span class="st">"B"</span>,<span class="st">"C"</span>)])</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"D"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"C"</span>, <span class="st">"G"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"E"</span>, label<span class="op">=</span><span class="st">" yes"</span>)</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"D"</span>, <span class="st">"C"</span>, label<span class="op">=</span><span class="st">" no"</span>)</span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">"E"</span>, <span class="st">"F"</span>)</span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>dot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-44-eliza-flowchart" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-outputid="22193a5d-6e4c-445d-f33b-48a229bc02b9" data-cellview="form" data-execution_count="11">
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <figure class="figure">
@@ -1036,32 +928,32 @@ OUTPUT:    a string response
 </div>
 <p><strong>Reading it:</strong> every path ends at a returned string — match a rule and fill its template, or fall through to the default. No box anywhere ‘understands’ the sentence. The Python next implements exactly this.</p>
 <div id="cell-45-eliza-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:36.463908Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:36.463376Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:36.474784Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:36.472367Z&quot;}}" data-outputid="ea56e2b0-2625-45a2-e592-82c709f8e94b" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A minimal ELIZA. Each rule is a pair: (trigger phrase, response template).</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ELIZA_RULES <span class="op">=</span> [</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i feel"</span>,    <span class="st">"Why do you feel </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i am"</span>,      <span class="st">"How long have you been </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i need"</span>,    <span class="st">"What would it mean to you if you got </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my mother"</span>, <span class="st">"Tell me more about your family."</span>),</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my father"</span>, <span class="st">"Tell me more about your family."</span>),</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i think"</span>,   <span class="st">"Do you really think </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"because"</span>,   <span class="st">"Is that the real reason?"</span>),</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"always"</span>,    <span class="st">"Can you think of a specific example?"</span>),</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"everyone"</span>,  <span class="st">"Really — everyone?"</span>),</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eliza_respond(user_input, rules<span class="op">=</span>ELIZA_RULES):</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    lowered <span class="op">=</span> user_input.lower().strip()</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> trigger, template <span class="kw">in</span> rules:</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> trigger <span class="kw">in</span> lowered:</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>            rest <span class="op">=</span> lowered.split(trigger, <span class="dv">1</span>)[<span class="dv">1</span>].strip()</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> template.<span class="bu">format</span>(rest<span class="op">=</span>rest)</span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Please go on."</span></span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick test (no typing needed) — this runs automatically:</span></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sample <span class="kw">in</span> [<span class="st">"I feel lonely"</span>, <span class="st">"My mother never listens"</span>, <span class="st">"The weather is nice"</span>]:</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"You:   </span><span class="sc">{</span>sample<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(sample)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A minimal ELIZA. Each rule is a pair: (trigger phrase, response template).</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ELIZA_RULES <span class="op">=</span> [</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i feel"</span>,    <span class="st">"Why do you feel </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i am"</span>,      <span class="st">"How long have you been </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i need"</span>,    <span class="st">"What would it mean to you if you got </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my mother"</span>, <span class="st">"Tell me more about your family."</span>),</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"my father"</span>, <span class="st">"Tell me more about your family."</span>),</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"i think"</span>,   <span class="st">"Do you really think </span><span class="sc">{rest}</span><span class="st">?"</span>),</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"because"</span>,   <span class="st">"Is that the real reason?"</span>),</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"always"</span>,    <span class="st">"Can you think of a specific example?"</span>),</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"everyone"</span>,  <span class="st">"Really — everyone?"</span>),</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eliza_respond(user_input, rules<span class="op">=</span>ELIZA_RULES):</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    lowered <span class="op">=</span> user_input.lower().strip()</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> trigger, template <span class="kw">in</span> rules:</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> trigger <span class="kw">in</span> lowered:</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>            rest <span class="op">=</span> lowered.split(trigger, <span class="dv">1</span>)[<span class="dv">1</span>].strip()</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> template.<span class="bu">format</span>(rest<span class="op">=</span>rest)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Please go on."</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick test (no typing needed) — this runs automatically:</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sample <span class="kw">in</span> [<span class="st">"I feel lonely"</span>, <span class="st">"My mother never listens"</span>, <span class="st">"The weather is nice"</span>]:</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"You:   </span><span class="sc">{</span>sample<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(sample)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>You:   I feel lonely
 ELIZA: Why do you feel lonely?
@@ -1093,17 +985,17 @@ ELIZA: Please go on.
 <h3 class="anchored" data-anchor-id="talk-to-eliza-yourself-optional">Talk to ELIZA Yourself (Optional)</h3>
 <p>The function below wraps ELIZA in a live chat loop. Running it <strong>pauses the notebook</strong> and waits for you to type, so the call on the last line is left commented out. To try it, delete the <code>#</code> on that one line and run the cell — type <code>quit</code> to stop.</p>
 <div id="3e86628b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:36.479917Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:36.479081Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:36.487121Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:36.485411Z&quot;}}" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chat_with_eliza():</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My name is ELIZA. How are you feeling today? (Type 'quit' to exit)"</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        line <span class="op">=</span> <span class="bu">input</span>(<span class="st">"You:   "</span>)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line.lower() <span class="kw">in</span> [<span class="st">"quit"</span>, <span class="st">"exit"</span>]:</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"ELIZA: Goodbye!"</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(line)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the # below to start chatting:</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># chat_with_eliza()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chat_with_eliza():</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"My name is ELIZA. How are you feeling today? (Type 'quit' to exit)"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        line <span class="op">=</span> <span class="bu">input</span>(<span class="st">"You:   "</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line.lower() <span class="kw">in</span> [<span class="st">"quit"</span>, <span class="st">"exit"</span>]:</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"ELIZA: Goodbye!"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"ELIZA: </span><span class="sc">{</span>eliza_respond(line)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the # below to start chatting:</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># chat_with_eliza()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Modern LLMs (Gemini, Claude, GPT) are vastly more sophisticated than ELIZA</strong> — trained on hundreds of billions of words, capable of fluent responses on any topic. But they share ELIZA’s fundamental property: they predict <strong>plausible-sounding text</strong> without having a model of what the text <em>refers to</em>.</p>
 <ul>

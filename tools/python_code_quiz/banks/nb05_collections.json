@@ -3,207 +3,654 @@
   "questions": [
     {
       "function_name": "first_item",
-      "parameters": ["items"],
+      "parameters": [
+        "items"
+      ],
       "description": "Return the first element of the list. first_item(['a','b','c']) → 'a'.",
       "input_type": "list",
       "answer_code": "def first_item(items):\n    return items[0]",
       "hint": "Use index 0.",
-      "test_inputs": [[[1, 2, 3]], [['a', 'b', 'c']], [[42]]]
+      "test_inputs": [
+        [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          [
+            "a",
+            "b",
+            "c"
+          ]
+        ],
+        [
+          [
+            42
+          ]
+        ]
+      ]
     },
     {
       "function_name": "last_item",
-      "parameters": ["items"],
+      "parameters": [
+        "items"
+      ],
       "description": "Return the last element of the list. last_item([10,20,30]) → 30.",
       "input_type": "list",
       "answer_code": "def last_item(items):\n    return items[-1]",
       "hint": "`-1` indexes from the end.",
-      "test_inputs": [[[1, 2, 3]], [['a', 'b', 'c']], [[42]]]
+      "test_inputs": [
+        [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          [
+            "a",
+            "b",
+            "c"
+          ]
+        ],
+        [
+          [
+            42
+          ]
+        ]
+      ]
     },
     {
       "function_name": "list_length",
-      "parameters": ["items"],
+      "parameters": [
+        "items"
+      ],
       "description": "Return the number of items in the list. Use len().",
       "input_type": "list",
       "answer_code": "def list_length(items):\n    return len(items)",
       "hint": "len() works on lists too.",
-      "test_inputs": [[[]], [[1, 2, 3, 4]], [['a']], [list(range(20))]]
+      "test_inputs": [
+        [
+          []
+        ],
+        [
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          [
+            "a"
+          ]
+        ],
+        [
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        ]
+      ]
     },
     {
       "function_name": "total_calories",
-      "parameters": ["calories"],
+      "parameters": [
+        "calories"
+      ],
       "description": "Given a list of numbers, return their sum. total_calories([200, 300, 150]) → 650. Use sum().",
       "input_type": "list",
       "answer_code": "def total_calories(calories):\n    return sum(calories)",
       "hint": "`sum(my_list)` returns the total.",
-      "test_inputs": [[[200, 300, 150]], [[0]], [[]], [[10, 20, 30, 40]]]
+      "test_inputs": [
+        [
+          [
+            200,
+            300,
+            150
+          ]
+        ],
+        [
+          [
+            0
+          ]
+        ],
+        [
+          []
+        ],
+        [
+          [
+            10,
+            20,
+            30,
+            40
+          ]
+        ]
+      ]
     },
     {
       "function_name": "longest_name",
-      "parameters": ["names"],
+      "parameters": [
+        "names"
+      ],
       "description": "Return the longest string in the list. If multiple are tied, return any one of them. longest_name(['Ada','Beatrice','Cyril']) → 'Beatrice'.",
       "input_type": "list",
       "answer_code": "def longest_name(names):\n    return max(names, key=len)",
       "hint": "`max(names, key=len)` picks the longest string.",
-      "test_inputs": [[['Ada', 'Beatrice', 'Cyril']], [['hi', 'hello', 'hey']], [['one']]]
+      "test_inputs": [
+        [
+          [
+            "Ada",
+            "Beatrice",
+            "Cyril"
+          ]
+        ],
+        [
+          [
+            "hi",
+            "hello",
+            "hey"
+          ]
+        ],
+        [
+          [
+            "one"
+          ]
+        ]
+      ]
     },
     {
       "function_name": "count_occurrences",
-      "parameters": ["items", "target"],
+      "parameters": [
+        "items",
+        "target"
+      ],
       "description": "Count how many times `target` appears in `items`. count_occurrences(['a','b','a','c','a'], 'a') → 3.",
-      "input_type": ["list", "string"],
+      "input_type": [
+        "list",
+        "string"
+      ],
       "answer_code": "def count_occurrences(items, target):\n    return items.count(target)",
       "hint": "Lists have a `.count()` method.",
-      "test_inputs": [[['a', 'b', 'a', 'c', 'a'], 'a'], [['x', 'y', 'z'], 'q'], [[], 'a']]
+      "test_inputs": [
+        [
+          [
+            "a",
+            "b",
+            "a",
+            "c",
+            "a"
+          ],
+          "a"
+        ],
+        [
+          [
+            "x",
+            "y",
+            "z"
+          ],
+          "q"
+        ],
+        [
+          [],
+          "a"
+        ]
+      ]
     },
     {
       "function_name": "make_record",
-      "parameters": ["name", "age"],
+      "parameters": [
+        "name",
+        "age"
+      ],
       "description": "Return a tuple containing the name and age, in that order. make_record('Ada', 30) → ('Ada', 30).",
-      "input_type": ["string", "int"],
+      "input_type": [
+        "string",
+        "int"
+      ],
       "answer_code": "def make_record(name, age):\n    return (name, age)",
       "hint": "A tuple looks like `(value1, value2)`.",
-      "test_inputs": [["Ada", 30], ["Beatrice", 45], ["Cyril", 22]]
+      "test_inputs": [
+        [
+          "Ada",
+          30
+        ],
+        [
+          "Beatrice",
+          45
+        ],
+        [
+          "Cyril",
+          22
+        ]
+      ]
     },
     {
       "function_name": "swap_pair",
-      "parameters": ["pair"],
+      "parameters": [
+        "pair"
+      ],
       "description": "Given a 2-tuple, return a new tuple with the elements swapped. swap_pair(('a', 'b')) → ('b', 'a').",
       "input_type": "any",
       "answer_code": "def swap_pair(pair):\n    a, b = pair\n    return (b, a)",
       "hint": "You can unpack a tuple with `a, b = pair`.",
-      "test_inputs": [[("a", "b")], [(1, 2)], [("hello", 42)]]
+      "test_inputs": [
+        [
+          [
+            "a",
+            "b"
+          ]
+        ],
+        [
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          [
+            "hello",
+            42
+          ]
+        ]
+      ]
     },
     {
       "function_name": "menu_price",
-      "parameters": ["menu", "item"],
+      "parameters": [
+        "menu",
+        "item"
+      ],
       "description": "Look up the price of `item` in the `menu` dictionary. If `item` is not in the menu, return 0. Use `.get()`.",
-      "input_type": ["dict", "string"],
+      "input_type": [
+        "dict",
+        "string"
+      ],
       "answer_code": "def menu_price(menu, item):\n    return menu.get(item, 0)",
       "hint": "`menu.get(item, 0)` returns 0 when the key is missing.",
       "test_inputs": [
-        [{"scone": 0.6, "tea": 2.5}, "tea"],
-        [{"scone": 0.6, "tea": 2.5}, "coffee"],
-        [{}, "anything"]
+        [
+          {
+            "scone": 0.6,
+            "tea": 2.5
+          },
+          "tea"
+        ],
+        [
+          {
+            "scone": 0.6,
+            "tea": 2.5
+          },
+          "coffee"
+        ],
+        [
+          {},
+          "anything"
+        ]
       ]
     },
     {
       "function_name": "add_to_menu",
-      "parameters": ["menu", "item", "price"],
+      "parameters": [
+        "menu",
+        "item",
+        "price"
+      ],
       "description": "Add the item with the given price to the menu dictionary, then return the updated menu.",
-      "input_type": ["dict", "string", "float"],
+      "input_type": [
+        "dict",
+        "string",
+        "float"
+      ],
       "answer_code": "def add_to_menu(menu, item, price):\n    menu[item] = price\n    return menu",
       "hint": "Assign with `menu[item] = price`.",
       "test_inputs": [
-        [{"tea": 2.5}, "scone", 0.6],
-        [{}, "coffee", 3.0],
-        [{"a": 1, "b": 2}, "c", 3]
+        [
+          {
+            "tea": 2.5
+          },
+          "scone",
+          0.6
+        ],
+        [
+          {},
+          "coffee",
+          3.0
+        ],
+        [
+          {
+            "a": 1,
+            "b": 2
+          },
+          "c",
+          3
+        ]
       ]
     },
     {
       "function_name": "menu_total",
-      "parameters": ["menu"],
+      "parameters": [
+        "menu"
+      ],
       "description": "Given a dict of item → price, return the total of all prices. menu_total({'a': 1, 'b': 2, 'c': 3}) → 6.",
       "input_type": "dict",
       "answer_code": "def menu_total(menu):\n    return sum(menu.values())",
       "hint": "`menu.values()` gives you the prices; `sum()` adds them.",
       "test_inputs": [
-        [{"a": 1, "b": 2, "c": 3}],
-        [{"tea": 2.5, "scone": 0.6}],
-        [{}]
+        [
+          {
+            "a": 1,
+            "b": 2,
+            "c": 3
+          }
+        ],
+        [
+          {
+            "tea": 2.5,
+            "scone": 0.6
+          }
+        ],
+        [
+          {}
+        ]
       ]
     },
     {
       "function_name": "most_expensive",
-      "parameters": ["menu"],
+      "parameters": [
+        "menu"
+      ],
       "description": "Return the *name* of the item with the highest price in the menu dictionary. most_expensive({'tea': 2.5, 'scone': 0.6, 'cake': 4.0}) → 'cake'. Assume there is one clear winner.",
       "input_type": "dict",
       "answer_code": "def most_expensive(menu):\n    return max(menu, key=lambda k: menu[k])",
       "hint": "`max(menu, key=lambda k: menu[k])` picks the key with the largest value.",
       "test_inputs": [
-        [{"tea": 2.5, "scone": 0.6, "cake": 4.0}],
-        [{"a": 1, "b": 5, "c": 3}],
-        [{"only": 7}]
+        [
+          {
+            "tea": 2.5,
+            "scone": 0.6,
+            "cake": 4.0
+          }
+        ],
+        [
+          {
+            "a": 1,
+            "b": 5,
+            "c": 3
+          }
+        ],
+        [
+          {
+            "only": 7
+          }
+        ]
       ]
     },
     {
       "function_name": "sorted_items",
-      "parameters": ["menu"],
+      "parameters": [
+        "menu"
+      ],
       "description": "Return a list of the menu's keys, sorted alphabetically. sorted_items({'tea': 2.5, 'scone': 0.6}) → ['scone', 'tea'].",
       "input_type": "dict",
       "answer_code": "def sorted_items(menu):\n    return sorted(menu.keys())",
       "hint": "`sorted(menu.keys())` returns a sorted list of keys.",
       "test_inputs": [
-        [{"tea": 2.5, "scone": 0.6}],
-        [{"b": 1, "a": 2, "c": 3}],
-        [{}]
+        [
+          {
+            "tea": 2.5,
+            "scone": 0.6
+          }
+        ],
+        [
+          {
+            "b": 1,
+            "a": 2,
+            "c": 3
+          }
+        ],
+        [
+          {}
+        ]
       ]
     },
     {
       "function_name": "unique_count",
-      "parameters": ["items"],
+      "parameters": [
+        "items"
+      ],
       "description": "Return the number of *distinct* values in the list. unique_count(['Ada','Beatrice','Ada','Cyril']) → 3.",
       "input_type": "list",
       "answer_code": "def unique_count(items):\n    return len(set(items))",
       "hint": "Convert to a set to drop duplicates, then take len().",
       "test_inputs": [
-        [["Ada", "Beatrice", "Ada", "Cyril"]],
-        [[1, 1, 1, 1]],
-        [[]],
-        [[1, 2, 3, 4]]
+        [
+          [
+            "Ada",
+            "Beatrice",
+            "Ada",
+            "Cyril"
+          ]
+        ],
+        [
+          [
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          []
+        ],
+        [
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
       ]
     },
     {
       "function_name": "common_items",
-      "parameters": ["a", "b"],
+      "parameters": [
+        "a",
+        "b"
+      ],
       "description": "Given two lists, return a *set* containing the elements that appear in both. common_items([1,2,3],[2,3,4]) → {2, 3}.",
-      "input_type": ["list", "list"],
+      "input_type": [
+        "list",
+        "list"
+      ],
       "answer_code": "def common_items(a, b):\n    return set(a) & set(b)",
       "hint": "Convert each to a set, then use the `&` operator (set intersection).",
       "test_inputs": [
-        [[1, 2, 3], [2, 3, 4]],
-        [["a", "b"], ["b", "c"]],
-        [[1, 2], [3, 4]],
-        [[], [1, 2]]
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "b",
+            "c"
+          ]
+        ],
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          [],
+          [
+            1,
+            2
+          ]
+        ]
       ]
     },
     {
       "function_name": "merge_unique",
-      "parameters": ["a", "b"],
+      "parameters": [
+        "a",
+        "b"
+      ],
       "description": "Given two lists, return a *set* of all items that appear in either one. merge_unique([1,2,3],[3,4,5]) → {1, 2, 3, 4, 5}.",
-      "input_type": ["list", "list"],
+      "input_type": [
+        "list",
+        "list"
+      ],
       "answer_code": "def merge_unique(a, b):\n    return set(a) | set(b)",
       "hint": "The `|` operator is set union.",
       "test_inputs": [
-        [[1, 2, 3], [3, 4, 5]],
-        [["a"], ["b"]],
-        [[], []],
-        [[1, 1, 1], [1, 1, 1]]
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            3,
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            "a"
+          ],
+          [
+            "b"
+          ]
+        ],
+        [
+          [],
+          []
+        ],
+        [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
       ]
     },
     {
       "function_name": "items_under_price",
-      "parameters": ["menu", "threshold"],
+      "parameters": [
+        "menu",
+        "threshold"
+      ],
       "description": "Return a list of item names whose price is strictly less than `threshold`. Order doesn't matter — the grader sorts.",
-      "input_type": ["dict", "float"],
+      "input_type": [
+        "dict",
+        "float"
+      ],
       "answer_code": "def items_under_price(menu, threshold):\n    return sorted([item for item, price in menu.items() if price < threshold])",
       "hint": "Loop over `menu.items()` and collect names where the price is less than the threshold.",
       "test_inputs": [
-        [{"tea": 2.5, "scone": 0.6, "cake": 4.0}, 3.0],
-        [{"a": 1, "b": 2, "c": 3}, 2.5],
-        [{}, 5.0]
+        [
+          {
+            "tea": 2.5,
+            "scone": 0.6,
+            "cake": 4.0
+          },
+          3.0
+        ],
+        [
+          {
+            "a": 1,
+            "b": 2,
+            "c": 3
+          },
+          2.5
+        ],
+        [
+          {},
+          5.0
+        ]
       ]
     },
     {
       "function_name": "guest_names",
-      "parameters": ["party"],
+      "parameters": [
+        "party"
+      ],
       "description": "Given a list of guest dictionaries — each with a 'name' key — return a list of just the names. guest_names([{'name':'Ada','age':30}, {'name':'Beatrice','age':45}]) → ['Ada', 'Beatrice'].",
       "input_type": "list",
       "answer_code": "def guest_names(party):\n    return [guest['name'] for guest in party]",
       "hint": "Loop over `party` and pull out `guest['name']` from each one.",
       "test_inputs": [
-        [[{"name": "Ada", "age": 30}, {"name": "Beatrice", "age": 45}]],
-        [[{"name": "Cyril", "age": 22}]],
-        [[]]
+        [
+          [
+            {
+              "name": "Ada",
+              "age": 30
+            },
+            {
+              "name": "Beatrice",
+              "age": 45
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "name": "Cyril",
+              "age": 22
+            }
+          ]
+        ],
+        [
+          []
+        ]
       ]
     }
   ]
