@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>comp1150_nb07_searchingsorting – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notebook-7-algorithms-complexity-the-limits-of-computation" id="toc-notebook-7-algorithms-complexity-the-limits-of-computation" class="nav-link active" data-scroll-target="#notebook-7-algorithms-complexity-the-limits-of-computation">Notebook 7: Algorithms, Complexity &amp; the Limits of Computation</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#the-problem-the-queen-wants-it-found-and-now" id="toc-the-problem-the-queen-wants-it-found-and-now" class="nav-link" data-scroll-target="#the-problem-the-queen-wants-it-found-and-now">The Problem: The Queen Wants It <em>Found</em>, and <em>Now</em></a></li>
+  </ul></li>
+  <li><a href="#part-1-searching-sorting-how-long-it-takes" id="toc-part-1-searching-sorting-how-long-it-takes" class="nav-link" data-scroll-target="#part-1-searching-sorting-how-long-it-takes">Part 1 — Searching, Sorting &amp; How Long It Takes</a>
+  <ul class="collapse">
+  <li><a href="#linear-search-check-every-card" id="toc-linear-search-check-every-card" class="nav-link" data-scroll-target="#linear-search-check-every-card">Linear Search: Check Every Card</a></li>
+  <li><a href="#binary-search-cut-the-deck-in-half-again-and-again" id="toc-binary-search-cut-the-deck-in-half-again-and-again" class="nav-link" data-scroll-target="#binary-search-cut-the-deck-in-half-again-and-again">Binary Search: Cut the Deck in Half (Again and Again)</a></li>
+  <li><a href="#why-order-matters-counting-the-rabbits-steps" id="toc-why-order-matters-counting-the-rabbits-steps" class="nav-link" data-scroll-target="#why-order-matters-counting-the-rabbits-steps">Why Order Matters: Counting the Rabbit’s Steps</a></li>
+  <li><a href="#sorting-putting-the-deck-in-order" id="toc-sorting-putting-the-deck-in-order" class="nav-link" data-scroll-target="#sorting-putting-the-deck-in-order">Sorting: Putting the Deck in Order</a></li>
+  <li><a href="#a-faster-idea-merge-sort-described-not-coded" id="toc-a-faster-idea-merge-sort-described-not-coded" class="nav-link" data-scroll-target="#a-faster-idea-merge-sort-described-not-coded">A Faster Idea: Merge Sort (Described, Not Coded)</a></li>
+  <li><a href="#the-practical-tool-sorted-and-key" id="toc-the-practical-tool-sorted-and-key" class="nav-link" data-scroll-target="#the-practical-tool-sorted-and-key">The Practical Tool: <code>sorted()</code> and <code>key=</code></a></li>
+  </ul></li>
+  <li><a href="#part-2-the-limits-of-computation" id="toc-part-2-the-limits-of-computation" class="nav-link" data-scroll-target="#part-2-the-limits-of-computation">Part 2 — The Limits of Computation</a>
+  <ul class="collapse">
+  <li><a href="#a-machine-made-of-almost-nothing-the-turing-machine" id="toc-a-machine-made-of-almost-nothing-the-turing-machine" class="nav-link" data-scroll-target="#a-machine-made-of-almost-nothing-the-turing-machine">A Machine Made of Almost Nothing: The Turing Machine</a></li>
+  <li><a href="#the-halting-problem-a-question-no-program-can-answer" id="toc-the-halting-problem-a-question-no-program-can-answer" class="nav-link" data-scroll-target="#the-halting-problem-a-question-no-program-can-answer">The Halting Problem: A Question No Program Can Answer</a></li>
+  <li><a href="#p-vs.-np-easy-to-check-hard-to-solve" id="toc-p-vs.-np-easy-to-check-hard-to-solve" class="nav-link" data-scroll-target="#p-vs.-np-easy-to-check-hard-to-solve">P vs.&nbsp;NP: Easy to Check, Hard to Solve</a></li>
+  <li><a href="#what-this-means-for-ai-and-llms" id="toc-what-this-means-for-ai-and-llms" class="nav-link" data-scroll-target="#what-this-means-for-ai-and-llms">What This Means for AI and LLMs</a></li>
+  <li><a href="#capstone-the-great-wonderland-race-ai-assisted" id="toc-capstone-the-great-wonderland-race-ai-assisted" class="nav-link" data-scroll-target="#capstone-the-great-wonderland-race-ai-assisted">✏️ Capstone — The Great Wonderland Race (AI-Assisted)</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb">View on GitHub</a></p>
+<section id="notebook-7-algorithms-complexity-the-limits-of-computation" class="level1">
+<h1>Notebook 7: Algorithms, Complexity &amp; the Limits of Computation</h1>
+<section id="comp-1150-computer-science-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
+<p><strong>Brendan Shea, PhD</strong></p>
+<p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
+</section>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li><strong>Perform</strong> a <strong>linear search</strong> over a list and explain when it is the only option.</li>
+<li><strong>Perform</strong> a <strong>binary search</strong> over a <em>sorted</em> list, and explain why the list must be sorted first.</li>
+<li><strong>Reason</strong> informally about <strong>running time</strong> using Big-O names — <code>O(n)</code>, <code>O(log n)</code>, <code>O(n²)</code>, <code>O(n log n)</code> — to describe how work grows as data grows.</li>
+<li><strong>Hand-code</strong> one simple sorting algorithm (selection sort) and <strong>describe</strong> how a faster one (merge sort) works.</li>
+<li><strong>Use</strong> Python’s built-in <code>sorted()</code> and <code>.sort()</code> with a <code>key=</code> function to sort numbers, strings, and objects.</li>
+<li><strong>Describe</strong> a <strong>Turing machine</strong> as a thought experiment and say what it means for a problem to be <strong>computable</strong>.</li>
+<li><strong>Explain</strong> the <strong>halting problem</strong> and what it means for a problem to be <strong>undecidable</strong>.</li>
+<li><strong>Discuss</strong> <strong>P vs.&nbsp;NP</strong> as the cultural idea “easy to check, hard to solve,” and connect these limits to what modern AI / LLMs can and cannot do <em>in principle</em>.</li>
+</ul>
+<p><em>Maps to course LOs: 4, 13</em></p>
+</section>
+<section id="the-problem-the-queen-wants-it-found-and-now" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-the-queen-wants-it-found-and-now">The Problem: The Queen Wants It <em>Found</em>, and <em>Now</em></h2>
+<p>The Queen of Hearts keeps an enormous, hopelessly shuffled deck. Every card is a guest, a gardener, or a tart in her ledger. When she wants a particular Knave, she expects him produced <em>instantly</em> — and “Off with their heads!” is the penalty for being slow.</p>
+<p><strong>Alice</strong> has been handed the deck and told to make it <em>findable</em>. The <strong>White Rabbit</strong>, forever checking his pocket-watch and muttering “no time, no time!”, will be our guide to the question that haunts every search: <em>how many steps did that take?</em></p>
+<p>But by the end of this notebook a stranger question appears, whispered by the <strong>Cheshire Cat</strong> from his branch: are there tasks that <strong>no</strong> algorithm — and <strong>no</strong> computer, ever — can finish at all?</p>
+<section id="the-roadmap" class="level3">
+<h3 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h3>
+<p>This notebook comes in two halves.</p>
+<p><strong>Part 1 — Making things fast.</strong> We start with the two ways to <em>find</em> a card: checking every one (<strong>linear search</strong>) versus repeatedly cutting the deck in half (<strong>binary search</strong>). Binary search only works on a <em>sorted</em> deck, so we learn to <strong>sort</strong>. Along the way the White Rabbit teaches us to <em>count steps</em> with <strong>Big-O notation</strong>.</p>
+<p><strong>Part 2 — What can’t be made fast, or done at all.</strong> Some problems are merely slow (the Queen’s impossible puzzles — <strong>P vs.&nbsp;NP</strong>). Others can <em>never</em> be solved by any program, no matter how clever (the <strong>halting problem</strong> and <strong>undecidability</strong>). We close by asking what all this means for modern <strong>AI and large language models</strong>.</p>
+</section>
+</section>
+</section>
+<section id="part-1-searching-sorting-how-long-it-takes" class="level1">
+<h1>Part 1 — Searching, Sorting &amp; How Long It Takes</h1>
+<section id="linear-search-check-every-card" class="level2">
+<h2 class="anchored" data-anchor-id="linear-search-check-every-card">Linear Search: Check Every Card</h2>
+<p>Alice’s deck is <strong>shuffled</strong> — no order at all. She is told to find the <strong>Knave of Hearts</strong>. With a random pile, she has no shortcut: she must turn over the top card, check it, and if it is not the Knave, move to the next. She keeps going until she finds him or runs out of cards.</p>
+<p>That is a <strong>linear search</strong>: walk through the items one at a time, in order, comparing each to your target.</p>
+<section id="the-syntax-of-a-linear-search" class="level3">
+<h3 class="anchored" data-anchor-id="the-syntax-of-a-linear-search">The Syntax of a Linear Search</h3>
+<p>A search function takes the <em>collection</em> to look through and the <em>target</em> to look for. It returns <strong>where</strong> the target is (its index) or a signal that it is not there.</p>
+<p>What should that “not there” signal be? You will often see <code>-1</code> in textbooks — a habit borrowed from languages like C and Java. <strong>Be careful: in Python, <code>-1</code> is a perfectly valid index</strong> (<code>items[-1]</code> is the <em>last</em> item). So if a caller forgets to check and writes <code>items[result]</code>, a <code>-1</code> “not found” will silently hand them the last card instead of an error. The safer, more Pythonic choices are:</p>
+<ul>
+<li><strong><code>return None</code></strong> — there is no <code>items[None]</code>, so a misuse fails loudly and immediately.</li>
+<li><strong>raise an error</strong> — this is what the built-in <code>list.index()</code> does (it raises <code>ValueError</code>).</li>
+</ul>
+<p>We will use <code>None</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_search(items, target):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> items[index] <span class="op">==</span> target:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> index        <span class="co"># found it — report the position</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span>                 <span class="co"># checked everything — not here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-9" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_search(items, target):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return the index of target in items, or None if it is not present."""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> items[index] <span class="op">==</span> target:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> index</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Alice's shuffled deck of guests (no order at all)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>guests <span class="op">=</span> [<span class="st">"March Hare"</span>, <span class="st">"Dormouse"</span>, <span class="st">"Knave of Hearts"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Duchess"</span>, <span class="st">"Mad Hatter"</span>, <span class="st">"Gryphon"</span>]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(linear_search(guests, <span class="st">"Knave of Hearts"</span>))   <span class="co"># found at index 2</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(linear_search(guests, <span class="st">"Cheshire Cat"</span>))      <span class="co"># not invited -&gt; None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="understanding-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code">Understanding the Code</h3>
+<ul>
+<li><code>for index in range(len(items))</code> walks the positions <code>0, 1, 2, …</code> in order.</li>
+<li><code>if items[index] == target</code> compares the card at that position to the one we want.</li>
+<li>The moment we find a match we <code>return index</code> — we stop early, we do not keep looking.</li>
+<li>If the loop finishes without ever matching, we fall through to <code>return None</code>. That <code>None</code> is our <strong>sentinel value</strong>: a special return that means “not found.” (As noted above, <code>None</code> is safer here than <code>-1</code>, which Python would accept as the last index.)</li>
+</ul>
+<p>Notice the cost: if the Knave is near the <em>bottom</em> of the deck, Alice turns over nearly every card. If he is not in the deck at all, she turns over <strong>every single one</strong>.</p>
+</section>
+<section id="predict-before-you-run" class="level3">
+<h3 class="anchored" data-anchor-id="predict-before-you-run">🔮 Predict Before You Run</h3>
+<p>The deck has <strong>12</strong> guests. Before running the next cell, predict:</p>
+<ol type="1">
+<li>If the target is the <strong>last</strong> guest, how many comparisons does <code>linear_search</code> make?</li>
+<li>If the target is <strong>not in the deck at all</strong>, how many comparisons does it make?</li>
+<li>On average, for a random target that <em>is</em> present, roughly how many?</li>
+</ol>
+<div id="cell-12" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>deck12 <span class="op">=</span> [<span class="ss">f"Card </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>)]   <span class="co"># "Card 1" ... "Card 12"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_search_counting(items, target):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    comparisons <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        comparisons <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> items[index] <span class="op">==</span> target:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> index, comparisons</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span>, comparisons</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"last item:   "</span>, linear_search_counting(deck12, <span class="st">"Card 12"</span>))   <span class="co"># 12 comparisons</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"missing item:"</span>, linear_search_counting(deck12, <span class="st">"Card 99"</span>))   <span class="co"># 12 comparisons</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"first item:  "</span>, linear_search_counting(deck12, <span class="st">"Card 1"</span>))    <span class="co"># 1 comparison</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>The pattern:</strong> worst case is <em>n</em> comparisons for a deck of <em>n</em> cards. Best case is 1 (lucky first card). On average, about <em>n</em>/2. The thing that matters most is that the work <strong>grows in step with the size of the deck</strong> — double the deck, double the worst-case work. Hold that thought; the White Rabbit will name it soon.</p>
+</section>
+<section id="your-turn-alices-linear-search" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-alices-linear-search">✏️ Your Turn — Alice’s Linear Search</h3>
+<p>Alice has an <strong>unsorted</strong> guest list. Complete <code>find_guest(guests, name)</code> so it returns the <em>position</em> of a guest, or the string <code>"not invited"</code> if the name is absent. Test it on a hit and a miss.</p>
+<div id="cell-15" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>guests <span class="op">=</span> [<span class="st">"Dormouse"</span>, <span class="st">"Mad Hatter"</span>, <span class="st">"March Hare"</span>, <span class="st">"Gryphon"</span>, <span class="st">"Mock Turtle"</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_guest(guests, name):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: walk the list; return the index if found, else "not invited"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_guest(guests, <span class="st">"Gryphon"</span>))      <span class="co"># expected: 3</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_guest(guests, <span class="st">"Cheshire Cat"</span>)) <span class="co"># expected: not invited</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="binary-search-cut-the-deck-in-half-again-and-again" class="level2">
+<h2 class="anchored" data-anchor-id="binary-search-cut-the-deck-in-half-again-and-again">Binary Search: Cut the Deck in Half (Again and Again)</h2>
+<p>The White Rabbit is appalled at all this card-turning. “There’s a faster way!” he insists — <em>but only if the deck is already sorted.</em></p>
+<p>Think about how you find a word in a dictionary. You do not start at “aardvark” and read every word. You flip to the <strong>middle</strong>, see whether your word is earlier or later, and throw away the half it cannot be in. Then you repeat on what remains. Each look <strong>halves</strong> the search.</p>
+<p>That is <strong>binary search</strong>, and it requires the data to be <strong>in order</strong>.</p>
+<section id="the-syntax-of-a-binary-search" class="level3">
+<h3 class="anchored" data-anchor-id="the-syntax-of-a-binary-search">The Syntax of a Binary Search</h3>
+<p>We track the slice of the deck still in play with two markers: <code>low</code> and <code>high</code>. We look at the <code>mid</code>dle card. If it is our target, done. If our target is <em>bigger</em>, the answer must be in the upper half, so we move <code>low</code> past <code>mid</code>. If it is <em>smaller</em>, we move <code>high</code> below <code>mid</code>. As with linear search, we return <code>None</code> when the card is not there.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binary_search(sorted_items, target):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    low <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    high <span class="op">=</span> <span class="bu">len</span>(sorted_items) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> low <span class="op">&lt;=</span> high:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        mid <span class="op">=</span> (low <span class="op">+</span> high) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> sorted_items[mid] <span class="op">==</span> target:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> mid</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> sorted_items[mid] <span class="op">&lt;</span> target:   <span class="co"># target is in the upper half</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            low <span class="op">=</span> mid <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:                              <span class="co"># target is in the lower half</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            high <span class="op">=</span> mid <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-18" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binary_search(sorted_items, target):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return the index of target in a SORTED list, or None if not present.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Prints each step so we can watch the search space shrink."""</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    low <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    high <span class="op">=</span> <span class="bu">len</span>(sorted_items) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> low <span class="op">&lt;=</span> high:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        mid <span class="op">=</span> (low <span class="op">+</span> high) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  looking in positions </span><span class="sc">{</span>low<span class="sc">}</span><span class="ss">..</span><span class="sc">{</span>high<span class="sc">}</span><span class="ss">, checking position </span><span class="sc">{</span>mid<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>sorted_items[mid]<span class="sc">!r}</span><span class="ss">)"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> sorted_items[mid] <span class="op">==</span> target:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> mid</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> sorted_items[mid] <span class="op">&lt;</span> target:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            low <span class="op">=</span> mid <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            high <span class="op">=</span> mid <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> report(sorted_items, target):</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Search and print a clear, non-contradictory result."""</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> binary_search(sorted_items, target)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  -&gt; </span><span class="sc">{</span>target<span class="sc">!r}</span><span class="ss"> is not in the deck"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  -&gt; found </span><span class="sc">{</span>target<span class="sc">!r}</span><span class="ss"> at index </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># The deck must be SORTED first</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>sorted_guests <span class="op">=</span> <span class="bu">sorted</span>([<span class="st">"March Hare"</span>, <span class="st">"Dormouse"</span>, <span class="st">"Knave of Hearts"</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Duchess"</span>, <span class="st">"Mad Hatter"</span>, <span class="st">"Gryphon"</span>])</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sorted deck:"</span>, sorted_guests)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Searching for 'Mad Hatter':"</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>report(sorted_guests, <span class="st">"Mad Hatter"</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Searching for 'Cheshire Cat':"</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>report(sorted_guests, <span class="st">"Cheshire Cat"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="understanding-the-code-1" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-1">Understanding the Code</h3>
+<ul>
+<li><code>low</code> and <code>high</code> mark the <strong>range still worth searching</strong>. Everything outside it has been ruled out.</li>
+<li><code>mid = (low + high) // 2</code> picks the middle position (integer division throws away the remainder).</li>
+<li>The three branches: <strong>equal</strong> → found; <strong>mid is too small</strong> → answer must be to the right, so <code>low = mid + 1</code>; <strong>mid is too big</strong> → answer is to the left, so <code>high = mid - 1</code>.</li>
+<li><code>while low &lt;= high</code> keeps going until the range is empty. When <code>low</code> passes <code>high</code>, there is nothing left, so we <code>return None</code>.</li>
+<li>The little <code>report</code> helper checks <code>if result is None</code> so the printout never says the contradictory “found at index None” — it says plainly that the card is not in the deck.</li>
+</ul>
+<p>Run the printed steps again: each line throws away <em>half</em> of what remained. A deck of 1,000 cards is found in about <strong>10</strong> steps, not 1,000.</p>
+</section>
+<section id="picture-it-halving-the-search-space" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-halving-the-search-space">Picture It: Halving the Search Space</h3>
+<p>Binary search on 16 cards needs at most 4 steps, because 16 halves to 8, to 4, to 2, to 1. The diagram below shows that shrinking range.</p>
+</section>
+<section id="a-trap-binary-search-on-an-unsorted-list" class="level3">
+<h3 class="anchored" data-anchor-id="a-trap-binary-search-on-an-unsorted-list">A Trap: Binary Search on an <em>Unsorted</em> List</h3>
+<p>Binary search trusts that the deck is sorted. Give it a shuffled deck and it will happily rule out the <em>wrong</em> half — and report “not found” for a card that is sitting right there. It fails <strong>silently</strong>, which is the worst kind of failure.</p>
+<div id="cell-23" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>shuffled <span class="op">=</span> [<span class="st">"March Hare"</span>, <span class="st">"Dormouse"</span>, <span class="st">"Knave of Hearts"</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Duchess"</span>, <span class="st">"Mad Hatter"</span>, <span class="st">"Gryphon"</span>]   <span class="co"># NOT sorted</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The Knave IS in the list, but binary search may not find him:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> binary_search(shuffled, <span class="st">"Knave of Hearts"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Result on the unsorted deck:"</span>, result, <span class="st">"(should have been found!)"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Lesson: always sort before you binary-search."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="your-turn-the-caterpillars-binary-search" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-the-caterpillars-binary-search">✏️ Your Turn — The Caterpillar’s Binary Search</h3>
+<p>The Caterpillar hands you a <strong>sorted</strong> list and asks you to implement <code>binary_search(nums, target)</code> from scratch — return the index, or <code>None</code> if it’s absent. Keep two markers, <code>low</code> and <code>high</code>, and check the middle each pass. (Stuck on the <code>low</code>/<code>high</code> updates? That’s the classic off-by-one — trace it by hand on a small list until it clicks.)</p>
+<div id="cell-25" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sorted_nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binary_search(nums, target):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: implement binary search; return the index, or None if not found</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(binary_search(sorted_nums, <span class="dv">12</span>))   <span class="co"># expected: 5</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(binary_search(sorted_nums, <span class="dv">8</span>))    <span class="co"># expected: None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="why-order-matters-counting-the-rabbits-steps" class="level2">
+<h2 class="anchored" data-anchor-id="why-order-matters-counting-the-rabbits-steps">Why Order Matters: Counting the Rabbit’s Steps</h2>
+<p>The White Rabbit does not care about <em>seconds</em> — those depend on whose computer you use. He cares about <strong>how the number of steps grows as the deck grows</strong>. Computer scientists write this with <strong>Big-O notation</strong>. You can read <code>O(...)</code> as <em>“on the order of…”</em></p>
+<p>The four you will meet most often, from wonderful to dreadful:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Big-O</th>
+<th>Name</th>
+<th>What it means</th>
+<th>Our example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>O(1)</code></td>
+<td>constant</td>
+<td>same work no matter the size</td>
+<td>grabbing the top card</td>
+</tr>
+<tr class="even">
+<td><code>O(log n)</code></td>
+<td>logarithmic</td>
+<td>each step throws away a <em>fraction</em></td>
+<td><strong>binary search</strong></td>
+</tr>
+<tr class="odd">
+<td><code>O(n)</code></td>
+<td>linear</td>
+<td>work grows in step with size</td>
+<td><strong>linear search</strong></td>
+</tr>
+<tr class="even">
+<td><code>O(n log n)</code></td>
+<td>“n log n”</td>
+<td>a good sort’s cost</td>
+<td><strong>merge sort</strong>, <code>sorted()</code></td>
+</tr>
+<tr class="odd">
+<td><code>O(n²)</code></td>
+<td>quadratic</td>
+<td>work grows with the <em>square</em></td>
+<td><strong>selection sort</strong> (next)</td>
+</tr>
+</tbody>
+</table>
+<p>Big-O ignores constants and small terms. We do not say “3n + 7 steps”; we say <code>O(n)</code>. The point is the <strong>shape of the growth</strong>, not the exact count.</p>
+<div id="cell-27" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'deck size n'</span><span class="sc">:&gt;14}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'linear O(n)'</span><span class="sc">:&gt;12}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'binary O(log n)'</span><span class="sc">:&gt;16}</span><span class="ss">"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">48</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">16</span>, <span class="dv">1024</span>, <span class="dv">1_000_000</span>, <span class="dv">1_000_000_000</span>]:</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    linear <span class="op">=</span> n                       <span class="co"># worst-case comparisons</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    binary <span class="op">=</span> math.ceil(math.log2(n)) <span class="co"># worst-case comparisons</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">:&gt;14,}</span><span class="ss"> | </span><span class="sc">{</span>linear<span class="sc">:&gt;12,}</span><span class="ss"> | </span><span class="sc">{</span>binary<span class="sc">:&gt;16,}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Look at the bottom row. To find a card among a <strong>billion</strong>, linear search may check a billion; binary search checks about <strong>30</strong>. That gap is the whole reason we bother to sort.</p>
+<section id="picture-it-how-work-grows" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-how-work-grows">Picture It: How Work Grows</h3>
+<p>The same idea as a shape. As <em>n</em> grows, <code>O(n²)</code> shoots up, <code>O(n)</code> rises steadily, and <code>O(log n)</code> barely lifts off the floor.</p>
+</section>
+<section id="your-turn-counting-steps-on-paper-no-coding" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-counting-steps-on-paper-no-coding">✏️ Your Turn — Counting Steps, On Paper <em>(no coding)</em></h3>
+<p>You have a sorted list of <strong>16</strong> guests. In the <strong>worst case</strong>:</p>
+<ol type="1">
+<li>How many comparisons does <strong>linear search</strong> make?</li>
+<li>How many does <strong>binary search</strong> make? (Hint: how many times can you halve 16?)</li>
+<li>In two or three sentences, explain <em>why</em> binary search needs so many fewer — and what the deck must have that linear search did not require.</li>
+</ol>
+</section>
+</section>
+<section id="sorting-putting-the-deck-in-order" class="level2">
+<h2 class="anchored" data-anchor-id="sorting-putting-the-deck-in-order">Sorting: Putting the Deck in Order</h2>
+<p>Binary search needed a <em>sorted</em> deck. So how does Alice sort one in the first place? There are many sorting algorithms; we will write one by hand and <em>describe</em> a faster one.</p>
+<p>The hand-written one is <strong>selection sort</strong>, and its idea is exactly what it sounds like: <em>find the smallest card and put it first; from what’s left, find the next smallest and put it second; repeat until the deck is in order.</em></p>
+<section id="the-syntax-of-a-selection-sort" class="level3">
+<h3 class="anchored" data-anchor-id="the-syntax-of-a-selection-sort">The Syntax of a Selection Sort</h3>
+<p>The outer loop walks the position we are currently <em>filling</em>. The inner loop scans everything <em>after</em> it to find the smallest remaining card. Then one <strong>swap</strong> drops that card into place.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selection_sort(items):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        smallest <span class="op">=</span> i</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(items)):</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> items[j] <span class="op">&lt;</span> items[smallest]:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                smallest <span class="op">=</span> j</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        items[i], items[smallest] <span class="op">=</span> items[smallest], items[i]   <span class="co"># swap into place</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> items</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-34" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selection_sort(items):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Sort items in place using selection sort, printing each pass."""</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        smallest <span class="op">=</span> i</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(items)):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> items[j] <span class="op">&lt;</span> items[smallest]:</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                smallest <span class="op">=</span> j</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        items[i], items[smallest] <span class="op">=</span> items[smallest], items[i]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  after pass </span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>items<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> items</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>ranks <span class="op">=</span> [<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">1</span>]</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"start:        "</span>, ranks)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>selection_sort(ranks)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"sorted:       "</span>, ranks)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="understanding-the-code-2" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-2">Understanding the Code</h3>
+<ul>
+<li>The outer loop variable <code>i</code> is the <strong>slot being filled</strong>: first the position that should hold the smallest card, then the next, and so on.</li>
+<li><code>smallest</code> starts as a <em>guess</em> (<code>i</code>) and the inner loop updates it whenever it finds something smaller in the unsorted tail.</li>
+<li>The line with two assignments at once is a <strong>swap</strong>: Python lets you write <code>a, b = b, a</code> to exchange two values without a temporary variable.</li>
+<li>Watch the printed passes: after each one, the front of the list is sorted and growing.</li>
+</ul>
+<p><strong>The cost:</strong> for each of <em>n</em> slots, we scan the rest of the deck. That is roughly <em>n</em> × <em>n</em> work — <code>O(n²)</code>. Fine for a handful of cards, painful for millions.</p>
+</section>
+<section id="predict-before-you-run-1" class="level3">
+<h3 class="anchored" data-anchor-id="predict-before-you-run-1">🔮 Predict Before You Run</h3>
+<p>Given the list <code>[5, 3, 8, 1, 9]</code>, what will it look like <strong>after the first pass</strong> of selection sort (after the smallest card is placed in slot 0)? Write down your guess, then run the cell.</p>
+<div id="cell-37" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>demo <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">9</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>selection_sort(demo)   <span class="co"># watch only the FIRST printed pass to check your prediction</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="your-turn-the-hatters-selection-sort" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-the-hatters-selection-sort">✏️ Your Turn — The Hatter’s Selection Sort</h3>
+<p>The tea party seats guests by <strong>arrival time</strong> (smaller number = arrived earlier). Use selection sort to order the list, printing it after each pass so the Hatter can watch it tidy itself.</p>
+<div id="cell-39" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arrivals <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>]   <span class="co"># arrival times</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selection_sort(items):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: selection sort, printing the list after each pass</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>selection_sort(arrivals)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"seated in order:"</span>, arrivals)   <span class="co"># expected: [1, 2, 3, 4, 5]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="a-faster-idea-merge-sort-described-not-coded" class="level2">
+<h2 class="anchored" data-anchor-id="a-faster-idea-merge-sort-described-not-coded">A Faster Idea: Merge Sort (Described, Not Coded)</h2>
+<p>Selection sort is <code>O(n²)</code>. For a deck of a million, that is a <em>trillion</em> comparisons. Real systems use smarter sorts that run in <code>O(n log n)</code> — and the classic example is <strong>merge sort</strong>. We will <em>describe</em> it rather than code it, because the idea matters more than the implementation here.</p>
+<p>Merge sort uses <strong>divide and conquer</strong>:</p>
+<ol type="1">
+<li><strong>Divide.</strong> Split the deck into two halves. Split each half again. Keep splitting until every pile is a single card — and a single card is already “sorted.”</li>
+<li><strong>Conquer (merge).</strong> Take two sorted piles and <strong>merge</strong> them into one sorted pile by repeatedly comparing the top card of each and taking the smaller. Merging two sorted piles is cheap and easy.</li>
+<li><strong>Combine upward.</strong> Merge the small sorted piles into bigger sorted piles, and those into bigger ones, until the whole deck is one sorted pile.</li>
+</ol>
+<p>Why is it faster? There are about <code>log n</code> levels of splitting (you can only halve <em>n</em> about <code>log n</code> times), and each level does <code>O(n)</code> work to merge everything — so the total is <code>O(n log n)</code>. That is why <code>sorted()</code> can sort a million items in well under a second while selection sort would crawl.</p>
+<section id="picture-it-divide-and-merge" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-divide-and-merge">Picture It: Divide and Merge</h3>
+<p>Merge sort splits all the way down, then merges back up.</p>
+</section>
+</section>
+<section id="the-practical-tool-sorted-and-key" class="level2">
+<h2 class="anchored" data-anchor-id="the-practical-tool-sorted-and-key">The Practical Tool: <code>sorted()</code> and <code>key=</code></h2>
+<p>In real programs nobody hand-writes selection sort. Python ships a fast <code>O(n log n)</code> sort built in. You meet it two ways: <code>sorted(items)</code> returns a <strong>brand-new</strong> sorted list, while <code>items.sort()</code> sorts the list <strong>in place</strong>. The real power comes from <code>key=</code>, which lets you sort by a <em>computed</em> value instead of the items themselves.</p>
+<section id="the-syntax-of-sorted-with-a-key" class="level3">
+<h3 class="anchored" data-anchor-id="the-syntax-of-sorted-with-a-key">The Syntax of <code>sorted()</code> with a Key</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(items)                       <span class="co"># ascending order, returns a NEW list</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(items, reverse<span class="op">=</span><span class="va">True</span>)         <span class="co"># descending order</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>items.sort()                        <span class="co"># sorts in place, returns None</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(items, key<span class="op">=</span>some_function)    <span class="co"># sort by what some_function returns for each item</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A <code>key</code> function receives <strong>one</strong> item and returns the value to sort <em>by</em>. A <code>lambda</code> is a tiny one-line function, handy here: <code>lambda c: c.rank</code> means “given a card <code>c</code>, sort by its <code>rank</code>.”</p>
+<div id="cell-45" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numbers and strings: the obvious cases</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>([<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">1</span>]))                 <span class="co"># [1, 2, 4, 7, 10]</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>([<span class="st">"Hatter"</span>, <span class="st">"Alice"</span>, <span class="st">"Duchess"</span>]))   <span class="co"># alphabetical</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>([<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>))   <span class="co"># [10, 7, 4, 2, 1]</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sorting OBJECTS with key= (a Card class, picking up where Notebook 6 left off)</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Card:</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, rank):</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rank <span class="op">=</span> rank</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>rank<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>hand <span class="op">=</span> [Card(<span class="st">"Knave"</span>, <span class="dv">11</span>), Card(<span class="st">"Two"</span>, <span class="dv">2</span>), Card(<span class="st">"Queen"</span>, <span class="dv">12</span>), Card(<span class="st">"Seven"</span>, <span class="dv">7</span>)]</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">by rank: "</span>, <span class="bu">sorted</span>(hand, key<span class="op">=</span><span class="kw">lambda</span> c: c.rank))   <span class="co"># 2, 7, 11, 12</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"by name: "</span>, <span class="bu">sorted</span>(hand, key<span class="op">=</span><span class="kw">lambda</span> c: c.name))     <span class="co"># alphabetical by name</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="understanding-the-code-3" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-3">Understanding the Code</h3>
+<ul>
+<li><code>sorted(...)</code> hands back a <strong>new</strong> list and leaves the original untouched; <code>.sort()</code> rearranges the original and returns <code>None</code> (a common beginner bug: writing <code>x = mylist.sort()</code> and getting <code>None</code>).</li>
+<li><code>reverse=True</code> flips the order.</li>
+<li><code>key=lambda c: c.rank</code> tells <code>sorted</code> <em>what to compare</em>. Python calls that function on each card, gets back a rank number, and sorts by those numbers — without losing track of which whole card each number came from.</li>
+<li>This is the everyday tool: you almost never implement a sort, but you constantly choose <em>what to sort by</em>.</li>
+</ul>
+</section>
+<section id="picture-it-which-method-when" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-which-method-when">Picture It: Which Method, When?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Needs sorted input?</th>
+<th>Changes the list?</th>
+<th>Big-O</th>
+<th>Reach for it when…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Linear search</strong></td>
+<td>no</td>
+<td>no</td>
+<td><code>O(n)</code></td>
+<td>data is unsorted or tiny</td>
+</tr>
+<tr class="even">
+<td><strong>Binary search</strong></td>
+<td><strong>yes</strong></td>
+<td>no</td>
+<td><code>O(log n)</code></td>
+<td>data is sorted and you search a lot</td>
+</tr>
+<tr class="odd">
+<td><strong>Selection sort</strong></td>
+<td>no</td>
+<td>sorts in place</td>
+<td><code>O(n²)</code></td>
+<td>learning / very small lists</td>
+</tr>
+<tr class="even">
+<td><strong>Merge sort</strong></td>
+<td>no</td>
+<td>returns sorted</td>
+<td><code>O(n log n)</code></td>
+<td>you need a guaranteed-fast sort</td>
+</tr>
+<tr class="odd">
+<td><strong><code>sorted()</code> / <code>.sort()</code></strong></td>
+<td>no</td>
+<td>new list / in place</td>
+<td><code>O(n log n)</code></td>
+<td>real code — almost always</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="your-turn-sorting-the-knaves-tarts-with-key" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-sorting-the-knaves-tarts-with-key">✏️ Your Turn — Sorting the Knave’s Tarts with <code>key=</code></h3>
+<p>The Knave has a list of <code>Tart</code> objects, each with a <code>flavor</code> (string) and a <code>count</code> (int). Use <code>sorted(..., key=...)</code> to produce <strong>two</strong> orderings: one by <code>count</code> (most tarts last), and one alphabetically by <code>flavor</code>. Use the built-in — don’t write your own sort.</p>
+<div id="cell-49" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Tart:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, flavor, count):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.flavor <span class="op">=</span> flavor</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.count <span class="op">=</span> count</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>flavor<span class="sc">}</span><span class="ss">x</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>count<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>tarts <span class="op">=</span> [Tart(<span class="st">"strawberry"</span>, <span class="dv">12</span>), Tart(<span class="st">"apple"</span>, <span class="dv">3</span>), Tart(<span class="st">"plum"</span>, <span class="dv">7</span>)]</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>by_count  <span class="op">=</span> <span class="va">None</span>   <span class="co"># </span><span class="al">TODO</span><span class="co">: sorted(tarts, key=...) ascending by count</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>by_flavor <span class="op">=</span> <span class="va">None</span>   <span class="co"># </span><span class="al">TODO</span><span class="co">: sorted(tarts, key=...) alphabetically by flavor</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"by count: "</span>, by_count)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"by flavor:"</span>, by_flavor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+</section>
+<section id="part-2-the-limits-of-computation" class="level1">
+<h1>Part 2 — The Limits of Computation</h1>
+<p>So far, every problem has had a fast-enough answer: search smarter, sort first, count the steps. Now the <strong>Cheshire Cat</strong> fades into view, all grin, and asks a different kind of question. Not <em>“how long will it take?”</em> but: <strong>“Are there questions a machine can never answer at all — no matter how clever the algorithm, no matter how fast the computer?”</strong></p>
+<p>The astonishing answer, proved in 1936 by a mathematician named <strong>Alan Turing</strong>, is <strong>yes</strong>. This part is about <em>ideas</em>, not code. Read it like a set of philosophy puzzles.</p>
+<section id="a-machine-made-of-almost-nothing-the-turing-machine" class="level2">
+<h2 class="anchored" data-anchor-id="a-machine-made-of-almost-nothing-the-turing-machine">A Machine Made of Almost Nothing: The Turing Machine</h2>
+<p>Before there were computers, Turing asked: <em>what is the simplest possible device that could carry out any calculation a human follows by rote?</em> His answer was a machine so simple it sounds like a toy:</p>
+<ul>
+<li>An endless <strong>tape</strong> divided into squares (imagine the Caterpillar’s ribbon, unrolling forever).</li>
+<li>A <strong>head</strong> that sits over one square and can <strong>read</strong> the symbol there, <strong>write</strong> a new symbol, and move one square <strong>left</strong> or <strong>right</strong>.</li>
+<li>A tiny <strong>rulebook</strong>: “if you are in state A and you read a 1, write a 0, move right, and switch to state B.” A handful of such rules.</li>
+</ul>
+<p>That is the whole machine. No screen, no memory chips — just a tape, a head, and a list of if-then rules.</p>
+<p>Here is the shocking part. This ribbon-and-rulebook gadget can compute <strong>anything</strong> that your laptop, a supercomputer, or any future computer can compute. The claim that “anything computable can be computed by a Turing machine” is called the <strong>Church–Turing thesis</strong>. It is the reason we can talk about <em>computation</em> as a single universal idea, instead of a different idea for every brand of machine.</p>
+<section id="picture-it-the-tape-the-head-the-rulebook" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-tape-the-head-the-rulebook">Picture It: The Tape, the Head, the Rulebook</h3>
+<div id="cell-54" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A tiny illustrative Turing machine: flip every bit on the tape, left to right.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_tiny_tm(tape):</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Move right across the tape, flipping 1&lt;-&gt;0, until we run off the end."""</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    tape <span class="op">=</span> <span class="bu">list</span>(tape)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    head <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> head <span class="op">&lt;</span> <span class="bu">len</span>(tape):</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        tape[head] <span class="op">=</span> <span class="st">"0"</span> <span class="cf">if</span> tape[head] <span class="op">==</span> <span class="st">"1"</span> <span class="cf">else</span> <span class="st">"1"</span>   <span class="co"># write</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        head <span class="op">+=</span> <span class="dv">1</span>                                        <span class="co"># move right</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">""</span>.join(tape)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"before:"</span>, <span class="st">"110100"</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"after: "</span>, run_tiny_tm(<span class="st">"110100"</span>))   <span class="co"># every bit flipped</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="discussion" class="level3">
+<h3 class="anchored" data-anchor-id="discussion">💬 Discussion</h3>
+<ol type="1">
+<li>Why would anyone study such a slow, silly machine instead of a real computer? What do we <em>gain</em> by stripping computation down to a tape and a rulebook?</li>
+<li>The Church–Turing thesis says every computer is, deep down, “just” a Turing machine. Does that match your intuition about your phone? What would it mean if it were true?</li>
+<li>If a Turing machine can compute anything any computer can, what <em>kind</em> of question could possibly be off-limits to it? (We are about to find one.)</li>
+</ol>
+</section>
+</section>
+<section id="the-halting-problem-a-question-no-program-can-answer" class="level2">
+<h2 class="anchored" data-anchor-id="the-halting-problem-a-question-no-program-can-answer">The Halting Problem: A Question No Program Can Answer</h2>
+<p>The White Rabbit is forever running. Alice wonders: <em>will he ever stop, or run forever?</em> For a program, this is a real and important question. Some programs finish (they <strong>halt</strong>); some get stuck in a loop and run forever. Wouldn’t it be wonderful to have a tool that, given <strong>any</strong> program and its input, always told you the truth: <em>“this one halts”</em> or <em>“this one loops forever”</em>?</p>
+<p>Call that dream tool <code>halts(program, input)</code>. Turing proved it <strong>cannot exist</strong>. Not “we haven’t built it yet” — it <em>cannot</em> exist, ever. Here is the idea, in plain English:</p>
+<p>Suppose <code>halts</code> existed. Then we could build a mischievous program, call it <strong>Contrary</strong>, that does this: <em>“Ask <code>halts</code> what I would do. If <code>halts</code> says I halt, then loop forever. If <code>halts</code> says I loop forever, then halt immediately.”</em> Now run <strong>Contrary</strong> on itself. Whatever <code>halts</code> predicts, Contrary does the <strong>opposite</strong> — so <code>halts</code> is wrong. Since we built Contrary using only <code>halts</code>, the only escape is that <code>halts</code> never existed in the first place.</p>
+<p>This is the same self-referential trick as “This sentence is false.” The halting problem is <strong>undecidable</strong>.</p>
+<section id="what-undecidable-really-means" class="level3">
+<h3 class="anchored" data-anchor-id="what-undecidable-really-means">What “Undecidable” Really Means</h3>
+<p>Be careful: <strong>undecidable does not mean hard.</strong> A hard problem is one we can solve, just slowly. An <em>undecidable</em> problem is one for which <strong>no algorithm can ever give the right answer in every case</strong> — not with a faster chip, not with more memory, not with a cleverer programmer.</p>
+<p>The halting problem is not a lonely exception. Many real questions reduce to it. <em>“Will this program ever crash?”</em> <em>“Does this code contain a virus that will eventually trigger?”</em> <em>“Will these two programs always produce the same output?”</em> In full generality, <strong>no</strong> program can answer these for all inputs. The best real tools (antivirus, type checkers, verifiers) settle for being <em>usually</em> right, or right on a <em>restricted</em> set of cases.</p>
+</section>
+<section id="discussion-1" class="level3">
+<h3 class="anchored" data-anchor-id="discussion-1">💬 Discussion</h3>
+<ol type="1">
+<li>In your own words, what is the difference between <em>“impossible for now”</em> and <em>“impossible in principle”</em>? Give a non-computing example of each.</li>
+<li>Imagine you are writing the autograder for this course, and you want it to detect any student program that has an infinite loop. Why does the halting problem mean you can never make that detector perfect? What could you do instead?</li>
+<li>The proof relies on a program asking about <em>itself</em>. Where else have you seen self-reference create a paradox?</li>
+</ol>
+</section>
+</section>
+<section id="p-vs.-np-easy-to-check-hard-to-solve" class="level2">
+<h2 class="anchored" data-anchor-id="p-vs.-np-easy-to-check-hard-to-solve">P vs.&nbsp;NP: Easy to Check, Hard to Solve</h2>
+<p>Not every limit is about <em>impossibility</em>. Some problems are perfectly solvable but seem to require a hopeless amount of work. The Queen empties a sack of a thousand jigsaw pieces and roars, “Assemble it — perfectly — or off with your head!”</p>
+<p>Notice two very different jobs:</p>
+<ul>
+<li><strong>Checking</strong> a finished puzzle is <em>easy</em>: glance at it, see that every piece fits. Quick.</li>
+<li><strong>Finding</strong> the solution from scratch may be <em>brutal</em>: in the worst case you try an astronomical number of arrangements.</li>
+</ul>
+<p>Computer scientists capture this with two groups of problems:</p>
+<ul>
+<li><strong>P</strong> — problems we can <strong>solve</strong> quickly (in a reasonable, <code>O(n^k)</code>-ish number of steps). Searching and sorting live here.</li>
+<li><strong>NP</strong> — problems where we can <strong>check</strong> a proposed answer quickly, even if <em>finding</em> it might be slow. The jigsaw, scheduling 500 classes without conflicts, packing a truck optimally, solving a giant Sudoku.</li>
+</ul>
+<p>The famous open question is: <strong>does P = NP?</strong> That is, if you can <em>check</em> an answer fast, can you always <em>find</em> one fast too? Almost everyone believes <strong>P ≠ NP</strong> (finding is genuinely harder than checking), but <strong>nobody has proved it.</strong> It is one of the seven Millennium Prize Problems — there is a literal <strong>$1,000,000</strong> waiting for a proof either way.</p>
+<section id="discussion-2" class="level3">
+<h3 class="anchored" data-anchor-id="discussion-2">💬 Discussion</h3>
+<ol type="1">
+<li>Describe an everyday task that is <strong>hard to do but easy to check</strong> that it was done right. Why does that gap feel familiar?</li>
+<li>Much of modern encryption relies on a problem being hard to <em>solve</em> but easy to <em>check</em>. If someone proved <strong>P = NP</strong> tomorrow with a practical method, why might a lot of internet security suddenly break?</li>
+<li>“Hard for any computer” (P vs.&nbsp;NP) and “impossible for any computer” (the halting problem) sound similar but are <em>not</em> the same. In your own words, what is the difference?</li>
+</ol>
+</section>
+</section>
+<section id="what-this-means-for-ai-and-llms" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-means-for-ai-and-llms">What This Means for AI and LLMs</h2>
+<p>It is tempting to think a powerful enough AI will eventually solve <em>everything</em>. The limits in this notebook say otherwise — and the distinction is worth getting right.</p>
+<ul>
+<li><strong>An LLM is still computation.</strong> A large language model runs on ordinary computers, so it cannot escape undecidability. There is <strong>no</strong> AI, however large, that can correctly decide whether <em>any</em> program halts. That limit is mathematical, not a matter of training data or model size.</li>
+<li><strong>Some limits are about impossibility; others are about cost.</strong> P vs.&nbsp;NP–style problems are <em>allowed</em> to have solutions — they are just expensive. An AI might find good <em>approximate</em> answers fast (and often does), but “found a decent schedule” is not the same as “proved this is the best possible one.”</li>
+<li><strong>Be precise about what LLMs are bad at.</strong> It is easy to blur two very different things:
+<ul>
+<li><em>Impossible in principle</em> — e.g., a perfect universal halting-detector. No program, AI or not, can do this.</li>
+<li><em>Hard or unreliable in practice</em> — e.g., guaranteeing a proof is correct, never hallucinating a fact, or producing a genuinely optimal solution. These are real weaknesses, but they are engineering and reliability problems, not mathematical impossibilities.</li>
+</ul></li>
+</ul>
+<p>The healthy stance is neither hype nor despair: AI is a remarkable tool <em>within</em> the space of computable, tractable problems, and the theory tells us exactly where the hard walls are.</p>
+<section id="discussion-3" class="level3">
+<h3 class="anchored" data-anchor-id="discussion-3">💬 Discussion</h3>
+<ol type="1">
+<li>A headline claims, “AI will soon solve any problem we throw at it.” Using the halting problem and P vs.&nbsp;NP, write a careful one-paragraph response.</li>
+<li>What is the difference between a task an LLM is merely <strong>bad at</strong> and a task that is <strong>mathematically impossible</strong> for <em>any</em> program? Give one example of each.</li>
+<li>Where, in your own use of AI tools, should you stay skeptical of the assumption that “the AI will just figure it out”?</li>
+</ol>
+</section>
+<section id="discussion-the-cheshire-cats-riddle" class="level3">
+<h3 class="anchored" data-anchor-id="discussion-the-cheshire-cats-riddle">💬 Discussion — The Cheshire Cat’s Riddle</h3>
+<p>The Cheshire Cat grins: <em>“Some of my riddles are merely slow to answer. One of them can never be answered at all.”</em></p>
+<p>In your own words, and with an everyday analogy of your choosing, explain the difference between:</p>
+<ul>
+<li>a problem that is <strong>undecidable</strong> (like the halting problem), and</li>
+<li>a problem that is merely <strong>hard</strong> (an NP problem like the giant jigsaw).</li>
+</ul>
+<p>Then name <strong>one place this distinction should change how much we trust an AI system</strong>. There’s no single right answer — share your analogy and reasoning, and respond to a classmate whose analogy differs from yours.</p>
+</section>
+</section>
+<section id="capstone-the-great-wonderland-race-ai-assisted" class="level2">
+<h2 class="anchored" data-anchor-id="capstone-the-great-wonderland-race-ai-assisted">✏️ Capstone — The Great Wonderland Race (AI-Assisted)</h2>
+<p>Time to put the last two notebooks into one small game. You’ll build a <strong>race</strong>: several characters, each with their own stats, run against each other; you <strong>bet</strong> on a winner; then the results are shown as a <strong>leaderboard, sorted fastest to slowest</strong>. It reviews <strong>objects</strong> (Notebook 6 — each racer is an object with attributes) and the star skill of <em>this</em> notebook (<strong><code>sorted()</code> with <code>key=</code></strong>, to rank the finishers).</p>
+<p>The default is a Wonderland race — the White Rabbit, the Mad Hatter, the Cheshire Cat — but <strong>pick your own</strong>: horses, robots, snails, your friends as superheroes, anything that can race.</p>
+<p><strong>How the game works, start to finish:</strong></p>
+<ol type="1">
+<li>Each <strong>racer is an object</strong> with a few stats — say <code>speed</code>, <code>stamina</code>, and a dash of <code>luck</code>.</li>
+<li>Each racer’s <strong>finish time</strong> is computed from those stats — give faster racers an edge, but let luck shake things up so the same one doesn’t always win.</li>
+<li>The player <strong>bets</strong> on a racer by name.</li>
+<li>The finishers are <strong>sorted by time</strong> with <code>sorted(..., key=...)</code> and printed as a leaderboard.</li>
+<li>The game says whether the bet paid off.</li>
+</ol>
+<p><strong>Step 1 — Design it first (before the AI).</strong> In a markdown cell, jot down: your theme, your 3–5 racers and their stats, how a racer’s finish time is computed from its stats, and how the bet wins or loses.</p>
+<p><strong>Step 2 — Turn your design into a prompt.</strong> Fill the blanks and send it to Gemini (or Claude / ChatGPT):</p>
+<blockquote class="blockquote">
+<p><em>Write a small race game in Python for Google Colab. Theme: <strong>[your theme]</strong>. Define a <code>Racer</code> class with a name and these stats: <strong>[your stats]</strong>. Create a list of <strong>[number]</strong> racers. Give each racer a method that computes its finish time from its stats plus a little randomness. Ask the player to bet on one racer by name. Run the race, then use <code>sorted(..., key=...)</code> to print a leaderboard from first place to last, and say whether the bet won. Keep it short and beginner-readable, with a comment on each part.</em></p>
+</blockquote>
+<p><strong>Step 3 — Get the bones working, then test.</strong> Paste it into the cell below and <strong>run it now</strong>. Get the simplest version working first — two racers, a finish time each, sorted into an order — and check the leaderboard by hand before adding more.</p>
+<p><strong>Step 4 — Add the bells and whistles.</strong> Once a basic race runs, add <strong>one or two</strong>, testing after each: a <code>luck</code> stat that can upset the favourite, different racer <em>types</em> via a subclass (a <code>Sprinter</code> that starts fast, a <code>Stayer</code> with high stamina — that’s inheritance from Notebook 6), payout odds on the bet, or a best-of-three series.</p>
+<p><strong>Step 5 — Check your work.</strong> Run it a few times. Does the <strong>leaderboard always come out in the right order</strong> (the slowest time should be last)? Try an empty racer list, or a bet on a name that isn’t running — does the game cope, or crash?</p>
+<p><strong>Step 6 — Reflect.</strong> In a markdown cell, write 2–3 sentences: which Notebook 6 idea (an object? a method? inheritance?) made the racers easy to build, and where did <code>sorted(key=...)</code> save you from writing a sort by hand?</p>
+<p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
+<div id="cell-65" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built race game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Algorithm</strong> — a step-by-step procedure for solving a problem.</li>
+<li><strong>Linear search</strong> — checking items one by one; <code>O(n)</code>.</li>
+<li><strong>Binary search</strong> — repeatedly halving a <em>sorted</em> list; <code>O(log n)</code>.</li>
+<li><strong>Sentinel value</strong> — a special return (we use <code>None</code>) meaning “not found.” Avoid <code>-1</code> in Python, since it is a valid (negative) index.</li>
+<li><strong>Big-O notation</strong> — a description of how an algorithm’s work grows with input size.</li>
+<li><strong><code>O(1)</code>, <code>O(log n)</code>, <code>O(n)</code>, <code>O(n log n)</code>, <code>O(n²)</code></strong> — constant, logarithmic, linear, “n log n,” and quadratic growth.</li>
+<li><strong>Selection sort</strong> — a simple <code>O(n²)</code> sort: repeatedly select the smallest remaining item.</li>
+<li><strong>Merge sort</strong> — a fast <code>O(n log n)</code> divide-and-conquer sort.</li>
+<li><strong>Swap</strong> — exchanging two values, e.g.&nbsp;<code>a, b = b, a</code>.</li>
+<li><strong>In-place</strong> — rearranging a list without making a new one.</li>
+<li><strong>Key function</strong> — a function passed to <code>sorted(..., key=...)</code> that returns the value to sort by.</li>
+<li><strong>Turing machine</strong> — a minimal tape-and-rulebook model of computation.</li>
+<li><strong>Church–Turing thesis</strong> — the idea that anything computable can be computed by a Turing machine.</li>
+<li><strong>Computable</strong> — solvable by some algorithm.</li>
+<li><strong>Halting problem</strong> — deciding whether an arbitrary program halts; proven impossible.</li>
+<li><strong>Undecidable</strong> — no algorithm can solve every case, even in principle.</li>
+<li><strong>P</strong> — problems solvable quickly.</li>
+<li><strong>NP</strong> — problems whose answers can be <em>checked</em> quickly.</li>
+<li><strong>P vs.&nbsp;NP</strong> — the open question of whether fast-to-check implies fast-to-solve.</li>
+<li><strong>Intractable</strong> — solvable in principle but requiring impractically much work.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p><strong>Part 1 — speed.</strong> Finding something is slow if you check everything (<strong>linear search</strong>, <code>O(n)</code>) and fast if the data is <strong>sorted</strong> and you halve it each step (<strong>binary search</strong>, <code>O(log n)</code>). Sorting is what makes that speed possible: we hand-coded <strong>selection sort</strong> (<code>O(n²)</code>) and described the faster <strong>merge sort</strong> (<code>O(n log n)</code>), then met the real-world tool, <code>sorted()</code> with <code>key=</code>. <strong>Big-O</strong> lets us compare strategies by how their work <em>grows</em>.</p>
+<p><strong>Part 2 — limits.</strong> Some problems are merely expensive: <strong>NP</strong> problems are easy to <em>check</em> but seem hard to <em>solve</em>, and whether <strong>P = NP</strong> is a famous open question. Other problems are <em>impossible</em> for any program: the <strong>halting problem</strong> is <strong>undecidable</strong>, a wall no computer — and no AI — can ever cross. Knowing the difference between “slow,” “intractable,” and “impossible” is part of thinking clearly about what computers, and AI, can really do.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p><strong>Notebook 8 — Software Engineering: SDLC, Git &amp; AI-Assisted Development.</strong> How real software gets built: the development lifecycle, Waterfall vs.&nbsp;Agile, using Git and GitHub from Colab, AI-assisted workflows (spec → code → test → review), and the basics of testing.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,1067 @@
+{
+  "title": "Chapter 01 Principles Reasoning",
+  "source_csv": "chapter-01-principles-reasoning.csv",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What field studies ethical questions raised by medicine and the life sciences?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The field of social medicine",
+          "correct": false
+        },
+        {
+          "text": "The field of bioethics",
+          "correct": true
+        },
+        {
+          "text": "Cognitive-science research",
+          "correct": false
+        },
+        {
+          "text": "Health-policy analysis",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which branch asks what people morally ought to do?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The descriptive branch of ethics",
+          "correct": false
+        },
+        {
+          "text": "The metaethical branch of ethics",
+          "correct": false
+        },
+        {
+          "text": "The normative branch of ethics",
+          "correct": true
+        },
+        {
+          "text": "The clinical decision method",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which branch studies what people actually believe about morality?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Existing case law",
+          "correct": false
+        },
+        {
+          "text": "The normative branch of ethics",
+          "correct": false
+        },
+        {
+          "text": "The descriptive branch of ethics",
+          "correct": true
+        },
+        {
+          "text": "The metaethical branch of ethics",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which branch studies the meaning and justification of moral claims?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The metaethical branch of ethics",
+          "correct": true
+        },
+        {
+          "text": "Applied legal reasoning",
+          "correct": false
+        },
+        {
+          "text": "Public-policy analysis",
+          "correct": false
+        },
+        {
+          "text": "Empirical ethics research",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which principle focuses on respecting patient choice?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The principle of autonomy",
+          "correct": true
+        },
+        {
+          "text": "The duty of beneficence",
+          "correct": false
+        },
+        {
+          "text": "Pure aggregate utility",
+          "correct": false
+        },
+        {
+          "text": "The principle of justice",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which principle focuses on acting for the patient's good?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The principle of justice",
+          "correct": false
+        },
+        {
+          "text": "Moral neutrality alone",
+          "correct": false
+        },
+        {
+          "text": "The principle of autonomy",
+          "correct": false
+        },
+        {
+          "text": "The duty of beneficence",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which principle is captured by primum non nocere?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The principle of autonomy",
+          "correct": false
+        },
+        {
+          "text": "The duty of beneficence",
+          "correct": false
+        },
+        {
+          "text": "The principle of justice",
+          "correct": false
+        },
+        {
+          "text": "Non-maleficence",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which principle concerns fair distribution of benefits and burdens?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Non-maleficence",
+          "correct": false
+        },
+        {
+          "text": "The principle of justice",
+          "correct": true
+        },
+        {
+          "text": "The duty of beneficence",
+          "correct": false
+        },
+        {
+          "text": "The principle of autonomy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "A prima facie duty remains binding until it is what?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Published in print",
+          "correct": false
+        },
+        {
+          "text": "Written in the chart",
+          "correct": false
+        },
+        {
+          "text": "Outweighed by another duty",
+          "correct": true
+        },
+        {
+          "text": "Measured by numbers",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What term means narrowing a broad principle into a usable rule?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Principle specification in practice",
+          "correct": true
+        },
+        {
+          "text": "Balancing rival duties",
+          "correct": false
+        },
+        {
+          "text": "The metaethical branch of ethics",
+          "correct": false
+        },
+        {
+          "text": "Lingering moral residue",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What term names the moral cost left after a tragic choice?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "A moral conflict",
+          "correct": false
+        },
+        {
+          "text": "The descriptive branch of ethics",
+          "correct": false
+        },
+        {
+          "text": "Shared common morality",
+          "correct": false
+        },
+        {
+          "text": "Lingering moral residue",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which theory says right acts maximize overall well-being?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The ethics-of-care view",
+          "correct": false
+        },
+        {
+          "text": "The virtue-ethics approach",
+          "correct": false
+        },
+        {
+          "text": "The deontological theory",
+          "correct": false
+        },
+        {
+          "text": "The utilitarian theory",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which family says some acts are right or wrong apart from outcomes?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The deontological theory",
+          "correct": true
+        },
+        {
+          "text": "A preference-based theory",
+          "correct": false
+        },
+        {
+          "text": "A contractarian theory",
+          "correct": false
+        },
+        {
+          "text": "The utilitarian theory",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does Kant call the unconditional moral command that applies regardless of desire?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The categorical imperative",
+          "correct": true
+        },
+        {
+          "text": "The hypothetical imperative",
+          "correct": false
+        },
+        {
+          "text": "The principle of utility",
+          "correct": false
+        },
+        {
+          "text": "The golden mean",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Virtue ethics centers moral evaluation on what?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Stable character traits",
+          "correct": true
+        },
+        {
+          "text": "Formal legal rules",
+          "correct": false
+        },
+        {
+          "text": "Hypothetical social contracts",
+          "correct": false
+        },
+        {
+          "text": "Net pleasure",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What Greek term names human flourishing in Aristotle?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Arete",
+          "correct": false
+        },
+        {
+          "text": "Telos",
+          "correct": false
+        },
+        {
+          "text": "Eudaimonia",
+          "correct": true
+        },
+        {
+          "text": "Logos",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Care ethics begins from what kind of moral world?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Individual natural rights",
+          "correct": false
+        },
+        {
+          "text": "Market-style exchange",
+          "correct": false
+        },
+        {
+          "text": "Caring relations",
+          "correct": true
+        },
+        {
+          "text": "Blind universal rules",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "According to Singer's version of utilitarianism, what should moral action maximize?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Obedience to duty",
+          "correct": false
+        },
+        {
+          "text": "The cultivation of virtue",
+          "correct": false
+        },
+        {
+          "text": "The satisfaction of preferences",
+          "correct": true
+        },
+        {
+          "text": "The preservation of custom",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What term does Singer use for giving lower weight to interests because of species membership?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Essentialism",
+          "correct": false
+        },
+        {
+          "text": "Anthropocentrism",
+          "correct": false
+        },
+        {
+          "text": "Paternalism",
+          "correct": false
+        },
+        {
+          "text": "Speciesism",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Equal consideration of interests says like interests count how?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Privately",
+          "correct": false
+        },
+        {
+          "text": "Equally",
+          "correct": true
+        },
+        {
+          "text": "Sequentially",
+          "correct": false
+        },
+        {
+          "text": "Locally",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "In 1973 what event badly injured Dax Cowart?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Propane explosion",
+          "correct": true
+        },
+        {
+          "text": "Jet crash",
+          "correct": false
+        },
+        {
+          "text": "Car rollover",
+          "correct": false
+        },
+        {
+          "text": "Factory spill",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "About how much of Cowart's body was burned?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "40 percent",
+          "correct": false
+        },
+        {
+          "text": "65 percent",
+          "correct": true
+        },
+        {
+          "text": "25 percent",
+          "correct": false
+        },
+        {
+          "text": "90 percent",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What routine treatment removed dead tissue from Cowart's burns?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Blood typing",
+          "correct": false
+        },
+        {
+          "text": "Sedation only",
+          "correct": false
+        },
+        {
+          "text": "Debridement",
+          "correct": true
+        },
+        {
+          "text": "Eye lavage",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which psychiatrist concluded Cowart was competent?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Robert B White",
+          "correct": true
+        },
+        {
+          "text": "Peter Singer",
+          "correct": false
+        },
+        {
+          "text": "Henry Beecher",
+          "correct": false
+        },
+        {
+          "text": "James Jones",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What documentary recorded Cowart asking to die?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The Burn Unit",
+          "correct": false
+        },
+        {
+          "text": "Autonomy First",
+          "correct": false
+        },
+        {
+          "text": "Please Let Me Die",
+          "correct": true
+        },
+        {
+          "text": "Dax's Choice",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "complete sentence",
+      "prompt": "At the rehab hospital in Houston what happened when Cowart again refused treatment?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "His refusal was ignored and treatment there continued.",
+          "correct": false
+        },
+        {
+          "text": "His refusal was treated as temporary confusion by staff.",
+          "correct": false
+        },
+        {
+          "text": "His refusal was sent to court before anyone acted.",
+          "correct": false
+        },
+        {
+          "text": "His refusal was honored and treatment there stopped.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "According to Cowart what right was at the center of the case?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Body control",
+          "correct": true
+        },
+        {
+          "text": "Public funding",
+          "correct": false
+        },
+        {
+          "text": "Religious liberty",
+          "correct": false
+        },
+        {
+          "text": "Property rights",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "complete sentence",
+      "prompt": "Which claim from The Autonomy Argument drew the main criticism from Cowart's physicians?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Competent adults may refuse any medical treatment.",
+          "correct": false
+        },
+        {
+          "text": "Cowart was competent when he refused treatment.",
+          "correct": true
+        },
+        {
+          "text": "Treating him over objection violated his moral rights.",
+          "correct": false
+        },
+        {
+          "text": "His mother could override any refusal he made.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "complete sentence",
+      "prompt": "In the Cowart case how is decision-making capacity described?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "It belongs to the family whenever treatment is life-saving.",
+          "correct": false
+        },
+        {
+          "text": "It is specific to a particular decision at a particular time.",
+          "correct": true
+        },
+        {
+          "text": "It is a global status that settles every medical choice.",
+          "correct": false
+        },
+        {
+          "text": "It is morally neutral and unrelated to understanding or reasoning.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "If a patient still has capacity what may a surrogate not do?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Override refusal",
+          "correct": true
+        },
+        {
+          "text": "Offer support",
+          "correct": false
+        },
+        {
+          "text": "Record wishes",
+          "correct": false
+        },
+        {
+          "text": "Ask questions",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which duties make up the four-principles framework?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Respect for persons",
+          "correct": false
+        },
+        {
+          "text": "Non-maleficence",
+          "correct": true
+        },
+        {
+          "text": "The principle of autonomy",
+          "correct": true
+        },
+        {
+          "text": "The principle of justice",
+          "correct": true
+        },
+        {
+          "text": "The duty of beneficence",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which branches of ethical inquiry study moral beliefs moral duties and moral meaning?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The metaethical branch of ethics",
+          "correct": true
+        },
+        {
+          "text": "The descriptive branch of ethics",
+          "correct": true
+        },
+        {
+          "text": "The normative branch of ethics",
+          "correct": true
+        },
+        {
+          "text": "Political philosophy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which moral theories were presented as major lenses for evaluating action?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The virtue-ethics approach",
+          "correct": true
+        },
+        {
+          "text": "The ethics-of-care view",
+          "correct": true
+        },
+        {
+          "text": "The utilitarian theory",
+          "correct": true
+        },
+        {
+          "text": "The relativist view",
+          "correct": false
+        },
+        {
+          "text": "The deontological theory",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which abilities are part of decision-making capacity?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Obey family",
+          "correct": false
+        },
+        {
+          "text": "Clearly communicate a choice",
+          "correct": true
+        },
+        {
+          "text": "Appreciate case",
+          "correct": true
+        },
+        {
+          "text": "Reason clearly",
+          "correct": true
+        },
+        {
+          "text": "Understand relevant information",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which of the following statements about Dax Cowart are true?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "He lost several fingers because of his burns.",
+          "correct": true
+        },
+        {
+          "text": "He repeatedly asked that treatment be stopped.",
+          "correct": true
+        },
+        {
+          "text": "He later earned a law degree and practiced law.",
+          "correct": true
+        },
+        {
+          "text": "He was left blind after the explosion and treatment.",
+          "correct": true
+        },
+        {
+          "text": "He died in the ambulance with his father.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which claims did Cowart hold after recovery?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Glad to live",
+          "correct": true
+        },
+        {
+          "text": "Rights violated",
+          "correct": true
+        },
+        {
+          "text": "Refusal respected",
+          "correct": false
+        },
+        {
+          "text": "Wrong fully erased",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which labels or principles are associated with Peter Singer's utilitarian approach?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "Preference utilitarianism",
+          "correct": true
+        },
+        {
+          "text": "The categorical imperative",
+          "correct": false
+        },
+        {
+          "text": "Equal consideration of interests",
+          "correct": true
+        },
+        {
+          "text": "Speciesism",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which duties most clearly clash in the Dax case?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "The principle of autonomy",
+          "correct": true
+        },
+        {
+          "text": "The principle of justice",
+          "correct": false
+        },
+        {
+          "text": "The duty of beneficence",
+          "correct": true
+        },
+        {
+          "text": "Clinical confidentiality duties",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which descriptions fit a moral dilemma?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "All values align",
+          "correct": false
+        },
+        {
+          "text": "Every option wrong",
+          "correct": true
+        },
+        {
+          "text": "No clean answer",
+          "correct": true
+        },
+        {
+          "text": "One duty settles it",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which details support the claim that Cowart's refusal was serious and informed?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [],
+      "choices": [
+        {
+          "text": "He understood that stopping treatment would likely lead to death.",
+          "correct": true
+        },
+        {
+          "text": "He repeated his refusal over time and in different settings.",
+          "correct": true
+        },
+        {
+          "text": "He spoke lucidly about what he wanted and why.",
+          "correct": true
+        },
+        {
+          "text": "A psychiatrist found that he was competent to decide.",
+          "correct": true
+        },
+        {
+          "text": "His mother immediately agreed that treatment should stop.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
