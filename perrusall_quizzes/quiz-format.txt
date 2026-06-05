@@ -10,7 +10,7 @@ Refer to the template spreadsheet and fill it in with a row for each question yo
 
 Notes on quiz design:
 
-1. The default quiz is around 40 questions. Usually around 30 MC and 10 MR. No T/F or NM. In some cases, this may change.
+1. The default quiz is around 40 questions. Usually around 30 questions from the notebook (split between technical Python questions and conceptual ones) and 10 questions from the paired case study. No T/F or NM questions unless specifically requested.
 2. I prefer longer question stems and shorter answers. Average answer length (across the set) should not exceed 5 words. This is easiest if some questions have 1 o 2 word answers.
 3. Within a single question, all answers should be a similar length. Right answers should be equally likely to be longest, shortest, or in the middle.
 4. False answers need to represent plausible misleaders. They should not (in comparison to right answers) be more likely to use absolutes, negatives, quantifiers, or the like.

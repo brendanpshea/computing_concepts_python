@@ -11,8 +11,8 @@ A template and authoring guide for the 12 main notebooks in the redesigned COMP 
 | Total cells | ~45 |
 | Word count (prose only) | ~6,000 |
 | Reading level | 10thâ€“12th grade |
-| Exercises | 3â€“4, no inline solutions |
-| AI-assisted exercise | At least 1, explicitly called out |
+| Practice exercises | One short **✏️ Your Turn** per concept section, interleaved (not clustered at the end) |
+| End capstone | One **AI-assisted build** — a themed, student-choosable program that fuses the notebook's concepts |
 | Max code cell length | ~25 lines (split longer ones) |
 | Max prose cell length | ~300 words (easier to project and read) |
 | Primary graphics libraries | graphviz, matplotlib |
@@ -312,24 +312,50 @@ Each concept section follows this pattern:
 6. **Variation or edge case** â€” another small code cell OR a matplotlib/graphviz diagram (code, 5â€“15 lines)
 7. **Prose closer** â€” takeaway + transition to next section (markdown, 1 cell, ~75 words)
 
-Not every section needs all seven cells. Some concepts are prose-only (e.g., a networking idea with a single diagram); some are code-heavy. Aim for the average.
+Not every section needs all eight cells (when trimming, the Your Turn is the one to keep). Some concepts are prose-only (e.g., a networking idea with a single diagram); some are code-heavy. Aim for the average.
 
-### 41. Exercise block (3â€“4 exercises, each 1 cell). Can be interleaved through Content.
-Each exercise in its own markdown cell, no solution cells in the notebook.
-- Frame each as a task one of the cast asks the student to do
-- Number them
-- Mark at least one as `ðŸ¤– **AI-Assisted Exercise**` with an explicit instruction to use Gemini / Claude / ChatGPT and verify the result
+### 41. Practice: interleaved "✏️ Your Turn" cells
 
-Example exercise framing:
+Practice is **distributed through the notebook, not piled at the end.** End each concept section with one short **✏️ Your Turn** — a small task the student writes themselves, using the tool they just met.
+
+- **One per concept section**, placed right after that section's explanation.
+- **Heading:** `### ✏️ Your Turn — [Short Task Name]`.
+- **Body:** a markdown cell stating the task in 1–3 sentences (framed around the cast), then a code cell that is a **starter scaffold, not a solution** — an editable value block and `# TODO:` comments, no answer.
+- **Mark the scaffold `#| eval: false`** (see render-safety below) so it renders as an editable starting point instead of executing half-finished code.
+- **No inline solutions.** Keep each to one new idea. A "predict the output" or paper-only reasoning task is a fine Your Turn where hands-on code doesn't fit.
+- Spread the cast; keep at least one Your Turn framed around a female character.
+
 ```markdown
-### Exercise 3 â€” Dwight's Beet Inventory ðŸ¤– AI-Assisted
+### ✏️ Your Turn — Dwight's Low-Stock Beets
 
-Dwight wants a function that takes his beet-type dictionary and returns the three beet types with the lowest stock. Use Gemini to draft the function, then:
-
-1. Paste the function into a code cell and run it against `dwights_beets` (defined above).
-2. Find at least one thing the AI got wrong or could improve. Fix it.
-3. In a markdown cell, write 2â€“3 sentences explaining what you changed and why.
+Dwight wants the three beet types with the lowest stock. Start from `dwights_beets` below and print them.
 ```
+```python
+#| eval: false
+# ⬇️ CHANGE THIS, THEN RE-RUN
+dwights_beets = {"Detroit Dark Red": 12, "Chioggia": 3, "Golden": 7}
+# ----------------------------------
+
+# TODO: print the three beet types with the lowest stock.
+```
+
+### 41b. End-of-notebook capstone (AI-assisted build)
+
+Every notebook ends with **one larger, AI-assisted build** — a small program, ideally **game-like**, that fuses the notebook's concepts into something the student makes their own. This is where the explicit AI-assisted work lives, which lets the interleaved Your Turns stay short.
+
+Design principles:
+
+- **It must exercise the notebook's headline concepts.** Pick a build whose natural shape *requires* them — control flow → a turn-based game (loop + decisions + a function); OOP → a battle game (base class + two subclasses that override); collections → a collection-manager (list + dict + set); searching/sorting → a race ranked with `sorted(key=...)`.
+- **Student-choosable theme.** Give a themed default from the notebook's world, then explicitly invite the student to reskin it (their own setting, characters, subject). Public-domain or original themes only.
+- **The same six-step arc every time**, so students learn the workflow by repetition:
+  1. **Design it first** (in a markdown cell, before touching the AI) — name the pieces.
+  2. **Turn the design into a prompt** — a fill-in-the-blank prompt skeleton with `[bracketed]` slots, sent to Gemini / Claude / ChatGPT.
+  3. **Get the bones working, then test** — paste, run, get the simplest version working and check it by hand before adding anything.
+  4. **Add one or two bells and whistles**, re-testing after each.
+  5. **Check your work / try to break it** — edge cases (empty input, a value out of range); fix one thing it gets wrong.
+  6. **Reflect** — 2–3 sentences on what the AI got wrong and what you fixed, ending on the course rule: *AI is a fast first draft. You verify.*
+- **Two cells:** the markdown brief (the six steps), then an empty `#| eval: false` paste cell — `# ✏️ Paste your AI-built [thing] here, then run it and fix what's broken.`
+- **Placement:** the last section before "Key Terms" (after PyQuiz, if the notebook uses it).
 
 ### 42. Key Terms glossary (1â€“2 cells, markdown)
 Alphabetical list of the technical terms introduced in the notebook. Each entry: term in bold, one-sentence plain-language definition.
@@ -523,11 +549,11 @@ After running the script, the cell will:
 - **In Colab:** collapse to a clickable title bar; the student can click to expand and read the source if curious.
 - **In the rendered Quarto HTML:**
   - if the cell has saved outputs (a diagram, a chart) → the **code is hidden, the output is shown**
-  - if the cell has no saved outputs (an interactive game like the arcades) → the **cell is removed entirely**
+  - if the cell has no saved outputs (a purely interactive helper) → the **cell is removed entirely**
 
 Remove the `#@title` line later and re-run the script — the metadata is cleaned up automatically.
 
-**Use it for:** graphviz flowchart code, matplotlib figure scaffolding that isn't pedagogically interesting, randomized arcade generators, any "trust me, this draws the picture" helper.
+**Use it for:** graphviz flowchart code, matplotlib figure scaffolding that isn't pedagogically interesting, any "trust me, this draws the picture" helper.
 
 **Don't use it for:** code students are meant to read, modify, or copy as a model. That's most cells.
 
@@ -535,7 +561,7 @@ Remove the `#@title` line later and re-run the script — the metadata is cleane
 
 The course includes an in-notebook practice tool (`pyquiz.py`) backed by per-notebook JSON question banks under `tools/python_code_quiz/banks/`. Use it for notebooks where the natural practice format is "write a function that does X" (NB3–NB7, NB11). Skip it where that frame is forced (DB, networks, AI-ethics).
 
-**Where it fits in the notebook:** as the last practice section, just before "## Key Terms". Two cells:
+**Where it fits in the notebook:** the closing self-check, after the interleaved Your Turns and just before the end-of-notebook capstone (which in turn sits just before "## Key Terms"). Two cells:
 
 1. **Markdown intro.** Longer the first time, short on repeat visits.
    - **NB3 (first use):** explain the `def name(params): return ...` template, since students haven't formally seen functions yet.
@@ -563,13 +589,25 @@ practice_tool = PracticeTool(
 
 **Bank size:** aim for ~15–18 problems, ramping in difficulty. Include early gimmes (one-line returns) so students get the rhythm before the harder ones.
 
-### Arcade cells
+### Interactive, input, and scaffold cells: `#| eval: false`
 
-Notebooks 2 onward use the "arcade" pattern: a hidden generator cell producing an infinite stream of randomized practice questions (`trace_arcade`, `flow_arcade`, …). Conventions:
+The site renders with `freeze: auto`, so **cells are executed at render time.** Any cell that would hang or error during a non-interactive render must have `#| eval: false` as its first line — it then shows as an editable code block without running:
 
-- Mark the generator with `#@title 🎮 Arcade name — generator code (click to show)`. The build script removes it from Quarto HTML and collapses it in Colab.
-- **Keep** the intro markdown cell — short description of what the arcade does, what modes exist, ending in "Run the cell and play."
-- **Do not add** an "Understanding the Code" walk-through or an "Extend the Arcade" exercise after the arcade cell. Both are tangents — the generator is a tool, not a teaching object.
+- **`input()` cells** (they block forever waiting on stdin),
+- **"✏️ Your Turn" and capstone scaffolds** (intentionally unfinished — `# TODO:`s and blank assignments would raise),
+- **the PyQuiz bootstrap** (network + widget),
+- anything meant to be run by the student in Colab rather than shown as static output.
+
+Cells that *should* show output in the HTML — finished worked demos, `#@title` diagram generators — stay executable (no `#| eval: false`). Rule of thumb: if it's a finished example whose output teaches, let it run; if it's a starting point or an interactive tool, mark it `#| eval: false`.
+
+### No arcades — use lightweight prediction beats
+
+Earlier drafts used hidden "arcade" generators (`trace_arcade`, `flow_arcade`, …) for infinite randomized drills. **Don't add these.** They're a tangent: a wall of generator code the student can't read, and they crowd out hands-on practice. Fill that role instead with:
+
+- the **interleaved Your Turn** cells (the real practice), and
+- a short **🔮 Predict Before You Run** beat where useful — a markdown cell asking the student to predict a small cell's output before running it. One or two sentences, no generator code.
+
+PyQuiz (above) remains the optional closing self-check for function-writing notebooks.
 
 ---
 
@@ -577,8 +615,9 @@ Notebooks 2 onward use the "arcade" pattern: a hidden generator cell producing a
 
 - [ ] Title, LOs, lecture-link placeholder, opening hook all present
 - [ ] Cast is consistent throughout and comes from the planned world for this notebook
-- [ ] 4â€“5 concept sections, each following the 7-cell pattern (or a defensible variation)
-- [ ] 3â€“4 exercises, no inline solutions, at least one marked AI-Assisted
+- [ ] 4–5 concept sections, each following the 8-cell pattern (ending in a ✏️ Your Turn) or a defensible variation
+- [ ] One short **✏️ Your Turn** after each concept section (interleaved, scaffolded, no inline solutions)
+- [ ] One end-of-notebook **AI-assisted capstone** that fuses the notebook's concepts, with a student-choosable theme
 - [ ] Key Terms glossary covers every bolded term in the notebook
 - [ ] Summary + What's Next + credits footer in place
 - [ ] No code cell exceeds ~25 lines
@@ -588,9 +627,9 @@ Notebooks 2 onward use the "arcade" pattern: a hidden generator cell producing a
 - [ ] Word count ~6,000; cell count ~45
 - [ ] Read through at projector resolution â€” no cell overflows a screen
 - [ ] No bare `---` divider lines anywhere in markdown cells
-- [ ] Diagram and arcade-generator cells marked with `#@title`; arcades have no walk-through or extension exercise after them
+- [ ] Diagram/helper-generator cells marked with `#@title`; interactive, `input()`, and scaffold cells marked `#| eval: false` (renders safely under `freeze: auto`)
 - [ ] `python tools/add_colab_header.py` run after edits (refreshes Colab header, strips dividers, normalizes hidden cells)
-- [ ] If using PyQuiz: `## Practice: PyQuiz` section is the last section before "Key Terms", with the standard bootstrap and a `banks/nbNN_*.json` bank scoped to concepts already introduced
+- [ ] If using PyQuiz: `## Practice: PyQuiz` sits after the Your Turns and before the capstone, with the standard bootstrap and a `banks/nbNN_*.json` bank scoped to concepts already introduced
 
 ---
 

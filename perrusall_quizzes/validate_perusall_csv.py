@@ -31,9 +31,10 @@ LOADED_WORD_RE = re.compile(
 )
 VOWEL_GROUP_RE = re.compile(r"[aeiouy]+", re.IGNORECASE)
 WORD_RE = re.compile(r"[A-Za-z0-9']+")
-META_PROMPT_RE = re.compile(r"\bpart\s+[ab]\b|\bthis lecture\b", re.IGNORECASE)
+META_PROMPT_RE = re.compile(r"\bpart\s+[ab]\b|\bthis lecture\b|\bthis notebook\b|\bthis cell\b|\bthis case study\b", re.IGNORECASE)
 PREMISE_PROMPT_RE = re.compile(r"\bwhich premise\b", re.IGNORECASE)
 PREMISE_CHOICE_RE = re.compile(r"Premise\s+\d+", re.IGNORECASE)
+LINE_CELL_CHOICE_RE = re.compile(r"(Line|Cell)\s+\d+", re.IGNORECASE)
 FACT_STYLE_PROMPT_RE = re.compile(r"^(Which facts|Which statements|Which details)\b", re.IGNORECASE)
 SENTENCE_STYLE_PROMPT_RE = re.compile(r"\bwhat initially happened\b|\bdescribed as what\b", re.IGNORECASE)
 STOPWORDS = {
@@ -96,8 +97,11 @@ class ValidationResult:
         self.warnings.append(message)
 
 
+def strip_code(text: str) -> str:
+    return re.sub(r"`[^`]*`", "", text)
+
 def count_words(text: str) -> int:
-    return len(WORD_RE.findall(text))
+    return len(WORD_RE.findall(strip_code(text)))
 
 
 def count_syllables(word: str) -> int:
@@ -112,9 +116,10 @@ def count_syllables(word: str) -> int:
 
 
 def flesch_kincaid_grade(text: str) -> float:
-    sentences = re.split(r"[.!?]+", text)
+    text_no_code = strip_code(text)
+    sentences = re.split(r"[.!?]+", text_no_code)
     sentence_count = len([sentence for sentence in sentences if sentence.strip()]) or 1
-    words = WORD_RE.findall(text)
+    words = WORD_RE.findall(text_no_code)
     word_count = len(words)
     if word_count == 0:
         return 0.0
@@ -213,6 +218,11 @@ def validate_row(result: ValidationResult, row_number: int, row: dict[str, str])
     ):
         result.add_warning(
             f"row {row_number}: premise-number placeholders are not informative; restate the actual premises instead"
+        )
+        
+    if non_empty_choices and any(LINE_CELL_CHOICE_RE.fullmatch(choice) for _, choice in non_empty_choices):
+        result.add_warning(
+            f"row {row_number}: line or cell number placeholders are not informative; put the actual code or algorithm step in the choices"
         )
 
     for _, choice in non_empty_choices:

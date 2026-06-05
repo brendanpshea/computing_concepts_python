@@ -1,16 +1,16 @@
 {
-  "title": "Replace With Quiz Title",
+  "title": "Replace With Chapter Title (e.g. Chapter 1 - Hardware & Lovelace)",
   "shuffle_answers": true,
   "questions": [
     {
       "question_type": "MC",
       "answer_style": "single word or term",
-      "prompt": "Replace this prompt with a one-best-answer question.",
+      "prompt": "Replace this prompt with a conceptual notebook or conceptual case study question.",
       "answer_explanation": "",
       "points": "",
       "tags": [
-        "replace-me",
-        "key-term"
+        "source: case-study",
+        "type: conceptual"
       ],
       "choices": [
         {
@@ -34,28 +34,28 @@
     {
       "question_type": "MC",
       "answer_style": "clause",
-      "prompt": "Replace this prompt with a clause-style answer set.",
+      "prompt": "Replace this prompt with a technical programming question (e.g. `What does len(my_list) return?`).",
       "answer_explanation": "",
       "points": "",
       "tags": [
-        "replace-me",
-        "clause-style"
+        "source: notebook",
+        "type: technical"
       ],
       "choices": [
         {
-          "text": "The correct short clause",
+          "text": "`The number of elements in the list`",
           "correct": true
         },
         {
-          "text": "A plausible short clause",
+          "text": "`The last element in the list`",
           "correct": false
         },
         {
-          "text": "Another plausible clause",
+          "text": "`The memory address of the list`",
           "correct": false
         },
         {
-          "text": "A final short clause",
+          "text": "`The capacity of the list`",
           "correct": false
         }
       ]
@@ -67,8 +67,8 @@
       "answer_explanation": "",
       "points": "",
       "tags": [
-        "replace-me",
-        "sentence-style"
+        "source: notebook",
+        "type: conceptual"
       ],
       "choices": [
         {

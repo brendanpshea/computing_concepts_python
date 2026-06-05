@@ -13,21 +13,21 @@ Each source file is a `.quiz.json` document with this shape:
 
 ```json
 {
-  "title": "Chapter 1 - Principles and Reasoning",
+  "title": "Chapter 1 - Notebook and Case Study",
   "shuffle_answers": true,
   "questions": [
     {
       "question_type": "MC",
       "answer_style": "clause",
-      "prompt": "Which branch asks what people morally ought to do?",
+      "prompt": "What does a Turing machine mathematically model of?",
       "answer_explanation": "",
       "points": "",
-      "tags": ["principles", "ethics-branches"],
+      "tags": ["source: case-study", "topic: turing-machine"],
       "choices": [
-        { "text": "The descriptive branch of ethics", "correct": false },
-        { "text": "The normative branch of ethics", "correct": true },
-        { "text": "The metaethical branch of ethics", "correct": false },
-        { "text": "The clinical decision method", "correct": false }
+        { "text": "The physical construction of CPUs", "correct": false },
+        { "text": "The logical limits of computation", "correct": true },
+        { "text": "The syntax of early compilers", "correct": false },
+        { "text": "The storage capacity of memory", "correct": false }
       ]
     }
   ]
@@ -73,11 +73,12 @@ python .\perrusall_quizzes\shuffle_perusall_answers.py .\perrusall_quizzes
 ## Recommended Practice
 
 - Edit the `.quiz.json` files, not the generated CSVs, unless you are making a quick emergency fix.
-- Keep `tags` short and topic-oriented so you can later search for concepts, cases, and answer-style distributions.
-- Ask about the underlying concept, case, argument, or doctrine, not the course packaging. Avoid prompts framed around `Part A`, `Part B`, or `this lecture`.
-- When a prompt asks for a named term, doctrine, or test, preserve the canonical label verbatim. Do not replace `speciesism`, `eudaimonia`, or `the categorical imperative` with descriptive glosses.
-- Avoid prompt wording that cues the answer by repeating its stem. If the theory name already contains the answer word, rewrite the prompt so students must recognize the concept rather than echo it.
-- When a question is about events, facts, statements, or an argument's content, write the answer choices as clauses or complete sentences. Use periods on complete-sentence choices.
-- Do not use placeholder answers like `Premise 1` or `Premise 2`. Put the actual premise statements in the answer choices.
+- When including code in prompts or answers, wrap it in backticks (`like this`). The validator ignores text in backticks during reading-level checks. Furthermore, commas and quotes in code can break CSV flat files, making `.quiz.json` editing safer.
+- Keep `tags` structured so you can track quiz balance. Use tags like `"source: notebook"`, `"source: case-study"`, `"type: conceptual"`, and `"type: technical"` to quickly eyeball question ratios.
+- Ask about the underlying concept, algorithm, case fact, or doctrine, not the course packaging. Avoid prompts framed around `this notebook`, `this cell`, `this case study`, or `this lecture`.
+- When a prompt asks for a named term, preserving the canonical label verbatim is fine. Do not replace terms like `polymorphism` or `encapsulation` with generic descriptions if the question tests vocabulary recognition.
+- Avoid prompt wording that cues the answer by repeating its stem.
+- When a question is about events, facts, operations, or code execution output, write the answer choices as clauses or complete sentences. Use periods on complete-sentence choices.
+- Do not use placeholder answers like `Line 5` or `Cell 2`. Put the actual code chunk or algorithmic logical step in the answer choices.
 - Use `complete sentence` only where the question actually benefits from full-sentence distractors.
 - Run generation and validation together after every batch of edits.

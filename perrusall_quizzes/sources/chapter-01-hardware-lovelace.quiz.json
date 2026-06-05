@@ -1,0 +1,1166 @@
+{
+  "title": "Chapter 1 - Hardware & Lovelace",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does computer science study?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Algorithms, data, and problem-solving",
+          "correct": true
+        },
+        {
+          "text": "Only how physical computer hardware is built",
+          "correct": false
+        },
+        {
+          "text": "How to use apps and spreadsheets",
+          "correct": false
+        },
+        {
+          "text": "The mechanics of repairing laptops",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which analogy best describes the relationship between computer science and computers?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Astronomy to telescopes",
+          "correct": true
+        },
+        {
+          "text": "Biology to microscopes",
+          "correct": false
+        },
+        {
+          "text": "Chemistry to beakers",
+          "correct": false
+        },
+        {
+          "text": "Physics to particles",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is Google Colab?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A browser-based Python environment",
+          "correct": true
+        },
+        {
+          "text": "A physical piece of server hardware",
+          "correct": false
+        },
+        {
+          "text": "A language older than Python",
+          "correct": false
+        },
+        {
+          "text": "A social media platform for coders",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does a built-in function like `print()` do?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It performs a predefined action",
+          "correct": true
+        },
+        {
+          "text": "It crashes the computer if misused",
+          "correct": false
+        },
+        {
+          "text": "It invents a new operation",
+          "correct": false
+        },
+        {
+          "text": "It creates physical hardware",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which built-in AI assistant does Colab provide?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Gemini",
+          "correct": true
+        },
+        {
+          "text": "Siri",
+          "correct": false
+        },
+        {
+          "text": "Alexa",
+          "correct": false
+        },
+        {
+          "text": "Cortana",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did nineteenth-century science need algorithms?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "To compute long navigation tables without errors",
+          "correct": true
+        },
+        {
+          "text": "To browse the early internet",
+          "correct": false
+        },
+        {
+          "text": "To design automated steam engines",
+          "correct": false
+        },
+        {
+          "text": "To build early video games",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was Charles Babbage's Analytical Engine intended to be?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A general-purpose mechanical computer",
+          "correct": true
+        },
+        {
+          "text": "The first electric supercomputer",
+          "correct": false
+        },
+        {
+          "text": "A calculator using vacuum tubes",
+          "correct": false
+        },
+        {
+          "text": "A silicon-based logic board",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the equivalent of the CPU in the Analytical Engine?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The Mill",
+          "correct": true
+        },
+        {
+          "text": "The Store",
+          "correct": false
+        },
+        {
+          "text": "The Variable Cards",
+          "correct": false
+        },
+        {
+          "text": "The Output Printer",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the equivalent of memory in the Analytical Engine?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The Store",
+          "correct": true
+        },
+        {
+          "text": "The Mill",
+          "correct": false
+        },
+        {
+          "text": "The Stack",
+          "correct": false
+        },
+        {
+          "text": "The CPU",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How do factorial values grow as the input sequence increases?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Explosively and non-linearly",
+          "correct": true
+        },
+        {
+          "text": "At a steady linear pace",
+          "correct": false
+        },
+        {
+          "text": "They decrease over time",
+          "correct": false
+        },
+        {
+          "text": "They remain exactly the same",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What symbol is used to pass data to a function?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Parentheses `()`",
+          "correct": true
+        },
+        {
+          "text": "Brackets `[]`",
+          "correct": false
+        },
+        {
+          "text": "Braces `{}`",
+          "correct": false
+        },
+        {
+          "text": "Quotes `\"\"`",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In `def compute_factorials(n):`, what does `def` do?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "It defines a new function",
+          "correct": true
+        },
+        {
+          "text": "It deletes the variable `n`",
+          "correct": false
+        },
+        {
+          "text": "It defers execution until later",
+          "correct": false
+        },
+        {
+          "text": "It defaults to zero",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What kind of loop requires a test condition or diamond shape in a flowchart?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "A repetition structure",
+          "correct": true
+        },
+        {
+          "text": "A sequential assignment",
+          "correct": false
+        },
+        {
+          "text": "A variable declaration",
+          "correct": false
+        },
+        {
+          "text": "A hardware print step",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What does the line-for-line translation of the diamond describe?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "A loop test",
+          "correct": true
+        },
+        {
+          "text": "A variable type",
+          "correct": false
+        },
+        {
+          "text": "A syntax error",
+          "correct": false
+        },
+        {
+          "text": "A data structure",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the term for `n` in `compute_factorials(n)`?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "An input parameter",
+          "correct": true
+        },
+        {
+          "text": "A loop test variable",
+          "correct": false
+        },
+        {
+          "text": "An accumulator",
+          "correct": false
+        },
+        {
+          "text": "An output printer",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the outcome of passing a string to `print()`?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "The string content is displayed",
+          "correct": true
+        },
+        {
+          "text": "The system shuts down",
+          "correct": false
+        },
+        {
+          "text": "The string is saved to disk",
+          "correct": false
+        },
+        {
+          "text": "The text is translated to French",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What shape typically represents a repetition back-arrow in a flowchart?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "A loop",
+          "correct": true
+        },
+        {
+          "text": "A diamond",
+          "correct": false
+        },
+        {
+          "text": "A square",
+          "correct": false
+        },
+        {
+          "text": "An oval",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which variable compounding each pass characterizes the factorial algorithm?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "An accumulator",
+          "correct": true
+        },
+        {
+          "text": "A static constant",
+          "correct": false
+        },
+        {
+          "text": "A Boolean test",
+          "correct": false
+        },
+        {
+          "text": "An operation card",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How do you run code in Colab without installing Python?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "It runs remotely in a browser",
+          "correct": true
+        },
+        {
+          "text": "It downloads a local virtual machine",
+          "correct": false
+        },
+        {
+          "text": "It writes a batch file",
+          "correct": false
+        },
+        {
+          "text": "It uses Javascript only",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What mathematical operation does a factorial algorithm perform repeatedly?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Multiplication",
+          "correct": true
+        },
+        {
+          "text": "Addition",
+          "correct": false
+        },
+        {
+          "text": "Subtraction",
+          "correct": false
+        },
+        {
+          "text": "Square roots",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What represents the execution of instructions in Colab?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Cells",
+          "correct": true
+        },
+        {
+          "text": "Pages",
+          "correct": false
+        },
+        {
+          "text": "Slides",
+          "correct": false
+        },
+        {
+          "text": "Sheets",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How are instructions organized in a function?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "In a named, reusable block",
+          "correct": true
+        },
+        {
+          "text": "In random execution order",
+          "correct": false
+        },
+        {
+          "text": "As a single-use script only",
+          "correct": false
+        },
+        {
+          "text": "As immutable hardware logic",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What does 3! equal?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "6",
+          "correct": true
+        },
+        {
+          "text": "3",
+          "correct": false
+        },
+        {
+          "text": "9",
+          "correct": false
+        },
+        {
+          "text": "12",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What happens to the running product in a factorial loop?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "It is multiplied each pass",
+          "correct": true
+        },
+        {
+          "text": "It is cleared back to zero",
+          "correct": false
+        },
+        {
+          "text": "It is printed immediately",
+          "correct": false
+        },
+        {
+          "text": "It creates an infinite loop",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why is `print` considered built-in?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "It comes pre-installed with Python",
+          "correct": true
+        },
+        {
+          "text": "It requires external downloads",
+          "correct": false
+        },
+        {
+          "text": "It is only available online",
+          "correct": false
+        },
+        {
+          "text": "It was written by Babbage",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which two statements accurately describe Colab?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It runs code remotely in your browser.",
+          "correct": true
+        },
+        {
+          "text": "It provides access to AI pair-programmers.",
+          "correct": true
+        },
+        {
+          "text": "It requires an expensive physical server at your desk.",
+          "correct": false
+        },
+        {
+          "text": "It only supports block-based programming languages.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which elements correspond to von Neumann architecture in Babbage's design?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The Mill acts as the CPU.",
+          "correct": true
+        },
+        {
+          "text": "The Store functions as system memory.",
+          "correct": true
+        },
+        {
+          "text": "The variable cards replace the need for math.",
+          "correct": false
+        },
+        {
+          "text": "The steam engine executes Python directly.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "What operations are required to compute factorials?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Using an accumulator variable.",
+          "correct": true
+        },
+        {
+          "text": "A loop to iterate through values.",
+          "correct": true
+        },
+        {
+          "text": "Division by zero on each pass.",
+          "correct": false
+        },
+        {
+          "text": "Sorting the numbers in reverse.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "In Python, which concepts apply to functions?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "They are reusable blocks of code.",
+          "correct": true
+        },
+        {
+          "text": "They can accept input parameters like `n`.",
+          "correct": true
+        },
+        {
+          "text": "They run automatically without being invoked.",
+          "correct": false
+        },
+        {
+          "text": "They must always use a while loop inside.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "What describes `compute_factorials` as implemented in the notebook?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "It demonstrates algorithmic repetition.",
+          "correct": true
+        },
+        {
+          "text": "It is defined using the `def` keyword.",
+          "correct": true
+        },
+        {
+          "text": "It is part of the standard Python library.",
+          "correct": false
+        },
+        {
+          "text": "It computes logarithmic navigation tables.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was 'Lady Lovelace's Objection'?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Machines cannot originate anything",
+          "correct": true
+        },
+        {
+          "text": "Machines will eventually overpower humans",
+          "correct": false
+        },
+        {
+          "text": "Steam computers cannot execute loops",
+          "correct": false
+        },
+        {
+          "text": "Only men can write code",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did Turing propose to replace the question 'Can machines think?'",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The Imitation Game",
+          "correct": true
+        },
+        {
+          "text": "The Analytical Engine",
+          "correct": false
+        },
+        {
+          "text": "The Universality Theorem",
+          "correct": false
+        },
+        {
+          "text": "The Halting Problem",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Who did Lovelace translate her Notes from?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Luigi Menabrea",
+          "correct": true
+        },
+        {
+          "text": "Charles Babbage",
+          "correct": false
+        },
+        {
+          "text": "Alan Turing",
+          "correct": false
+        },
+        {
+          "text": "Mary Shelley",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which mathematical sequence did Lovelace detail in Note G?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The Bernoulli numbers",
+          "correct": true
+        },
+        {
+          "text": "The Fibonacci sequence",
+          "correct": false
+        },
+        {
+          "text": "The prime numbers",
+          "correct": false
+        },
+        {
+          "text": "The factorials",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "To Lovelace, what constituted the 'original' work of computing?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Designing the algorithmic rules",
+          "correct": true
+        },
+        {
+          "text": "Building the brass engine",
+          "correct": false
+        },
+        {
+          "text": "Punching the jacquard cards",
+          "correct": false
+        },
+        {
+          "text": "Executing the operations",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a universal machine?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A machine that can simulate any other machine",
+          "correct": true
+        },
+        {
+          "text": "A machine designed only for Bernoulli numbers",
+          "correct": false
+        },
+        {
+          "text": "A mechanical calculator powered by steam",
+          "correct": false
+        },
+        {
+          "text": "A physical loop of infinite paper",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did Turing think machines surprise us?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "We cannot predict the consequences of complex rules",
+          "correct": true
+        },
+        {
+          "text": "They learn to break our rules",
+          "correct": false
+        },
+        {
+          "text": "They possess a human soul",
+          "correct": false
+        },
+        {
+          "text": "They randomly alter their data",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does a Turing test judge if a machine is 'thinking'?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "If a human cannot distinguish it from a human player",
+          "correct": true
+        },
+        {
+          "text": "If it solves equations faster than a human",
+          "correct": false
+        },
+        {
+          "text": "If it originates new mathematics",
+          "correct": false
+        },
+        {
+          "text": "If it translates French perfectly",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What term describes a finite list of unambiguous steps?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "An algorithm",
+          "correct": true
+        },
+        {
+          "text": "A heuristic",
+          "correct": false
+        },
+        {
+          "text": "A processor",
+          "correct": false
+        },
+        {
+          "text": "An Engine",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which details apply to Turing's universal machine concept?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It relies on the idea that rules can be stored as data.",
+          "correct": true
+        },
+        {
+          "text": "It implies one machine can execute any computable program.",
+          "correct": true
+        },
+        {
+          "text": "It requires a different physical machine for each problem.",
+          "correct": false
+        },
+        {
+          "text": "It was proposed after World War II.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
