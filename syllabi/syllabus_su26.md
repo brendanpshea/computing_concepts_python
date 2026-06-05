@@ -84,7 +84,7 @@ Critical Thinking
 
 Your final grade is a weighted average of the following:
 
-** Case Studies and Quizzes on Perusall - 20% **
+**Case Studies and Quizzes on Perusall - 20%**
 
 This will provide you with the opportunity to reflect on key ideas, events, and issues in computer science. They will be delivered in *Perusall* (see below).
 
@@ -98,7 +98,7 @@ Exams are delivered through D2L and require **Respondus LockDown Browser with Re
 
 You'll be prompted to install LockDown Browser the first time you launch a quiz from D2L. I recommend installing it and running a short practice quiz **at least a few days before Exam 1** so any setup problems surface early.
 
-** Programminmg Project (20%).** An independent programming project -- more details will be proviced later.
+**Programming Project (20%).** An independent programming project -- more details will be provided later.
 
 ### Attendance 📅
 
@@ -190,12 +190,12 @@ Exams are scheduled to **open Friday evening and close Sunday night** so you can
 2. Week 2 (6/14 to 6/20)
 - Chapter 2: Machine Architecture
 - Chapter 3: Python Basics, Pseudocode, and Flowcharts
-3. Week 3 (6/21 to 6/28)
+3. Week 3 (6/21 to 6/27)
 - Chapter 4: Control Flow and Functions
 - Exam 1
 4. Week 4 (6/28 to 7/4)
 - Chapter 5: Collections and Abstract Data Types
-- Chapter 6: Modues and OOP
+- Chapter 6: Modules and OOP
 5. Week 5 (7/5 to 7/11)
 - Chapter 7: Algorithms, Complexity & the Limits of Computation
 - Chapter 8: Software Engineering: SDLC, Git & AI-Assisted Development
@@ -205,8 +205,8 @@ Exams are scheduled to **open Friday evening and close Sunday night** so you can
 - Chapter 10: OS, Networks, Cloud & the Web
 7. Week 7 (7/19 to 7/25)
 - Chapter 11: Cybersecurity & Secure Software Development
-- Chapter 12:  AI, Machine Learning & AI
+- Chapter 12: Artificial Intelligence & Machine Learning
 8. Week 8 (7/26 to 8/1)
 - Final Project
 - Exam 3
-9. Week 9 (8/2 to 8/6). End of class
+9. Week 9 (8/2 to 8/6) — short wrap-up week; course officially ends 8/6. (Content is delivered across the eight weeks above; this is a brief closing period.)
