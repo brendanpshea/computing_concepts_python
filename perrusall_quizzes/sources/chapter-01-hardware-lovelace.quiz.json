@@ -92,7 +92,7 @@
     {
       "question_type": "MC",
       "answer_style": "clause",
-      "prompt": "What does a built-in function like `print()` do?",
+      "prompt": "What does a built-in function like <code>print()</code> do?",
       "answer_explanation": "",
       "points": "",
       "tags": [
@@ -304,19 +304,19 @@
       ],
       "choices": [
         {
-          "text": "Parentheses `()`",
+          "text": "Parentheses <code>()</code>",
           "correct": true
         },
         {
-          "text": "Brackets `[]`",
+          "text": "Brackets <code>[]</code>",
           "correct": false
         },
         {
-          "text": "Braces `{}`",
+          "text": "Braces <code>{}</code>",
           "correct": false
         },
         {
-          "text": "Quotes `\"\"`",
+          "text": "Quotes <code>\"\"</code>",
           "correct": false
         }
       ]
@@ -324,7 +324,7 @@
     {
       "question_type": "MC",
       "answer_style": "clause",
-      "prompt": "In `def compute_factorials(n):`, what does `def` do?",
+      "prompt": "In <code>def compute_factorials(n):</code>, what does <code>def</code> do?",
       "answer_explanation": "",
       "points": "",
       "tags": [
@@ -337,7 +337,7 @@
           "correct": true
         },
         {
-          "text": "It deletes the variable `n`",
+          "text": "It deletes the variable <code>n</code>",
           "correct": false
         },
         {
@@ -411,7 +411,7 @@
     {
       "question_type": "MC",
       "answer_style": "single word or term",
-      "prompt": "What is the term for `n` in `compute_factorials(n)`?",
+      "prompt": "What is the term for <code>n</code> in <code>compute_factorials(n)</code>?",
       "answer_explanation": "",
       "points": "",
       "tags": [
@@ -440,7 +440,7 @@
     {
       "question_type": "MC",
       "answer_style": "clause",
-      "prompt": "What is the outcome of passing a string to `print()`?",
+      "prompt": "What is the outcome of passing a string to <code>print()</code>?",
       "answer_explanation": "",
       "points": "",
       "tags": [
@@ -701,7 +701,7 @@
     {
       "question_type": "MC",
       "answer_style": "clause",
-      "prompt": "Why is `print` considered built-in?",
+      "prompt": "Why is <code>print</code> considered built-in?",
       "answer_explanation": "",
       "points": "",
       "tags": [
@@ -830,7 +830,7 @@
           "correct": true
         },
         {
-          "text": "They can accept input parameters like `n`.",
+          "text": "They can accept input parameters like <code>n</code>.",
           "correct": true
         },
         {

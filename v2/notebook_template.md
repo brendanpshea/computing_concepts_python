@@ -1,4 +1,4 @@
-﻿# Notebook Template & Style Guide â€” Summer 2026
+# Notebook Template & Style Guide — Summer 2026
 
 A template and authoring guide for the 12 main notebooks in the redesigned COMP 1150. Use this as a checklist when drafting; deviate when a topic demands it, but aim to keep the look and rhythm consistent across the semester.
 
@@ -10,7 +10,7 @@ A template and authoring guide for the 12 main notebooks in the redesigned COMP 
 |------|--------|
 | Total cells | ~45 |
 | Word count (prose only) | ~6,000 |
-| Reading level | 10thâ€“12th grade |
+| Reading level | 10th–12th grade |
 | Practice exercises | One short **✏️ Your Turn** per concept section, interleaved (not clustered at the end) |
 | End capstone | One **AI-assisted build** — a themed, student-choosable program that fuses the notebook's concepts |
 | Max code cell length | ~25 lines (split longer ones) |
@@ -21,8 +21,8 @@ A template and authoring guide for the 12 main notebooks in the redesigned COMP 
 
 ## Voice & Style
 
-- **Reading level: 10thâ€“12th grade.** Short sentences. Active voice. Plain words. Explain every technical term on first use and add it to the Key Terms glossary.
-- **Concrete over abstract.** Every concept lands in a scene with named characters doing something recognizable. No abstract "a user" or "a programmer" â€” always Dwight, always Elizabeth Bennet, always Gandalf.
+- **Reading level: 10th–12th grade.** Short sentences. Active voice. Plain words. Explain every technical term on first use and add it to the Key Terms glossary.
+- **Concrete over abstract.** Every concept lands in a scene with named characters doing something recognizable. No abstract "a user" or "a programmer" — always Dwight, always Elizabeth Bennet, always Gandalf.
 - **Funny when it fits; never forced.** The characters supply the humor. You don't need to punch up every paragraph.
 - **Don't assume prior programming background.** A student can have seen zero code and still follow along.
 - **Philosophical asides belong in the case studies, not the notebooks.** Notebooks are for doing. Case studies are for reflecting.
@@ -30,7 +30,7 @@ A template and authoring guide for the 12 main notebooks in the redesigned COMP 
 ---
 ## Cast Balance & Representation
 
-- **Every notebook world must include at least one named female character in a meaningful role.** She should do real conceptual work in the examples â€” making decisions, spotting errors, designing systems, asking good questions, or leading part of the scenario.
+- **Every notebook world must include at least one named female character in a meaningful role.** She should do real conceptual work in the examples — making decisions, spotting errors, designing systems, asking good questions, or leading part of the scenario.
 - **Avoid token casting.** Don't add one woman to the cast and then give all the technical action to male characters. Spread agency across the notebook.
 - **Use role-fit, not stereotype.** Female characters can be leads, engineers, analysts, founders, operators, security specialists, or skeptics. Do not default them to only support or administrative roles unless that is being deliberately subverted.
 - **Exercises should reflect this too.** At least one exercise prompt in each notebook should be framed around a female character's task, question, or problem.
@@ -46,106 +46,97 @@ Before drafting a notebook, confirm:
 
 **Pick one "world" per notebook.** Keep the cast consistent inside a notebook so students build a mental model of who's who. Switch worlds between notebooks for variety.
 
-**Within a world, spread characters across several different businesses and industries.** A single "world = one company" setup makes every code example rhyme with the last one. Instead, cast the source-material characters across a *universe* of 5â€“6 small-to-mid-sized businesses â€” a clinic here, a game studio there, a logistics firm, a lending shop, a civic agency. This is what gives the course its code variety: a dictionary example in the Austen world can come from Elizabeth's publishing house, while a list example can come from Jane's clinic and a class example can come from Darcy's investment fund.
+**Within a world, spread characters across several different businesses and industries.** A single "world = one company" setup makes every code example rhyme with the last one. Instead, cast the source-material characters across a *universe* of 5–6 small-to-mid-sized businesses — a clinic here, a game studio there, a logistics firm, a lending shop, a civic agency. This is what gives the course its code variety: a dictionary example in the Austen world can come from Elizabeth's publishing house, while a list example can come from Jane's clinic and a class example can come from Darcy's investment fund.
 
 Each roster below aims for:
-- **5â€“6 named characters spread across 5â€“6 distinct businesses** (healthcare, finance, logistics, retail, media, game design, civic tech, security, ag, manufacturing, etc.)
-- **Even gender balance** â€” at least 3F/3M in every roster of 6
-- **Role-fit, not stereotype** â€” female characters lead, build, investigate, and engineer; they are not defaulted into support roles
+- **5–6 named characters spread across 5–6 distinct businesses** (healthcare, finance, logistics, retail, media, game design, civic tech, security, ag, manufacturing, etc.)
+- **Even gender balance** — at least 3F/3M in every roster of 6
+- **Role-fit, not stereotype** — female characters lead, build, investigate, and engineer; they are not defaulted into support roles
 
-Each business gets a "code territory" note â€” the kinds of code examples that industry naturally produces. Use this to pick the right business for the concept you're teaching.
+Each business gets a "code territory" note — the kinds of code examples that industry naturally produces. Use this to pick the right business for the concept you're teaching.
 
 ---
 
-### NB 1 â€” Sherlock Holmes (Victorian-Modern London)
-*Pairs with: What Is Computing? + AI Pair-Programmer.*
+### NB 1 — A Story of Four Algorithms (History of Computing)
+*Pairs with: What Is Computing? + AI Pair-Programmer. Four historical algorithms, each on the hardware of its era — the cast is real computing pioneers, not a business world.*
 
-| Business | Character (role) | Code territory |
+| Era / Algorithm | Figure | Code territory |
 |---|---|---|
-| 221B Consulting (forensic data firm) | **Sherlock Holmes**, lead analyst | log parsing, pattern matching, evidence chains, set operations |
-| Adler Intelligence (private intel) | **Irene Adler**, founder & CEO | risk scoring, encrypted records, access control |
-| Watson Family Practice (GP clinic) | **John Watson**, physician-owner | patient records, scheduling, symptom dictionaries |
-| Hudson Holdings (property management) | **Mrs. Hudson**, owner | tenant ledgers, rent tracking, maintenance tickets |
-| Lestrade Public Safety Tech (civic software) | **Inspector Lestrade**, director | incident reports, mapping, open government data |
-| Hunter Tutoring (exam prep & mentoring) | **Violet Hunter**, founder | student progress, test scores, cohort scheduling |
+| Lovelace's Note G (1843) | **Ada Lovelace**, on Babbage's Analytical Engine | sequences, factorials — the first program |
+| Hollerith's Tabulator (1890) | **Herman Hollerith**, census engineer | counting & grouping records, tallies |
+| Turing's Bombe (1940s) | **Alan Turing**, codebreaker | the Caesar cipher, brute-force search |
+| Weizenbaum's ELIZA (1966) | **Joseph Weizenbaum**, MIT | pattern-matching, rule lists, chatbots |
 
-**Balance:** 3F / 3M.
+**Balance:** Ada Lovelace opens the notebook as the first programmer. Historical, public-domain cast.
 
 ---
 
-### NB 2 â€” Classic Nintendo (The Mushroom Kingdom & Neighbors)
-*Pairs with: Machine Architecture & Data Representation. Retro-hardware feel is a natural fit.*
+### NB 2 — Eight Bits & Bob (Retro Game Studio)
+*Pairs with: Machine Architecture & Data Representation. A small studio shipping onto the 8-bit "PixelBox 8" console, where every bit of the memory budget counts.*
 
-| Business | Character (role) | Code territory |
+| Role | Character | Code territory |
 |---|---|---|
-| Peach's Castle Events (event management platform) | **Princess Peach**, founder | guest lists, RSVP tables, seat assignments |
-| Samus Galactic Security (contract security) | **Samus Aran**, founder-engineer | sensor data, bit flags, armor-upgrade systems |
-| Rosalina Observatory (astronomy research lab) | **Rosalina**, principal investigator | telescope data, binary encoding, fixed-point math |
-| Mario Bros. Construction (building & repair) | **Mario**, owner-operator | parts inventory, job scheduling, blueprints |
-| Luigi's Ghost-Hunting Services (paranormal-tech) | **Luigi**, lead technician | sensor readings, error handling, bit masks |
-| Bowser Entertainment (rival theme-park chain) | **Bowser**, CEO | ride throughput, queue data, ticketing |
+| Studio director | **Vesper Crunch** | memory budgets, byte counting — the whole constraint |
+| Hardware engineer | **Dot Mainframe** | transistors, logic gates, CPU & memory hierarchy |
+| Sprite / asset designer | **Pip** | bitmaps, sprite grids, palettes |
 
-**Balance:** 3F / 3M.
+**Balance:** Vesper and Dot (both F) run the studio's direction and engineering. Original cast.
 
 ---
 
-### NB 3 â€” Dickens (Victorian-Modern England)
-*Pairs with: Python Basics via Pseudocode & Flowcharts. Dickens's clerks and ledgers map beautifully to methodical code.*
+### NB 3 — Mirabel's Emporium (Victorian Magic Shop)
+*Pairs with: Python Basics via Pseudocode & Flowcharts. A cluttered enchantments shop; coin in silver crowns & copper bits makes `//` and `%` natural. (Swapped from Dickens to an original, public-domain-friendly world.)*
 
-| Business | Character (role) | Code territory |
+| Role | Character | Code territory |
 |---|---|---|
-| Scrooge & Marley Accounting | **Ebenezer Scrooge**, managing partner | ledgers, totals, tax calculations, pseudocode for billing |
-| Havisham Bridal Emporium (legacy retail) | **Miss Havisham**, owner | inventory, price lookups, loyalty records |
-| Dombey Shipping (logistics & freight) | **Florence Dombey**, operations director | cargo manifests, route planning, delivery status |
-| Wilfer Data Services (small data consultancy) | **Bella Wilfer**, analyst-founder | CSV parsing, summary stats, flowcharts |
-| Cratchit Bookkeeping (small-business accounting) | **Bob Cratchit**, sole proprietor | invoices, overdue accounts, rate calculations |
-| Nickleby Tutoring (adult literacy) | **Kate Nickleby**, co-founder | student records, lesson plans, progress flags |
+| Proprietor | **Mirabel Quill** | exact, repeatable arithmetic — motivates "algorithm" |
+| Apprentice | **Fen** | hand-sums and the mistakes a program removes |
+| Ledger-keeper | **Wren Hollow** | plan-before-you-code — the workflow exemplar |
+| Guild auditor | **Auditor Crane** | data types — always know what you're holding |
 
-**Balance:** 3F / 3M.
+**Balance:** Mirabel and Wren (both F) own the shop's direction and its careful method. Original cast.
 
 ---
 
-### NB 4 â€” Princess Bride (Florin & Guilder, Present Day)
-*Pairs with: Control Flow & Problem Decomposition. Branching adventure maps to if/else.*
+### NB 4 — The Lost Crew (Peter Pan)
+*Pairs with: Control Flow & Functions. A rescue that must make decisions and repeat itself for every child. (Swapped from Princess Bride to a public-domain cast.)*
 
-| Business | Character (role) | Code territory |
+| Role | Character | Code territory |
 |---|---|---|
-| Buttercup Ventures (adventure-tourism ops) | **Buttercup**, CEO | trip bookings, route branching, risk decisions |
-| Valerie Community Pharmacy | **Valerie**, pharmacist-owner | prescription logic, dosing rules, refill triggers |
-| Inigo Fencing Academy (martial-arts training) | **Inigo Montoya**, head instructor | class rosters, skill progression, practice loops |
-| Fezzik Moving & Logistics | **Fezzik**, owner | truck loads, route decisions, weight limits |
-| Max & Mabel Miracle Pharmacy (alt-medicine) | **Mabel** (Max's wife, re-cast from "Valerie") / **Miracle Max**, co-owners | batch processes, recipe loops, error handling |
-| Queen's Governance Office (civic admin) | **Queen Bella**, chief of staff | permits, approvals, branching workflows |
+| Operations lead | **Wendy Darling** | decisions, loops over a roster, decomposition |
+| Signals | **Tinker Bell** | a single bool — the gate opens or it doesn't |
+| Rival captain | **Captain Hook** | `if`/`elif`/`else` rule tables (the Articles) |
+| Fine-print auditor | **Mr. Smee** | edge cases — "but what if there are zero children?" |
 
-**Balance:** 3F / 3M. *(Princess Bride has fewer named women; we elevate Queen Bella and split the pharmacy between Max and Mabel.)*
+**Balance:** Wendy leads operations and Tinker Bell handles signals (2F in lead roles). Public-domain cast (J. M. Barrie).
 
 ---
 
-### NB 5 â€” Wilde's Mayfair (Drawing-Room-Modern London)
-*Pairs with: Collections & ADTs. A high street of small businesses gives us natural variety; Wildean wit fits the "what shape is your data?" framing.*
+### NB 5 — The Midnight Masquerade (Gothic Costume Shop)
+*Pairs with: Collections & ADTs. Six famous monsters share one shop floor; each department is a different "shape of data." (Swapped from Wilde to a public-domain horror cast.)*
 
-| Business | Character (role) | Code territory |
+| Department | Proprietor | Code territory |
 |---|---|---|
-| Fairfax Stationery (custom paper & journals) | **Gwendolen Fairfax**, owner | order lists, indexing, slicing â€” natural fit for **lists** |
-| Bracknell Vetting & References (background-check firm) | **Augusta Bracknell**, managing director | fixed-field applicant records â€” natural fit for **tuples** |
-| Moncrieff Catering (society events) | **Algernon Moncrieff**, founder | menu price lookup â€” natural fit for **dictionaries** |
-| Cardew Country School (small tutoring outfit) | **Cecily Cardew**, headmistress | cohort overlap, dedup â€” natural fit for **sets** |
-| Worthing Concierge (town-and-country errands) | **Jack Worthing**, proprietor | customer queue â€” **ADT** worked example |
-| Goring Bespoke Tailoring | **Arthur Goring**, master tailor | measurement adjustments â€” **comprehensions** cameo |
+| Rentals Desk | **Count Dracula** | lists — ordered, changeable order sheets |
+| Fittings & Deposits | **Dr. Victoria Frankenstein** | tuples — fixed four-field client records |
+| Masks & Millinery | **The Phantom** | dictionaries — price lookup by name |
+| Masquerade Balls | **Camilla** | sets — guest-list overlap & uniqueness |
+| Fitting Rooms | **Mr. Hyde** | the ADT queue — promise vs. storage |
+| Alterations | **Cthulhu** | comprehensions — the same tweak to every costume |
 
-**Balance:** 3F / 3M (Gwendolen, Augusta Bracknell, Cecily / Algernon, Jack, Arthur Goring). Public-domain cast (Oscar Wilde).
+**Balance:** Victoria Frankenstein (F, recast) and Camilla (F) lead two departments. Public-domain cast.
 
 ---
 
-### NB 6 â€” Arthurian Legend (Camelot, Modernized)
-*Pairs with: Modules & OOP. Knightly orders, lineages, and guilds = a natural OOP universe. (Swapped from Tolkien â€” public-domain cast only. Functions are a quick NB4 callback, not re-taught.)*
+### NB 6 — Arthurian Legend (Camelot, Modernized)
+*Pairs with: Modules & OOP. Knightly orders, lineages, and guilds = a natural OOP universe. (Swapped from Tolkien — public-domain cast only. Functions are a quick NB4 callback, not re-taught.)*
 
 | Business | Character (role) | Code territory |
 |---|---|---|
 | Camelot Civic Systems (govtech platform) | **Guinevere**, CEO | citizen records, the `Citizen` class, parallel-lists-vs-objects |
 | Avalon Health Sciences (research lab) | **Morgan le Fay**, director of research | dataset objects, class hierarchies, inheritance/override |
 | Lake Logistics (last-mile delivery) | **Nimue / Lady of the Lake**, operations lead | package objects, the `DeliveryQueue` ADT, interface vs. implementation |
-| Pendragon Security (private security) | **Arthur Pendragon**, founder | guard/knight classes, inheritance (Guard â†’ Knight), `super()` |
+| Pendragon Security (private security) | **Arthur Pendragon**, founder | guard/knight classes, inheritance (Guard → Knight), `super()` |
 | Merlin Advisory (management consulting) | **Merlin**, senior partner | modules, imports, reusable helper files |
 | Lancelot Athletics (training academy) | **Lancelot**, head coach | athlete objects, methods, progress tracking |
 
@@ -153,23 +144,23 @@ Each business gets a "code territory" note â€” the kinds of code examples t
 
 ---
 
-### NB 7 â€” Dr. Who (Multi-Era London, Time-Adjusted)
-*Pairs with: Algorithms & Limits of Computation. Computability + paradoxes fit the Whoniverse.*
+### NB 7 — Wonderland (Alice, Modernized)
+*Pairs with: Algorithms & Limits of Computation. The Queen wants it found *now* (search & sort); the Cheshire Cat asks what no program can answer (the limits). (Swapped from Dr. Who to a public-domain cast.)*
 
-| Business | Character (role) | Code territory |
+| Role | Character | Code territory |
 |---|---|---|
-| TARDIS Travel (experimental travel platform) | **The Doctor** (13th, Jodie Whittaker era), founder | search over large graphs, route optimization |
-| Song Archaeological Data (research & archives) | **River Song**, principal | indexing, search algorithms, text corpora |
-| Martha Jones Telemedicine (remote clinic) | **Martha Jones**, medical director | triage algorithms, priority queues, diagnostic trees |
-| UNIT Cybersecurity Division | **Kate Lethbridge-Stewart**, commanding officer | threat-detection algorithms, classification, Big O on log search |
-| Torchwood Paranormal Research | **Captain Jack Harkness**, director | event timelines, halting-problem analogies |
-| Mickey Smith Mechanics (garage + diagnostics) | **Mickey Smith**, owner | fault-finding algorithms, cost-of-repair decisioning |
+| The impatient client | **The Queen of Hearts** | "found, and now" — why search speed matters |
+| The one handed the deck | **Alice** | linear & binary search over the deck |
+| The timekeeper | **The White Rabbit** | counting steps, Big-O growth |
+| Tea-party host | **The Mad Hatter** | selection sort, sorting by a `key=` |
+| Puzzle-giver | **The Caterpillar** | implementing binary search |
+| Riddler | **The Cheshire Cat** | undecidability, the halting problem |
 
-**Balance:** 3F / 3M.
+**Balance:** the Queen of Hearts and Alice (both F) drive the search problem and its solution. Public-domain cast (Lewis Carroll).
 
 ---
 
-### NB 8 â€” Star Trek (Federation, Modernized)
+### NB 8 — Star Trek (Federation, Modernized)
 *Pairs with: Software Engineering, Git & AI-Assisted Dev. Crew coordination + logs is a gift.*
 
 | Business | Character (role) | Code territory |
@@ -185,23 +176,23 @@ Each business gets a "code territory" note â€” the kinds of code examples t
 
 ---
 
-### NB 9 â€” Austen (Regency-Modern England)
+### NB 9 — Austen (Regency-Modern England)
 *Pairs with: Databases (Relational & Non-Relational). Social networks = relational data.*
 
 | Business | Character (role) | Code territory |
 |---|---|---|
-| Longbourn Publishing (independent press) | **Elizabeth Bennet**, editorial director | manuscripts, authors, royalties â€” classic relational data |
-| Netherfield Community Health (clinic) | **Jane Bennet**, clinical director | patients, visits, prescriptions â€” joins + integrity constraints |
-| Highbury Match (matchmaking app) | **Emma Woodhouse**, founder | profiles, compatibility tables â€” relational + document-store tradeoffs |
-| Pemberley Capital (wealth management) | **Fitzwilliam Darcy**, CFO | accounts, transactions â€” normalization, indexing |
-| Donwell Agricultural Systems (farm software) | **George Knightley**, co-founder | crop plots, yields, weather â€” time-series data |
-| Delaford Veterans Services (nonprofit) | **Colonel Brandon**, executive director | clients, services, case files â€” mixed structured/unstructured |
+| Longbourn Publishing (independent press) | **Elizabeth Bennet**, editorial director | manuscripts, authors, royalties — classic relational data |
+| Netherfield Community Health (clinic) | **Jane Bennet**, clinical director | patients, visits, prescriptions — joins + integrity constraints |
+| Highbury Match (matchmaking app) | **Emma Woodhouse**, founder | profiles, compatibility tables — relational + document-store tradeoffs |
+| Pemberley Capital (wealth management) | **Fitzwilliam Darcy**, CFO | accounts, transactions — normalization, indexing |
+| Donwell Agricultural Systems (farm software) | **George Knightley**, co-founder | crop plots, yields, weather — time-series data |
+| Delaford Veterans Services (nonprofit) | **Colonel Brandon**, executive director | clients, services, case files — mixed structured/unstructured |
 
 **Balance:** 3F / 3M.
 
 ---
 
-### NB 10 â€” Classic Crime Films (Modernized Metro Area)
+### NB 10 — Classic Crime Films (Modernized Metro Area)
 *Pairs with: OS, Networks, Cloud & Web. Coordination + comms + heists naturally invoke networks.*
 
 | Business | Character (role) | Code territory |
@@ -217,14 +208,14 @@ Each business gets a "code territory" note â€” the kinds of code examples t
 
 ---
 
-### NB 11 â€” Classic Horror (Gothic-Modern Europe)
+### NB 11 — Classic Horror (Gothic-Modern Europe)
 *Pairs with: Cybersecurity & Secure Software Development. Monsters = threats, defenders = defenses.*
 
 | Business | Character (role) | Code territory |
 |---|---|---|
 | Harker Risk & Insurance | **Mina Harker**, chief risk officer | threat modeling, risk scoring, breach reporting |
 | Lavenza Ethics Advisory (responsible biotech consulting) | **Elizabeth Lavenza**, principal | policy enforcement, consent records, audit logs |
-| DaaÃ© Talent Management (performing arts) | **Christine DaaÃ©**, founder | identity verification, stalker/abuse prevention, safe-list systems |
+| Daaé Talent Management (performing arts) | **Christine Daaé**, founder | identity verification, stalker/abuse prevention, safe-list systems |
 | Frankenstein BioLab (experimental biotech) | **Victor Frankenstein**, CTO | secure labs, access credentials, lab-notebook integrity |
 | Van Helsing Threat Research | **Abraham Van Helsing**, director | intrusion detection, signature matching, incident response |
 | Harker & Co. Legal (estate and security law) | **Jonathan Harker**, partner | secrets handling, document classification, contract review |
@@ -233,7 +224,7 @@ Each business gets a "code territory" note â€” the kinds of code examples t
 
 ---
 
-### NB 12 â€” Classic Comic Books (Modern-Day Metro)
+### NB 12 — Classic Comic Books (Modern-Day Metro)
 *Pairs with: AI, ML & Ethics. Power and responsibility, by design.*
 
 | Business | Character (role) | Code territory |
@@ -251,35 +242,35 @@ Each business gets a "code territory" note â€” the kinds of code examples t
 
 ### Bench Worlds (swap in if a primary world doesn't fit)
 
-These aren't in the rotation but are fully workable. Same rules apply: 5â€“6 businesses, 3F/3M minimum.
+These aren't in the rotation but are fully workable. Same rules apply: 5–6 businesses, 3F/3M minimum.
 
-- **Shakespeare (Elizabethan-Modern Europe)** â€” Verona Ventures (Juliet, VC), Elsinore Media (Ophelia, exec producer; Hamlet, PM), Dunsinane Defense (Lady Macbeth, strategy), Portia Legal (Portia, partner), Illyria Weddings (Viola, founder), Cyprus Cyber (Othello, CISO).
-- **Star Wars** â€” Rebel Ops Foundation (Leia), Jakku Salvage (Rey), Millennium Freight (Han Solo), Naboo Diplomatic Services (PadmÃ©), Mandalorian Security (Bo-Katan), Jedi Archives (Ahsoka).
-- **Grimm's Fairytales** â€” Red Delivery (Red Riding Hood), Cinderella Fulfillment (Cinderella), Rapunzel Wellness (Rapunzel), Hansel & Gretel Baking (Hansel), Rumpelstiltskin Lending (Rumpelstiltskin), Bremen Town Music (Bremen animals as label).
-- **Wonderland / Oz** â€” Wonderland Tea Co. (Hatter), Oz Emerald Platform (Glinda), Kansas Farm Analytics (Dorothy), Alice Analytics (Alice), Tin Man Manufacturing (Tin Man), Scarecrow Ag-AI (Scarecrow).
+- **Shakespeare (Elizabethan-Modern Europe)** — Verona Ventures (Juliet, VC), Elsinore Media (Ophelia, exec producer; Hamlet, PM), Dunsinane Defense (Lady Macbeth, strategy), Portia Legal (Portia, partner), Illyria Weddings (Viola, founder), Cyprus Cyber (Othello, CISO).
+- **Star Wars** — Rebel Ops Foundation (Leia), Jakku Salvage (Rey), Millennium Freight (Han Solo), Naboo Diplomatic Services (Padmé), Mandalorian Security (Bo-Katan), Jedi Archives (Ahsoka).
+- **Grimm's Fairytales** — Red Delivery (Red Riding Hood), Cinderella Fulfillment (Cinderella), Rapunzel Wellness (Rapunzel), Hansel & Gretel Baking (Hansel), Rumpelstiltskin Lending (Rumpelstiltskin), Bremen Town Music (Bremen animals as label).
+- **Wonderland / Oz** — Wonderland Tea Co. (Hatter), Oz Emerald Platform (Glinda), Kansas Farm Analytics (Dorothy), Alice Analytics (Alice), Tin Man Manufacturing (Tin Man), Scarecrow Ag-AI (Scarecrow).
 
 ---
 
-**One world per notebook, 12 notebooks, 12 worlds.** Within each notebook, pick 3â€“5 of the 6 businesses based on what your concept sections need â€” you don't have to use every business in every notebook.
+**One world per notebook, 12 notebooks, 12 worlds.** Within each notebook, pick 3–5 of the 6 businesses based on what your concept sections need — you don't have to use every business in every notebook.
 
 ---
 
 ## Cell-by-Cell Skeleton
 
-This is the recommended structure. The cell counts in parentheses are targets â€” adjust as the material requires.
+This is the recommended structure. The cell counts in parentheses are targets — adjust as the material requires.
 
 ### 1. Title banner (1 cell, markdown)
 ```markdown
 # Notebook N: [Title]
-### COMP 1150 â€” Computer Science Concepts
+### COMP 1150 — Computer Science Concepts
 **Brendan Shea, PhD**
 ```
-Attribution is to **Brendan Shea, PhD** â€” never the college. The course is *offered at* RCTC, but the notebooks are the author's copyrighted work.
+Attribution is to **Brendan Shea, PhD** — never the college. The course is *offered at* RCTC, but the notebooks are the author's copyrighted work.
 
 ### 2. Lecture video placeholder (1 cell, markdown)
 ```markdown
 <!-- Lecture video link to be added -->
-ðŸ“º **Lecture video:** *(coming soon)*
+📺 **Lecture video:** *(coming soon)*
 ```
 
 ### 3. Learning Outcomes (1 cell, markdown)
@@ -287,7 +278,7 @@ Attribution is to **Brendan Shea, PhD** â€” never the college. The course i
 ## Learning Outcomes
 
 By the end of this notebook, you will be able to:
-- [outcome 1, starting with a verb â€” Explain, Apply, Build, Distinguish, etc.]
+- [outcome 1, starting with a verb — Explain, Apply, Build, Distinguish, etc.]
 - [outcome 2]
 - [outcome 3]
 - [outcome 4]
@@ -295,22 +286,22 @@ By the end of this notebook, you will be able to:
 *Maps to course LOs: #, #, #*
 ```
 
-### 4. Opening hook (2â€“3 cells, markdown)
+### 4. Opening hook (2–3 cells, markdown)
 Set the scene. Introduce the world and the cast you'll use throughout. State the question or problem the notebook will answer.
 
-Keep this punchy â€” students decide in 30 seconds whether they're engaged.
+Keep this punchy — students decide in 30 seconds whether they're engaged.
 
-### 5â€“40. Concept sections (4â€“5 sections, ~7 cells each)
+### 5–40. Concept sections (4–5 sections, ~7 cells each)
 
 Each concept section follows this pattern:
 
-1. **Section heading** â€” `### [Section title]` (markdown, 1 cell)
-2. **Concept intro** â€” why this matters, in plain words (markdown, 1 cell, ~150 words)
-3. **Character-grounded example** â€” a scenario from the cast (markdown, 1 cell, ~150 words)
-4. **Small code cell** â€” the minimal code needed to show the concept (code, 5â€“15 lines)
-5. **Prose explanation** â€” what the code did and why (markdown, 1 cell, ~100 words)
-6. **Variation or edge case** â€” another small code cell OR a matplotlib/graphviz diagram (code, 5â€“15 lines)
-7. **Prose closer** â€” takeaway + transition to next section (markdown, 1 cell, ~75 words)
+1. **Section heading** — `### [Section title]` (markdown, 1 cell)
+2. **Concept intro** — why this matters, in plain words (markdown, 1 cell, ~150 words)
+3. **Character-grounded example** — a scenario from the cast (markdown, 1 cell, ~150 words)
+4. **Small code cell** — the minimal code needed to show the concept (code, 5–15 lines)
+5. **Prose explanation** — what the code did and why (markdown, 1 cell, ~100 words)
+6. **Variation or edge case** — another small code cell OR a matplotlib/graphviz diagram (code, 5–15 lines)
+7. **Prose closer** — takeaway + transition to next section (markdown, 1 cell, ~75 words)
 
 Not every section needs all eight cells (when trimming, the Your Turn is the one to keep). Some concepts are prose-only (e.g., a networking idea with a single diagram); some are code-heavy. Aim for the average.
 
@@ -357,33 +348,33 @@ Design principles:
 - **Two cells:** the markdown brief (the six steps), then an empty `#| eval: false` paste cell — `# ✏️ Paste your AI-built [thing] here, then run it and fix what's broken.`
 - **Placement:** the last section before "Key Terms" (after PyQuiz, if the notebook uses it).
 
-### 42. Key Terms glossary (1â€“2 cells, markdown)
+### 42. Key Terms glossary (1–2 cells, markdown)
 Alphabetical list of the technical terms introduced in the notebook. Each entry: term in bold, one-sentence plain-language definition.
 
 ```markdown
 ## Key Terms
 
-- **Dictionary** â€” A collection that stores data as key-value pairs, where each key maps to one value.
-- **Key** â€” The label you use to look up a value in a dictionary. Must be unique within a given dictionary.
-- **Value** â€” The data stored under a key in a dictionary. Can be any type.
+- **Dictionary** — A collection that stores data as key-value pairs, where each key maps to one value.
+- **Key** — The label you use to look up a value in a dictionary. Must be unique within a given dictionary.
+- **Value** — The data stored under a key in a dictionary. Can be any type.
 ```
 
 ### 43. Summary (1 cell, markdown)
-3â€“5 sentences recapping the main ideas. Not a full restatement â€” a "what should stick" note.
+3–5 sentences recapping the main ideas. Not a full restatement — a "what should stick" note.
 
 ### 44. What's Next (1 cell, markdown)
-1â€“2 sentences bridging to the next notebook. What problem is left open? What will we build on?
+1–2 sentences bridging to the next notebook. What problem is left open? What will we build on?
 
 ### 45. Credits / License (1 cell, markdown)
 Standard footer, identical across all notebooks. Copyright is **Brendan Shea's**, not the college's:
 
 ```markdown
 ---
-*COMP 1150 â€” Computer Science Concepts Â· Brendan Shea, PhD*  
+*COMP 1150 — Computer Science Concepts · Brendan Shea, PhD*  
 *Content licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*
 ```
 
-Do not attribute the notebooks to Rochester Community and Technical College anywhere â€” title, footer, or body.
+Do not attribute the notebooks to Rochester Community and Technical College anywhere — title, footer, or body.
 
 ---
 
@@ -410,7 +401,7 @@ Do not attribute the notebooks to Rochester Community and Technical College anyw
 
 **Rules regardless of style:**
 - Never exceed ~25 lines in a single code cell.
-- Use inline comments sparingly â€” one or two per cell at most. Prose cells carry the explanation.
+- Use inline comments sparingly — one or two per cell at most. Prose cells carry the explanation.
 - Every code cell should be runnable on its own or have its dependencies in the cell immediately above. Students will run cells out of order; plan for it.
 - Name variables after characters when it reinforces the example (`dwights_beets`, not `d1`).
 
@@ -418,9 +409,9 @@ Do not attribute the notebooks to Rochester Community and Technical College anyw
 
 ## Graphics Conventions
 
-- **graphviz** â€” for structural relationships: flowcharts, class hierarchies, ER diagrams, network topologies, process trees, decision trees.
-- **matplotlib** â€” for data, results, and comparisons: bar charts, line plots, scatter plots, histograms, timing comparisons for Big O.
-- **PIL / ipywidgets** â€” sparingly, for bespoke visual demos.
+- **graphviz** — for structural relationships: flowcharts, class hierarchies, ER diagrams, network topologies, process trees, decision trees.
+- **matplotlib** — for data, results, and comparisons: bar charts, line plots, scatter plots, histograms, timing comparisons for Big O.
+- **PIL / ipywidgets** — sparingly, for bespoke visual demos.
 - **All graphics are generated by code in the notebook.** No pasted-in images. This lets students tinker and see how the visual was built.
 - **Label everything.** Every axis, every node, every legend entry. A diagram without labels is wasted cells.
 
@@ -429,25 +420,25 @@ Do not attribute the notebooks to Rochester Community and Technical College anyw
 ## Cell-Size Discipline (for Reading & Projection)
 
 - **Markdown cells:** aim for ~150 words, cap at ~300. If a cell is longer than a projector screen of readable text, split it.
-- **Code cells:** 5â€“15 lines is the sweet spot. Hard cap ~25.
+- **Code cells:** 5–15 lines is the sweet spot. Hard cap ~25.
 - **When in doubt, split.** A notebook with 50 short cells reads better than one with 30 dense cells.
 
 ---
 
 ## Slide-View Rhythm (mandatory for every code & figure cell)
 
-These notebooks are presented one cell at a time. A code cell or figure that appears with no setup, or is immediately followed by a new section header, reads as a "cold" slide â€” the audience sees code/output with no idea why. **Never let a code or figure cell stand alone.** Every one gets sandwiched:
+These notebooks are presented one cell at a time. A code cell or figure that appears with no setup, or is immediately followed by a new section header, reads as a "cold" slide — the audience sees code/output with no idea why. **Never let a code or figure cell stand alone.** Every one gets sandwiched:
 
-1. **Setup slide (markdown, before):** a `###` header + 1â€“2 sentences saying *what's about to appear and why*. The last sentence should point at the cell ("the next cellâ€¦", "the diagram belowâ€¦").
+1. **Setup slide (markdown, before):** a `###` header + 1–2 sentences saying *what's about to appear and why*. The last sentence should point at the cell ("the next cell…", "the diagram below…").
 2. **The code or figure cell.**
 3. **Payoff slide (markdown, after):** a short explanation. For code use `### Understanding the Code` (bulleted, the new ideas only). For a graphviz/matplotlib figure use a one-line **`**Reading it:**`** caption that says how to read the picture.
 
 Rules:
 
-- This applies to **figures too**, not just code. A graphviz/matplotlib cell with no caption after it is the most common offender â€” fix it with a `**Reading it:**` line.
+- This applies to **figures too**, not just code. A graphviz/matplotlib cell with no caption after it is the most common offender — fix it with a `**Reading it:**` line.
 - A section intro can serve as the setup slide *only if* its final sentence explicitly points at the cell that follows. Otherwise add a dedicated setup slide.
-- Keep both framing slides light (1â€“3 sentences). The goal is pacing, not padding â€” each should change what the reader knows.
-- In slide view the pattern should always read: **setup â†’ artifact â†’ takeaway**, three readable slides, no orphaned code or uncaptioned diagrams.
+- Keep both framing slides light (1–3 sentences). The goal is pacing, not padding — each should change what the reader knows.
+- In slide view the pattern should always read: **setup → artifact → takeaway**, three readable slides, no orphaned code or uncaptioned diagrams.
 
 ---
 
@@ -463,7 +454,7 @@ Below is a fragment of what a **dictionaries** section in NB 5 could look like, 
 
 Dwight has a problem. He keeps every beet farm record on sticky notes taped to his monitor, and whenever Pam asks for the price of Detroit Dark Red beets, he spends ten minutes rifling through paper. There has to be a better way.
 
-A **dictionary** is Python's answer to Dwight's sticky notes. Instead of searching through a list one item at a time, a dictionary lets you look up a value instantly by its label â€” or **key**. If Dwight knows the beet name, he can get the price in a single step.
+A **dictionary** is Python's answer to Dwight's sticky notes. Instead of searching through a list one item at a time, a dictionary lets you look up a value instantly by its label — or **key**. If Dwight knows the beet name, he can get the price in a single step.
 
 ---
 
@@ -495,7 +486,7 @@ print(dwights_beets["Chioggia"])
 
 **[markdown cell]**
 
-When Dwight wants the price of Chioggia beets, he looks it up by key. Python jumps straight to that entry â€” it doesn't scan the other beets. That's the whole point of a dictionary: **fast lookup by name, not by position.**
+When Dwight wants the price of Chioggia beets, he looks it up by key. Python jumps straight to that entry — it doesn't scan the other beets. That's the whole point of a dictionary: **fast lookup by name, not by position.**
 
 ---
 
@@ -510,7 +501,7 @@ print(dwights_beets)
 
 **[markdown cell]**
 
-Adding a new beet is just as easy: assign a value to a new key. If Dwight ever wanted to update an existing price (say, Chioggia goes on sale), he'd use the same syntax â€” Python overwrites the existing value.
+Adding a new beet is just as easy: assign a value to a new key. If Dwight ever wanted to update an existing price (say, Chioggia goes on sale), he'd use the same syntax — Python overwrites the existing value.
 
 ---
 
@@ -623,9 +614,9 @@ PyQuiz (above) remains the optional closing self-check for function-writing note
 - [ ] No code cell exceeds ~25 lines
 - [ ] No prose cell exceeds ~300 words
 - [ ] All graphics generated by code, all labeled
-- [ ] **Slide-view rhythm:** every code & figure cell has a setup slide before and a payoff/`**Reading it:**` slide after â€” no cold or uncaptioned cells
+- [ ] **Slide-view rhythm:** every code & figure cell has a setup slide before and a payoff/`**Reading it:**` slide after — no cold or uncaptioned cells
 - [ ] Word count ~6,000; cell count ~45
-- [ ] Read through at projector resolution â€” no cell overflows a screen
+- [ ] Read through at projector resolution — no cell overflows a screen
 - [ ] No bare `---` divider lines anywhere in markdown cells
 - [ ] Diagram/helper-generator cells marked with `#@title`; interactive, `input()`, and scaffold cells marked `#| eval: false` (renders safely under `freeze: auto`)
 - [ ] `python tools/add_colab_header.py` run after edits (refreshes Colab header, strips dividers, normalizes hidden cells)
@@ -639,13 +630,13 @@ A suggested rotation so no world repeats and the vibe varies session to session.
 
 | NB | Topic | Proposed World |
 |----|-------|----------------|
-| 1 | What Is Computing? + AI Pair-Programmer | Sherlock Holmes (investigation + reasoning) |
-| 2 | Machine Architecture & Data Representation | Classic Nintendo (NES hardware era feel) |
-| 3 | Python via Pseudocode & Flowcharts | Dickens (clerks, ledgers, methodical work) |
-| 4 | Control Flow & Decomposition | Princess Bride (if/else adventure branching) |
-| 5 | Collections & ADTs | Wilde's Mayfair (drawing-room high street) |
-| 6 | Modules & OOP | Arthurian legend (knightly orders = class hierarchy) |
-| 7 | Algorithms & Limits of Computation | Dr. Who (computability + time paradoxes) |
+| 1 | What Is Computing? + AI Pair-Programmer | A Story of Four Algorithms (Lovelace → ELIZA) |
+| 2 | Machine Architecture & Data Representation | Eight Bits & Bob (retro 8-bit game studio) |
+| 3 | Python via Pseudocode & Flowcharts | Mirabel's Emporium (Victorian magic shop) |
+| 4 | Control Flow & Decomposition | The Lost Crew (Peter Pan) |
+| 5 | Collections & ADTs | The Midnight Masquerade (gothic costume shop) |
+| 6 | Modules & OOP | Arthurian legend (Camelot) |
+| 7 | Algorithms & Limits of Computation | Wonderland (Alice) |
 | 8 | Software Engineering, Git & AI-Assisted Dev | Star Trek (crew coordination, logs, reviews) |
 | 9 | Databases: Relational & Non-Relational | Austen (social networks = relational data) |
 | 10 | OS, Networks, Cloud & Web | Classic crime films (networks, heists, coordination) |

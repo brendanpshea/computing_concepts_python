@@ -98,7 +98,7 @@ class ValidationResult:
 
 
 def strip_code(text: str) -> str:
-    return re.sub(r"`[^`]*`", "", text)
+    return re.sub(r"<code>.*?</code>", "", text, flags=re.IGNORECASE)
 
 def count_words(text: str) -> int:
     return len(WORD_RE.findall(strip_code(text)))

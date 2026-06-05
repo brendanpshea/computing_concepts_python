@@ -73,7 +73,7 @@ python .\perrusall_quizzes\shuffle_perusall_answers.py .\perrusall_quizzes
 ## Recommended Practice
 
 - Edit the `.quiz.json` files, not the generated CSVs, unless you are making a quick emergency fix.
-- When including code in prompts or answers, wrap it in backticks (`like this`). The validator ignores text in backticks during reading-level checks. Furthermore, commas and quotes in code can break CSV flat files, making `.quiz.json` editing safer.
+- When including code in prompts or answers, wrap it in HTML `<code>` tags (e.g., `<code>like this</code>`). Perusall interprets standard markdown backticks as AsciiMath (which italicizes letters and turns underscores into subscripts). The validator ignores text inside `<code>` tags during reading-level checks. Furthermore, commas and quotes in code can break CSV flat files, making `.quiz.json` editing safer.
 - Keep `tags` structured so you can track quiz balance. Use tags like `"source: notebook"`, `"source: case-study"`, `"type: conceptual"`, and `"type: technical"` to quickly eyeball question ratios.
 - Ask about the underlying concept, algorithm, case fact, or doctrine, not the course packaging. Avoid prompts framed around `this notebook`, `this cell`, `this case study`, or `this lecture`.
 - When a prompt asks for a named term, preserving the canonical label verbatim is fine. Do not replace terms like `polymorphism` or `encapsulation` with generic descriptions if the question tests vocabulary recognition.
