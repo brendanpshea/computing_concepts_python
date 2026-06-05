@@ -397,96 +397,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Chain eight half-adders together (passing each carry into the next column) and you can add two 8-bit numbers. That chain is the core of the <strong>ALU</strong> — the <strong>Arithmetic Logic Unit</strong>, the part of the chip that does math and comparisons. Add some gates that select <em>which</em> operation to run, and you have, essentially, a processor’s calculator.</p>
 <p>That’s the whole bottom of the stack: <strong>transistor → gate → half-adder → ALU.</strong> Next we’ll see where the ALU sits inside a complete machine.</p>
-<p>Before we go up a level, here’s a practice game for gates. Run the cell, read the walk-through, then do the exercise underneath it.</p>
-<div id="nb2-14-gatearcade" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gate_arcade(rounds<span class="op">=</span><span class="dv">5</span>):</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Random logic-gate practice. Type 0 or 1 as your answer."""</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    gates <span class="op">=</span> {</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"AND"</span>: <span class="kw">lambda</span> a, b: a <span class="op">&amp;</span> b,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"OR"</span>:  <span class="kw">lambda</span> a, b: a <span class="op">|</span> b,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"XOR"</span>: <span class="kw">lambda</span> a, b: a <span class="op">^</span> b,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, rounds <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> random.choice(<span class="bu">list</span>(gates))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        a, b <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="dv">1</span>), random.randint(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        correct <span class="op">=</span> gates[name](a, b)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        guess <span class="op">=</span> <span class="bu">input</span>(<span class="ss">f"Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> = ? "</span>).strip()</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> guess <span class="op">==</span> <span class="bu">str</span>(correct):</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"✅ Correct!"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            score <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"❌ Not quite — </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>correct<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Final score: </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>rounds<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on the next line, then run this cell.</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># gate_arcade()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Before we go up a level, here’s a practice game for the gates. You don’t need to read its code — that comes in Notebook 4. Just <strong>run it and drill</strong> until the answers come fast.</p>
+<p><strong>🎮 This is a practice tool — not code to study.</strong> The hidden cell above defines the game; the cell below runs it. You’re not expected to understand <em>how</em> it’s built yet — functions arrive in Notebook 4. For now, just play: drill the gates until the answers come automatically.</p>
+<div id="cell-17" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on the next line, then run this cell.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    Drill AND, OR, XOR, NOT, and NAND. Replay as often as you like.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># gate_arcade()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="understanding-the-code" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-the-code">Understanding the Code</h3>
-<p>Three ideas in this cell are worth knowing — you’ll reuse all of them:</p>
+<section id="think-about-it-why-so-few-gates" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-why-so-few-gates">💭 Think About It — Why So Few Gates?</h3>
+<p>Every gate you just drilled — even AND, OR, and XOR — can be built out of nothing but <strong>NAND</strong> gates wired together. For that reason NAND is called a <em>universal</em> gate.</p>
 <ul>
-<li><strong>A dictionary of functions.</strong> <code>gates</code> maps a name like <code>"AND"</code> to a tiny function (<code>lambda a, b: a &amp; b</code>). A <code>lambda</code> is just a one-line, unnamed function. Looking up <code>gates[name]</code> and calling it <code>(a, b)</code> lets us pick <em>which</em> operation to run at runtime — the software version of “add gates that select the operation.”</li>
-<li><strong><code>&amp;</code>, <code>|</code>, <code>^</code> are Python’s bit operators</strong> — they apply AND, OR, and XOR to the bits directly. On single bits they behave exactly like the truth tables above.</li>
-<li><strong><code>input()</code> always returns a <em>string</em>.</strong> Even if the user types <code>1</code>, you get the text <code>"1"</code>, not the number <code>1</code>. That’s why we compare against <code>str(correct)</code>. Forgetting this is one of the most common beginner bugs — watch for it all semester.</li>
+<li>In your own words, why might a chip designer prefer to manufacture <strong>one</strong> kind of gate, over and over, rather than five different kinds? Think about cost, testing, and what could go wrong on a production line.</li>
+<li>A single gate is just a tiny decision: <em>given these inputs, what comes out?</em> Describe something from everyday life that turns two yes/no conditions into one yes/no answer (for example: “the door unlocks only if I have the key <strong>AND</strong> the alarm is off”). Which gate does your example behave like?</li>
+<li>A computer does breathtakingly complex things, yet at the bottom it is millions of these one-bit decisions. Does that change how you think about what a computer “understands”? Why or why not?</li>
 </ul>
-</section>
-<section id="exercise-1-add-the-not-gate-work-from-a-copy" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1-add-the-not-gate-work-from-a-copy">✏️ Exercise 1 — Add the NOT Gate (Work From a Copy)</h3>
-<p>The arcade above quizzes three gates: <strong>AND</strong>, <strong>OR</strong>, and <strong>XOR</strong>. It’s missing <strong>NOT</strong>. Your job is to add it — and you’ll do it safely, by working from a <em>copy</em> so the original game keeps working.</p>
-<p><strong>Why NOT is different.</strong> AND, OR, and XOR each take <strong>two</strong> inputs. NOT takes only <strong>one</strong>: it flips the bit.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Input</th>
-<th>NOT output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>Because NOT has one input, its question can’t look like <code>1 AND 0 = ?</code>. It has to look like <code>NOT 1 = ?</code>. So the game has to treat NOT as a <em>special case</em>.</p>
-<p><strong>Step 1 — Make a copy.</strong> Leave the original <code>gate_arcade</code> cell alone. In a <strong>new</strong> code cell, paste the version below. Notice it is named <code>my_gate_arcade</code> — a copy with a new name, so both versions can exist side by side. (Working from a copy means you can always go back if you break something.)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_gate_arcade(rounds<span class="op">=</span><span class="dv">5</span>):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, rounds <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> random.choice([<span class="st">"AND"</span>, <span class="st">"OR"</span>, <span class="st">"XOR"</span>, <span class="st">"NOT"</span>])   <span class="co"># NOT is now in the mix</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name <span class="op">==</span> <span class="st">"NOT"</span>:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="dv">1</span>)                 <span class="co"># NOT needs only ONE input</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            correct <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> a                          <span class="co"># the flip: 0 becomes 1, 1 becomes 0</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            guess <span class="op">=</span> <span class="bu">input</span>(<span class="ss">f"Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: NOT </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> = ? "</span>).strip()</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            a, b <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="dv">1</span>), random.randint(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span>   name <span class="op">==</span> <span class="st">"AND"</span>: correct <span class="op">=</span> a <span class="op">&amp;</span> b</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> name <span class="op">==</span> <span class="st">"OR"</span>:  correct <span class="op">=</span> a <span class="op">|</span> b</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:               correct <span class="op">=</span> a <span class="op">^</span> b      <span class="co"># XOR</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            guess <span class="op">=</span> <span class="bu">input</span>(<span class="ss">f"Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> = ? "</span>).strip()</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> guess <span class="op">==</span> <span class="bu">str</span>(correct):</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"✅ Correct!"</span>)<span class="op">;</span> score <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"❌ Not quite — the answer was </span><span class="sc">{</span>correct<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="er">Final score: {score}/{rounds}")</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># my_gate_arcade()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>What changed, and why:</strong> - <code>"NOT"</code> was added to the list of gates the game can randomly pick. - A new <code>if name == "NOT":</code> block handles the one-input case. It makes a single input <code>a</code>, computes the flip with <code>1 - a</code>, and asks <code>NOT a = ?</code>. - AND, OR, and XOR all moved into the <code>else</code> block. They still work the same way, with two inputs.</p>
-<p><strong>Step 2 — Play it.</strong> Delete the <code>#</code> on the last line (<code># my_gate_arcade()</code>), run the cell, and type <code>0</code> or <code>1</code> for each round.</p>
-<p><strong>Step 3 — Verify it yourself.</strong> When a <code>NOT</code> round comes up, check the game against the truth table above. If it claims <code>NOT 1 = 0</code>, is that right? Keep playing until you have seen at least <strong>two</strong> NOT rounds and confirmed both by hand.</p>
-<p><strong>Step 4 — Reflect.</strong> In a markdown cell, answer in a sentence or two: why did NOT need its own <code>if</code> block, when AND, OR, and XOR could share one? <em>(Hint: count the inputs.)</em></p>
-<p><strong>Optional AI stretch.</strong> Ask Gemini or Claude: <em>“add a NAND gate to this function — NAND is the NOT of AND.”</em> Paste its version into another new cell, run it, and check several answers against AND by hand. The course rule still holds: <em>AI is a fast first draft; you verify.</em></p>
+<p>Share a sentence or two on each.</p>
 </section>
 </section>
 <section id="inside-the-machine-how-a-computer-actually-works" class="level2">
@@ -518,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-5-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-6-output-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -596,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-6-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-7-output-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -713,7 +640,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -789,7 +716,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -805,7 +732,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -859,28 +786,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>64 + 8 + 2 + 1 = 75.</strong> Going the other way (decimal → binary): repeatedly subtract the largest place value you can.</p>
 <p>An 8-bit byte holds 0 through 255 — that’s 2⁸ = 256 different values. Remember that 255. Tobble certainly does.</p>
 <div id="nb2-33-binary-python" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python can convert for you — useful for CHECKING hand work, not replacing it.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">75</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> in binary: </span><span class="sc">{</span>n<span class="sc">:08b}</span><span class="ss">"</span>)        <span class="co"># :08b -&gt; binary, padded to 8 digits</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> in hex:    </span><span class="sc">{</span>n<span class="sc">:02X}</span><span class="ss">"</span>)        <span class="co"># :02X -&gt; hex, 2 digits, uppercase</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>from_binary <span class="op">=</span> <span class="bu">int</span>(<span class="st">"01001011"</span>, <span class="dv">2</span>)         <span class="co"># the 2 means 'read this string as base 2'</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"int('01001011', 2) ="</span>, from_binary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>75 in binary: 01001011
 75 in hex:    4B
 int('01001011', 2) = 75</code></pre>
 </div>
 </div>
-</section>
-<section id="understanding-the-code-1" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-the-code-1">Understanding the Code</h3>
-<p>Two new tools here, both worth memorizing:</p>
-<ul>
-<li><strong>Format specifiers inside f-strings.</strong> <code>f"{n:08b}"</code> says “format <code>n</code> as <strong>b</strong>inary, at least <strong>8</strong> digits, zero-padded.” <code>f"{n:02X}"</code> means “he<strong>X</strong>, 2 digits, uppercase.” These are how you control how a number <em>prints</em> without changing the number itself.</li>
-<li><strong><code>int(text, base)</code></strong> converts a string of digits into a number, reading it in the base you give. <code>int("01001011", 2)</code> reads that text as binary and returns <code>75</code>. <code>int("4B", 16)</code> would read hex. With no base argument, <code>int("75")</code> assumes base 10.</li>
-</ul>
-<p>Use these to <em>check</em> your hand conversions, never to skip learning them — the quiz won’t let you import Python.</p>
 </section>
 <section id="hexadecimal-binary-for-humans" class="level3">
 <h3 class="anchored" data-anchor-id="hexadecimal-binary-for-humans">Hexadecimal: Binary for Humans</h3>
@@ -954,7 +865,7 @@ int('01001011', 2) = 75</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1052,87 +963,39 @@ int('01001011', 2) = 75</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>On the wheel, as the bits climb past the halfway point (<code>1000</code>) the <em>meaning</em> jumps to the most negative value and climbs back toward −1 — the numbers wrap like an odometer. Python’s own integers don’t have this limit (they grow as large as needed), but <strong>fixed-width</strong> values — registers, image pixels, the PixelBox 8’s score counter — absolutely do. We can simulate a fixed 8-bit value with a <em>mask</em>:</p>
 <div id="nb2-44-mask" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>value <span class="op">=</span> <span class="op">-</span><span class="dv">37</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>byte  <span class="op">=</span> value <span class="op">&amp;</span> <span class="bn">0xFF</span>          <span class="co"># keep only the lowest 8 bits</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss"> stored in 8 bits: </span><span class="sc">{</span>byte<span class="sc">:08b}</span><span class="ss">  (raw value </span><span class="sc">{</span>byte<span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="bn">0b11011011</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>signed <span class="op">=</span> raw <span class="op">-</span> <span class="dv">256</span> <span class="cf">if</span> raw <span class="op">&gt;=</span> <span class="dv">128</span> <span class="cf">else</span> raw   <span class="co"># leftmost bit set -&gt; negative</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"11011011 interpreted as signed:"</span>, signed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>-37 stored in 8 bits: 11011011  (raw value 219)
 11011011 interpreted as signed: -37</code></pre>
 </div>
 </div>
-</section>
-<section id="understanding-the-code-2" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-the-code-2">Understanding the Code</h3>
-<ul>
-<li><strong><code>&amp; 0xFF</code> is a mask.</strong> <code>0xFF</code> is hex for <code>11111111</code> — eight 1s. ANDing any number with it keeps only the lowest 8 bits and throws everything else away. This is <em>exactly</em> what a real 8-bit register does to a value that’s too big: it simply has nowhere to put the higher bits.</li>
-<li><strong><code>0b11011011</code> is a binary literal.</strong> The <code>0b</code> prefix tells Python “the following digits are binary.” (<code>0x</code> does the same for hex.) It’s just another way to write the number <code>219</code>.</li>
-<li><strong>The signed-read line</strong> (<code>raw - 256 if raw &gt;= 128 else raw</code>) is the two’s-complement decode rule in one line: if the value is 128 or more, the leftmost bit is set, so it really represents <code>raw - 256</code> (a negative number). This is the code form of the exam tip above.</li>
-</ul>
-<p>Here is the notebook’s main test-prep tool. Run it, read the walk-through, then do the exercise underneath.</p>
-<div id="nb2-47-basearcade" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> base_arcade(mode<span class="op">=</span><span class="st">"bin2dec"</span>, rounds<span class="op">=</span><span class="dv">5</span>):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Random number-base practice. Modes: bin2dec, dec2bin, hex, twos."""</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, rounds <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> mode <span class="op">==</span> <span class="st">"bin2dec"</span>:</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            n <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="dv">255</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            prompt, correct <span class="op">=</span> <span class="ss">f"Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: binary </span><span class="sc">{</span>n<span class="sc">:08b}</span><span class="ss"> = ? (decimal) "</span>, <span class="bu">str</span>(n)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> mode <span class="op">==</span> <span class="st">"dec2bin"</span>:</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            n <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="dv">255</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            prompt, correct <span class="op">=</span> <span class="ss">f"Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: decimal </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> = ? (8-bit binary) "</span>, <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">:08b}</span><span class="ss">"</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> mode <span class="op">==</span> <span class="st">"hex"</span>:</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            n <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="dv">255</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>            prompt, correct <span class="op">=</span> <span class="ss">f"Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: decimal </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> = ? (2-digit hex) "</span>, <span class="ss">f"</span><span class="sc">{</span>n<span class="sc">:02X}</span><span class="ss">"</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> mode <span class="op">==</span> <span class="st">"twos"</span>:</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            n <span class="op">=</span> random.randint(<span class="op">-</span><span class="dv">128</span>, <span class="dv">127</span>)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            prompt, correct <span class="op">=</span> <span class="ss">f"Round </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> as an 8-bit two's-complement byte = ? "</span>, <span class="ss">f"</span><span class="sc">{</span>n <span class="op">&amp;</span> <span class="bn">0xFF</span><span class="sc">:08b}</span><span class="ss">"</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Unknown mode. Use bin2dec, dec2bin, hex, or twos."</span>)</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        guess <span class="op">=</span> <span class="bu">input</span>(prompt).strip().upper()</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> guess <span class="op">==</span> correct:</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"✅ Correct!"</span>)</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            score <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"❌ Answer was </span><span class="sc">{</span>correct<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">[</span><span class="sc">{</span>mode<span class="sc">}</span><span class="ss">] score: </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>rounds<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on ONE line below, then run this cell.</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co"># base_arcade("bin2dec")</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co"># base_arcade("dec2bin")</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co"># base_arcade("hex")</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="co"># base_arcade("twos")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here are the notebook’s main test-prep tools — two self-grading drills. You don’t need to read their code yet (that’s Notebook 4); just <strong>run them and practice</strong> until you can hit a streak of 5.</p>
+<div id="cell-52" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on the next line, then run this cell.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    Each round converts between decimal, binary, and hex. Drill to a streak of 5.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># base_arcade()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-54" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on the next line, then run this cell.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    Encode and decode signed bytes — the trickiest skill on the quiz. Drill it.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># twos_arcade()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="understanding-the-code-3" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-the-code-3">Understanding the Code</h3>
+<section id="think-about-it-why-hexadecimal-exists" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-why-hexadecimal-exists">💭 Think About It — Why Hexadecimal Exists</h3>
+<p>You just drilled converting among decimal, binary, and hexadecimal.</p>
 <ul>
-<li><strong>The <code>if / elif</code> chain is a dispatcher.</strong> The <code>mode</code> string selects which kind of question to build. Each branch sets two things: the <code>prompt</code> to show, and the <code>correct</code> answer as a <em>string</em> (so it can be compared to what <code>input()</code> returns).</li>
-<li><strong>The format specifiers do the heavy lifting.</strong> <code>f"{n:08b}"</code>, <code>f"{n:02X}"</code>, and <code>f"{n &amp; 0xFF:08b}"</code> are the same tools from earlier — note the <code>twos</code> mode reuses the <code>&amp; 0xFF</code> mask to produce the two’s-complement byte automatically.</li>
-<li><strong><code>.strip().upper()</code> normalizes the answer.</strong> <code>.strip()</code> removes accidental spaces; <code>.upper()</code> makes hex like <code>4b</code> match <code>4B</code>. Cleaning user input before comparing it is a habit worth building now.</li>
+<li>Humans <em>could</em> read raw binary if we had to, so why do programmers bother with hexadecimal at all? What does grouping bits into hex digits buy you? (Think about how many binary digits a single hex digit stands in for.)</li>
+<li>We almost certainly count in base 10 because of an accident of human anatomy. What “anatomy” makes base 2 the natural choice for a machine built from transistors?</li>
+<li>Imagine a civilization whose computers were built from <em>three</em>-state switches instead of two-state ones. How might their everyday number system differ from ours? There’s no single right answer — reason it out.</li>
 </ul>
-</section>
-<section id="exercise-2-extend-the-number-base-arcade" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2-extend-the-number-base-arcade">✏️ Exercise 2 — Extend the Number Base Arcade</h3>
-<p><strong>Self-study:</strong> play every mode (<code>bin2dec</code>, <code>dec2bin</code>, <code>hex</code>, <code>twos</code>) until you can hit a streak of 5. This is your quiz trainer — replay it as much as you want.</p>
-<p><strong>Coding task:</strong> add a <strong><code>"hex2bin"</code></strong> mode that shows a 2-digit hex value and asks for the 8-bit binary.</p>
-<ul>
-<li>You’ll add one more <code>elif mode == "hex2bin":</code> branch.</li>
-<li>It needs a <code>prompt</code> (show the hex) and a <code>correct</code> answer (the binary string).</li>
-<li>Test it against the reference strip from earlier in the notebook.</li>
-</ul>
-<p><strong>Using AI here:</strong> ask Gemini <em>“write just the elif branch for a hex2bin mode matching this function’s style”</em> — then <strong>run it and check several answers by hand</strong> before trusting it. Paste your scores and describe your change in a markdown cell.</p>
+<p>Share a sentence or two on each.</p>
 </section>
 </section>
 <section id="encoding-text-images-and-sound" class="level2">
@@ -1146,38 +1009,37 @@ int('01001011', 2) = 75</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>Understanding the code:</strong> <code>np.arange(32, 128)</code> builds the list of numbers 32–127; <code>.reshape(8, 12)</code> folds that flat list into an 8-row by 12-column grid (8 × 12 = 96 numbers). <code>imshow</code> paints any grid of numbers as a colored image — we’ll reuse it immediately for sprites. The <code>chr(c)</code> call turns each code back into its character so we can label it. One idea, many uses: <em>a grid of numbers is a picture.</em></p>
 </section>
 <section id="images-grids-of-numbers" class="level3">
 <h3 class="anchored" data-anchor-id="images-grids-of-numbers">Images = Grids of Numbers</h3>
 <p>A digital image is a grid of <strong>pixels</strong>, and each pixel is a number. The simplest case: 1 bit per pixel — 0 is background, 1 is drawn. That’s exactly how a PixelBox 8 sprite works. Color just means more bits per pixel plus a small <strong>palette</strong> (Vesper only paid for four colors). The image below is rendered straight from a grid of 0s and 1s.</p>
 <div id="nb2-55-sprite" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pip's 8x8 'definitely a dragon' sprite — just a grid of bits.</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dragon <span class="op">=</span> [</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>plt.imshow(dragon, cmap<span class="op">=</span><span class="st">"binary"</span>)   <span class="co"># same imshow as the ASCII grid</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"8 bytes = one sprite"</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pip's 8x8 'definitely a dragon' sprite — just a grid of bits.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dragon <span class="op">=</span> [</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>plt.imshow(dragon, cmap<span class="op">=</span><span class="st">"binary"</span>)   <span class="co"># same imshow as the ASCII grid</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"8 bytes = one sprite"</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1191,51 +1053,50 @@ int('01001011', 2) = 75</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>Understanding the code:</strong> <code>np.linspace(0, 1, 600)</code> makes 600 evenly spaced time points — those are the sample moments. <code>np.sign(...)</code> snaps every value to −1 or +1, which is exactly what a cheap 1-bit audio channel does to a wave.</p>
 <p>Text, image, sound: three completely different experiences, <strong>one underlying idea</strong> — a sequence of numbers plus an agreed rule for what those numbers mean. Change the rule and the same bytes become gibberish. That’s the bridge to the final part.</p>
 </section>
 <section id="exercise-3-design-your-own-sprite" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3-design-your-own-sprite">✏️ Exercise 3 — Design Your Own Sprite</h3>
 <p>The next cell is <strong>yours to edit directly</strong>. Run it first to see the starter shape, then read the task below it.</p>
 <div id="nb2-60-spritedesigner" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ EDIT THESE 0s and 1s to draw your own 8x8 sprite.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>frame1 <span class="op">=</span> [</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional second frame for the animation bonus (start as a copy, then tweak):</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>frame2 <span class="op">=</span> [</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>plt.imshow(frame1, cmap<span class="op">=</span><span class="st">"binary"</span>)</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Your sprite"</span>)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ EDIT THESE 0s and 1s to draw your own 8x8 sprite.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>frame1 <span class="op">=</span> [</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional second frame for the animation bonus (start as a copy, then tweak):</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>frame2 <span class="op">=</span> [</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>plt.imshow(frame1, cmap<span class="op">=</span><span class="st">"binary"</span>)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Your sprite"</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1244,23 +1105,23 @@ int('01001011', 2) = 75</code></pre>
 <p><strong>Optional bonus — animation:</strong> fill in <code>frame2</code> with a slightly different pose, then run the cell below to flip between them. Two frames is exactly how 1980s games made things “move” on a tiny memory budget.</p>
 <p><strong>Using AI here (optional):</strong> ask Gemini <em>“give me an 8×8 grid of 0s and 1s that looks like a sword”</em> — then paste it in and judge whether it actually does. You are the art director; the AI is a junior intern.</p>
 <div id="nb2-62-spriteanim" class="cell" data-execution_count="38">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ ANIMATION BONUS: run this after filling in frame2.</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> clear_output</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):                       <span class="co"># 6 flips, then stop</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> frame, label <span class="kw">in</span> [(frame1, <span class="st">"frame 1"</span>), (frame2, <span class="st">"frame 2"</span>)]:</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        clear_output(wait<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        plt.imshow(frame, cmap<span class="op">=</span><span class="st">"binary"</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        plt.title(label)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ ANIMATION BONUS: run this after filling in frame2.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> clear_output</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):                       <span class="co"># 6 flips, then stop</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> frame, label <span class="kw">in</span> [(frame1, <span class="st">"frame 1"</span>), (frame2, <span class="st">"frame 2"</span>)]:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        clear_output(wait<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        plt.imshow(frame, cmap<span class="op">=</span><span class="st">"binary"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        plt.title(label)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1301,12 +1162,6 @@ int('01001011', 2) = 75</code></pre>
 </table>
 <p>The same bug class still bites: a 2015 FAA directive warned that a Boeing 787 counter could overflow after 248 days of continuous power, potentially shutting down electrical generators in flight. <strong>Representation size is a safety decision.</strong></p>
 <div id="nb2-65-overflow" class="cell" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate an 8-bit level counter. &amp; 0xFF forces it to stay 8 bits wide.</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>level <span class="op">=</span> <span class="dv">253</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    level <span class="op">=</span> (level <span class="op">+</span> <span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    note <span class="op">=</span> <span class="st">"  &lt;-- overflow! wrapped around"</span> <span class="cf">if</span> level <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">""</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"next level -&gt; stored as </span><span class="sc">{</span>level<span class="sc">:3d}</span><span class="ss">  (</span><span class="sc">{</span>level<span class="sc">:08b}</span><span class="ss">)</span><span class="sc">{</span>note<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>next level -&gt; stored as 254  (11111110)
 next level -&gt; stored as 255  (11111111)
@@ -1319,49 +1174,34 @@ next level -&gt; stored as   3  (00000011)</code></pre>
 <p>Run that cell and watch 254 → 255 → <strong>0</strong>. Nothing is “broken” — the hardware did exactly what fixed-width wrap-around always does (the same <code>&amp; 0xFF</code> masking from the two’s-complement section). The bug was a <em>human</em> decision: choosing a box too small for the numbers that would eventually go in it.</p>
 <p>Every representation choice in this notebook — byte width, palette size, sample rate, character encoding — is an engineering trade-off with real consequences. That is the deep lesson of data representation, and it’s why this is Learning Outcomes 1 and 2 of the course, not an afterthought.</p>
 </section>
-<section id="exercise-4-build-a-retro-toy-with-ai" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-4-build-a-retro-toy-with-ai">✏️ Exercise 4 — Build a Retro Toy with AI</h3>
-<p>Use Gemini (or Claude / ChatGPT) to build <strong>one small, fun thing</strong> that runs in this notebook and uses a concept from it. Pick one:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Option</th>
-<th>What it does</th>
-<th>Concept it uses</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Secret Message Machine</strong></td>
-<td>Turns text → binary or hex, and back again</td>
-<td><code>ord</code>/<code>chr</code>, binary/hex</td>
-</tr>
-<tr class="even">
-<td><strong>Pixel Banner</strong></td>
-<td>Turns your initials into blocky 8-bit letters with <code>imshow</code></td>
-<td>bitmaps / sprite grids</td>
-</tr>
-<tr class="odd">
-<td><strong>Chiptune Plotter</strong></td>
-<td>Turns a few notes into a plotted square-wave “melody”</td>
-<td>sound = numbers, square waves</td>
-</tr>
-<tr class="even">
-<td><strong>Overflow Survival</strong></td>
-<td>A tiny text game where your score is an 8-bit byte and wraps at 256</td>
-<td>two’s complement / overflow</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Steps:</strong> 1. Ask the AI to draft your chosen toy. Be specific: <em>“…as a single Python cell that runs in Google Colab.”</em> 2. Paste it into the empty cell below and get it actually working (it probably won’t run perfectly first try). 3. In a markdown cell, write 2–3 sentences: <strong>what did the AI get wrong or what did you improve, and how did you fix it?</strong></p>
+<section id="exercise-4-build-a-retro-text-adventure-with-ai" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-build-a-retro-text-adventure-with-ai">✏️ Exercise 4 — Build a Retro Text Adventure with AI</h3>
+<p>In the late 1970s and early ’80s, before graphics were cheap, the hottest games were <strong>text adventures</strong>: you typed commands like <code>go north</code> or <code>take lamp</code>, and the computer described a world back to you in words. You’ll build a tiny one with an AI partner — but the <em>imagination</em> has to be yours.</p>
+<p><strong>Step 1 — Design your world first (do this before touching the AI).</strong> A generic prompt gives a generic game. Spend two minutes deciding:</p>
+<ul>
+<li><strong>Setting &amp; era:</strong> far-future starship? haunted Victorian manor? noir detective’s city? sword-and-sorcery dungeon? a real place you know? Anything goes — make it yours.</li>
+<li><strong>The goal:</strong> what is the player trying to find, escape, or solve?</li>
+<li><strong>Three or four rooms</strong> and a one-line description of each.</li>
+<li><strong>One thing that wins</strong> the game and <strong>one thing that ends it badly</strong>.</li>
+</ul>
+<p>Jot these down in a markdown cell. This is the part the AI <em>can’t</em> do for you.</p>
+<p><strong>Step 2 — Turn your design into a prompt.</strong> Fill your ideas into this skeleton and send it to Gemini (or Claude / ChatGPT):</p>
+<blockquote class="blockquote">
+<p><em>Write a short text-adventure game as a single Python cell that runs in Google Colab.</em> <em>Setting: <strong>[your setting and era]</strong>. The player is <strong>[who they are]</strong> trying to <strong>[the goal]</strong>.</em> <em>Include these rooms: <strong>[room 1 — description]</strong>, <strong>[room 2 — description]</strong>, <strong>[room 3 — description]</strong>.</em> <em>The player moves by typing <code>north</code>, <code>south</code>, <code>east</code>, <code>west</code>, or <code>quit</code>. Each room prints its description.</em> <em>Reaching <strong>[the win room]</strong> wins the game; entering <strong>[the hazard]</strong> ends it.</em> <em>Use a dictionary of rooms and a simple input loop. Keep it short and beginner-readable.</em></p>
+</blockquote>
+<p><strong>Step 3 — Get the bones working, then test.</strong> Paste the result into the empty cell below and <strong>run it right away</strong>. It probably won’t be perfect — walk every path, hit the win, hit the loss, and fix what breaks. Don’t add anything new until the basic game runs end to end. <em>Get it working small first.</em></p>
+<p><strong>Step 4 — Now add the whistles and bells.</strong> Once the core loop is solid, layer in <strong>one or two</strong> extras — adding them one at a time and re-testing after each:</p>
+<ul>
+<li><strong>An item to pick up</strong> (a key, a keycard, a lantern) that a later room requires before it lets you through.</li>
+<li><strong>A hidden room</strong> reachable only by an unusual command.</li>
+<li><strong>A richer ending</strong> — a real win <em>and</em> a real lose message.</li>
+<li><strong>Something that wraps</strong> — a torch or oxygen meter that drops one unit per move (a callback to overflow!).</li>
+</ul>
+<p>For each addition you can ask the AI for help — but <strong>run it and read the output yourself</strong> before trusting it.</p>
+<p><strong>Step 5 — Reflect.</strong> In a markdown cell, write 2–3 sentences: what did the AI get wrong, or what did you improve, and how did you fix it?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
 <div id="nb2-68-ex4-scaffold" class="cell" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built retro toy here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built retro toy here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
