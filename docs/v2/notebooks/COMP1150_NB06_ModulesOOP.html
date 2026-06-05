@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#designing-with-objects-finding-the-classes" id="toc-designing-with-objects-finding-the-classes" class="nav-link" data-scroll-target="#designing-with-objects-finding-the-classes">Designing with Objects: Finding the Classes</a></li>
   <li><a href="#abstraction-one-interface-many-implementations" id="toc-abstraction-one-interface-many-implementations" class="nav-link" data-scroll-target="#abstraction-one-interface-many-implementations">Abstraction: One Interface, Many Implementations</a></li>
   <li><a href="#the-four-pillars-of-oop" id="toc-the-four-pillars-of-oop" class="nav-link" data-scroll-target="#the-four-pillars-of-oop">The Four Pillars of OOP</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#capstone-build-a-battle-game-oop" id="toc-capstone-build-a-battle-game-oop" class="nav-link" data-scroll-target="#capstone-build-a-battle-game-oop">✏️ Capstone — Build a Battle Game (OOP)</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -315,6 +315,15 @@ Big job: 8250.0</code></pre>
 <li>That’s the cure for copy-paste: <strong>one definition, many imports.</strong> No more nine drifting copies.</li>
 </ul>
 </section>
+<section id="your-turn-your-own-toolkit" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-your-own-toolkit">✏️ Your Turn — Your Own Toolkit</h3>
+<p>Python’s standard library is full of ready-made tools. Import one you haven’t used yet and try it — for example <code>import statistics</code> then <code>statistics.mean([...])</code>, or <code>from datetime import date</code> then <code>date.today()</code>. Print the result.</p>
+<div id="cell-20" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: import a tool from the standard library and use it.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># import statistics</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(statistics.mean([10, 20, 30]))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 </section>
 <section id="what-oop-is-a-way-of-thinking-not-just-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="what-oop-is-a-way-of-thinking-not-just-syntax">What OOP Is: A Way of Thinking, Not Just Syntax</h2>
@@ -327,7 +336,7 @@ Big job: 8250.0</code></pre>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-6-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-7-output-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -339,14 +348,14 @@ Big job: 8250.0</code></pre>
 <p>Modules organize <em>code</em>. Now we organize <em>data</em>. Back to Guinevere’s tangle of parallel lists — let’s first see exactly how bad it gets, so the fix feels earned.</p>
 <p>The cell below tracks two citizens the “loose variables” way: separate lists, lined up by position.</p>
 <div id="0e487285" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:12.961584Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:12.960197Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:12.975220Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:12.971758Z&quot;}}" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>names    <span class="op">=</span> [<span class="st">"Elaine Astolat"</span>, <span class="st">"Percival Wales"</span>]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ages     <span class="op">=</span> [<span class="dv">34</span>, <span class="dv">41</span>]</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>wards    <span class="op">=</span> [<span class="st">"North"</span>, <span class="st">"Harbor"</span>]</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>balances <span class="op">=</span> [<span class="fl">120.00</span>, <span class="fl">0.00</span>]</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># To raise Elaine's balance, you must remember she's at index 0 in EVERY list:</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>balances[<span class="dv">0</span>] <span class="op">=</span> balances[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">25</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(names[<span class="dv">0</span>], <span class="st">"owes"</span>, balances[<span class="dv">0</span>], <span class="st">"in"</span>, wards[<span class="dv">0</span>], <span class="st">"ward"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>names    <span class="op">=</span> [<span class="st">"Elaine Astolat"</span>, <span class="st">"Percival Wales"</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ages     <span class="op">=</span> [<span class="dv">34</span>, <span class="dv">41</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>wards    <span class="op">=</span> [<span class="st">"North"</span>, <span class="st">"Harbor"</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>balances <span class="op">=</span> [<span class="fl">120.00</span>, <span class="fl">0.00</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># To raise Elaine's balance, you must remember she's at index 0 in EVERY list:</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>balances[<span class="dv">0</span>] <span class="op">=</span> balances[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">25</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(names[<span class="dv">0</span>], <span class="st">"owes"</span>, balances[<span class="dv">0</span>], <span class="st">"in"</span>, wards[<span class="dv">0</span>], <span class="st">"ward"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Elaine Astolat owes 145.0 in North ward</code></pre>
 </div>
@@ -354,14 +363,14 @@ Big job: 8250.0</code></pre>
 <p>See the problem? Elaine’s facts are scattered across four lists, held together only by the fragile promise that index <code>0</code> means “Elaine” in all of them. Sort one list, or insert a citizen in the middle, and everything silently misaligns. There has to be a better way — and there is.</p>
 <p>A <strong>class</strong> is a blueprint. It describes what <em>every</em> citizen has. From one blueprint you stamp out as many <strong>objects</strong> as you like, and each object keeps all of its own facts together in one place.<strong>Defining a class and building an object.</strong> Use the <code>class</code> keyword and a special <code>__init__</code> setup method; <code>self</code> stands for the object being built:<code>pythonclass ClassName:    def __init__(self, value):    # runs automatically when you build one        self.attribute = value    # store a fact ON the object itselfthing = ClassName("some value")   # build an object — __init__ runs right nowthing.attribute                   # read a fact back with a dot</code>Guinevere defines a <code>Citizen</code> class once.</p>
 <div id="143efd27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:12.983671Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:12.982295Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:12.996583Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:12.993272Z&quot;}}" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ward <span class="op">=</span> ward</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>elaine <span class="op">=</span> Citizen(<span class="st">"Elaine Astolat"</span>, <span class="st">"North"</span>, <span class="fl">120.00</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(elaine.name, <span class="st">"is in"</span>, elaine.ward, <span class="st">"ward"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ward <span class="op">=</span> ward</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>elaine <span class="op">=</span> Citizen(<span class="st">"Elaine Astolat"</span>, <span class="st">"North"</span>, <span class="fl">120.00</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(elaine.name, <span class="st">"is in"</span>, elaine.ward, <span class="st">"ward"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Elaine Astolat is in North ward</code></pre>
 </div>
@@ -377,11 +386,11 @@ Big job: 8250.0</code></pre>
 </ul>
 <p>A class earns its keep when you make <em>many</em> objects from it. Each call to <code>Citizen(...)</code> produces a brand-new, independent object with its own data.</p>
 <div id="e2d95036" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.005563Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.004674Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.017188Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.014477Z&quot;}}" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>percival <span class="op">=</span> Citizen(<span class="st">"Percival Wales"</span>, <span class="st">"Harbor"</span>, <span class="fl">0.00</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> [elaine, percival]</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> person <span class="kw">in</span> roster:</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(person.name, <span class="st">"—"</span>, person.ward, <span class="st">"ward, balance"</span>, person.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>percival <span class="op">=</span> Citizen(<span class="st">"Percival Wales"</span>, <span class="st">"Harbor"</span>, <span class="fl">0.00</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> [elaine, percival]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> person <span class="kw">in</span> roster:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(person.name, <span class="st">"—"</span>, person.ward, <span class="st">"ward, balance"</span>, person.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Elaine Astolat — North ward, balance 120.0
 Percival Wales — Harbor ward, balance 0.0</code></pre>
@@ -400,9 +409,9 @@ Percival Wales — Harbor ward, balance 0.0</code></pre>
 <h3 class="anchored" data-anchor-id="predict-before-you-run">🔮 Predict Before You Run</h3>
 <p><code>elaine</code> and <code>percival</code> were built from the same class. Before running the next cell, predict: if we change <strong>elaine’s</strong> balance, does percival’s balance change too?</p>
 <div id="b746766c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.026020Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.024837Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.037448Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.034539Z&quot;}}" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>elaine.balance <span class="op">=</span> elaine.balance <span class="op">+</span> <span class="dv">50</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Elaine:"</span>, elaine.balance)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percival:"</span>, percival.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>elaine.balance <span class="op">=</span> elaine.balance <span class="op">+</span> <span class="dv">50</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Elaine:"</span>, elaine.balance)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percival:"</span>, percival.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Elaine: 170.0
 Percival: 0.0</code></pre>
@@ -424,18 +433,18 @@ Percival: 0.0</code></pre>
 <p>Here’s the idea everyone trips over first, so we’ll go slow: every method’s first parameter is <code>self</code>, and <code>self</code> means <em>“the particular object this method was called on.”</em></p>
 <p>Guinevere adds a <code>pay</code> method to <code>Citizen</code> so a citizen can reduce their own balance.<strong>Defining a method.</strong> A method is a function written inside the class, and its first parameter is always <code>self</code>:``<code>pythonclass ClassName:    def method_name(self, argument):   # self first, then the real arguments        self.attribute = argument      # act on THIS object's own datathing.method_name(value)               # you pass</code>value<code>; Python fills in</code>self```<code>Watch the</code>self` in the cell below.</p>
 <div id="583870af" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.044641Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.044011Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.057053Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.053987Z&quot;}}" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ward <span class="op">=</span> ward</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> pay(<span class="va">self</span>, amount):</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> <span class="va">self</span>.balance <span class="op">-</span> amount</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.balance</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>elaine <span class="op">=</span> Citizen(<span class="st">"Elaine Astolat"</span>, <span class="st">"North"</span>, <span class="fl">120.00</span>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After paying 20:"</span>, elaine.pay(<span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ward <span class="op">=</span> ward</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> pay(<span class="va">self</span>, amount):</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> <span class="va">self</span>.balance <span class="op">-</span> amount</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.balance</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>elaine <span class="op">=</span> Citizen(<span class="st">"Elaine Astolat"</span>, <span class="st">"North"</span>, <span class="fl">120.00</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After paying 20:"</span>, elaine.pay(<span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>After paying 20: 100.0</code></pre>
 </div>
@@ -449,12 +458,12 @@ Percival: 0.0</code></pre>
 </ul>
 <p>Why does <code>self</code> matter so much? Because the <strong>same method</strong> does different things depending on <strong>which object</strong> you call it on. <code>self</code> is how the method knows whose data to touch.</p>
 <div id="ea6c81ba" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.065890Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.064997Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.078994Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.075605Z&quot;}}" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>percival <span class="op">=</span> Citizen(<span class="st">"Percival Wales"</span>, <span class="st">"Harbor"</span>, <span class="fl">300.00</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>elaine.pay(<span class="dv">20</span>)      <span class="co"># self = elaine</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>percival.pay(<span class="dv">75</span>)    <span class="co"># self = percival</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Elaine:"</span>, elaine.balance)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percival:"</span>, percival.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>percival <span class="op">=</span> Citizen(<span class="st">"Percival Wales"</span>, <span class="st">"Harbor"</span>, <span class="fl">300.00</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>elaine.pay(<span class="dv">20</span>)      <span class="co"># self = elaine</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>percival.pay(<span class="dv">75</span>)    <span class="co"># self = percival</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Elaine:"</span>, elaine.balance)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percival:"</span>, percival.balance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Elaine: 80.0
 Percival: 225.0</code></pre>
@@ -473,18 +482,18 @@ Percival: 225.0</code></pre>
 <h3 class="anchored" data-anchor-id="a-trap-forgetting-self.">A Trap: Forgetting <code>self.</code></h3>
 <p>Inside a method, you must write <code>self.balance</code>, not bare <code>balance</code>, to touch the object’s data. A bare name just makes a throwaway local variable that vanishes when the method ends. The next cell shows the bug.</p>
 <div id="fa07383e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.087437Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.086449Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.100175Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.096775Z&quot;}}" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BrokenCitizen:</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, balance):</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> pay(<span class="va">self</span>, amount):</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        balance <span class="op">=</span> <span class="va">self</span>.balance <span class="op">-</span> amount   <span class="co"># </span><span class="al">BUG</span><span class="co">: missing self. (writes a local)</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"done"</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> BrokenCitizen(<span class="st">"Test"</span>, <span class="dv">100</span>)</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>p.pay(<span class="dv">40</span>)</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Balance after paying 40:"</span>, p.balance)   <span class="co"># still 100 — the payment vanished</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BrokenCitizen:</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, balance):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> pay(<span class="va">self</span>, amount):</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        balance <span class="op">=</span> <span class="va">self</span>.balance <span class="op">-</span> amount   <span class="co"># </span><span class="al">BUG</span><span class="co">: missing self. (writes a local)</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"done"</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> BrokenCitizen(<span class="st">"Test"</span>, <span class="dv">100</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>p.pay(<span class="dv">40</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Balance after paying 40:"</span>, p.balance)   <span class="co"># still 100 — the payment vanished</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Balance after paying 40: 100</code></pre>
 </div>
@@ -497,22 +506,35 @@ Percival: 225.0</code></pre>
 <li>The object’s real <code>self.balance</code> was never touched — so it’s still <code>100</code>.</li>
 <li>The fix is one word: <code>self.balance = self.balance - amount</code>. Missing <code>self.</code> is the single most common beginner OOP bug. When an update “doesn’t stick,” check for it first.</li>
 </ul>
+</section>
+<section id="your-turn-lancelots-athlete-class" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-lancelots-athlete-class">✏️ Your Turn — Lancelot’s Athlete Class</h3>
+<p>Write a class <code>Athlete</code> with an <code>__init__</code> that stores <code>name</code> and <code>wins</code> (default <code>0</code>), plus a method <code>record_win(self)</code> that adds one to <code>wins</code>. Make <strong>two</strong> athletes, record a few wins for each, print both — and confirm that recording a win for one does <strong>not</strong> change the other’s total.</p>
+<div id="cell-48" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: define class Athlete with __init__(self, name, wins=0)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       and a method record_win(self) that does self.wins += 1.</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># class Athlete:</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     ...</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Make two athletes, record some wins, then print both totals.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>Some data isn’t meant to be poked at from outside. Python has no hard “private” lock, but there’s a strong convention: a leading underscore (<code>_pin</code>) means <em>“internal — please don’t touch directly.”</em> This is <strong>encapsulation</strong>: the object guards its own data and exposes safe methods instead. We’ll also add <code>__str__</code>, a special method that controls how the object prints.<strong>The underscore convention and a <code>__str__</code> method.</strong><code>pythonclass ClassName:    def __init__(self, value):        self._hidden = value         # leading _ : "internal — don't touch from outside"    def __str__(self):               # special method: controls what print() shows        return f"ClassName(...)"     # return the text you want printed</code></p>
 <div id="0ecff5fd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.108348Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.107407Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.123583Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.119806Z&quot;}}" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Account:</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, owner, pin):</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.owner <span class="op">=</span> owner</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._pin <span class="op">=</span> pin          <span class="co"># leading _ : internal, don't touch from outside</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> check_pin(<span class="va">self</span>, guess):</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> guess <span class="op">==</span> <span class="va">self</span>._pin</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"Account(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>owner<span class="sc">}</span><span class="ss">)"</span>   <span class="co"># note: no PIN leaked</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> Account(<span class="st">"Guinevere"</span>, <span class="dv">4821</span>)</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)                     <span class="co"># uses __str__</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a.check_pin(<span class="dv">4821</span>))     <span class="co"># the safe, public way to test the PIN</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Account:</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, owner, pin):</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.owner <span class="op">=</span> owner</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._pin <span class="op">=</span> pin          <span class="co"># leading _ : internal, don't touch from outside</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> check_pin(<span class="va">self</span>, guess):</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> guess <span class="op">==</span> <span class="va">self</span>._pin</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"Account(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>owner<span class="sc">}</span><span class="ss">)"</span>   <span class="co"># note: no PIN leaked</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> Account(<span class="st">"Guinevere"</span>, <span class="dv">4821</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)                     <span class="co"># uses __str__</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a.check_pin(<span class="dv">4821</span>))     <span class="co"># the safe, public way to test the PIN</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Account(Guinevere)
 True</code></pre>
@@ -527,6 +549,23 @@ True</code></pre>
 <li><code>__str__</code> runs whenever the object is printed, giving a clean, readable result instead of <code>&lt;__main__.Account object at 0x...&gt;</code> — and notice it deliberately doesn’t print the PIN.</li>
 </ul>
 </section>
+<section id="your-turn-guineveres-__str__" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-guineveres-__str__">✏️ Your Turn — Guinevere’s <code>__str__</code></h3>
+<p>Guinevere wants her <code>Citizen</code> objects to print nicely instead of as <code>&lt;...object at 0x...&gt;</code>. Add a <code>__str__</code> method to <code>Citizen</code> that returns something like <code>"Elaine Astolat (North ward): owes 120.0"</code>. Then create a citizen and <code>print</code> it to confirm your <code>__str__</code> runs.</p>
+<div id="cell-53" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ward <span class="op">=</span> ward</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: add __str__(self) returning e.g.</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#       "Elaine Astolat (North ward): owes 120.0"</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># c = Citizen("Elaine Astolat", "North", 120.0)</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># print(c)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 </section>
 <section id="inheritance-build-once-specialize-later" class="level2">
 <h2 class="anchored" data-anchor-id="inheritance-build-once-specialize-later">Inheritance: Build Once, Specialize Later</h2>
@@ -534,15 +573,15 @@ True</code></pre>
 <p><strong>Inheritance</strong> lets a class build <em>on top of</em> another. The general class is the <strong>parent</strong> (or base); the specialized one is the <strong>child</strong> (or subclass). The child gets everything the parent has, for free, plus its own extras.</p>
 <p>First the parent. A <code>Guard</code> has a name and can report for patrol.</p>
 <div id="ee1dbcf6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.132841Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.131422Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.144988Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.141954Z&quot;}}" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Guard:</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol(<span class="va">self</span>):</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> is on patrol."</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>gareth <span class="op">=</span> Guard(<span class="st">"Gareth"</span>)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gareth.patrol())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Guard:</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol(<span class="va">self</span>):</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> is on patrol."</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>gareth <span class="op">=</span> Guard(<span class="st">"Gareth"</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gareth.patrol())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gareth is on patrol.</code></pre>
 </div>
@@ -555,11 +594,11 @@ True</code></pre>
 </ul>
 <p>Now the child. <code>class Knight(Guard):</code> means “a Knight <strong>is a</strong> Guard, with more.” Even with an empty body, a Knight already has <code>name</code> and <code>patrol</code> — inherited from Guard.<strong>Inheriting from a parent.</strong> Put the parent class in parentheses after the child’s name:<code>pythonclass Child(Parent):   # Child gets all of Parent's attributes and methods for free    ...</code></p>
 <div id="56952291" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.153961Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.153044Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.164552Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.162181Z&quot;}}" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span>   <span class="co"># empty body — but Knight already inherits everything from Guard</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>lancelot <span class="op">=</span> Knight(<span class="st">"Lancelot"</span>)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lancelot.patrol())   <span class="co"># works, even though we never defined patrol in Knight</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span>   <span class="co"># empty body — but Knight already inherits everything from Guard</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>lancelot <span class="op">=</span> Knight(<span class="st">"Lancelot"</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lancelot.patrol())   <span class="co"># works, even though we never defined patrol in Knight</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Lancelot is on patrol.</code></pre>
 </div>
@@ -574,14 +613,14 @@ True</code></pre>
 </ul>
 <p>Knights need <em>more</em> than guards: a rank. So Knight gets its own <code>__init__</code>. But we don’t want to retype the name-setup — we ask the parent to do its part with <strong><code>super().__init__()</code></strong>, then add the new piece.<strong>Reusing the parent’s setup.</strong> <code>super()</code> refers to the parent class; call its <code>__init__</code> first, then add what’s new:<code>pythonclass Child(Parent):    def __init__(self, a, b):        super().__init__(a)   # let Parent run its own setup for the shared part        self.b = b            # then add the data unique to Child</code></p>
 <div id="3a47c6fa" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.176272Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.174887Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.189860Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.186221Z&quot;}}" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, rank):</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name)   <span class="co"># let Guard set up self.name</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rank <span class="op">=</span> rank         <span class="co"># then add what's new to Knight</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>lancelot <span class="op">=</span> Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lancelot.patrol())</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rank:"</span>, lancelot.rank)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, rank):</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name)   <span class="co"># let Guard set up self.name</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rank <span class="op">=</span> rank         <span class="co"># then add what's new to Knight</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>lancelot <span class="op">=</span> Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lancelot.patrol())</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rank:"</span>, lancelot.rank)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Lancelot is on patrol.
 Rank: First Knight</code></pre>
@@ -597,16 +636,16 @@ Rank: First Knight</code></pre>
 </ul>
 <p>A child can also <strong>override</strong> a method — define one with the same name as the parent’s, and the child’s version wins for child objects. Knights announce their rank on patrol; guards don’t.</p>
 <div id="f3c58943" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.198085Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.197212Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.210679Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.207425Z&quot;}}" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, rank):</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rank <span class="op">=</span> rank</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol(<span class="va">self</span>):   <span class="co"># same name as Guard.patrol — this version wins for Knights</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>rank<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> leads the patrol."</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Guard(<span class="st">"Gareth"</span>).patrol())</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>).patrol())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Knight(Guard):</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, rank):</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rank <span class="op">=</span> rank</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol(<span class="va">self</span>):   <span class="co"># same name as Guard.patrol — this version wins for Knights</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>rank<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> leads the patrol."</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Guard(<span class="st">"Gareth"</span>).patrol())</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>).patrol())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gareth is on patrol.
 First Knight Lancelot leads the patrol.</code></pre>
@@ -621,15 +660,29 @@ First Knight Lancelot leads the patrol.</code></pre>
 <li>Same method name, different behavior per class — this is how one line of calling code (<code>x.patrol()</code>) adapts to whatever object <code>x</code> is.</li>
 </ul>
 </section>
+<section id="your-turn-morgans-researcher-hierarchy" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-morgans-researcher-hierarchy">✏️ Your Turn — Morgan’s Researcher Hierarchy</h3>
+<p>Write a base class <code>Researcher</code> that stores <code>name</code> and has a method <code>describe()</code> returning <code>"&lt;name&gt; runs experiments."</code>. Then write a subclass <code>LeadResearcher(Researcher)</code> that adds a <code>team_size</code> (using <code>super().__init__()</code>) and <strong>overrides</strong> <code>describe()</code> to also mention the team size. Make one of each and print both descriptions.</p>
+<div id="cell-68" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: class Researcher with __init__(self, name) and describe(self).</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: class LeadResearcher(Researcher) that adds team_size via super().__init__()</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#       and overrides describe().</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># r    = Researcher("Morgan")</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># lead = LeadResearcher("Nimue", team_size=4)</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(r.describe())</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(lead.describe())</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 <section id="polymorphism-one-call-many-behaviors" class="level3">
 <h3 class="anchored" data-anchor-id="polymorphism-one-call-many-behaviors">Polymorphism: One Call, Many Behaviors</h3>
 <p>Look again at what just happened. We called <code>.patrol()</code> on a guard and on a knight, and each did the <em>right thing for its own type</em> — and we never checked which was which. That ability has a name: <strong>polymorphism</strong> (Greek for “many shapes”). One method name, many behaviors, chosen automatically by the object.</p>
 <p>It pays off when you have a <em>mix</em> of objects. Arthur’s roster holds guards and knights together. He loops once and calls <code>.patrol()</code> on each — Python runs the correct version every time. The next cell builds a mixed roster and patrols it.</p>
 <div id="b4d65fcb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:13.217908Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:13.217106Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:13.228536Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:13.226391Z&quot;}}" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> [Guard(<span class="st">"Gareth"</span>), Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>), Guard(<span class="st">"Kay"</span>)]</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> officer <span class="kw">in</span> roster:</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(officer.patrol())   <span class="co"># each object runs its OWN patrol()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> [Guard(<span class="st">"Gareth"</span>), Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>), Guard(<span class="st">"Kay"</span>)]</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> officer <span class="kw">in</span> roster:</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(officer.patrol())   <span class="co"># each object runs its OWN patrol()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gareth is on patrol.
 First Knight Lancelot leads the patrol.
@@ -658,7 +711,7 @@ C:\Users\brend\AppData\Local\Temp\claude\ipykernel_75116\1007185676.py:8: Syntax
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-20-output-2.svg" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-24-output-2.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -669,17 +722,17 @@ C:\Users\brend\AppData\Local\Temp\claude\ipykernel_75116\1007185676.py:8: Syntax
 <h3 class="anchored" data-anchor-id="a-trap-a-shared-mutable-class-attribute">A Trap: A Shared Mutable Class Attribute</h3>
 <p>If you put a <strong>mutable</strong> value (like a list) directly in the class body instead of inside <code>__init__</code>, <em>every</em> object shares the one same list. Change it through one object and it changes for all of them. The next cell shows the surprise.</p>
 <div id="3a88c2cf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:16.367719Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:16.366881Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:16.380460Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:16.378054Z&quot;}}" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Squad:</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    members <span class="op">=</span> []          <span class="co"># </span><span class="al">BUG</span><span class="co">: one list shared by ALL squads</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add(<span class="va">self</span>, name):</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members.append(name)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>red <span class="op">=</span> Squad()</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>blue <span class="op">=</span> Squad()</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>red.add(<span class="st">"Gareth"</span>)</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Red squad:"</span>, red.members)</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Blue squad:"</span>, blue.members)   <span class="co"># Gareth leaked into Blue!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Squad:</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    members <span class="op">=</span> []          <span class="co"># </span><span class="al">BUG</span><span class="co">: one list shared by ALL squads</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add(<span class="va">self</span>, name):</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members.append(name)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>red <span class="op">=</span> Squad()</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>blue <span class="op">=</span> Squad()</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>red.add(<span class="st">"Gareth"</span>)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Red squad:"</span>, red.members)</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Blue squad:"</span>, blue.members)   <span class="co"># Gareth leaked into Blue!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Red squad: ['Gareth']
 Blue squad: ['Gareth']</code></pre>
@@ -704,21 +757,21 @@ Blue squad: ['Gareth']</code></pre>
 </ul>
 <p>That second pattern — building an object out of other objects — is called <strong>composition</strong>. Arthur’s <code>Squad</code> below <em>has a</em> list of guards and delegates the work to them.</p>
 <div id="bd0d5d20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:16.387567Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:16.386521Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:16.399329Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:16.397001Z&quot;}}" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Squad:</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members <span class="op">=</span> []          <span class="co"># a Squad HAS guards (composition)</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> recruit(<span class="va">self</span>, guard):</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members.append(guard)</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol_all(<span class="va">self</span>):</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [g.patrol() <span class="cf">for</span> g <span class="kw">in</span> <span class="va">self</span>.members]</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>watch <span class="op">=</span> Squad(<span class="st">"Night Watch"</span>)</span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>watch.recruit(Guard(<span class="st">"Gareth"</span>))</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>watch.recruit(Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>))</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(watch.patrol_all())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Squad:</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members <span class="op">=</span> []          <span class="co"># a Squad HAS guards (composition)</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> recruit(<span class="va">self</span>, guard):</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.members.append(guard)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> patrol_all(<span class="va">self</span>):</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [g.patrol() <span class="cf">for</span> g <span class="kw">in</span> <span class="va">self</span>.members]</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>watch <span class="op">=</span> Squad(<span class="st">"Night Watch"</span>)</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>watch.recruit(Guard(<span class="st">"Gareth"</span>))</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>watch.recruit(Knight(<span class="st">"Lancelot"</span>, <span class="st">"First Knight"</span>))</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(watch.patrol_all())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Gareth is on patrol.', 'First Knight Lancelot leads the patrol.']</code></pre>
 </div>
@@ -763,12 +816,20 @@ Blue squad: ['Gareth']</code></pre>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-23-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-27-output-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Reading it:</strong> Each box is one class with high cohesion — it owns just its own data and jobs. The arrows are the only links between them (low coupling): a Courier touches a Package only by delivering it, never by reaching inside the DispatchDesk. Change one box and the others barely notice.</p>
+</section>
+<section id="your-turn-morgans-lab-on-paper" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-morgans-lab-on-paper">✏️ Your Turn — Morgan’s Lab, On Paper</h3>
+<p><strong>No code for this one — design first.</strong> Morgan le Fay describes Avalon Health Sciences:</p>
+<blockquote class="blockquote">
+<p>“A <strong>study</strong> has a <strong>title</strong> and a list of <strong>participants</strong>. Each <strong>participant</strong> has an <strong>ID</strong> and an <strong>age</strong>. A <strong>researcher</strong> can <em>enroll</em> a participant and <em>count</em> how many are signed up.”</p>
+</blockquote>
+<p>Using the <strong>noun/verb heuristic</strong>, in a markdown cell list (a) the <strong>classes</strong> you’d create, (b) the <strong>attributes</strong> each holds, and (c) the <strong>methods</strong>. Then write one sentence on which class should own the <code>enroll</code> method, and why. (Hint: think about cohesion — which class is <em>responsible</em> for the participant list?)</p>
 </section>
 </section>
 <section id="abstraction-one-interface-many-implementations" class="level2">
@@ -784,7 +845,7 @@ Blue squad: ['Gareth']</code></pre>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-24-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-28-output-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -792,28 +853,28 @@ Blue squad: ['Gareth']</code></pre>
 <p><strong>Reading it:</strong> Read top to bottom. Each layer rests on the one beneath it and hides that layer’s detail. You write <code>DeliveryQueue</code> without ever thinking about transistors — every layer below is abstracted away.</p>
 <p>The <code>DeliveryQueue</code> class below stores packages in a list, but hides that behind two methods: <code>enqueue</code> and <code>dequeue</code>. Code that uses the queue never touches the list directly.</p>
 <div id="8081cb60" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:18.917507Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:18.916973Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:18.926883Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:18.924413Z&quot;}}" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeliveryQueue:</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items <span class="op">=</span> []           <span class="co"># storage — hidden behind the methods</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> enqueue(<span class="va">self</span>, package):    <span class="co"># add to the back</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items.append(package)</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dequeue(<span class="va">self</span>):             <span class="co"># take from the front</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._items.pop(<span class="dv">0</span>)</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_empty(<span class="va">self</span>):</span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>._items) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeliveryQueue:</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items <span class="op">=</span> []           <span class="co"># storage — hidden behind the methods</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> enqueue(<span class="va">self</span>, package):    <span class="co"># add to the back</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items.append(package)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dequeue(<span class="va">self</span>):             <span class="co"># take from the front</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._items.pop(<span class="dv">0</span>)</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_empty(<span class="va">self</span>):</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>._items) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Nimue’s dispatcher uses the queue through its <strong>interface</strong> only — <code>enqueue</code>, <code>dequeue</code>, <code>is_empty</code>. They never see the list inside.</p>
 <div id="bbb5c4d9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-02T14:22:18.933184Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-02T14:22:18.932625Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-02T14:22:18.940976Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-02T14:22:18.939293Z&quot;}}" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dispatch <span class="op">=</span> DeliveryQueue()</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Camelot #1"</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Astolat #2"</span>)</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Lyonesse #3"</span>)</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> dispatch.is_empty():</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Now delivering:"</span>, dispatch.dequeue())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>dispatch <span class="op">=</span> DeliveryQueue()</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Camelot #1"</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Astolat #2"</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>dispatch.enqueue(<span class="st">"Lyonesse #3"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> dispatch.is_empty():</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Now delivering:"</span>, dispatch.dequeue())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Now delivering: Camelot #1
 Now delivering: Astolat #2
@@ -836,12 +897,34 @@ Now delivering: Lyonesse #3</code></pre>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-27-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB06_ModulesOOP_files/figure-html/cell-31-output-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Reading it:</strong> Callers depend only on the top box (the promise). Either storage box below can fulfill it, and swapping them never reaches the caller. Promise on top, storage on the bottom — that’s the ADT idea from Notebook 5, now built by hand.</p>
+</section>
+<section id="your-turn-nimues-queue-extended" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-nimues-queue-extended">✏️ Your Turn — Nimue’s Queue, Extended</h3>
+<p>Add a method <code>peek(self)</code> to the <code>DeliveryQueue</code> class that returns the next package <strong>without</strong> removing it (the front item is <code>self._items[0]</code>). Build a queue, add three packages, call <code>peek()</code>, then <code>dequeue()</code> once, and show that <code>peek</code> reported the right one without consuming it.</p>
+<div id="cell-100" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeliveryQueue:</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items <span class="op">=</span> []</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> enqueue(<span class="va">self</span>, package):</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items.append(package)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> dequeue(<span class="va">self</span>):</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._items.pop(<span class="dv">0</span>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_empty(<span class="va">self</span>):</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>._items) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: add peek(self) -&gt; return the front item WITHOUT removing it</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a queue, enqueue three packages, peek, dequeue once, peek again.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 </section>
 <section id="the-four-pillars-of-oop" class="level2">
@@ -855,34 +938,28 @@ Now delivering: Lyonesse #3</code></pre>
 </ol>
 <p>If you can name these four and give an example of each, you understand what object-oriented design <em>is</em>. Everything after this is practice and judgment — knowing not just <em>how</em> to use each one, but <em>when</em>.</p>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<p>Work these in new code cells. There are no solution cells — that’s on purpose. Test your classes by making objects and printing results.</p>
-<section id="exercise-1-lancelots-athlete-class" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1-lancelots-athlete-class">✏️ Exercise 1 — Lancelot’s Athlete Class</h3>
-<p><strong>Lancelot Athletics</strong> tracks athletes. Write a class <code>Athlete</code> with an <code>__init__</code> that stores <code>name</code> and <code>wins</code> (default <code>0</code>), plus a method <code>record_win(self)</code> that adds one to <code>wins</code>. Create two athletes, record a few wins for each, and print both — and confirm that recording a win for one does <strong>not</strong> change the other’s total.</p>
-</section>
-<section id="exercise-2-morgans-researcher-hierarchy-ai-assisted" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2-morgans-researcher-hierarchy-ai-assisted">✏️ Exercise 2 — Morgan’s Researcher Hierarchy &nbsp; 🤖 <em>AI-Assisted</em></h3>
-<p><strong>Morgan le Fay</strong> at Avalon Health Sciences wants a base class <code>Researcher</code> (stores <code>name</code>, has a method <code>describe</code> returning <code>"&lt;name&gt; runs experiments."</code>) and a subclass <code>LeadResearcher(Researcher)</code> that adds a <code>team_size</code> and <strong>overrides</strong> <code>describe</code> to also mention the team size.</p>
-<p>Use Gemini, Claude, or ChatGPT to draft both classes. Then: 1. Paste the result into a code cell and run it. Create one <code>Researcher</code> and one <code>LeadResearcher</code> and print both descriptions. 2. Find at least one thing the AI got wrong, missed, or could improve — a common one is forgetting <code>super().__init__()</code> so the lead’s <code>name</code> goes missing. 3. In a markdown cell, write 2–3 sentences on what you changed and why.</p>
-</section>
-<section id="exercise-3-nimues-queue-extended" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3-nimues-queue-extended">✏️ Exercise 3 — Nimue’s Queue, Extended</h3>
-<p>Add a method <code>peek(self)</code> to the <code>DeliveryQueue</code> class that returns the next package <strong>without removing it</strong>. (Hint: the front item is <code>self._items[0]</code>.) Build a queue, add three packages, call <code>peek()</code>, then <code>dequeue()</code> once, and show that <code>peek</code> reported the right one without consuming it.</p>
-</section>
-<section id="exercise-4-guineveres-__str__" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-4-guineveres-__str__">✏️ Exercise 4 — Guinevere’s <code>__str__</code></h3>
-<p>Guinevere wants her <code>Citizen</code> objects to print nicely. Add a <code>__str__</code> method to <code>Citizen</code> that returns something like <code>"Elaine Astolat (North ward): owes 120.0"</code>. Create a citizen and <code>print</code> it to confirm your <code>__str__</code> runs instead of the default <code>&lt;...object at 0x...&gt;</code> text.</p>
-</section>
-<section id="exercise-5-morgans-lab-on-paper" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-5-morgans-lab-on-paper">✏️ Exercise 5 — Morgan’s Lab, On Paper</h3>
-<p>You don’t always start at the keyboard. <strong>Morgan le Fay</strong> describes Avalon Health Sciences like this:</p>
+<section id="capstone-build-a-battle-game-oop" class="level2">
+<h2 class="anchored" data-anchor-id="capstone-build-a-battle-game-oop">✏️ Capstone — Build a Battle Game (OOP)</h2>
+<p>This is where object-oriented design proves its worth. You’ll build a small <strong>turn-based battle game</strong>: a hero faces a band of monsters, they trade blows in a loop, and the last one standing wins. The default is a Camelot knight against a horde, but <strong>pick your own</strong>: a space marine versus aliens, a wizard versus slimes, a robot versus viruses.</p>
+<p>To earn its keep, your game must be built the OOP way:</p>
+<ul>
+<li>a <strong>base class</strong> — call it <code>Combatant</code> (or <code>Character</code>) — that holds shared data like <code>name</code> and <code>hp</code> and has methods such as <code>attack(self, other)</code>, <code>take_damage(self, amount)</code>, and <code>is_alive(self)</code>;</li>
+<li>a hero built from it, and <strong>at least two kinds of monster</strong> made by <strong>inheritance</strong> (for example <code>Goblin</code> and <code>Dragon</code> extending a <code>Monster</code> base), where each monster <strong>overrides</strong> a method so it fights differently — that’s polymorphism;</li>
+<li>a <strong>list of monsters</strong> the hero battles, fought in a <strong>turn loop</strong> until the hero falls or every monster is defeated.</li>
+</ul>
+<p><strong>Step 1 — Design it first (before the AI).</strong> In a markdown cell, sketch your classes the noun/verb way: what is the base <code>Combatant</code> (its attributes and methods), what two monster types extend it, and how does each one fight differently? Decide the starting <code>hp</code> and attack power for the hero and the monsters.</p>
+<p><strong>Step 2 — Turn your design into a prompt.</strong> Fill the blanks and send it to Gemini (or Claude / ChatGPT):</p>
 <blockquote class="blockquote">
-<p>“A <strong>study</strong> has a <strong>title</strong> and a list of <strong>participants</strong>. Each <strong>participant</strong> has an <strong>ID</strong> and an <strong>age</strong>. A <strong>researcher</strong> can <em>enroll</em> a participant and <em>count</em> how many are signed up.”</p>
+<p><em>Write a small turn-based battle game in Python for Google Colab. Theme: <strong>[your theme]</strong>. Define a base class <code>Combatant</code> with <code>name</code> and <code>hp</code> and methods <code>attack(other)</code>, <code>take_damage(amount)</code>, and <code>is_alive()</code>. Make a hero and at least two monster subclasses (<strong>[your two monsters]</strong>) that inherit from a <code>Monster</code> base and <strong>override</strong> how they attack. Put the monsters in a <strong>list</strong> and loop through a battle, turn by turn, printing what happens, until the hero dies or all monsters are defeated. Keep it short and beginner-readable.</em></p>
 </blockquote>
-<p>In a markdown cell — <strong>no code required</strong> — use the <strong>noun/verb heuristic</strong> to list (a) the classes you would create, (b) the attributes each one holds, and (c) the methods. Then write one sentence on which class should own the <code>enroll</code> method, and why. (Hint: think about cohesion — which class is <em>responsible</em> for the list of participants?)</p>
-</section>
+<p><strong>Step 3 — Get the bones working, then test.</strong> Paste it into the cell below and <strong>run it now</strong>. Get the simplest fight working first — one hero, one monster, hp going down, someone wins — and check it by hand before adding more.</p>
+<p><strong>Step 4 — Add the bells and whistles.</strong> Once a basic fight runs, add <strong>one or two</strong>, testing after each: a third monster type with a special attack, a healing potion the hero can use, a <code>Boss</code> that overrides <code>take_damage</code> to be tougher, or a <code>Party</code> class that <em>has</em> a list of heroes (composition).</p>
+<p><strong>Step 5 — Test it like Smee.</strong> Try to break it: hp driven below zero, an empty monster list, a monster attacking after it’s already been defeated. Fix one thing it gets wrong.</p>
+<p><strong>Step 6 — Reflect.</strong> In a markdown cell, write 2–3 sentences: where did inheritance save you repetition, and what did the AI get wrong that you had to fix?</p>
+<p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
+<div id="cell-103" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built battle game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="key-terms" class="level2">
 <h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
