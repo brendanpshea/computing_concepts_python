@@ -98,7 +98,7 @@ Exams are delivered through D2L and require **Respondus LockDown Browser with Re
 
 You'll be prompted to install LockDown Browser the first time you launch a quiz from D2L. I recommend installing it and running a short practice quiz **at least a few days before Exam 1** so any setup problems surface early.
 
-**Programming Project (20%).** An independent programming project -- more details will be provided later.
+**Three Short Programming Projects (20% total)**. Each lecture wi
 
 ### Attendance 📅
 
