@@ -1,0 +1,1166 @@
+{
+  "title": "Chapter 2 - Machine Architecture & The Silicon Shield",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Who founded TSMC?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Morris Chang",
+          "correct": true
+        },
+        {
+          "text": "Carver Mead",
+          "correct": false
+        },
+        {
+          "text": "Lynn Conway",
+          "correct": false
+        },
+        {
+          "text": "Gordon Moore",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was TSMC's unique business model?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A pure-play foundry",
+          "correct": true
+        },
+        {
+          "text": "An integrated device manufacturer",
+          "correct": false
+        },
+        {
+          "text": "An OS designer",
+          "correct": false
+        },
+        {
+          "text": "A vacuum-tube maker",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did the Mead-Conway revolution achieve?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It standardized VLSI design rules",
+          "correct": true
+        },
+        {
+          "text": "It invented the pure silicon wafer",
+          "correct": false
+        },
+        {
+          "text": "It created the working transistor",
+          "correct": false
+        },
+        {
+          "text": "It built the pure-play foundry",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What kind of company is Nvidia?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Fabless",
+          "correct": true
+        },
+        {
+          "text": "Foundry",
+          "correct": false
+        },
+        {
+          "text": "IDM",
+          "correct": false
+        },
+        {
+          "text": "Toolmaker",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which company builds EUV lithography machines?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "ASML",
+          "correct": true
+        },
+        {
+          "text": "TSMC",
+          "correct": false
+        },
+        {
+          "text": "SMIC",
+          "correct": false
+        },
+        {
+          "text": "Intel",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the 'silicon shield' theory?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Taiwan's chip dominance deters invasion",
+          "correct": true
+        },
+        {
+          "text": "A physical coating over transistors",
+          "correct": false
+        },
+        {
+          "text": "A firewall for fabless designs",
+          "correct": false
+        },
+        {
+          "text": "China's indigenous chip effort",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did the U.S. export controls in 2022 aim to restrict?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "High-end AI chips and tools",
+          "correct": true
+        },
+        {
+          "text": "All consumer electronics exports",
+          "correct": false
+        },
+        {
+          "text": "Domestic software development",
+          "correct": false
+        },
+        {
+          "text": "Access to open-source languages",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How did Huawei respond to the export controls in 2023?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "With a domestic 7nm chip",
+          "correct": true
+        },
+        {
+          "text": "By purchasing a TSMC stake",
+          "correct": false
+        },
+        {
+          "text": "By quitting smartphone making",
+          "correct": false
+        },
+        {
+          "text": "By suing Carver Mead",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which elements defined the traditional IDM model?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "One company designed the chip.",
+          "correct": true
+        },
+        {
+          "text": "The same company owned the fab.",
+          "correct": true
+        },
+        {
+          "text": "The company only built for others.",
+          "correct": false
+        },
+        {
+          "text": "The process used open-source hardware.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which arguments support the Fragmentation Reply?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Controls fund indigenous rival capability.",
+          "correct": true
+        },
+        {
+          "text": "Controls fragment the supply chain.",
+          "correct": true
+        },
+        {
+          "text": "Controls have no economic blowback.",
+          "correct": false
+        },
+        {
+          "text": "Controls destroy all worldwide AI models.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the central purpose of machine architecture?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Translating algorithms into hardware operations",
+          "correct": true
+        },
+        {
+          "text": "Inventing new mathematical theorems",
+          "correct": false
+        },
+        {
+          "text": "Building better word processors",
+          "correct": false
+        },
+        {
+          "text": "Making internet connections faster",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which base describes the binary number system?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Base-2",
+          "correct": true
+        },
+        {
+          "text": "Base-10",
+          "correct": false
+        },
+        {
+          "text": "Base-16",
+          "correct": false
+        },
+        {
+          "text": "Base-8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does a single bit represent?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A choice between two states, like on or off",
+          "correct": true
+        },
+        {
+          "text": "A complete English alphabet character",
+          "correct": false
+        },
+        {
+          "text": "A full color image pixel",
+          "correct": false
+        },
+        {
+          "text": "A floating-point decimal number",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What defines the von Neumann architecture?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Sequential instruction and data space",
+          "correct": true
+        },
+        {
+          "text": "Exclusively parallel GPU clusters",
+          "correct": false
+        },
+        {
+          "text": "Running entirely without transistors",
+          "correct": false
+        },
+        {
+          "text": "Hardware disjoint from human inputs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which component acts as the computer's 'brain' in the von Neumann model?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The CPU",
+          "correct": true
+        },
+        {
+          "text": "The Memory",
+          "correct": false
+        },
+        {
+          "text": "The I/O bus",
+          "correct": false
+        },
+        {
+          "text": "The Power Supply",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What characterizes volatile memory?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Contents vanish without power",
+          "correct": true
+        },
+        {
+          "text": "Contents stay on hard drives",
+          "correct": false
+        },
+        {
+          "text": "It executes mathematical arithmetic",
+          "correct": false
+        },
+        {
+          "text": "It isolates software bugs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does bit width impact software capabilities?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It ceilings memory and precision",
+          "correct": true
+        },
+        {
+          "text": "It sets motherboard visual colors",
+          "correct": false
+        },
+        {
+          "text": "It controls internet transfer speeds",
+          "correct": false
+        },
+        {
+          "text": "It governs the operating system",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What happens visually when you double the bit width from 8-bit to 16-bit?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The reach exponentially squares",
+          "correct": true
+        },
+        {
+          "text": "The hardware requires double electricity",
+          "correct": false
+        },
+        {
+          "text": "The computer requires a larger monitor",
+          "correct": false
+        },
+        {
+          "text": "The reach scales linearly",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which elements are part of the von Neumann bottleneck?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The processor computes faster than memory delivers data.",
+          "correct": true
+        },
+        {
+          "text": "The bus acts as a literal internal speed limit.",
+          "correct": true
+        },
+        {
+          "text": "Modern AI models completely bypass the von Neumann structure.",
+          "correct": false
+        },
+        {
+          "text": "The CPU cannot perform any arithmetic operations.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which facts apply to Gordon Moore's 1965 observation?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It described the exponential doubling of chip transistors.",
+          "correct": true
+        },
+        {
+          "text": "It correctly predicted decades of global industry growth.",
+          "correct": true
+        },
+        {
+          "text": "It was a legally binding international engineering treaty.",
+          "correct": false
+        },
+        {
+          "text": "It stated that chips would become more expensive every year.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the decimal value of the binary number <code>1010</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "10",
+          "correct": true
+        },
+        {
+          "text": "8",
+          "correct": false
+        },
+        {
+          "text": "12",
+          "correct": false
+        },
+        {
+          "text": "16",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the binary representation of the decimal number <code>13</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>1101</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>1011</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>1110</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>1001</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the hexadecimal equivalent of the binary number <code>1111 1111</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>FF</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>EE</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>11</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>00</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the decimal value of the hexadecimal number <code>1A</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "26",
+          "correct": true
+        },
+        {
+          "text": "24",
+          "correct": false
+        },
+        {
+          "text": "16",
+          "correct": false
+        },
+        {
+          "text": "32",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "How many unique values can be represented by 4 bits?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "16",
+          "correct": true
+        },
+        {
+          "text": "8",
+          "correct": false
+        },
+        {
+          "text": "4",
+          "correct": false
+        },
+        {
+          "text": "32",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In two's complement, what does the leftmost bit usually signify?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "The mathematical sign of the number",
+          "correct": true
+        },
+        {
+          "text": "The magnitude of the exponent",
+          "correct": false
+        },
+        {
+          "text": "A parity check for errors",
+          "correct": false
+        },
+        {
+          "text": "The start of the data string",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the 8-bit two's complement representation of <code>-1</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>1111 1111</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>1000 0001</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>0000 0001</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>0111 1111</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the decimal equivalent of the 8-bit two's complement binary number <code>1000 0000</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "-128",
+          "correct": true
+        },
+        {
+          "text": "-1",
+          "correct": false
+        },
+        {
+          "text": "128",
+          "correct": false
+        },
+        {
+          "text": "0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "If you binary-shift <code>0010</code> left by one position, what is the new decimal value?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "4",
+          "correct": true
+        },
+        {
+          "text": "1",
+          "correct": false
+        },
+        {
+          "text": "8",
+          "correct": false
+        },
+        {
+          "text": "2",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the hexadecimal representation of decimal <code>255</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>FF</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>AA</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>2F</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>F0</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Convert the hexadecimal number <code>10</code> to decimal.",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "16",
+          "correct": true
+        },
+        {
+          "text": "10",
+          "correct": false
+        },
+        {
+          "text": "2",
+          "correct": false
+        },
+        {
+          "text": "8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the binary representation of the hexadecimal digit <code>C</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>1100</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>1010</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>1110</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>1011</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the largest positive integer you can represent in 8-bit two's complement?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "127",
+          "correct": true
+        },
+        {
+          "text": "255",
+          "correct": false
+        },
+        {
+          "text": "128",
+          "correct": false
+        },
+        {
+          "text": "256",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How do you find the two's complement of a binary number?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Invert all bits and add 1",
+          "correct": true
+        },
+        {
+          "text": "Reverse the order of the bits",
+          "correct": false
+        },
+        {
+          "text": "Change the leftmost bit to 0",
+          "correct": false
+        },
+        {
+          "text": "Subtract 1 and invert all bits",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Convert the unsigned binary <code>1101</code> to hexadecimal.",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>D</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>B</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>C</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>E</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Convert the decimal <code>7</code> to a 4-bit binary string.",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>0111</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>1000</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>0110</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>0101</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What happens if you add 1 to the largest positive number in two's complement?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "It overflows to an incorrect negative number",
+          "correct": true
+        },
+        {
+          "text": "The CPU upgrades to a larger bit width",
+          "correct": false
+        },
+        {
+          "text": "The result stays exactly the same",
+          "correct": false
+        },
+        {
+          "text": "The system correctly represents the new positive number",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the decimal value of the unsigned binary number <code>1111</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "15",
+          "correct": true
+        },
+        {
+          "text": "16",
+          "correct": false
+        },
+        {
+          "text": "14",
+          "correct": false
+        },
+        {
+          "text": "8",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following are equal to decimal 12?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Hexadecimal <code>C</code>",
+          "correct": true
+        },
+        {
+          "text": "Binary <code>1100</code>",
+          "correct": true
+        },
+        {
+          "text": "Hexadecimal <code>A</code>",
+          "correct": false
+        },
+        {
+          "text": "Binary <code>1010</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which statements about two's complement are correct?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "It allows subtraction to be computed via addition.",
+          "correct": true
+        },
+        {
+          "text": "It has exactly one representation for the number zero.",
+          "correct": true
+        },
+        {
+          "text": "It reserves two distinct patterns for positive and negative zero.",
+          "correct": false
+        },
+        {
+          "text": "It only works to represent positive floating point values.",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
