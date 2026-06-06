@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>comp1150_nb04_controlflowfunctions – Computing Concepts with Python</title>
+<title>Notebook 4: Control Flow &amp; Functions – Computing Concepts with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -164,9 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#notebook-4-control-flow-functions" id="toc-notebook-4-control-flow-functions" class="nav-link active" data-scroll-target="#notebook-4-control-flow-functions">Notebook 4: Control Flow &amp; Functions</a>
-  <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#the-big-contract" id="toc-the-big-contract" class="nav-link" data-scroll-target="#the-big-contract">The Big Contract</a></li>
   <li><a href="#the-roadmap" id="toc-the-roadmap" class="nav-link" data-scroll-target="#the-roadmap">The Roadmap</a></li>
   <li><a href="#making-decisions-if" id="toc-making-decisions-if" class="nav-link" data-scroll-target="#making-decisions-if">Making Decisions: <code>if</code></a></li>
@@ -184,26 +184,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 4: Control Flow &amp; Functions</h1>
+<p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb">View on GitHub</a></p>
-<section id="notebook-4-control-flow-functions" class="level1">
-<h1>Notebook 4: Control Flow &amp; Functions</h1>
-<section id="comp-1150-computer-science-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
-<p><strong>Brendan Shea, PhD</strong></p>
 <p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
-</section>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -488,6 +510,16 @@ Time's up. Tick tock.</code></pre>
 <p>Peter’s loop never ends because nothing moves it toward the exit. That points at a quiet promise <em>every</em> loop makes: <strong>something inside it must change so the condition will eventually become <code>False</code>.</strong> Break that promise and the loop runs forever.</p>
 <p>Now a question that sounds easy and isn’t: could you write one program that reads <em>any</em> loop and decides whether it will ever stop? For a small loop, sure — you trace it by hand. But in general, <strong>no program can answer that question for every possible loop.</strong> That isn’t a gap in our cleverness; it was <em>proven</em> impossible. The result is called the <strong>halting problem</strong>, and we meet it properly in Notebook 7. For now, notice where you are: you bumped into one of the deepest limits in all of computer science just by writing a <code>while</code> loop.</p>
 </section>
+<section id="think-about-it-will-it-always-stop" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-will-it-always-stop">💭 Think About It — Will It Always Stop?</h3>
+<p>You saw that a loop with the wrong condition can run forever. Sometimes it’s obvious a loop will end; sometimes it really isn’t.</p>
+<ul>
+<li>For an everyday process (boiling pasta, waiting for a bus, searching your room for your keys), how do you <em>know</em> it will eventually finish? Is that guarantee built into the steps, or do you just trust it?</li>
+<li>Can you describe a set of instructions that might run forever for some starting inputs but stop for others?</li>
+<li>Why might it matter — for software running a plane or a hospital monitor — to be <em>certain</em> a program will always finish what it started?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 <section id="the-while-loop-as-a-flowchart" class="level3">
 <h3 class="anchored" data-anchor-id="the-while-loop-as-a-flowchart">The <code>while</code> Loop, as a Flowchart</h3>
 <p>A <code>while</code> loop is the first flowchart with an arrow that goes <em>backwards</em>. Watch the <strong>“loop back”</strong> edge: the diamond is tested, the body runs, and control returns to the diamond — over and over, until the test is finally <code>False</code>.</p>
@@ -505,7 +537,7 @@ Time's up. Tick tock.</code></pre>
 <section id="your-turn-count-the-pixie-dust" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-count-the-pixie-dust">✏️ Your Turn — Count the Pixie Dust</h3>
 <p>The ship burns one measure of pixie dust each minute. Start with some <code>dust</code> and use a <code>while</code> loop to print how much is left each minute until it runs out, then print <em>Out of dust!</em>. Make sure something changes each pass — otherwise you’ll loop forever.</p>
-<div id="cell-36" class="cell">
+<div id="cell-37" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>dust <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -593,7 +625,7 @@ Accounted for: Michael
 <section id="your-turn-total-the-supplies" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-total-the-supplies">✏️ Your Turn — Total the Supplies</h3>
 <p>Each child needs a different number of supplies. Use a <code>for</code> loop and an <strong>accumulator</strong> to add up the list below and print the total. (Try an empty list too — what should it print?)</p>
-<div id="cell-46" class="cell">
+<div id="cell-47" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS LIST, THEN RE-RUN</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>needs <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>]</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -645,7 +677,7 @@ Search ended.</code></pre>
 <section id="your-turn-find-the-stowaway" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-find-the-stowaway">✏️ Your Turn — Find the Stowaway</h3>
 <p>Loop through <code>roster</code>, printing each name you check. The moment you reach <code>"stowaway"</code>, print <em>Caught!</em> and <code>break</code> out of the loop.</p>
-<div id="cell-51" class="cell">
+<div id="cell-52" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> [<span class="st">"Wendy"</span>, <span class="st">"John"</span>, <span class="st">"stowaway"</span>, <span class="st">"Michael"</span>]</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -713,7 +745,17 @@ Night 2: Nana checks child #3</code></pre>
 </div>
 </div>
 </div>
+<section id="think-about-it-is-that-really-all-there-is" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-is-that-really-all-there-is">💭 Think About It — Is That Really All There Is?</h3>
+<p>You just learned that sequence, selection (<code>if</code>), and repetition (loops) are enough to express <em>any</em> algorithm at all.</p>
+<ul>
+<li>Does it surprise you that everything a computer does reduces to just these three? Can you think of something a computer does that feels like it must need more — and guess how it might actually be built from the three?</li>
+<li>Human instructions from a coach, teacher, or parent rarely sound like pure sequence/selection/repetition. What do humans add that these three building blocks leave out?</li>
+<li>If these three are all you truly need, why do programming languages bother having so many other features? What might they be for?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
 <p><strong>Reading it:</strong> Three shapes, left to right — a straight line (sequence), a fork (selection), and a loop-back arrow (iteration). Every program you ever write or read is some arrangement of just these three. That’s a genuinely surprising fact, and it’s the theoretical heart of this notebook.</p>
+</section>
 </section>
 <section id="decomposing-problems-into-functions" class="level2">
 <h2 class="anchored" data-anchor-id="decomposing-problems-into-functions">Decomposing Problems into Functions</h2>
@@ -777,7 +819,7 @@ r = 5   s = None</code></pre>
 <section id="your-turn-write-a-function" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-write-a-function">✏️ Your Turn — Write a Function</h3>
 <p>Write a function <code>supplies_for(children, per_child)</code> that <strong>returns</strong> the total supplies needed (children × per_child). Then call it and print the result. Return the value — don’t <code>print</code> inside the function.</p>
-<div id="cell-68" class="cell">
+<div id="cell-70" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: define supplies_for(children, per_child) that RETURNS children * per_child,</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       then call it and print the result.</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -882,7 +924,7 @@ Return the total supply units needed for a group of children.</code></pre>
 <section id="your-turn-document-it" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-document-it">✏️ Your Turn — Document It</h3>
 <p>Take your <code>supplies_for</code> function from above. Give <code>per_child</code> a <strong>default</strong> of <code>3</code>, add a one-line <strong>docstring</strong> saying what it does, then call it once using a <strong>keyword argument</strong>.</p>
-<div id="cell-82" class="cell">
+<div id="cell-84" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: add a default (per_child=3) and a docstring, then call with a keyword arg.</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># def supplies_for(children, per_child=3):</span></span>
@@ -1128,7 +1170,7 @@ FUNCTION mission_total(roster):
 <p><strong>Step 5 — Test it like Smee.</strong> Try to break it: a turn count of 0, an action that isn’t on the menu, a resource that goes negative. Fix one thing it gets wrong.</p>
 <p><strong>Step 6 — Reflect.</strong> In a markdown cell, write 2–3 sentences: what did the AI get wrong or what did you improve, and how did you fix it?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
-<div id="cell-101" class="cell">
+<div id="cell-103" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built turn-based game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -1192,7 +1234,6 @@ FUNCTION mission_total(roster):
 <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

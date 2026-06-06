@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>comp1150_nb06_modulesoop – Computing Concepts with Python</title>
+<title>Notebook 6: Modules &amp; Object-Oriented Design – Computing Concepts with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -164,9 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#notebook-6-modules-object-oriented-design" id="toc-notebook-6-modules-object-oriented-design" class="nav-link active" data-scroll-target="#notebook-6-modules-object-oriented-design">Notebook 6: Modules &amp; Object-Oriented Design</a>
-  <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#the-problem-too-much-copy-paste" id="toc-the-problem-too-much-copy-paste" class="nav-link" data-scroll-target="#the-problem-too-much-copy-paste">The Problem: Too Much Copy-Paste</a></li>
   <li><a href="#modules-code-you-dont-have-to-rewrite" id="toc-modules-code-you-dont-have-to-rewrite" class="nav-link" data-scroll-target="#modules-code-you-dont-have-to-rewrite">Modules: Code You Don’t Have to Rewrite</a></li>
   <li><a href="#what-oop-is-a-way-of-thinking-not-just-syntax" id="toc-what-oop-is-a-way-of-thinking-not-just-syntax" class="nav-link" data-scroll-target="#what-oop-is-a-way-of-thinking-not-just-syntax">What OOP Is: A Way of Thinking, Not Just Syntax</a></li>
@@ -181,26 +181,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 6: Modules &amp; Object-Oriented Design</h1>
+<p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb">View on GitHub</a></p>
-<section id="notebook-6-modules-object-oriented-design" class="level1">
-<h1>Notebook 6: Modules &amp; Object-Oriented Design</h1>
-<section id="comp-1150-computer-science-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
-<p><strong>Brendan Shea, PhD</strong></p>
 <p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
-</section>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -341,7 +363,17 @@ Big job: 8250.0</code></pre>
 </div>
 </div>
 </div>
+<section id="think-about-it-seeing-the-world-as-objects" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-seeing-the-world-as-objects">💭 Think About It — Seeing the World as Objects</h3>
+<p>OOP is a way of thinking: model a problem as objects that bundle data together with the things they can do.</p>
+<ul>
+<li>Look around the room and pick one thing. Describe it as an “object”: what does it <em>know</em> (its data) and what can it <em>do</em> (its actions)?</li>
+<li>Bundling data with behavior is just one way to organize a program — the earlier notebooks used separate functions and variables. What might be appealing about keeping related data and actions together?</li>
+<li>Some people say OOP matches how humans naturally think about the world. Do you agree? Is “everything is an object” always a helpful lens, or can it be forced?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
 <p><strong>Reading it:</strong> On the left, data and functions are separate boxes — the functions reach over to act on the data. On the right, each object carries its own data <em>and</em> its own methods in one bundle. That bundling is the whole idea of OOP.</p>
+</section>
 </section>
 <section id="classes-objects-blueprints-and-the-things-you-build-from-them" class="level2">
 <h2 class="anchored" data-anchor-id="classes-objects-blueprints-and-the-things-you-build-from-them">Classes &amp; Objects: Blueprints and the Things You Build From Them</h2>
@@ -510,7 +542,7 @@ Percival: 225.0</code></pre>
 <section id="your-turn-lancelots-athlete-class" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-lancelots-athlete-class">✏️ Your Turn — Lancelot’s Athlete Class</h3>
 <p>Write a class <code>Athlete</code> with an <code>__init__</code> that stores <code>name</code> and <code>wins</code> (default <code>0</code>), plus a method <code>record_win(self)</code> that adds one to <code>wins</code>. Make <strong>two</strong> athletes, record a few wins for each, print both — and confirm that recording a win for one does <strong>not</strong> change the other’s total.</p>
-<div id="cell-48" class="cell">
+<div id="cell-49" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: define class Athlete with __init__(self, name, wins=0)</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       and a method record_win(self) that does self.wins += 1.</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -552,7 +584,7 @@ True</code></pre>
 <section id="your-turn-guineveres-__str__" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-guineveres-__str__">✏️ Your Turn — Guinevere’s <code>__str__</code></h3>
 <p>Guinevere wants her <code>Citizen</code> objects to print nicely instead of as <code>&lt;...object at 0x...&gt;</code>. Add a <code>__str__</code> method to <code>Citizen</code> that returns something like <code>"Elaine Astolat (North ward): owes 120.0"</code>. Then create a citizen and <code>print</code> it to confirm your <code>__str__</code> runs.</p>
-<div id="cell-53" class="cell">
+<div id="cell-54" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
@@ -663,7 +695,7 @@ First Knight Lancelot leads the patrol.</code></pre>
 <section id="your-turn-morgans-researcher-hierarchy" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-morgans-researcher-hierarchy">✏️ Your Turn — Morgan’s Researcher Hierarchy</h3>
 <p>Write a base class <code>Researcher</code> that stores <code>name</code> and has a method <code>describe()</code> returning <code>"&lt;name&gt; runs experiments."</code>. Then write a subclass <code>LeadResearcher(Researcher)</code> that adds a <code>team_size</code> (using <code>super().__init__()</code>) and <strong>overrides</strong> <code>describe()</code> to also mention the team size. Make one of each and print both descriptions.</p>
-<div id="cell-68" class="cell">
+<div id="cell-69" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: class Researcher with __init__(self, name) and describe(self).</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: class LeadResearcher(Researcher) that adds team_size via super().__init__()</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#       and overrides describe().</span></span>
@@ -783,6 +815,16 @@ Blue squad: ['Gareth']</code></pre>
 <li><code>patrol_all</code> does its job by asking each member to <code>patrol()</code> — the Squad delegates to the objects it contains.</li>
 <li>A famous design guideline says <strong>“favor composition over inheritance.”</strong> Composition is more flexible: you can change a squad’s members while the program runs, but you can’t change a class’s parent. Overusing inheritance is one of the main complaints in this notebook’s case study.</li>
 </ul>
+</section>
+<section id="think-about-it-drawing-the-family-tree" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-drawing-the-family-tree">💭 Think About It — Drawing the Family Tree</h3>
+<p>Inheritance models an “is-a” relationship (a dog <em>is an</em> animal); composition models “has-a” (a car <em>has an</em> engine). Choosing wrong leads to awkward designs.</p>
+<ul>
+<li>Real-world categories are messy: is a tomato a fruit or a vegetable? Why might forcing the world into clean “is-a” hierarchies cause trouble for a programmer?</li>
+<li>Give an everyday example of an “is-a” relationship and a “has-a” relationship. How did you decide which was which?</li>
+<li>“Prefer composition over inheritance” is common advice. Without the jargon, why might building things by <em>combining parts</em> be more flexible than building them by <em>specializing a parent</em>?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
 </section>
 </section>
 <section id="designing-with-objects-finding-the-classes" class="level2">
@@ -907,7 +949,7 @@ Now delivering: Lyonesse #3</code></pre>
 <section id="your-turn-nimues-queue-extended" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-nimues-queue-extended">✏️ Your Turn — Nimue’s Queue, Extended</h3>
 <p>Add a method <code>peek(self)</code> to the <code>DeliveryQueue</code> class that returns the next package <strong>without</strong> removing it (the front item is <code>self._items[0]</code>). Build a queue, add three packages, call <code>peek()</code>, then <code>dequeue()</code> once, and show that <code>peek</code> reported the right one without consuming it.</p>
-<div id="cell-100" class="cell">
+<div id="cell-102" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeliveryQueue:</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items <span class="op">=</span> []</span>
@@ -937,6 +979,16 @@ Now delivering: Lyonesse #3</code></pre>
 <li><strong>Polymorphism</strong> — one method name behaving correctly for each object. <em>(The mixed patrol roster.)</em></li>
 </ol>
 <p>If you can name these four and give an example of each, you understand what object-oriented design <em>is</em>. Everything after this is practice and judgment — knowing not just <em>how</em> to use each one, but <em>when</em>.</p>
+<section id="think-about-it-when-is-oop-the-right-choice" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-when-is-oop-the-right-choice">💭 Think About It — When Is OOP the Right Choice?</h3>
+<p>You’ve now seen the four pillars — encapsulation, inheritance, polymorphism, abstraction — working together.</p>
+<ul>
+<li>OOP is powerful but not free: it adds structure and ceremony. For what kinds of problems do you think that structure pays off, and where might it just be overhead?</li>
+<li>Of the four pillars, which felt most genuinely useful to you, and which felt most abstract or hard to grasp? Why?</li>
+<li>A big program can be organized many ways. Why does <em>how</em> code is organized matter so much, even when two versions produce the exact same output?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 </section>
 <section id="capstone-build-a-battle-game-oop" class="level2">
 <h2 class="anchored" data-anchor-id="capstone-build-a-battle-game-oop">✏️ Capstone — Build a Battle Game (OOP)</h2>
@@ -957,7 +1009,7 @@ Now delivering: Lyonesse #3</code></pre>
 <p><strong>Step 5 — Test it like Smee.</strong> Try to break it: hp driven below zero, an empty monster list, a monster attacking after it’s already been defeated. Fix one thing it gets wrong.</p>
 <p><strong>Step 6 — Reflect.</strong> In a markdown cell, write 2–3 sentences: where did inheritance save you repetition, and what did the AI get wrong that you had to fix?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
-<div id="cell-103" class="cell">
+<div id="cell-106" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built battle game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -1010,7 +1062,6 @@ Now delivering: Lyonesse #3</code></pre>
 <p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>comp1150_nb01_whatiscomputing – Computing Concepts with Python</title>
+<title>Notebook 1: What Is Computing? A Story of Four Algorithms – Computing Concepts with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -164,9 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#notebook-1-what-is-computing-a-story-of-four-algorithms" id="toc-notebook-1-what-is-computing-a-story-of-four-algorithms" class="nav-link active" data-scroll-target="#notebook-1-what-is-computing-a-story-of-four-algorithms">Notebook 1: What Is Computing? A Story of Four Algorithms</a>
-  <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#what-is-computer-science" id="toc-what-is-computer-science" class="nav-link" data-scroll-target="#what-is-computer-science">What Is Computer Science?</a></li>
   <li><a href="#the-four-algorithms-well-study" id="toc-the-four-algorithms-well-study" class="nav-link" data-scroll-target="#the-four-algorithms-well-study">The Four Algorithms We’ll Study</a></li>
   <li><a href="#a-hundred-and-twenty-years-of-hardware" id="toc-a-hundred-and-twenty-years-of-hardware" class="nav-link" data-scroll-target="#a-hundred-and-twenty-years-of-hardware">A Hundred and Twenty Years of Hardware</a></li>
@@ -180,26 +180,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 1: What Is Computing? A Story of Four Algorithms</h1>
+<p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB01_WhatIsComputing.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB01_WhatIsComputing.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB01_WhatIsComputing.ipynb">View on GitHub</a></p>
-<section id="notebook-1-what-is-computing-a-story-of-four-algorithms" class="level1">
-<h1>Notebook 1: What Is Computing? A Story of Four Algorithms</h1>
-<section id="comp-1150-computer-science-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
-<p><strong>Brendan Shea, PhD</strong></p>
 <p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
-</section>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -528,6 +550,16 @@ OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
 <li><strong>AI-Assisted Theorem Proving (2020s):</strong> Today, systems like Lean (a formal proof assistant) and AI models are being used not just to verify human proofs, but to help discover new mathematical insights, theorems, and bounds in fields like combinatorics and geometry.</li>
 </ol>
 </section>
+<section id="think-about-it-can-you-trust-a-proof-you-cant-read" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-can-you-trust-a-proof-you-cant-read">💭 Think About It — Can You Trust a Proof You Can’t Read?</h3>
+<p>The Four Color Theorem (1976) was the first famous result whose proof no human could fully check by hand — a computer had to grind through nearly two thousand cases. Today, AI systems help discover proofs as well as verify them.</p>
+<ul>
+<li>If a theorem is “proved” only because a machine checked more cases than any person could read in a lifetime, do you count it as <em>proved</em>? What would it take to convince you?</li>
+<li>Lovelace insisted her machine “has no pretensions to originate anything” — it only does what we order it to. Does AI-assisted mathematics challenge that claim, or is it still just following orders very fast?</li>
+<li>Think of a time you trusted an answer from a calculator, a spreadsheet, or an app without checking it yourself. What made you trust it? Was that trust earned?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 </section>
 <section id="algorithm-2-holleriths-tabulator-1890" class="level2">
 <h2 class="anchored" data-anchor-id="algorithm-2-holleriths-tabulator-1890">Algorithm 2 — Hollerith’s Tabulator (1890)</h2>
@@ -696,6 +728,16 @@ OUTPUT:    a dictionary mapping each value of that field to its count
 <li><strong>Cloud Data and DataFrames (2010s–Present):</strong> The rise of cloud data warehouses (like Snowflake or BigQuery) combined with powerful, open-source software abstractions (like Python’s <code>pandas</code> library) democratized data science, enabling analysts to process massive datasets with just a few lines of code.</li>
 </ol>
 </section>
+<section id="think-about-it-counting-people" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-counting-people">💭 Think About It — Counting People</h3>
+<p>Hollerith’s tabulator was built to count a whole nation. The moment you turn people into rows of data, you can answer questions about them at astonishing speed — and that power cuts both ways.</p>
+<ul>
+<li>What genuinely good things become possible when a government or company can quickly count and sort millions of people (think public health, services, planning)?</li>
+<li>A category recorded for one harmless reason can later be used for a purpose no one intended when the data was collected. Why might that be hard to prevent, even with good intentions at the start?</li>
+<li>You are a “row” in dozens of databases right now. Describe one way you’ve noticed being treated as a data point. Did it feel helpful, unsettling, or both?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 </section>
 <section id="algorithm-3-turings-codebreaker-1940s" class="level2">
 <h2 class="anchored" data-anchor-id="algorithm-3-turings-codebreaker-1940s">Algorithm 3 — Turing’s Codebreaker (1940s)</h2>
@@ -843,6 +885,16 @@ Shift 25: HVS SOUZS VOG ZOBRSR</code></pre>
 <li><strong>End-to-End Encryption (2010s):</strong> Messaging apps like Signal and WhatsApp adopted protocols where only the communicating users can read the messages. This means not even the service providers have the keys to decrypt the conversations.</li>
 <li><strong>Post-Quantum Cryptography (Present):</strong> With the theoretical advent of quantum computers—which could break RSA and other traditional encryption instantly using algorithms like Shor’s—researchers and governments are actively developing and standardizing new cryptographic algorithms resistant to quantum attacks.</li>
 </ol>
+</section>
+<section id="think-about-it-a-world-without-secrets-or-without-privacy" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-a-world-without-secrets-or-without-privacy">💭 Think About It — A World Without Secrets, or Without Privacy?</h3>
+<p>Turing’s team broke codes to win a war. The same mathematics now protects your messages, your bank, and your passwords — and also protects people doing harm.</p>
+<ul>
+<li>Strong encryption shields everyone equally, including criminals. Should governments be able to demand a “backdoor” that lets them read encrypted messages with a warrant? Pick a side and give your best reason.</li>
+<li>End-to-end encryption means <em>even the company</em> can’t read your messages. What do you gain from that, and what do you give up?</li>
+<li>Where do you personally draw the line between privacy and safety? Has something in your own life (a hack, a leak, a feeling of being watched) shaped where that line is?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
 </section>
 </section>
 <section id="algorithm-4-weizenbaums-eliza-1966" class="level2">
@@ -1014,6 +1066,16 @@ ELIZA: Please go on.
 <p>Here are 12 examples of characters you could choose to get you thinking: 1. <strong>Yoda</strong> — “Why do you feel {rest}, hmmm?” 2. <strong>Darth Vader</strong> — “I find your need for {rest} disturbing.” 3. <strong>Gollum</strong> — “We wants {rest}, precious, yes we does!” 4. <strong>Sherlock Holmes</strong> — “It is elementary that you think {rest}.” 5. <strong>Hermione Granger</strong> — “According to the books, {rest} is clearly wrong. Have you done your research?” 6. <strong>Michael Scott</strong> — “That’s what she said about {rest}!” 7. <strong>Homer Simpson</strong> — “Mmm… {rest}…” 8. <strong>GLaDOS</strong> — “I am generating a deadly neurotoxin because you feel {rest}.” 9. <strong>Ron Swanson</strong> — “I have no interest in {rest}. Give me all the bacon and eggs you have.” 10. <strong>Spock</strong> — “It is highly illogical that you need {rest}.” 11. <strong>Katniss Everdeen</strong> — “I’m not interested in {rest}. I just want to survive.” 12. <strong>Leslie Knope</strong> — “I am <em>so</em> excited that you care about {rest}! This is amazing!”</p>
 <p><strong>Requirements:</strong> 1. Your triggers must not already appear in <code>ELIZA_RULES</code>. 2. Write a test conversation of at least six exchanges interacting with your character. 3. In a markdown cell: - Did the illusion of understanding feel stronger or weaker than the original? - What would a user have to type to <em>break</em> the illusion?</p>
 </section>
+<section id="think-about-it-does-the-machine-understand" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-does-the-machine-understand">💭 Think About It — Does the Machine Understand?</h3>
+<p>ELIZA just matched patterns and filled in templates, yet people poured out real feelings to it — even after being told exactly how it worked. Weizenbaum, who built it, found this deeply disturbing.</p>
+<ul>
+<li>Why do you think people opened up to ELIZA even knowing it was a simple program? Have you ever felt a pull to treat a chatbot or voice assistant as if it understood you?</li>
+<li>When we say a modern AI “understands” a question, is that the right word — or a convenient shorthand for very good pattern-matching? Argue for one view.</li>
+<li>What do we gain, and what might we lose, when we let ourselves talk to a machine as though it were a person?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 </section>
 <section id="closing-the-pattern-across-the-four" class="level2">
 <h2 class="anchored" data-anchor-id="closing-the-pattern-across-the-four">Closing: The Pattern Across the Four</h2>
@@ -1096,7 +1158,6 @@ ELIZA: Please go on.
 <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. </em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

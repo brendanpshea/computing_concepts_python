@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>comp1150_nb07_searchingsorting – Computing Concepts with Python</title>
+<title>Notebook 7: Algorithms, Complexity &amp; the Limits of Computation – Computing Concepts with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -164,11 +166,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#notebook-7-algorithms-complexity-the-limits-of-computation" id="toc-notebook-7-algorithms-complexity-the-limits-of-computation" class="nav-link active" data-scroll-target="#notebook-7-algorithms-complexity-the-limits-of-computation">Notebook 7: Algorithms, Complexity &amp; the Limits of Computation</a>
-  <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#the-problem-the-queen-wants-it-found-and-now" id="toc-the-problem-the-queen-wants-it-found-and-now" class="nav-link" data-scroll-target="#the-problem-the-queen-wants-it-found-and-now">The Problem: The Queen Wants It <em>Found</em>, and <em>Now</em></a></li>
-  </ul></li>
   <li><a href="#part-1-searching-sorting-how-long-it-takes" id="toc-part-1-searching-sorting-how-long-it-takes" class="nav-link" data-scroll-target="#part-1-searching-sorting-how-long-it-takes">Part 1 — Searching, Sorting &amp; How Long It Takes</a>
   <ul class="collapse">
   <li><a href="#linear-search-check-every-card" id="toc-linear-search-check-every-card" class="nav-link" data-scroll-target="#linear-search-check-every-card">Linear Search: Check Every Card</a></li>
@@ -193,21 +192,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 7: Algorithms, Complexity &amp; the Limits of Computation</h1>
+<p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb">View on GitHub</a></p>
-<section id="notebook-7-algorithms-complexity-the-limits-of-computation" class="level1">
-<h1>Notebook 7: Algorithms, Complexity &amp; the Limits of Computation</h1>
-<section id="comp-1150-computer-science-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
-<p><strong>Brendan Shea, PhD</strong></p>
 <p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
-</section>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -233,7 +255,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This notebook comes in two halves.</p>
 <p><strong>Part 1 — Making things fast.</strong> We start with the two ways to <em>find</em> a card: checking every one (<strong>linear search</strong>) versus repeatedly cutting the deck in half (<strong>binary search</strong>). Binary search only works on a <em>sorted</em> deck, so we learn to <strong>sort</strong>. Along the way the White Rabbit teaches us to <em>count steps</em> with <strong>Big-O notation</strong>.</p>
 <p><strong>Part 2 — What can’t be made fast, or done at all.</strong> Some problems are merely slow (the Queen’s impossible puzzles — <strong>P vs.&nbsp;NP</strong>). Others can <em>never</em> be solved by any program, no matter how clever (the <strong>halting problem</strong> and <strong>undecidability</strong>). We close by asking what all this means for modern <strong>AI and large language models</strong>.</p>
-</section>
 </section>
 </section>
 <section id="part-1-searching-sorting-how-long-it-takes" class="level1">
@@ -502,6 +523,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>In two or three sentences, explain <em>why</em> binary search needs so many fewer — and what the deck must have that linear search did not require.</li>
 </ol>
 </section>
+<section id="think-about-it-when-does-speed-actually-matter" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-when-does-speed-actually-matter">💭 Think About It — When Does Speed Actually Matter?</h3>
+<p>You’ve now counted how the work grows as the input gets bigger — linear search checks every card, binary search cuts the deck in half.</p>
+<ul>
+<li>For a small list, linear and binary search both feel instant. At what scale does the difference start to actually matter? Think of real systems where the list is enormous.</li>
+<li>A faster algorithm sometimes needs extra setup — binary search requires a <em>sorted</em> list. When is it worth paying that setup cost, and when would you just do the slow-but-simple thing?</li>
+<li>Where in your own life have you felt the difference between something that scales well and something that grinds to a halt as it gets bigger — a line, a website, a group chat?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 </section>
 <section id="sorting-putting-the-deck-in-order" class="level2">
 <h2 class="anchored" data-anchor-id="sorting-putting-the-deck-in-order">Sorting: Putting the Deck in Order</h2>
@@ -518,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                smallest <span class="op">=</span> j</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        items[i], items[smallest] <span class="op">=</span> items[smallest], items[i]   <span class="co"># swap into place</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> items</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="cell-34" class="cell">
+<div id="cell-35" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selection_sort(items):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Sort items in place using selection sort, printing each pass."""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
@@ -550,7 +581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="predict-before-you-run-1" class="level3">
 <h3 class="anchored" data-anchor-id="predict-before-you-run-1">🔮 Predict Before You Run</h3>
 <p>Given the list <code>[5, 3, 8, 1, 9]</code>, what will it look like <strong>after the first pass</strong> of selection sort (after the smallest card is placed in slot 0)? Write down your guess, then run the cell.</p>
-<div id="cell-37" class="cell">
+<div id="cell-38" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>demo <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">9</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>selection_sort(demo)   <span class="co"># watch only the FIRST printed pass to check your prediction</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -558,7 +589,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-the-hatters-selection-sort" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-the-hatters-selection-sort">✏️ Your Turn — The Hatter’s Selection Sort</h3>
 <p>The tea party seats guests by <strong>arrival time</strong> (smaller number = arrived earlier). Use selection sort to order the list, printing it after each pass so the Hatter can watch it tidy itself.</p>
-<div id="cell-39" class="cell">
+<div id="cell-40" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arrivals <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>]   <span class="co"># arrival times</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selection_sort(items):</span>
@@ -595,7 +626,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>items.sort()                        <span class="co"># sorts in place, returns None</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(items, key<span class="op">=</span>some_function)    <span class="co"># sort by what some_function returns for each item</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A <code>key</code> function receives <strong>one</strong> item and returns the value to sort <em>by</em>. A <code>lambda</code> is a tiny one-line function, handy here: <code>lambda c: c.rank</code> means “given a card <code>c</code>, sort by its <code>rank</code>.”</p>
-<div id="cell-45" class="cell">
+<div id="cell-46" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numbers and strings: the obvious cases</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>([<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">1</span>]))                 <span class="co"># [1, 2, 4, 7, 10]</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>([<span class="st">"Hatter"</span>, <span class="st">"Alice"</span>, <span class="st">"Duchess"</span>]))   <span class="co"># alphabetical</span></span>
@@ -686,7 +717,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-sorting-the-knaves-tarts-with-key" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-sorting-the-knaves-tarts-with-key">✏️ Your Turn — Sorting the Knave’s Tarts with <code>key=</code></h3>
 <p>The Knave has a list of <code>Tart</code> objects, each with a <code>flavor</code> (string) and a <code>count</code> (int). Use <code>sorted(..., key=...)</code> to produce <strong>two</strong> orderings: one by <code>count</code> (most tarts last), and one alphabetically by <code>flavor</code>. Use the built-in — don’t write your own sort.</p>
-<div id="cell-49" class="cell">
+<div id="cell-50" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Tart:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, flavor, count):</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.flavor <span class="op">=</span> flavor</span>
@@ -721,7 +752,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here is the shocking part. This ribbon-and-rulebook gadget can compute <strong>anything</strong> that your laptop, a supercomputer, or any future computer can compute. The claim that “anything computable can be computed by a Turing machine” is called the <strong>Church–Turing thesis</strong>. It is the reason we can talk about <em>computation</em> as a single universal idea, instead of a different idea for every brand of machine.</p>
 <section id="picture-it-the-tape-the-head-the-rulebook" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-tape-the-head-the-rulebook">Picture It: The Tape, the Head, the Rulebook</h3>
-<div id="cell-54" class="cell">
+<div id="cell-55" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A tiny illustrative Turing machine: flip every bit on the tape, left to right.</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_tiny_tm(tape):</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Move right across the tape, flipping 1&lt;-&gt;0, until we run off the end."""</span></span>
@@ -842,7 +873,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Step 5 — Check your work.</strong> Run it a few times. Does the <strong>leaderboard always come out in the right order</strong> (the slowest time should be last)? Try an empty racer list, or a bet on a name that isn’t running — does the game cope, or crash?</p>
 <p><strong>Step 6 — Reflect.</strong> In a markdown cell, write 2–3 sentences: which Notebook 6 idea (an object? a method? inheritance?) made the racers easy to build, and where did <code>sorted(key=...)</code> save you from writing a sort by hand?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
-<div id="cell-65" class="cell">
+<div id="cell-66" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built race game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>

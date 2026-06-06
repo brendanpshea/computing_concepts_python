@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>comp1150_nb05_collectionsadts – Computing Concepts with Python</title>
+<title>Notebook 5: Collections &amp; Abstract Data Types – Computing Concepts with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -164,9 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#notebook-5-collections-abstract-data-types" id="toc-notebook-5-collections-abstract-data-types" class="nav-link active" data-scroll-target="#notebook-5-collections-abstract-data-types">Notebook 5: Collections &amp; Abstract Data Types</a>
-  <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#the-big-contractwelcome-to-the-midnight-masquerade-a-delightfully-creaky-costume-emporium-where-six-rather-famous-monsters-share-one-shop-floor-and-a-single-much-abused-cash-register.-the-lighting-flickers-on-purpose-the-cobwebs-are-decorative-and-to-everyones-eternal-frustration-absolutely-nothing-runs-on-paper-any-more.-department-proprietor-todays-headache-rentals-desk-count-dracula-the-order-list-is-a-heap-of-bat-shaped-sticky-notes-fittings-deposits-dr.-victoria-frankenstein-every-client-has-the-same-four-fields-in-the-same-order-forever-masks-millinery-the-phantom-nobody-can-remember-the-price-of-a-half-mask-masquerade-balls-camilla-two-guest-lists-overlap-and-she-needs-to-know-by-whom-fitting-rooms-mr.-hyde-customers-form-a-line-and-no-one-knows-whose-turn-it-is-alterations-cthulhu-every-costume-needs-the-same-small-adjustment-each-problem-is-really-the-same-question-in-different-rather-gothic-clothing-what-shape-of-data-fits-the-job" id="toc-the-big-contractwelcome-to-the-midnight-masquerade-a-delightfully-creaky-costume-emporium-where-six-rather-famous-monsters-share-one-shop-floor-and-a-single-much-abused-cash-register.-the-lighting-flickers-on-purpose-the-cobwebs-are-decorative-and-to-everyones-eternal-frustration-absolutely-nothing-runs-on-paper-any-more.-department-proprietor-todays-headache-rentals-desk-count-dracula-the-order-list-is-a-heap-of-bat-shaped-sticky-notes-fittings-deposits-dr.-victoria-frankenstein-every-client-has-the-same-four-fields-in-the-same-order-forever-masks-millinery-the-phantom-nobody-can-remember-the-price-of-a-half-mask-masquerade-balls-camilla-two-guest-lists-overlap-and-she-needs-to-know-by-whom-fitting-rooms-mr.-hyde-customers-form-a-line-and-no-one-knows-whose-turn-it-is-alterations-cthulhu-every-costume-needs-the-same-small-adjustment-each-problem-is-really-the-same-question-in-different-rather-gothic-clothing-what-shape-of-data-fits-the-job" class="nav-link" data-scroll-target="#the-big-contractwelcome-to-the-midnight-masquerade-a-delightfully-creaky-costume-emporium-where-six-rather-famous-monsters-share-one-shop-floor-and-a-single-much-abused-cash-register.-the-lighting-flickers-on-purpose-the-cobwebs-are-decorative-and-to-everyones-eternal-frustration-absolutely-nothing-runs-on-paper-any-more.-department-proprietor-todays-headache-rentals-desk-count-dracula-the-order-list-is-a-heap-of-bat-shaped-sticky-notes-fittings-deposits-dr.-victoria-frankenstein-every-client-has-the-same-four-fields-in-the-same-order-forever-masks-millinery-the-phantom-nobody-can-remember-the-price-of-a-half-mask-masquerade-balls-camilla-two-guest-lists-overlap-and-she-needs-to-know-by-whom-fitting-rooms-mr.-hyde-customers-form-a-line-and-no-one-knows-whose-turn-it-is-alterations-cthulhu-every-costume-needs-the-same-small-adjustment-each-problem-is-really-the-same-question-in-different-rather-gothic-clothing-what-shape-of-data-fits-the-job">The Big ContractWelcome to <strong>The Midnight Masquerade</strong>, a delightfully creaky costume emporium where six rather famous monsters share one shop floor and a single, much-abused cash register. The lighting flickers on purpose, the cobwebs are <em>decorative</em>, and — to everyone’s eternal frustration — absolutely nothing runs on paper any more.| Department | Proprietor | Today’s headache ||—|—|—|| <strong>Rentals Desk</strong> | Count Dracula | the order list is a heap of bat-shaped sticky notes || <strong>Fittings &amp; Deposits</strong> | Dr.&nbsp;Victoria Frankenstein | every client has the <em>same</em> four fields, in the <em>same</em> order, forever || <strong>Masks &amp; Millinery</strong> | The Phantom | nobody can remember the price of a half-mask || <strong>Masquerade Balls</strong> | Camilla | two guest lists overlap and she needs to know by <em>whom</em> || <strong>Fitting Rooms</strong> | Mr.&nbsp;Hyde | customers form a line and no one knows whose turn it is || <strong>Alterations</strong> | Cthulhu | every costume needs the same small adjustment |Each problem is really the same question in different (rather gothic) clothing: <strong>what shape of data fits the job?</strong></a></li>
   <li><a href="#the-roadmap-part-department-what-youll-learn-lists-draculas-rentals-desk-ordered-changeable-sequences-aliasing-dracula-again-the-most-common-list-bug-in-python-tuples-frankensteins-fittings-fixed-records-you-dont-mean-to-edit-dictionaries-the-phantoms-masks-look-up-a-value-by-its-label-sort-by-it-sets-camillas-masquerade-balls-membership-overlap-uniqueness-nested-collections-camillas-guest-list-lists-of-dicts-real-data-shape-adts-hydes-fitting-rooms-the-promise-of-a-collection-vs.-its-storage-most-code-cells-open-with-a-change-this-then-re-run-block.-edit-the-values-press-run-watch-the-output-move.-that-is-the-study-method." id="toc-the-roadmap-part-department-what-youll-learn-lists-draculas-rentals-desk-ordered-changeable-sequences-aliasing-dracula-again-the-most-common-list-bug-in-python-tuples-frankensteins-fittings-fixed-records-you-dont-mean-to-edit-dictionaries-the-phantoms-masks-look-up-a-value-by-its-label-sort-by-it-sets-camillas-masquerade-balls-membership-overlap-uniqueness-nested-collections-camillas-guest-list-lists-of-dicts-real-data-shape-adts-hydes-fitting-rooms-the-promise-of-a-collection-vs.-its-storage-most-code-cells-open-with-a-change-this-then-re-run-block.-edit-the-values-press-run-watch-the-output-move.-that-is-the-study-method." class="nav-link" data-scroll-target="#the-roadmap-part-department-what-youll-learn-lists-draculas-rentals-desk-ordered-changeable-sequences-aliasing-dracula-again-the-most-common-list-bug-in-python-tuples-frankensteins-fittings-fixed-records-you-dont-mean-to-edit-dictionaries-the-phantoms-masks-look-up-a-value-by-its-label-sort-by-it-sets-camillas-masquerade-balls-membership-overlap-uniqueness-nested-collections-camillas-guest-list-lists-of-dicts-real-data-shape-adts-hydes-fitting-rooms-the-promise-of-a-collection-vs.-its-storage-most-code-cells-open-with-a-change-this-then-re-run-block.-edit-the-values-press-run-watch-the-output-move.-that-is-the-study-method.">The Roadmap| Part | Department | What you’ll learn ||—|—|—|| Lists | Dracula’s Rentals Desk | ordered, changeable sequences || Aliasing | Dracula (again) | the most common list bug in Python || Tuples | Frankenstein’s Fittings | fixed records you don’t mean to edit || Dictionaries | The Phantom’s Masks | look up a value by its label; sort by it || Sets | Camilla’s Masquerade Balls | membership, overlap, uniqueness || Nested collections | Camilla’s guest list | lists of dicts — real-data shape || ADTs | Hyde’s Fitting Rooms | the <em>promise</em> of a collection vs.&nbsp;its <em>storage</em> |Most code cells open with a <code># ⬇️ CHANGE THIS, THEN RE-RUN</code> block. Edit the values, press <em>Run</em>, watch the output move. That is the study method.</a></li>
   <li><a href="#lists-ordered-things-you-can-still-changecount-dracula-works-the-rentals-desk-at-the-midnight-masquerade.-customers-shamble-up-all-evening-asking-for-costumes-and-dracula-wants-them-recorded-in-the-order-they-arrived-first-come-first-served-no-exceptions-he-is-after-all-a-stickler-for-proper-queueing-etiquette-dating-back-several-centuries.-he-also-reserves-the-right-to-cross-items-off-add-a-forgotten-one-or-revise-a-misheard-request.that-is-a-list-a-row-of-items-kept-in-order-with-a-position-an-index-for-each-one-and-free-permission-to-change-the-contents-later.writing-a-list-reading-an-item.-you-write-a-list-as-comma-separated-values-between-square-brackets-and-you-reach-an-item-by-its-index-its-position-in-another-pair-of-square-bracketspythonmy_list-item0-item1-item2-the-make-it-a-list-commas-separate-itemsmy_list0-read-the-item-at-position-0-the-first-onelenmy_list-how-many-items-the-list-holdspython-numbers-positions-from-0-so-the-first-item-is-my_list0-and-the-third-is-my_list2.-keep-that-in-mind-as-you-read-the-example-below." id="toc-lists-ordered-things-you-can-still-changecount-dracula-works-the-rentals-desk-at-the-midnight-masquerade.-customers-shamble-up-all-evening-asking-for-costumes-and-dracula-wants-them-recorded-in-the-order-they-arrived-first-come-first-served-no-exceptions-he-is-after-all-a-stickler-for-proper-queueing-etiquette-dating-back-several-centuries.-he-also-reserves-the-right-to-cross-items-off-add-a-forgotten-one-or-revise-a-misheard-request.that-is-a-list-a-row-of-items-kept-in-order-with-a-position-an-index-for-each-one-and-free-permission-to-change-the-contents-later.writing-a-list-reading-an-item.-you-write-a-list-as-comma-separated-values-between-square-brackets-and-you-reach-an-item-by-its-index-its-position-in-another-pair-of-square-bracketspythonmy_list-item0-item1-item2-the-make-it-a-list-commas-separate-itemsmy_list0-read-the-item-at-position-0-the-first-onelenmy_list-how-many-items-the-list-holdspython-numbers-positions-from-0-so-the-first-item-is-my_list0-and-the-third-is-my_list2.-keep-that-in-mind-as-you-read-the-example-below." class="nav-link" data-scroll-target="#lists-ordered-things-you-can-still-changecount-dracula-works-the-rentals-desk-at-the-midnight-masquerade.-customers-shamble-up-all-evening-asking-for-costumes-and-dracula-wants-them-recorded-in-the-order-they-arrived-first-come-first-served-no-exceptions-he-is-after-all-a-stickler-for-proper-queueing-etiquette-dating-back-several-centuries.-he-also-reserves-the-right-to-cross-items-off-add-a-forgotten-one-or-revise-a-misheard-request.that-is-a-list-a-row-of-items-kept-in-order-with-a-position-an-index-for-each-one-and-free-permission-to-change-the-contents-later.writing-a-list-reading-an-item.-you-write-a-list-as-comma-separated-values-between-square-brackets-and-you-reach-an-item-by-its-index-its-position-in-another-pair-of-square-bracketspythonmy_list-item0-item1-item2-the-make-it-a-list-commas-separate-itemsmy_list0-read-the-item-at-position-0-the-first-onelenmy_list-how-many-items-the-list-holdspython-numbers-positions-from-0-so-the-first-item-is-my_list0-and-the-third-is-my_list2.-keep-that-in-mind-as-you-read-the-example-below.">Lists: Ordered Things You Can Still Change<strong>Count Dracula</strong> works the Rentals Desk at The Midnight Masquerade. Customers shamble up all evening asking for costumes, and Dracula wants them recorded <strong>in the order they arrived</strong> — first come, first served, no exceptions (he is, after all, a stickler for proper queueing etiquette dating back several centuries). He also reserves the right to cross items off, add a forgotten one, or revise a misheard request.That is a <strong>list</strong>: a row of items kept in order, with a position (an <strong>index</strong>) for each one, and free permission to change the contents later.<strong>Writing a list, reading an item.</strong> You write a list as comma-separated values between <strong>square brackets</strong>, and you reach an item by its <strong>index</strong> (its position) in another pair of square brackets:<code>pythonmy_list = [item0, item1, item2]   # the [ ] make it a list; commas separate itemsmy_list[0]                        # read the item at position 0 — the first onelen(my_list)                      # how many items the list holds</code>Python numbers positions from <strong>0</strong>, so the first item is <code>my_list[0]</code> and the third is <code>my_list[2]</code>. Keep that in mind as you read the example below.</a></li>
@@ -182,26 +182,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 5: Collections &amp; Abstract Data Types</h1>
+<p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB05_CollectionsADTs.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB05_CollectionsADTs.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB05_CollectionsADTs.ipynb">View on GitHub</a></p>
-<section id="notebook-5-collections-abstract-data-types" class="level1">
-<h1>Notebook 5: Collections &amp; Abstract Data Types</h1>
-<section id="comp-1150-computer-science-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
-<p><strong>Brendan Shea, PhD</strong></p>
 <p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
-</section>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -444,6 +466,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="choosing-your-collection-a-quick-guidefour-collections-four-jobs.-if-you-remember-nothing-else-from-this-notebook-remember-this-table.-if-the-job-needs-reach-for-example-from-this-notebook-order-and-the-ability-to-add-remove-edit-list-draculas-nightly-orders-a-fixed-shape-record-that-shouldnt-change-tuple-frankensteins-client-name-height_cm-costume-deposit-looking-up-a-value-by-a-label-name-id-dict-the-phantoms-masks-style-price-membership-uniqueness-overlap-set-camillas-at-both-balls-question-if-you-find-yourself-writing-a-for-loop-just-to-check-whether-something-is-in-a-list-thats-a-set-screaming.-if-you-keep-using-if-to-find-a-price-thats-a-dict." class="level3">
 <h3 class="anchored" data-anchor-id="choosing-your-collection-a-quick-guidefour-collections-four-jobs.-if-you-remember-nothing-else-from-this-notebook-remember-this-table.-if-the-job-needs-reach-for-example-from-this-notebook-order-and-the-ability-to-add-remove-edit-list-draculas-nightly-orders-a-fixed-shape-record-that-shouldnt-change-tuple-frankensteins-client-name-height_cm-costume-deposit-looking-up-a-value-by-a-label-name-id-dict-the-phantoms-masks-style-price-membership-uniqueness-overlap-set-camillas-at-both-balls-question-if-you-find-yourself-writing-a-for-loop-just-to-check-whether-something-is-in-a-list-thats-a-set-screaming.-if-you-keep-using-if-to-find-a-price-thats-a-dict.">Choosing Your Collection — A Quick GuideFour collections, four jobs. If you remember nothing else from this notebook, remember this table.| If the job needs… | …reach for | Example from this notebook ||—|—|—|| Order <em>and</em> the ability to add / remove / edit | <strong>list</strong> | Dracula’s nightly orders || A fixed-shape record that shouldn’t change | <strong>tuple</strong> | Frankenstein’s client <code>(name, height_cm, costume, deposit)</code> || Looking up a value by a label / name / ID | <strong>dict</strong> | The Phantom’s masks (style → price) || Membership / uniqueness / overlap | <strong>set</strong> | Camilla’s “at both balls” question |If you find yourself writing a <code>for</code> loop just to check whether something is in a list, that’s a <strong>set</strong> screaming. If you keep using <code>if</code> to find a price, that’s a <strong>dict</strong>.</h3>
 </section>
+<section id="think-about-it-the-right-tool-for-the-job" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-right-tool-for-the-job">💭 Think About It — The Right Tool for the Job</h3>
+<p>You’ve now met lists, tuples, dictionaries, and sets — each good at different things.</p>
+<ul>
+<li>Picking the wrong collection still “works,” but it can make a program slow or clumsy. Where in everyday life does using the wrong-but-workable tool cause similar friction?</li>
+<li>A dictionary trades extra memory for fast lookup by name. Why is “use more of one resource to save another” such a common bargain — and where else do you make that trade?</li>
+<li>Without using any code, how would you explain to a friend the difference between a list and a set, using only an everyday example?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 </section>
 <section id="nested-collections-real-data-has-shapeso-far-each-example-has-been-flat-one-list-or-one-dictionary-or-one-set.-real-data-is-almost-never-that-simple.-camilla-finalises-tonights-ball-and-every-guest-has-a-name-an-age-and-a-costume.-that-is-three-facts-per-guest-one-row-three-columns.the-standard-python-answer-is-a-list-of-dictionaries-a-list-one-entry-per-guest-where-each-entry-is-a-dict-one-key-per-fact.-this-is-exactly-the-shape-of-nearly-every-api-response-every-spreadsheet-row-every-database-query-you-will-meet-in-nb09-and-nb10.the-shape-and-reading-into-it.-square-brackets-hold-several-records-and-you-read-into-it-in-two-steps-list-index-first-then-dict-keypythondata-key1-value-key2-value-one-record-a-dict-key1-value-key2-value-another-recorddata0-step-one-the-whole-first-record-a-dictdata0key1-step-two-one-field-inside-that-record" class="level2">
 <h2 class="anchored" data-anchor-id="nested-collections-real-data-has-shapeso-far-each-example-has-been-flat-one-list-or-one-dictionary-or-one-set.-real-data-is-almost-never-that-simple.-camilla-finalises-tonights-ball-and-every-guest-has-a-name-an-age-and-a-costume.-that-is-three-facts-per-guest-one-row-three-columns.the-standard-python-answer-is-a-list-of-dictionaries-a-list-one-entry-per-guest-where-each-entry-is-a-dict-one-key-per-fact.-this-is-exactly-the-shape-of-nearly-every-api-response-every-spreadsheet-row-every-database-query-you-will-meet-in-nb09-and-nb10.the-shape-and-reading-into-it.-square-brackets-hold-several-records-and-you-read-into-it-in-two-steps-list-index-first-then-dict-keypythondata-key1-value-key2-value-one-record-a-dict-key1-value-key2-value-another-recorddata0-step-one-the-whole-first-record-a-dictdata0key1-step-two-one-field-inside-that-record">Nested Collections: Real Data Has ShapeSo far each example has been <strong>flat</strong> — one list, or one dictionary, or one set. Real data is almost never that simple. Camilla finalises tonight’s ball, and every guest has a <strong>name</strong>, an <strong>age</strong>, <em>and</em> a <strong>costume</strong>. That is three facts per guest — one row, three columns.The standard Python answer is a <strong>list of dictionaries</strong>: a list (one entry per guest) where each entry is a dict (one key per fact). This is exactly the shape of nearly every API response, every spreadsheet row, every database query you will meet in NB09 and NB10.<strong>The shape, and reading into it.</strong> Square brackets hold several <code>{ }</code> records, and you read into it in <strong>two steps</strong> — list index first, then dict key:<code>pythondata = [    {"key1": value, "key2": value},   # one record (a dict)    {"key1": value, "key2": value},   # another record]data[0]            # step one: the whole first record (a dict)data[0]["key1"]    # step two: one field inside that record</code></h2>
@@ -465,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-filter-the-ball" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-filter-the-ball">✏️ Your Turn — Filter the Ball</h3>
 <p>Using the <code>ball</code> guest list from above (a list of dicts), collect the <strong>names</strong> of every guest <strong>older than 100</strong> and print them. A <code>for</code> loop with <code>append</code>, or a comprehension — your choice.</p>
-<div id="cell-68" class="cell">
+<div id="cell-69" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uses the `ball` list of guest dicts from the section above.</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: collect the names of guests older than 100, then print them.</span></span>
@@ -489,6 +521,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="picture-it-one-interface-two-implementations" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-one-interface-two-implementations">Picture It: One Interface, Two Implementations</h3>
 <p>The diagram below shows the same <code>CustomerQueue</code> interface sitting above two different storage choices. The point isn’t the diagram — it’s that the box on top doesn’t care which box on the bottom you pick.</p>
+</section>
+<section id="think-about-it-you-dont-need-to-know-how-it-works" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-you-dont-need-to-know-how-it-works">💭 Think About It — You Don’t Need to Know How It Works</h3>
+<p>An abstract data type promises <em>what</em> you can do (push, pop, look something up) while hiding <em>how</em> it’s stored underneath.</p>
+<ul>
+<li>You use dozens of things daily without knowing how they work inside — a car, a phone, a card payment. Is that a good thing, a risky thing, or both?</li>
+<li>If two different storage methods keep the exact same promise to the user, does it matter which one is used underneath? When would you suddenly start to care?</li>
+<li>Hiding complexity behind a simple interface is one of the biggest ideas in computing. Where have you seen a simple “front” hide messy complexity in the non-computing world?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
 <p><strong>Reading it:</strong> the yellow box is the public promise — the three method names. The grey boxes are two different ways to keep the data. Code that uses the queue only touches the yellow box, so changing the grey box is free.</p>
 </section>
 <section id="your-turn-hydes-fitting-room-queue" class="level3">
@@ -500,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Add both to the copy below, then test: add Dracula, Cthulhu, and Mina; <code>peek()</code>; <code>cancel("Cthulhu")</code>; serve the next customer.</p>
 <p><strong>Think about it (the interface question):</strong> if you swapped the inner list for a <em>dictionary keyed by ticket number</em>, which of the five methods (<code>add</code>, <code>next_customer</code>, <code>size</code>, <code>peek</code>, <code>cancel</code>) would have to change, and which wouldn’t? That gap between the <strong>promise</strong> and the <strong>storage</strong> is the whole idea of an ADT.</p>
-<div id="cell-77" class="cell">
+<div id="cell-79" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomerQueue:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._line <span class="op">=</span> []</span>
@@ -535,7 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-adjust-every-sleeve" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-adjust-every-sleeve">✏️ Your Turn — Adjust Every Sleeve</h3>
 <p>Cthulhu’s Alterations department adds 2 cm to every sleeve. Given <code>sleeves = [62, 65, 60, 68, 63]</code>, use a <strong>list comprehension</strong> to build a new list with each value <code>+ 2</code>, and print it. Bonus: a <strong>dict comprehension</strong> mapping <code>"sleeve_1"</code>, <code>"sleeve_2"</code>, … to the adjusted values.</p>
-<div id="cell-82" class="cell">
+<div id="cell-84" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sleeves <span class="op">=</span> [<span class="dv">62</span>, <span class="dv">65</span>, <span class="dv">60</span>, <span class="dv">68</span>, <span class="dv">63</span>]</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: adjusted = [ ... ]      # each sleeve + 2, via a list comprehension</span></span>
@@ -724,7 +766,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Step 5 — Test it like Smee.</strong> Try to break it: look up a name that isn’t there (does <code>.get()</code> save you?), add the same item twice, list an empty catalog. Fix one thing it gets wrong.</p>
 <p><strong>Step 6 — Reflect.</strong> In a markdown cell, write 2–3 sentences: what did the AI get wrong or what did you improve, and how did you fix it?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
-<div id="cell-90" class="cell">
+<div id="cell-92" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built collection manager here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -774,7 +816,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

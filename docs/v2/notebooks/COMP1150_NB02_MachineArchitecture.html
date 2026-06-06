@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>comp1150_nb02_machinearchitecture – Computing Concepts with Python</title>
+<title>Notebook 2: Machine Architecture &amp; Data Representation – Computing Concepts with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -164,9 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#notebook-2-machine-architecture-data-representation" id="toc-notebook-2-machine-architecture-data-representation" class="nav-link active" data-scroll-target="#notebook-2-machine-architecture-data-representation">Notebook 2: Machine Architecture &amp; Data Representation</a>
-  <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#a-memory-budget-crisis" id="toc-a-memory-budget-crisis" class="nav-link" data-scroll-target="#a-memory-budget-crisis">A Memory Budget Crisis</a></li>
   <li><a href="#the-roadmap" id="toc-the-roadmap" class="nav-link" data-scroll-target="#the-roadmap">The Roadmap</a></li>
   <li><a href="#from-transistor-to-arithmetic" id="toc-from-transistor-to-arithmetic" class="nav-link" data-scroll-target="#from-transistor-to-arithmetic">From Transistor to Arithmetic</a></li>
@@ -180,26 +180,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 2: Machine Architecture &amp; Data Representation</h1>
+<p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB02_MachineArchitecture.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB02_MachineArchitecture.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB02_MachineArchitecture.ipynb">View on GitHub</a></p>
-<section id="notebook-2-machine-architecture-data-representation" class="level1">
-<h1>Notebook 2: Machine Architecture &amp; Data Representation</h1>
-<section id="comp-1150-computer-science-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
-<p><strong>Brendan Shea, PhD</strong></p>
 <p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
-</section>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -278,8 +300,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Dot Mainframe</strong>, the studio’s hardware engineer — who named her cat “Cache” — starts at the bottom.</p>
 <p>A <strong>transistor</strong> is a tiny electrical switch with no moving parts. It has two states: current flows (call it <strong>1</strong>) or it doesn’t (call it <strong>0</strong>). That’s it. That’s the whole physical foundation of computing. A modern chip has <em>billions</em> of these switches; the PixelBox 8 has a few thousand.</p>
 <p>One switch isn’t interesting. The magic starts when you wire a few together so their combined behavior follows a <em>rule</em>. A small bundle of transistors wired to follow one logical rule is called a <strong>logic gate</strong>.</p>
-<div id="nb2-08-gates-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="21">
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div id="nb2-08-gates-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:536}}" data-outputid="00e19578-a0d7-48a8-a3b3-282c08e02485" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <figure class="figure">
 <p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-2-output-1.svg" class="img-fluid figure-img"></p>
@@ -386,8 +408,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>1 AND 1 = 1</code> → that’s the <strong>carry digit</strong> (the 1 you carry into the next column)</li>
 </ul>
 <p>So an XOR gate and an AND gate, side by side, <em>add two bits</em>: XOR gives the result digit, AND gives the carry. This pairing is called a <strong>half-adder</strong>. You don’t need to build one — just hold onto the idea: <strong>arithmetic is just gates wired cleverly.</strong></p>
-<div id="nb2-11-halfadder-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="22">
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div id="nb2-11-halfadder-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:344}}" data-outputid="b510d715-1800-41ed-f008-127460bfa3cf" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <figure class="figure">
 <p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-3-output-1.svg" class="img-fluid figure-img"></p>
@@ -399,7 +421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>That’s the whole bottom of the stack: <strong>transistor → gate → half-adder → ALU.</strong> Next we’ll see where the ALU sits inside a complete machine.</p>
 <p>Before we go up a level, here’s a practice game for the gates. You don’t need to read its code — that comes in Notebook 4. Just <strong>run it and drill</strong> until the answers come fast.</p>
 <p><strong>🎮 This is a practice tool — not code to study.</strong> The hidden cell above defines the game; the cell below runs it. You’re not expected to understand <em>how</em> it’s built yet — functions arrive in Notebook 4. For now, just play: drill the gates until the answers come automatically.</p>
-<div id="cell-17" class="cell">
+<div id="A4vzd_2ytAF3" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on the next line, then run this cell.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    Drill AND, OR, XOR, NOT, and NAND. Replay as often as you like.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># gate_arcade()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -441,8 +463,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>When the CPU needs something from memory, it puts the address on the <strong>address bus</strong> and the data travels back on the <strong>data bus</strong> — think of buses as the hallways between the cook and the counter.</p>
-<div id="nb2-19-vn-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="24">
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div id="nb2-19-vn-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:281}}" data-outputid="998abbb6-5c10-45ce-b70b-0d4700f8669e" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <figure class="figure">
 <p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-6-output-1.svg" class="img-fluid figure-img"></p>
@@ -519,8 +541,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Every part did exactly one small job. Nothing “understood” addition — the gates from the previous section just produced 8. That is the entire trick of computing.</p>
-<div id="nb2-21-fde-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="25">
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div id="nb2-21-fde-graphviz" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:401}}" data-outputid="a912c638-b27b-4ea7-d623-361ffb59d7c7" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <figure class="figure">
 <p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-7-output-1.svg" class="img-fluid figure-img"></p>
@@ -636,7 +658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Reaching all the way to a hard disk, in human terms, is the difference between answering a question now and answering it next spring. That gap is <em>why</em> games have loading screens, and why “is the data already in RAM?” is one of the most important questions in performance.</p>
-<div id="nb2-25-latency-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="26">
+<div id="nb2-25-latency-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:407}}" data-outputid="5c1e6d6a-e146-4243-ef01-1df6cec13b20" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -712,7 +734,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>The Atari 2600 had <strong>128 bytes</strong> of RAM — not kilobytes, <em>bytes</em>. You could not store this sentence in it. Programmers squeezed entire games into that space by hand. The PixelBox 8 lives in roughly this era.</p>
-<div id="nb2-28-console-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="27">
+<div id="nb2-28-console-chart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:407}}" data-outputid="3097e83d-784e-45d6-bf12-b2b472d294ab" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -721,14 +743,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<section id="think-about-it-when-the-hardware-outlives-the-software" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-when-the-hardware-outlives-the-software">💭 Think About It — When the Hardware Outlives the Software</h3>
+<p>Old consoles and cartridges show how tightly software used to be bound to one specific machine.</p>
+<ul>
+<li>Games written for a 1985 console often can’t run today without emulation. Whose job is it — if anyone’s — to keep old software playable: companies, museums, hobbyists, or no one?</li>
+<li>Binding software tightly to specific hardware made old games fast but fragile. Where else in life do you see a trade-off between squeezing out maximum performance now and keeping flexibility for later?</li>
+<li>Think of a device or file format you once owned that became unusable when the hardware around it changed. What did that cost you?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
 <p>From the Atari 2600 to the PS5, RAM grew <strong>roughly 130 million-fold</strong>, CPU clock about 3,000-fold, and storage moved through three physical technologies (cartridge → optical disc → SSD). And yet: every one of these machines is a von Neumann computer running a fetch–decode–execute loop over the registers, ALU, and memory we just diagrammed.</p>
 <p><strong>The architecture is the constant. The magnitudes are the variable.</strong> Hold onto that — it is the single most useful idea for understanding any computer you will ever meet, from a 1977 console to whatever ships in 2040.</p>
+</section>
 </section>
 <section id="counting-in-binary-and-hexadecimal" class="level2">
 <h2 class="anchored" data-anchor-id="counting-in-binary-and-hexadecimal">Counting in Binary and Hexadecimal</h2>
 <p>The CPU only has transistors, and a transistor only knows two states. So every number must be written using only <strong>two digits: 0 and 1</strong>. This is <strong>binary</strong> (base 2).</p>
 <p>You already know base 10. In <code>375</code>, each position is a power of ten: 3×100 + 7×10 + 5×1. Binary works the same way, but each position is a power of <strong>two</strong>. A group of 8 bits is a <strong>byte</strong>, with these place values:</p>
-<div id="nb2-31-placevalue" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="28">
+<div id="nb2-31-placevalue" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:409}}" data-outputid="a6fb5849-d880-457e-d588-0eb6831506fb" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -785,7 +817,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p><strong>64 + 8 + 2 + 1 = 75.</strong> Going the other way (decimal → binary): repeatedly subtract the largest place value you can.</p>
 <p>An 8-bit byte holds 0 through 255 — that’s 2⁸ = 256 different values. Remember that 255. Tobble certainly does.</p>
-<div id="nb2-33-binary-python" class="cell" data-execution_count="29">
+<div id="nb2-33-binary-python" class="cell" data-cellview="form" data-outputid="15e426d4-62f9-404c-d74e-b1a98f0358ce" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>75 in binary: 01001011
 75 in hex:    4B
@@ -861,7 +893,7 @@ int('01001011', 2) = 75</code></pre>
 </tbody>
 </table>
 <p>So <code>01001011</code> splits into <code>0100</code> (= 4) and <code>1011</code> (= B) → <strong><code>4B</code></strong>. Two readable characters instead of eight bits. This is why colors look like <code>#4B2C9F</code> and memory addresses look like <code>0x1A3F</code>.</p>
-<div id="nb2-36-hexstrip" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="30">
+<div id="nb2-36-hexstrip" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:244}}" data-outputid="bf07e8cc-fa9f-4574-c1b9-8c4671380499" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -959,7 +991,7 @@ int('01001011', 2) = 75</code></pre>
 <section id="picture-it-the-twos-complement-wheel" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-twos-complement-wheel">Picture It: the Two’s-Complement Wheel</h3>
 <p>The diagram below lays all 16 four-bit patterns around a clock face, with the value each one <em>means</em> in the centre. Watch what happens as you pass the halfway point.</p>
-<div id="nb2-42-numberwheel" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="31">
+<div id="nb2-42-numberwheel" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:482}}" data-outputid="65e00f3e-fc97-44dc-b02c-67edd8c8da71" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -969,19 +1001,19 @@ int('01001011', 2) = 75</code></pre>
 </div>
 </div>
 <p>On the wheel, as the bits climb past the halfway point (<code>1000</code>) the <em>meaning</em> jumps to the most negative value and climbs back toward −1 — the numbers wrap like an odometer. Python’s own integers don’t have this limit (they grow as large as needed), but <strong>fixed-width</strong> values — registers, image pixels, the PixelBox 8’s score counter — absolutely do. We can simulate a fixed 8-bit value with a <em>mask</em>:</p>
-<div id="nb2-44-mask" class="cell" data-execution_count="32">
+<div id="nb2-44-mask" class="cell" data-outputid="337e1a33-f926-4b32-9149-a6e5999c58e6" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>-37 stored in 8 bits: 11011011  (raw value 219)
 11011011 interpreted as signed: -37</code></pre>
 </div>
 </div>
 <p>Here are the notebook’s main test-prep tools — two self-grading drills. You don’t need to read their code yet (that’s Notebook 4); just <strong>run them and practice</strong> until you can hit a streak of 5.</p>
-<div id="cell-52" class="cell">
+<div id="FDnEDzX7tAGI" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on the next line, then run this cell.</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    Each round converts between decimal, binary, and hex. Drill to a streak of 5.</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># base_arcade()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-54" class="cell">
+<div id="nDFYNrzctAGJ" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ TO PLAY: delete the # on the next line, then run this cell.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    Encode and decode signed bytes — the trickiest skill on the quiz. Drill it.</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># twos_arcade()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1005,11 +1037,15 @@ int('01001011', 2) = 75</code></pre>
 <h3 class="anchored" data-anchor-id="text-numbers-in-a-lookup-table">Text = Numbers in a Lookup Table</h3>
 <p>A computer stores the letter <code>A</code> by agreeing, in advance, that <code>A</code> <em>is</em> the number 65. That agreement is a <strong>character encoding</strong>. The classic one is <strong>ASCII</strong>: <code>A</code> = 65, <code>B</code> = 66, <code>a</code> = 97, <code>space</code> = 32, and so on.</p>
 <p>You met this in Notebook 1’s Caesar cipher — <code>ord()</code> gives a character’s code, <code>chr()</code> turns a code back into a character. ASCII only covers 128 characters (enough for English). Modern systems use <strong>Unicode</strong>, extending the same idea to every writing system on Earth plus emoji — <code>🐉</code> is just a (large) number with an agreed meaning.</p>
-<div id="nb2-52-ascii" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="34">
+<div id="nb2-52-ascii" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:499}}" data-outputid="2b993c94-eab3-4754-c992-6a96ae57e058" data-execution_count="18">
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.12/dist-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 127 () missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="COMP1150_NB02_MachineArchitecture_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1018,24 +1054,24 @@ int('01001011', 2) = 75</code></pre>
 <section id="images-grids-of-numbers" class="level3">
 <h3 class="anchored" data-anchor-id="images-grids-of-numbers">Images = Grids of Numbers</h3>
 <p>A digital image is a grid of <strong>pixels</strong>, and each pixel is a number. The simplest case: 1 bit per pixel — 0 is background, 1 is drawn. That’s exactly how a PixelBox 8 sprite works. Color just means more bits per pixel plus a small <strong>palette</strong> (Vesper only paid for four colors). The image below is rendered straight from a grid of 0s and 1s.</p>
-<div id="nb2-55-sprite" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pip's 8x8 'definitely a dragon' sprite — just a grid of bits.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dragon <span class="op">=</span> [</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>plt.imshow(dragon, cmap<span class="op">=</span><span class="st">"binary"</span>)   <span class="co"># same imshow as the ASCII grid</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"8 bytes = one sprite"</span>)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-55-sprite" class="cell" data-outputid="a42f11fc-9c9f-4ec7-d547-eccb6fd42402" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:290}}" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pip's 8x8 'definitely a dragon' sprite — just a grid of bits.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dragon <span class="op">=</span> [</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.imshow(dragon, cmap<span class="op">=</span><span class="st">"binary"</span>)   <span class="co"># same imshow as the ASCII grid</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"8 bytes = one sprite"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1049,7 +1085,7 @@ int('01001011', 2) = 75</code></pre>
 <section id="sound-numbers-over-time" class="level3">
 <h3 class="anchored" data-anchor-id="sound-numbers-over-time">Sound = Numbers Over Time</h3>
 <p>Sound is a wave. To store it, the computer measures the wave’s height many times per second; each measurement is a number — that’s <strong>sampling</strong>, and the stored sound is literally just that list of numbers. The PixelBox 8’s audio chip is cheap, so instead of smooth waves it mostly produces blocky <strong>square waves</strong> — the classic “chiptune” buzz.</p>
-<div id="nb2-57-wave" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="36">
+<div id="nb2-57-wave" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:314}}" data-outputid="f294e49e-0db0-4279-939b-1a84cbe5970c" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1063,36 +1099,36 @@ int('01001011', 2) = 75</code></pre>
 <section id="exercise-3-design-your-own-sprite" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-3-design-your-own-sprite">✏️ Exercise 3 — Design Your Own Sprite</h3>
 <p>The next cell is <strong>yours to edit directly</strong>. Run it first to see the starter shape, then read the task below it.</p>
-<div id="nb2-60-spritedesigner" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ EDIT THESE 0s and 1s to draw your own 8x8 sprite.</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>frame1 <span class="op">=</span> [</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional second frame for the animation bonus (start as a copy, then tweak):</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>frame2 <span class="op">=</span> [</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>plt.imshow(frame1, cmap<span class="op">=</span><span class="st">"binary"</span>)</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Your sprite"</span>)</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-60-spritedesigner" class="cell" data-outputid="83b53a48-148d-4531-bd43-b0cd79bbd96e" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:290}}" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ EDIT THESE 0s and 1s to draw your own 8x8 sprite.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>frame1 <span class="op">=</span> [</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional second frame for the animation bonus (start as a copy, then tweak):</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>frame2 <span class="op">=</span> [</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>plt.imshow(frame1, cmap<span class="op">=</span><span class="st">"binary"</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Your sprite"</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1104,20 +1140,20 @@ int('01001011', 2) = 75</code></pre>
 <p><strong>Your task:</strong> edit the <code>0</code>s and <code>1</code>s in <code>frame1</code> above to draw something for <em>Quest for the Reasonably Priced Sword</em> — a sword, a coin, a slime, anything. A <code>1</code> is a filled pixel, a <code>0</code> is empty. Re-run the cell to see your art.</p>
 <p><strong>Optional bonus — animation:</strong> fill in <code>frame2</code> with a slightly different pose, then run the cell below to flip between them. Two frames is exactly how 1980s games made things “move” on a tiny memory budget.</p>
 <p><strong>Using AI here (optional):</strong> ask Gemini <em>“give me an 8×8 grid of 0s and 1s that looks like a sword”</em> — then paste it in and judge whether it actually does. You are the art director; the AI is a junior intern.</p>
-<div id="nb2-62-spriteanim" class="cell" data-execution_count="38">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ ANIMATION BONUS: run this after filling in frame2.</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> clear_output</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):                       <span class="co"># 6 flips, then stop</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> frame, label <span class="kw">in</span> [(frame1, <span class="st">"frame 1"</span>), (frame2, <span class="st">"frame 2"</span>)]:</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        clear_output(wait<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        plt.imshow(frame, cmap<span class="op">=</span><span class="st">"binary"</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        plt.title(label)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-62-spriteanim" class="cell" data-outputid="aa9d65df-8676-4c30-cebe-5b5f15680f7b" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:290}}" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ▶ ANIMATION BONUS: run this after filling in frame2.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> clear_output</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):                       <span class="co"># 6 flips, then stop</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> frame, label <span class="kw">in</span> [(frame1, <span class="st">"frame 1"</span>), (frame2, <span class="st">"frame 2"</span>)]:</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        clear_output(wait<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        plt.imshow(frame, cmap<span class="op">=</span><span class="st">"binary"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        plt.title(label)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1161,7 +1197,7 @@ int('01001011', 2) = 75</code></pre>
 </tbody>
 </table>
 <p>The same bug class still bites: a 2015 FAA directive warned that a Boeing 787 counter could overflow after 248 days of continuous power, potentially shutting down electrical generators in flight. <strong>Representation size is a safety decision.</strong></p>
-<div id="nb2-65-overflow" class="cell" data-execution_count="39">
+<div id="nb2-65-overflow" class="cell" data-outputid="81837d50-0828-4b2a-bb26-ea774f7ae34d" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="23">
 <div class="cell-output cell-output-stdout">
 <pre><code>next level -&gt; stored as 254  (11111110)
 next level -&gt; stored as 255  (11111111)
@@ -1171,6 +1207,16 @@ next level -&gt; stored as   2  (00000010)
 next level -&gt; stored as   3  (00000011)</code></pre>
 </div>
 </div>
+</section>
+<section id="think-about-it-when-the-numbers-run-out" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-when-the-numbers-run-out">💭 Think About It — When the Numbers Run Out</h3>
+<p>The Pac-Man kill screen happens because a counter overflows a single byte. Every number on a computer has a hidden ceiling.</p>
+<ul>
+<li>The bug wasn’t bad luck — it was a limit baked into how the machine stores numbers. Does it change how you think about software to know every program rests on finite, fixed-size representations?</li>
+<li>The Pac-Man overflow was harmless fun. Where might a silent overflow like this be dangerous instead? Reason about a system where running out of digits could really matter.</li>
+<li>Have you ever hit an invisible limit in an app or game — a max level, a character cap, a counter that froze? What do you now think was happening underneath?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
 <p>Run that cell and watch 254 → 255 → <strong>0</strong>. Nothing is “broken” — the hardware did exactly what fixed-width wrap-around always does (the same <code>&amp; 0xFF</code> masking from the two’s-complement section). The bug was a <em>human</em> decision: choosing a box too small for the numbers that would eventually go in it.</p>
 <p>Every representation choice in this notebook — byte width, palette size, sample rate, character encoding — is an engineering trade-off with real consequences. That is the deep lesson of data representation, and it’s why this is Learning Outcomes 1 and 2 of the course, not an afterthought.</p>
 </section>
@@ -1200,8 +1246,8 @@ next level -&gt; stored as   3  (00000011)</code></pre>
 <p>For each addition you can ask the AI for help — but <strong>run it and read the output yourself</strong> before trusting it.</p>
 <p><strong>Step 5 — Reflect.</strong> In a markdown cell, write 2–3 sentences: what did the AI get wrong, or what did you improve, and how did you fix it?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
-<div id="nb2-68-ex4-scaffold" class="cell" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built retro toy here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="nb2-68-ex4-scaffold" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built retro toy here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -1255,7 +1301,6 @@ next level -&gt; stored as   3  (00000011)</code></pre>
 <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

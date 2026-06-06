@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>comp1150_nb03_pseudocodeflowcharts – Computing Concepts with Python</title>
+<title>Notebook 3: Python Basics via Pseudocode &amp; Flowcharts – Computing Concepts with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -164,9 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#notebook-3-python-basics-via-pseudocode-flowcharts" id="toc-notebook-3-python-basics-via-pseudocode-flowcharts" class="nav-link active" data-scroll-target="#notebook-3-python-basics-via-pseudocode-flowcharts">Notebook 3: Python Basics via Pseudocode &amp; Flowcharts</a>
-  <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#welcome-to-the-emporium" id="toc-welcome-to-the-emporium" class="nav-link" data-scroll-target="#welcome-to-the-emporium">Welcome to the Emporium</a></li>
   <li><a href="#a-word-youll-use-all-year-algorithm" id="toc-a-word-youll-use-all-year-algorithm" class="nav-link" data-scroll-target="#a-word-youll-use-all-year-algorithm">A Word You’ll Use All Year: <em>Algorithm</em></a></li>
   <li><a href="#the-roadmap" id="toc-the-roadmap" class="nav-link" data-scroll-target="#the-roadmap">The Roadmap</a></li>
@@ -183,24 +183,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 3: Python Basics via Pseudocode &amp; Flowcharts</h1>
+<p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb">View on GitHub</a></p>
-<section id="notebook-3-python-basics-via-pseudocode-flowcharts" class="level1">
-<h1>Notebook 3: Python Basics via Pseudocode &amp; Flowcharts</h1>
-<section id="comp-1150-computer-science-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
 <p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
-</section>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -235,6 +258,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Keep these four in your pocket. When something you write loops forever or gives a different answer each run, one of these four has slipped.</p>
 <p>Two more ideas are worth holding onto. First, <strong>one problem can have many algorithms.</strong> There are dozens of ways to sort a shelf of labelled jars — some quick, some slow — and choosing well is much of what computer science is about (you’ll meet this head-on in Notebook 7). Second, an algorithm is an <em>idea</em>, separate from any one programming language. Wren’s method for splitting a cache of crystals among apprentices could be carried out in Python, in some other language, or by Fen with a pencil and a patient evening.</p>
 <p>That separation is the whole reason this notebook teaches a <strong>workflow</strong> instead of just Python syntax. You’ll pin down the algorithm <em>first</em> — in plain words and a picture — and only then translate it into code.</p>
+<section id="think-about-it-algorithms-you-already-follow" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-algorithms-you-already-follow">💭 Think About It — Algorithms You Already Follow</h3>
+<p>You just met the word <em>algorithm</em>: a precise sequence of steps that anyone — or any machine — can follow to get a result.</p>
+<ul>
+<li>Describe an everyday routine (a recipe, getting ready in the morning, giving someone directions) as an algorithm. Where is it precise, and where does it secretly rely on human judgment?</li>
+<li>A good algorithm leaves no step to guesswork. Why is “leave nothing to interpretation” so much harder than it sounds when the follower is a machine instead of a person?</li>
+<li>“Social media algorithms” are in the news constantly. Based on what the word actually means, what do you think people are really worried about when they complain about them?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 </section>
 <section id="the-roadmap" class="level2">
 <h2 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h2>
@@ -291,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here is the shape of every assignment you’ll ever write:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>box_name <span class="op">=</span> value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The trick is how to <em>read</em> that <code>=</code>. Read it as <strong>“gets,”</strong> not “equals.” So <code>crowns = 50</code> means <em>“the box named <code>crowns</code> gets the value 50.”</em> It’s an <strong>instruction to store something</strong>, not a claim that two things are equal. Mirabel likes this arrangement: a named box can be checked, reused, and corrected in exactly one place — unlike Fen’s totals, scattered in the margins of three different pages.</p>
-<div id="cell-10" class="cell">
+<div id="cell-11" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>crowns <span class="op">=</span> <span class="dv">50</span>      <span class="co"># coins in the till</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>spent  <span class="op">=</span> <span class="dv">12</span>      <span class="co"># a customer's purchase</span></span>
@@ -307,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-update-the-till" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-update-the-till">✏️ Your Turn — Update the Till</h3>
 <p>A customer buys a phoenix feather. Start with the till and the price already in boxes, then update the till to reflect the sale, and print the new total.</p>
-<div id="cell-15" class="cell">
+<div id="cell-16" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>till  <span class="op">=</span> <span class="dv">200</span>      <span class="co"># crowns currently in the till</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="dv">35</span>       <span class="co"># price of one phoenix feather</span></span>
@@ -366,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>When you want to know what you’re holding, ask Python directly with the <code>type()</code> function:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(some_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="cell-17" class="cell">
+<div id="cell-18" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">42</span>))           <span class="co"># a whole number</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="fl">3.14</span>))         <span class="co"># has a decimal point</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"Mirabel"</span>))    <span class="co"># in quotes -&gt; text</span></span>
@@ -381,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-name-that-type" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-name-that-type">✏️ Your Turn — Name That Type</h3>
 <p>Store one value of <strong>each</strong> of the four types in the boxes below — your own choices — then print the type of each. Before you run it, predict each answer out loud; then check yourself against Python.</p>
-<div id="cell-20" class="cell">
+<div id="cell-21" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ FILL IN a value of each type, then run.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>whole_number   <span class="op">=</span>      <span class="co"># an int</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>decimal_number <span class="op">=</span>      <span class="co"># a float</span></span>
@@ -434,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>The pair <code>//</code> and <code>%</code> are a team. Together they answer one very practical question: <em>“how many whole groups fit, and how much is left over?”</em> That question is everywhere — and in our shop, it’s exactly how you turn a heap of copper bits into crowns-and-bits.</p>
-<div id="cell-22" class="cell">
+<div id="cell-23" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>bits <span class="op">=</span> <span class="dv">347</span>        <span class="co"># a pile of loose copper bits (100 bits = 1 crown)</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -501,7 +534,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-crowns-and-bits" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-crowns-and-bits">✏️ Your Turn — Crowns and Bits</h3>
 <p>A customer pays for a jar of moonpetal with a fistful of loose bits. Given the number of bits, work out how many whole <strong>crowns</strong> that is and how many <strong>bits</strong> are left over, and print both.</p>
-<div id="cell-26" class="cell">
+<div id="cell-27" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>paid_bits <span class="op">=</span> <span class="dv">525</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -611,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong><code>or</code></strong> — True when <strong>either</strong> side is True.</li>
 <li><strong><code>not</code></strong> — flips it: <code>not True</code> is <code>False</code>.</li>
 </ul>
-<div id="cell-29" class="cell">
+<div id="cell-30" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>purse  <span class="op">=</span> <span class="dv">72</span>        <span class="co"># crowns the customer is carrying</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>price  <span class="op">=</span> <span class="dv">50</span>        <span class="co"># price of the item</span></span>
@@ -633,7 +666,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-the-shopkeepers-test" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-the-shopkeepers-test">✏️ Your Turn — The Shopkeeper’s Test</h3>
 <p>Mirabel will sell an item only if the customer can afford it <strong>and</strong> it’s in stock. Set up the boxes below, then write and print <strong>one</strong> boolean expression that is <code>True</code> exactly when the sale should go through. Test it by changing the values so it comes out both <code>True</code> and <code>False</code>.</p>
-<div id="cell-32" class="cell">
+<div id="cell-33" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>purse    <span class="op">=</span> <span class="dv">40</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>price    <span class="op">=</span> <span class="dv">35</span></span>
@@ -654,7 +687,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The shape of an input is:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> <span class="bu">input</span>(<span class="st">"a prompt to show: "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>There is one surprise hiding in that line, and it is responsible for the most common bug in this entire course — so let’s meet it head-on.</p>
-<div id="cell-34" class="cell">
+<div id="cell-35" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This cell PAUSES and waits for you to type. That's expected, not a freeze.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>typed <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Type any number: "</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(typed, <span class="st">"has type"</span>, <span class="bu">type</span>(typed))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -663,7 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-1-beginner-bug" class="level3">
 <h3 class="anchored" data-anchor-id="the-1-beginner-bug">The #1 Beginner Bug</h3>
 <p>Because <code>input()</code> returns a string, doing arithmetic on it goes wrong in a way that looks <em>almost</em> right — which is the most dangerous kind of wrong:</p>
-<div id="cell-37" class="cell">
+<div id="cell-38" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">"5"</span>     <span class="co"># pretend these two arrived from input()</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="st">"3"</span></span>
@@ -679,7 +712,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-ask-and-answer" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-ask-and-answer">✏️ Your Turn — Ask and Answer</h3>
 <p>Ask the customer how many phoenix feathers they want and the price per feather, then print the total cost. Remember to cast each input before multiplying.</p>
-<div id="cell-40" class="cell">
+<div id="cell-41" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: read two numbers with input(), cast them with int(),</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       multiply, and print the total cost.</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
@@ -720,7 +753,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="cell-42" class="cell">
+<div id="cell-43" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Line one</span><span class="ch">\n</span><span class="st">Line two"</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Item:</span><span class="ch">\t</span><span class="st">Moonpetal"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mirabel said </span><span class="ch">\"</span><span class="st">mind the cat</span><span class="ch">\"</span><span class="st">"</span>)</span>
@@ -769,7 +802,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="cell-45" class="cell">
+<div id="cell-46" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="fl">19.5</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>name  <span class="op">=</span> <span class="st">"mirabel"</span></span>
@@ -849,7 +882,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Two things to know. Strings are <strong>immutable</strong> — a method never changes the original; it hands back a <em>new</em> string. And methods can be <strong>chained</strong> left to right, so <code>raw.strip().title()</code> trims first, then title-cases the trimmed result.</p>
-<div id="cell-48" class="cell">
+<div id="cell-49" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="st">"  mirabel quill  "</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -865,7 +898,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="putting-it-together-a-shop-label" class="level3">
 <h3 class="anchored" data-anchor-id="putting-it-together-a-shop-label">Putting It Together: a Shop Label</h3>
 <p>These tools shine when you use them <em>at once</em>. The cell below prints a bordered price label using all three — a repeated-character rule, a centred upper-cased banner, and a right-aligned price column to two decimals.</p>
-<div id="cell-51" class="cell">
+<div id="cell-52" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>shop <span class="op">=</span> <span class="st">"mirabel's emporium"</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> <span class="st">"phoenix feather"</span></span>
@@ -885,7 +918,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-your-own-price-label" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-your-own-price-label">✏️ Your Turn — Your Own Price Label</h3>
 <p>Make a label for an item of your own invention (a <em>self-stirring teaspoon</em>? a <em>jar of bottled Tuesday</em>?). Print a bordered label with the shop name centred and the price right-aligned to two decimals — start from the cell above and make it yours.</p>
-<div id="cell-54" class="cell">
+<div id="cell-55" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>shop  <span class="op">=</span> <span class="st">"your shop name"</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>item  <span class="op">=</span> <span class="st">"your wondrous item"</span></span>
@@ -956,7 +989,7 @@ OUTPUT:  share        — crystals each apprentice receives
 <p>Six numbered steps anyone could follow — including a tired future you, debugging this at midnight.</p>
 <p><strong>Step 2½ — The Flowchart.</strong> The same six steps, drawn so the straight-line shape is obvious: Start, two inputs, two calculations, one output, End.</p>
 <p><strong>Step 3 — Python.</strong> Now — and only now — translate the pseudocode line for line. We use an editable value block first, so the output is reproducible and we can check it by hand:</p>
-<div id="cell-66" class="cell">
+<div id="cell-67" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>crystals    <span class="op">=</span> <span class="dv">1000</span>      <span class="co"># step 1: READ crystals</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>apprentices <span class="op">=</span> <span class="dv">7</span>         <span class="co"># step 2: READ apprentices</span></span>
@@ -976,7 +1009,7 @@ OUTPUT:  share        — crystals each apprentice receives
 </ul>
 <p>That <code>(quotient × divisor) + remainder = original</code> check works for <em>any</em> <code>//</code> and <code>%</code> pair. Get in the habit of running it.</p>
 <p>Here is the same algorithm wired to a real person, with <code>int(input(...))</code> standing in for steps 1–2 — the type-casting rule applied. The <em>thinking</em> was finished before a line of Python got written. That’s the whole method.</p>
-<div id="cell-68" class="cell">
+<div id="cell-69" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>crystals    <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Crystals in the cache: "</span>))</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>apprentices <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Number of apprentices: "</span>))</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1000,7 +1033,7 @@ OUTPUT:  share        — crystals each apprentice receives
 <li><strong>Python:</strong> in a code cell with an editable value block — then <strong>verify by hand</strong> with one example and show the cross-check.</li>
 </ol>
 <p><em>Hint: it’s the same <code>//</code> and <code>%</code> shape as the crystal split.</em></p>
-<div id="cell-70" class="cell">
+<div id="cell-71" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Your Python for the bits-to-crowns exercise.</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your pseudocode in a markdown cell FIRST, then translate it here.</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1022,6 +1055,16 @@ OUTPUT:  share        — crystals each apprentice receives
 <li><strong>Read every line.</strong> Is each <code>input()</code> cast with <code>int()</code>? Is it <code>//</code> or <code>/</code>? Is it <code>==</code> or <code>=</code>?</li>
 <li><strong>Does it match your plan?</strong> Without pseudocode to compare against, “it didn’t crash” is all you really know — and that’s not the same as “it’s correct.”</li>
 </ol>
+<section id="think-about-it-who-does-the-thinking" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-who-does-the-thinking">💭 Think About It — Who Does the Thinking?</h3>
+<p>You just saw the habit of planning in pseudocode <em>before</em> asking an AI to write the code.</p>
+<ul>
+<li>If an AI can write the code for you, why bother learning to plan it yourself first? What might you lose by skipping straight to “AI, just build this”?</li>
+<li>When an AI hands you code that runs but you don’t understand it, what should you do — and whose responsibility is it if that code turns out to be wrong?</li>
+<li>Compare leaning on AI to write code with using GPS to navigate. What does each make easier, and what skill might quietly fade if you rely on it for everything?</li>
+</ul>
+<p>There are no single right answers here — share a sentence or two on each.</p>
+</section>
 </section>
 <section id="practice-pyquiz" class="level2">
 <h2 class="anchored" data-anchor-id="practice-pyquiz">Practice: PyQuiz</h2>
@@ -1041,7 +1084,7 @@ OUTPUT:  share        — crystals each apprentice receives
 <h3 class="anchored" data-anchor-id="how-to-use-it">How to use it</h3>
 <p>For each problem: read the description and sample runs, edit the code in the box, and click <strong>Run Tests</strong> to see how you did. Stuck? Click <strong>Hint</strong>. Use <strong>Next</strong> to move on, or the dropdown to jump around — your code is checked per test case, so you can see partial progress clearly.</p>
 <p>Run the cell below to start. <em>(The first time, it downloads <code>pyquiz.py</code> from the course repo — a brief pause, then the tool appears.)</em></p>
-<div id="cell-73" class="cell">
+<div id="cell-75" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PyQuiz bootstrap — works in Colab or any local Jupyter.</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, urllib.request</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main"</span></span>
@@ -1057,7 +1100,7 @@ OUTPUT:  share        — crystals each apprentice receives
 </section>
 <section id="capstone-build-a-trading-game-ai-assistedin-this-exercise-youll-build-a-trading-game.-the-core-idea-is-always-the-same-start-with-some-money-buy-low-and-sell-high-and-try-to-end-up-richer-but-the-theme-is-yours-a-magic-shop-a-space-trader-hauling-cargo-a-sneaker-reseller-flipping-drops-a-lemonade-stand-a-card--or-crypto-market-where-prices-swing.-youll-build-it-the-way-a-pro-does-plan-first-let-an-ai-help-you-write-it-then-verify.one-note-a-real-game-repeats-over-many-turns-and-repetition-needs-loops-which-arrive-in-notebook-4.-thats-fine-here-the-ai-will-reach-for-a-few-tools-you-havent-formally-met.-your-job-is-to-plan-the-game-and-check-that-it-works-not-to-know-every-line-by-heart.step-1-design-it-first-before-touching-the-ai.-a-generic-prompt-makes-a-generic-game.-jot-these-in-a-markdown-cell--setting-goods-your-theme-plus-35-things-to-trade-and-a-price-for-each.--the-purse-how-much-money-does-the-player-start-with--the-goal-end-richer-than-you-started-or-hit-a-target-before-you-run-out.--the-catch-what-makes-it-fun-prices-that-drift-each-turn-a-limited-number-of-turns-a-risky-itemstep-2-turn-your-design-into-a-prompt.-fill-in-the-blanks-and-send-it-to-gemini-or-claude-chatgpt-write-a-small-text-trading-game-as-a-python-program-for-google-colab.-the-player-starts-with-n-money-and-can-buy-or-sell-these-goods-each-turn-your-goods-and-prices.-prices-stay-fixed-drift-each-turn.-the-game-lasts-number-turns-or-until-your-end-condition.-each-turn-show-the-players-money-and-inventory-at-the-end-say-whether-they-finished-richer.-keep-it-short-and-beginner-readable.step-3-get-the-bones-working-then-test.-paste-it-into-the-cell-below-and-run-it-now.-it-wont-be-perfect.-get-the-simplest-version-working-first-buy-one-item-sell-it-watch-the-money-change-and-check-that-by-hand-before-adding-anything.step-4-add-the-bells-and-whistles.-once-the-core-works-add-one-or-two-extras-testing-after-each-prices-that-change-each-turn-a-sell-price-different-from-the-buy-price-where-profit-lives-a-winlose-message-or-a-risky-item-that-might-be-worthless.step-5-reflect.-in-a-markdown-cell-write-23-sentences-what-did-the-ai-get-wrong-or-what-did-you-improve-and-how-did-you-fix-itremember-the-course-rule-ai-is-a-fast-first-draft.-you-verify." class="level2">
 <h2 class="anchored" data-anchor-id="capstone-build-a-trading-game-ai-assistedin-this-exercise-youll-build-a-trading-game.-the-core-idea-is-always-the-same-start-with-some-money-buy-low-and-sell-high-and-try-to-end-up-richer-but-the-theme-is-yours-a-magic-shop-a-space-trader-hauling-cargo-a-sneaker-reseller-flipping-drops-a-lemonade-stand-a-card--or-crypto-market-where-prices-swing.-youll-build-it-the-way-a-pro-does-plan-first-let-an-ai-help-you-write-it-then-verify.one-note-a-real-game-repeats-over-many-turns-and-repetition-needs-loops-which-arrive-in-notebook-4.-thats-fine-here-the-ai-will-reach-for-a-few-tools-you-havent-formally-met.-your-job-is-to-plan-the-game-and-check-that-it-works-not-to-know-every-line-by-heart.step-1-design-it-first-before-touching-the-ai.-a-generic-prompt-makes-a-generic-game.-jot-these-in-a-markdown-cell--setting-goods-your-theme-plus-35-things-to-trade-and-a-price-for-each.--the-purse-how-much-money-does-the-player-start-with--the-goal-end-richer-than-you-started-or-hit-a-target-before-you-run-out.--the-catch-what-makes-it-fun-prices-that-drift-each-turn-a-limited-number-of-turns-a-risky-itemstep-2-turn-your-design-into-a-prompt.-fill-in-the-blanks-and-send-it-to-gemini-or-claude-chatgpt-write-a-small-text-trading-game-as-a-python-program-for-google-colab.-the-player-starts-with-n-money-and-can-buy-or-sell-these-goods-each-turn-your-goods-and-prices.-prices-stay-fixed-drift-each-turn.-the-game-lasts-number-turns-or-until-your-end-condition.-each-turn-show-the-players-money-and-inventory-at-the-end-say-whether-they-finished-richer.-keep-it-short-and-beginner-readable.step-3-get-the-bones-working-then-test.-paste-it-into-the-cell-below-and-run-it-now.-it-wont-be-perfect.-get-the-simplest-version-working-first-buy-one-item-sell-it-watch-the-money-change-and-check-that-by-hand-before-adding-anything.step-4-add-the-bells-and-whistles.-once-the-core-works-add-one-or-two-extras-testing-after-each-prices-that-change-each-turn-a-sell-price-different-from-the-buy-price-where-profit-lives-a-winlose-message-or-a-risky-item-that-might-be-worthless.step-5-reflect.-in-a-markdown-cell-write-23-sentences-what-did-the-ai-get-wrong-or-what-did-you-improve-and-how-did-you-fix-itremember-the-course-rule-ai-is-a-fast-first-draft.-you-verify.">✏️ Capstone — Build a Trading Game (AI-Assisted)In this exercise you’ll build a <strong>trading game</strong>. The core idea is always the same — start with some money, <strong>buy low and sell high</strong>, and try to end up richer — but the theme is yours: a magic shop, a <strong>space trader</strong> hauling cargo, a <strong>sneaker reseller</strong> flipping drops, a <strong>lemonade stand</strong>, a <strong>card- or crypto-market</strong> where prices swing. You’ll build it the way a pro does: <strong>plan first, let an AI help you write it, then verify.</strong><em>One note:</em> a real game <em>repeats</em> over many turns, and repetition needs <strong>loops</strong>, which arrive in Notebook 4. That’s fine here — the AI will reach for a few tools you haven’t formally met. Your job is to <strong>plan the game and check that it works</strong>, not to know every line by heart.<strong>Step 1 — Design it first (before touching the AI).</strong> A generic prompt makes a generic game. Jot these in a markdown cell:- <strong>Setting &amp; goods:</strong> your theme, plus 3–5 things to trade and a price for each.- <strong>The purse:</strong> how much money does the player start with?- <strong>The goal:</strong> end richer than you started — or hit a target before you run out.- <strong>The catch:</strong> what makes it fun? Prices that drift each turn? A limited number of turns? A risky item?<strong>Step 2 — Turn your design into a prompt.</strong> Fill in the blanks and send it to Gemini (or Claude / ChatGPT):&gt; <em>Write a small text trading game as a Python program for Google Colab. The player starts with <strong>[N]</strong> money and can buy or sell these goods each turn: <strong>[your goods and prices]</strong>. Prices <strong>[stay fixed / drift each turn]</strong>. The game lasts <strong>[number]</strong> turns or until <strong>[your end condition]</strong>. Each turn, show the player’s money and inventory; at the end, say whether they finished richer. Keep it short and beginner-readable.</em><strong>Step 3 — Get the bones working, then test.</strong> Paste it into the cell below and <strong>run it now</strong>. It won’t be perfect. Get the simplest version working first — buy one item, sell it, watch the money change — and check that by hand before adding anything.<strong>Step 4 — Add the bells and whistles.</strong> Once the core works, add <strong>one or two</strong> extras, testing after each: prices that change each turn, a sell price different from the buy price (where profit lives), a win/lose message, or a risky item that might be worthless.<strong>Step 5 — Reflect.</strong> In a markdown cell, write 2–3 sentences: what did the AI get wrong or what did you improve, and how did you fix it?Remember the course rule: <em>AI is a fast first draft. You verify.</em></h2>
-<div id="cell-75" class="cell">
+<div id="cell-77" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built trading game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -1108,7 +1151,6 @@ OUTPUT:  share        — crystals each apprentice receives
 <p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
