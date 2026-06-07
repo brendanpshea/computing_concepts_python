@@ -1,0 +1,1166 @@
+{
+  "title": "Chapter 3 - Pseudocode, Flowcharts & Hopper's Bargain",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Who built the first working compiler?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Grace Hopper",
+          "correct": true
+        },
+        {
+          "text": "Alan Turing",
+          "correct": false
+        },
+        {
+          "text": "Charles Babbage",
+          "correct": false
+        },
+        {
+          "text": "Carver Mead",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was the primary function of Hopper's A-0 compiler?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It translated symbolic language into machine instructions",
+          "correct": true
+        },
+        {
+          "text": "It checked Python code for syntax errors",
+          "correct": false
+        },
+        {
+          "text": "It automatically physically punched paper tape",
+          "correct": false
+        },
+        {
+          "text": "It calculated ballistics tables manually",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does 'abstraction' mean in the context of computer science history?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Hiding complex machine operations behind simpler language layers",
+          "correct": true
+        },
+        {
+          "text": "Translating code back into physical hardware components",
+          "correct": false
+        },
+        {
+          "text": "Refusing to use visual flowcharts",
+          "correct": false
+        },
+        {
+          "text": "Writing code exclusively in binary logic",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was COBOL designed to do?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Serve as a standard language for business data processing",
+          "correct": true
+        },
+        {
+          "text": "Train large language models on public source code",
+          "correct": false
+        },
+        {
+          "text": "Operate the Mark I mechanical computer",
+          "correct": false
+        },
+        {
+          "text": "Replace Python entirely",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which issue did the Y2K bug highlight about abstraction?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Programmers had forgotten the lowest code layers that ran critical systems",
+          "correct": true
+        },
+        {
+          "text": "All modern compilers had a hidden hardware flaw",
+          "correct": false
+        },
+        {
+          "text": "LLMs were hallucinating fake library packages",
+          "correct": false
+        },
+        {
+          "text": "Mechanical moths still existed in server rooms",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "According to Hopper, why was building a compiler necessary?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "So ordinary technical workers could program without learning machine code",
+          "correct": true
+        },
+        {
+          "text": "So women could exclusively dominate the programming field",
+          "correct": false
+        },
+        {
+          "text": "To make computers run faster physically",
+          "correct": false
+        },
+        {
+          "text": "To prevent hardware bugs like moths from spreading",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did Edsger Dijkstra argue about hiding the machine from the programmer?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It makes some kinds of errors invisible and impossible to diagnose",
+          "correct": true
+        },
+        {
+          "text": "It allows programs to run infinitely fast",
+          "correct": false
+        },
+        {
+          "text": "It permanently solves the problem of security flaws",
+          "correct": false
+        },
+        {
+          "text": "It is the only morally correct way to write software",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does a compiler fundamentally differ from a Large Language Model (LLM)?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A compiler translates deterministically, while an LLM guesses statistically",
+          "correct": true
+        },
+        {
+          "text": "A compiler requires an internet connection to run",
+          "correct": false
+        },
+        {
+          "text": "An LLM writes only assembly language",
+          "correct": false
+        },
+        {
+          "text": "A compiler cannot translate Python code",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which components are characteristic of early programming (1940s)?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Code was heavily hand-translated into physical instructions.",
+          "correct": true
+        },
+        {
+          "text": "Operations were closely tied to physical machine architecture.",
+          "correct": true
+        },
+        {
+          "text": "Compilers automatically fixed logical errors.",
+          "correct": false
+        },
+        {
+          "text": "Visual drag-and-drop interfaces were standard.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "What are the core arguments of the Labor Reply regarding abstraction?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Productivity tools change who does the work and on what terms.",
+          "correct": true
+        },
+        {
+          "text": "Technological shifts altered the gender demographics of the field.",
+          "correct": true
+        },
+        {
+          "text": "Abstraction creates perfectly equitable workplaces immediately.",
+          "correct": false
+        },
+        {
+          "text": "New compilers always guarantee higher wages for all workers.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is an algorithm?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A precise sequence of executable steps",
+          "correct": true
+        },
+        {
+          "text": "A specific programming language like Python",
+          "correct": false
+        },
+        {
+          "text": "A hardware component connecting memory and CPU",
+          "correct": false
+        },
+        {
+          "text": "A random guess at a mathematical problem",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What should you do before translating an algorithm into code?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Pin it down in plain words and a picture",
+          "correct": true
+        },
+        {
+          "text": "Memorize all Python syntax rules",
+          "correct": false
+        },
+        {
+          "text": "Create a new variable named crowns",
+          "correct": false
+        },
+        {
+          "text": "Delete all floats from memory",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which definition accurately describes a variable?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A labeled box that holds one value at a time",
+          "correct": true
+        },
+        {
+          "text": "A mathematical constant that never changes",
+          "correct": false
+        },
+        {
+          "text": "A built-in Python math function",
+          "correct": false
+        },
+        {
+          "text": "A flowchart diamond indicating choice",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does a variable do when it receives a new assignment?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It forgets its old value entirely",
+          "correct": true
+        },
+        {
+          "text": "It mathematically adds the new value to the old",
+          "correct": false
+        },
+        {
+          "text": "It crashes the program if the type changes",
+          "correct": false
+        },
+        {
+          "text": "It copies the value to a secondary box",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In programming, what is the role of an expression?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It computes and evaluates to a value",
+          "correct": true
+        },
+        {
+          "text": "It acts as a complete executable instruction",
+          "correct": false
+        },
+        {
+          "text": "It only prints output to the screen",
+          "correct": false
+        },
+        {
+          "text": "It permanently deletes unused variables",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What dictates the operations allowed on a value?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Its data type",
+          "correct": true
+        },
+        {
+          "text": "The variable name",
+          "correct": false
+        },
+        {
+          "text": "The length of the code",
+          "correct": false
+        },
+        {
+          "text": "The CPU architecture",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why is <code>\"42\"</code> different from <code>42</code> in Python?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Quotes mean the value is text, not a number",
+          "correct": true
+        },
+        {
+          "text": "Quotes make the number negative",
+          "correct": false
+        },
+        {
+          "text": "Quotes indicate a floating-point value",
+          "correct": false
+        },
+        {
+          "text": "Quotes tell Python to compute it faster",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does a Python <code>float</code> visually differ from an <code>int</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "It contains a lone decimal point",
+          "correct": true
+        },
+        {
+          "text": "It is wrapped in quotation marks",
+          "correct": false
+        },
+        {
+          "text": "It has a negative sign in front",
+          "correct": false
+        },
+        {
+          "text": "It requires two assignment operators",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which elements are fundamental characteristics of an algorithm?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The steps are unambiguous and repeatable.",
+          "correct": true
+        },
+        {
+          "text": "A single problem can have multiple possible algorithms.",
+          "correct": true
+        },
+        {
+          "text": "They must be written exclusively in Python.",
+          "correct": false
+        },
+        {
+          "text": "They inherently require electronic hardware to run.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "complete sentence",
+      "prompt": "Which facts about the assignment operator (=) are correct?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The right side computes entirely before storing.",
+          "correct": true
+        },
+        {
+          "text": "Values flow exclusively from right to left.",
+          "correct": true
+        },
+        {
+          "text": "It tests whether two numbers are mathematically equal.",
+          "correct": false
+        },
+        {
+          "text": "It allows a box to hold two simultaneous values.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What symbol is used for the assignment operator?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>=</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>==</code>",
+          "correct": false
+        },
+        {
+          "text": "<code><-</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>:</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In <code>total = crowns - spent</code>, which part executes first?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>Python computes crowns - spent</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>Python creates the total variable</code>",
+          "correct": false
+        },
+        {
+          "text": "Python prints the output",
+          "correct": false
+        },
+        {
+          "text": "Python stops the execution",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What type is <code>\"Mirabel\"</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>str</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>int</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>float</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>bool</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What type is <code>3.14</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>float</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>int</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>str</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>bool</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What type is <code>False</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>bool</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>str</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>float</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>int</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What type is <code>100</code>?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>int</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>float</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>str</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>bool</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What operator computes integer floor division?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>//</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>%</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>/</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>**</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What operator computes the division remainder?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>%</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>//</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>/</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>**</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What built-in function returns the absolute value?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>abs()</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>max()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>min()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>round()</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What built-in function finds the largest in a set of numbers?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>max()</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>min()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>abs()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>len()</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "If you evaluate <code>10 / 5</code>, what type is returned?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>float</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>int</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>str</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>bool</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What does <code>347 // 100</code> evaluate to?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "3",
+          "correct": true
+        },
+        {
+          "text": "47",
+          "correct": false
+        },
+        {
+          "text": "3.47",
+          "correct": false
+        },
+        {
+          "text": "300",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What does <code>347 % 100</code> evaluate to?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "47",
+          "correct": true
+        },
+        {
+          "text": "3",
+          "correct": false
+        },
+        {
+          "text": "3.47",
+          "correct": false
+        },
+        {
+          "text": "0",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does a line of code like <code>spent = 70</code> represent?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "A complete statement",
+          "correct": true
+        },
+        {
+          "text": "A raw operand",
+          "correct": false
+        },
+        {
+          "text": "A flowchart diamond",
+          "correct": false
+        },
+        {
+          "text": "A Boolean condition",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "In <code>7 > 3</code>, what are the numbers 7 and 3?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Operands",
+          "correct": true
+        },
+        {
+          "text": "Variables",
+          "correct": false
+        },
+        {
+          "text": "Operators",
+          "correct": false
+        },
+        {
+          "text": "Statements",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What will <code>type(\"42\")</code> output?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code><class 'str'></code>",
+          "correct": true
+        },
+        {
+          "text": "<code><class 'int'></code>",
+          "correct": false
+        },
+        {
+          "text": "<code><class 'float'></code>",
+          "correct": false
+        },
+        {
+          "text": "<code><class 'bool'></code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What does <code>round(3.14159, 2)</code> output?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "3.14",
+          "correct": true
+        },
+        {
+          "text": "3",
+          "correct": false
+        },
+        {
+          "text": "3.1",
+          "correct": false
+        },
+        {
+          "text": "4",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What does <code>abs(-15)</code> evaluate to?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "15",
+          "correct": true
+        },
+        {
+          "text": "-15",
+          "correct": false
+        },
+        {
+          "text": "0",
+          "correct": false
+        },
+        {
+          "text": "1.5",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which expressions evaluate to integer types?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>347 // 100</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>347 % 100</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>10 / 5</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>3.0 + 2.0</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which operations will output a float?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>10 / 2</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>round(3.14159, 2)</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>5 % 2</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>10 // 3</code>",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
