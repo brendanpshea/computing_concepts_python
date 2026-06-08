@@ -26,37 +26,37 @@ This is a **8-week summer course covering the same content as a 16-week semester
 
 ## Outline of Major Content Areas
 
-    Data storage
-    Machine architecture and data manipulation
-    Operating systems
-    Networking and telecommunications
-    Algorithms
-    Programming languages
-    Software engineering
-    Data structures
-    File structures and database structures
-    Artificial intelligence
-    Computer security
-    Computer programming in Python or other languages
+1. Data storage
+2. Machine architecture and data manipulation
+3. Operating systems
+4. Networking and telecommunications
+5. Algorithms
+6. Programming languages
+7. Software engineering
+8. Data structures
+9. File structures and database structures
+10. Artificial intelligence
+11. Computer security
+12. Computer programming in Python or other languages
 
 ## Learning Outcomes (General)
 
 The student will be able to:
 
-    Apply the rudiments of data storage within a digital computer.
-    Explain the concepts of machine architecture and interaction between processor and memory.
-    State the fundamental concepts of operating systems and networks.
-    Apply the concept of an algorithm and its importance within the discipline of computer science.
-    Develop algorithmic solutions and express them using pseudocode and flowcharts.
-    Apply the concept of a high-level programming language to implement algorithms with the language.
-    List the benefits of modular design.
-    State the concept of abstraction and elementary abstract data types.
-    State the concepts of file and database structures.
-    Explain the difficulty of detecting the presence of intelligence to the appearance of intelligence.
-    Explain the concept of computability.
-    Explain the concept of computer security and encryption.
-    Describe the evolution of digital systems and their past, present, and potential future impact on human society.
-    Construct simple programs in Python or other languages.
+1. Apply the rudiments of data storage within a digital computer.
+2. Explain the concepts of machine architecture and interaction between processor and memory.
+3. State the fundamental concepts of operating systems and networks.
+4. Apply the concept of an algorithm and its importance within the discipline of computer science.
+5. Develop algorithmic solutions and express them using pseudocode and flowcharts.
+6. Apply the concept of a high-level programming language to implement algorithms with the language.
+7. List the benefits of modular design.
+8. State the concept of abstraction and elementary abstract data types.
+9. State the concepts of file and database structures.
+10. Explain the difficulty of detecting the presence of intelligence to the appearance of intelligence.
+11. Explain the concept of computability.
+12. Explain the concept of computer security and encryption.
+13. Describe the evolution of digital systems and their past, present, and potential future impact on human society.
+14. Construct simple programs in Python or other languages.
 
 ## RCTC Core Outcome(s)
 
@@ -84,11 +84,11 @@ Critical Thinking
 
 Your final grade is a weighted average of the following:
 
-**Case Studies and Quizzes on Perusall - 20%**
+**Lectures, Case Studies, and Quizzes on Perusall - 40%**
 
 This will provide you with the opportunity to reflect on key ideas, events, and issues in computer science. They will be delivered in *Perusall* (see below).
 
-**Three Exams - 60% total (20% each)**
+**Three Exams - 45% total (15% each)**
 
 Exams are delivered through D2L and require **Respondus LockDown Browser with Respondus Monitor**. You will need:
 
@@ -98,7 +98,7 @@ Exams are delivered through D2L and require **Respondus LockDown Browser with Re
 
 You'll be prompted to install LockDown Browser the first time you launch a quiz from D2L. I recommend installing it and running a short practice quiz **at least a few days before Exam 1** so any setup problems surface early.
 
-**Programming Project (20%)**. More details will be provided later.
+**Programming Project (15%)**. More details will be provided later.
 
 ### Attendance 📅
 
