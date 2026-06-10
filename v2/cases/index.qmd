@@ -22,7 +22,7 @@ interesting.
 | 4 | [The Therac-25: When Control Flow Kills](cs04_therac25.qmd) | **Available** |
 | 5 | [How We Represent People: ADTs and the Ethics of Data Modeling](cs05_representing_people.qmd) | **Available** |
 | 6 | [Was OOP a Mistake? Alan Kay, Smalltalk & the Backlash](cs06_oop_mistake.qmd) | **Available** |
-| 7 | The Halting Problem & the Limits of Machines | *In progress* |
+| 7 | ["We Must Know — We Will Know": Gödel, Turing, and the Problem No Computer Can Solve](cs07_halting_problem.qmd) | **Available** |
 | 8 | Open Source & the Code an AI Learned From — Linux, Git & Copilot | *In progress* |
 | 9 | From SQL to NoSQL — Why Google Built Bigtable | *In progress* |
 | 10 | Three Companies Own the Internet — ARPANET to the Cloud Oligopoly | *In progress* |

@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(python3)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Read(//c/Users/brend/AppData/Local/Temp/**)",
+      "Bash(PYTHONIOENCODING=utf-8 python -c ' *)"
     ]
   }
 }

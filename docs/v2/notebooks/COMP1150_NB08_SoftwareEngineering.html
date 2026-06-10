@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-10">
+
+<title>Notebook 8: Software Engineering — SDLC, Git &amp; AI-Assisted Development – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#the-problem-a-wrong-dose-ships-to-emerald-city-hospital" id="toc-the-problem-a-wrong-dose-ships-to-emerald-city-hospital" class="nav-link" data-scroll-target="#the-problem-a-wrong-dose-ships-to-emerald-city-hospital">The Problem: A Wrong Dose Ships to Emerald City Hospital</a></li>
+  <li><a href="#the-software-development-life-cycle" id="toc-the-software-development-life-cycle" class="nav-link" data-scroll-target="#the-software-development-life-cycle">The Software Development Life Cycle</a></li>
+  <li><a href="#the-cowardly-lions-problem" id="toc-the-cowardly-lions-problem" class="nav-link" data-scroll-target="#the-cowardly-lions-problem">The Cowardly Lion’s Problem</a></li>
+  <li><a href="#what-version-control-is" id="toc-what-version-control-is" class="nav-link" data-scroll-target="#what-version-control-is">What Version Control Is</a></li>
+  <li><a href="#your-turn-set-up-github-and-save-this-notebook" id="toc-your-turn-set-up-github-and-save-this-notebook" class="nav-link" data-scroll-target="#your-turn-set-up-github-and-save-this-notebook">✏️ Your Turn — Set Up GitHub and Save This Notebook</a></li>
+  <li><a href="#the-tin-woodmans-standard" id="toc-the-tin-woodmans-standard" class="nav-link" data-scroll-target="#the-tin-woodmans-standard">The Tin Woodman’s Standard</a></li>
+  <li><a href="#how-code-really-gets-written-in-2026" id="toc-how-code-really-gets-written-in-2026" class="nav-link" data-scroll-target="#how-code-really-gets-written-in-2026">How Code Really Gets Written in 2026</a></li>
+  <li><a href="#capstone-crack-the-emerald-gate-code" id="toc-capstone-crack-the-emerald-gate-code" class="nav-link" data-scroll-target="#capstone-crack-the-emerald-gate-code">✏️ Capstone — Crack the Emerald Gate Code</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notebook 8: Software Engineering — SDLC, Git &amp; AI-Assisted Development</h1>
+<p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 10, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb">View on GitHub</a></p>
+<p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li><strong>Describe</strong> the stages of the <strong>software development life cycle (SDLC)</strong> and explain why teams plan before they type.</li>
+<li><strong>Write</strong> a clear <strong>requirement</strong> and <strong>user story</strong> for a feature.</li>
+<li><strong>Use</strong> <strong>git</strong> to track changes, read a project’s history, and recover an earlier version of your work — and <strong>explain</strong> how git is really used day-to-day through GitHub and your code editor.</li>
+<li><strong>Write</strong> simple <strong>tests</strong> with <code>assert</code> to check that code is <em>correct</em>, not just that it <em>runs</em>.</li>
+<li><strong>Review</strong> AI-generated code critically — finding bugs and judgment problems <em>before</em> they ship.</li>
+<li><strong>Explain</strong> how software is actually built in 2026, when AI writes much of the code, and <strong>discuss</strong> who is responsible for it.</li>
+</ul>
+<p><em>Maps to course LOs: 5, 13</em></p>
+</section>
+<section id="the-problem-a-wrong-dose-ships-to-emerald-city-hospital" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-a-wrong-dose-ships-to-emerald-city-hospital">The Problem: A Wrong Dose Ships to Emerald City Hospital</h2>
+<p>It is Dorothy’s first week as a junior developer at <strong>Emerald City Hospital</strong>. The hospital runs its own software, <strong>MedTrack</strong>, which records the medications each patient receives.</p>
+<p>On Tuesday, a nurse reports that MedTrack logged a dose of <strong>5.0 mg</strong> for a patient who should have received <strong>0.5 mg</strong>. Nobody typed the wrong number — the <em>program</em> did it. The code “worked”: it ran without crashing, it printed a number, it saved to the file. It was just <strong>wrong</strong>.</p>
+<p>How does a single bad line of code make it all the way to a real patient? And what do professional teams do to stop it? That question is what this whole notebook is about.</p>
+<blockquote class="blockquote">
+<p>Writing code that <em>runs</em> is only a small part of software engineering. The hard part is making sure it is <strong>correct</strong>, that you can <strong>undo</strong> mistakes, and that a <strong>human stays responsible</strong> — especially now that AI writes so much of the code.</p>
+</blockquote>
+<section id="the-roadmap" class="level3">
+<h3 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h3>
+<p>This notebook has four parts. Together they tell the story of how a feature goes from idea to something safe enough to ship.</p>
+<ul>
+<li><strong>The SDLC</strong> — the stages every project moves through, the two rhythms teams use to move through them (<strong>waterfall vs.&nbsp;agile</strong>), and why we don’t just start typing.</li>
+<li><strong>Git &amp; GitHub</strong> — how teams track every change, work in parallel, and recover from mistakes.</li>
+<li><strong>Testing</strong> — how we check that code is <em>correct</em>, not just that it runs.</li>
+<li><strong>AI-Assisted Development</strong> — how code actually gets written in 2026, and why everything before it matters <em>more</em>, not less, when AI writes the first draft.</li>
+</ul>
+<p>Our running example is <strong>MedTrack</strong>, the patient-medication tracker.</p>
+</section>
+</section>
+<section id="the-software-development-life-cycle" class="level2">
+<h2 class="anchored" data-anchor-id="the-software-development-life-cycle">The Software Development Life Cycle</h2>
+<p>The Scarecrow wants a brain — and on a software team, “using your brain” mostly means <strong>thinking before you build</strong>. Rushing straight to code is how a hospital ends up with a 5.0 mg bug.</p>
+<p>Professionals describe the journey of any software project as the <strong>software development life cycle (SDLC)</strong> — a sequence of stages a project moves through:</p>
+<ol type="1">
+<li><strong>Requirements</strong> — figure out <em>what</em> the software must do, and for whom.</li>
+<li><strong>Design</strong> — decide <em>how</em> it will work: the structure, the pieces, the data.</li>
+<li><strong>Build</strong> — actually write the code (this is the part beginners think is the <em>whole</em> job).</li>
+<li><strong>Test</strong> — check that it does what the requirements said, <em>correctly</em>.</li>
+<li><strong>Deploy</strong> — release it so real people (nurses, patients) can use it.</li>
+<li><strong>Maintain</strong> — fix bugs, add features, adapt as needs change.</li>
+</ol>
+<p>The 5.0 mg dose bug is a <strong>requirements-and-test failure</strong> wearing a costume: nobody clearly wrote down the rules for a valid dose, and nobody tested for a bad one.</p>
+<section id="picture-it-the-cycle" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-cycle">Picture It: The Cycle</h3>
+<p>It’s called a <em>life cycle</em>, not a <em>life line</em>, because software is never really “done.” Maintenance feeds new requirements, and the loop starts again. A bug caught at <strong>Requirements</strong> costs a sentence to fix; the <em>same</em> bug caught at <strong>Deploy</strong> — in a patient’s chart — can cost far more.</p>
+<div id="83cbe72b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:35.309750Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:35.309369Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:36.256673Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:36.255442Z&quot;}}" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB08_SoftwareEngineering_files/figure-html/cell-2-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="waterfall-vs.-agile-two-ways-around-the-loop" class="level3">
+<h3 class="anchored" data-anchor-id="waterfall-vs.-agile-two-ways-around-the-loop">Waterfall vs.&nbsp;Agile: Two Ways Around the Loop</h3>
+<p>Knowing the <em>stages</em> doesn’t settle the biggest practical question: how should a team move <em>through</em> them? Two classic answers dominate software history.</p>
+<p><strong>Waterfall</strong> takes the list literally — finish each stage completely before starting the next. Gather <em>all</em> the requirements and sign them off; design <em>everything</em>; then build; then test; then deploy. One long pass, like water flowing down a series of falls, with no swimming back up. It feels wonderfully organized. Its famous weakness: you find out whether you built the <em>right thing</em> only at the very end, when changing course is most expensive. If the nurses first see MedTrack a year in and say “that’s not how we record doses at all,” that’s a year of work aimed at the wrong target.</p>
+<p><strong>Agile</strong> runs the same stages as <em>many small loops</em> instead of one big pass. The team builds a thin slice of working software in a short cycle called a <strong>sprint</strong> (commonly one to four weeks), puts it in front of real users, and lets what they learn <em>change the requirements</em> before the next loop. Working software early and often; course corrections while they’re still cheap. A bare-bones dose-entry screen that nurses try in week two could surface the 0.5-vs-5.0 confusion before it ever reached a patient.</p>
+<p>Neither approach is simply “right”:</p>
+<ul>
+<li><strong>Waterfall still fits</strong> when the requirements truly are fixed and changing the product later is enormously costly — firmware burned into a heart monitor, or software a regulator must approve as one complete, documented package.</li>
+<li><strong>Agile fits</strong> the far more common case: nobody fully knows the requirements until users touch the software.</li>
+<li><strong>Most real teams run something agile-ish</strong> — short cycles and feedback at the core, plus as much up-front planning and documentation as the project’s risk demands. Hospital software like MedTrack needs both: sprints <em>and</em> a paper trail.</li>
+</ul>
+<p>Keep this idea in your pocket — a tight loop of <em>build a little, check it, adjust</em>. It comes back twice in this notebook: as the test-fix-retest rhythm of the testing section, and again at high speed when an AI writes the first draft.</p>
+</section>
+<section id="picture-it-one-pass-vs.-many-loops" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-one-pass-vs.-many-loops">Picture It: One Pass vs.&nbsp;Many Loops</h3>
+<p>The same stages, two rhythms. Waterfall crosses the river in one giant leap; agile crosses on stepping stones, checking its footing at each one.</p>
+<div id="70735e77" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:36.261562Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:36.261040Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:37.243090Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:37.241229Z&quot;}}" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB08_SoftwareEngineering_files/figure-html/cell-3-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="requirements-turning-a-wish-into-a-spec" class="level3">
+<h3 class="anchored" data-anchor-id="requirements-turning-a-wish-into-a-spec">Requirements: Turning a Wish Into a Spec</h3>
+<p>“Track medications” is a <em>wish</em>, not a plan. A <strong>requirement</strong> is a precise, testable statement of what the software must do. Teams often write requirements as <strong>user stories</strong>, which keep the focus on <em>who</em> needs <em>what</em> and <em>why</em>.</p>
+<p>A user story follows a simple shape — fill in the three blanks:</p>
+<pre><code>As a  &lt;kind of user&gt;,
+I want  &lt;some capability&gt;,
+so that  &lt;some benefit&gt;.</code></pre>
+<p>Compare a vague wish with a precise requirement for MedTrack:</p>
+<ul>
+<li>❌ <strong>Vague:</strong> “The app should handle doses.”</li>
+<li>✅ <strong>Precise:</strong> “A recorded dose must be a positive number between 0.01 and 1000 mg. If it falls outside that range, the app must reject it and show an error instead of saving it.”</li>
+</ul>
+<p>That second version is something you can actually <em>build</em> and <em>test</em>. The vague one is how 5.0 mg slips through.</p>
+</section>
+<section id="your-turn-write-a-requirement" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-write-a-requirement">✏️ Your Turn — Write a Requirement</h3>
+<p>Pick one feature MedTrack might need (for example: searching for a patient, recording who gave a dose, or warning about a drug interaction).</p>
+<p>In the cell below, fill in:</p>
+<ol type="1">
+<li><strong>One user story</strong> using the <code>As a... I want... so that...</code> shape.</li>
+<li><strong>One precise, testable requirement</strong> for that feature — specific enough that someone could later check whether the code obeys it.</li>
+</ol>
+<p>There’s no autograder here; just edit the text.</p>
+<blockquote class="blockquote">
+<p><strong>✏️ Write your answer here.</strong> Double-click this cell to edit it, fill in the blanks, then press <strong>Shift+Enter</strong> to render it. (This is writing, not code — no <code>print</code> needed.)</p>
+<p><strong>User story</strong> As a ___, I want ___, so that ___.</p>
+<p><strong>Precise, testable requirement</strong> ___</p>
+</blockquote>
+</section>
+<section id="think-about-it-skipping-the-plan" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-skipping-the-plan">💭 Think About It — Skipping the Plan</h3>
+<p>Beginners (and rushed teams) love to skip straight to the <strong>Build</strong> stage — it feels productive to be typing code.</p>
+<ol type="1">
+<li>Why might jumping straight to writing code <em>feel</em> faster but actually end up <em>slower</em> for a real project?</li>
+<li>Think of a non-software project you’ve done where poor planning caused problems later (an essay, a road trip, an event). What did the “requirements” stage look like — or what happened because there wasn’t one?</li>
+<li>In a hospital, who <em>besides programmers</em> should have a say in the requirements for MedTrack? Why does that matter?</li>
+<li>MedTrack is hospital software: mistakes can reach patients, and regulators may demand documented evidence before anything ships. Make the best case you can for running this project <strong>waterfall</strong>, then the best case for <strong>agile</strong>. Which would you actually choose — and what would you borrow from the other approach?</li>
+</ol>
+</section>
+</section>
+<section id="the-cowardly-lions-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-cowardly-lions-problem">The Cowardly Lion’s Problem</h2>
+<p>The Cowardly Lion is afraid to touch MedTrack’s code. What if he changes something and breaks the whole thing? What if he can’t get back to the version that worked?</p>
+<p>This fear is completely reasonable — and <strong>version control</strong> is the cure. A version-control tool records the full history of a project: every change, who made it, when, and why. If today’s edit breaks something, you can look back, compare, and return to any earlier version. The Lion can finally experiment without dread.</p>
+<p>The standard tool for this, used almost everywhere, is <strong>git</strong>.</p>
+</section>
+<section id="what-version-control-is" class="level2">
+<h2 class="anchored" data-anchor-id="what-version-control-is">What Version Control Is</h2>
+<p>A <strong>version-control system</strong> records the full history of a project: every change, who made it, when, and <em>why</em>. Think of it as an unlimited, organized “undo” that works across the whole project and never forgets.</p>
+<p>The core idea is the <strong>commit</strong> — a saved <strong>snapshot</strong> of the project at one moment, with a short message describing the change (“Reject doses outside the safe range”). String the commits together and you get the project’s <strong>history</strong>: a timeline you can read, compare, and <strong>return to</strong>. Made a mess today? You can look back at yesterday’s snapshot and restore it. That’s what finally lets the Cowardly Lion experiment without fear.</p>
+<p>The standard tool for this — used almost everywhere — is <strong>git</strong>. The most popular place to store git projects online, so a whole team can share them, is <strong>GitHub</strong>.</p>
+<section id="picture-it-the-three-areas" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-three-areas">Picture It: The Three Areas</h3>
+<p>When you save work with git, a change moves through three places: the <strong>working directory</strong> (the files you edit), the <strong>staging area</strong> (the changes you’ve chosen to include next), and the <strong>repository</strong> (the permanent history of snapshots). The diagram below shows that one-way flow.</p>
+<div id="f9c05be4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:37.247388Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:37.246997Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:38.151404Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:38.149872Z&quot;}}" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB08_SoftwareEngineering_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="the-commands-under-the-hood" class="level3">
+<h3 class="anchored" data-anchor-id="the-commands-under-the-hood">The Commands Under the Hood</h3>
+<p>You won’t run these in this notebook — in a moment you’ll use GitHub’s website instead, which is friendlier. But it’s worth seeing the actual commands once, because every button you’ll click is secretly running one of them. The basic rhythm for saving work is three commands:</p>
+<pre><code>git init                       # start tracking the current folder as a repo
+git add  &lt;files&gt;               # stage the changes you want in the next snapshot
+git commit -m "&lt;message&gt;"      # save the snapshot, with a note explaining it</code></pre>
+<p>To look back, you’d use <code>git log</code> to read the history and <code>git show</code> (or <code>git checkout</code>) to view or restore an earlier snapshot. The message on each commit matters: <em>“fixed the dose validation bug”</em> tells a future teammate (or future you) <strong>why</strong> the change happened — <em>“stuff”</em> tells them nothing.</p>
+<p>So when GitHub later shows you a “commit” or a list of past versions, it’s not magic — it’s exactly these commands wearing a nicer outfit.</p>
+</section>
+<section id="recovering-an-earlier-version" class="level3">
+<h3 class="anchored" data-anchor-id="recovering-an-earlier-version">Recovering an Earlier Version</h3>
+<p>Here’s the payoff that cures the Lion’s fear. Because <em>every</em> commit is kept, you can always look at — or restore — any earlier version of any file, even one from weeks ago. If today’s change breaks MedTrack, you don’t panic: you open the history, find the last snapshot that worked, and bring it back. Nothing good is ever truly lost once it’s been committed.</p>
+</section>
+<section id="how-youll-really-use-git-github-your-editor" class="level3">
+<h3 class="anchored" data-anchor-id="how-youll-really-use-git-github-your-editor">How You’ll <em>Really</em> Use Git: GitHub &amp; Your Editor</h3>
+<p>Here’s the honest truth about working life: <strong>most developers rarely type those commands by hand.</strong> Git almost always runs underneath friendlier tools:</p>
+<ul>
+<li><strong>GitHub</strong> (and GitLab, Bitbucket) — websites that store the shared, official copy of a project online so a whole team can collaborate. This is also where <strong>code review</strong> happens — and it’s what you’ll set up in this notebook’s exercise.</li>
+<li><strong>Your code editor / IDE</strong> — editors like <strong>VS Code</strong> have a built-in “Source Control” panel with buttons for the common actions, so you click instead of type.</li>
+<li><strong>GitHub Desktop</strong> — a standalone app that wraps git in a simple window.</li>
+</ul>
+<p>You learned the commands above for the same reason you learn arithmetic before trusting a calculator: when something goes wrong (and with git, eventually it will), the people who understand what’s <em>actually happening</em> are the ones who can fix it.</p>
+</section>
+<section id="branches-pull-requests-code-review" class="level3">
+<h3 class="anchored" data-anchor-id="branches-pull-requests-code-review">Branches, Pull Requests &amp; Code Review</h3>
+<p>Teams add three more ideas on top of commits. You don’t need to run them now, but you’ll meet them on any real project:</p>
+<ul>
+<li><strong>Branch</strong> — a separate, safe copy of the project’s timeline where you build a feature <em>without</em> touching the working version everyone depends on. The Lion can experiment on a branch and break nothing real.</li>
+<li><strong>Pull request (PR)</strong> — when the feature is ready, you open a pull request: a formal “please review and merge my changes” proposal.</li>
+<li><strong>Code review</strong> — before the PR is merged, a teammate reads it. Glinda, the senior engineer, checks Dorothy’s code for bugs and problems <em>before</em> it reaches a patient. Only after approval does it <strong>merge</strong> into the main project.</li>
+</ul>
+<p>This review step is one of the most important safety nets in all of software — and when we get to AI-assisted development we’ll see it’s <em>exactly</em> what we need when an AI writes the code.</p>
+<div id="a9effbcd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:38.154742Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:38.154433Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:39.162491Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:39.159775Z&quot;}}" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB08_SoftwareEngineering_files/figure-html/cell-5-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="your-turn-set-up-github-and-save-this-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="your-turn-set-up-github-and-save-this-notebook">✏️ Your Turn — Set Up GitHub and Save This Notebook</h2>
+<p>This is the hands-on part — and you’ll do it <strong>in your browser</strong>, not in a code cell, because that’s how version control really works. You’ll come away with a real GitHub account and a class repository holding your own copy of this notebook.</p>
+<blockquote class="blockquote">
+<p>💡 GitHub’s and Colab’s screens change their wording from time to time, so the exact button labels may look a little different from what’s written here — the steps and the order stay the same.</p>
+</blockquote>
+<p><strong>1. Create a free GitHub account.</strong> Go to <strong><a href="https://github.com">github.com</a></strong> and sign up. You’ll need an email address and a username (pick something you wouldn’t mind a future employer seeing). It’s free. As a student, you can also unlock extra free tools later through the <strong><a href="https://education.github.com/pack">GitHub Student Developer Pack</a></strong>.</p>
+<p><strong>2. Create a repository for this class.</strong> Once signed in, click the <strong>+</strong> in the top-right corner and choose <strong>New repository</strong>. Name it something like <code>comp1150</code>, set it to <strong>Private</strong> (this is your personal class space), check <strong>Add a README file</strong>, and click <strong>Create repository</strong>. You now have a repo — a home for this course’s work.</p>
+<p><strong>3. Save <em>this</em> notebook into your repo.</strong> You’re reading this in Google Colab, which can save straight to GitHub. In the Colab menu choose <strong>File → Save a copy in GitHub</strong>. The first time, it will ask permission to connect to your GitHub account — approve it. Then pick your <code>comp1150</code> repository, keep the default filename, and click <strong>OK</strong>. Colab just made your first <strong>commit</strong> for you.</p>
+<blockquote class="blockquote">
+<p>💡 <em>Not in Colab?</em> Plain Jupyter has no “Save a copy in GitHub” menu. No problem: download the notebook (<strong>File → Download</strong>), then in your repo on github.com click <strong>Add file → Upload files</strong> and upload it. Different door, same result — a commit.</p>
+</blockquote>
+<p><strong>4. See your history grow.</strong> Back on GitHub, open your <code>comp1150</code> repo and click your saved notebook. Now make a tiny change here in Colab — for example, type your name in the cell below — and do <strong>File → Save a copy in GitHub</strong> again. Refresh the repo page and click the <strong>commits</strong> link (it shows a clock/history icon). You should see <strong>two</strong> commits: proof that GitHub kept <em>both</em> versions and you could return to either one. That history is the whole point.</p>
+<blockquote class="blockquote">
+<p><strong>✏️ Your name here:</strong> ___ <em>(Double-click to edit, then re-save the notebook to GitHub in step 4.)</em></p>
+</blockquote>
+<section id="think-about-it-the-audit-trail" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-audit-trail">💭 Think About It — The Audit Trail</h3>
+<p>Because of git, Emerald City Hospital can see <em>exactly</em> who changed each line of MedTrack, when, and why.</p>
+<ol type="1">
+<li>Why does a complete, permanent history of changes matter <em>more</em> for hospital software than for, say, a hobby video game?</li>
+<li>If the 5.0 mg dose bug reached a patient, how could the project’s git history help the team figure out what went wrong — and who needs to be part of the fix?</li>
+<li>Knowing that every change is permanently recorded with your name on it, how might that change the way a developer works? Is that pressure a good thing, a bad thing, or both?</li>
+</ol>
+</section>
+</section>
+<section id="the-tin-woodmans-standard" class="level2">
+<h2 class="anchored" data-anchor-id="the-tin-woodmans-standard">The Tin Woodman’s Standard</h2>
+<p>The Tin Woodman wants to do things <em>right</em>. For software, “right” has a specific meaning that trips up almost every beginner:</p>
+<blockquote class="blockquote">
+<p><strong>Code that runs is not the same as code that is correct.</strong></p>
+</blockquote>
+<p>The original 5.0 mg bug ran perfectly. It crashed nothing. It just produced the <em>wrong answer</em>. The only way to catch that kind of problem on purpose — before a patient does — is to <strong>test</strong>: feed the code known inputs and check that it produces the answers you expect.</p>
+<section id="the-syntax-of-assert" class="level3">
+<h3 class="anchored" data-anchor-id="the-syntax-of-assert">The Syntax of <code>assert</code></h3>
+<p>The simplest testing tool in Python is the <code>assert</code> statement. You give it something that should be <strong>True</strong>. If it is, nothing happens and the program moves on. If it is <strong>False</strong>, Python stops immediately and raises an <code>AssertionError</code> — a loud, deliberate alarm.</p>
+<pre><code>assert &lt;something that should be True&gt;
+assert &lt;something that should be True&gt;, "&lt;message if it's False&gt;"</code></pre>
+<p>That optional message after the comma is what gets shown when the check fails, so make it describe what went wrong.</p>
+</section>
+<section id="hands-on-testing-a-simple-function" class="level3">
+<h3 class="anchored" data-anchor-id="hands-on-testing-a-simple-function">Hands-On: Testing a Simple Function</h3>
+<p>Here’s a small MedTrack helper that converts a dose in grams to milligrams. Let’s write <code>assert</code> checks that pin down what “correct” means for it.</p>
+<div id="7c2a252e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:39.168547Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:39.167582Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:39.177148Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:39.174681Z&quot;}}" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> grams_to_mg(grams):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Convert a dose in grams to milligrams."""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> grams <span class="op">*</span> <span class="dv">1000</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Each assert states a fact that MUST be true if the function is correct.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> grams_to_mg(<span class="dv">1</span>) <span class="op">==</span> <span class="dv">1000</span>,   <span class="st">"1 g should be 1000 mg"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> grams_to_mg(<span class="fl">0.5</span>) <span class="op">==</span> <span class="dv">500</span>,  <span class="st">"0.5 g should be 500 mg"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> grams_to_mg(<span class="dv">0</span>) <span class="op">==</span> <span class="dv">0</span>,      <span class="st">"0 g should be 0 mg"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"All checks passed ✅"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>All checks passed ✅</code></pre>
+</div>
+</div>
+</section>
+<section id="a-bug-hides-in-plain-sight" class="level3">
+<h3 class="anchored" data-anchor-id="a-bug-hides-in-plain-sight">A Bug Hides in Plain Sight</h3>
+<p>Now meet a function that <strong>runs fine</strong> but is <strong>wrong</strong>. It’s supposed to round a dose to one decimal place. Read it, then run the tests below it.</p>
+<div id="46505886" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:39.181760Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:39.181361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:39.186296Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:39.185214Z&quot;}}" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> round_dose(mg):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Round a dose to 1 decimal place (e.g., 0.46 -&gt; 0.5)."""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(mg)          <span class="co"># &lt;-- bug: forgot the number of decimal places!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="64dcb001" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:39.190433Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:39.189808Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:39.381252Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:39.379712Z&quot;}}" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These tests describe what "correct" means. Run this cell — and watch the test catch the bug.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> round_dose(<span class="fl">0.46</span>) <span class="op">==</span> <span class="fl">0.5</span>, <span class="st">"0.46 mg should round to 0.5, got "</span> <span class="op">+</span> <span class="bu">str</span>(round_dose(<span class="fl">0.46</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"All checks passed ✅"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># These tests describe what "correct" means. Run this cell — and watch the test catch the bug.</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span style="font-weight:bold;color:rgb(0,135,0)">assert</span> round_dose(<span class="ansi-green-fg">0.46</span>) == <span class="ansi-green-fg">0.5</span>, <span class="ansi-yellow-fg">"0.46 mg should round to 0.5, got "</span> + str(round_dose(<span class="ansi-green-fg">0.46</span>))
+<span class="ansi-green-fg">      3</span> print(<span class="ansi-yellow-fg">"All checks passed ✅"</span>)
+
+<span class="ansi-red-fg">AssertionError</span>: 0.46 mg should round to 0.5, got 0</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="understanding-the-failure" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-failure">Understanding the Failure</h3>
+<p>Run the cell above and you’ll get an <strong><code>AssertionError</code></strong> showing the message we wrote. That failure is a <em>success</em> for us — the test caught a real bug before any patient did. Notice what happened:</p>
+<ul>
+<li><code>round(0.46)</code> returns <code>0</code> (rounds to the nearest <em>whole</em> number).</li>
+<li>We wanted <code>round(0.46, 1)</code> — round to <em>one decimal place</em> — which gives <code>0.5</code>.</li>
+</ul>
+<p>This is exactly the flavor of mistake behind the opening 5.0 mg disaster: code that runs, looks reasonable, and is quietly wrong. A test turned a silent error into a loud one.</p>
+</section>
+<section id="your-turn-catch-and-fix-the-bug" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-catch-and-fix-the-bug">✏️ Your Turn — Catch and Fix the Bug</h3>
+<p>Below is the buggy <code>round_dose</code> again.</p>
+<ol type="1">
+<li><strong>First</strong>, add one or two more <code>assert</code> checks describing correct behavior (for example, <code>round_dose(1.24)</code> should be <code>1.2</code>).</li>
+<li><strong>Then</strong> fix the function body so all your checks pass.</li>
+</ol>
+<div id="769f98a3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:39.384856Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:39.384413Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:39.391079Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:39.389787Z&quot;}}" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> round_dose(mg):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Round a dose to 1 decimal place."""</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(mg)          <span class="co"># </span><span class="al">TODO</span><span class="co">: fix this line</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: add a couple of assert checks for correct behavior, e.g.:</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># assert round_dose(1.24) == 1.2, "1.24 should round to 1.2"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"If you see this with no error, your checks passed ✅"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>If you see this with no error, your checks passed ✅</code></pre>
+</div>
+</div>
+</section>
+<section id="picture-it-the-testing-mindset" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-testing-mindset">Picture It: The Testing Mindset</h3>
+<p>Professionals often write the <strong>test first</strong> — stating what “correct” means — and only then write or fix the code until the test passes. Once a test exists, it keeps guarding that behavior forever: if a future change re-breaks it, the test fails again instantly, catching a <strong>regression</strong> (an old bug coming back).</p>
+<div id="3f689333" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:39.395301Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:39.394836Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:40.258974Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:40.257605Z&quot;}}" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB08_SoftwareEngineering_files/figure-html/cell-10-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="think-about-it-it-ran-without-errors" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-it-ran-without-errors">💭 Think About It — “It Ran Without Errors”</h3>
+<ol type="1">
+<li>In your own words, what’s the difference between code that <em>runs</em> and code that is <em>correct</em>? Give an everyday (non-coding) example of something that “worked” but was still wrong.</li>
+<li>You can never test <em>every</em> possible input. So how does a team decide which tests are worth writing? What kinds of inputs are most likely to hide bugs?</li>
+<li>For software that affects people’s health, is “we tested it and it passed” ever <em>enough</em> to be sure it’s safe? What else might matter?</li>
+</ol>
+</section>
+</section>
+<section id="how-code-really-gets-written-in-2026" class="level2">
+<h2 class="anchored" data-anchor-id="how-code-really-gets-written-in-2026">How Code Really Gets Written in 2026</h2>
+<p>You already know an AI can write code — you’ve been doing it all semester. So this section isn’t about <em>that</em>. It’s about the harder, more valuable skill: how to <strong>engineer</strong> with an AI rather than just prompt it. Asking an assistant for a single function is easy. Building something real — something you’d trust at Emerald City Hospital — takes discipline the AI can’t supply for you.</p>
+<p>That discipline is the great-and-powerful <strong>Wizard of Oz</strong> lesson. The Wizard is dazzling and confident — and when Toto pulls back the curtain, <em>just a man pulling levers</em>. An AI assistant produces text that <em>reads</em> like expert code. Whether it is actually correct, safe, and appropriate is a separate question — and answering it is now <strong>your</strong> job. The modern loop is:</p>
+<ol type="1">
+<li><strong>You decompose and spec</strong> — decide what pieces should exist and describe them clearly.</li>
+<li><strong>The AI drafts</strong> — fast, fluent, often <em>mostly</em> right.</li>
+<li><strong>You review, test, and own it</strong> — because plausible is not the same as correct, and your name is on it.</li>
+</ol>
+<p>The punchline of this whole notebook: <strong>AI writing the code makes planning, version control, and testing more important, not less.</strong> The human stopped being the typist and became the one who is <em>responsible</em>.</p>
+<section id="decomposition-you-draw-the-boxes" class="level3">
+<h3 class="anchored" data-anchor-id="decomposition-you-draw-the-boxes">Decomposition — You Draw the Boxes</h3>
+<p>Here’s the part an AI <em>won’t</em> do for you. The hard part of a real program isn’t writing a function — it’s deciding <strong>what functions should exist</strong> and how they fit together. The AI is brilliant at filling in a box you’ve defined. Drawing the boxes is the engineer’s job.</p>
+<p>One decomposition decision matters more than any other for <em>quality</em>: <strong>separate the pure logic from the input/output.</strong></p>
+<ul>
+<li><strong>Pure logic</strong> — the rules. Given some inputs, it computes an answer and returns it (no printing, no asking). A function like “given the secret code and a guess, how many symbols are correct?” is pure logic.</li>
+<li><strong>Input / output (I/O)</strong> — the parts that talk to the human: <code>input()</code> to read a guess, <code>print()</code> to show feedback, the loop that runs the game.</li>
+</ul>
+<p>Why split them? Because <strong>you can only write <code>assert</code> tests against pure logic.</strong> You can’t easily test code that stops to ask a human a question, but you <em>can</em> test a function that takes inputs and returns an answer. So designing your program with a testable logic core isn’t just tidy — it’s what makes the rest of this notebook’s discipline <em>possible</em>.</p>
+<div id="4ff78308" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:40.263404Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:40.262782Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:41.008406Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:41.006945Z&quot;}}" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB08_SoftwareEngineering_files/figure-html/cell-11-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="the-spec-is-the-real-source-code" class="level3">
+<h3 class="anchored" data-anchor-id="the-spec-is-the-real-source-code">The Spec Is the Real Source Code</h3>
+<p>When you build with AI, something quietly flips. In the old world, the <strong>code</strong> was the thing you wrote and treasured. In the AI world, the code is <em>downstream</em> — the AI can regenerate it any time. What you actually author, refine, and keep is the <strong>spec</strong>: the clear description of what the program must do.</p>
+<p>This is why everything from the start of the notebook pays off here. A vague request gets vague, buggy code; a precise spec — inputs, rules, edge cases, constraints — gets code worth keeping. Your prompt to an AI <em>is</em> a spec. Writing a good one is the same skill as writing a good requirement, just aimed at a machine.</p>
+</section>
+<section id="iterative-development-the-first-draft-is-rarely-right" class="level3">
+<h3 class="anchored" data-anchor-id="iterative-development-the-first-draft-is-rarely-right">Iterative Development: The First Draft Is Rarely Right</h3>
+<p>Beginners treat the AI’s first answer as <em>the</em> answer. Professionals treat it as a <strong>first draft</strong>. Real AI-assisted development is a conversation: you read the draft, find what’s wrong or missing, and ask for a fix — then check <em>that</em> too. The skill is steering: knowing what to ask for next, and knowing when to stop steering and just fix the two lines yourself.</p>
+<p>And every loop needs a way to tell whether the new draft is <em>actually</em> better. That’s what your tests are for. Without them, “fixing” one thing while the AI silently breaks another is just spinning in circles.</p>
+<p>Notice what this loop <em>is</em>: the <strong>agile</strong> cycle from the start of this notebook, shrunk from weeks to minutes. Every prompt-review-fix round is a tiny sprint — build a little, check it, adjust — with you playing the customer who gives the feedback.</p>
+</section>
+<section id="reading-ai-code-critically" class="level3">
+<h3 class="anchored" data-anchor-id="reading-ai-code-critically">Reading AI Code Critically</h3>
+<p>An AI assistant is built to produce <strong>plausible</strong> text — output that <em>reads</em> like a confident expert wrote it. But <strong>plausible is not the same as correct.</strong> AI-generated code can:</p>
+<ul>
+<li>contain subtle logic bugs (an off-by-one, a wrong rounding) that look perfectly normal;</li>
+<li>call functions or libraries that don’t actually exist (a “hallucination”);</li>
+<li>ignore a rule you forgot to state;</li>
+<li>do something <em>technically</em> working but <em>inappropriate</em> — like leaking private patient data.</li>
+</ul>
+<p>So you read every line and ask: <em>Does this match the spec? What happens with bad input? Is anything here unsafe?</em> This is the same <strong>code review</strong> skill from before — now aimed at a machine’s output.</p>
+</section>
+<section id="the-curtain-exercise-review-the-wizards-code" class="level3">
+<h3 class="anchored" data-anchor-id="the-curtain-exercise-review-the-wizards-code">🔍 The Curtain Exercise — Review the Wizard’s Code</h3>
+<p>The Wizard (our AI assistant) was asked to write a function that records a patient’s dose. Here’s what it produced. It’s clean, it’s confident, and it <strong>runs</strong>. Your job is to be <strong>Glinda</strong>: review it <em>before</em> it ships and find what’s wrong.</p>
+<p>Read the function carefully first. There are (at least) <strong>two</strong> problems hiding in it — one a <em>bug</em>, one a <em>judgment/privacy</em> issue.</p>
+<div id="802ea868" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:41.012430Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:41.011956Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:41.025322Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:41.023308Z&quot;}}" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Code drafted by the AI assistant (the "Wizard"). Review before shipping! ---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> record_dose(patient_name, mg):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Record a patient's medication dose."""</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reject doses outside the safe range.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> mg <span class="op">&lt;</span> <span class="fl">0.01</span> <span class="kw">or</span> mg <span class="op">&gt;</span> <span class="dv">1000</span>:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Dose out of range"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save a log line so we have a record.</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"public_dose_log.txt"</span>, <span class="st">"a"</span>) <span class="im">as</span> f:</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        f.write(patient_name <span class="op">+</span> <span class="st">" received "</span> <span class="op">+</span> <span class="bu">str</span>(mg) <span class="op">+</span> <span class="st">" mg</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Dose recorded for "</span> <span class="op">+</span> patient_name</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># It runs without crashing -- which is exactly the trap.</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(record_dose(<span class="st">"Aunt Em"</span>, <span class="dv">5000</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dose out of range
+Dose recorded for Aunt Em</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-what-we-caught" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-what-we-caught">Understanding What We Caught</h3>
+<p>Run the cell above and watch the trap spring: <code>record_dose("Aunt Em", 5000)</code> is <strong>way</strong> over the safe limit, yet the function happily returns <code>"Dose recorded for Aunt Em"</code>. Here are the two problems:</p>
+<ol type="1">
+<li><p><strong>A correctness bug.</strong> When the dose is out of range, the code only <code>print</code>s a warning — then <em>keeps going</em> and records the dose anyway. It should <strong>stop</strong> (e.g., <code>raise ValueError</code>) so a bad dose is never saved. A <strong>test</strong> like <code>assert</code>-checking that 5000 mg is rejected would have caught this instantly.</p></li>
+<li><p><strong>A privacy / judgment problem.</strong> It writes the <strong>patient’s name</strong> into a file literally named <code>public_dose_log.txt</code>. Even if every line <em>worked</em>, dumping identifiable patient data into a shared/public file is a serious violation. <strong>No test would catch this</strong> — it takes a <em>human</em> who understands the hospital’s rules and values.</p></li>
+</ol>
+<p>That second point is the heart of the notebook: some problems are caught by tests, but others can only be caught by a responsible person who knows the context. The Wizard can draft; only Glinda can approve.</p>
+</section>
+<section id="think-about-it-who-is-responsible" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-who-is-responsible">💭 Think About It — Who Is Responsible?</h3>
+<ol type="1">
+<li>The Wizard’s function had a dangerous bug <em>and</em> a privacy violation, but it was an AI that “wrote” it. If that code reached a patient, <strong>who is responsible</strong> — the AI, the developer who accepted it, the reviewer, the hospital? Defend your answer.</li>
+<li>What does it mean to <strong>“own” code you didn’t personally type</strong>? Is accepting AI-written code more like (a) hiring a contractor, (b) copying a classmate’s homework, or (c) using a calculator? Argue for the best analogy.</li>
+<li>Should an AI assistant be allowed to write code that controls <strong>medication dosing</strong> at all? If yes, what safeguards would you require first? If no, where exactly is the line?</li>
+</ol>
+</section>
+<section id="think-about-it-using-ai-in-this-course" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-using-ai-in-this-course">💭 Think About It — Using AI in <em>This</em> Course</h3>
+<p>You have access to the same kind of AI assistant the pros use. That raises a real question about your own learning.</p>
+<ol type="1">
+<li>Where’s the line between <strong>learning <em>with</em> AI</strong> (it helps you understand) and <strong>outsourcing your learning</strong> (it does the thinking so you don’t have to)? Give a concrete example of each.</li>
+<li>If an AI can write the code for an assignment in seconds, what is the <em>actual skill</em> this course is trying to build in you? Has this notebook changed your answer?</li>
+<li>Imagine you’re hiring a junior developer in 2026. Knowing AI writes much of the code, what would you most want to test that a candidate can do? How might you find out?</li>
+</ol>
+</section>
+</section>
+<section id="capstone-crack-the-emerald-gate-code" class="level2">
+<h2 class="anchored" data-anchor-id="capstone-crack-the-emerald-gate-code">✏️ Capstone — Crack the Emerald Gate Code</h2>
+<p>Time to run the <em>whole</em> engineering loop yourself, on something bigger than a single function: you’ll build a small game with an AI assistant. The point isn’t a polished game — it’s experiencing <strong>why</strong> specs, tests, and version control exist by actually needing them.</p>
+<p>Unlike earlier notebooks, <strong>you write every prompt.</strong> The notebook tells you <em>what</em> to build and <em>what good looks like</em>; composing the prompts to Gemini, Claude, or ChatGPT is your job (and you’re free to re-theme the game however you like).</p>
+<section id="first-what-game-are-we-building" class="level3">
+<h3 class="anchored" data-anchor-id="first-what-game-are-we-building">First: What Game Are We Building?</h3>
+<p>The <strong>Gatekeeper of the Emerald City</strong> picks a secret code of <strong>4 colored gems</strong>, chosen from 6 colors (repeats allowed). On each turn the player guesses 4 gems, and the game gives two clues:</p>
+<ul>
+<li>how many gems are the <strong>right color in the right position</strong>, and</li>
+<li>how many are the <strong>right color but in the wrong position</strong>.</li>
+</ul>
+<p>The player uses those clues to deduce the code, and wins by cracking it within <strong>10 guesses</strong>. Here’s a short sample so the idea is unmistakable:</p>
+<pre><code>Secret (hidden):  🟥 🟩 🟩 🟦
+
+Guess 1: 🟥 🟦 🟨 🟩   -&gt;  1 right spot, 2 right color / wrong spot
+Guess 2: 🟥 🟩 🟦 🟩   -&gt;  3 right spot, 1 right color / wrong spot
+Guess 3: 🟥 🟩 🟩 🟦   -&gt;  4 right spot  --  cracked it! 🎉</code></pre>
+<p>That’s the entire game. (This is the classic game <em>Mastermind</em>; the colored-gem version just gives it an Emerald City coat of paint.)</p>
+</section>
+<section id="step-1-build-the-whole-game-prompt-1" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-build-the-whole-game-prompt-1">Step 1 — Build the Whole Game <em>(prompt #1)</em></h3>
+<p>Write <strong>one</strong> prompt that asks your AI assistant to build the complete game described above, and paste its code into the cell below, then play it.</p>
+<p>Your prompt should make the spec precise — the things <em>you</em> now know to include: - the rules exactly as above (4 gems, 6 colors, repeats allowed, two clue numbers, 10 guesses, win/lose); - <strong>one specific instruction that pays off in Step 2:</strong> ask for the scoring to live in its own function, e.g.&nbsp;<code>score_guess(secret, guess)</code> that <em>returns</em> the two clue numbers (right-spot, wrong-spot) — separate from the <code>input</code>/<code>print</code> game loop. (Remember: pure logic you can test; I/O you can’t.) - <strong>two notebook-survival instructions</strong>, because this code will live in a notebook cell, not a <code>.py</code> file: - the player <strong>types letters</strong> for the colors (e.g.&nbsp;<code>R G B Y P O</code>) — emoji are fine to <em>display</em>, but nobody can type 🟥 into an input box; - the game loop lives in a function <code>play()</code> that is <strong>not called automatically</strong> — tell the AI: no <code>play()</code> call and no <code>if __name__ == "__main__":</code> block at the bottom. (In a notebook that block runs anyway, and the game would demand input every single time you re-ran the cell — including later, when all you want is to re-define <code>score_guess</code> for testing.) You’ll start the game yourself in the next cell.</p>
+<div id="e7f10ac9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:41.030436Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:41.029964Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:41.034817Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:41.033435Z&quot;}}" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paste the AI's game code here — function definitions only, with NOTHING at the</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># bottom that calls play() automatically. Run this cell once to define the game.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="be5fcc76" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:41.039007Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:41.038447Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:41.043698Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:41.041974Z&quot;}}" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now play! Remove the # from the line below and run this cell. (Keeping play()</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in its own cell means re-running the definitions above never traps you in the game.)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># play()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-add-tests-prompt-2" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-add-tests-prompt-2">Step 2 — Add Tests <em>(prompt #2)</em></h3>
+<p>Don’t trust the draft — pin it down. Write a prompt asking the AI to produce <code>assert</code> tests for the <code>score_guess</code> function. Paste them below and run them.</p>
+<p>Make sure your prompt demands the case that trips up almost every first draft: <strong>repeated colors.</strong> For example, if the secret is <code>🟥🟥🟩🟦</code> and the guess is <code>🟥🟦🟥🟥</code>, a naive scorer double-counts the extra red gems and reports the wrong-spot number incorrectly. A good test catches that. If a test fails, you’ve found a real bug — fix it (or re-prompt) until they pass.</p>
+<p>One more notebook-survival instruction for your prompt: ask for the tests <strong>wrapped in a function</strong> — <code>run_tests()</code> — that runs every <code>assert</code> and finishes with a line like <code>print("All tests passed ✅")</code>. That way Step 4 can re-run the whole suite with a single call.</p>
+<div id="60c2427b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:41.047941Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:41.047351Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:41.053477Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:41.052159Z&quot;}}" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paste the AI's tests here: a run_tests() function full of asserts.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then remove the # below and run the cell — a failure means a real bug. Fix it!</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># run_tests()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-3-extend-the-game-prompt-3" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-extend-the-game-prompt-3">Step 3 — Extend the Game <em>(prompt #3)</em></h3>
+<p>Now grow it. Write a prompt asking the AI to add <strong>one</strong> new feature to your game. Pick one (or invent your own):</p>
+<ul>
+<li>a <strong>hint</strong> the player can request (reveals one gem);</li>
+<li><strong>difficulty levels</strong> that change the code length or number of colors;</li>
+<li>also report the <strong>total number of correct-color gems</strong> each turn.</li>
+</ul>
+<p>Paste the AI’s new, extended version of the game below.</p>
+<div id="d1237119" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:41.059322Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:41.058441Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:41.066036Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:41.063690Z&quot;}}" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paste the AI's extended version of the game here.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-4-regression-test" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-regression-test">Step 4 — Regression Test</h3>
+<p>Here’s the payoff. Re-run your Step 2 tests against the <strong>extended</strong> code from Step 3.</p>
+<p>When an AI rewrites a program to add a feature, it often quietly breaks something that used to work — that’s a <strong>regression</strong>. Your tests are exactly what catch it. First <strong>re-run the Step 3 cell</strong>, so the <em>extended</em> <code>score_guess</code> is the one currently defined — then run the cell below: the same <code>run_tests()</code> from Step 2, now aimed at the new code.</p>
+<ul>
+<li>If the tests still pass: great — your change was safe.</li>
+<li>If a test now <strong>fails</strong>: the AI broke your scoring while adding the feature. <em>That’s the lesson.</em> Diagnose it, fix it (or re-prompt), and get back to green before you’d ever ship.</li>
+</ul>
+<div id="e08fe991" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:41.070380Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:41.069971Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:41.076094Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:41.074585Z&quot;}}" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Re-run the Step 3 cell, so the EXTENDED score_guess is the one defined.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Remove the # below and run — same tests, new code. That's a regression test.</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># run_tests()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="ship-it-save-to-github" class="level3">
+<h3 class="anchored" data-anchor-id="ship-it-save-to-github">Ship It — Save to GitHub</h3>
+<p>You took a real program through the full loop: spec, AI draft, tests, an extension, a regression caught and fixed. Now save your work the way you set up earlier: <strong>File -&gt; Save a copy in GitHub -&gt; your <code>comp1150</code> repo.</strong> That’s a real commit, in your real history — with a game in it you can actually play. <em>(Plain Jupyter: download the notebook, then <strong>Add file → Upload files</strong> in your repo on github.com — same commit, different door.)</em></p>
+</section>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Software development life cycle (SDLC)</strong> — the stages a software project moves through: requirements, design, build, test, deploy, maintain.</li>
+<li><strong>Waterfall</strong> — running the SDLC stages as one long pass: finish each stage completely before the next; feedback arrives only at the end.</li>
+<li><strong>Agile</strong> — running the SDLC as many short loops, shipping a small working slice each time and letting feedback change the requirements.</li>
+<li><strong>Sprint</strong> — one short agile cycle (commonly 1–4 weeks) that ends with working software and user feedback.</li>
+<li><strong>Requirement</strong> — a precise, testable statement of what software must do.</li>
+<li><strong>User story</strong> — a requirement written from a user’s view: “As a …, I want …, so that ….”</li>
+<li><strong>Version control</strong> — a system that records the full history of changes to a project.</li>
+<li><strong>Git</strong> — the most widely used version-control tool.</li>
+<li><strong>Repository (repo)</strong> — a project tracked by git, including its complete history.</li>
+<li><strong>Commit</strong> — a saved snapshot of the project, with a message describing the change.</li>
+<li><strong>Staging area</strong> — the holding zone (<code>git add</code>) for changes you’ve chosen to include in the next commit.</li>
+<li><strong>GitHub</strong> — a website that hosts the shared copy of a git project and is where teams collaborate and review code.</li>
+<li><strong>Branch</strong> — a separate timeline for building a change without affecting the main version.</li>
+<li><strong>Pull request (PR)</strong> — a proposal to merge a branch’s changes, used to request review.</li>
+<li><strong>Code review</strong> — a teammate reading proposed changes before they’re merged.</li>
+<li><strong>Test</strong> — code that checks other code produces the expected result.</li>
+<li><strong>Assertion (<code>assert</code>)</strong> — a statement that raises an error if a condition that should be true is false.</li>
+<li><strong>Decomposition</strong> — breaking a program into well-defined pieces (deciding <em>what functions should exist</em>); the engineer’s job, not the AI’s.</li>
+<li><strong>Pure logic vs.&nbsp;I/O</strong> — separating the rules (inputs in, answer out — testable) from the parts that talk to a human (<code>input</code>/<code>print</code> — hard to test).</li>
+<li><strong>Spec</strong> — the precise description of what to build; in AI-assisted work it is the real artifact you author and keep, while the code is downstream.</li>
+<li><strong>Iterative development</strong> — treating the AI’s output as a <em>first draft</em> and improving it through a review-and-refine loop.</li>
+<li><strong>Regression</strong> — working code that breaks because of a later change (such as adding a feature); tests are what catch it.</li>
+<li><strong>Prompt</strong> — the instructions given to an AI assistant; effectively a spec.</li>
+<li><strong>Hallucination</strong> — confident AI output that is wrong or invented (e.g., a nonexistent function).</li>
+<li><strong>Accountability</strong> — the principle that a responsible human owns the code, even when an AI drafted it.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li><strong>The SDLC.</strong> Software moves through stages — requirements, design, build, test, deploy, maintain. Catching a problem early (in a <em>requirement</em>) is far cheaper than catching it late (in a <em>patient’s chart</em>). Clear requirements and user stories are how vague wishes become buildable, testable plans. Teams move through the stages either as one long pass (<strong>waterfall</strong>) or as many short, feedback-driven loops called sprints (<strong>agile</strong>) — and most modern teams work in short loops.</li>
+<li><strong>Git &amp; GitHub.</strong> Version control records every change, so teams can collaborate, work in parallel on branches, recover earlier versions, and keep an audit trail. You type git commands to understand them, but day-to-day they live inside GitHub and your editor. Pull requests and code review are the safety net before code ships.</li>
+<li><strong>Testing.</strong> Code that <em>runs</em> is not code that is <em>correct</em>. Tests (<code>assert</code>) turn silent wrong answers into loud failures, and guard against regressions forever after.</li>
+<li><strong>AI-Assisted Development.</strong> In 2026, AI drafts much of the code, but it produces <em>plausible</em> output, not guaranteed-correct output. The human’s job is the engineering <em>around</em> it: <strong>decomposing</strong> the problem and writing a clear <strong>spec</strong>, then <strong>iterating</strong> on the draft and holding it to <strong>tests</strong> you own. Some flaws a test catches; others — like a privacy violation — only a responsible human can.</li>
+</ul>
+<p>The throughline: <strong>the more code AI writes, the more the human disciplines of this notebook — planning, version control, testing, and judgment — matter.</strong></p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p><strong>Notebook 9 — Databases: Relational &amp; Non-Relational.</strong> MedTrack has to <em>store</em> all those patient records somewhere safe and searchable. Next we’ll see how real applications keep data organized, find it fast, and keep it consistent — the foundation under almost every program that matters.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

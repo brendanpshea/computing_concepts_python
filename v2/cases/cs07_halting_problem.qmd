@@ -1,0 +1,247 @@
+---
+title: "\"We Must Know — We Will Know\": Gödel, Turing, and the Problem No Computer Can Solve"
+subtitle: "How mathematics found its own limits — and accidentally invented the computer — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+# Format, bibliography, and styling are inherited from _quarto.yml
+# (HTML + DOCX, refs.bib, _case-styles.scss).
+---
+
+::: {.case-at-a-glance}
+- **Who:** David Hilbert, the most famous mathematician alive; Kurt Gödel, a 24-year-old logic student from Vienna; Alan Turing, a 23-year-old graduate student at Cambridge — with John von Neumann, Max Newman, and Alonzo Church in supporting roles
+- **What:** Hilbert announced a plan to put all of mathematics on a firm, machine-checkable footing. Gödel proved in 1931 that the plan could never fully succeed. Turing proved in 1936 that no possible machine can solve a simple-sounding question about programs — and the blueprint for the modern computer was hiding inside his proof
+- **Where / When:** Königsberg, September 1930; Vienna, 1931; Cambridge and Princeton, 1935–1936
+- **Why it matters:** Computer science is the only engineering field that proved its hard limits *before* its first machine was built. Two collisions drive the case: [truth]{.key-term} vs. [provability]{.key-term}, and whether the limits on [machines]{.key-term} are also limits on [minds]{.key-term}
+- **Concepts at play:** algorithm, Turing machine, the halting problem, undecidability, self-reference, proof by contradiction
+:::
+
+## The Case
+
+On September 8, 1930, the city of Königsberg gave David Hilbert the highest honor it could: it made him an honorary citizen. Hilbert was sixty-eight and retiring. He was the most influential mathematician of his era, and Königsberg was his hometown. He marked the occasion with a speech, broadcast live on German radio. The recording still exists.
+
+The speech was a declaration of war on doubt. A century earlier, some scientists had adopted a gloomy Latin motto: *ignoramus et ignorabimus* — "we do not know, and we will not know." Some questions, they said, are simply beyond human reach. Hilbert despised this idea. In mathematics, he insisted, there is no *ignorabimus*. Every well-posed problem has an answer, and we can find it. He ended the speech with six words that would later be carved on his tombstone:
+
+> *Wir müssen wissen. Wir werden wissen.*
+> "We must know. We will know."
+
+He did not know that his program was already dead. It had been killed the day before, in the same city, by a shy twenty-four-year-old almost nobody had heard of.
+
+::: {.context-box}
+**Hilbert's program.** Hilbert wanted to rebuild all of mathematics as a [formal system]{.key-term}: a fixed set of starting statements (axioms) plus fixed rules for combining symbols, so that checking a proof requires no insight at all — only careful rule-following, like checking a move in chess. He made three demands:
+
+- The system should be [complete]{.key-term}: every true mathematical statement should be provable inside it.
+- It should be [consistent]{.key-term}: it should never prove a statement *and* its opposite.
+- It should be [decidable]{.key-term}: there should be a definite, step-by-step method — what we now call an [algorithm]{.key-term} — that takes any mathematical statement and correctly answers "provable" or "not provable."
+
+This third demand had a famous name: the [Entscheidungsproblem]{.key-term}, the "decision problem." Solve it, and mathematics becomes, in principle, a machine.
+:::
+
+The day before Hilbert's speech, a small conference on the foundations of science was wrapping up across town. On its final morning, September 7, the participants held a roundtable discussion. Near the end, a young Viennese logician named Kurt Gödel spoke up, briefly and quietly. He had a result, he said. One can write down true statements of ordinary arithmetic that cannot be proved from the accepted axioms.
+
+Almost no one in the room reacted. The remark was too strange, too brief, too big to absorb. One listener did react: John von Neumann, a Hungarian prodigy who was already one of the sharpest mathematicians in Europe. He cornered Gödel afterward and made him explain. Within weeks, von Neumann had pushed the idea a step further — only to receive word that Gödel had already gotten there first.
+
+What Gödel published in 1931 has been called the most important result in modern logic [@godel1931]. Stripped of its machinery, his trick was ancient. Consider the old liar paradox: "This sentence is false." If it's true, it's false; if it's false, it's true. Gödel found a way to build something like that sentence *inside arithmetic itself* — but with one crucial change. His sentence does not say "I am false." It says:
+
+> "This statement cannot be proved."
+
+Now walk the two possibilities. 
+
+1. If the system proves the sentence, then the system has proved something false — and a system that proves falsehoods is worthless. 
+2. If the system *cannot* prove the sentence, then the sentence is *true* — and here is a truth the system can never reach. 
+
+Either way, Hilbert's first demand fails. No consistent system rich enough to do arithmetic can prove every truth. Truth and provability come apart, permanently.
+
+Gödel then twisted the knife. His **second** theorem showed that no such system can prove its *own* consistency. A system can be sound, but it can never certify, by itself, that it is. Keep that fact in your pocket. It will matter at the end of this story.
+
+Hilbert's program lost two of its three pillars in a single paper. But one pillar still stood: the Entscheidungsproblem. Even in an incomplete system, there might still be an algorithm that at least sorts the provable statements from the unprovable ones. Killing *that* demand required something nobody had: a precise definition of "algorithm." How do you prove that *no possible method* can do something, when "method" is just a vague word for whatever a clever person might someday invent?
+
+The answer came from Cambridge. In the spring of 1935, a twenty-two-year-old graduate student named Alan Turing sat in a lecture course on the foundations of mathematics, taught by the topologist Max Newman. Newman posed the Entscheidungsproblem and used a suggestive phrase: was there a *mechanical process* that could test a statement for provability? [@hodges1983]
+
+Turing took the word "mechanical" literally. That summer, lying in a meadow outside Cambridge, he imagined the most stripped-down computing setup possible: a person — a clerk — working with a pencil, an eraser, a long paper tape divided into squares, and a small card of fixed rules. This machine worked as follows:
+
+1. Read a symbol. 
+2. Look up the rule. 
+3. Write a symbol. 
+4. Move left or right. 
+5. Repeat. 
+
+Nothing the clerk does requires insight; everything is rule-following. Turing argued that *anything* any human computer does by rote, step by step, this setup can do. Then he replaced the clerk with a machine. We now call it a [Turing machine]{.key-term}: the simplest honest model of what "following an algorithm" means.
+
+With a precise model in hand, impossibility became provable. In his 1936 paper, Turing showed there is a question about these machines that no machine can answer — the question we now call the [halting problem]{.key-term}: given a program and its input, will it eventually finish, or will it run forever? [@turing1936] Since a solution to the Entscheidungsproblem would let you answer that question, there is no solution. Hilbert's third pillar fell. The decision problem is [undecidable]{.key-term}: not unsolved, but *unsolvable* — provably beyond every algorithm that will ever exist.
+
+There was a complication. Months before Turing finished, the American logician Alonzo Church reached the same conclusion by a different route, using a symbolic system called the lambda calculus. By the normal rules of academic credit, Turing had been scooped. Newman fought for the paper anyway, and he was right to. Church's argument was correct; Turing's was *convincing*. You could see the clerk. You could believe that this captured what "method" means. Turing's paper was published, and he left for Princeton to study under Church.
+
+And buried inside the paper was the twist that turns this story from an ending into a beginning. To run his proof, Turing needed one special machine: a single machine that could read the description of *any other machine* as data on its tape, and then imitate it. One machine, all programs. He proved this [universal machine]{.key-term} could exist. Nine years later, von Neumann — the man who had cornered Gödel in Königsberg — drew on that idea in the design document that still describes essentially every computer on Earth: one general-purpose processor, running whatever program you load into its memory. The proof that machines have absolute limits contained, as a working part, the blueprint for building them.
+
+So the outcome is not in dispute. Hilbert's dream is dead; Gödel and Turing killed it; the murder weapon became the computer. What remains disputed — bitterly, to this day — is what was actually buried. Gödel and Turing themselves split on the question. Gödel suspected that the human mind might *escape* the limits he had proved for formal systems. Turing spent the rest of his short life arguing the opposite: that we are not exceptions, and that machines would one day do whatever minds do. The two people who proved the limits could not agree on whom the limits bind. That is the argument this case is really about.
+
+## How It Worked: The Program That Reads Programs
+
+Turing's impossibility proof sounds like it should take a textbook. In fact, it fits on an index card, and you already know the two ideas it needs.
+
+The first idea: **programs are data.** A program is just text. Text can be saved in a file, sent in a message — or handed to another program as input. Nothing stops a program from reading, analyzing, or running another program. Your phone does it constantly. Crucially, nothing stops a program from being handed *its own text* as input.
+
+The second idea: [proof by contradiction]{.key-term}. To show something is impossible, assume it exists, and then show that this assumption destroys itself.
+
+So: assume the halting problem is solvable. That means someone could, in principle, write the ultimate debugging tool:
+
+``` python
+def halts(program, input):
+    # Returns True if program(input) eventually finishes.
+    # Returns False if program(input) would run forever.
+    # Never wrong. Never stuck. Works on ALL programs.
+    ...
+```
+
+We make no assumption about *how* it works. Maybe it is a million lines long. Maybe it took a thousand geniuses a century. We assume only that it exists and is always right.
+
+Now we write a short, bratty program that uses `halts` against itself:
+
+``` python
+def contrary(program):
+    if halts(program, program):      # "Will this program halt, fed itself?"
+        while True:                  # If YES: deliberately loop forever.
+            pass
+    else:
+        return "Done!"               # If NO: deliberately halt at once.
+```
+
+`contrary` asks the oracle one question — "does this program halt when given its own text?" — and then *does the opposite of whatever the oracle predicts*. There is nothing exotic here: one `if`, one `while`, one `return`. Any first-semester programmer could write it, if only someone would supply `halts`.
+
+Now spring the trap. Feed `contrary` to itself:
+
+``` python
+contrary(contrary)
+```
+
+What does `halts(contrary, contrary)` answer? Walk both branches:
+
+1. Suppose it answers **True** ("it halts"). Then `contrary` enters the infinite loop — and runs forever. The oracle was wrong.
+2. Suppose it answers **False** ("it runs forever"). Then `contrary` returns `"Done!"` immediately — and halts. The oracle was wrong again.
+
+Every branch ends in contradiction. There is no clever third answer, and "refuse to answer" was ruled out by assumption. The only escape is to admit the assumption was false: **no program like `halts` can exist.** Not now, not ever, not with any amount of money, hardware, or genius. The wall is mathematical, not technological.
+
+```{dot}
+//| label: fig-contrary
+//| fig-cap: "The halting-problem trap. Read it top to bottom: we assume a perfect halts() oracle exists, build the contrary program, and feed contrary its own text. The gold diamond is the oracle's prediction. Both answers lead to a red contradiction box — whatever halts() predicts, contrary does the opposite, so the 'always right' oracle is wrong. The green endpoint is the only consistent conclusion: no such oracle can exist. Adapted from Turing (1936)."
+digraph G {
+  rankdir=TB;
+  node [shape=box, style="rounded,filled", fillcolor="#eef3f8",
+        fontname="Helvetica", fontsize=11, margin="0.18,0.10"];
+  edge [fontname="Helvetica", fontsize=10];
+
+  start [label="Assume a perfect halts(program, input)\nexists and is always right", fillcolor="#dde8f0"];
+  build [label="Build contrary(p):\nif halts(p, p): loop forever\nelse: halt at once"];
+  feed  [label="Run contrary(contrary)"];
+  ask   [label="What does halts(contrary, contrary)\npredict?", shape=diamond, fillcolor="#f3e9d8"];
+  haltp [label="contrary loops forever\n— the oracle said it would halt", fillcolor="#f3dcdc"];
+  loopp [label="contrary halts at once\n— the oracle said it would loop", fillcolor="#f3dcdc"];
+  concl [label="Contradiction either way:\nno perfect halts() can exist", fillcolor="#e3efe1"];
+
+  start -> build -> feed -> ask;
+  ask -> haltp [label="  \"it halts\""];
+  ask -> loopp [label="  \"it loops\""];
+  haltp -> concl;
+  loopp -> concl;
+}
+```
+
+Why should anyone care whether a perfect loop-detector exists? Because of what it could do. Here is a complete, runnable program:
+
+``` python
+def prime(k):
+    return k > 1 and all(k % d for d in range(2, int(k**0.5) + 1))
+
+n = 4
+while any(prime(a) and prime(n - a) for a in range(2, n)):
+    n += 2                            # try the next even number
+print("Goldbach was wrong:", n)       # nobody knows if this line ever runs
+```
+
+This loop hunts for an even number that is *not* the sum of two primes. Goldbach's conjecture — one of the oldest open problems in mathematics — says no such number exists. Mathematicians have tried to settle it since 1742. Notice what that means: asking "does this six-line loop halt?" *is* asking "is Goldbach's conjecture false?" A working `halts` would settle it instantly, along with whole families of famous open problems, each just a short search loop away. A single program that answers centuries of mathematics at the push of a button is too good to be true. Turing proved that it is.
+
+::: {.context-box}
+**The same trick, twice.** Look at the shape of the two proofs in this case. Gödel built a statement that talks about its own provability: "this statement cannot be proved." Turing built a program that acts on a prediction about its own behavior — and then defies it. Both are the liar paradox, re-engineered from a party trick into an instrument. The shared ingredient is [self-reference]{.key-term}: a system rich enough to describe *other* things of its own kind (statements about statements, programs reading programs) is rich enough to be turned on itself. That richness is exactly what makes arithmetic and computers powerful — and the limits come bundled with the power. You cannot have one without the other.
+:::
+
+One warning before we leave the machinery, because this is the single most common misreading of the result. The halting problem does **not** say "we can never tell whether a program halts." For *this particular* program, or that one, we often can — programmers prove specific loops terminate every working day. What Turing ruled out is one *general* method that works for *all* programs, with no exceptions and no "I don't know." Undecidability is a statement about the impossibility of full generality, not a cloud of mystery hanging over every individual case. Keep this distinction in hand; the argument that follows turns on it.
+
+## The Argument Gödel Started
+
+Hilbert's program was barely in the ground before people began asking the obvious next question. The theorems put hard limits on formal systems and machines. Human beings *discovered* those theorems. So: are we above the limit — or under it with everything else?
+
+The question is older than the theorems. In 1651, Thomas Hobbes wrote that reasoning is "nothing but reckoning" — that thought, at bottom, is computation. Modern science largely inherited that bet: the brain is a physical system; physical systems can be simulated; so whatever a mind does, a machine could in principle do. Call this the **mechanist thesis**. Gödel's theorem looked, to some, like the first mathematical weapon ever forged against it.
+
+::: {.context-box}
+**Why "machine" and "formal system" are the same target.** Turing's machine and Church's lambda calculus looked nothing alike, yet they computed exactly the same set of things — and so has every honest model of computation proposed since. This convergence is the [Church–Turing thesis]{.key-term}: anything doable by *any* step-by-step method is doable by a Turing machine. It is why the argument below can slide between "formal system," "machine," "program," and "AI" without cheating. By this thesis they are one kind of thing in different clothes — and Gödel's theorem applies to all of them at once.
+:::
+
+### The Lucas–Penrose argument: the mind sees what the machine cannot
+
+In 1961, the Oxford philosopher John Lucas published a paper with a blunt opening: "Gödel's theorem seems to me to prove that mechanism is false" [@lucas1961]. Three decades later, the physicist Roger Penrose rebuilt the argument at book length, adding a speculative twist — that human insight must come from physics no computer can run [@penrose1989]. The core argument is the same, and it is elegant:
+
+::: {.argument}
+**The Lucas–Penrose Argument**
+
+1. Suppose the human mind is a machine. Then there is some formal system **M** that proves exactly what the mind can prove.
+2. By Gödel's theorem, if **M** is consistent, there is a Gödel sentence **G** — "this statement cannot be proved in **M**" — that **M** can never prove.
+3. But a human mathematician, standing outside **M** and understanding how **G** was built, can *see* that **G** is true.
+4. Then the mind can establish a truth that **M** cannot — so **M** does not prove exactly what the mind can prove.
+5. Therefore, the human mind is not a machine.
+:::
+
+Feel the pull of it. The machine is locked in its rules; we read the trick from outside and just *see* the answer. Whatever insight is, it seems to be the thing the machine lacks — and Gödel seems to have proved the lack.
+
+The argument's entire weight rests on premise 3: that little word *see*. That is exactly where the reply strikes.
+
+### The consistency reply: you can't see what you think you see
+
+The counterattack came early — the philosopher Hilary Putnam stated its core even before Lucas published [@putnam1960] — and it uses Gödel's *own second theorem* as the weapon. Re-read premise 3 carefully. The mathematician "sees" that **G** is true. But how was **G** built? **G** is true *provided that* **M** is consistent. That proviso is doing all the work, and it cannot be discharged.
+
+::: {.argument}
+**The Consistency Reply**
+
+1. The Gödel sentence **G** is guaranteed true only *if* the system **M** is consistent. "Seeing" that **G** is true therefore requires *knowing* that **M** is consistent.
+2. By Gödel's second theorem, **M** cannot prove its own consistency.
+3. If the mind *is* **M**, then the mind cannot establish its own consistency either — it can at best hope.
+4. And the hope is shaky: human mathematicians are demonstrably not consistent. They publish flawed proofs constantly; some stood for years before the holes were found.
+5. Therefore premise 3 fails: the mathematician does not *see* that **G** is true; she sees only "**G** is true *if* I am consistent" — which is precisely as much as the machine can see.
+:::
+
+The reply does not claim minds are machines. It claims the Lucas–Penrose argument cannot *prove* they aren't, because the human "insight" it appeals to is either unjustified confidence or something the machine can match line for line. The mathematician and the machine end up staring at the same conditional. The halo around "seeing" was borrowed, not earned.
+
+What did Gödel himself think? Characteristically, he refused both sides. In a 1951 lecture he endorsed only a disjunction: *either* the human mind surpasses every machine, *or* there exist mathematical problems absolutely unsolvable by anyone — and the theorems alone cannot tell us which [@godel1951]. Privately he leaned toward the first option. Publicly he claimed only the fork in the road. The man with the best right to an opinion declined to have a provable one.
+
+**The idealization objection.** A third position questions the entire setup. The argument treats "the mind" as a fixed formal system — infinitely patient, error-free, unchanging. No actual brain is anything of the kind. Real mathematicians are finite, noisy, error-prone, and they die. Real computers are too: a physical machine with finite memory is not even a true Turing machine, just a very large approximation of one. Perhaps Lucas, Penrose, and their critics are all arguing about two idealizations — the perfect mind, the perfect machine — that nothing in the universe instantiates. On this view, the theorems are facts about mathematics, full stop, and squeezing a verdict about *us* out of them was always a category error.
+
+### The argument that hasn't ended: the limit goes to work
+
+Whatever the theorems say about minds, the engineering consequences are not philosophical at all. They ship in products. The halting problem turned out to be the first domino in a long chain: nearly every interesting question of the form "what will this program do on all inputs?" has been proven undecidable by reducing it to halting. Will it ever crash? Ever leak this secret? Ever execute this forbidden behavior? In full generality: no algorithm can say.
+
+One example has teeth. In 1987, the security researcher Fred Cohen — who coined the term "computer virus" — proved that a *perfect* virus detector is impossible: any program that could flag all viruses and only viruses could be turned on itself, contrary-style, into a contradiction [@cohen1987]. Every antivirus product you have ever used is therefore a heuristic: a best guess, with false alarms and misses, *necessarily*. Not because the vendors are lazy. Because Turing.
+
+Yet here is the turn that keeps the story honest: the limit did not paralyze the field. It *shaped* it. Software verification is a thriving industry — built, every inch of it, on concessions to the theorem. Type checkers and static analyzers reject some programs that would actually run fine, because "safe, unsafe, or I can't tell" is achievable and "safe or unsafe" is not. Verified systems like the seL4 operating-system kernel exist because engineers proved properties of *one specific program* with human-guided effort — exactly the loophole undecidability leaves open [@klein2009]. The practical lesson of the halting problem was never "give up." It was "stop demanding the general oracle, and budget for its absence."
+
+Which brings the argument to the present tense. A large language model is a program, running on von Neumann's machine, computing nothing beyond Turing's limit — scale changes none of that. But the sharper point cuts the other way. The people now asked to *certify* AI systems — will this model ever produce dangerous output? can we guarantee alignment? — are asking "what will this program do on all inputs?" questions, the very family the theorems gutted. When a company advertises software "guaranteed free of bugs," or a regulation demands an AI "proven never to deceive," the demand has the same shape as Hilbert's: *we must know, we will know.* We have a theorem about how that ended.
+
+And yet the engineers' loophole is real too: *specific* properties of *specific* systems can be proven, partial checkers do catch real catastrophes, and "impossible in general" has never meant "worthless in practice." So the question Königsberg opened in 1930 is still open, just wearing new clothes. It is no longer "can mathematics be mechanized?" It is: when someone promises certainty about what a machine will do — or insists that human judgment can deliver what the machine can't — which side of Gödel's fork are they standing on? And how would they know?
+
+## Discussion Questions
+
+1. Explain the halting problem to a friend who has never written code. Use an analogy from outside computing. What does your analogy get right? Where does it break down?
+2. Write **The Lucas–Penrose Argument** and **The Consistency Reply** in your own words. What is the one thing they really disagree about? Could any experiment or discovery settle it?
+3. You are an engineer at a software company. Marketing wants to advertise your tool as "catches every infinite loop, guaranteed." You know the math says no tool can do this for all programs. What do you tell them? Would shipping a tool that catches *most* loops under that slogan be dishonest?
+4. Pick one: a perfect spam filter, a perfect antivirus, or a tool that proves an AI will never give dangerous advice. Does the limit in this case apply to it? If something is impossible "in general," is that a good reason not to build the partial version?
+5. Hilbert said: "We must know. We will know." Gödel proved that some true statements can never be proved. Outside of mathematics — in law, science, or daily life — is there a difference between being *true* and being *provable*? Give an example and defend your answer.
+
+## Further Reading
+
+- Ernest Nagel and James R. Newman, *Gödel's Proof* (rev. ed. 2001) — the classic short, readable walk through the incompleteness theorems [@nagel2001].
+- Charles Petzold, *The Annotated Turing* (2008) — Turing's 1936 paper, reprinted in full with a patient line-by-line guide [@petzold2008].
+- Apostolos Doxiadis and Christos Papadimitriou, *Logicomix* (2009) — a graphic novel about the quest for mathematical certainty, from Russell to Gödel; the most painless entry point to this whole story [@doxiadis2009].
+- Andrew Hodges, *Alan Turing: The Enigma* (1983) — the definitive biography, including the Cambridge years that produced the 1936 paper [@hodges1983].
+
+## References
+
+::: {#refs}
+:::

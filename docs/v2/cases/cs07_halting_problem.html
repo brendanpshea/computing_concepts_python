@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-06-10">
+
+<title>“We Must Know — We Will Know”: Gödel, Turing, and the Problem No Computer Can Solve – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-case" id="toc-the-case" class="nav-link active" data-scroll-target="#the-case">The Case</a></li>
+  <li><a href="#how-it-worked-the-program-that-reads-programs" id="toc-how-it-worked-the-program-that-reads-programs" class="nav-link" data-scroll-target="#how-it-worked-the-program-that-reads-programs">How It Worked: The Program That Reads Programs</a></li>
+  <li><a href="#the-argument-gödel-started" id="toc-the-argument-gödel-started" class="nav-link" data-scroll-target="#the-argument-gödel-started">The Argument Gödel Started</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cs07_halting_problem.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">“We Must Know — We Will Know”: Gödel, Turing, and the Problem No Computer Can Solve</h1>
+<p class="subtitle lead">How mathematics found its own limits — and accidentally invented the computer — a COMP 1150 case study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 10, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="case-at-a-glance">
+<ul>
+<li><strong>Who:</strong> David Hilbert, the most famous mathematician alive; Kurt Gödel, a 24-year-old logic student from Vienna; Alan Turing, a 23-year-old graduate student at Cambridge — with John von Neumann, Max Newman, and Alonzo Church in supporting roles</li>
+<li><strong>What:</strong> Hilbert announced a plan to put all of mathematics on a firm, machine-checkable footing. Gödel proved in 1931 that the plan could never fully succeed. Turing proved in 1936 that no possible machine can solve a simple-sounding question about programs — and the blueprint for the modern computer was hiding inside his proof</li>
+<li><strong>Where / When:</strong> Königsberg, September 1930; Vienna, 1931; Cambridge and Princeton, 1935–1936</li>
+<li><strong>Why it matters:</strong> Computer science is the only engineering field that proved its hard limits <em>before</em> its first machine was built. Two collisions drive the case: <span class="key-term">truth</span> vs.&nbsp;<span class="key-term">provability</span>, and whether the limits on <span class="key-term">machines</span> are also limits on <span class="key-term">minds</span></li>
+<li><strong>Concepts at play:</strong> algorithm, Turing machine, the halting problem, undecidability, self-reference, proof by contradiction</li>
+</ul>
+</div>
+<section id="the-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-case">The Case</h2>
+<p>On September 8, 1930, the city of Königsberg gave David Hilbert the highest honor it could: it made him an honorary citizen. Hilbert was sixty-eight and retiring. He was the most influential mathematician of his era, and Königsberg was his hometown. He marked the occasion with a speech, broadcast live on German radio. The recording still exists.</p>
+<p>The speech was a declaration of war on doubt. A century earlier, some scientists had adopted a gloomy Latin motto: <em>ignoramus et ignorabimus</em> — “we do not know, and we will not know.” Some questions, they said, are simply beyond human reach. Hilbert despised this idea. In mathematics, he insisted, there is no <em>ignorabimus</em>. Every well-posed problem has an answer, and we can find it. He ended the speech with six words that would later be carved on his tombstone:</p>
+<blockquote class="blockquote">
+<p><em>Wir müssen wissen. Wir werden wissen.</em> “We must know. We will know.”</p>
+</blockquote>
+<p>He did not know that his program was already dead. It had been killed the day before, in the same city, by a shy twenty-four-year-old almost nobody had heard of.</p>
+<div class="context-box">
+<p><strong>Hilbert’s program.</strong> Hilbert wanted to rebuild all of mathematics as a <span class="key-term">formal system</span>: a fixed set of starting statements (axioms) plus fixed rules for combining symbols, so that checking a proof requires no insight at all — only careful rule-following, like checking a move in chess. He made three demands:</p>
+<ul>
+<li>The system should be <span class="key-term">complete</span>: every true mathematical statement should be provable inside it.</li>
+<li>It should be <span class="key-term">consistent</span>: it should never prove a statement <em>and</em> its opposite.</li>
+<li>It should be <span class="key-term">decidable</span>: there should be a definite, step-by-step method — what we now call an <span class="key-term">algorithm</span> — that takes any mathematical statement and correctly answers “provable” or “not provable.”</li>
+</ul>
+<p>This third demand had a famous name: the <span class="key-term">Entscheidungsproblem</span>, the “decision problem.” Solve it, and mathematics becomes, in principle, a machine.</p>
+</div>
+<p>The day before Hilbert’s speech, a small conference on the foundations of science was wrapping up across town. On its final morning, September 7, the participants held a roundtable discussion. Near the end, a young Viennese logician named Kurt Gödel spoke up, briefly and quietly. He had a result, he said. One can write down true statements of ordinary arithmetic that cannot be proved from the accepted axioms.</p>
+<p>Almost no one in the room reacted. The remark was too strange, too brief, too big to absorb. One listener did react: John von Neumann, a Hungarian prodigy who was already one of the sharpest mathematicians in Europe. He cornered Gödel afterward and made him explain. Within weeks, von Neumann had pushed the idea a step further — only to receive word that Gödel had already gotten there first.</p>
+<p>What Gödel published in 1931 has been called the most important result in modern logic <span class="citation" data-cites="godel1931">(<a href="#ref-godel1931" role="doc-biblioref">Gödel 1931</a>)</span>. Stripped of its machinery, his trick was ancient. Consider the old liar paradox: “This sentence is false.” If it’s true, it’s false; if it’s false, it’s true. Gödel found a way to build something like that sentence <em>inside arithmetic itself</em> — but with one crucial change. His sentence does not say “I am false.” It says:</p>
+<blockquote class="blockquote">
+<p>“This statement cannot be proved.”</p>
+</blockquote>
+<p>Now walk the two possibilities.</p>
+<ol type="1">
+<li>If the system proves the sentence, then the system has proved something false — and a system that proves falsehoods is worthless.</li>
+<li>If the system <em>cannot</em> prove the sentence, then the sentence is <em>true</em> — and here is a truth the system can never reach.</li>
+</ol>
+<p>Either way, Hilbert’s first demand fails. No consistent system rich enough to do arithmetic can prove every truth. Truth and provability come apart, permanently.</p>
+<p>Gödel then twisted the knife. His <strong>second</strong> theorem showed that no such system can prove its <em>own</em> consistency. A system can be sound, but it can never certify, by itself, that it is. Keep that fact in your pocket. It will matter at the end of this story.</p>
+<p>Hilbert’s program lost two of its three pillars in a single paper. But one pillar still stood: the Entscheidungsproblem. Even in an incomplete system, there might still be an algorithm that at least sorts the provable statements from the unprovable ones. Killing <em>that</em> demand required something nobody had: a precise definition of “algorithm.” How do you prove that <em>no possible method</em> can do something, when “method” is just a vague word for whatever a clever person might someday invent?</p>
+<p>The answer came from Cambridge. In the spring of 1935, a twenty-two-year-old graduate student named Alan Turing sat in a lecture course on the foundations of mathematics, taught by the topologist Max Newman. Newman posed the Entscheidungsproblem and used a suggestive phrase: was there a <em>mechanical process</em> that could test a statement for provability? <span class="citation" data-cites="hodges1983">(<a href="#ref-hodges1983" role="doc-biblioref">Hodges 1983</a>)</span></p>
+<p>Turing took the word “mechanical” literally. That summer, lying in a meadow outside Cambridge, he imagined the most stripped-down computing setup possible: a person — a clerk — working with a pencil, an eraser, a long paper tape divided into squares, and a small card of fixed rules. This machine worked as follows:</p>
+<ol type="1">
+<li>Read a symbol.</li>
+<li>Look up the rule.</li>
+<li>Write a symbol.</li>
+<li>Move left or right.</li>
+<li>Repeat.</li>
+</ol>
+<p>Nothing the clerk does requires insight; everything is rule-following. Turing argued that <em>anything</em> any human computer does by rote, step by step, this setup can do. Then he replaced the clerk with a machine. We now call it a <span class="key-term">Turing machine</span>: the simplest honest model of what “following an algorithm” means.</p>
+<p>With a precise model in hand, impossibility became provable. In his 1936 paper, Turing showed there is a question about these machines that no machine can answer — the question we now call the <span class="key-term">halting problem</span>: given a program and its input, will it eventually finish, or will it run forever? <span class="citation" data-cites="turing1936">(<a href="#ref-turing1936" role="doc-biblioref">Turing 1936</a>)</span> Since a solution to the Entscheidungsproblem would let you answer that question, there is no solution. Hilbert’s third pillar fell. The decision problem is <span class="key-term">undecidable</span>: not unsolved, but <em>unsolvable</em> — provably beyond every algorithm that will ever exist.</p>
+<p>There was a complication. Months before Turing finished, the American logician Alonzo Church reached the same conclusion by a different route, using a symbolic system called the lambda calculus. By the normal rules of academic credit, Turing had been scooped. Newman fought for the paper anyway, and he was right to. Church’s argument was correct; Turing’s was <em>convincing</em>. You could see the clerk. You could believe that this captured what “method” means. Turing’s paper was published, and he left for Princeton to study under Church.</p>
+<p>And buried inside the paper was the twist that turns this story from an ending into a beginning. To run his proof, Turing needed one special machine: a single machine that could read the description of <em>any other machine</em> as data on its tape, and then imitate it. One machine, all programs. He proved this <span class="key-term">universal machine</span> could exist. Nine years later, von Neumann — the man who had cornered Gödel in Königsberg — drew on that idea in the design document that still describes essentially every computer on Earth: one general-purpose processor, running whatever program you load into its memory. The proof that machines have absolute limits contained, as a working part, the blueprint for building them.</p>
+<p>So the outcome is not in dispute. Hilbert’s dream is dead; Gödel and Turing killed it; the murder weapon became the computer. What remains disputed — bitterly, to this day — is what was actually buried. Gödel and Turing themselves split on the question. Gödel suspected that the human mind might <em>escape</em> the limits he had proved for formal systems. Turing spent the rest of his short life arguing the opposite: that we are not exceptions, and that machines would one day do whatever minds do. The two people who proved the limits could not agree on whom the limits bind. That is the argument this case is really about.</p>
+</section>
+<section id="how-it-worked-the-program-that-reads-programs" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-worked-the-program-that-reads-programs">How It Worked: The Program That Reads Programs</h2>
+<p>Turing’s impossibility proof sounds like it should take a textbook. In fact, it fits on an index card, and you already know the two ideas it needs.</p>
+<p>The first idea: <strong>programs are data.</strong> A program is just text. Text can be saved in a file, sent in a message — or handed to another program as input. Nothing stops a program from reading, analyzing, or running another program. Your phone does it constantly. Crucially, nothing stops a program from being handed <em>its own text</em> as input.</p>
+<p>The second idea: <span class="key-term">proof by contradiction</span>. To show something is impossible, assume it exists, and then show that this assumption destroys itself.</p>
+<p>So: assume the halting problem is solvable. That means someone could, in principle, write the ultimate debugging tool:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> halts(program, <span class="bu">input</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Returns True if program(input) eventually finishes.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Returns False if program(input) would run forever.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Never wrong. Never stuck. Works on ALL programs.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We make no assumption about <em>how</em> it works. Maybe it is a million lines long. Maybe it took a thousand geniuses a century. We assume only that it exists and is always right.</p>
+<p>Now we write a short, bratty program that uses <code>halts</code> against itself:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> contrary(program):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> halts(program, program):      <span class="co"># "Will this program halt, fed itself?"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="va">True</span>:                  <span class="co"># If YES: deliberately loop forever.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">pass</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Done!"</span>               <span class="co"># If NO: deliberately halt at once.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>contrary</code> asks the oracle one question — “does this program halt when given its own text?” — and then <em>does the opposite of whatever the oracle predicts</em>. There is nothing exotic here: one <code>if</code>, one <code>while</code>, one <code>return</code>. Any first-semester programmer could write it, if only someone would supply <code>halts</code>.</p>
+<p>Now spring the trap. Feed <code>contrary</code> to itself:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>contrary(contrary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>What does <code>halts(contrary, contrary)</code> answer? Walk both branches:</p>
+<ol type="1">
+<li>Suppose it answers <strong>True</strong> (“it halts”). Then <code>contrary</code> enters the infinite loop — and runs forever. The oracle was wrong.</li>
+<li>Suppose it answers <strong>False</strong> (“it runs forever”). Then <code>contrary</code> returns <code>"Done!"</code> immediately — and halts. The oracle was wrong again.</li>
+</ol>
+<p>Every branch ends in contradiction. There is no clever third answer, and “refuse to answer” was ruled out by assumption. The only escape is to admit the assumption was false: <strong>no program like <code>halts</code> can exist.</strong> Not now, not ever, not with any amount of money, hardware, or genius. The wall is mathematical, not technological.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-contrary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-contrary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="672" height="480" viewbox="0.00 0.00 403.57 495.60" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 491.6)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-491.6 399.57,-491.6 399.57,4 -4,4"></polygon>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<path fill="#dde8f0" stroke="black" d="M293.92,-487.8C293.92,-487.8 101.65,-487.8 101.65,-487.8 95.65,-487.8 89.65,-481.8 89.65,-475.8 89.65,-475.8 89.65,-459 89.65,-459 89.65,-453 95.65,-447 101.65,-447 101.65,-447 293.92,-447 293.92,-447 299.92,-447 305.92,-453 305.92,-459 305.92,-459 305.92,-475.8 305.92,-475.8 305.92,-481.8 299.92,-487.8 293.92,-487.8"></path>
+<text text-anchor="middle" x="197.78" y="-470.7" font-family="Helvetica,sans-Serif" font-size="11.00">Assume a perfect halts(program, input)</text>
+<text text-anchor="middle" x="197.78" y="-457.5" font-family="Helvetica,sans-Serif" font-size="11.00">exists and is always right</text>
+</g>
+<!-- build -->
+<g id="node2" class="node">
+<title>build</title>
+<path fill="#eef3f8" stroke="black" d="M259.45,-410C259.45,-410 136.12,-410 136.12,-410 130.12,-410 124.12,-404 124.12,-398 124.12,-398 124.12,-368.8 124.12,-368.8 124.12,-362.8 130.12,-356.8 136.12,-356.8 136.12,-356.8 259.45,-356.8 259.45,-356.8 265.45,-356.8 271.45,-362.8 271.45,-368.8 271.45,-368.8 271.45,-398 271.45,-398 271.45,-404 265.45,-410 259.45,-410"></path>
+<text text-anchor="middle" x="197.78" y="-393.3" font-family="Helvetica,sans-Serif" font-size="11.00">Build contrary(p):</text>
+<text text-anchor="middle" x="197.78" y="-380.1" font-family="Helvetica,sans-Serif" font-size="11.00">if halts(p, p): loop forever</text>
+<text text-anchor="middle" x="197.78" y="-366.9" font-family="Helvetica,sans-Serif" font-size="11.00">else: halt at once</text>
+</g>
+<!-- start&#45;&gt;build -->
+<g id="edge1" class="edge">
+<title>start-&gt;build</title>
+<path fill="none" stroke="black" d="M197.78,-446.97C197.78,-438.98 197.78,-429.48 197.78,-420.31"></path>
+<polygon fill="black" stroke="black" points="201.28,-420.21 197.78,-410.21 194.28,-420.21 201.28,-420.21"></polygon>
+</g>
+<!-- feed -->
+<g id="node3" class="node">
+<title>feed</title>
+<path fill="#eef3f8" stroke="black" d="M253.82,-319.6C253.82,-319.6 141.75,-319.6 141.75,-319.6 135.75,-319.6 129.75,-313.6 129.75,-307.6 129.75,-307.6 129.75,-295.6 129.75,-295.6 129.75,-289.6 135.75,-283.6 141.75,-283.6 141.75,-283.6 253.82,-283.6 253.82,-283.6 259.82,-283.6 265.82,-289.6 265.82,-295.6 265.82,-295.6 265.82,-307.6 265.82,-307.6 265.82,-313.6 259.82,-319.6 253.82,-319.6"></path>
+<text text-anchor="middle" x="197.78" y="-298.3" font-family="Helvetica,sans-Serif" font-size="11.00">Run contrary(contrary)</text>
+</g>
+<!-- build&#45;&gt;feed -->
+<g id="edge2" class="edge">
+<title>build-&gt;feed</title>
+<path fill="none" stroke="black" d="M197.78,-356.71C197.78,-348.16 197.78,-338.61 197.78,-329.94"></path>
+<polygon fill="black" stroke="black" points="201.28,-329.92 197.78,-319.92 194.28,-329.92 201.28,-329.92"></polygon>
+</g>
+<!-- ask -->
+<g id="node4" class="node">
+<title>ask</title>
+<path fill="#f3e9d8" stroke="black" d="M186.03,-244.1C186.03,-244.1 11.97,-208.6 11.97,-208.6 6.1,-207.4 6.1,-205 11.97,-203.8 11.97,-203.8 186.03,-168.3 186.03,-168.3 191.9,-167.1 203.66,-167.1 209.54,-168.3 209.54,-168.3 383.59,-203.8 383.59,-203.8 389.47,-205 389.47,-207.4 383.59,-208.6 383.59,-208.6 209.54,-244.1 209.54,-244.1 203.66,-245.3 191.9,-245.3 186.03,-244.1"></path>
+<text text-anchor="middle" x="197.78" y="-209.5" font-family="Helvetica,sans-Serif" font-size="11.00">What does halts(contrary, contrary)</text>
+<text text-anchor="middle" x="197.78" y="-196.3" font-family="Helvetica,sans-Serif" font-size="11.00">predict?</text>
+</g>
+<!-- feed&#45;&gt;ask -->
+<g id="edge3" class="edge">
+<title>feed-&gt;ask</title>
+<path fill="none" stroke="black" d="M197.78,-283.47C197.78,-275.81 197.78,-266.34 197.78,-256.72"></path>
+<polygon fill="black" stroke="black" points="201.28,-256.7 197.78,-246.7 194.28,-256.7 201.28,-256.7"></polygon>
+</g>
+<!-- haltp -->
+<g id="node5" class="node">
+<title>haltp</title>
+<path fill="#f3dcdc" stroke="black" d="M177.2,-118C177.2,-118 30.37,-118 30.37,-118 24.37,-118 18.37,-112 18.37,-106 18.37,-106 18.37,-89.2 18.37,-89.2 18.37,-83.2 24.37,-77.2 30.37,-77.2 30.37,-77.2 177.2,-77.2 177.2,-77.2 183.2,-77.2 189.2,-83.2 189.2,-89.2 189.2,-89.2 189.2,-106 189.2,-106 189.2,-112 183.2,-118 177.2,-118"></path>
+<text text-anchor="middle" x="103.78" y="-100.9" font-family="Helvetica,sans-Serif" font-size="11.00">contrary loops forever</text>
+<text text-anchor="middle" x="103.78" y="-87.7" font-family="Helvetica,sans-Serif" font-size="11.00">— the oracle said it would halt</text>
+</g>
+<!-- ask&#45;&gt;haltp -->
+<g id="edge4" class="edge">
+<title>ask-&gt;haltp</title>
+<path fill="none" stroke="black" d="M168.3,-171.76C155.25,-156.96 140.09,-139.77 127.75,-125.78"></path>
+<polygon fill="black" stroke="black" points="130.09,-123.14 120.85,-117.95 124.84,-127.77 130.09,-123.14"></polygon>
+<text text-anchor="middle" x="166.56" y="-138.8" font-family="Helvetica,sans-Serif" font-size="10.00"> &nbsp;"it halts"</text>
+</g>
+<!-- loopp -->
+<g id="node6" class="node">
+<title>loopp</title>
+<path fill="#f3dcdc" stroke="black" d="M368.76,-118C368.76,-118 218.81,-118 218.81,-118 212.81,-118 206.81,-112 206.81,-106 206.81,-106 206.81,-89.2 206.81,-89.2 206.81,-83.2 212.81,-77.2 218.81,-77.2 218.81,-77.2 368.76,-77.2 368.76,-77.2 374.76,-77.2 380.76,-83.2 380.76,-89.2 380.76,-89.2 380.76,-106 380.76,-106 380.76,-112 374.76,-118 368.76,-118"></path>
+<text text-anchor="middle" x="293.78" y="-100.9" font-family="Helvetica,sans-Serif" font-size="11.00">contrary halts at once</text>
+<text text-anchor="middle" x="293.78" y="-87.7" font-family="Helvetica,sans-Serif" font-size="11.00">— the oracle said it would loop</text>
+</g>
+<!-- ask&#45;&gt;loopp -->
+<g id="edge5" class="edge">
+<title>ask-&gt;loopp</title>
+<path fill="none" stroke="black" d="M227.9,-171.76C241.35,-156.82 256.99,-139.45 269.66,-125.39"></path>
+<polygon fill="black" stroke="black" points="272.27,-127.72 276.36,-117.95 267.07,-123.04 272.27,-127.72"></polygon>
+<text text-anchor="middle" x="281.95" y="-138.8" font-family="Helvetica,sans-Serif" font-size="10.00"> &nbsp;"it loops"</text>
+</g>
+<!-- concl -->
+<g id="node7" class="node">
+<title>concl</title>
+<path fill="#e3efe1" stroke="black" d="M263.29,-40.6C263.29,-40.6 132.28,-40.6 132.28,-40.6 126.28,-40.6 120.28,-34.6 120.28,-28.6 120.28,-28.6 120.28,-11.8 120.28,-11.8 120.28,-5.8 126.28,0.2 132.28,0.2 132.28,0.2 263.29,0.2 263.29,0.2 269.29,0.2 275.29,-5.8 275.29,-11.8 275.29,-11.8 275.29,-28.6 275.29,-28.6 275.29,-34.6 269.29,-40.6 263.29,-40.6"></path>
+<text text-anchor="middle" x="197.78" y="-23.5" font-family="Helvetica,sans-Serif" font-size="11.00">Contradiction either way:</text>
+<text text-anchor="middle" x="197.78" y="-10.3" font-family="Helvetica,sans-Serif" font-size="11.00">no perfect halts() can exist</text>
+</g>
+<!-- haltp&#45;&gt;concl -->
+<g id="edge6" class="edge">
+<title>haltp-&gt;concl</title>
+<path fill="none" stroke="black" d="M127.99,-77.18C139.5,-67.95 153.42,-56.78 165.79,-46.86"></path>
+<polygon fill="black" stroke="black" points="168.05,-49.54 173.66,-40.55 163.67,-44.08 168.05,-49.54"></polygon>
+</g>
+<!-- loopp&#45;&gt;concl -->
+<g id="edge7" class="edge">
+<title>loopp-&gt;concl</title>
+<path fill="none" stroke="black" d="M269.31,-77.38C257.55,-68.14 243.29,-56.95 230.61,-46.98"></path>
+<polygon fill="black" stroke="black" points="232.57,-44.07 222.55,-40.65 228.25,-49.58 232.57,-44.07"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-contrary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The halting-problem trap. Read it top to bottom: we assume a perfect halts() oracle exists, build the contrary program, and feed contrary its own text. The gold diamond is the oracle’s prediction. Both answers lead to a red contradiction box — whatever halts() predicts, contrary does the opposite, so the ‘always right’ oracle is wrong. The green endpoint is the only consistent conclusion: no such oracle can exist. Adapted from Turing (1936).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Why should anyone care whether a perfect loop-detector exists? Because of what it could do. Here is a complete, runnable program:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prime(k):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> k <span class="op">&gt;</span> <span class="dv">1</span> <span class="kw">and</span> <span class="bu">all</span>(k <span class="op">%</span> d <span class="cf">for</span> d <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(k<span class="op">**</span><span class="fl">0.5</span>) <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">any</span>(prime(a) <span class="kw">and</span> prime(n <span class="op">-</span> a) <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, n)):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">+=</span> <span class="dv">2</span>                            <span class="co"># try the next even number</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Goldbach was wrong:"</span>, n)       <span class="co"># nobody knows if this line ever runs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This loop hunts for an even number that is <em>not</em> the sum of two primes. Goldbach’s conjecture — one of the oldest open problems in mathematics — says no such number exists. Mathematicians have tried to settle it since 1742. Notice what that means: asking “does this six-line loop halt?” <em>is</em> asking “is Goldbach’s conjecture false?” A working <code>halts</code> would settle it instantly, along with whole families of famous open problems, each just a short search loop away. A single program that answers centuries of mathematics at the push of a button is too good to be true. Turing proved that it is.</p>
+<div class="context-box">
+<p><strong>The same trick, twice.</strong> Look at the shape of the two proofs in this case. Gödel built a statement that talks about its own provability: “this statement cannot be proved.” Turing built a program that acts on a prediction about its own behavior — and then defies it. Both are the liar paradox, re-engineered from a party trick into an instrument. The shared ingredient is <span class="key-term">self-reference</span>: a system rich enough to describe <em>other</em> things of its own kind (statements about statements, programs reading programs) is rich enough to be turned on itself. That richness is exactly what makes arithmetic and computers powerful — and the limits come bundled with the power. You cannot have one without the other.</p>
+</div>
+<p>One warning before we leave the machinery, because this is the single most common misreading of the result. The halting problem does <strong>not</strong> say “we can never tell whether a program halts.” For <em>this particular</em> program, or that one, we often can — programmers prove specific loops terminate every working day. What Turing ruled out is one <em>general</em> method that works for <em>all</em> programs, with no exceptions and no “I don’t know.” Undecidability is a statement about the impossibility of full generality, not a cloud of mystery hanging over every individual case. Keep this distinction in hand; the argument that follows turns on it.</p>
+</section>
+<section id="the-argument-gödel-started" class="level2">
+<h2 class="anchored" data-anchor-id="the-argument-gödel-started">The Argument Gödel Started</h2>
+<p>Hilbert’s program was barely in the ground before people began asking the obvious next question. The theorems put hard limits on formal systems and machines. Human beings <em>discovered</em> those theorems. So: are we above the limit — or under it with everything else?</p>
+<p>The question is older than the theorems. In 1651, Thomas Hobbes wrote that reasoning is “nothing but reckoning” — that thought, at bottom, is computation. Modern science largely inherited that bet: the brain is a physical system; physical systems can be simulated; so whatever a mind does, a machine could in principle do. Call this the <strong>mechanist thesis</strong>. Gödel’s theorem looked, to some, like the first mathematical weapon ever forged against it.</p>
+<div class="context-box">
+<p><strong>Why “machine” and “formal system” are the same target.</strong> Turing’s machine and Church’s lambda calculus looked nothing alike, yet they computed exactly the same set of things — and so has every honest model of computation proposed since. This convergence is the <span class="key-term">Church–Turing thesis</span>: anything doable by <em>any</em> step-by-step method is doable by a Turing machine. It is why the argument below can slide between “formal system,” “machine,” “program,” and “AI” without cheating. By this thesis they are one kind of thing in different clothes — and Gödel’s theorem applies to all of them at once.</p>
+</div>
+<section id="the-lucaspenrose-argument-the-mind-sees-what-the-machine-cannot" class="level3">
+<h3 class="anchored" data-anchor-id="the-lucaspenrose-argument-the-mind-sees-what-the-machine-cannot">The Lucas–Penrose argument: the mind sees what the machine cannot</h3>
+<p>In 1961, the Oxford philosopher John Lucas published a paper with a blunt opening: “Gödel’s theorem seems to me to prove that mechanism is false” <span class="citation" data-cites="lucas1961">(<a href="#ref-lucas1961" role="doc-biblioref">Lucas 1961</a>)</span>. Three decades later, the physicist Roger Penrose rebuilt the argument at book length, adding a speculative twist — that human insight must come from physics no computer can run <span class="citation" data-cites="penrose1989">(<a href="#ref-penrose1989" role="doc-biblioref">Penrose 1989</a>)</span>. The core argument is the same, and it is elegant:</p>
+<div class="argument">
+<p><strong>The Lucas–Penrose Argument</strong></p>
+<ol type="1">
+<li>Suppose the human mind is a machine. Then there is some formal system <strong>M</strong> that proves exactly what the mind can prove.</li>
+<li>By Gödel’s theorem, if <strong>M</strong> is consistent, there is a Gödel sentence <strong>G</strong> — “this statement cannot be proved in <strong>M</strong>” — that <strong>M</strong> can never prove.</li>
+<li>But a human mathematician, standing outside <strong>M</strong> and understanding how <strong>G</strong> was built, can <em>see</em> that <strong>G</strong> is true.</li>
+<li>Then the mind can establish a truth that <strong>M</strong> cannot — so <strong>M</strong> does not prove exactly what the mind can prove.</li>
+<li>Therefore, the human mind is not a machine.</li>
+</ol>
+</div>
+<p>Feel the pull of it. The machine is locked in its rules; we read the trick from outside and just <em>see</em> the answer. Whatever insight is, it seems to be the thing the machine lacks — and Gödel seems to have proved the lack.</p>
+<p>The argument’s entire weight rests on premise 3: that little word <em>see</em>. That is exactly where the reply strikes.</p>
+</section>
+<section id="the-consistency-reply-you-cant-see-what-you-think-you-see" class="level3">
+<h3 class="anchored" data-anchor-id="the-consistency-reply-you-cant-see-what-you-think-you-see">The consistency reply: you can’t see what you think you see</h3>
+<p>The counterattack came early — the philosopher Hilary Putnam stated its core even before Lucas published <span class="citation" data-cites="putnam1960">(<a href="#ref-putnam1960" role="doc-biblioref">Putnam 1960</a>)</span> — and it uses Gödel’s <em>own second theorem</em> as the weapon. Re-read premise 3 carefully. The mathematician “sees” that <strong>G</strong> is true. But how was <strong>G</strong> built? <strong>G</strong> is true <em>provided that</em> <strong>M</strong> is consistent. That proviso is doing all the work, and it cannot be discharged.</p>
+<div class="argument">
+<p><strong>The Consistency Reply</strong></p>
+<ol type="1">
+<li>The Gödel sentence <strong>G</strong> is guaranteed true only <em>if</em> the system <strong>M</strong> is consistent. “Seeing” that <strong>G</strong> is true therefore requires <em>knowing</em> that <strong>M</strong> is consistent.</li>
+<li>By Gödel’s second theorem, <strong>M</strong> cannot prove its own consistency.</li>
+<li>If the mind <em>is</em> <strong>M</strong>, then the mind cannot establish its own consistency either — it can at best hope.</li>
+<li>And the hope is shaky: human mathematicians are demonstrably not consistent. They publish flawed proofs constantly; some stood for years before the holes were found.</li>
+<li>Therefore premise 3 fails: the mathematician does not <em>see</em> that <strong>G</strong> is true; she sees only “<strong>G</strong> is true <em>if</em> I am consistent” — which is precisely as much as the machine can see.</li>
+</ol>
+</div>
+<p>The reply does not claim minds are machines. It claims the Lucas–Penrose argument cannot <em>prove</em> they aren’t, because the human “insight” it appeals to is either unjustified confidence or something the machine can match line for line. The mathematician and the machine end up staring at the same conditional. The halo around “seeing” was borrowed, not earned.</p>
+<p>What did Gödel himself think? Characteristically, he refused both sides. In a 1951 lecture he endorsed only a disjunction: <em>either</em> the human mind surpasses every machine, <em>or</em> there exist mathematical problems absolutely unsolvable by anyone — and the theorems alone cannot tell us which <span class="citation" data-cites="godel1951">(<a href="#ref-godel1951" role="doc-biblioref">Gödel 1951</a>)</span>. Privately he leaned toward the first option. Publicly he claimed only the fork in the road. The man with the best right to an opinion declined to have a provable one.</p>
+<p><strong>The idealization objection.</strong> A third position questions the entire setup. The argument treats “the mind” as a fixed formal system — infinitely patient, error-free, unchanging. No actual brain is anything of the kind. Real mathematicians are finite, noisy, error-prone, and they die. Real computers are too: a physical machine with finite memory is not even a true Turing machine, just a very large approximation of one. Perhaps Lucas, Penrose, and their critics are all arguing about two idealizations — the perfect mind, the perfect machine — that nothing in the universe instantiates. On this view, the theorems are facts about mathematics, full stop, and squeezing a verdict about <em>us</em> out of them was always a category error.</p>
+</section>
+<section id="the-argument-that-hasnt-ended-the-limit-goes-to-work" class="level3">
+<h3 class="anchored" data-anchor-id="the-argument-that-hasnt-ended-the-limit-goes-to-work">The argument that hasn’t ended: the limit goes to work</h3>
+<p>Whatever the theorems say about minds, the engineering consequences are not philosophical at all. They ship in products. The halting problem turned out to be the first domino in a long chain: nearly every interesting question of the form “what will this program do on all inputs?” has been proven undecidable by reducing it to halting. Will it ever crash? Ever leak this secret? Ever execute this forbidden behavior? In full generality: no algorithm can say.</p>
+<p>One example has teeth. In 1987, the security researcher Fred Cohen — who coined the term “computer virus” — proved that a <em>perfect</em> virus detector is impossible: any program that could flag all viruses and only viruses could be turned on itself, contrary-style, into a contradiction <span class="citation" data-cites="cohen1987">(<a href="#ref-cohen1987" role="doc-biblioref">Cohen 1987</a>)</span>. Every antivirus product you have ever used is therefore a heuristic: a best guess, with false alarms and misses, <em>necessarily</em>. Not because the vendors are lazy. Because Turing.</p>
+<p>Yet here is the turn that keeps the story honest: the limit did not paralyze the field. It <em>shaped</em> it. Software verification is a thriving industry — built, every inch of it, on concessions to the theorem. Type checkers and static analyzers reject some programs that would actually run fine, because “safe, unsafe, or I can’t tell” is achievable and “safe or unsafe” is not. Verified systems like the seL4 operating-system kernel exist because engineers proved properties of <em>one specific program</em> with human-guided effort — exactly the loophole undecidability leaves open <span class="citation" data-cites="klein2009">(<a href="#ref-klein2009" role="doc-biblioref">Klein et al. 2009</a>)</span>. The practical lesson of the halting problem was never “give up.” It was “stop demanding the general oracle, and budget for its absence.”</p>
+<p>Which brings the argument to the present tense. A large language model is a program, running on von Neumann’s machine, computing nothing beyond Turing’s limit — scale changes none of that. But the sharper point cuts the other way. The people now asked to <em>certify</em> AI systems — will this model ever produce dangerous output? can we guarantee alignment? — are asking “what will this program do on all inputs?” questions, the very family the theorems gutted. When a company advertises software “guaranteed free of bugs,” or a regulation demands an AI “proven never to deceive,” the demand has the same shape as Hilbert’s: <em>we must know, we will know.</em> We have a theorem about how that ended.</p>
+<p>And yet the engineers’ loophole is real too: <em>specific</em> properties of <em>specific</em> systems can be proven, partial checkers do catch real catastrophes, and “impossible in general” has never meant “worthless in practice.” So the question Königsberg opened in 1930 is still open, just wearing new clothes. It is no longer “can mathematics be mechanized?” It is: when someone promises certainty about what a machine will do — or insists that human judgment can deliver what the machine can’t — which side of Gödel’s fork are they standing on? And how would they know?</p>
+</section>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>Explain the halting problem to a friend who has never written code. Use an analogy from outside computing. What does your analogy get right? Where does it break down?</li>
+<li>Write <strong>The Lucas–Penrose Argument</strong> and <strong>The Consistency Reply</strong> in your own words. What is the one thing they really disagree about? Could any experiment or discovery settle it?</li>
+<li>You are an engineer at a software company. Marketing wants to advertise your tool as “catches every infinite loop, guaranteed.” You know the math says no tool can do this for all programs. What do you tell them? Would shipping a tool that catches <em>most</em> loops under that slogan be dishonest?</li>
+<li>Pick one: a perfect spam filter, a perfect antivirus, or a tool that proves an AI will never give dangerous advice. Does the limit in this case apply to it? If something is impossible “in general,” is that a good reason not to build the partial version?</li>
+<li>Hilbert said: “We must know. We will know.” Gödel proved that some true statements can never be proved. Outside of mathematics — in law, science, or daily life — is there a difference between being <em>true</em> and being <em>provable</em>? Give an example and defend your answer.</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li>Ernest Nagel and James R. Newman, <em>Gödel’s Proof</em> (rev. ed.&nbsp;2001) — the classic short, readable walk through the incompleteness theorems <span class="citation" data-cites="nagel2001">(<a href="#ref-nagel2001" role="doc-biblioref">Nagel and Newman 2001</a>)</span>.</li>
+<li>Charles Petzold, <em>The Annotated Turing</em> (2008) — Turing’s 1936 paper, reprinted in full with a patient line-by-line guide <span class="citation" data-cites="petzold2008">(<a href="#ref-petzold2008" role="doc-biblioref">Petzold 2008</a>)</span>.</li>
+<li>Apostolos Doxiadis and Christos Papadimitriou, <em>Logicomix</em> (2009) — a graphic novel about the quest for mathematical certainty, from Russell to Gödel; the most painless entry point to this whole story <span class="citation" data-cites="doxiadis2009">(<a href="#ref-doxiadis2009" role="doc-biblioref">Doxiadis and Papadimitriou 2009</a>)</span>.</li>
+<li>Andrew Hodges, <em>Alan Turing: The Enigma</em> (1983) — the definitive biography, including the Cambridge years that produced the 1936 paper <span class="citation" data-cites="hodges1983">(<a href="#ref-hodges1983" role="doc-biblioref">Hodges 1983</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-cohen1987" class="csl-entry" role="listitem">
+Cohen, Fred. 1987. <span>“Computer Viruses: Theory and Experiments.”</span> <em>Computers &amp; Security</em> 6 (1): 22–35. <a href="https://doi.org/10.1016/0167-4048(87)90122-2">https://doi.org/10.1016/0167-4048(87)90122-2</a>.
+</div>
+<div id="ref-doxiadis2009" class="csl-entry" role="listitem">
+Doxiadis, Apostolos, and Christos H. Papadimitriou. 2009. <em>Logicomix: An Epic Search for Truth</em>. Bloomsbury.
+</div>
+<div id="ref-godel1931" class="csl-entry" role="listitem">
+Gödel, Kurt. 1931. <span>“<span>Ü</span>ber Formal Unentscheidbare <span>S</span><span>ä</span>tze Der <span>Principia Mathematica</span> Und Verwandter <span>S</span>ysteme <span>I</span>.”</span> <em>Monatshefte f<span>ü</span>r Mathematik Und Physik</em> 38: 173–98.
+</div>
+<div id="ref-godel1951" class="csl-entry" role="listitem">
+Gödel, Kurt. 1951. <em>Some Basic Theorems on the Foundations of Mathematics and Their Implications</em>. Josiah Willard Gibbs Lecture, American Mathematical Society.
+</div>
+<div id="ref-hodges1983" class="csl-entry" role="listitem">
+Hodges, Andrew. 1983. <em>Alan Turing: The Enigma</em>. Burnett Books / Princeton University Press.
+</div>
+<div id="ref-klein2009" class="csl-entry" role="listitem">
+Klein, Gerwin, Kevin Elphinstone, Gernot Heiser, et al. 2009. <span>“<span class="nocase">seL4</span>: Formal Verification of an <span>OS</span> Kernel.”</span> <em>Proceedings of the 22nd <span>ACM</span> Symposium on Operating Systems Principles (<span>SOSP</span> ’09)</em>, 207–20. <a href="https://doi.org/10.1145/1629575.1629596">https://doi.org/10.1145/1629575.1629596</a>.
+</div>
+<div id="ref-lucas1961" class="csl-entry" role="listitem">
+Lucas, John R. 1961. <span>“Minds, Machines and <span class="nocase">G<span class="nocase">ö</span>del</span>.”</span> <em>Philosophy</em> 36 (137): 112–27. <a href="https://doi.org/10.1017/S0031819100057983">https://doi.org/10.1017/S0031819100057983</a>.
+</div>
+<div id="ref-nagel2001" class="csl-entry" role="listitem">
+Nagel, Ernest, and James R. Newman. 2001. <em>G<span>ö</span>del’s Proof</em>. Revised. Edited by Douglas R. Hofstadter. New York University Press.
+</div>
+<div id="ref-penrose1989" class="csl-entry" role="listitem">
+Penrose, Roger. 1989. <em>The Emperor’s New Mind: Concerning Computers, Minds, and the Laws of Physics</em>. Oxford University Press.
+</div>
+<div id="ref-petzold2008" class="csl-entry" role="listitem">
+Petzold, Charles. 2008. <em>The Annotated <span>Turing</span>: A Guided Tour Through <span>Alan Turing</span>’s Historic Paper on Computability and the <span>Turing</span> Machine</em>. Wiley.
+</div>
+<div id="ref-putnam1960" class="csl-entry" role="listitem">
+Putnam, Hilary. 1960. <span>“Minds and Machines.”</span> In <em>Dimensions of Mind</em>, edited by Sidney Hook. New York University Press.
+</div>
+<div id="ref-turing1936" class="csl-entry" role="listitem">
+Turing, Alan M. 1936. <em>On Computable Numbers, with an Application to the <span>Entscheidungsproblem</span></em>.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
