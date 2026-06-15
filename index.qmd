@@ -31,8 +31,8 @@ browser), **Run** (open in Google Colab to execute and edit), and
 | 4 | Control Flow & Functions | [HTML](v2/notebooks/COMP1150_NB04_ControlFlowFunctions.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB04_ControlFlowFunctions.ipynb) |
 | 5 | Collections & ADTs | [HTML](v2/notebooks/COMP1150_NB05_CollectionsADTs.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB05_CollectionsADTs.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB05_CollectionsADTs.ipynb) |
 | 6 | Functions, Modules & OOP | [HTML](v2/notebooks/COMP1150_NB06_ModulesOOP.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb) |
-| 7 | Algorithms & the Limits of Computation | *in progress* | | |
-| 8 | Software Engineering, Git & AI-Assisted Dev | *in progress* | | |
+| 7 | Algorithms, Complexity & the Limits of Computation | [HTML](v2/notebooks/COMP1150_NB07_SearchingSorting.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb) |
+| 8 | Software Engineering, Git & AI-Assisted Dev | [HTML](v2/notebooks/COMP1150_NB08_SoftwareEngineering.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb) |
 | 9 | Databases: Relational & Non-Relational | *in progress* | | |
 | 10 | OS, Networks, Cloud & the Web | *in progress* | | |
 | 11 | Cybersecurity & Secure Software Development | *in progress* | | |
@@ -42,7 +42,7 @@ browser), **Run** (open in Google Colab to execute and edit), and
 
 Short, discussion-ready pieces on the history, ethics, and unresolved
 arguments behind the technical material. About twenty to thirty
-minutes each. The six drafted so far:
+minutes each. The seven drafted so far:
 
 - [Lovelace and Turing: Can a Machine Originate?](v2/cases/cs01_lovelace_turing.qmd) —
   paired with Notebook 1.
@@ -56,6 +56,8 @@ minutes each. The six drafted so far:
   paired with Notebook 5.
 - [Was OOP a Mistake? Alan Kay, Smalltalk & the Backlash](v2/cases/cs06_oop_mistake.qmd) —
   paired with Notebook 6.
+- ["We Must Know — We Will Know": Gödel, Turing, and the Problem No Computer Can Solve](v2/cases/cs07_halting_problem.qmd) —
+  paired with Notebook 7.
 
 The full [case studies index](v2/cases/index.qmd) lists all twelve
 planned cases with brief descriptions.
