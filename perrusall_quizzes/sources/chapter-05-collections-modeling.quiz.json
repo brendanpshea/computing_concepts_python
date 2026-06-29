@@ -1,0 +1,1166 @@
+{
+  "title": "Chapter 5 - Collections and Data Modeling",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which Python collection is ordered and mutable?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Lists",
+          "correct": true
+        },
+        {
+          "text": "Tuples",
+          "correct": false
+        },
+        {
+          "text": "Sets",
+          "correct": false
+        },
+        {
+          "text": "Dictionaries",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which Python collection is ordered and immutable?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Tuples",
+          "correct": true
+        },
+        {
+          "text": "Lists",
+          "correct": false
+        },
+        {
+          "text": "Sets",
+          "correct": false
+        },
+        {
+          "text": "Dictionaries",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which Python collection is unordered and prevents duplicates?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Sets",
+          "correct": true
+        },
+        {
+          "text": "Lists",
+          "correct": false
+        },
+        {
+          "text": "Tuples",
+          "correct": false
+        },
+        {
+          "text": "Dictionaries",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which Python collection maps unique keys to values?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Dictionaries",
+          "correct": true
+        },
+        {
+          "text": "Lists",
+          "correct": false
+        },
+        {
+          "text": "Tuples",
+          "correct": false
+        },
+        {
+          "text": "Sets",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the index of the first element in a Python list?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "0",
+          "correct": true
+        },
+        {
+          "text": "1",
+          "correct": false
+        },
+        {
+          "text": "-1",
+          "correct": false
+        },
+        {
+          "text": "2",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which index represents the last element in a Python list?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "-1",
+          "correct": true
+        },
+        {
+          "text": "0",
+          "correct": false
+        },
+        {
+          "text": "1",
+          "correct": false
+        },
+        {
+          "text": "len",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What does `d.get(key)` return by default if the key is missing?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "None",
+          "correct": true
+        },
+        {
+          "text": "0",
+          "correct": false
+        },
+        {
+          "text": "False",
+          "correct": false
+        },
+        {
+          "text": "Error",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which operator is used to find the intersection of two sets?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "&",
+          "correct": true
+        },
+        {
+          "text": "|",
+          "correct": false
+        },
+        {
+          "text": "-",
+          "correct": false
+        },
+        {
+          "text": "^",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What empty collection type does curly braces `{}` create by default?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "A dictionary",
+          "correct": true
+        },
+        {
+          "text": "A set",
+          "correct": false
+        },
+        {
+          "text": "A list",
+          "correct": false
+        },
+        {
+          "text": "A tuple",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What value is returned when a function finishes without a return statement?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "None",
+          "correct": true
+        },
+        {
+          "text": "0",
+          "correct": false
+        },
+        {
+          "text": "True",
+          "correct": false
+        },
+        {
+          "text": "False",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What are lists, dictionaries, and sets called since they can be changed?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Mutable",
+          "correct": true
+        },
+        {
+          "text": "Immutable",
+          "correct": false
+        },
+        {
+          "text": "Static",
+          "correct": false
+        },
+        {
+          "text": "Abstract",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What are tuples called since they cannot be changed after creation?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Immutable",
+          "correct": true
+        },
+        {
+          "text": "Mutable",
+          "correct": false
+        },
+        {
+          "text": "Dynamic",
+          "correct": false
+        },
+        {
+          "text": "Abstract",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What happens when assigning one list variable directly to another, as in `b = a`?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Both variables share one list",
+          "correct": true
+        },
+        {
+          "text": "An independent copy is made",
+          "correct": false
+        },
+        {
+          "text": "The first list becomes immutable",
+          "correct": false
+        },
+        {
+          "text": "The program crashes immediately",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How can a developer create a true, independent copy of a list to avoid aliasing bugs?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Call the `.copy()` method on it",
+          "correct": true
+        },
+        {
+          "text": "Assign list name variables directly",
+          "correct": false
+        },
+        {
+          "text": "Place list inside a tuple",
+          "correct": false
+        },
+        {
+          "text": "Delete original list variable early",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary purpose of the accumulator pattern inside a loop?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Build up a running total",
+          "correct": true
+        },
+        {
+          "text": "Stop the loop execution immediately",
+          "correct": false
+        },
+        {
+          "text": "Hide variables from outside functions",
+          "correct": false
+        },
+        {
+          "text": "Generate documentation for a class",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the `items()` method do when iterating over a dictionary?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Yields both key and value",
+          "correct": true
+        },
+        {
+          "text": "Displays keys while hiding values",
+          "correct": false
+        },
+        {
+          "text": "Returns keys in alphabetical order",
+          "correct": false
+        },
+        {
+          "text": "Structures dictionary as pure tuples",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why might a dictionary lookup be preferred over a list scan as data size grows?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Lookup speed remains completely constant",
+          "correct": true
+        },
+        {
+          "text": "Speed slows down with items",
+          "correct": false
+        },
+        {
+          "text": "Reduces overall memory footprint significantly",
+          "correct": false
+        },
+        {
+          "text": "Sorts retrieved values in order",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does hashing let a dictionary or set do when looking up a key?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Jump straight to the key's spot",
+          "correct": true
+        },
+        {
+          "text": "Walk every entry until matched",
+          "correct": false
+        },
+        {
+          "text": "Sort the keys before searching",
+          "correct": false
+        },
+        {
+          "text": "Compress the stored values smaller",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why must dictionary keys and set members be immutable (like strings, numbers, or tuples)?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "A changing value would lose its shelf",
+          "correct": true
+        },
+        {
+          "text": "Immutable objects use far less memory",
+          "correct": false
+        },
+        {
+          "text": "Mutable objects cannot be printed safely",
+          "correct": false
+        },
+        {
+          "text": "Python forbids storing numbers in lists",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What shape represents typical nested tabular data (like spreadsheet rows or API results) in Python?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "List of dictionaries representing rows",
+          "correct": true
+        },
+        {
+          "text": "Dictionary pointing to flat tuples",
+          "correct": false
+        },
+        {
+          "text": "Set of nested tuples strictly",
+          "correct": false
+        },
+        {
+          "text": "Flat list containing only strings",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which statements are true about Python list comprehensions?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Build lists in one line",
+          "correct": true
+        },
+        {
+          "text": "Support optional conditional filtering logic",
+          "correct": true
+        },
+        {
+          "text": "Run loop iterations implicitly underneath",
+          "correct": true
+        },
+        {
+          "text": "Permanently freeze the collection size",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the core distinction between an Abstract Data Type (ADT) and its implementation?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "ADT defines behavior; implementation stores",
+          "correct": true
+        },
+        {
+          "text": "ADT defines storage; implementation behaviors",
+          "correct": false
+        },
+        {
+          "text": "ADT requires dicts; implementation lists",
+          "correct": false
+        },
+        {
+          "text": "ADT runs automatically; implementation manually",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does the built-in `sorted()` function behave?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Returns new list, leaves original",
+          "correct": true
+        },
+        {
+          "text": "Modifies original collection in place",
+          "correct": false
+        },
+        {
+          "text": "Converts collection to immutable set",
+          "correct": false
+        },
+        {
+          "text": "Sorts keys but deletes values",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which statements accurately describe how a list slice behaves in Python?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Returns a brand new list",
+          "correct": true
+        },
+        {
+          "text": "Leaves the original list unaltered",
+          "correct": true
+        },
+        {
+          "text": "Negative indices count from end",
+          "correct": true
+        },
+        {
+          "text": "Modifies source list in place",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following are valid set operations supported in Python?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Union using vertical pipe operator",
+          "correct": true
+        },
+        {
+          "text": "Intersection using ampersand operator",
+          "correct": true
+        },
+        {
+          "text": "Difference using minus sign operator",
+          "correct": true
+        },
+        {
+          "text": "Concatenation using plus sign operator",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of these describe the benefits of Abstract Data Types?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Hides complex storage details cleanly",
+          "correct": true
+        },
+        {
+          "text": "Swaps storage without breaking code",
+          "correct": true
+        },
+        {
+          "text": "Separates behavior promise from storage",
+          "correct": true
+        },
+        {
+          "text": "Doubles execution speed of search",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What does a list or dictionary comprehension look like left-to-right?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Expression describing each output item",
+          "correct": true
+        },
+        {
+          "text": "For loop specifying the source",
+          "correct": true
+        },
+        {
+          "text": "Optional if condition for filtering",
+          "correct": true
+        },
+        {
+          "text": "While loop repeating process indefinitely",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which of these Python collections are inherently mutable?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Lists",
+          "correct": true
+        },
+        {
+          "text": "Dictionaries",
+          "correct": true
+        },
+        {
+          "text": "Sets",
+          "correct": true
+        },
+        {
+          "text": "Tuples",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "When accessing specific internal values within a standardized list of dictionaries, which steps occur?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Query list index absolutely first",
+          "correct": true
+        },
+        {
+          "text": "Drill into specific dictionary keys",
+          "correct": true
+        },
+        {
+          "text": "Access nested layers simultaneously",
+          "correct": false
+        },
+        {
+          "text": "Iterate dictionary attributes beforehand",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "If a list-backed queue swapped its storage to a dictionary keyed by ticket number, which parts would have to be rewritten?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "The add operation",
+          "correct": true
+        },
+        {
+          "text": "The next_customer (pop) operation",
+          "correct": true
+        },
+        {
+          "text": "The size operation",
+          "correct": true
+        },
+        {
+          "text": "The outside code that calls them",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was the direct impact of Facebook's real-name verification policy on Native American users?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Locked out users defying assumptions",
+          "correct": true
+        },
+        {
+          "text": "Eliminated fake duplicate accounts smoothly",
+          "correct": false
+        },
+        {
+          "text": "Blocked localized routing to communities",
+          "correct": false
+        },
+        {
+          "text": "Required premium payment for verification",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the term 'schema' denote in a database or software system?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Structure defining fields and values",
+          "correct": true
+        },
+        {
+          "text": "Graphical interface for system administrators",
+          "correct": false
+        },
+        {
+          "text": "Hidden backup servers tracing errors",
+          "correct": false
+        },
+        {
+          "text": "Cryptographic token verifying user logins",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did Patrick McKenzie compile his list of 'Falsehoods Programmers Believe About Names'?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Name broke systems when traveling",
+          "correct": true
+        },
+        {
+          "text": "Platforms banned user accounts randomly",
+          "correct": false
+        },
+        {
+          "text": "Governments demanded complex character sets",
+          "correct": false
+        },
+        {
+          "text": "Wanted completely unhackable database models",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What happens when a lossy schema flattens complex human data, such as a name?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Original nuances are permanently lost",
+          "correct": true
+        },
+        {
+          "text": "Database storage size expands unsustainable",
+          "correct": false
+        },
+        {
+          "text": "System schedules localized database migration",
+          "correct": false
+        },
+        {
+          "text": "Lookup search speed slows down",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does the Universalist view in data modeling recommend handling edge cases?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Standard schemas with exception paths",
+          "correct": true
+        },
+        {
+          "text": "Restructure schema for every case",
+          "correct": false
+        },
+        {
+          "text": "Use ML to redefine fields",
+          "correct": false
+        },
+        {
+          "text": "Reject data not fitting perfectly",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the core argument of the Pluralist reply regarding database exception paths?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Impose unfair barriers on minorities",
+          "correct": true
+        },
+        {
+          "text": "Resolve edge cases without friction",
+          "correct": false
+        },
+        {
+          "text": "Efficient structures handling web traffic",
+          "correct": false
+        },
+        {
+          "text": "Prevent performance issues and leaks",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did the Gender Shades audit discover about commercial face-classification systems?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Error rates higher for minorities",
+          "correct": true
+        },
+        {
+          "text": "Classification software misidentified matching twins",
+          "correct": false
+        },
+        {
+          "text": "Performed perfectly on all demographics",
+          "correct": false
+        },
+        {
+          "text": "Software corrupted underlying database files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the retrospective of the ImageNet dataset conclude about improving accuracy?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Accuracy does not fix bias",
+          "correct": true
+        },
+        {
+          "text": "Tools require bigger training databases",
+          "correct": false
+        },
+        {
+          "text": "Boundaries generated purely by AI",
+          "correct": false
+        },
+        {
+          "text": "Datasets should avoid real people",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "How can restrictive schema choices made decades ago negatively propagate into modern AI systems?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Compiled into historical training datasets",
+          "correct": true
+        },
+        {
+          "text": "Define labels model can recognize",
+          "correct": true
+        },
+        {
+          "text": "Copy old assumptions into databases",
+          "correct": true
+        },
+        {
+          "text": "Correct demographic disparities naturally",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What are the consequences of representing human gender as a single binary character in databases?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Excludes fluid non binary identities",
+          "correct": true
+        },
+        {
+          "text": "Demands migrations enabling wider fields",
+          "correct": true
+        },
+        {
+          "text": "Conflicts with legal local forms",
+          "correct": true
+        },
+        {
+          "text": "Increases physical camera detection range",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

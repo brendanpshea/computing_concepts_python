@@ -1,0 +1,1166 @@
+{
+  "title": "Chapter 6 - Functions, Modules and OOP",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which Python keyword begins establishing a new custom blueprint structure?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "class",
+          "correct": true
+        },
+        {
+          "text": "def",
+          "correct": false
+        },
+        {
+          "text": "init",
+          "correct": false
+        },
+        {
+          "text": "object",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which special constructor method initializes a newly built object instance?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "__init__",
+          "correct": true
+        },
+        {
+          "text": "__new__",
+          "correct": false
+        },
+        {
+          "text": "__main__",
+          "correct": false
+        },
+        {
+          "text": "__call__",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What first argument must represent the current operating object in a method?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "self",
+          "correct": true
+        },
+        {
+          "text": "this",
+          "correct": false
+        },
+        {
+          "text": "object",
+          "correct": false
+        },
+        {
+          "text": "cls",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which built-in reference calls parent class setups and methods directly?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "super",
+          "correct": true
+        },
+        {
+          "text": "parent",
+          "correct": false
+        },
+        {
+          "text": "base",
+          "correct": false
+        },
+        {
+          "text": "inherit",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which keyword creates a short alternative label when importing packages?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "as",
+          "correct": true
+        },
+        {
+          "text": "from",
+          "correct": false
+        },
+        {
+          "text": "in",
+          "correct": false
+        },
+        {
+          "text": "import",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "How is the square root utility called after loading its standard numeric library?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "math.sqrt",
+          "correct": true
+        },
+        {
+          "text": "math(sqrt)",
+          "correct": false
+        },
+        {
+          "text": "sqrt",
+          "correct": false
+        },
+        {
+          "text": "import.sqrt",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which keyword retrieves particular functions out of another file?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "from",
+          "correct": true
+        },
+        {
+          "text": "import",
+          "correct": false
+        },
+        {
+          "text": "with",
+          "correct": false
+        },
+        {
+          "text": "require",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which built-in tool lists all methods and data holding fields in an object?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "dir",
+          "correct": true
+        },
+        {
+          "text": "help",
+          "correct": false
+        },
+        {
+          "text": "list",
+          "correct": false
+        },
+        {
+          "text": "vars",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What placeholder is returned if a method lacks a direct return step?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "None",
+          "correct": true
+        },
+        {
+          "text": "False",
+          "correct": false
+        },
+        {
+          "text": "0",
+          "correct": false
+        },
+        {
+          "text": "\"\"",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which exact syntax runs parent constructors inside child setup methods?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "super()",
+          "correct": true
+        },
+        {
+          "text": "super(self)",
+          "correct": false
+        },
+        {
+          "text": "super(parent)",
+          "correct": false
+        },
+        {
+          "text": "super",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which capital letter naming format fits Python class names best?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "CapWords",
+          "correct": true
+        },
+        {
+          "text": "snake_case",
+          "correct": false
+        },
+        {
+          "text": "lowercase",
+          "correct": false
+        },
+        {
+          "text": "UPPERCASE",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a separate file holding functions for reuse called?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "A Python module",
+          "correct": true
+        },
+        {
+          "text": "A Python script",
+          "correct": false
+        },
+        {
+          "text": "An import folder",
+          "correct": false
+        },
+        {
+          "text": "A virtual program",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Where does Python search for names if you forget self prefixes?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Searches local and global namespaces",
+          "correct": true
+        },
+        {
+          "text": "Queries parent superclass directory automatically",
+          "correct": false
+        },
+        {
+          "text": "Defaults to first instance attribute",
+          "correct": false
+        },
+        {
+          "text": "Creates a new private variable",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How do different classes handle having the same method name?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Each responds to its own method",
+          "correct": true
+        },
+        {
+          "text": "The compiler rejects both class templates",
+          "correct": false
+        },
+        {
+          "text": "Python overrides the first defined template",
+          "correct": false
+        },
+        {
+          "text": "Execution stalls because of naming collisions",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Where should instance variables be set up so objects do not share data?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Inside the local initializer method",
+          "correct": true
+        },
+        {
+          "text": "Inside the primary class body",
+          "correct": false
+        },
+        {
+          "text": "Inside an external global module",
+          "correct": false
+        },
+        {
+          "text": "Inside the parent directory structure",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What error happens when you put a list directly in class bodies?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Every instance shares the same list",
+          "correct": true
+        },
+        {
+          "text": "Each instance creates a local copy",
+          "correct": false
+        },
+        {
+          "text": "Python raises a syntax compilation error",
+          "correct": false
+        },
+        {
+          "text": "The database prevents any list updates",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does an overridden child method run its parent's version?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "By calling the super method",
+          "correct": true
+        },
+        {
+          "text": "By calling the import method",
+          "correct": false
+        },
+        {
+          "text": "By calling the local method",
+          "correct": false
+        },
+        {
+          "text": "By calling the helper method",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How can you import only one function instead of a whole file?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Import only the required function",
+          "correct": true
+        },
+        {
+          "text": "Compile the entire file together",
+          "correct": false
+        },
+        {
+          "text": "Duplicate the source code manually",
+          "correct": false
+        },
+        {
+          "text": "Convert the functions to text",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What standard text prints out if you try printing a raw object?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "A default string representing details",
+          "correct": true
+        },
+        {
+          "text": "A detailed list of properties",
+          "correct": false
+        },
+        {
+          "text": "A syntax error halting execution",
+          "correct": false
+        },
+        {
+          "text": "A blank line containing spaces",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does encapsulation hide within an object to keep data safe?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Private internal state database and variables",
+          "correct": true
+        },
+        {
+          "text": "Shared public global definitions and modules",
+          "correct": false
+        },
+        {
+          "text": "Standard library import functions and methods",
+          "correct": false
+        },
+        {
+          "text": "Local terminal execution pathways and parameters",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does a subclass automatically gain from its parent class?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Inherits methods from class Guard",
+          "correct": true
+        },
+        {
+          "text": "Only the special init methods",
+          "correct": false
+        },
+        {
+          "text": "Exclusive access to global variables",
+          "correct": false
+        },
+        {
+          "text": "Automatic copy of import functions",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why is organizing code into classes highly useful for software teams?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Isolating changes to separate modules",
+          "correct": true
+        },
+        {
+          "text": "Increasing the speed of calculations",
+          "correct": false
+        },
+        {
+          "text": "Forcing developers to write tests",
+          "correct": false
+        },
+        {
+          "text": "Allowing duplicate names in data",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In the patrol scenario, what role does Lancelot fill?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "An instance of class Guard",
+          "correct": true
+        },
+        {
+          "text": "A subclass of class Guard",
+          "correct": false
+        },
+        {
+          "text": "A function inside the class",
+          "correct": false
+        },
+        {
+          "text": "A parameter of class Guard",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What are correct ways to import modules and tools in Python?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Importing the entire module structure",
+          "correct": true
+        },
+        {
+          "text": "Importing specific functions using from",
+          "correct": true
+        },
+        {
+          "text": "Importing a module with an alias",
+          "correct": true
+        },
+        {
+          "text": "Importing class methods without classes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which events cause an AttributeError on an active object?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Calling a method not defined",
+          "correct": true
+        },
+        {
+          "text": "Accessing a missing instance variable",
+          "correct": true
+        },
+        {
+          "text": "Attempting to print instance properties",
+          "correct": false
+        },
+        {
+          "text": "Invoking inherited methods on setup",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which choices describe class constructor setups in Python?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Accepts self as first parameter",
+          "correct": true
+        },
+        {
+          "text": "Runs immediately when instantiating client",
+          "correct": true
+        },
+        {
+          "text": "Returns an integer indicator value",
+          "correct": false
+        },
+        {
+          "text": "Can assign static variables alone",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What bugs happen if you leave out self prefixes inside methods?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Assignments fail to write back",
+          "correct": true
+        },
+        {
+          "text": "Local variables are discarded immediately",
+          "correct": true
+        },
+        {
+          "text": "Python raises automatic compilation errors",
+          "correct": false
+        },
+        {
+          "text": "Global variables are overwritten secretly",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What gets passed down to a child class from its parent?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "General instance methods defined successfully",
+          "correct": true
+        },
+        {
+          "text": "The default structural initialization steps",
+          "correct": true
+        },
+        {
+          "text": "Locally defined import module references",
+          "correct": false
+        },
+        {
+          "text": "The class name declaration strings",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which choices demonstrate composition instead of general inheritance?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "An object holding other objects",
+          "correct": true
+        },
+        {
+          "text": "Delegating work to inner instances",
+          "correct": true
+        },
+        {
+          "text": "Defining a specialized child class",
+          "correct": false
+        },
+        {
+          "text": "Accessing base constructors via super",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What guidelines help developers design custom class shapes?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Identify primary nouns as classes",
+          "correct": true
+        },
+        {
+          "text": "Identify primary verbs as methods",
+          "correct": true
+        },
+        {
+          "text": "Convert any single integer to objects",
+          "correct": false
+        },
+        {
+          "text": "Force inheritance for simple functions",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which living thing did Alan Kay use to explain object boundaries?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Living cellular organisms communicating messages",
+          "correct": true
+        },
+        {
+          "text": "Plant root structures sharing resources",
+          "correct": false
+        },
+        {
+          "text": "Neural brain networks firing impulses",
+          "correct": false
+        },
+        {
+          "text": "Animal pack behavior finding food",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which software element was pioneered by Simula but criticized by Kay?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Deep class inheritance systems",
+          "correct": true
+        },
+        {
+          "text": "Private internal object data",
+          "correct": false
+        },
+        {
+          "text": "Asynchronous message passing networks",
+          "correct": false
+        },
+        {
+          "text": "Dynamic memory management schemes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the core rule of the Liskov Substitution Principle?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Child types replace parent types safely",
+          "correct": true
+        },
+        {
+          "text": "Parent types override child types safely",
+          "correct": false
+        },
+        {
+          "text": "Classes support multiple inheritance structures safely",
+          "correct": false
+        },
+        {
+          "text": "Objects share standard computer assets safely",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why does defining a square as a child of rectangle cause bugs?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Setting width alters height unexpectedly",
+          "correct": true
+        },
+        {
+          "text": "Square objects demand higher memory",
+          "correct": false
+        },
+        {
+          "text": "Rectangle methods fail calculating square areas",
+          "correct": false
+        },
+        {
+          "text": "Inheritance requires completely identical names",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which design rule was made famous in the 1994 book Design Patterns?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Favor composition over strict inheritance",
+          "correct": true
+        },
+        {
+          "text": "Eliminate object boundaries for speed",
+          "correct": false
+        },
+        {
+          "text": "Utilize deep hierarchies for simplicity",
+          "correct": false
+        },
+        {
+          "text": "Merge data representation and flowcharts",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the main idea behind using object composition?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Building relationships using has-a connections",
+          "correct": true
+        },
+        {
+          "text": "Extending parental behaviors using inheritance",
+          "correct": false
+        },
+        {
+          "text": "Hiding all standard library modules",
+          "correct": false
+        },
+        {
+          "text": "Refusing message requests from clients",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which issue does the gorilla and banana joke explain?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Objects drag their whole inheritance tree",
+          "correct": true
+        },
+        {
+          "text": "Large databases cause syntax bugs",
+          "correct": false
+        },
+        {
+          "text": "Compilers produce slow binary programs",
+          "correct": false
+        },
+        {
+          "text": "Computers consume too much electrical energy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which parts of object-oriented coding are most loved and used today?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Hiding implementation details via encapsulation",
+          "correct": true
+        },
+        {
+          "text": "Providing uniform interfaces via polymorphism",
+          "correct": true
+        },
+        {
+          "text": "Constructing massive multi level inheritance trees",
+          "correct": false
+        },
+        {
+          "text": "Coupling mutable state across distinct files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "How do new languages like Go and Rust differ from Java?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Omit class inheritance structures cleanly",
+          "correct": true
+        },
+        {
+          "text": "Enforce clean modular project encapsulation",
+          "correct": true
+        },
+        {
+          "text": "Require deep parent shape templates",
+          "correct": false
+        },
+        {
+          "text": "Reject message passing interfaces natively",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What primary complaint do functional programmers have about objects?",
+      "answer_explanation": "",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Glueing changeable state to behavior",
+          "correct": true
+        },
+        {
+          "text": "Scattering mutable data across objects",
+          "correct": true
+        },
+        {
+          "text": "Simplifying debugging using pure functions",
+          "correct": false
+        },
+        {
+          "text": "Eliminating duplicate class names safely",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
