@@ -1,0 +1,172 @@
+---
+title: "Open Source and the Code an AI Learned From"
+subtitle: "Linux, Git, and the day Copilot recited someone else's work — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+bibliography: refs.bib
+---
+
+::: {.case-at-a-glance}
+- **Who:** Richard Stallman (b. 1953), who invented the license that made code sharing enforceable; Linus Torvalds (b. 1969), who built Linux and then Git; Tim Davis (b. 1961), a Texas A&M professor whose code an AI recited back to the world; and Matthew Butterick, the programmer-lawyer who sued GitHub, Microsoft, and OpenAI over it.
+- **What:** For thirty years, millions of programmers shared their code publicly — but under licenses with conditions attached. Then GitHub Copilot, an AI trained on that code, began producing it for paying customers with the conditions stripped away. The people who built the commons asked: is that theft, learning, or something the rules never imagined?
+- **Where / When:** MIT, 1983 (the GNU project). Helsinki, 1991 (Linux). Portland, 2005 (Git, written in about two weeks). San Francisco, 2021–2024 (Copilot's launch and the lawsuit that followed).
+- **Why it matters:** Open source is the foundation nearly all modern software stands on, and it works because a license's conditions are supposed to stick. Copilot is the sharpest test yet of whether they do. The case turns on a collision between [the commons]{.key-term} — a shared resource kept alive by rules its users respect — and [training as fair use]{.key-term}, the claim that an AI may learn from anything public.
+- **Concepts at play:** software license, [copyleft]{.key-term}, [version control]{.key-term}, [commit]{.key-term}, [hash function]{.key-term}, [repository]{.key-term}, machine learning on code, [memorization]{.key-term} vs. generalization
+:::
+
+## The Case
+
+In 1980, a printer jammed at MIT, and the modern argument about software ownership began.
+
+Richard Stallman worked in the Artificial Intelligence Lab. The lab had a new laser printer from Xerox, and it jammed often. With the old printer, Stallman had simply fixed the software himself — the lab had the source code, the human-readable text of the program. With the new one, Xerox refused to share the code. Stallman tracked down a researcher who had a copy. The researcher said no. He had signed an agreement not to share it.
+
+To Stallman, this was a moral injury, not an inconvenience. He had grown up in a culture where programmers passed code around the way scientists pass around results. Now that culture was being fenced off, one signed agreement at a time. In 1983 he announced a plan to rebuild an entire free operating system from scratch, called GNU, and in 1985 he published a manifesto explaining why [@stallman1985].
+
+His real invention, though, was legal, not technical. Stallman realized that copyright — the very law being used to lock code up — could be used to keep it open. He wrote the **GNU General Public License**, or GPL. Anyone could use, change, and share GPL code. But there was a condition: if you shared your changed version, you had to share it under the same license, source code included. Freedom, enforced by copyright itself. He called the trick [copyleft]{.key-term}.
+
+::: {.context-box}
+**What a software license actually is.** Under copyright law, code is like a book: by default, all rights are reserved to the author. You may not legally copy it just because you can see it. A **license** is a conditional grant: the author says "you may copy this, *if* you follow my conditions." [Copyleft]{.key-term} licenses like the GPL demand that shared versions stay open. **Permissive** licenses like MIT and BSD ask less — usually just that you keep the author's name and license text attached. Almost all "open" code carries one of these. Public to *read* has never meant free to *take*.
+:::
+
+Stallman's project built the tools but stalled on the core — the operating system's kernel. Then, in August 1991, a 21-year-old student in Helsinki posted to an internet newsgroup: "I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu)" [@torvalds1991]. Linus Torvalds released his kernel, Linux, under Stallman's GPL. The combination worked. Strangers on every continent could improve the code, and the license guaranteed no company could take it private. By the 2000s, Linux ran most of the internet's servers. Today it runs every Android phone. It may be the largest cooperative project in human history, and it was held together by a license.
+
+But cooperation at that scale created a mechanical problem: how do thousands of people edit the same code without destroying each other's work? For years, Linux developers used a proprietary tool called BitKeeper. In 2005 its owner, angry over a licensing dispute, cut them off. Torvalds responded the way he had in 1991. He wrote his own tool, in about two weeks. He named it Git.
+
+Git is a [version control]{.key-term} system: it records the entire history of a project as a chain of snapshots, so anyone can see what changed, when, and by whose hand. Each snapshot is a [commit]{.key-term}, and each commit is named by a [hash]{.key-term} — a fingerprint computed from the content itself. Change one character anywhere and the fingerprint changes completely. History becomes tamper-evident. Authorship becomes traceable.
+
+::: {.context-box}
+**Version control in one paragraph.** A [repository]{.key-term} is a project folder plus its full recorded history. A [commit]{.key-term} is one saved snapshot, with a message, an author, and a timestamp. Because each commit's [hash]{.key-term} is computed from its content *and* from the hash of the commit before it, the whole history forms a chain that cannot be quietly rewritten. This is why open-source projects can accept work from strangers: the record of who wrote what, and under which license, is built into the system.
+:::
+
+In 2008, a startup called GitHub wrapped Git in a friendly website. Sharing a repository became one click. Within a decade GitHub hosted most of the world's open code — tens of millions of repositories, each one carrying its license file along like a label on a jar. In 2018, Microsoft bought GitHub for $7.5 billion. The company that Linux developers had once treated as the enemy of free software now owned the commons' front door.
+
+Then the commons became a dataset.
+
+In 2021, GitHub launched **Copilot**, built with OpenAI. Copilot is an AI assistant that writes code. A programmer types a comment or the start of a function, and Copilot suggests the rest — often correctly, sometimes brilliantly. It had learned by training on billions of lines of public code from GitHub. GPL code, MIT code, all of it. Copilot's suggestions arrived with no license, no author, and no history. For $10 a month.
+
+In October 2022, Tim Davis, a professor at Texas A&M who wrote widely used mathematical software, posted a comparison online. On one side: Copilot's output. On the other: his own published code, matching line after line — with his name and license text gone [@davis2022]. Other users showed Copilot reproducing one of the most famous fragments in programming, the "fast inverse square root" from the game *Quake III* — complete with its notoriously profane comment, but not its GPL license.
+
+A month later, programmer-lawyer Matthew Butterick and a team of class-action attorneys sued GitHub, Microsoft, and OpenAI in federal court, on behalf of the anonymous developers whose code trained Copilot [@butterick2022copilot]. It was the first major lawsuit about AI trained on other people's work — filed before the famous cases about news articles, books, and images.
+
+The question the case raised is not whether Copilot is useful. It plainly is; within two years, GitHub reported over a million paying users. The question is older and harder. Millions of people shared their work under an explicit deal: *use this, but keep my conditions.* An AI absorbed all of it and now produces the work without the deal. Whose promise was broken — and did "public" ever mean "free for this"?
+
+## How It Worked
+
+Two mechanisms drive this case. The first is how Git knows whose code is whose. The second is how Copilot learned — and why it sometimes recites.
+
+### How Git fingerprints content
+
+Git identifies every piece of content by its **SHA-1 hash** — a 40-character fingerprint computed from the bytes themselves. The recipe is short enough to run yourself:
+
+```python
+import hashlib
+
+def git_blob_hash(content: str) -> str:
+    """Compute a file's ID exactly the way Git does."""
+    data = content.encode()
+    header = f"blob {len(data)}\0".encode()
+    return hashlib.sha1(header + data).hexdigest()
+
+print(git_blob_hash("hello world\n"))
+# 3b18e512dba79e4c8300dd08aeb37f8e728b8dad
+
+print(git_blob_hash("hello World\n"))   # one letter changed
+# 58bd3da091baa2c5ddaf2d841ba1fdb51be1874f
+```
+
+Run it, and you will get exactly those two fingerprints — anyone, on any machine, always. That is the point of a [hash function]{.key-term}: the same content always gives the same fingerprint, and even a one-letter change gives a completely different one. There is no way to work backward from the fingerprint to the content, and no practical way to craft a different file with the same fingerprint.
+
+Git builds its whole history from this trick:
+
+1. Every file's content gets a hash (a *blob*).
+2. Every folder gets a hash computed from the hashes of the things inside it.
+3. Every commit gets a hash computed from the folder hash, the author, the message — and the hash of the previous commit.
+
+Step 3 is the lock on the ledger. You cannot alter an old commit without changing its hash, which changes every hash after it, which everyone else's copy of the repository would instantly notice. This is why Davis could do more than say "that looks like my code." The public record — every commit, every author, every license file — is mathematically anchored. When critics said "we can prove whose code this was," Git's design is what they meant.
+
+### How Copilot learned
+
+Copilot's underlying model was trained by **next-token prediction**: show the model billions of code fragments, hide the next piece, and adjust the model until its guesses improve. Repeat, at enormous scale. Nothing in this process reads a license file. Code under GPL, MIT, or no license at all is simply text to predict.
+
+Most of what such a model learns is *generalization* — patterns, idioms, the shape of a correct loop. But models also exhibit [memorization]{.key-term}: rare, distinctive passages seen during training can be reproduced nearly verbatim. Boilerplate that appears in a million repositories comes out as a blend. A one-of-a-kind function like Davis's — or a famous oddity like the *Quake* code, copied into thousands of repositories exactly because it is famous — can come out as a recitation.
+
+The comparison at the heart of the legal fight looks like this:
+
+| Question | A person reading code to learn | A model training on code |
+|---|---|---|
+| Scale | dozens of projects in a career | billions of lines in weeks |
+| What is retained | ideas, habits, judgment | numerical weights that can regenerate text |
+| Can it reproduce verbatim? | rarely, and usually knowingly | yes, without knowing it has |
+| Sees the license? | yes, and can honor it | no — licenses are just more text |
+| Who profits directly | the learner | the company selling the model |
+
+Whether the two columns describe *the same activity* at different scales, or *different activities* that merely rhyme, is exactly what the argument below is about.
+
+## The Argument Copilot Started
+
+The positions connect: each one answers the one before it.
+
+### The plaintiffs' opening: a license is not a suggestion
+
+Butterick's complaint puts the developers' position plainly: open-source code "is not in the public domain. It is licensed" [@butterick2022copilot]. The Free Software Foundation — Stallman's organization — takes the same line: the conditions are the *reason* the commons exists at all.
+
+::: {.argument}
+**The License Argument**
+
+1. Open-source code is copyrighted work, made public only under conditions — keep the attribution, keep the license, or share alike.
+2. Copilot was built from that code and can reproduce it, and its outputs meet none of those conditions.
+3. A system built by taking conditional grants while discarding the conditions violates the grants.
+4. Therefore, Copilot is built on infringement — of millions of small promises at once.
+:::
+
+The steel in this argument is historical. Copyleft only ever worked because the conditions stuck. Companies shipped their Linux changes back to the community for thirty years not out of kindness but because the GPL required it and courts backed it up. If a company can now launder any code through a model — in one side as licensed work, out the other side as unconditioned suggestions — then copyleft is dead, and with it the deal that built the commons. The weight rests on premise 3: that training-and-generation is a form of *taking* covered by the license's conditions. That is the premise the reply denies.
+
+::: {.context-box}
+**Fair use.** U.S. copyright law allows some unlicensed uses of protected work — this is [fair use]{.key-term}. Courts weigh several factors, but the one that dominates modern cases is whether the use is **transformative**: does it create something with a new purpose, rather than substituting for the original? A search engine indexing books was ruled transformative. A company copying a competitor's code to sell the same product was not. Nobody wrote these rules with machine learning in mind, which is why both sides can cite them in good faith.
+:::
+
+### The defense: training is learning, and learning is free
+
+Microsoft, OpenAI, and many machine-learning researchers deny that training on public code "takes" it in the legal sense. Their model did not paste code into a database; it adjusted billions of numbers until it acquired something like skill. Every programmer alive, they note, learned partly by reading other people's code — and nobody calls that infringement.
+
+::: {.argument}
+**The Fair Use Reply**
+
+1. Copyright protects a particular *expression*, not the ideas, techniques, and patterns it contains.
+2. Training extracts ideas, techniques, and patterns — the unprotected part — for the new purpose of generating original suggestions, which is transformative.
+3. Verbatim reproduction is rare, unintended, and fixable with filters; a rare bug does not define the product.
+4. Therefore, training on public code is fair use, and Copilot infringes nothing by existing.
+:::
+
+The reply's soft spot is premise 2, and it is an analogy, not a fact. "The model learns like a person" is doing enormous work. A person who studied Davis's code could not, years later, type it back out with the comments intact. The model can. And scale changes the deal in a way the human comparison hides: a developer sharing code in 2015 was implicitly saying yes to human readers, not to a rival's product ingesting their life's work in an afternoon. Whether the law cares about that difference is contested. Whether the *community* cares is not — which is the next move.
+
+**The norms objection.** In 2022 the Software Freedom Conservancy — a nonprofit that enforces the GPL in court — launched a campaign called "Give Up GitHub," urging developers to leave the platform entirely [@kuhn2022]. Its argument deliberately sidesteps fair use: even if Copilot turns out to be *legal*, GitHub defected from the community's social contract. Developers uploaded their work under one shared understanding, and the platform's owner changed the terms retroactively, without asking, for profit. On this view the License Argument aims too low. The wrong is not a copyright technicality; it is that the commons runs on trust, and the trust was spent by someone who never earned it. The objection's weakness is its remedy — a boycott that mostly did not happen. GitHub kept growing. Perhaps norms without law are just nostalgia.
+
+### Where it rests today: the empirical turn
+
+The lawsuit largely fizzled. In 2024, a federal judge dismissed most of the claims in *Doe v. GitHub* — including, notably, the copyright-adjacent claims about stripped attribution — leaving only narrow contract issues alive [@vincent2024]. Courts in the parallel cases about books have leaned the same way: in 2025, a judge ruled that training a model on lawfully obtained books was "quintessentially transformative." The legal wind, so far, favors the Fair Use Reply.
+
+Industry behavior tells a more tangled story. GitHub shipped a filter that blocks Copilot suggestions matching public code, and offers paying customers legal indemnification if they get sued over an output — a curious warranty for a product doing nothing wrong. Regulators moved too: the EU's AI Act now requires model makers to disclose summaries of copyrighted training data. And a new ecosystem of opt-outs, "no-AI" license clauses, and poisoned datasets has appeared, as creators try to rebuild by technical means the consent the law declined to require.
+
+The deepest uncertainty is not legal but behavioral. The commons was an equilibrium: people shared because sharing came with terms that held. Stallman's whole insight in 1985 was that goodwill without enforcement gets fenced off. If the answer to "can they take it?" turns out to be *yes* — if anything public is training data — do the next thirty years of programmers keep sharing? Or does the code an AI learned from turn out to be the last generation of code anyone freely gave?
+
+## Discussion Questions
+
+1. Changing one letter in a file gives a completely different Git hash. Explain in your own words why that property makes a project's history trustworthy. Then give an analogy from outside computing.
+2. Write the License Argument and the Fair Use Reply in your own words. What is the one thing they really disagree about — what the law says, or what "learning" means? Defend your choice.
+3. You maintain a popular open-source library. A company asks to include it in an AI training set. They offer credit but no money. Do you say yes? What would change your answer?
+4. Pick one: music sampling, fan fiction, or AI image generators trained on artists' work. Is the Copilot debate easier or harder in your chosen case? Why?
+5. Is a person who learns to code by reading public repositories doing the same thing Copilot did? Take a side. Then state the strongest point against your side.
+
+## Further Reading
+
+- The GNU Manifesto — Stallman's original 1985 case for free software, and still the clearest statement of the philosophy the GPL enforces [@stallman1985].
+- *Just for Fun* — Torvalds's own account of building Linux, cheerfully unphilosophical and a useful contrast with Stallman [@torvalds2001].
+- *The Cathedral and the Bazaar* — Raymond's classic essay on why open, chaotic collaboration outbuilds closed teams [@raymond1999].
+- The *Doe v. GitHub* complaint and case site — the plaintiffs' argument in full, with the Copilot output examples that started it [@butterick2022copilot].
+- *Pro Git* — the standard free book on Git; chapter 10 explains the hash-based object model shown above [@chacon2014].
+
+## References
+
+::: {#refs}
+:::

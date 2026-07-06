@@ -23,7 +23,7 @@ interesting.
 | 5 | [How We Represent People: ADTs and the Ethics of Data Modeling](cs05_representing_people.qmd) | **Available** |
 | 6 | [Was OOP a Mistake? Alan Kay, Smalltalk & the Backlash](cs06_oop_mistake.qmd) | **Available** |
 | 7 | ["We Must Know — We Will Know": Gödel, Turing, and the Problem No Computer Can Solve](cs07_halting_problem.qmd) | **Available** |
-| 8 | Open Source & the Code an AI Learned From — Linux, Git & Copilot | *In progress* |
+| 8 | [Open Source and the Code an AI Learned From — Linux, Git & Copilot](cs08_open_source_copilot.qmd) | **Available** |
 | 9 | From SQL to NoSQL — Why Google Built Bigtable | *In progress* |
 | 10 | Three Companies Own the Internet — ARPANET to the Cloud Oligopoly | *In progress* |
 | 11 | The Equifax Breach | *In progress* |
