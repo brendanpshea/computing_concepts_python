@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>comp1150_nb09_databases – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notebook-9-databases-where-data-lives-when-the-program-stops" id="toc-notebook-9-databases-where-data-lives-when-the-program-stops" class="nav-link active" data-scroll-target="#notebook-9-databases-where-data-lives-when-the-program-stops">Notebook 9: Databases — Where Data Lives When the Program Stops</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#the-problem-batch-88-goes-missing" id="toc-the-problem-batch-88-goes-missing" class="nav-link" data-scroll-target="#the-problem-batch-88-goes-missing">The Problem: Batch 88 Goes Missing</a></li>
+  <li><a href="#why-a-database-from-one-big-grid-to-tables" id="toc-why-a-database-from-one-big-grid-to-tables" class="nav-link" data-scroll-target="#why-a-database-from-one-big-grid-to-tables">1. Why a Database? From One Big Grid to Tables</a></li>
+  <li><a href="#talking-to-a-database-sql" id="toc-talking-to-a-database-sql" class="nav-link" data-scroll-target="#talking-to-a-database-sql">2. Talking to a Database: SQL</a></li>
+  <li><a href="#asking-questions-barnaby-and-the-tasting-bureau" id="toc-asking-questions-barnaby-and-the-tasting-bureau" class="nav-link" data-scroll-target="#asking-questions-barnaby-and-the-tasting-bureau">3. Asking Questions: Barnaby and the Tasting Bureau</a></li>
+  <li><a href="#two-tables-are-better-than-one" id="toc-two-tables-are-better-than-one" class="nav-link" data-scroll-target="#two-tables-are-better-than-one">4. Two Tables Are Better Than One</a></li>
+  <li><a href="#when-rows-dont-fit-junipers-flavor-dreams" id="toc-when-rows-dont-fit-junipers-flavor-dreams" class="nav-link" data-scroll-target="#when-rows-dont-fit-junipers-flavor-dreams">5. When Rows Don’t Fit: Juniper’s Flavor Dreams</a></li>
+  <li><a href="#how-a-program-talks-to-the-database" id="toc-how-a-program-talks-to-the-database" class="nav-link" data-scroll-target="#how-a-program-talks-to-the-database">6. How a <em>Program</em> Talks to the Database</a></li>
+  <li><a href="#capstone-the-sweetshop-database" id="toc-capstone-the-sweetshop-database" class="nav-link" data-scroll-target="#capstone-the-sweetshop-database">✏️ Capstone — The Sweetshop Database</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB09_Databases.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB09_Databases.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB09_Databases.ipynb">View on GitHub</a></p>
+<section id="notebook-9-databases-where-data-lives-when-the-program-stops" class="level1">
+<h1>Notebook 9: Databases — Where Data Lives When the Program Stops</h1>
+<section id="comp-1150-computer-science-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
+<p><strong>Brendan Shea, PhD</strong></p>
+<!-- Lecture video link to be added -->
+<p>📺 <strong>Lecture video:</strong> <em>(coming soon)</em></p>
+</section>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li>Explain what a database is and why programs use one instead of variables, spreadsheets, or plain files</li>
+<li>Describe the relational model: tables, rows, columns, primary keys, and foreign keys</li>
+<li>Write basic SQL: <code>CREATE TABLE</code>, <code>INSERT</code>, <code>SELECT</code> with <code>WHERE</code> and <code>ORDER BY</code>, <code>JOIN</code>, and <code>GROUP BY</code></li>
+<li>Explain what an integrity constraint protects against, and why a database that says “no” is a feature</li>
+<li>Distinguish relational from document (non-relational) data models, and argue which fits a given problem</li>
+</ul>
+<p><em>Maps to course LOs: 9</em></p>
+</section>
+<section id="the-problem-batch-88-goes-missing" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-batch-88-goes-missing">The Problem: Batch 88 Goes Missing</h2>
+<p>The <strong>Marchpane Confectionery Works</strong> is famous for candies that shouldn’t be possible: Gloomberry Fizzers, Thundermint Bars, Whispering Toffee that hums when you unwrap it. Its founder, <strong>Cordelia Marchpane</strong>, is a brilliant inventor — and, until this week, a terrible record-keeper.</p>
+<p>Every fact about the factory lives in one enormous spreadsheet started by Cordelia’s grandmother. Candies, recipes, batches, shop orders — all of it, in one grid, edited by whoever grabs the laptop first.</p>
+<p>This week, three things went wrong at once:</p>
+<ol type="1">
+<li>A clerk renamed “Gloomberry Fizzer” to “Gloomberry Fizzers” in row 40 — but not in rows 87, 210, or 384. Now searches for the candy find <em>some</em> of its records.</li>
+<li>The Puddleton Sweet Shoppe received 400 boxes of Thundermint Bars. They ordered Whispering Toffee.</li>
+<li>Batch 88 failed a quality check, and <strong>nobody can say which recipe version it used</strong> — the batch row just says “the usual one.”</li>
+</ol>
+<p>Cordelia’s floor manager, <strong>Hazel Nougat</strong>, delivers the verdict: <em>“The problem isn’t that we made mistakes. Everyone makes mistakes. The problem is that nothing stopped us.”</em></p>
+<p>The spreadsheet will accept anything: a duplicated candy, a misspelled name, an order pointing at a product that doesn’t exist. It has no rules, no memory of who changed what, and no way for two people to work safely at once.</p>
+<p>There’s one more problem, and it’s the deepest one. Every program you’ve written in this course so far had the same quiet flaw: <strong>when the program stopped, its data vanished.</strong> Every list, every dictionary, every object — gone the moment the cell finished. A factory can’t work that way. Data has to <em>outlive</em> the program that created it.</p>
+<p>The tool that fixes all of this — the rules, the sharing, and the surviving — is a <strong>database</strong>. That’s what this notebook is about.</p>
+<section id="the-roadmap" class="level3">
+<h3 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h3>
+<p>Here’s where we’re going:</p>
+<ol type="1">
+<li><strong>Why a database?</strong> What the spreadsheet can’t do, and the idea of the <em>relational model</em>.</li>
+<li><strong>Talking to a database</strong> — a language called SQL, and how to create and fill tables.</li>
+<li><strong>Asking questions</strong> — <code>SELECT</code>, the query that does most of the world’s data work.</li>
+<li><strong>Two tables are better than one</strong> — <code>JOIN</code>, <code>GROUP BY</code>, and the safety rules that would have saved Batch 88.</li>
+<li><strong>When rows don’t fit</strong> — document databases, for data that refuses to sit in neat columns.</li>
+</ol>
+<p>At the end, you’ll design and build a small database of your own, with an AI assistant doing the typing and you doing the thinking.</p>
+</section>
+</section>
+<section id="why-a-database-from-one-big-grid-to-tables" class="level2">
+<h2 class="anchored" data-anchor-id="why-a-database-from-one-big-grid-to-tables">1. Why a Database? From One Big Grid to Tables</h2>
+<p>A <strong>database</strong> is an organized collection of data, managed by a program whose whole job is to keep that data correct, shared, and permanent. That program is called a <strong>database management system</strong> (DBMS). The one we’ll use is <strong>SQLite</strong> — small, free, and built into Python, but a genuine database used in phones, browsers, and airplanes.</p>
+<p>The most successful way to organize a database — dominant for fifty years — is the <strong>relational model</strong>. Its core move sounds almost too simple:</p>
+<p><strong>Give each <em>kind</em> of thing its own table.</strong></p>
+<p>Candies are one kind of thing, so they get a <code>candies</code> table. Batches are a different kind of thing: <code>batches</code> table. Shop orders: <code>shop_orders</code> table. Cordelia’s grandmother crammed all three into one grid, and that’s precisely why every disaster happened.</p>
+<section id="the-vocabulary-of-tables" class="level3">
+<h3 class="anchored" data-anchor-id="the-vocabulary-of-tables">The Vocabulary of Tables</h3>
+<p>Four words carry the whole relational model:</p>
+<ul>
+<li>A <strong>table</strong> holds every record of one kind of thing (all the candies, and <em>only</em> candies).</li>
+<li>A <strong>row</strong> is one of those things (one candy: Thundermint Bar).</li>
+<li>A <strong>column</strong> is one fact recorded about every row (every candy has a <code>price_pence</code>).</li>
+<li>The <strong>primary key</strong> is a column holding a unique, unchanging ID for each row — a name tag that never lies.</li>
+</ul>
+<p>That last one is the fix for the Gloomberry disaster. Names get misspelled, renamed, and duplicated. So a table never uses a name to identify anything. Candy #3 is candy #3 forever, even if its name changes in exactly one place: its own row.</p>
+</section>
+<section id="picture-it-the-factorys-tables" class="level3">
+<h3 class="anchored" data-anchor-id="picture-it-the-factorys-tables">Picture It: The Factory’s Tables</h3>
+<p>The diagram below shows the three tables we’ll build for the Marchpane Works, and how they connect. Each box is a table; each line inside it is a column. The arrows show rows in one table pointing at rows in another — a batch <em>belongs to</em> a candy, and so does an order.</p>
+<p><strong>Reading it:</strong> each box is a table and each line is a column. The 🔑 marks the primary key — the row’s permanent ID. The arrows (↗) show that <code>batches</code> and <code>shop_orders</code> don’t store a candy’s <em>name</em>; they store its <code>candy_id</code>, pointing back at exactly one row in <code>candies</code>. Rename the candy there, and every batch and order follows automatically.</p>
+</section>
+<section id="think-about-it-you-used-five-databases-before-breakfast" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-you-used-five-databases-before-breakfast">💭 Think About It — You Used Five Databases Before Breakfast</h3>
+<p>Your phone’s contacts, your text messages, your streaming history, your school’s registration system, the till at the coffee shop — every one is a database.</p>
+<p>Pick one system you used today. What do you think its tables are? What would go wrong if it were one big spreadsheet that anyone could edit?</p>
+</section>
+</section>
+<section id="talking-to-a-database-sql" class="level2">
+<h2 class="anchored" data-anchor-id="talking-to-a-database-sql">2. Talking to a Database: SQL</h2>
+<p>Databases speak their own language: <strong>SQL</strong> (“ess-cue-ell,” or “sequel”), short for <em>Structured Query Language</em>. It’s been the standard since the 1970s, and it’s wonderfully unlike Python: instead of telling the computer <em>how</em> to do something step by step, you describe <em>what</em> you want, and the database figures out how.</p>
+<p>In this notebook we’ll write SQL directly in code cells, using a small tool called <strong>jupysql</strong>. Any cell that starts with the line <code>%%sql</code> speaks SQL instead of Python. That first line is called a <em>cell magic</em> — think of it as a sign on the door saying which language is spoken inside.</p>
+<p>The next cell installs the tool. It takes a few seconds and only needs to run once per session.</p>
+<div id="c0b52db8" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install jupysql <span class="op">--</span>quiet</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+[notice] A new release of pip is available: 25.2 -&gt; 26.1.2
+[notice] To update, run: pythonw.exe -m pip install --upgrade pip</code></pre>
+</div>
+</div>
+<section id="connecting-to-a-database" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-to-a-database">Connecting to a Database</h3>
+<p>With the tool installed, two lines get us ready. The general pattern is:</p>
+<pre><code>%load_ext sql
+%sql sqlite:///file_name.db</code></pre>
+<p>The first line switches on SQL support. The second connects to a database <em>file</em> — and here’s a quiet superpower: if the file doesn’t exist, SQLite simply creates it. The next cell connects us to <code>candy_factory.db</code>, the file where everything we build will live — and where it will <strong>still be</strong> after the program stops.</p>
+<div id="eea7070a" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext sql</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config SqlMagic.displaylimit <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>sql sqlite:<span class="op">///</span>candy_factory.db</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Connecting to 'sqlite:///candy_factory.db'</span>
+</div>
+</div>
+</section>
+<section id="making-a-table-create-table" class="level3">
+<h3 class="anchored" data-anchor-id="making-a-table-create-table">Making a Table: CREATE TABLE</h3>
+<p>The first SQL statement to learn creates a table. The general shape is:</p>
+<pre><code>CREATE TABLE table_name (
+    column_name   TYPE,
+    column_name   TYPE,
+    ...
+);</code></pre>
+<p>You name the table, then list each column with its <strong>data type</strong>. SQLite’s everyday types are <code>INTEGER</code> (whole numbers), <code>REAL</code> (decimals), and <code>TEXT</code> (strings). Adding <code>PRIMARY KEY</code> after a column marks it as the table’s permanent ID.</p>
+<p>The next cell builds Cordelia’s <code>candies</code> table. (The <code>DROP TABLE IF EXISTS</code> line first deletes any old copy, so you can safely re-run the cell.)</p>
+<div id="d8438d8e" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>DROP TABLE IF EXISTS candies<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>CREATE TABLE candies (</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    candy_id     INTEGER PRIMARY KEY,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    name         TEXT,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    department   TEXT,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    price_pence  INTEGER,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    sugar_grams  REAL</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<table class="caption-top">
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="understanding-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code">Understanding the Code</h3>
+<ul>
+<li><code>%%sql</code> on the first line means: this whole cell is SQL, not Python.</li>
+<li><code>CREATE TABLE candies ( ... )</code> declares the table and its five columns.</li>
+<li><code>candy_id INTEGER PRIMARY KEY</code> — every candy gets a unique whole-number ID. This is the name tag that never lies.</li>
+<li>Statements end with a semicolon <code>;</code> — SQL’s version of a full stop.</li>
+</ul>
+<p>The table exists, but it’s empty — a labeled filing cabinet with no files. Let’s fix that.</p>
+</section>
+<section id="filling-it-insert" class="level3">
+<h3 class="anchored" data-anchor-id="filling-it-insert">Filling It: INSERT</h3>
+<p>Adding a row uses <code>INSERT</code>. The general shape:</p>
+<pre><code>INSERT INTO table_name (column_1, column_2, ...)
+VALUES (value_1, value_2, ...);</code></pre>
+<p>You name the columns, then supply one value for each, in the same order. Text values go in single quotes: <code>'Thundermint Bar'</code>. The next cell stocks the factory’s catalog.</p>
+<div id="b5bfdc87" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>INSERT INTO candies (candy_id, name, department, price_pence, sugar_grams) VALUES</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="st">'Gloomberry Fizzer'</span>,   <span class="st">'Fizzworks'</span>,    <span class="dv">120</span>, <span class="fl">22.0</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="st">'Thundermint Bar'</span>,     <span class="st">'Chocolate'</span>,    <span class="dv">250</span>, <span class="fl">31.5</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="st">'Whispering Toffee'</span>,   <span class="st">'Toffee Hall'</span>,  <span class="dv">180</span>, <span class="fl">27.0</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">4</span>, <span class="st">'Marchpane Original'</span>,  <span class="st">'Marzipanery'</span>,  <span class="dv">300</span>, <span class="fl">18.5</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">5</span>, <span class="st">'Puddle Drops'</span>,        <span class="st">'Fizzworks'</span>,     <span class="dv">90</span>, <span class="fl">12.0</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">6</span>, <span class="st">'Candied Thistle'</span>,     <span class="st">'Experimental'</span>, <span class="dv">210</span>,  <span class="fl">8.0</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">7</span>, <span class="st">'Hummingbird Nougat'</span>,  <span class="st">'Toffee Hall'</span>,  <span class="dv">260</span>, <span class="fl">24.5</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">8</span>, <span class="st">'Midnight Sherbet'</span>,    <span class="st">'Fizzworks'</span>,    <span class="dv">140</span>, <span class="fl">19.0</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display">
+<span style="color: green">8 rows affected.</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<table class="caption-top">
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+<p>Eight candies, one <code>INSERT</code>. (Listing several rows after one <code>VALUES</code>, separated by commas, is a handy shortcut.)</p>
+<p>But did it work? Time to meet the most important word in SQL. The next cell asks the database to show us everything in the table.</p>
+<div id="6455ee59" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>SELECT <span class="op">*</span> FROM candies<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">candy_id</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">department</th>
+<th data-quarto-table-cell-role="th">price_pence</th>
+<th data-quarto-table-cell-role="th">sugar_grams</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Gloomberry Fizzer</td>
+<td>Fizzworks</td>
+<td>120</td>
+<td>22.0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Thundermint Bar</td>
+<td>Chocolate</td>
+<td>250</td>
+<td>31.5</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Whispering Toffee</td>
+<td>Toffee Hall</td>
+<td>180</td>
+<td>27.0</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Marchpane Original</td>
+<td>Marzipanery</td>
+<td>300</td>
+<td>18.5</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Puddle Drops</td>
+<td>Fizzworks</td>
+<td>90</td>
+<td>12.0</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Candied Thistle</td>
+<td>Experimental</td>
+<td>210</td>
+<td>8.0</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Hummingbird Nougat</td>
+<td>Toffee Hall</td>
+<td>260</td>
+<td>24.5</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Midnight Sherbet</td>
+<td>Fizzworks</td>
+<td>140</td>
+<td>19.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>There’s the whole catalog, back out of the database as a clean table. <code>SELECT * FROM candies</code> means “give me every column (<code>*</code>) of every row in <code>candies</code>.”</p>
+<p>Notice what you did <em>not</em> have to write: no loop, no print formatting, no file handling. You described what you wanted; the database did the rest. The whole next section is about asking sharper questions than “everything, please.”</p>
+</section>
+<section id="your-turn-cordelias-ingredient-stores" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-cordelias-ingredient-stores">✏️ Your Turn — Cordelia’s Ingredient Stores</h3>
+<p>Cordelia wants a table for raw ingredients. It needs: an <code>ingredient_id</code> (whole number, primary key), a <code>name</code> (text), <code>stock_kg</code> (a decimal — how much is in the storeroom), and <code>cost_pence_per_kg</code> (a whole number).</p>
+<p>Write the <code>CREATE TABLE</code> statement, then <code>INSERT</code> at least three ingredients. Invent something suitably strange — lifting syrup, powdered thunder, gloomberries.</p>
+<div id="e54c562b" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> TODO: create the ingredients table (<span class="dv">4</span> columns, described above)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> TODO: insert at least three ingredients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="asking-questions-barnaby-and-the-tasting-bureau" class="level2">
+<h2 class="anchored" data-anchor-id="asking-questions-barnaby-and-the-tasting-bureau">3. Asking Questions: Barnaby and the Tasting Bureau</h2>
+<p><strong>Barnaby Brittle</strong> runs the factory’s Tasting Bureau, and he lives inside one SQL word: <code>SELECT</code>. Creating tables happens once; <em>querying</em> them happens thousands of times a day, everywhere. A request for data is called a <strong>query</strong>.</p>
+<p>The full shape of a basic query:</p>
+<pre><code>SELECT column_1, column_2
+FROM table_name
+WHERE condition;</code></pre>
+<ul>
+<li><code>SELECT</code> — <em>which columns</em> you want (or <code>*</code> for all of them).</li>
+<li><code>FROM</code> — <em>which table</em> to look in.</li>
+<li><code>WHERE</code> — <em>which rows</em> qualify. Leave it off, and you get every row.</li>
+</ul>
+<p>Barnaby rarely needs every column. The next cell pulls just names and prices.</p>
+<div id="35103d36" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>SELECT name, price_pence</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>FROM candies<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">price_pence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gloomberry Fizzer</td>
+<td>120</td>
+</tr>
+<tr class="even">
+<td>Thundermint Bar</td>
+<td>250</td>
+</tr>
+<tr class="odd">
+<td>Whispering Toffee</td>
+<td>180</td>
+</tr>
+<tr class="even">
+<td>Marchpane Original</td>
+<td>300</td>
+</tr>
+<tr class="odd">
+<td>Puddle Drops</td>
+<td>90</td>
+</tr>
+<tr class="even">
+<td>Candied Thistle</td>
+<td>210</td>
+</tr>
+<tr class="odd">
+<td>Hummingbird Nougat</td>
+<td>260</td>
+</tr>
+<tr class="even">
+<td>Midnight Sherbet</td>
+<td>140</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Two columns instead of five — <code>SELECT</code> lets you take only what you need.</p>
+<p>Filtering <em>rows</em> is where queries get powerful. A <code>WHERE</code> condition works like the boolean tests you’ve written in Python: <code>=</code>, <code>&lt;</code>, <code>&gt;</code>, combined with <code>AND</code> and <code>OR</code>. (One trap for Python speakers: SQL tests equality with a single <code>=</code>, not <code>==</code>.)</p>
+<p>Barnaby has been asked for the <em>lighter</em> end of the catalog. The next cell finds every candy under 20 grams of sugar.</p>
+<div id="29a6edf7" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>SELECT name, sugar_grams</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>FROM candies</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>WHERE sugar_grams <span class="op">&lt;</span> <span class="dv">20</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">sugar_grams</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Marchpane Original</td>
+<td>18.5</td>
+</tr>
+<tr class="even">
+<td>Puddle Drops</td>
+<td>12.0</td>
+</tr>
+<tr class="odd">
+<td>Candied Thistle</td>
+<td>8.0</td>
+</tr>
+<tr class="even">
+<td>Midnight Sherbet</td>
+<td>19.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Four rows survive the filter. The database checked the condition against every candy and kept only the ones where it was true — exactly like an <code>if</code> inside a loop, except you never wrote the loop.</p>
+<p>Conditions combine just like in Python. <code>WHERE department = 'Fizzworks' AND price_pence &lt; 100</code> finds cheap fizzy candies. <code>OR</code> and <code>NOT</code> work too.</p>
+<section id="predict-before-you-run" class="level3">
+<h3 class="anchored" data-anchor-id="predict-before-you-run">🔮 Predict Before You Run</h3>
+<p>The next cell asks for candies where <code>department = 'Fizzworks' AND sugar_grams &lt; 20</code>.</p>
+<p>Look back at the full catalog printout above. <strong>Before you run the cell</strong>, write down which candies you expect — and how many rows that is.</p>
+<div id="4e16feca" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>SELECT name, department, sugar_grams</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>FROM candies</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>WHERE department <span class="op">=</span> <span class="st">'Fizzworks'</span> AND sugar_grams <span class="op">&lt;</span> <span class="dv">20</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">department</th>
+<th data-quarto-table-cell-role="th">sugar_grams</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Puddle Drops</td>
+<td>Fizzworks</td>
+<td>12.0</td>
+</tr>
+<tr class="even">
+<td>Midnight Sherbet</td>
+<td>Fizzworks</td>
+<td>19.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Did you predict both? Gloomberry Fizzer is in Fizzworks but has 22 grams of sugar — the <code>AND</code> requires <em>both</em> conditions, so it’s out.</p>
+<p>One more tool and Barnaby’s kit is complete: <strong>sorting</strong>. Add these to the end of a query:</p>
+<pre><code>ORDER BY column_name DESC
+LIMIT n;</code></pre>
+<p><code>ORDER BY</code> sorts the results by a column (<code>DESC</code> for descending, highest first; leave it off for ascending). <code>LIMIT</code> keeps only the first <em>n</em> rows. Together they answer “top three” questions — like the next cell: the factory’s three most expensive candies.</p>
+<div id="68c50c51" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>SELECT name, price_pence</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>FROM candies</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>ORDER BY price_pence DESC</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>LIMIT <span class="dv">3</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">price_pence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Marchpane Original</td>
+<td>300</td>
+</tr>
+<tr class="even">
+<td>Hummingbird Nougat</td>
+<td>260</td>
+</tr>
+<tr class="odd">
+<td>Thundermint Bar</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Sorted, trimmed, done. Notice the pattern of everything in this section: you <em>describe the result</em> — these columns, rows matching this, in this order, only this many — and the database works out the steps. That’s SQL’s whole personality.</p>
+</section>
+<section id="your-turn-barnabys-shortlist" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-barnabys-shortlist">✏️ Your Turn — Barnaby’s Shortlist</h3>
+<p>The Tasting Bureau needs a shortlist for a “light and affordable” gift box: every candy <strong>under 25 grams of sugar</strong>, showing <code>name</code>, <code>price_pence</code>, and <code>sugar_grams</code>, <strong>sorted from cheapest to most expensive</strong>.</p>
+<p>One query does it. (Remember: ascending is the default sort.)</p>
+<div id="a6ca3854" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> TODO: Barnaby<span class="st">'s shortlist — under 25g sugar, cheapest first</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="er">SELECT</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="two-tables-are-better-than-one" class="level2">
+<h2 class="anchored" data-anchor-id="two-tables-are-better-than-one">4. Two Tables Are Better Than One</h2>
+<p>Back to the week’s disasters. The renamed Gloomberry Fizzer broke the spreadsheet because the candy’s <em>name</em> was copied into hundreds of rows. The relational fix: other tables store the candy’s <strong>primary key</strong>, never its name.</p>
+<p>When a column in one table holds the primary key of another table’s row, it’s called a <strong>foreign key</strong>. A batch doesn’t say “the usual one” — it says <code>candy_id = 3</code>, which points at exactly one row in <code>candies</code>, forever.</p>
+<p>The next cell builds the factory’s two remaining tables. Watch the <code>FOREIGN KEY</code> lines — and the <code>PRAGMA</code> at the top, which switches on SQLite’s enforcement of them.</p>
+<div id="a1166a6d" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>PRAGMA foreign_keys <span class="op">=</span> ON<span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>DROP TABLE IF EXISTS batches<span class="op">;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>CREATE TABLE batches (</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    batch_id      INTEGER PRIMARY KEY,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    candy_id      INTEGER,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    batch_size    INTEGER,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    quality_score REAL,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    made_on       TEXT,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    FOREIGN KEY (candy_id) REFERENCES candies (candy_id)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>DROP TABLE IF EXISTS shop_orders<span class="op">;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>CREATE TABLE shop_orders (</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    order_id   INTEGER PRIMARY KEY,</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    candy_id   INTEGER,</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    shop_name  TEXT,</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    boxes      INTEGER,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    FOREIGN KEY (candy_id) REFERENCES candies (candy_id)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<table class="caption-top">
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+<section id="understanding-the-code-1" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code-1">Understanding the Code</h3>
+<ul>
+<li>Each table gets its own primary key (<code>batch_id</code>, <code>order_id</code>).</li>
+<li><code>candy_id INTEGER</code> — the foreign key column. It holds <em>numbers</em>, not names.</li>
+<li><code>FOREIGN KEY (candy_id) REFERENCES candies (candy_id)</code> — the rule: any value in this column <strong>must</strong> exist as a primary key in <code>candies</code>.</li>
+<li><code>PRAGMA foreign_keys = ON</code> — SQLite politely ignores that rule unless you switch enforcement on. We want it on. We’ll see why shortly.</li>
+</ul>
+<p>Now some data: recent batches off the line, and the week’s shop orders.</p>
+<div id="70bdbffc" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>INSERT INTO batches (batch_id, candy_id, batch_size, quality_score, made_on) VALUES</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">86</span>, <span class="dv">2</span>, <span class="dv">500</span>, <span class="fl">9.1</span>, <span class="st">'2026-06-29'</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">87</span>, <span class="dv">5</span>, <span class="dv">800</span>, <span class="fl">8.4</span>, <span class="st">'2026-06-30'</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">88</span>, <span class="dv">1</span>, <span class="dv">650</span>, <span class="fl">5.2</span>, <span class="st">'2026-07-01'</span>),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">89</span>, <span class="dv">3</span>, <span class="dv">400</span>, <span class="fl">9.6</span>, <span class="st">'2026-07-01'</span>),</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">90</span>, <span class="dv">1</span>, <span class="dv">700</span>, <span class="fl">8.9</span>, <span class="st">'2026-07-02'</span>)<span class="op">;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>INSERT INTO shop_orders (order_id, candy_id, shop_name, boxes) VALUES</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">501</span>, <span class="dv">3</span>, <span class="st">'Puddleton Sweet Shoppe'</span>, <span class="dv">400</span>),</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">502</span>, <span class="dv">2</span>, <span class="st">'Puddleton Sweet Shoppe'</span>, <span class="dv">120</span>),</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">503</span>, <span class="dv">1</span>, <span class="st">'The Sugared Quill'</span>,      <span class="dv">250</span>),</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">504</span>, <span class="dv">4</span>, <span class="st">'The Sugared Quill'</span>,       <span class="dv">60</span>),</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">505</span>, <span class="dv">2</span>, <span class="st">'Grimble &amp; Daughters'</span>,    <span class="dv">300</span>),</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">506</span>, <span class="dv">5</span>, <span class="st">'Grimble &amp; Daughters'</span>,    <span class="dv">450</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display">
+<span style="color: green">5 rows affected.</span>
+</div>
+<div class="cell-output cell-output-display">
+<span style="color: green">6 rows affected.</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<table class="caption-top">
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="putting-them-back-together-join" class="level3">
+<h3 class="anchored" data-anchor-id="putting-them-back-together-join">Putting Them Back Together: JOIN</h3>
+<p>Look at <code>batches</code>: it’s all ID numbers. Efficient — but Hazel can’t hand Cordelia a report that says “candy 1 had a bad day.” We need each batch <em>with its candy’s name</em>. Recombining tables is what <code>JOIN</code> does:</p>
+<pre><code>SELECT columns
+FROM table_a
+JOIN table_b ON table_a.key_column = table_b.key_column;</code></pre>
+<p>The <code>ON</code> clause says how rows match up: a batch and a candy belong together when their <code>candy_id</code> values are equal. Because both tables have a column called <code>candy_id</code>, we write the table name in front — <code>batches.candy_id</code> — to say which one we mean.</p>
+<p>The next cell produces Hazel’s readable batch report.</p>
+<div id="efd1e364" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>SELECT batches.batch_id, candies.name, batches.quality_score</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>FROM batches</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>JOIN candies ON batches.candy_id <span class="op">=</span> candies.candy_id</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ORDER BY batches.quality_score<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">batch_id</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">quality_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>88</td>
+<td>Gloomberry Fizzer</td>
+<td>5.2</td>
+</tr>
+<tr class="even">
+<td>87</td>
+<td>Puddle Drops</td>
+<td>8.4</td>
+</tr>
+<tr class="odd">
+<td>90</td>
+<td>Gloomberry Fizzer</td>
+<td>8.9</td>
+</tr>
+<tr class="even">
+<td>86</td>
+<td>Thundermint Bar</td>
+<td>9.1</td>
+</tr>
+<tr class="odd">
+<td>89</td>
+<td>Whispering Toffee</td>
+<td>9.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Every batch, with its candy’s <em>name</em> — even though <code>batches</code> never stores a name. The database matched each batch’s <code>candy_id</code> to the right row of <code>candies</code> and stitched the columns together on the fly.</p>
+<p>And there’s the week’s mystery solved in one line of output: <strong>Batch 88, Gloomberry Fizzer, quality 5.2.</strong> The ID pointed at exactly one candy. No “the usual one” possible.</p>
+<p>This is the deal the relational model offers: store every fact <strong>once</strong>, in the table where it belongs — then use <code>JOIN</code> to recombine facts whenever a question needs them.</p>
+</section>
+<section id="ledgers-question-group-by" class="level3">
+<h3 class="anchored" data-anchor-id="ledgers-question-group-by">Ledger’s Question: GROUP BY</h3>
+<p><strong>Ledger Pettigrew</strong> in accounts doesn’t want rows; he wants <em>totals</em>. Which candy earned the most this week? That takes two new tools:</p>
+<pre><code>SELECT column, SUM(expression)
+FROM ...
+GROUP BY column;</code></pre>
+<p><code>GROUP BY</code> gathers rows into buckets — one bucket per candy. An <strong>aggregate function</strong> then boils each bucket down to one number: <code>SUM()</code> adds, <code>COUNT()</code> counts, <code>AVG()</code> averages.</p>
+<p>The next cell joins orders to candies, groups by candy, and totals up the money.</p>
+<div id="37474ca3" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>SELECT candies.name,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>       SUM(shop_orders.boxes) AS total_boxes,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>       SUM(shop_orders.boxes <span class="op">*</span> candies.price_pence) AS revenue_pence</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>FROM shop_orders</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>JOIN candies ON shop_orders.candy_id <span class="op">=</span> candies.candy_id</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>GROUP BY candies.name</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>ORDER BY revenue_pence DESC<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">total_boxes</th>
+<th data-quarto-table-cell-role="th">revenue_pence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thundermint Bar</td>
+<td>420</td>
+<td>105000</td>
+</tr>
+<tr class="even">
+<td>Whispering Toffee</td>
+<td>400</td>
+<td>72000</td>
+</tr>
+<tr class="odd">
+<td>Puddle Drops</td>
+<td>450</td>
+<td>40500</td>
+</tr>
+<tr class="even">
+<td>Gloomberry Fizzer</td>
+<td>250</td>
+<td>30000</td>
+</tr>
+<tr class="odd">
+<td>Marchpane Original</td>
+<td>60</td>
+<td>18000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>One row per candy, not per order — that’s <code>GROUP BY</code> at work. The <code>AS</code> keyword just gives a calculated column a readable name.</p>
+<p>Ledger’s entire quarterly report is queries like this one. So is a streaming service’s “most played,” a hospital’s “visits per patient,” and a game’s leaderboard. <code>JOIN</code> + <code>GROUP BY</code> is most of what “data analysis” means in practice.</p>
+</section>
+<section id="hazels-safety-rule" class="level3">
+<h3 class="anchored" data-anchor-id="hazels-safety-rule">Hazel’s Safety Rule</h3>
+<p>One disaster remains: the Puddleton shipment — an order pointing at the wrong product. The spreadsheet accepted it silently. What does the database do?</p>
+<p>A rule like <code>FOREIGN KEY</code> is an <strong>integrity constraint</strong>: a promise about the data that the database itself enforces. Not a warning. A refusal.</p>
+<p>The next cell tries to log a batch for candy #999 — a candy that does not exist. It’s marked not to run automatically, because it is <em>designed to fail</em>. Run it yourself and read the error.</p>
+<div id="a3c3661d" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> This INSERT <span class="kw">is</span> designed to FAIL. Run it <span class="kw">and</span> read the error message.</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>INSERT INTO batches (batch_id, candy_id, batch_size, quality_score, made_on)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>VALUES (<span class="dv">91</span>, <span class="dv">999</span>, <span class="dv">500</span>, <span class="fl">7.0</span>, <span class="st">'2026-07-03'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You should see an error ending in <strong><code>FOREIGN KEY constraint failed</code></strong>.</p>
+<p>Hazel’s verdict on the spreadsheet was: <em>“nothing stopped us.”</em> This is what stopping us looks like. The database checked <code>candies</code> for a candy #999, found nothing, and rejected the row — no matter who typed it, no matter how busy the factory was.</p>
+<p>That’s the deep difference between a spreadsheet and a database. A spreadsheet stores what you typed. A database enforces what must be <em>true</em>.</p>
+</section>
+<section id="your-turn-hazels-quality-watchlist" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-hazels-quality-watchlist">✏️ Your Turn — Hazel’s Quality Watchlist</h3>
+<p>Hazel wants a watchlist: the <strong>candy name</strong>, <strong>batch ID</strong>, and <strong>quality score</strong> for every batch scoring <strong>below 9.0</strong>, worst first.</p>
+<p>You’ll need a <code>JOIN</code> (the names live in <code>candies</code>, the scores in <code>batches</code>), a <code>WHERE</code>, and an <code>ORDER BY</code>. Use the batch report query above as your model.</p>
+<div id="9326c95d" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> TODO: Hazel<span class="st">'s watchlist — name, batch_id, quality_score for batches under 9.0, worst first</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="er">SELECT</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="think-about-it-the-machine-that-says-no" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-machine-that-says-no">💭 Think About It — The Machine That Says No</h3>
+<p>The foreign-key error <em>prevented</em> a user from doing what they asked. Usually we call that a bug. Here it’s the whole point.</p>
+<p>Where else should software refuse an instruction, even from an authorized user? Where would a hard “no” do more harm than good? Who should get to decide which rules are unbreakable?</p>
+</section>
+</section>
+<section id="when-rows-dont-fit-junipers-flavor-dreams" class="level2">
+<h2 class="anchored" data-anchor-id="when-rows-dont-fit-junipers-flavor-dreams">5. When Rows Don’t Fit: Juniper’s Flavor Dreams</h2>
+<p><strong>Juniper Quist</strong> runs Experimental Flavors, and her data problem is different in kind. The factory invites the public to submit “flavor dreams” — descriptions of candies they wish existed. The submissions are chaos:</p>
+<ul>
+<li>One dreamer specifies a texture, a color, and a sound.</li>
+<li>Another lists fourteen allergies and a childhood memory.</li>
+<li>Another writes only: <em>“make it taste like a thunderstorm.”</em></li>
+</ul>
+<p>Try designing a table for that. What are the columns? <code>texture</code>? <code>memory</code>? <code>sound_on_unwrapping</code>? Every submission would fill three columns and leave forty empty — and next week someone invents a field you never imagined. Rigid columns, which <em>saved</em> the factory in sections 1–4, are exactly wrong here.</p>
+<section id="the-document-model" class="level3">
+<h3 class="anchored" data-anchor-id="the-document-model">The Document Model</h3>
+<p>The alternative: store each submission as a <strong>document</strong> — a free-form bundle of labeled data, usually written as <strong>JSON</strong> (JavaScript Object Notation). JSON should look eerily familiar; it’s essentially a Python dictionary in text form:</p>
+<pre><code>{"from": "a dreamer", "wants": ["fizzy", "purple"], "loudness": 3}</code></pre>
+<p>A <strong>document database</strong> stores one document per record and lets every document have a <em>different shape</em>. Famous examples include MongoDB; these systems are often grouped under the banner <strong>NoSQL</strong> (“not only SQL”).</p>
+<p>We don’t need new software to try the idea — SQLite can store JSON in an ordinary <code>TEXT</code> column and query inside it. The next cell files three wildly different dreams.</p>
+<div id="74fc2464" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>DROP TABLE IF EXISTS flavor_dreams<span class="op">;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>CREATE TABLE flavor_dreams (</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    dream_id  INTEGER PRIMARY KEY,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    dream     TEXT</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>INSERT INTO flavor_dreams (dream_id, dream) VALUES</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="st">'{"from": "Milo, age 9", "taste": "thunderstorm", "loudness": 5}'</span>),</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="st">'{"from": "Prof. Anemone", "texture": "cloud", "color": "in-between blue",</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="er">          "allergies": ["nuts", "regret"]}'),</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="st">'{"from": "anonymous", "taste": "the last day of school",</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="er">          "must_hum": true, "budget_pence": 200}');</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display">
+<span style="color: green">3 rows affected.</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<table class="caption-top">
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+<p>Three rows, three completely different shapes — and the table didn’t complain, because to the table each dream is just one text value. No empty columns, no <code>ALTER TABLE</code> every time a dreamer invents a new field.</p>
+<p>Can we still <em>query</em> inside them? SQLite provides <code>json_extract(column, '$.field')</code>, which reaches into a document and pulls out one labeled value (the <code>$</code> means “start at the top of the document”). The next cell pulls out who each dream is from, and its taste — if it has one.</p>
+<div id="bc1ddb34" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>SELECT dream_id,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>       json_extract(dream, <span class="st">'$.from'</span>)  AS dreamer,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>       json_extract(dream, <span class="st">'$.taste'</span>) AS taste</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>FROM flavor_dreams<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<span style="None">Running query in 'sqlite:///candy_factory.db'</span>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">dream_id</th>
+<th data-quarto-table-cell-role="th">dreamer</th>
+<th data-quarto-table-cell-role="th">taste</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Milo, age 9</td>
+<td>thunderstorm</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Prof. Anemone</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>anonymous</td>
+<td>the last day of school</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Notice Prof.&nbsp;Anemone’s <code>taste</code> comes back as <code>None</code> — her dream simply doesn’t have that field, and the document model shrugs: fine.</p>
+<p>That shrug is the whole trade-off. Compare the two models honestly:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Relational (tables)</th>
+<th>Document (JSON)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Every record has the same shape?</td>
+<td>Yes — enforced</td>
+<td>No — each document differs</td>
+</tr>
+<tr class="even">
+<td>Rules like foreign keys?</td>
+<td>Strong, automatic</td>
+<td>Weak or manual</td>
+</tr>
+<tr class="odd">
+<td>Combining data (<code>JOIN</code>)?</td>
+<td>Excellent</td>
+<td>Awkward</td>
+</tr>
+<tr class="even">
+<td>Handles surprise fields?</td>
+<td>Painfully (<code>ALTER TABLE</code>)</td>
+<td>Effortlessly</td>
+</tr>
+<tr class="odd">
+<td>Best when…</td>
+<td>the shape is known and shared</td>
+<td>the shape is varied and evolving</td>
+</tr>
+</tbody>
+</table>
+<p>The rule of thumb: <strong>batches and bank accounts want tables; dreams and profiles want documents.</strong> Real systems — including this factory — often use both, side by side.</p>
+</section>
+<section id="your-turn-pick-the-right-model" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-pick-the-right-model">✏️ Your Turn — Pick the Right Model</h3>
+<p>For each scenario, choose <strong>relational</strong> or <strong>document</strong> — and give one sentence of <em>why</em>, using the table above. There’s a defensible case on both sides for at least one of them.</p>
+<ol type="1">
+<li>A bank’s ledger of account transfers.</li>
+<li>Player save-files for a video game, where every update adds new abilities and items.</li>
+<li>A clinic’s records of patients, visits, and prescriptions.</li>
+<li>An online shop’s product catalog: books, gloves, kayaks — each with different attributes.</li>
+</ol>
+<p>No code for this one — write your four answers in the cell below or on paper.</p>
+<p><em>(Write your answers here — double-click this cell to edit it.)</em></p>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+</section>
+<section id="think-about-it-queryable-isnt-the-same-as-fair-game" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-queryable-isnt-the-same-as-fair-game">💭 Think About It — Queryable Isn’t the Same as Fair Game</h3>
+<p>Juniper realizes she can run one query and read every dream ever submitted — including names, allergies, and childhood memories people typed in without much thought.</p>
+<p>Databases make data <em>easy to ask about</em>. Does being able to query something give you the right to? Who should be allowed to run which queries at the factory — and who decides?</p>
+</section>
+</section>
+<section id="how-a-program-talks-to-the-database" class="level2">
+<h2 class="anchored" data-anchor-id="how-a-program-talks-to-the-database">6. How a <em>Program</em> Talks to the Database</h2>
+<p>The <code>%%sql</code> magic is a tool for humans in notebooks. Real applications — a shop website, the factory’s ordering app — are programs, and they run SQL through an ordinary library. Python ships with one: <code>sqlite3</code>.</p>
+<p>The pattern is only three moves: <strong>connect</strong> to the database file, <strong>execute</strong> a query, <strong>fetch</strong> the results. The next cell is plain Python, reading the same <code>candy_factory.db</code> we’ve been building all along.</p>
+<div id="4bb5e530" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"candy_factory.db"</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> connection.execute(</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SELECT name, price_pence FROM candies ORDER BY price_pence DESC LIMIT 3"</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>).fetchall()</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>connection.close()</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, price <span class="kw">in</span> rows:</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>price<span class="sc">}</span><span class="ss">p"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Marchpane Original: 300p
+Hummingbird Nougat: 260p
+Thundermint Bar: 250p</code></pre>
+</div>
+</div>
+<p>Same SQL, same answers — the language doesn’t change, only who’s speaking it. The query went in as a string; the results came back as a plain Python list you can loop over.</p>
+<p>Hold onto this pattern. Next notebook, we’ll build a small <strong>web application</strong>, and this is exactly how it will work: a browser asks a question, a few lines of Python run a query, and the database — the permanent, rule-enforcing memory underneath everything — supplies the answer.</p>
+</section>
+<section id="capstone-the-sweetshop-database" class="level2">
+<h2 class="anchored" data-anchor-id="capstone-the-sweetshop-database">✏️ Capstone — The Sweetshop Database</h2>
+<p>Time to build your own. You’ll design a small database and have an AI assistant (Gemini, Claude, or ChatGPT) write the SQL — while <em>you</em> make every design decision and verify every result.</p>
+<p><strong>The default theme:</strong> you’ve opened a small sweetshop that stocks Marchpane candies. You need three tables: your products, your suppliers, and your sales. <strong>Or reskin it entirely</strong> — a record shop, your game collection, a plant nursery, a recipe box. Any theme with 2–3 kinds of connected things works.</p>
+<section id="step-0-design-first-before-touching-the-ai" class="level3">
+<h3 class="anchored" data-anchor-id="step-0-design-first-before-touching-the-ai">Step 0 — Design First (before touching the AI)</h3>
+<p>In the cell below, write your design as plain text:</p>
+<ul>
+<li>Your 2–3 tables, and what one <em>row</em> of each represents</li>
+<li>The columns of each table, with types</li>
+<li>Where the primary keys are, and which column is a <strong>foreign key</strong> pointing at which table</li>
+</ul>
+<p><em>(Double-click and write your design here.)</em></p>
+<p><strong>Table 1:</strong> …</p>
+<p><strong>Table 2:</strong> …</p>
+<p><strong>Table 3:</strong> …</p>
+</section>
+<section id="step-1-build-it-prompt-1" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-build-it-prompt-1">Step 1 — Build It <em>(prompt #1)</em></h3>
+<p>Turn your design into a prompt. A skeleton to fill in:</p>
+<blockquote class="blockquote">
+<p>I’m learning SQL with SQLite in a Jupyter notebook, using <code>%%sql</code> cell magic. Write <code>CREATE TABLE</code> statements for these tables: <strong>[paste your design]</strong>. Include <code>PRIMARY KEY</code> and <code>FOREIGN KEY</code> constraints, and start with <code>DROP TABLE IF EXISTS</code> lines. Then write <code>INSERT</code> statements adding <strong>[5–10]</strong> realistic rows per table, themed around <strong>[your theme]</strong>. SQL only, one code block, no explanations.</p>
+</blockquote>
+<p>Paste the AI’s SQL into the cell below and run it. If it errors, read the message — fix it yourself or ask the AI, but <em>you</em> decide what changes.</p>
+<div id="90c33d21" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> ✏️ Paste your AI<span class="op">-</span>built CREATE TABLE <span class="kw">and</span> INSERT statements here, then run.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-interrogate-it-prompt-2" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-interrogate-it-prompt-2">Step 2 — Interrogate It <em>(prompt #2)</em></h3>
+<p>Ask the AI for <strong>five queries</strong> against your schema — require at least: one <code>WHERE</code> filter, one <code>ORDER BY ... LIMIT</code>, one <code>JOIN</code>, and one <code>GROUP BY</code> with <code>SUM</code> or <code>COUNT</code>.</p>
+<p><strong>Then verify like Barnaby would:</strong> before running each query, look at your inserted data and predict the answer. Run it. If a result surprises you, figure out whether the query is wrong or your prediction was — one of those happens a lot with AI-written <code>JOIN</code>s.</p>
+<div id="e18c9c8d" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> ✏️ Paste <span class="kw">and</span> run your five queries here (one at a time <span class="kw">is</span> fine).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-3-break-it-then-reflect" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-break-it-then-reflect">Step 3 — Break It, Then Reflect</h3>
+<p>Two final tests:</p>
+<ol type="1">
+<li><strong>Try to break your own rules.</strong> Write an <code>INSERT</code> that violates one of your foreign keys (like candy #999). Confirm the database refuses it. If it <em>doesn’t</em>, find out why — did the AI forget the constraint, or is <code>PRAGMA foreign_keys = ON</code> missing?</li>
+<li><strong>Reflect</strong> in the cell below, 2–3 sentences: What did the AI get wrong or almost-wrong? What did you catch by predicting results first?</li>
+</ol>
+<p><em>AI is a fast first draft. You verify.</em></p>
+<div id="ac89d64b" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>sql</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> ✏️ Your constraint<span class="op">-</span>breaking INSERT goes here. It SHOULD fail.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><em>(Your 2–3 sentence reflection — double-click to edit.)</em></p>
+</section>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Aggregate function</strong> — A function like <code>SUM()</code>, <code>COUNT()</code>, or <code>AVG()</code> that boils a group of rows down to one number.</li>
+<li><strong>Column</strong> — One fact recorded about every row in a table, such as <code>price_pence</code>.</li>
+<li><strong>Database</strong> — An organized, permanent collection of data managed by software that keeps it correct and shareable.</li>
+<li><strong>DBMS (database management system)</strong> — The program that manages a database and enforces its rules; SQLite is one.</li>
+<li><strong>Document database</strong> — A database that stores free-form documents (usually JSON), letting every record have a different shape.</li>
+<li><strong>Foreign key</strong> — A column holding the primary key of a row in another table, linking the two.</li>
+<li><strong>Integrity constraint</strong> — A rule about the data (like a foreign key) that the database itself enforces by refusing bad changes.</li>
+<li><strong>JOIN</strong> — The SQL operation that recombines rows from two tables by matching key values.</li>
+<li><strong>JSON</strong> — A text format for labeled, nested data; looks and works much like a Python dictionary.</li>
+<li><strong>NoSQL</strong> — An umbrella term for non-relational databases, including document stores.</li>
+<li><strong>Primary key</strong> — A column whose value uniquely and permanently identifies each row in its table.</li>
+<li><strong>Query</strong> — A request for data, written in SQL with <code>SELECT</code>.</li>
+<li><strong>Relational model</strong> — The design that organizes data into tables of rows and columns, one table per kind of thing.</li>
+<li><strong>Row</strong> — One record in a table: one candy, one batch, one order.</li>
+<li><strong>SQL</strong> — Structured Query Language, the standard language for creating, filling, and querying databases.</li>
+<li><strong>Table</strong> — A named grid holding every record of one kind of thing.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>A database gives data three things a running program can’t: permanence, shared access, and enforced rules. The relational model organizes data as tables — one per kind of thing — where every row has a permanent primary key, and other tables point at it with foreign keys instead of copying names. SQL is the language for all of it: <code>CREATE TABLE</code> and <code>INSERT</code> to build, <code>SELECT</code> with <code>WHERE</code>, <code>ORDER BY</code>, <code>JOIN</code>, and <code>GROUP BY</code> to ask questions. Integrity constraints are the database <em>refusing</em> to store what must not be true — the safety rule the Marchpane spreadsheet never had. And when data won’t sit in fixed columns, document databases trade those rules away for flexibility. Knowing <em>which trade to make</em> is the real skill.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p>Your database can answer questions — but only for someone sitting at this notebook. Next time we go bigger: operating systems, networks, and the web, ending with your first <strong>web application</strong>. A browser anywhere in the world will send a request, and a few lines of Python will answer it — by querying a database, exactly the way you did today.</p>
+<p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
