@@ -1,0 +1,1170 @@
+{
+  "title": "Chapter 7 - Searching, Sorting and Complexity",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What does a linear search return in our Python implementation when the target is not present in the list?",
+      "answer_explanation": "The implementation returns None as a sentinel value to safely signal that the element was not found.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "None",
+          "correct": true
+        },
+        {
+          "text": "-1",
+          "correct": false
+        },
+        {
+          "text": "False",
+          "correct": false
+        },
+        {
+          "text": "ValueError",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which built-in Python function returns a brand-new ordered list without modifying the original collection?",
+      "answer_explanation": "The sorted() function creates and returns a new list, leaving the original list unchanged.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "sorted()",
+          "correct": true
+        },
+        {
+          "text": ".sort()",
+          "correct": false
+        },
+        {
+          "text": "sort()",
+          "correct": false
+        },
+        {
+          "text": "arrange()",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which Python list method rearranges a list in-place and returns None?",
+      "answer_explanation": "The .sort() method modifies the list it is called on and does not return a new list.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": ".sort()",
+          "correct": true
+        },
+        {
+          "text": "sorted()",
+          "correct": false
+        },
+        {
+          "text": ".arrange()",
+          "correct": false
+        },
+        {
+          "text": ".inplace_sort()",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the worst-case number of comparisons for a linear search on a list of size n?",
+      "answer_explanation": "In the worst case (when the item is at the end or missing), linear search must inspect every element.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "exactly n",
+          "correct": true
+        },
+        {
+          "text": "log n",
+          "correct": false
+        },
+        {
+          "text": "n / 2",
+          "correct": false
+        },
+        {
+          "text": "n²",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the worst-case complexity shape for a binary search on a sorted list of size n?",
+      "answer_explanation": "Binary search halves the search space at each step, yielding logarithmic growth.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "O(log n)",
+          "correct": true
+        },
+        {
+          "text": "O(n)",
+          "correct": false
+        },
+        {
+          "text": "O(n²)",
+          "correct": false
+        },
+        {
+          "text": "O(n log n)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why must a list be sorted before performing a binary search?",
+      "answer_explanation": "Binary search relies on order to determine whether to discard the lower or upper half of the remaining elements.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "to rule out half the items",
+          "correct": true
+        },
+        {
+          "text": "to speed up index operations",
+          "correct": false
+        },
+        {
+          "text": "to prevent syntax error crashes",
+          "correct": false
+        },
+        {
+          "text": "to allow duplicate element values",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the correct Python syntax to swap two variables without using a third temporary variable?",
+      "answer_explanation": "Python allows multiple assignments in a single line, like x, y = y, x, which evaluates the right-hand side first and then assigns.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "x, y = y, x",
+          "correct": true
+        },
+        {
+          "text": "x = y",
+          "correct": false
+        },
+        {
+          "text": "swap(x, y)",
+          "correct": false
+        },
+        {
+          "text": "x, y = swap(y, x)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which Big-O complexity represents a constant running time that does not grow with the input size?",
+      "answer_explanation": "O(1) represents constant time, meaning the number of steps is independent of the input size.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "O(1)",
+          "correct": true
+        },
+        {
+          "text": "O(log n)",
+          "correct": false
+        },
+        {
+          "text": "O(n)",
+          "correct": false
+        },
+        {
+          "text": "O(n²)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which Big-O complexity represents quadratic growth, where work grows with the square of the input size?",
+      "answer_explanation": "O(n²) represents quadratic growth, which is characteristic of selection sort.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "O(n²)",
+          "correct": true
+        },
+        {
+          "text": "O(n)",
+          "correct": false
+        },
+        {
+          "text": "O(n log n)",
+          "correct": false
+        },
+        {
+          "text": "O(log n)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which sorting algorithm repeatedly finds the smallest remaining item and swaps it into its correct position?",
+      "answer_explanation": "Selection sort works by selecting the minimum value in the unsorted section and placing it at the front.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "selection sort",
+          "correct": true
+        },
+        {
+          "text": "merge sort",
+          "correct": false
+        },
+        {
+          "text": "binary search",
+          "correct": false
+        },
+        {
+          "text": "bubble sort",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What divide-and-conquer strategy does merge sort use to sort a list?",
+      "answer_explanation": "Merge sort divides the unsorted list into single-element lists, and recursively merges them into sorted lists.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "split and merge recursively",
+          "correct": true
+        },
+        {
+          "text": "find smallest item repeatedly",
+          "correct": false
+        },
+        {
+          "text": "swap adjacent out-of-order pairs",
+          "correct": false
+        },
+        {
+          "text": "partition around a pivot value",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which argument is used in Python's sorted() to specify a custom sorting criteria?",
+      "answer_explanation": "The key argument accepts a function that computes a sort key for each item.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "key",
+          "correct": true
+        },
+        {
+          "text": "by",
+          "correct": false
+        },
+        {
+          "text": "index",
+          "correct": false
+        },
+        {
+          "text": "reverse",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What expression correctly extracts a custom attribute from a card object for sorting?",
+      "answer_explanation": "A lambda function like `lambda card: card.rank` takes a card object and retrieves its rank attribute.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "lambda card: card.rank",
+          "correct": true
+        },
+        {
+          "text": "lambda: card.rank",
+          "correct": false
+        },
+        {
+          "text": "def rank(card): return card",
+          "correct": false
+        },
+        {
+          "text": "lambda card.rank",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "In selection sort, if you run it on the list `[5, 3, 8, 1, 9]`, what is the list after the first pass?",
+      "answer_explanation": "In the first pass, selection sort finds the smallest element (1) and swaps it with the element at index 0 (5), resulting in `[1, 3, 8, 5, 9]`.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "[1, 3, 8, 5, 9]",
+          "correct": true
+        },
+        {
+          "text": "[1, 3, 5, 8, 9]",
+          "correct": false
+        },
+        {
+          "text": "[3, 5, 8, 1, 9]",
+          "correct": false
+        },
+        {
+          "text": "[5, 3, 1, 8, 9]",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the worst-case time complexity of selection sort?",
+      "answer_explanation": "Selection sort scans the remaining unsorted list for each index, resulting in O(n²) operations.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "O(n²)",
+          "correct": true
+        },
+        {
+          "text": "O(n)",
+          "correct": false
+        },
+        {
+          "text": "O(n log n)",
+          "correct": false
+        },
+        {
+          "text": "O(log n)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the time complexity of merge sort?",
+      "answer_explanation": "Merge sort runs in O(n log n) because there are log n levels of recursion, each requiring O(n) merging work.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "O(n log n)",
+          "correct": true
+        },
+        {
+          "text": "O(n²)",
+          "correct": false
+        },
+        {
+          "text": "O(n)",
+          "correct": false
+        },
+        {
+          "text": "O(log n)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which search algorithm is the only option when the list is completely unsorted?",
+      "answer_explanation": "If elements have no ordering, we cannot skip checking any of them; we must search linearly.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "linear search",
+          "correct": true
+        },
+        {
+          "text": "binary search",
+          "correct": false
+        },
+        {
+          "text": "selection sort",
+          "correct": false
+        },
+        {
+          "text": "merge sort",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the average number of comparisons in a linear search on a list of size n if the item is present?",
+      "answer_explanation": "On average, a successful linear search will find the item in the middle of the list, requiring n / 2 comparisons.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "n / 2",
+          "correct": true
+        },
+        {
+          "text": "log n",
+          "correct": false
+        },
+        {
+          "text": "n",
+          "correct": false
+        },
+        {
+          "text": "n²",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which mathematical concept is used to describe the shape of growth in algorithmic work?",
+      "answer_explanation": "Big-O notation describes how the resource requirements (like time or memory) scale with input size.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Big-O notation",
+          "correct": true
+        },
+        {
+          "text": "linear algebra tools",
+          "correct": false
+        },
+        {
+          "text": "calculus derivative rules",
+          "correct": false
+        },
+        {
+          "text": "quadratic formula values",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the main advantage of binary search over linear search for large datasets?",
+      "answer_explanation": "For large list sizes, binary search scales logarithmically, which is dramatically faster than linear growth.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "much faster search time",
+          "correct": true
+        },
+        {
+          "text": "requires no sorted input",
+          "correct": false
+        },
+        {
+          "text": "modifies the list in place",
+          "correct": false
+        },
+        {
+          "text": "uses less computer memory",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the Church-Turing thesis state about models of computation?",
+      "answer_explanation": "The Church-Turing thesis asserts that any device capable of executing algorithms shares the exact same theoretical limits.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "any computer shares the same limits",
+          "correct": true
+        },
+        {
+          "text": "quantum computers solve undecidable problems",
+          "correct": false
+        },
+        {
+          "text": "python runs faster than machine code",
+          "correct": false
+        },
+        {
+          "text": "all algorithms run in polynomial time",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which complexity class represents problems that can be solved in a reasonable (polynomial) number of steps?",
+      "answer_explanation": "The class P consists of decision problems solvable by a deterministic Turing machine in polynomial time.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "P",
+          "correct": true
+        },
+        {
+          "text": "NP",
+          "correct": false
+        },
+        {
+          "text": "undecidable",
+          "correct": false
+        },
+        {
+          "text": "intractable",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which algorithms modify the list in-place during execution?",
+      "answer_explanation": "Selection sort and the list .sort() method perform sorting in-place, whereas sorted() returns a new list.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "selection sort",
+          "correct": true
+        },
+        {
+          "text": "list .sort() method",
+          "correct": true
+        },
+        {
+          "text": "built-in sorted() function",
+          "correct": false
+        },
+        {
+          "text": "binary search algorithm",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which statements describe characteristics of binary search?",
+      "answer_explanation": "Binary search runs in O(log n) time and strictly requires sorted input.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "requires a sorted list",
+          "correct": true
+        },
+        {
+          "text": "runs in O(log n) time",
+          "correct": true
+        },
+        {
+          "text": "searches unsorted lists successfully",
+          "correct": false
+        },
+        {
+          "text": "modifies the original list",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which parameters can be passed to Python's built-in sorted() function?",
+      "answer_explanation": "sorted() accepts key (to specify a function to extract a comparison key) and reverse (to change sort order).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "key",
+          "correct": true
+        },
+        {
+          "text": "reverse",
+          "correct": true
+        },
+        {
+          "text": "inplace",
+          "correct": false
+        },
+        {
+          "text": "shuffle",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which running times grow slower than quadratic growth as input size increases?",
+      "answer_explanation": "O(log n), O(n), and O(n log n) all grow slower than quadratic O(n²).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "O(log n)",
+          "correct": true
+        },
+        {
+          "text": "O(n)",
+          "correct": true
+        },
+        {
+          "text": "O(n log n)",
+          "correct": true
+        },
+        {
+          "text": "O(n³)",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following are valid sentinel values or search results in our linear and binary search code?",
+      "answer_explanation": "We return the integer index if found, and None as a sentinel value if not found.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "None to indicate not found",
+          "correct": true
+        },
+        {
+          "text": "the integer index when found",
+          "correct": true
+        },
+        {
+          "text": "-1 to indicate not found",
+          "correct": false
+        },
+        {
+          "text": "False to indicate not found",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What are the key steps in the divide-and-conquer strategy of merge sort?",
+      "answer_explanation": "Merge sort splits the list recursively until single elements are reached, then merges sorted sublists.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "splitting the list recursively",
+          "correct": true
+        },
+        {
+          "text": "merging sorted sublists together",
+          "correct": true
+        },
+        {
+          "text": "scanning for the smallest element",
+          "correct": false
+        },
+        {
+          "text": "swapping adjacent out-of-order items",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which problems belong to the complexity class NP (can be verified in polynomial time)?",
+      "answer_explanation": "Scheduling classes, Sudoku, and jigsaw puzzles are in NP (easy to check, hard to solve), whereas binary search is in P.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "scheduling classes without conflict",
+          "correct": true
+        },
+        {
+          "text": "solving a giant Sudoku puzzle",
+          "correct": true
+        },
+        {
+          "text": "assembling a large jigsaw puzzle",
+          "correct": true
+        },
+        {
+          "text": "binary search in sorted list",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which are features of a Turing machine?",
+      "answer_explanation": "A Turing machine consists of a tape, a read-write head, and a state-transition rulebook. It does not have registers, cache, or CPU.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "an infinite storage tape",
+          "correct": true
+        },
+        {
+          "text": "a read-write tape head",
+          "correct": true
+        },
+        {
+          "text": "a fixed rulebook of transitions",
+          "correct": true
+        },
+        {
+          "text": "high-speed cache memory",
+          "correct": false
+        },
+        {
+          "text": "a central processing unit",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was the core ambition of David Hilbert's mathematical program?",
+      "answer_explanation": "Hilbert wanted to build a complete, consistent, and decidable formal system for all mathematics.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "formalizing all of mathematics",
+          "correct": true
+        },
+        {
+          "text": "proving that computation is physical",
+          "correct": false
+        },
+        {
+          "text": "building mechanical calculators",
+          "correct": false
+        },
+        {
+          "text": "inventing the first computer",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did Kurt Gödel prove about rich consistent formal systems in 1931?",
+      "answer_explanation": "Gödel's incompleteness theorems proved that any consistent system rich enough for arithmetic will have true statements that are unprovable within the system.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "they are always incomplete",
+          "correct": true
+        },
+        {
+          "text": "they are always inconsistent",
+          "correct": false
+        },
+        {
+          "text": "they are completely decidable",
+          "correct": false
+        },
+        {
+          "text": "they must have physical tape",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which famous decision problem asked if there is an algorithm to decide if any mathematical statement is provable?",
+      "answer_explanation": "The Entscheidungsproblem was the decision problem posed by David Hilbert.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "the Entscheidungsproblem",
+          "correct": true
+        },
+        {
+          "text": "the Halting Problem",
+          "correct": false
+        },
+        {
+          "text": "the Lucas-Penrose Argument",
+          "correct": false
+        },
+        {
+          "text": "the Liar Paradox",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did Alan Turing use to prove that the Entscheidungsproblem has no solution?",
+      "answer_explanation": "Turing proved that the halting problem is undecidable, which in turn meant the Entscheidungsproblem was unsolvable.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "the halting problem",
+          "correct": true
+        },
+        {
+          "text": "the lambda calculus",
+          "correct": false
+        },
+        {
+          "text": "incompleteness theorems",
+          "correct": false
+        },
+        {
+          "text": "quantum mechanics",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the term for a problem where no algorithm can ever give a correct answer in every case?",
+      "answer_explanation": "An undecidable problem is one for which no general algorithm can always give a correct yes/no answer.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "undecidable",
+          "correct": true
+        },
+        {
+          "text": "intractable",
+          "correct": false
+        },
+        {
+          "text": "incomplete",
+          "correct": false
+        },
+        {
+          "text": "NP-complete",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did Alan Turing's 'universal machine' blueprint directly inspire?",
+      "answer_explanation": "The universal machine, which reads program code as data to mimic other machines, is the conceptual ancestor of general-purpose computer CPUs.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "general-purpose computer processors",
+          "correct": true
+        },
+        {
+          "text": "mechanical gear calculators",
+          "correct": false
+        },
+        {
+          "text": "logic gate circuits",
+          "correct": false
+        },
+        {
+          "text": "compiler translators",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which philosophical paradox is the basis for the proofs of both Gödel and Turing?",
+      "answer_explanation": "The liar paradox ('this statement is false') inspired both Gödel's unprovable sentence and Turing's contrary program.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "the liar paradox",
+          "correct": true
+        },
+        {
+          "text": "Zenons paradox",
+          "correct": false
+        },
+        {
+          "text": "the grandfather paradox",
+          "correct": false
+        },
+        {
+          "text": "the ship of Theseus",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did Fred Cohen prove about computer virus detection in 1987?",
+      "answer_explanation": "Using a diagonal proof similar to Turing's, Cohen proved that a perfect virus detector (never wrong, never false alarm) cannot exist.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "perfect virus detection is impossible",
+          "correct": true
+        },
+        {
+          "text": "viruses require internet connections",
+          "correct": false
+        },
+        {
+          "text": "all viruses use self-reference",
+          "correct": false
+        },
+        {
+          "text": "logic gates prevent virus execution",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What demands did David Hilbert make of his proposed mathematical system?",
+      "answer_explanation": "Hilbert demanded the system be complete (prove all truths), consistent (no contradictions), and decidable (step-by-step decision algorithm).",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "completeness of all truths",
+          "correct": true
+        },
+        {
+          "text": "consistency without contradictions",
+          "correct": true
+        },
+        {
+          "text": "decidability via step-by-step algorithms",
+          "correct": true
+        },
+        {
+          "text": "physical feasibility on memory tape",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What does the controversy between John Lucas and Hilary Putnam concern?",
+      "answer_explanation": "Lucas argued that Gödel's theorem shows human minds are not machines, whereas Putnam and others replied that we cannot prove human consistency.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "whether human minds are machines",
+          "correct": true
+        },
+        {
+          "text": "if Gödel's theorem limits minds",
+          "correct": true
+        },
+        {
+          "text": "how to code binary search",
+          "correct": false
+        },
+        {
+          "text": "if merge sort is faster",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

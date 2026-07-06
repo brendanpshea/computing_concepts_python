@@ -1,0 +1,1170 @@
+{
+  "title": "Chapter 8 - Software Engineering",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which keyword in Python is used to write a test that throws a loud error if a condition is false?",
+      "answer_explanation": "The assert keyword evaluates a boolean expression and raises an AssertionError if it is False.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "assert",
+          "correct": true
+        },
+        {
+          "text": "try",
+          "correct": false
+        },
+        {
+          "text": "except",
+          "correct": false
+        },
+        {
+          "text": "check",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which git command is used to save a snapshot of staged changes into the local repository history?",
+      "answer_explanation": "git commit creates a permanent snapshot of the staged changes in the project timeline.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "git commit",
+          "correct": true
+        },
+        {
+          "text": "git add",
+          "correct": false
+        },
+        {
+          "text": "git init",
+          "correct": false
+        },
+        {
+          "text": "git push",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which git command is used to place changes in the staging area before committing them?",
+      "answer_explanation": "git add selects modified files to be included in the next commit snapshot.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "git add",
+          "correct": true
+        },
+        {
+          "text": "git commit",
+          "correct": false
+        },
+        {
+          "text": "git init",
+          "correct": false
+        },
+        {
+          "text": "git branch",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What type of error is raised in Python when an assertion check fails?",
+      "answer_explanation": "When an expression evaluated by assert is False, Python raises an AssertionError.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "AssertionError",
+          "correct": true
+        },
+        {
+          "text": "ValueError",
+          "correct": false
+        },
+        {
+          "text": "TypeError",
+          "correct": false
+        },
+        {
+          "text": "SyntaxError",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary characteristic of the Waterfall model in the SDLC?",
+      "answer_explanation": "The Waterfall model executes SDLC phases in a strict linear sequence, completing each fully before starting the next.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "finishing stages sequentially",
+          "correct": true
+        },
+        {
+          "text": "building in short loops",
+          "correct": false
+        },
+        {
+          "text": "skipping requirements gathering",
+          "correct": false
+        },
+        {
+          "text": "coding without any design",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a sprint in Agile software development?",
+      "answer_explanation": "A sprint is a short, time-boxed development cycle (typically 1-4 weeks) that results in working software.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "a short development loop",
+          "correct": true
+        },
+        {
+          "text": "a fast typing test",
+          "correct": false
+        },
+        {
+          "text": "a database indexing step",
+          "correct": false
+        },
+        {
+          "text": "a version control branch",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What format is commonly used to write a user story in Agile development?",
+      "answer_explanation": "User stories keep developers focused on users through the template: As a... I want... so that....",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "As a... I want... so...",
+          "correct": true
+        },
+        {
+          "text": "If... then... else... block",
+          "correct": false
+        },
+        {
+          "text": "def... return... some value",
+          "correct": false
+        },
+        {
+          "text": "import... as... custom name",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which SDLC stage is focused on deciding the structure, components, and data model of the application?",
+      "answer_explanation": "The Design stage specifies how the system components, APIs, and data models will be organized prior to writing code.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Design",
+          "correct": true
+        },
+        {
+          "text": "Build",
+          "correct": false
+        },
+        {
+          "text": "Requirements",
+          "correct": false
+        },
+        {
+          "text": "Deploy",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which term describes a software bug where previously working code breaks due to a new change?",
+      "answer_explanation": "A regression occurs when an update or addition accidentally breaks existing functionality.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "regression",
+          "correct": true
+        },
+        {
+          "text": "compilation",
+          "correct": false
+        },
+        {
+          "text": "allocation",
+          "correct": false
+        },
+        {
+          "text": "abstraction",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why is separating pure logic from input/output (I/O) recommended for code quality?",
+      "answer_explanation": "By keeping rules separate from print/input statements, you can write clean, automated assert tests for the logic.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "allows automated testing",
+          "correct": true
+        },
+        {
+          "text": "prevents syntax compile crashes",
+          "correct": false
+        },
+        {
+          "text": "makes program execution faster",
+          "correct": false
+        },
+        {
+          "text": "reduces file storage size",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Who is legally and ethically accountable if an AI assistant generates code with a critical bug that ships to users?",
+      "answer_explanation": "AI is only a draft tool; the human developer who reviews and accepts the code holds ultimate accountability.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "the developer who approved it",
+          "correct": true
+        },
+        {
+          "text": "the AI model itself",
+          "correct": false
+        },
+        {
+          "text": "the compiler software",
+          "correct": false
+        },
+        {
+          "text": "the open-source library author",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary role of a code review on a software team?",
+      "answer_explanation": "Code reviews allow team members to examine proposed changes before merging them to catch bugs and verify quality.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "check code before merging",
+          "correct": true
+        },
+        {
+          "text": "measure developer typing speed",
+          "correct": false
+        },
+        {
+          "text": "compile code to machine binary",
+          "correct": false
+        },
+        {
+          "text": "push changes to production",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What file extension is used for Jupyter notebooks, like the ones used in Google Colab?",
+      "answer_explanation": "Jupyter Notebooks save their JSON structure with the .ipynb extension.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": ".ipynb",
+          "correct": true
+        },
+        {
+          "text": ".py",
+          "correct": false
+        },
+        {
+          "text": ".json",
+          "correct": false
+        },
+        {
+          "text": ".md",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which platform is most commonly used to store git repositories online and collaborate on PRs?",
+      "answer_explanation": "GitHub is the dominant web-based service for hosting Git repositories and conducting pull requests.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "GitHub",
+          "correct": true
+        },
+        {
+          "text": "SQLite",
+          "correct": false
+        },
+        {
+          "text": "Pyngrok",
+          "correct": false
+        },
+        {
+          "text": "Google Drive",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does a git repository include besides the project's files?",
+      "answer_explanation": "A repository stores the files alongside the complete, permanent history of all commits.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "the complete change history",
+          "correct": true
+        },
+        {
+          "text": "the computer operating system",
+          "correct": false
+        },
+        {
+          "text": "the hardware processor registry",
+          "correct": false
+        },
+        {
+          "text": "the python compilation binary",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which term describes an isolated timeline in Git used to develop a feature safely?",
+      "answer_explanation": "Branches allow developers to work on features without affecting the main shipping version.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "branch",
+          "correct": true
+        },
+        {
+          "text": "commit",
+          "correct": false
+        },
+        {
+          "text": "pull request",
+          "correct": false
+        },
+        {
+          "text": "repository",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a pull request (PR) in version control?",
+      "answer_explanation": "A pull request is a formal proposal to merge code from one branch into another, triggering review.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "a proposal to merge changes",
+          "correct": true
+        },
+        {
+          "text": "a request to download files",
+          "correct": false
+        },
+        {
+          "text": "a command to delete history",
+          "correct": false
+        },
+        {
+          "text": "an automatic error report",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which SDLC stage is concerned with release and hosting of software for real users?",
+      "answer_explanation": "The Deploy stage publishes the built software to environments (like servers) where users can access it.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Deploy",
+          "correct": true
+        },
+        {
+          "text": "Design",
+          "correct": false
+        },
+        {
+          "text": "Maintain",
+          "correct": false
+        },
+        {
+          "text": "Build",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the main danger of jumping straight to the Build stage without planning?",
+      "answer_explanation": "Skipping requirements and design often results in writing code that does not solve the user's actual problem.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "building the wrong product",
+          "correct": true
+        },
+        {
+          "text": "triggering python compiler warnings",
+          "correct": false
+        },
+        {
+          "text": "losing Git repository history",
+          "correct": false
+        },
+        {
+          "text": "raising assertion errors automatically",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the term for a precise, testable statement of what a software system must do?",
+      "answer_explanation": "A requirement provides a clear, verifiable definition of expected software behavior.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "requirement",
+          "correct": true
+        },
+        {
+          "text": "sprint",
+          "correct": false
+        },
+        {
+          "text": "pull request",
+          "correct": false
+        },
+        {
+          "text": "docstring",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a major advantage of Agile sprints over Waterfall?",
+      "answer_explanation": "Agile builds software in short feedback loops, allowing early course corrections before changes become too expensive.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "early and frequent course corrections",
+          "correct": true
+        },
+        {
+          "text": "guaranteed zero bugs",
+          "correct": false
+        },
+        {
+          "text": "zero documentation required",
+          "correct": false
+        },
+        {
+          "text": "faster execution speed",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does a pure logic function do?",
+      "answer_explanation": "Pure logic functions perform calculations and return values without interacting with the console or external resources.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "computes returns without I/O interactions",
+          "correct": true
+        },
+        {
+          "text": "reads user keyboard inputs",
+          "correct": false
+        },
+        {
+          "text": "prints messages on screen",
+          "correct": false
+        },
+        {
+          "text": "saves data to disk files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which of the following are valid Python assert statements that will not raise an AssertionError?",
+      "answer_explanation": "assert statements pass silently when the expression evaluates to True.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "assert True",
+          "correct": true
+        },
+        {
+          "text": "assert 5 > 3",
+          "correct": true
+        },
+        {
+          "text": "assert False",
+          "correct": false
+        },
+        {
+          "text": "assert 1 == 2",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which actions move changes along Git's three areas?",
+      "answer_explanation": "git add stages changes (working to staging), and git commit saves the snapshot (staging to repo).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "git add to stage changes",
+          "correct": true
+        },
+        {
+          "text": "git commit to save snapshot",
+          "correct": true
+        },
+        {
+          "text": "git init to delete history",
+          "correct": false
+        },
+        {
+          "text": "git push to copy local files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which are stages of the Software Development Life Cycle (SDLC)?",
+      "answer_explanation": "Requirements, Design, Build, Test, Deploy, and Maintain are the six SDLC stages.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Requirements",
+          "correct": true
+        },
+        {
+          "text": "Design",
+          "correct": true
+        },
+        {
+          "text": "Build",
+          "correct": true
+        },
+        {
+          "text": "Test",
+          "correct": true
+        },
+        {
+          "text": "Branching",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following describe Agile software development?",
+      "answer_explanation": "Agile uses short feedback-driven loops called sprints rather than finishing stages fully in one long sequence.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "works in short cycles called sprints",
+          "correct": true
+        },
+        {
+          "text": "adapts requirements based on user feedback",
+          "correct": true
+        },
+        {
+          "text": "completes all coding before testing starts",
+          "correct": false
+        },
+        {
+          "text": "operates as one long linear waterfall pass",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Why do professional software teams use version control systems like Git?",
+      "answer_explanation": "Version control lets developers recover older versions, collaborate via branches, and audit project history.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "to recover older versions of files",
+          "correct": true
+        },
+        {
+          "text": "to work in parallel on branches",
+          "correct": true
+        },
+        {
+          "text": "to maintain a tamper-evident audit history",
+          "correct": true
+        },
+        {
+          "text": "to run test assertions automatically",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What are the common parts of a Git-based collaboration workflow?",
+      "answer_explanation": "Collaboration workflows typically utilize feature branches, pull requests, and peer code reviews before merging.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "opening a pull request",
+          "correct": true
+        },
+        {
+          "text": "conducting peer code review",
+          "correct": true
+        },
+        {
+          "text": "running code in Google Drive",
+          "correct": false
+        },
+        {
+          "text": "compiling files directly to machine binary",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following are examples of input/output (I/O) operations in Python?",
+      "answer_explanation": "I/O includes talking to a human (print, input) or writing/reading files from disk.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "printing messages using print()",
+          "correct": true
+        },
+        {
+          "text": "reading text with input()",
+          "correct": true
+        },
+        {
+          "text": "reading or writing disk files",
+          "correct": true
+        },
+        {
+          "text": "returning an integer value from a function",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which are potential issues when using code drafted by an AI assistant?",
+      "answer_explanation": "AI drafts can contain subtle logic errors, hallucinated APIs, and policy/privacy violations.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "subtle logic bugs that look correct",
+          "correct": true
+        },
+        {
+          "text": "hallucinations of nonexistent functions",
+          "correct": true
+        },
+        {
+          "text": "ethical or privacy policy violations",
+          "correct": true
+        },
+        {
+          "text": "code that runs in-place only",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What legal mechanism did Richard Stallman use to invent copyleft and enforce software freedom?",
+      "answer_explanation": "Copyleft uses copyright law to grant users freedoms while legally binding modifications to remain free.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "copyright law rules",
+          "correct": true
+        },
+        {
+          "text": "patent registration processes",
+          "correct": false
+        },
+        {
+          "text": "trademark filing methods",
+          "correct": false
+        },
+        {
+          "text": "trade secret agreements",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary condition of a copyleft license like the GPL?",
+      "answer_explanation": "Copyleft licenses require that anyone sharing modified versions of the code must also share their source under the same license.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "modifications must remain free",
+          "correct": true
+        },
+        {
+          "text": "users must pay licensing fees",
+          "correct": false
+        },
+        {
+          "text": "authors must sign paper contracts",
+          "correct": false
+        },
+        {
+          "text": "code must run on Linux servers",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which type of software license demands the least from users, usually only requiring attribution?",
+      "answer_explanation": "Permissive licenses (like MIT or BSD) allow modifications to be closed-source, only requiring attribution.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "permissive licenses",
+          "correct": true
+        },
+        {
+          "text": "copyleft licenses",
+          "correct": false
+        },
+        {
+          "text": "proprietary licenses",
+          "correct": false
+        },
+        {
+          "text": "public domain grants",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which mathematical tool does Git use to create tamper-evident snap fingerprints?",
+      "answer_explanation": "Git runs a cryptographic hash function on file and folder contents to produce secure, unique identifiers.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "hash functions",
+          "correct": true
+        },
+        {
+          "text": "compiler translators",
+          "correct": false
+        },
+        {
+          "text": "logic gate adders",
+          "correct": false
+        },
+        {
+          "text": "linear search algorithms",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What type of hash function does Git use to identify files and commits?",
+      "answer_explanation": "Git traditionally utilizes the SHA-1 hash function to fingerprint repository items.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "SHA-1",
+          "correct": true
+        },
+        {
+          "text": "MD5",
+          "correct": false
+        },
+        {
+          "text": "SHA-256",
+          "correct": false
+        },
+        {
+          "text": "RSA",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did professor Tim Davis observe that triggered the Copilot lawsuit controversy?",
+      "answer_explanation": "Davis showed that GitHub Copilot generated blocks of his copyrighted code verbatim, with licenses and attribution removed.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "verbatim reciting of copyrighted code",
+          "correct": true
+        },
+        {
+          "text": "compiler crashes during model training",
+          "correct": false
+        },
+        {
+          "text": "copyright registration of AI models",
+          "correct": false
+        },
+        {
+          "text": "slow execution of git commits",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which legal doctrine did AI companies cite to defend training models on public code?",
+      "answer_explanation": "AI model makers argue that training is transformative learning, falling under fair use.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "fair use",
+          "correct": true
+        },
+        {
+          "text": "copyleft",
+          "correct": false
+        },
+        {
+          "text": "public domain",
+          "correct": false
+        },
+        {
+          "text": "trade secrets",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What term describes when an AI model regenerates training data verbatim?",
+      "answer_explanation": "When an AI outputs memorized text or code snippets verbatim from training, it is called memorization.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "memorization",
+          "correct": true
+        },
+        {
+          "text": "generalization",
+          "correct": false
+        },
+        {
+          "text": "validation",
+          "correct": false
+        },
+        {
+          "text": "compilation",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which of the following are examples of permissive open-source licenses?",
+      "answer_explanation": "MIT and BSD licenses are classic examples of permissive licenses.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "MIT",
+          "correct": true
+        },
+        {
+          "text": "BSD",
+          "correct": true
+        },
+        {
+          "text": "GPL",
+          "correct": false
+        },
+        {
+          "text": "EULA",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "How does Git ensure the integrity of a repository's history?",
+      "answer_explanation": "Git computes hashes from content and links commits by embedding the previous commit's hash, forming an immutable chain.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "computing hashes from commit content",
+          "correct": true
+        },
+        {
+          "text": "chaining hashes from previous commits",
+          "correct": true
+        },
+        {
+          "text": "encrypting all files automatically",
+          "correct": false
+        },
+        {
+          "text": "requiring approval from Richard Stallman",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
