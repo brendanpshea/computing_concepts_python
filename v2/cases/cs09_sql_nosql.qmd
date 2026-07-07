@@ -1,0 +1,161 @@
+---
+title: "From SQL to NoSQL: Why Google Broke the Database"
+subtitle: "Edgar Codd's promise, Bigtable's rebellion, and the decade it took to put the rules back — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+bibliography: refs.bib
+---
+
+::: {.case-at-a-glance}
+- **Who:** Edgar F. Codd (1923–2003), the IBM mathematician who invented the relational database; Fay Chang, Jeff Dean, and Sanjay Ghemawat, the Google engineers who abandoned it to index the web; Eric Brewer, whose theorem said the choice was forced; and Michael Stonebraker, the database pioneer who called the rebellion a forty-year-old mistake in new clothes.
+- **What:** For three decades, one idea ruled data: keep it in tables, and let the database — not the programmer — enforce the rules. Google's Bigtable threw the rules out on purpose, because nothing built on them could hold the whole web. A movement called NoSQL followed, then partly reversed itself. The fight was never really about software. It was about who is allowed to trade correctness for scale.
+- **Where / When:** IBM San Jose, 1970 (Codd's paper). Mountain View, California, 2004–2006 (Bigtable). The startup world, 2007–2012 (the NoSQL boom). Google again, 2012 (Spanner — the return of the rules).
+- **Why it matters:** Every app you use keeps its promises — your balance, your grades, your messages — inside a database. This case is about what happens when [guarantees]{.key-term} collide with [scale]{.key-term}: when a system can be *right* or *available*, but not always both, and somebody has to choose.
+- **Concepts at play:** the relational model, table, [primary key]{.key-term}, [join]{.key-term}, [transaction]{.key-term}, [consistency]{.key-term}, [key-value store]{.key-term}, [eventual consistency]{.key-term}, the CAP theorem
+:::
+
+## The Case
+
+In 1970, the most advanced databases in the world were a mess, and Edgar Codd could prove it.
+
+Codd was a mathematician at IBM's San Jose lab. He had flown for the Royal Air Force in World War II, programmed some of the earliest computers, and now studied how businesses stored their records. What he saw troubled him. The leading systems — including IBM's own IMS, built to track the millions of parts in the Apollo moon program — stored data as a tangle of records wired directly to other records. To find anything, a programmer had to know the tangle by heart. Worse, the tangle *was* the truth: reorganize how the data was stored, and every program that read it broke.
+
+Codd's answer was a short paper with a dry title: "A Relational Model of Data for Large Shared Data Banks" [@codd1970]. Its idea was radical in its plainness. Store everything in simple tables of rows and columns. Let programs ask questions about *what* the data is — never *where* it lives. And move the rulekeeping out of the programs and into the database itself.
+
+::: {.context-box}
+**Codd's deal: the database enforces the rules.** In the **relational model**, each table holds one kind of thing, each row is one of them, and a [primary key]{.key-term} gives every row a permanent ID. Tables connect by referring to each other's keys, and a [join]{.key-term} recombines them to answer questions. Above all, the database polices itself: it refuses a payment pointing at no account, and it applies related changes as an all-or-nothing [transaction]{.key-term} — both halves of a money transfer, or neither. Programs come and go and carry bugs; the rules hold anyway. This property — every user sees data that obeys the rules — is called [consistency]{.key-term}.
+:::
+
+IBM did not celebrate. IMS made enormous money, and Codd's model threatened it. His ideas advanced slowly inside the company — and quickly outside it. A young entrepreneur named Larry Ellison read the research papers IBM published and raced to ship a commercial relational database first. He named his company after the product: Oracle. Through the 1980s and 1990s, the relational database and its language, SQL, conquered the industry so completely that "database" and "relational database" became almost the same word. Codd received the Turing Award, computing's Nobel Prize, in 1981. When he died in 2003, the obituaries called his idea one of the foundations of the modern world [@markoff2003].
+
+Then the modern world outgrew it — at exactly one company first.
+
+By 2004, Google was trying to hold a copy of the entire web: billions of pages, petabytes of data, updated constantly, queried thousands of times per second. The relational playbook said: buy a bigger, more reliable server. But there was no server big enough, at any price. Google's answer to every hardware problem was the opposite — spread the work across thousands of *cheap* machines, and expect them to fail daily. On that kind of hardware, Codd's guarantees became crushingly expensive. A join across tables is fast when the tables share one machine. When the rows are scattered across a thousand computers in three data centers, the same join means a storm of network traffic — and if any machine hiccups, the query stalls.
+
+So a team of Google engineers — Fay Chang, Jeff Dean, Sanjay Ghemawat, and their colleagues — built something that broke the deal on purpose. They called it **Bigtable** [@chang2006]. It had no SQL. No joins. No transactions across rows. It was, at heart, one gigantic sorted list of key-value pairs, chopped into pieces and spread across machines. Ask for a row by its key, and Bigtable found it fast — no matter whether the table held a million rows or a hundred billion. Ask it anything more clever, and the answer was: that's your problem now.
+
+It worked. Bigtable ran web search, Google Earth, and Google Analytics. In 2006, Google did something unusual: it published the design in an academic paper for anyone to read. A year later Amazon published Dynamo, its own rule-breaking store, built so the shopping cart would *never* refuse a customer — even if that meant two versions of the cart existing at once and merging later [@decandia2007].
+
+The papers landed on an industry primed for rebellion. Open-source imitations appeared within months: HBase, Cassandra, MongoDB. By 2009 the movement had a name — **NoSQL** — and a swagger. Schemas were bureaucracy. Joins were for grandparents. Startups with a thousandth of Google's traffic tore out their relational databases to be ready for a scale most would never see.
+
+Not everyone cheered. Michael Stonebraker — who had built one of the first relational databases in the 1970s and had a claim to be Codd's most accomplished heir — watched the movement with open disbelief. The industry, he argued, had spent the 1970s learning *painfully* why the rules mattered. Now it was unlearning them on purpose [@stonebraker2010].
+
+The outcome of that fight is not the interesting part. The interesting part is the question underneath it: Google faced a real, provable limit and made a considered trade. Ten thousand other companies then made the same trade without the limit. Was Codd's promise ever optional — and if so, whose call was it to drop?
+
+## How It Worked
+
+Codd's model and Bigtable's model are both simple enough to hold in your head. The difference between them is *where the work goes*.
+
+A Bigtable-style store is, at its core, a giant sorted map: one lookup key per row, and labeled values inside. Fifteen lines of Python capture the shape:
+
+```python
+store = {}   # a wide-column store in miniature: row key -> labeled values
+
+def put(row_key, column, value):
+    store.setdefault(row_key, {})[column] = value
+
+def get(row_key):
+    return store.get(row_key, {})
+
+put("com.example/pageA", "contents", "<html>A cooking blog...</html>")
+put("com.example/pageA", "links_to", "com.recipes/pageB")
+put("com.recipes/pageB", "contents", "<html>A recipe...</html>")
+put("com.recipes/pageB", "language", "en")
+
+print(get("com.example/pageA"))
+```
+
+Notice two things. First, `get` is one step. Whether the store holds four rows or forty billion, fetching a row by its key costs about the same — and because the keys are kept sorted, the real system can split the key range across thousands of machines and still know instantly which machine owns which row. That single property is what let Bigtable swallow the web. Second, notice what rows *don't* have: the same shape. `pageA` has a `links_to`; `pageB` has a `language`. No schema complains, because there is no schema.
+
+Now ask the store a harder question: *which pages link to pageB?* The relational answer is a one-line join — the database walks the connection for you. Bigtable's answer is: it can't. The store can only look things up by row key, and "pageB" is buried inside other rows' values. If you need that question answered fast, *you* must build and maintain a second copy of the data, keyed the other way:
+
+```python
+backlinks = {}   # a second index — yours to build, and yours to keep correct
+
+def put_link(from_page, to_page):
+    put(from_page, "links_to", to_page)
+    backlinks.setdefault(to_page, []).append(from_page)
+```
+
+That second function is the whole bargain in four lines. The lookup is fast — but now two structures must agree forever, and no database is checking. If a crash hits between the two updates, they silently disagree. Codd's model made that *impossible*; the database applied related changes as one transaction. Bigtable made it *your job*. The work never disappeared. It moved from the database into every program that uses it.
+
+The full trade looks like this:
+
+| Question | Relational (Codd) | Bigtable-style (NoSQL) |
+|---|---|---|
+| Shape of the data | fixed columns, enforced | each row holds whatever it holds |
+| Who enforces the rules | the database, always | your code, if you remember |
+| How it grows | a bigger, costlier server | thousands more cheap servers |
+| Cross-table questions | one join, database does the work | build your own second index |
+| During a network failure | may refuse to answer (stays right) | keeps answering (may be stale) |
+
+The last row deserves its own name. Systems like Dynamo promise [eventual consistency]{.key-term}: after an update, different machines may briefly disagree about the truth, and the system reconciles them later. Amazon judged that a shopping cart that *sometimes shows a deleted item* beats a cart that *sometimes refuses to open*. For carts, most people agree. For bank balances, most people do not — which is exactly where the argument begins.
+
+::: {.context-box}
+**The CAP theorem.** In 2000, Eric Brewer conjectured — and in 2002, Seth Gilbert and Nancy Lynch proved — a hard limit on distributed systems [@gilbert2002]. When data lives on many machines and the network between them fails (a *partition*), a system must choose: keep answering with possibly stale data (**availability**), or refuse to answer until the machines agree (**consistency**). At web scale, partitions are a certainty, not a risk. So the theorem is not advice; it is a bill that always comes due. The only question is who pays it, and in what currency — wrong answers or no answers.
+:::
+
+## The Argument Bigtable Started
+
+The positions connect: each answers the one before.
+
+### Stonebraker's warning: we already learned this lesson
+
+Stonebraker's objection was not that Google was wrong about Google. It was that the industry was treating a special case as a revolution. The 1960s had databases without enforced rules; the relational model was invented *because of* what happened.
+
+::: {.argument}
+**The Guarantees Argument**
+
+1. Data outlives the programs that create it, and rules enforced only by programs die with the programs — every team re-implements them differently, partially, or not at all.
+2. NoSQL systems move rulekeeping out of the database and into application code, restoring exactly the situation the relational model was invented to end.
+3. Almost no adopter has Google's problem, but every adopter inherits Google's compromises.
+4. Therefore, for nearly everyone, abandoning the relational model is not innovation — it is forgetting, at the expense of whoever's data gets lost.
+:::
+
+The steel in this argument is the wreckage. Early versions of MongoDB, the most popular NoSQL database, shipped with defaults that did not wait to confirm a write had actually been stored — fast in benchmarks, and capable of silently losing data in production. Teams discovered "eventual consistency" as a customer support ticket: an order charged twice, a balance that depended on which server you asked. The weight rests on premise 3 — *you are not Google*. That is the premise the reply attacks, by denying that it matters.
+
+### The scale reply: the old model assumed a world that's gone
+
+The Bigtable and Dynamo designers did not think they were forgetting the 1970s. They thought the 1970s had made an assumption — one reliable machine — that the web had falsified. Their position was that the trade-off is imposed by mathematics, and pretending otherwise is the real malpractice.
+
+::: {.argument}
+**The Scale Reply**
+
+1. At scale, network partitions and machine failures are certainties, so the CAP theorem forces a choice between availability and consistency — refusing to choose just means choosing downtime.
+2. Downtime and slowness are real harms too, measured in stranded users and lost work, not just lost rows.
+3. The relational model's guarantees were designed for, and priced for, a single reliable computer — an assumption that no longer describes the systems people actually need.
+4. Therefore, relaxing guarantees is not recklessness. It is honest engineering for the world as it is, and the relaxed systems say out loud what the old ones quietly assumed.
+:::
+
+The reply is strongest exactly where it stays modest. Google *measured* its limit. Amazon *chose* its failure mode — a stale cart — deliberately, for a case where staleness is cheap. The soft spot is that the argument justifies the engineers who did the measuring, and says nothing about the ten thousand teams who copied the conclusion without the measurement. A trade-off adopted as a fashion statement is not a trade-off. It is a coin flip with other people's data.
+
+**The hype objection.** Which points at a third position: the real failure was never in either model, but in how the industry chooses tools. Databases got picked the way sneakers get picked — by what the famous companies wore. Conference talks, résumés, and the word "web-scale" did the deciding; requirements did not. On this view, choosing a database is an *ethical* act, because other people's records ride on it: prescriptions, savings, evidence, grades. A team that adopts eventual consistency for a medication log has made a decision about patients, whether or not anyone in the room said so. The objection challenges both formal arguments the same way: they debate which trade is correct, when the scandal is how casually the trade was made — and that when data quietly went missing, no one could say who had decided it could.
+
+### Where it rests today: SQL's revenge
+
+Then the story turned on its makers. In 2012, Google — the company that broke the database — published Spanner, a planet-spanning database that brought back SQL, schemas, and transactions, at global scale [@corbett2012]. The paper's confession is quietly devastating: it is better, the authors wrote, to let programmers deal with performance costs as they arise "rather than always coding around the lack of transactions." Google had spent years watching its own engineers hand-build, badly, the guarantees Bigtable had dropped — every team paying Codd's bill separately.
+
+The rest of the industry converged from both directions. MongoDB added transactions and schema validation — rules, by the back door. The old relational databases learned the other side's best trick: PostgreSQL added flexible JSON columns, letting oddly-shaped data live inside a rule-keeping system. By the 2020s, the startup world's fashionable advice had become deliberately boring: *just use Postgres, until you can prove you can't.* The revolution and the establishment had quietly adopted each other's features, and the loud decade in between started to look less like progress in either direction than like the price of finding out.
+
+Which leaves the sharper question. Codd's rules were dropped by people who had done the math, then re-adopted once the cost of living without them came due — and the bill for the years in between was paid mostly by users who never knew a choice had been made. If that is how software finds its limits — break the rule, ship it, count the damage, put the rule back — is that engineering learning honestly? Or is it an experiment run on the public, and if so, who signed the consent form?
+
+## Discussion Questions
+
+1. Codd's key idea: the database enforces the rules, not the programs that use it. Explain why that matters in your own words. Then give an analogy from outside computing — a referee, a landlord, a proofreader, or one of your own.
+2. Write the Guarantees Argument and the Scale Reply in your own words. Do they really disagree about databases? Or do they disagree about *who* should be allowed to make the trade-off? Defend your answer.
+3. You are CTO of a ten-person startup building a medication-tracking app. An engineer proposes a NoSQL store "so we can scale later." What do you decide? What two questions do you ask before deciding?
+4. Pick another field that trades safety margin for speed or scale — aviation, fast fashion, food delivery, social media moderation. Is that field's version of the trade more like Google's (measured) or like the hype wave (copied)? Why?
+5. "Eventually consistent" means the system may briefly show different users different truths. Name one app where you would accept that, and one where you would not. What separates the two?
+
+## Further Reading
+
+- Codd's original 1970 paper — short, surprisingly readable, and one of the most consequential papers in computing [@codd1970].
+- The Bigtable paper — the design that started it all, written with unusual clarity about what was given up and why [@chang2006].
+- The Dynamo paper — Amazon's shopping-cart trade-off, and the clearest statement of eventual consistency by the people who chose it [@decandia2007].
+- Stonebraker's CACM column — the case against the NoSQL wave, from the relational model's most decorated defender [@stonebraker2010].
+- The Spanner paper — Google's return to transactions, including the sentence where they say why [@corbett2012].
+
+## References
+
+::: {#refs}
+:::
