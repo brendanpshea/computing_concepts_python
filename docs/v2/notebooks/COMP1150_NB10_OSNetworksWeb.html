@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>comp1150_nb10_osnetworksweb – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notebook-10-os-networks-cloud-the-web-the-case-of-the-vanishing-website" id="toc-notebook-10-os-networks-cloud-the-web-the-case-of-the-vanishing-website" class="nav-link active" data-scroll-target="#notebook-10-os-networks-cloud-the-web-the-case-of-the-vanishing-website">Notebook 10: OS, Networks, Cloud &amp; the Web — The Case of the Vanishing Website</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#the-case-of-the-vanishing-website" id="toc-the-case-of-the-vanishing-website" class="nav-link" data-scroll-target="#the-case-of-the-vanishing-website">The Case of the Vanishing Website</a></li>
+  <li><a href="#the-machine-underneath-what-an-operating-system-does" id="toc-the-machine-underneath-what-an-operating-system-does" class="nav-link" data-scroll-target="#the-machine-underneath-what-an-operating-system-does">1. The Machine Underneath: What an Operating System Does</a></li>
+  <li><a href="#finding-the-address-dns-and-ip" id="toc-finding-the-address-dns-and-ip" class="nav-link" data-scroll-target="#finding-the-address-dns-and-ip">2. Finding the Address: DNS and IP</a></li>
+  <li><a href="#the-conversation-http" id="toc-the-conversation-http" class="nav-link" data-scroll-target="#the-conversation-http">3. The Conversation: HTTP</a></li>
+  <li><a href="#whose-computer-is-it-anyway-the-cloud" id="toc-whose-computer-is-it-anyway-the-cloud" class="nav-link" data-scroll-target="#whose-computer-is-it-anyway-the-cloud">4. Whose Computer Is It Anyway? The Cloud</a></li>
+  <li><a href="#becoming-the-server" id="toc-becoming-the-server" class="nav-link" data-scroll-target="#becoming-the-server">5. Becoming the Server</a></li>
+  <li><a href="#capstone-the-baker-street-tip-line" id="toc-capstone-the-baker-street-tip-line" class="nav-link" data-scroll-target="#capstone-the-baker-street-tip-line">✏️ Capstone — The Baker Street Tip Line</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB10_OSNetworksWeb.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB10_OSNetworksWeb.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB10_OSNetworksWeb.ipynb">View on GitHub</a></p>
+<section id="notebook-10-os-networks-cloud-the-web-the-case-of-the-vanishing-website" class="level1">
+<h1>Notebook 10: OS, Networks, Cloud &amp; the Web — The Case of the Vanishing Website</h1>
+<section id="comp-1150-computer-science-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
+<p><strong>Brendan Shea, PhD</strong></p>
+<!-- Lecture video link to be added -->
+<p>📺 <strong>Lecture video:</strong> <em>(coming soon)</em></p>
+</section>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li>Explain what an operating system does: managing processes, files, and memory</li>
+<li>Describe how a request crosses the internet: IP addresses, DNS, packets, and TCP</li>
+<li>Read an HTTP conversation: requests, responses, and status codes</li>
+<li>Call a real web API with Python’s <code>requests</code> library and parse the JSON it returns</li>
+<li>Distinguish the cloud service models — IaaS, PaaS, and SaaS — and give an example of each</li>
+<li>Build and run a tiny web server with Flask, and explain the request/response cycle</li>
+</ul>
+<p><em>Maps to course LOs: 3</em></p>
+</section>
+<section id="the-case-of-the-vanishing-website" class="level2">
+<h2 class="anchored" data-anchor-id="the-case-of-the-vanishing-website">The Case of the Vanishing Website</h2>
+<p><strong>Irene Adler</strong> runs Adler Streaming, a video platform with two million subscribers. This morning, it vanished.</p>
+<p>Not for everyone. That’s the maddening part. Support tickets say the site is down in Edinburgh but fine in Cardiff. Down on phones, fine on laptops. One customer watched half a film, refreshed, and got nothing.</p>
+<p>Irene doesn’t panic; she hires. Specifically, she hires <strong>Baker Street Diagnostics</strong>, a two-person consultancy run by <strong>Sherlock Holmes</strong> — a man who believes every technical failure is a crime scene — and <strong>Dr.&nbsp;John Watson</strong>, who translates Sherlock into English.</p>
+<p>Sherlock’s opening statement, delivered while Irene is still explaining:</p>
+<blockquote class="blockquote">
+<p>“Your website is not a place, Ms.&nbsp;Adler. It is a <em>conversation</em> — a request that leaves a customer’s device, crosses machines you’ve never met, and returns with an answer. Somewhere along that road, the conversation is dying. We will follow the request. Every hop is a suspect. We eliminate them one at a time.”</p>
+</blockquote>
+<p>That sentence is this notebook’s whole plan.</p>
+<p>So far in this course, your programs have lived alone: one file, one machine, no outside world. But almost nothing you actually <em>use</em> works that way. Every app on your phone is a conversation between your device and distant computers — crossing an operating system, a network, and somebody’s rented cloud.</p>
+<p>To find Irene’s fault, we have to understand every suspect on the road:</p>
+<ol type="1">
+<li><strong>The machine itself</strong> — what an operating system actually does.</li>
+<li><strong>The address lookup</strong> — how <code>adlerstreaming.com</code> becomes a number a network can use.</li>
+<li><strong>The journey</strong> — packets, and the internet’s delivery service.</li>
+<li><strong>The conversation</strong> — HTTP, the strict little language of the web.</li>
+<li><strong>The server’s home</strong> — the cloud, and whose computer it really is.</li>
+</ol>
+<p>And then the finale: the only way to truly understand a web server is to <em>become one</em>. At the end, you’ll build and run your own.</p>
+</section>
+<section id="the-machine-underneath-what-an-operating-system-does" class="level2">
+<h2 class="anchored" data-anchor-id="the-machine-underneath-what-an-operating-system-does">1. The Machine Underneath: What an Operating System Does</h2>
+<p>Sherlock starts every case the same way: at the scene, with the body. Here, the “body” is a computer — and the first thing to understand about any computer is that your programs never actually touch it.</p>
+<p>Between every program and the physical hardware sits the <strong>operating system</strong> (OS) — Windows, macOS, Linux, Android, iOS. It has three jobs that matter to us:</p>
+<ul>
+<li><strong>Processes.</strong> A <span class="key-term">process</span> is one running program. The OS starts them, stops them, and slices CPU time among them so that dozens can <em>appear</em> to run at once.</li>
+<li><strong>Files.</strong> The OS owns the disk and organizes it into the <span class="key-term">file system</span> — folders and files with names, so no program has to know where the physical bits live.</li>
+<li><strong>Memory.</strong> The OS hands each process its own protected slice of memory, so a buggy game can’t scribble over your open documents.</li>
+</ul>
+<p>A useful mental picture: the OS is a building manager. Programs are tenants. Tenants never wire their own electricity — they ask the manager, and the manager deals with the building.</p>
+<section id="the-crime-scene-is-a-real-computer" class="level3">
+<h3 class="anchored" data-anchor-id="the-crime-scene-is-a-real-computer">The Crime Scene Is a Real Computer</h3>
+<p>Here’s a fact that surprises most people: when you use Google Colab, you’re not using “a website” — you’ve been lent a <strong>real Linux computer</strong> in a Google data center. And Linux will happily let us interrogate it.</p>
+<p>In a code cell, a line starting with <code>!</code> is not Python — it’s a command sent straight to the operating system. The next cell asks the OS to list its running <strong>processes</strong>. Run it in Colab and examine the scene.</p>
+<div id="c4464aa9" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this in Colab: every row is one process (one running program).</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ps aux <span class="op">|</span> head <span class="op">-</span><span class="dv">15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You’ll see a table: each row is one process, with its ID number (<code>PID</code>), how much CPU and memory it’s using, and the command that started it. Somewhere in that list you’ll find <code>python3</code> — <em>that row is this notebook</em>. Your code is just one tenant among many, and the OS is managing all of them at once.</p>
+<p>Now the other two jobs — files and memory. The next cell peeks at the top of the file system, then asks the OS how much memory it’s handed out.</p>
+<div id="216a37f1" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this in Colab: the top of the file system, then the memory situation.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">/</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>free <span class="op">-</span>h</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The <code>ls /</code> listing shows the standard rooms of a Linux building — <code>home</code> (your files), <code>usr</code> (installed programs), <code>tmp</code> (scratch space). And <code>free -h</code> shows the memory ledger: total, used, available. Every byte your Python variables occupy was granted by the OS — and will be reclaimed by it when your process ends.</p>
+<p>One picture ties the three jobs together. The diagram below shows where the OS sits.</p>
+<div id="fc8f216c" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB10_OSNetworksWeb_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> every arrow passes through the middle box. Programs at the top never command the hardware directly — they <em>ask</em> the OS, and the OS decides. That protection is why one crashing app doesn’t take down your whole machine (and why, when a whole <em>server</em> goes silent, the OS’s process table is the first place a detective looks — remember that for later).</p>
+</section>
+<section id="your-turn-the-scene-of-the-machine" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-the-scene-of-the-machine">✏️ Your Turn — The Scene of the Machine</h3>
+<p>Sherlock leaves you at the scene with three questions. Answer each by running a command in Colab (use the two cells above as models):</p>
+<ol type="1">
+<li>How many processes mention <code>python</code> in their command? (Try <code>!ps aux | grep python</code>.)</li>
+<li>What’s inside the <code>/tmp</code> directory right now?</li>
+<li>Roughly how much memory is <em>available</em> on your Colab machine?</li>
+</ol>
+<div id="0152a57f" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: your three investigation commands, one per line.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="think-about-it-three-hundred-tenants" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-three-hundred-tenants">💭 Think About It — Three Hundred Tenants</h3>
+<p>Your phone is running a few hundred processes <em>right now</em> — and you’ve never had to know that until this sentence.</p>
+<p>That ignorance is a designed gift: the OS hides the machine so completely that most people never meet it. What’s one other system in your life (not a computer) that works hard so you can ignore it? What happens when <em>that</em> one breaks?</p>
+</section>
+</section>
+<section id="finding-the-address-dns-and-ip" class="level2">
+<h2 class="anchored" data-anchor-id="finding-the-address-dns-and-ip">2. Finding the Address: DNS and IP</h2>
+<p>The Colab machine checks out — suspect one eliminated. Sherlock moves to the road itself, and brings in a specialist: <strong>Mary Morstan</strong>, whose company, Morstan Logistics, moves fifty thousand parcels a day.</p>
+<p>Mary’s rule: <em>“You can’t deliver to a name. You deliver to an address.”</em></p>
+<p>The internet agrees. Every machine on a network has an <span class="key-term">IP address</span> — a number like <code>142.250.187.206</code>. Numbers, not names, are what the network routes. But nobody types numbers. You type <code>adlerstreaming.com</code>, and something must translate.</p>
+<p>That something is <span class="key-term">DNS</span> — the Domain Name System: the internet’s phone book, translating names into IP addresses millions of times per second, invisibly, before any real conversation begins.</p>
+<p>Python can ask DNS directly. The general pattern:</p>
+<pre><code>socket.gethostbyname("website name")</code></pre>
+<p>The next cell looks up three real names.</p>
+<div id="59dad296" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> site <span class="kw">in</span> [<span class="st">"google.com"</span>, <span class="st">"wikipedia.org"</span>, <span class="st">"python.org"</span>]:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>site<span class="sc">:16}</span><span class="ss"> -&gt; </span><span class="sc">{</span>socket<span class="sc">.</span>gethostbyname(site)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>google.com       -&gt; 142.251.218.174
+wikipedia.org    -&gt; 208.80.154.224
+python.org       -&gt; 151.101.64.223</code></pre>
+</div>
+</div>
+<p>Three names, three numeric addresses — you just used the same lookup your browser performs before loading any page. (Run it twice on different days and <code>google.com</code> may answer with <em>different</em> numbers. Big sites have many machines behind one name; DNS hands out addresses like a receptionist directing a queue.)</p>
+<p>And here is <strong>suspect two</strong> in Irene’s case: if a region’s DNS servers hold a stale or wrong address, the site “vanishes” — for those users only. Everyone else, using healthy phone books, sees nothing wrong. It fits the Edinburgh tickets… but Sherlock isn’t done eliminating.</p>
+<section id="the-journey-packets-and-tcp" class="level3">
+<h3 class="anchored" data-anchor-id="the-journey-packets-and-tcp">The Journey: Packets and TCP</h3>
+<p>Once your device has the address, Mary’s world takes over completely — because data travels the way parcels do.</p>
+<p>A message isn’t sent whole. It’s chopped into <span class="key-term">packets</span> — small chunks, each stamped with the destination address and a sequence number — and each packet finds its <em>own</em> way across the network, hopping from router to router. They can arrive out of order. Some don’t arrive at all.</p>
+<p>The internet’s fix is a protocol called <span class="key-term">TCP</span>, and it works exactly like Mary’s tracking system:</p>
+<ol type="1">
+<li>Number every parcel in the shipment.</li>
+<li>The receiver confirms each one that arrives.</li>
+<li>Anything unconfirmed gets re-sent.</li>
+<li>Reassemble in numbered order — the message arrives complete, or the sender knows it didn’t.</li>
+</ol>
+<p>The diagram below is Sherlock’s suspect map: the full road a request travels. Keep it in mind for the rest of the case.</p>
+<div id="e44ded3f" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB10_OSNetworksWeb_files/figure-html/cell-7-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> follow the numbers. The name lookup (1–2) happens <em>before</em> the real request; the request and response (3–6) each cross the network as packets that TCP reassembles. Every box is one of Sherlock’s suspects: the device, the phone book, the road, the server.</p>
+</section>
+<section id="your-turn-marys-address-book" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-marys-address-book">✏️ Your Turn — Mary’s Address Book</h3>
+<p>Mary wants a mini address book. Look up the IP addresses of <strong>three websites you actually use</strong> (pick your own). Then run your lookups a second time.</p>
+<p>Did any address change between runs — or differ from a classmate’s result for the same site? Write one sentence proposing <em>why</em> a single name might answer with different numbers.</p>
+<div id="6f43fdc7" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: look up three sites you use. Run it twice. Compare.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>my_sites <span class="op">=</span> [<span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="the-conversation-http" class="level2">
+<h2 class="anchored" data-anchor-id="the-conversation-http">3. The Conversation: HTTP</h2>
+<p>The road is clear — Mary’s packets are flowing. Sherlock turns to what’s <em>said</em> on that road. Time to question Irene’s site directly, in its own language.</p>
+<p>The web’s language is <span class="key-term">HTTP</span> (HyperText Transfer Protocol), and it is a rigidly polite conversation with exactly two turns:</p>
+<ul>
+<li><strong>The request</strong> — your device says: a <em>verb</em> (usually <code>GET</code>, meaning “please send me…”) plus an address.</li>
+<li><strong>The response</strong> — the server answers with two things: the content, and a three-digit <span class="key-term">status code</span> saying how it went.</li>
+</ul>
+<p>Sherlock reads status codes the way he reads witnesses:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Meaning</th>
+<th>Sherlock’s translation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>“The witness is cooperating.”</td>
+</tr>
+<tr class="even">
+<td><strong>301</strong></td>
+<td>Moved permanently</td>
+<td>“He’s given a forwarding address.”</td>
+</tr>
+<tr class="odd">
+<td><strong>404</strong></td>
+<td>Not found</td>
+<td>“There is no such person at this address.”</td>
+</tr>
+<tr class="even">
+<td><strong>500</strong></td>
+<td>Server error</td>
+<td>“The witness has fainted mid-sentence.”</td>
+</tr>
+</tbody>
+</table>
+<section id="making-requests-in-python" class="level3">
+<h3 class="anchored" data-anchor-id="making-requests-in-python">Making Requests in Python</h3>
+<p>Python speaks HTTP through the <code>requests</code> library. The pattern couldn’t be shorter:</p>
+<pre><code>response = requests.get("the URL")
+response.status_code   # the three-digit verdict
+response.json()        # the content, if it's JSON</code></pre>
+<p>Let’s question a real server. Open-Meteo is a free weather service with an API — and since the next section of this case takes us to London, the next cell asks for the current weather near Baker Street.</p>
+<div id="00f8d518" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.open-meteo.com/v1/forecast"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, params<span class="op">=</span>{</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"latitude"</span>: <span class="fl">51.52</span>, <span class="st">"longitude"</span>: <span class="op">-</span><span class="fl">0.16</span>,   <span class="co"># Baker Street, London</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"current_weather"</span>: <span class="va">True</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Status code:"</span>, response.status_code)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.json()[<span class="st">"current_weather"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Status code: 200
+{'time': '2026-07-07T13:00', 'interval': 900, 'temperature': 29.4, 'windspeed': 13.7, 'winddirection': 302, 'is_day': 1, 'weathercode': 1}</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code">Understanding the Code</h3>
+<ul>
+<li><code>requests.get(url, params=...)</code> sent a real HTTP request across the real internet — DNS lookup, packets, TCP, everything from the suspect map, in one line.</li>
+<li><code>response.status_code</code> came back <code>200</code>: the witness cooperated.</li>
+<li><code>response.json()</code> converted the reply into Python data. The server answered in <strong>JSON</strong> — labeled, nested data that arrives as dictionaries and lists you already know how to handle.</li>
+</ul>
+<p>A server whose job is answering programs (rather than showing pages to humans) is called an <span class="key-term">API</span> — an <em>application programming interface</em>. This is <strong>Dr.&nbsp;Watson’s</strong> world: his telehealth app never scrapes weather off a webpage; it asks an API and gets clean JSON. Most modern software is exactly this — programs having HTTP conversations with other programs.</p>
+</section>
+<section id="predict-before-you-run" class="level3">
+<h3 class="anchored" data-anchor-id="predict-before-you-run">🔮 Predict Before You Run</h3>
+<p>The next cell deliberately asks GitHub’s API for a page that does not exist.</p>
+<p>Look at Sherlock’s status-code table above. <strong>Before running it</strong>, write down the code you expect.</p>
+<div id="00896e2f" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"https://api.github.com/this-page-does-not-exist"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Status code:"</span>, response.status_code)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Status code: 404</code></pre>
+</div>
+</div>
+<p><strong>404 — no such person at this address.</strong> Note what <em>didn’t</em> happen: no crash, no silence. The server answered, calmly, with a code meaning “that’s not a thing.” Good HTTP conversations fail <em>informatively</em> — and a diagnostician like Sherlock learns as much from a 404 as from a 200.</p>
+<p>(As for Irene’s site? Her servers are returning 200s… when the request reaches them at all. Suspects three and four — the road and the conversation — are eliminated. The circle tightens.)</p>
+</section>
+<section id="your-turn-irenes-weather-wall" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-irenes-weather-wall">✏️ Your Turn — Irene’s Weather Wall</h3>
+<p>Irene wants a weather widget for her office wall: the current weather for a city of <em>your</em> choice.</p>
+<p>Find your city’s rough latitude and longitude (search engines answer this instantly), call the Open-Meteo API like the example above, and print <strong>just two things</strong>: the temperature and the wind speed, pulled out of the JSON by key.</p>
+<div id="4d8c74c9" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: your city's coordinates, one API call, print temperature and windspeed only.</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>my_latitude <span class="op">=</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>my_longitude <span class="op">=</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="whose-computer-is-it-anyway-the-cloud" class="level2">
+<h2 class="anchored" data-anchor-id="whose-computer-is-it-anyway-the-cloud">4. Whose Computer Is It Anyway? The Cloud</h2>
+<p>One suspect left: the server itself. But before we knock on its door, Sherlock asks his brother a deceptively simple question: <em>where does a website live?</em></p>
+<p><strong>Mycroft Holmes</strong> runs the Whitehall Cloud Office — he decides where the government’s systems live — and his answer is the least mystical definition you’ll ever hear:</p>
+<blockquote class="blockquote">
+<p>“The <span class="key-term">cloud</span> is someone else’s computer. Rented by the slice, billed by the hour, reachable over the network. The only interesting question is <em>how big a slice</em> you rent.”</p>
+</blockquote>
+<p>That question — how much of the machine is your problem versus the landlord’s — has exactly three standard answers, and a housing analogy makes them stick:</p>
+<ul>
+<li><span class="key-term">IaaS</span> (<em>Infrastructure as a Service</em>) — <strong>rent bare land.</strong> You get raw virtual machines; you install and manage everything above the hardware. Total control, total responsibility. (Amazon EC2.)</li>
+<li><span class="key-term">PaaS</span> (<em>Platform as a Service</em>) — <strong>rent an apartment.</strong> You bring only your code; the landlord runs the machines, the OS, the plumbing. (Heroku, Google App Engine.)</li>
+<li><span class="key-term">SaaS</span> (<em>Software as a Service</em>) — <strong>book a hotel room.</strong> You just <em>use</em> finished software through a browser; nothing underneath is your problem. (Gmail, Google Docs.)</li>
+</ul>
+<p>One more row for the table: <strong>you’ve been a cloud customer this whole course.</strong> Colab is finished software you use through a browser (SaaS) — that hands you a managed machine to run code on (which is what a PaaS does). The Linux box you interrogated in section 1? A slice of someone else’s computer, exactly as Mycroft says.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Housing version</th>
+<th>You manage</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IaaS</td>
+<td>bare land</td>
+<td>OS, software, code — everything</td>
+<td>Amazon EC2</td>
+</tr>
+<tr class="even">
+<td>PaaS</td>
+<td>apartment</td>
+<td>just your code and data</td>
+<td>Heroku, App Engine</td>
+</tr>
+<tr class="odd">
+<td>SaaS</td>
+<td>hotel room</td>
+<td>nothing — you’re a user</td>
+<td>Gmail, Colab</td>
+</tr>
+</tbody>
+</table>
+<p>And Irene? Adler Streaming rents from a PaaS. Which means the last suspect — her server — is a <em>process running on a machine she has never seen.</em> Hold that thought.</p>
+<section id="think-about-it-mycrofts-dilemma" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-mycrofts-dilemma">💭 Think About It — Mycroft’s Dilemma</h3>
+<p>Mycroft must decide where the national health records system lives: on servers the government owns and staffs, or rented from a giant cloud provider that runs infrastructure better than any government ever has.</p>
+<p>Give one strong reason for each choice. Then the harder question: who should hold the keys to data like that — and is “whoever runs servers best” the right answer?</p>
+</section>
+</section>
+<section id="becoming-the-server" class="level2">
+<h2 class="anchored" data-anchor-id="becoming-the-server">5. Becoming the Server</h2>
+<p>Four suspects eliminated: the client machine, DNS, the network, the HTTP conversation. What remains, however improbable, must be the truth — the fault is <em>at the server</em>.</p>
+<p>But what actually <strong>is</strong> a server? Strip away the mystique and it’s almost disappointing:</p>
+<blockquote class="blockquote">
+<p>A <span class="key-term">server</span> is a program that waits. It listens for HTTP requests, and for each one, it runs some code and returns a response.</p>
+</blockquote>
+<p>That’s it. It’s a process — a tenant of some operating system, like every program in section 1. And the fastest way to understand one is to <em>be</em> one. Python’s most popular tool for this is <strong>Flask</strong>, and its whole shape fits in a skeleton:</p>
+<pre><code>app = Flask(__name__)
+
+@app.route("/some/path")
+def handler():
+    return "the response"</code></pre>
+<p>Each <code>@app.route(...)</code> line declares: <em>when a request arrives for this path, run this function and send back whatever it returns.</em> A path-plus-function pair is called a <span class="key-term">route</span>.</p>
+<section id="mrs.-hudson-opens-the-doors" class="level3">
+<h3 class="anchored" data-anchor-id="mrs.-hudson-opens-the-doors">Mrs.&nbsp;Hudson Opens the Doors</h3>
+<p>Naturally, our server will be hosted by a landlady. <strong>Mrs.&nbsp;Hudson</strong> — of Hudson Hosting — presents the next cell: a complete, working web server in about a dozen lines.</p>
+<p>Two notes before you run it <strong>in Colab</strong>:</p>
+<ul>
+<li>The <code>serve_kernel_port_as_window</code> line is Colab magic: it opens a link to your server in a new browser tab.</li>
+<li><code>app.run(...)</code> <strong>runs forever</strong> — that’s the whole point of a server; it waits. The cell will show a spinner. When you’re done visiting your site, press the cell’s <strong>stop button</strong>.</li>
+</ul>
+<div id="432faf04" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab.output <span class="im">import</span> serve_kernel_port_as_window</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> home():</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"&lt;h1&gt;221B Web Services&lt;/h1&gt;&lt;p&gt;Mrs. Hudson welcomes you.&lt;/p&gt;"</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/api/status"</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> status():</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"service"</span>: <span class="st">"221B Web Services"</span>, <span class="st">"status"</span>: <span class="st">"open"</span>, <span class="st">"cases_solved"</span>: <span class="dv">47</span>}</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>serve_kernel_port_as_window(<span class="dv">5000</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>app.run(port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Click the link Colab prints, and you are <em>visiting your own website</em> — served by a process you started, on a rented Linux machine in a data center. Add <code>/api/status</code> to the address and you’ll get JSON: you’ve built an API, the very kind you <em>consumed</em> in section 3. (Returning a dictionary from a route is all it takes — Flask converts it to JSON for you.)</p>
+<p>Trace one full visit against the suspect map: browser → (address lookup) → packets → <strong>your process</strong> → its return value → packets → rendered page. The <span class="key-term">request/response cycle</span>, end to end — and this time you own the last box.</p>
+<p><em>(Want a link that works on your phone, off Colab? A tool called <code>pyngrok</code> can tunnel your server to a public URL — it needs a free ngrok account and token, so we leave it as an optional side quest.)</em></p>
+</section>
+<section id="case-closed" class="level3">
+<h3 class="anchored" data-anchor-id="case-closed">Case Closed</h3>
+<p>Armed with all five layers, Sherlock reads Adler Streaming’s server logs — and the culprit is almost insultingly mundane.</p>
+<p>One of Irene’s three server processes <strong>crashed two days ago</strong>. Nothing restarted it. The two survivors handled the load most of the time — but whenever traffic spiked, requests routed to the dead tenant’s address simply… vanished. Down in Edinburgh, fine in Cardiff; down at 8 PM, fine at 3 AM.</p>
+<p>One <code>ps</code> on the right machine — section 1, the very first tool in this notebook — would have shown a process table with a corpse in it. Sherlock’s verdict: <em>“Your website did not vanish, Ms.&nbsp;Adler. One-third of it stopped existing, and nobody was watching the tenants.”</em></p>
+<p>The fix is a monitor that restarts dead processes. The lesson is the notebook: <strong>the web is layers, and every layer is just something you now understand.</strong></p>
+</section>
+<section id="your-turn-your-own-route" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-your-own-route">✏️ Your Turn — Your Own Route</h3>
+<p>Reopen Mrs.&nbsp;Hudson’s server cell and add a <strong>third route</strong> at the path <code>/about</code> that returns a short HTML paragraph about <em>you</em> (or your favorite detective).</p>
+<p>Re-run the cell, visit <code>/about</code>, and confirm your page is live. Then, for one bonus mark of Sherlock’s respect: visit a path you <em>didn’t</em> define and note what Flask returns.</p>
+<div id="eaceb910" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: copy the server from above, add an /about route, re-run, visit it.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="capstone-the-baker-street-tip-line" class="level2">
+<h2 class="anchored" data-anchor-id="capstone-the-baker-street-tip-line">✏️ Capstone — The Baker Street Tip Line</h2>
+<p>Time to run your own corner of the web. You’ll design a small web service and have an AI assistant (Gemini, Claude, or ChatGPT) write the Flask code — while you make the design decisions and verify every route.</p>
+<p><strong>The default theme:</strong> an anonymous tip line for Baker Street Diagnostics — a home page, an API route serving the current tips as JSON, and a route that looks up one tip by number. <strong>Or reskin it</strong>: a fan site with an API, a team status board, a restaurant menu service. Any theme with a page + data works.</p>
+<section id="step-0-design-first-before-touching-the-ai" class="level3">
+<h3 class="anchored" data-anchor-id="step-0-design-first-before-touching-the-ai">Step 0 — Design First (before touching the AI)</h3>
+<p>In the cell below, write your design as plain text:</p>
+<ul>
+<li>Your <strong>three routes</strong>: their paths, and what each returns (HTML page or JSON?)</li>
+<li>The data behind them (a list of dictionaries is plenty — no database needed)</li>
+<li>One route must take a <strong>URL parameter</strong> — like <code>/tip/2</code> returning tip #2</li>
+</ul>
+<p><em>(Double-click and write your design here.)</em></p>
+<p><strong>Route 1:</strong> …</p>
+<p><strong>Route 2:</strong> …</p>
+<p><strong>Route 3:</strong> …</p>
+<p><strong>The data:</strong> …</p>
+</section>
+<section id="step-1-build-it-prompt-1" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-build-it-prompt-1">Step 1 — Build It <em>(prompt #1)</em></h3>
+<p>Turn your design into a prompt. A skeleton to fill in:</p>
+<blockquote class="blockquote">
+<p>I’m learning Flask in Google Colab. Write a complete Flask app with these three routes: <strong>[paste your design]</strong>. Store the data as a Python list of dictionaries defined at the top. Use <code>from google.colab.output import serve_kernel_port_as_window</code>, call <code>serve_kernel_port_as_window(5000)</code> just before <code>app.run(port=5000)</code>. One code block, no explanations.</p>
+</blockquote>
+<p>Paste the result below, run it, and <strong>visit every route</strong> in the opened tab. Don’t move on until all three answer.</p>
+<div id="aa25870a" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built Flask app here, run it, and visit every route.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-question-your-own-witness-prompt-2" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-question-your-own-witness-prompt-2">Step 2 — Question Your Own Witness <em>(prompt #2)</em></h3>
+<p>In section 3 you interrogated other people’s servers with <code>requests</code>. Now interrogate <strong>your own</strong> — the two halves of this notebook shaking hands.</p>
+<p>While your server cell is running, open Colab’s <em>second</em> trick: you can’t easily <code>requests.get</code> your own Colab tab from outside, so test like a detective instead:</p>
+<ol type="1">
+<li>Visit your JSON route in the browser — is it valid JSON? Every field you designed?</li>
+<li>Visit your parameter route with a number that <strong>exists</strong> — right answer?</li>
+<li>Visit it with a number that <strong>doesn’t exist</strong> — what happens? (If it crashes with an ugly error page: that’s a finding. Ask the AI to make it return a polite JSON message and a <code>404</code> status instead.)</li>
+</ol>
+<div id="e774059e" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your improved app here (with the polite 404 handling), re-run, re-test.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-3-one-extension-then-reflect" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-one-extension-then-reflect">Step 3 — One Extension, Then Reflect</h3>
+<p>Add <strong>one</strong> bell or whistle — your choice: a route that returns <em>how many</em> tips there are; a search route like <code>/tips/urgent</code>; or a home page that lists links to every other route. Re-test everything after (a change that breaks an old route is the oldest bug in the book).</p>
+<p>Then reflect below, 2–3 sentences: What did the AI get wrong or almost-wrong? What did you only catch by <em>visiting the routes yourself</em>?</p>
+<p><em>AI is a fast first draft. You verify.</em></p>
+<div id="e8ec7a19" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your final, extended app here.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><em>(Your 2–3 sentence reflection — double-click to edit.)</em></p>
+</section>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>API (application programming interface)</strong> — A server whose job is answering programs rather than people, usually in JSON.</li>
+<li><strong>Cloud</strong> — Computers owned by someone else, rented over the network by the slice.</li>
+<li><strong>DNS (Domain Name System)</strong> — The internet’s phone book: translates names like <code>python.org</code> into IP addresses.</li>
+<li><strong>File system</strong> — The OS’s organization of storage into named files and folders.</li>
+<li><strong>Flask</strong> — A small Python library for building web servers.</li>
+<li><strong>HTTP</strong> — The web’s request/response language, spoken between clients and servers.</li>
+<li><strong>IaaS / PaaS / SaaS</strong> — The three cloud rental sizes: raw machines / a platform for your code / finished software.</li>
+<li><strong>IP address</strong> — The numeric address that identifies a machine on a network.</li>
+<li><strong>Operating system (OS)</strong> — The software layer that manages processes, files, and memory between programs and hardware.</li>
+<li><strong>Packet</strong> — A small, addressed chunk of data; messages cross the internet as many packets.</li>
+<li><strong>Process</strong> — One running program, managed (started, scheduled, stopped) by the OS.</li>
+<li><strong>Request/response cycle</strong> — The full round trip: client asks, server’s code runs, answer returns.</li>
+<li><strong>Route</strong> — In a web server, one path (like <code>/api/status</code>) paired with the function that answers it.</li>
+<li><strong>Server</strong> — A program that waits for requests and returns responses.</li>
+<li><strong>Status code</strong> — The three-digit verdict in every HTTP response: 200 OK, 404 not found, 500 server error.</li>
+<li><strong>TCP</strong> — The protocol that numbers, confirms, re-sends, and reassembles packets so messages arrive complete.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Every app is a conversation across layers, and you now know each one. The operating system runs processes, owns files, and grants memory — programs never touch hardware directly. DNS turns names into IP addresses; TCP moves data as numbered, confirmed packets. On top of that road, HTTP holds a strict two-turn conversation of requests and responses, with status codes as verdicts — and an API is just a server that answers programs in JSON. The cloud is someone else’s computer rented in three sizes (IaaS, PaaS, SaaS). And a web server, demystified, is a program that waits: with Flask, a dozen lines make you a citizen of the web rather than a visitor. When something “vanishes,” it’s one of these layers — and now you know how to interrogate every suspect.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p>You just built a server and opened its door to the network. Here’s the thought that should keep you up tonight: <em>anyone</em> can knock. The next notebook is about exactly that — security. Who else is sending requests to your server, what are they after, and how do systems defend the data behind the door?</p>
+<p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
