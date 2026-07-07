@@ -22,6 +22,7 @@ A template and authoring guide for the 12 main notebooks in the redesigned COMP 
 ## Voice & Style
 
 - **Reading level: 10th–12th grade.** Short sentences. Active voice. Plain words. Explain every technical term on first use and add it to the Key Terms glossary.
+- **Bold new terms with plain `**term**`, not `[term]{.key-term}`.** The `.key-term` span syntax is a case-study convention (case studies always compile through Quarto, so the CSS class renders). Notebooks are also opened raw in Colab, where the span markup shows up as literal clutter instead of styled text — use ordinary markdown bold instead.
 - **Concrete over abstract.** Every concept lands in a scene with named characters doing something recognizable. No abstract "a user" or "a programmer" — always Dwight, always Elizabeth Bennet, always Gandalf.
 - **Funny when it fits; never forced.** The characters supply the humor. You don't need to punch up every paragraph.
 - **Don't assume prior programming background.** A student can have seen zero code and still follow along.

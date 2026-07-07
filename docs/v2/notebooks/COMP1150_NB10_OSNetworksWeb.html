@@ -237,8 +237,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Sherlock starts every case the same way: at the scene, with the body. Here, the “body” is a computer — and the first thing to understand about any computer is that your programs never actually touch it.</p>
 <p>Between every program and the physical hardware sits the <strong>operating system</strong> (OS) — Windows, macOS, Linux, Android, iOS. It has three jobs that matter to us:</p>
 <ul>
-<li><strong>Processes.</strong> A <span class="key-term">process</span> is one running program. The OS starts them, stops them, and slices CPU time among them so that dozens can <em>appear</em> to run at once.</li>
-<li><strong>Files.</strong> The OS owns the disk and organizes it into the <span class="key-term">file system</span> — folders and files with names, so no program has to know where the physical bits live.</li>
+<li><strong>Processes.</strong> A <strong>process</strong> is one running program. The OS starts them, stops them, and slices CPU time among them so that dozens can <em>appear</em> to run at once.</li>
+<li><strong>Files.</strong> The OS owns the disk and organizes it into the <strong>file system</strong> — folders and files with names, so no program has to know where the physical bits live.</li>
 <li><strong>Memory.</strong> The OS hands each process its own protected slice of memory, so a buggy game can’t scribble over your open documents.</li>
 </ul>
 <p>A useful mental picture: the OS is a building manager. Programs are tenants. Tenants never wire their own electricity — they ask the manager, and the manager deals with the building.</p>
@@ -292,8 +292,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="finding-the-address-dns-and-ip">2. Finding the Address: DNS and IP</h2>
 <p>The Colab machine checks out — suspect one eliminated. Sherlock moves to the road itself, and brings in a specialist: <strong>Mary Morstan</strong>, whose company, Morstan Logistics, moves fifty thousand parcels a day.</p>
 <p>Mary’s rule: <em>“You can’t deliver to a name. You deliver to an address.”</em></p>
-<p>The internet agrees. Every machine on a network has an <span class="key-term">IP address</span> — a number like <code>142.250.187.206</code>. Numbers, not names, are what the network routes. But nobody types numbers. You type <code>adlerstreaming.com</code>, and something must translate.</p>
-<p>That something is <span class="key-term">DNS</span> — the Domain Name System: the internet’s phone book, translating names into IP addresses millions of times per second, invisibly, before any real conversation begins.</p>
+<p>The internet agrees. Every machine on a network has an <strong>IP address</strong> — a number like <code>142.250.187.206</code>. Numbers, not names, are what the network routes. But nobody types numbers. You type <code>adlerstreaming.com</code>, and something must translate.</p>
+<p>That something is <strong>DNS</strong> — the Domain Name System: the internet’s phone book, translating names into IP addresses millions of times per second, invisibly, before any real conversation begins.</p>
 <p>Python can ask DNS directly. The general pattern:</p>
 <pre><code>socket.gethostbyname("website name")</code></pre>
 <p>The next cell looks up three real names.</p>
@@ -313,8 +313,8 @@ python.org       -&gt; 151.101.64.223</code></pre>
 <section id="the-journey-packets-and-tcp" class="level3">
 <h3 class="anchored" data-anchor-id="the-journey-packets-and-tcp">The Journey: Packets and TCP</h3>
 <p>Once your device has the address, Mary’s world takes over completely — because data travels the way parcels do.</p>
-<p>A message isn’t sent whole. It’s chopped into <span class="key-term">packets</span> — small chunks, each stamped with the destination address and a sequence number — and each packet finds its <em>own</em> way across the network, hopping from router to router. They can arrive out of order. Some don’t arrive at all.</p>
-<p>The internet’s fix is a protocol called <span class="key-term">TCP</span>, and it works exactly like Mary’s tracking system:</p>
+<p>A message isn’t sent whole. It’s chopped into <strong>packets</strong> — small chunks, each stamped with the destination address and a sequence number — and each packet finds its <em>own</em> way across the network, hopping from router to router. They can arrive out of order. Some don’t arrive at all.</p>
+<p>The internet’s fix is a protocol called <strong>TCP</strong>, and it works exactly like Mary’s tracking system:</p>
 <ol type="1">
 <li>Number every parcel in the shipment.</li>
 <li>The receiver confirms each one that arrives.</li>
@@ -348,10 +348,10 @@ python.org       -&gt; 151.101.64.223</code></pre>
 <section id="the-conversation-http" class="level2">
 <h2 class="anchored" data-anchor-id="the-conversation-http">3. The Conversation: HTTP</h2>
 <p>The road is clear — Mary’s packets are flowing. Sherlock turns to what’s <em>said</em> on that road. Time to question Irene’s site directly, in its own language.</p>
-<p>The web’s language is <span class="key-term">HTTP</span> (HyperText Transfer Protocol), and it is a rigidly polite conversation with exactly two turns:</p>
+<p>The web’s language is <strong>HTTP</strong> (HyperText Transfer Protocol), and it is a rigidly polite conversation with exactly two turns:</p>
 <ul>
 <li><strong>The request</strong> — your device says: a <em>verb</em> (usually <code>GET</code>, meaning “please send me…”) plus an address.</li>
-<li><strong>The response</strong> — the server answers with two things: the content, and a three-digit <span class="key-term">status code</span> saying how it went.</li>
+<li><strong>The response</strong> — the server answers with two things: the content, and a three-digit <strong>status code</strong> saying how it went.</li>
 </ul>
 <p>Sherlock reads status codes the way he reads witnesses:</p>
 <table class="caption-top table">
@@ -416,7 +416,7 @@ response.json()        # the content, if it's JSON</code></pre>
 <li><code>response.status_code</code> came back <code>200</code>: the witness cooperated.</li>
 <li><code>response.json()</code> converted the reply into Python data. The server answered in <strong>JSON</strong> — labeled, nested data that arrives as dictionaries and lists you already know how to handle.</li>
 </ul>
-<p>A server whose job is answering programs (rather than showing pages to humans) is called an <span class="key-term">API</span> — an <em>application programming interface</em>. This is <strong>Dr.&nbsp;Watson’s</strong> world: his telehealth app never scrapes weather off a webpage; it asks an API and gets clean JSON. Most modern software is exactly this — programs having HTTP conversations with other programs.</p>
+<p>A server whose job is answering programs (rather than showing pages to humans) is called an <strong>API</strong> — an <em>application programming interface</em>. This is <strong>Dr.&nbsp;Watson’s</strong> world: his telehealth app never scrapes weather off a webpage; it asks an API and gets clean JSON. Most modern software is exactly this — programs having HTTP conversations with other programs.</p>
 </section>
 <section id="predict-before-you-run" class="level3">
 <h3 class="anchored" data-anchor-id="predict-before-you-run">🔮 Predict Before You Run</h3>
@@ -452,13 +452,13 @@ response.json()        # the content, if it's JSON</code></pre>
 <p>One suspect left: the server itself. But before we knock on its door, Sherlock asks his brother a deceptively simple question: <em>where does a website live?</em></p>
 <p><strong>Mycroft Holmes</strong> runs the Whitehall Cloud Office — he decides where the government’s systems live — and his answer is the least mystical definition you’ll ever hear:</p>
 <blockquote class="blockquote">
-<p>“The <span class="key-term">cloud</span> is someone else’s computer. Rented by the slice, billed by the hour, reachable over the network. The only interesting question is <em>how big a slice</em> you rent.”</p>
+<p>“The <strong>cloud</strong> is someone else’s computer. Rented by the slice, billed by the hour, reachable over the network. The only interesting question is <em>how big a slice</em> you rent.”</p>
 </blockquote>
 <p>That question — how much of the machine is your problem versus the landlord’s — has exactly three standard answers, and a housing analogy makes them stick:</p>
 <ul>
-<li><span class="key-term">IaaS</span> (<em>Infrastructure as a Service</em>) — <strong>rent bare land.</strong> You get raw virtual machines; you install and manage everything above the hardware. Total control, total responsibility. (Amazon EC2.)</li>
-<li><span class="key-term">PaaS</span> (<em>Platform as a Service</em>) — <strong>rent an apartment.</strong> You bring only your code; the landlord runs the machines, the OS, the plumbing. (Heroku, Google App Engine.)</li>
-<li><span class="key-term">SaaS</span> (<em>Software as a Service</em>) — <strong>book a hotel room.</strong> You just <em>use</em> finished software through a browser; nothing underneath is your problem. (Gmail, Google Docs.)</li>
+<li><strong>IaaS</strong> (<em>Infrastructure as a Service</em>) — <strong>rent bare land.</strong> You get raw virtual machines; you install and manage everything above the hardware. Total control, total responsibility. (Amazon EC2.)</li>
+<li><strong>PaaS</strong> (<em>Platform as a Service</em>) — <strong>rent an apartment.</strong> You bring only your code; the landlord runs the machines, the OS, the plumbing. (Heroku, Google App Engine.)</li>
+<li><strong>SaaS</strong> (<em>Software as a Service</em>) — <strong>book a hotel room.</strong> You just <em>use</em> finished software through a browser; nothing underneath is your problem. (Gmail, Google Docs.)</li>
 </ul>
 <p>One more row for the table: <strong>you’ve been a cloud customer this whole course.</strong> Colab is finished software you use through a browser (SaaS) — that hands you a managed machine to run code on (which is what a PaaS does). The Linux box you interrogated in section 1? A slice of someone else’s computer, exactly as Mycroft says.</p>
 <table class="caption-top table">
@@ -503,7 +503,7 @@ response.json()        # the content, if it's JSON</code></pre>
 <p>Four suspects eliminated: the client machine, DNS, the network, the HTTP conversation. What remains, however improbable, must be the truth — the fault is <em>at the server</em>.</p>
 <p>But what actually <strong>is</strong> a server? Strip away the mystique and it’s almost disappointing:</p>
 <blockquote class="blockquote">
-<p>A <span class="key-term">server</span> is a program that waits. It listens for HTTP requests, and for each one, it runs some code and returns a response.</p>
+<p>A <strong>server</strong> is a program that waits. It listens for HTTP requests, and for each one, it runs some code and returns a response.</p>
 </blockquote>
 <p>That’s it. It’s a process — a tenant of some operating system, like every program in section 1. And the fastest way to understand one is to <em>be</em> one. Python’s most popular tool for this is <strong>Flask</strong>, and its whole shape fits in a skeleton:</p>
 <pre><code>app = Flask(__name__)
@@ -511,7 +511,7 @@ response.json()        # the content, if it's JSON</code></pre>
 @app.route("/some/path")
 def handler():
     return "the response"</code></pre>
-<p>Each <code>@app.route(...)</code> line declares: <em>when a request arrives for this path, run this function and send back whatever it returns.</em> A path-plus-function pair is called a <span class="key-term">route</span>.</p>
+<p>Each <code>@app.route(...)</code> line declares: <em>when a request arrives for this path, run this function and send back whatever it returns.</em> A path-plus-function pair is called a <strong>route</strong>.</p>
 <section id="mrs.-hudson-opens-the-doors" class="level3">
 <h3 class="anchored" data-anchor-id="mrs.-hudson-opens-the-doors">Mrs.&nbsp;Hudson Opens the Doors</h3>
 <p>Naturally, our server will be hosted by a landlady. <strong>Mrs.&nbsp;Hudson</strong> — of Hudson Hosting — presents the next cell: a complete, working web server in about a dozen lines.</p>
@@ -538,7 +538,7 @@ def handler():
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>app.run(port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Click the link Colab prints, and you are <em>visiting your own website</em> — served by a process you started, on a rented Linux machine in a data center. Add <code>/api/status</code> to the address and you’ll get JSON: you’ve built an API, the very kind you <em>consumed</em> in section 3. (Returning a dictionary from a route is all it takes — Flask converts it to JSON for you.)</p>
-<p>Trace one full visit against the suspect map: browser → (address lookup) → packets → <strong>your process</strong> → its return value → packets → rendered page. The <span class="key-term">request/response cycle</span>, end to end — and this time you own the last box.</p>
+<p>Trace one full visit against the suspect map: browser → (address lookup) → packets → <strong>your process</strong> → its return value → packets → rendered page. The <strong>request/response cycle</strong>, end to end — and this time you own the last box.</p>
 <p><em>(Want a link that works on your phone, off Colab? A tool called <code>pyngrok</code> can tunnel your server to a public URL — it needs a free ngrok account and token, so we leave it as an optional side quest.)</em></p>
 </section>
 <section id="case-closed" class="level3">
