@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-06-10">
+<meta name="dcterms.date" content="2026-07-06">
 
 <title>Notebook 8: Software Engineering — SDLC, Git &amp; AI-Assisted Development – Computing Concepts with Python</title>
 <style>
@@ -204,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 10, 2026</p>
+      <p class="date">July 6, 2026</p>
     </div>
   </div>
   
@@ -217,7 +217,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <!-- COLAB-BADGE -->
-<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb">View on GitHub</a></p>
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB08_SoftwareEngineering.ipynb">View on GitHub</a></p>
 <p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
@@ -268,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="picture-it-the-cycle" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-cycle">Picture It: The Cycle</h3>
 <p>It’s called a <em>life cycle</em>, not a <em>life line</em>, because software is never really “done.” Maintenance feeds new requirements, and the loop starts again. A bug caught at <strong>Requirements</strong> costs a sentence to fix; the <em>same</em> bug caught at <strong>Deploy</strong> — in a patient’s chart — can cost far more.</p>
-<div id="83cbe72b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:35.309750Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:35.309369Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:36.256673Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:36.255442Z&quot;}}" data-execution_count="1">
+<div id="83cbe72b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-cellview="form" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <figure class="figure">
@@ -294,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="picture-it-one-pass-vs.-many-loops" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-one-pass-vs.-many-loops">Picture It: One Pass vs.&nbsp;Many Loops</h3>
 <p>The same stages, two rhythms. Waterfall crosses the river in one giant leap; agile crosses on stepping stones, checking its footing at each one.</p>
-<div id="70735e77" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:36.261562Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:36.261040Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:37.243090Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:37.241229Z&quot;}}" data-execution_count="2">
+<div id="70735e77" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-cellview="form" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <figure class="figure">
@@ -358,7 +359,7 @@ so that  &lt;some benefit&gt;.</code></pre>
 <section id="picture-it-the-three-areas" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-three-areas">Picture It: The Three Areas</h3>
 <p>When you save work with git, a change moves through three places: the <strong>working directory</strong> (the files you edit), the <strong>staging area</strong> (the changes you’ve chosen to include next), and the <strong>repository</strong> (the permanent history of snapshots). The diagram below shows that one-way flow.</p>
-<div id="f9c05be4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:37.247388Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:37.246997Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:38.151404Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:38.149872Z&quot;}}" data-execution_count="3">
+<div id="f9c05be4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-cellview="form" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <figure class="figure">
@@ -400,7 +401,7 @@ git commit -m "&lt;message&gt;"      # save the snapshot, with a note explaining
 <li><strong>Code review</strong> — before the PR is merged, a teammate reads it. Glinda, the senior engineer, checks Dorothy’s code for bugs and problems <em>before</em> it reaches a patient. Only after approval does it <strong>merge</strong> into the main project.</li>
 </ul>
 <p>This review step is one of the most important safety nets in all of software — and when we get to AI-assisted development we’ll see it’s <em>exactly</em> what we need when an AI writes the code.</p>
-<div id="a9effbcd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:38.154742Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:38.154433Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:39.162491Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:39.159775Z&quot;}}" data-execution_count="4">
+<div id="a9effbcd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-cellview="form" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <figure class="figure">
@@ -530,7 +531,7 @@ assert &lt;something that should be True&gt;, "&lt;message if it's False&gt;"</c
 <section id="picture-it-the-testing-mindset" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-testing-mindset">Picture It: The Testing Mindset</h3>
 <p>Professionals often write the <strong>test first</strong> — stating what “correct” means — and only then write or fix the code until the test passes. Once a test exists, it keeps guarding that behavior forever: if a future change re-breaks it, the test fails again instantly, catching a <strong>regression</strong> (an old bug coming back).</p>
-<div id="3f689333" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:39.395301Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:39.394836Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:40.258974Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:40.257605Z&quot;}}" data-execution_count="9">
+<div id="3f689333" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-cellview="form" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <figure class="figure">
@@ -568,7 +569,7 @@ assert &lt;something that should be True&gt;, "&lt;message if it's False&gt;"</c
 <li><strong>Input / output (I/O)</strong> — the parts that talk to the human: <code>input()</code> to read a guess, <code>print()</code> to show feedback, the loop that runs the game.</li>
 </ul>
 <p>Why split them? Because <strong>you can only write <code>assert</code> tests against pure logic.</strong> You can’t easily test code that stops to ask a human a question, but you <em>can</em> test a function that takes inputs and returns an answer. So designing your program with a testable logic core isn’t just tidy — it’s what makes the rest of this notebook’s discipline <em>possible</em>.</p>
-<div id="4ff78308" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-10T12:51:40.263404Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-10T12:51:40.262782Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-10T12:51:41.008406Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-10T12:51:41.006945Z&quot;}}" data-execution_count="10">
+<div id="4ff78308" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-cellview="form" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <figure class="figure">

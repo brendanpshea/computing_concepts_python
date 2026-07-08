@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-06-06">
+<meta name="dcterms.date" content="2026-07-06">
 
 <title>Notebook 2: Machine Architecture &amp; Data Representation – Computing Concepts with Python</title>
 <style>
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2026</p>
+      <p class="date">July 6, 2026</p>
     </div>
   </div>
   
@@ -817,7 +817,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p><strong>64 + 8 + 2 + 1 = 75.</strong> Going the other way (decimal → binary): repeatedly subtract the largest place value you can.</p>
 <p>An 8-bit byte holds 0 through 255 — that’s 2⁸ = 256 different values. Remember that 255. Tobble certainly does.</p>
-<div id="nb2-33-binary-python" class="cell" data-cellview="form" data-outputid="15e426d4-62f9-404c-d74e-b1a98f0358ce" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="10">
+<div id="nb2-33-binary-python" class="cell" data-cellview="form" data-outputid="15e426d4-62f9-404c-d74e-b1a98f0358ce" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="10">
 <div class="cell-output cell-output-stdout">
 <pre><code>75 in binary: 01001011
 75 in hex:    4B
@@ -1001,7 +1001,7 @@ int('01001011', 2) = 75</code></pre>
 </div>
 </div>
 <p>On the wheel, as the bits climb past the halfway point (<code>1000</code>) the <em>meaning</em> jumps to the most negative value and climbs back toward −1 — the numbers wrap like an odometer. Python’s own integers don’t have this limit (they grow as large as needed), but <strong>fixed-width</strong> values — registers, image pixels, the PixelBox 8’s score counter — absolutely do. We can simulate a fixed 8-bit value with a <em>mask</em>:</p>
-<div id="nb2-44-mask" class="cell" data-outputid="337e1a33-f926-4b32-9149-a6e5999c58e6" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="13">
+<div id="nb2-44-mask" class="cell" data-outputid="337e1a33-f926-4b32-9149-a6e5999c58e6" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-cellview="form" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>-37 stored in 8 bits: 11011011  (raw value 219)
 11011011 interpreted as signed: -37</code></pre>
@@ -1197,7 +1197,7 @@ int('01001011', 2) = 75</code></pre>
 </tbody>
 </table>
 <p>The same bug class still bites: a 2015 FAA directive warned that a Boeing 787 counter could overflow after 248 days of continuous power, potentially shutting down electrical generators in flight. <strong>Representation size is a safety decision.</strong></p>
-<div id="nb2-65-overflow" class="cell" data-outputid="81837d50-0828-4b2a-bb26-ea774f7ae34d" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="23">
+<div id="nb2-65-overflow" class="cell" data-outputid="81837d50-0828-4b2a-bb26-ea774f7ae34d" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-cellview="form" data-execution_count="23">
 <div class="cell-output cell-output-stdout">
 <pre><code>next level -&gt; stored as 254  (11111110)
 next level -&gt; stored as 255  (11111111)
