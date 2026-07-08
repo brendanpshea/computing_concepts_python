@@ -25,7 +25,7 @@ interesting.
 | 7 | ["We Must Know — We Will Know": Gödel, Turing, and the Problem No Computer Can Solve](cs07_halting_problem.qmd) | **Available** |
 | 8 | [Open Source and the Code an AI Learned From — Linux, Git & Copilot](cs08_open_source_copilot.qmd) | **Available** |
 | 9 | [From SQL to NoSQL: Why Google Broke the Database](cs09_sql_nosql.qmd) | **Available** |
-| 10 | Three Companies Own the Internet — ARPANET to the Cloud Oligopoly | *In progress* |
+| 10 | [Three Companies Own the Internet — ARPANET to the Cloud Oligopoly](cs10_cloud_oligopoly.qmd) | **Available** |
 | 11 | The Equifax Breach | *In progress* |
 | 12 | COMPAS, Facial Recognition & AI Accountability | *In progress* |
 

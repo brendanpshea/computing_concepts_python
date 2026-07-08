@@ -1,0 +1,162 @@
+---
+title: "Three Companies Own the Internet"
+subtitle: "The network was designed to have no center. The economy built one anyway — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+bibliography: refs.bib
+---
+
+::: {.case-at-a-glance}
+- **Who:** Paul Baran (1926–2011), the RAND engineer who designed a network no attack could kill; Vint Cerf and Bob Kahn, who wrote the rules that glued the networks together; Tim Berners-Lee, who gave the web away; and Matthew Prince, the Cloudflare CEO who kicked a website off the internet and then announced that no one — including him — should have that power.
+- **What:** The internet was engineered so that no single failure, company, or government could take it down. Fifty years later, one configuration error at one company can silence newspapers, banks, and governments in under a minute — and has, repeatedly. Nobody conspired. Every step was a rational choice. The question is what to do about a center that nobody voted to build.
+- **Where / When:** UCLA, October 29, 1969 (the first ARPANET message). The open internet's rise, 1983–2006. Amazon Web Services, 2006 onward. The outages: Fastly, June 2021; CrowdStrike, July 2024; AWS us-east-1, October 2025.
+- **Why it matters:** Almost everything now runs on rented computing owned by a handful of firms. This case is about the collision between [decentralization by design]{.key-term} and [concentration by economics]{.key-term} — and about who holds power over infrastructure that everyone needs and no one governs.
+- **Concepts at play:** [packet switching]{.key-term}, network topology, the [end-to-end principle]{.key-term}, layers, [cloud computing]{.key-term}, [single point of failure]{.key-term}, economies of scale
+:::
+
+## The Case
+
+On the evening of October 29, 1969, a UCLA graduate student named Charley Kline sat down to send the first message ever transmitted on the ARPANET — the experimental network that would grow into the internet. He was logging in to a computer 350 miles away at the Stanford Research Institute. He typed **L**. It arrived. He typed **O**. It arrived. He typed **G** — and the remote system crashed.
+
+The first message on the internet was "LO." As in, the engineers later liked to say, *lo and behold*.
+
+The network Kline was testing had an unusual design philosophy behind it, and a Cold War pedigree. Through the early 1960s, an engineer at the RAND Corporation named Paul Baran had studied a grim question: how do you build a communications network that keeps working after a nuclear strike? His answer overturned how networks were built. The telephone system of his day was **centralized** — calls flowed through major switching hubs, and destroying a few hubs would silence the country. Baran proposed a network with *no hubs at all*: a fishnet of equal nodes, where every message is chopped into pieces and each piece finds its own path, hopping node to node, routing itself around any damage [@baran1964].
+
+::: {.context-box}
+**Packet switching, the no-center design.** In a [packet-switched]{.key-term} network, a message is split into small chunks called packets. Each packet carries its destination address and travels independently, passed from node to node, taking whatever route is available right now. If a node dies, packets simply flow around it, like water around a rock. No node is in charge. No node is special. The network's survival does not depend on any single machine — *by design*.
+:::
+
+The ARPANET was built on Baran's ideas, and it worked. But the deeper revolution came in the rules. In 1974, Vint Cerf and Bob Kahn published the protocol — later TCP/IP — that let *different* networks connect into one "internet." On January 1, 1983, the ARPANET switched over to it [@leiner2009]. And TCP/IP embodied a principle that a famous 1984 paper made explicit: keep the network itself simple and dumb, and put the intelligence at the *edges*, in the computers of the people using it [@saltzer1984].
+
+That principle sounds technical. It was political dynamite. A dumb network doesn't check what you're sending, doesn't care what application you invented, and — crucially — doesn't require anyone's permission to join. In 1991, a researcher at CERN named Tim Berners-Lee used that freedom to release the World Wide Web, then persuaded his lab to give it away, patent-free, forever. Anyone could build anything. Two graduate students in a rented garage could reach every person on the network — which is exactly what two graduate students named Page and Brin did in 1998.
+
+For two decades, that was the story: no center, no permission, no owner. Then, without anyone quite announcing it, the center came back.
+
+It started as a side business. Amazon had built enormous computing operations to run its store, and in 2006 it began renting slices of them to anyone with a credit card: storage first, then whole virtual computers, billed by the hour. Amazon Web Services turned computing into something you buy like electricity — and running your own servers soon looked as quaint as running your own generator. Microsoft and Google followed. Startups stopped buying machines at all. Why would you? The cloud was cheaper, safer, faster, and someone else's problem.
+
+Every individual choice was sensible. The sum of the choices was this: by the mid-2020s, roughly two-thirds of the world's cloud computing ran on the machines of three companies — Amazon, Microsoft, and Google. Much of the web's traffic flowed through a handful of delivery networks, Cloudflare and Fastly chief among them. The internet's *pipes* still had no center. But nearly everything the pipes carried now started or ended in a small number of very large buildings.
+
+Then the buildings started demonstrating what that meant.
+
+On June 8, 2021, a single customer of Fastly changed a setting — a valid, ordinary configuration change — that triggered a hidden bug. Within seconds, much of the visible web went dark at once: the *New York Times*, the *Guardian*, Reddit, Amazon itself, and the UK government's website, all returning the same error [@bbc2021fastly]. On October 20, 2025, a failure in a single Amazon region in Northern Virginia — the famous **us-east-1** — cascaded outward for hours. Banks, airlines, Snapchat, Ring doorbells, even internet-connected beds stopped working, across dozens of countries [@guardian2025aws].
+
+A network designed to survive a nuclear war now had single points of failure with street addresses.
+
+Nobody broke a law. Nobody even made a mistake, exactly — except one engineer at a time, at companies doing what their customers paid for. The unresolved question is not *how* this happened; that part is just economics. It is whether a center that nobody chose, nobody elected, and nobody governs is anybody's problem to fix — and if so, whose.
+
+## How It Worked
+
+To see what was gained and lost, you need two things: the design's promise, and the reason the promise eroded anyway.
+
+### The promise, in fifteen lines
+
+Baran's idea — no special nodes, messages route around damage — is simple enough to run. Here is a tiny network as a Python dictionary (each node lists its neighbors), and a function that finds a path by exploring outward, one hop at a time:
+
+```python
+network = {
+    "A": ["B", "C"],
+    "B": ["A", "D"],
+    "C": ["A", "D"],
+    "D": ["B", "C", "E"],
+    "E": ["D"],
+}
+
+def find_path(start, goal):
+    paths = [[start]]
+    while paths:
+        path = paths.pop(0)
+        for node in network.get(path[-1], []):
+            if node == goal:
+                return path + [node]
+            if node not in path:
+                paths.append(path + [node])
+    return None
+
+print(find_path("A", "E"))     # ['A', 'B', 'D', 'E']
+del network["B"]               # node B is destroyed
+print(find_path("A", "E"))     # ['A', 'C', 'D', 'E']
+```
+
+Run it. The message from A to E first travels through B. Then B is deleted — destroyed, unplugged, flooded, seized — and the *same code*, with no changes, finds the way around: through C. The algorithm never asks which node failed or why. No node is special, so no failure is fatal. That indifference *is* the design. Scale it from five nodes to millions and you have the internet's core, which has never suffered a global outage in its history.
+
+So why did October 2025 happen?
+
+### The center came back one layer up
+
+Because the internet is built in **layers**, and the designers only decentralized the bottom ones. The packet layer — the fishnet — is still exactly as Baran drew it. But everything people actually *use* runs in layers above the pipes: websites, apps, storage, databases. And at those layers, three economic forces pushed relentlessly toward bigness:
+
+1. **Scale is cheap.** A data center with a million servers costs far less per server than a closet with five. Renting from a giant beats owning, almost always, for almost everyone.
+2. **Defense requires size.** Modern attacks flood sites with garbage traffic. Only networks with enormous capacity can absorb them — so even tiny websites shelter behind giants like Cloudflare.
+3. **Speed requires presence.** Users expect pages instantly, which means copies of everything stored physically near everyone — a global footprint only a few firms can build.
+
+| Layer | What lives there | Centralized? | Why |
+|---|---|---|---|
+| Pipes & packets | routers, cables, TCP/IP | No — still Baran's fishnet | designed that way, and it held |
+| Delivery | the networks that carry sites to you | A few CDNs | absorbing attacks and distance takes size |
+| Compute & storage | the servers apps actually run on | ~3 clouds ≈ two-thirds | scale is overwhelmingly cheaper |
+| Applications | search, social, shopping, chat | a handful of giants | winner-take-most markets |
+
+Read the table bottom to top and the irony sharpens: each layer *up* is more centralized than the one below it. The fishnet survived. But when us-east-1 stumbles, it doesn't matter that the packets can route around damage — the damage *is the destination*. Your bank's app, your doorbell's brain, and your airline's check-in system were all standing in the same building. A [single point of failure]{.key-term} is any component whose failure takes the whole system down. The design eliminated them at the packet layer. The economy rebuilt them upstairs.
+
+## The Argument the Outages Started
+
+The positions connect: each answers the one before.
+
+### The resilience argument: we rebuilt what the design forbade
+
+After each major outage, a chorus of engineers and policy scholars makes the same case: this is no longer a story about websites being briefly annoying. It is systemic risk — the same shape as banking before 2008, where the failure of one firm could cascade through everyone.
+
+::: {.argument}
+**The Resilience Argument**
+
+1. The internet's value rests on its founding design property: no single failure can take the system down.
+2. Cloud concentration has reintroduced single points of failure at planetary scale — one company's configuration error now simultaneously halts banks, hospitals, airlines, and governments.
+3. When one actor's private failure imposes costs on everyone, markets alone do not correct it, because each customer's individually rational choice (use the biggest, cheapest cloud) is exactly what creates the shared risk.
+4. Therefore, hyperscale clouds are critical infrastructure — like the power grid — and should be governed like it: audited, stress-tested, and required to prove the failure of one region cannot cascade.
+:::
+
+The evidence is the outage record itself, and one more incident that generalized the lesson. In July 2024, a bad update from a single security company, CrowdStrike, crashed some 8.5 million Windows machines worldwide in hours — grounding flights and closing hospital systems. Not a cloud, not a network: just one vendor whose software ran *everywhere*. The pattern has a name from farming: **monoculture**. Plant one crop everywhere and one blight takes it all. The weight of the argument rests on premise 3 — that the market cannot fix this. That is the premise the reply denies.
+
+### The efficiency reply: concentration is what resilience looks like
+
+The cloud providers — and many economists — answer that the critics have the story backwards. The clouds did not *undermine* the internet's reliability. They are the *reason* ordinary companies have any.
+
+::: {.argument}
+**The Efficiency Reply**
+
+1. Security and reliability are products of scale: a hyperscale cloud employs thousands of the world's best engineers, runs multiple isolated regions, and defends against attacks no ordinary company could survive alone.
+2. Concentration made that engineering available to everyone for pennies — which is why two founders in a garage can still reach the world, rather than only firms rich enough to build their own fortresses.
+3. The great outages make headlines precisely because they are rare; the alternative world of a million self-run server closets fails constantly, invisibly, one business at a time.
+4. Therefore, concentration did not break the founders' promise. It delivered the promise — reliability for all — more effectively than the romantic, decentralized alternative ever did.
+:::
+
+There is real steel here. The counterfactual matters: before the cloud, small companies lost their data to a failed disk and a missing backup, routinely, and no one wrote think-pieces about it. Amazon's engineers *are* better at running servers than almost anyone renting from them. But notice what the reply measures — uptime — and notice what it quietly concedes. Premise 1 justifies trusting the giant's *competence*. It says nothing about the giant's *power*. That is where the next objection lives.
+
+**The power objection.** In August 2017, Cloudflare — the company that shields a huge share of the web from attack — dropped a neo-Nazi site called the Daily Stormer as a customer. The site promptly staggered off the usable internet. What made the moment famous was that Cloudflare's own CEO, Matthew Prince, immediately argued *against* his own authority to do it: "I woke up in a bad mood and decided someone shouldn't be allowed on the Internet. No one should have that power" [@prince2017]. Four years later, Amazon made a similar call, cutting off the social network Parler after the January 6 riot. Legal scholars noted what these episodes revealed: the end-to-end principle had been a *political* design — nobody's permission needed — and permission was back, held by private executives, applied at whim or under public pressure, with no vote, no appeal, and no law that quite covers it. This objection challenges both formal arguments the same way: they debate whether the center is *reliable*, when the harder question is that the center *decides* — and even the man holding the off-switch says he shouldn't be.
+
+### Where it rests today: politics without an engineering answer
+
+The empirical turn is messy. Europe has moved first: its Digital Markets Act polices the gatekeepers' business practices, and "digital sovereignty" projects try to grow European clouds — so far, mostly aspiration. A small counter-movement of companies has left the cloud entirely, repatriating to their own servers and publishing the millions saved; it remains a rounding error. And after each great outage comes the same quiet coda: almost nobody switches providers. Partly because moving is expensive. Partly because of a grim coordination logic — when the whole internet is down, being down looks like weather, not negligence. Nobody gets fired for failing at the same moment as everyone else.
+
+Which leaves the question the founders would find strangest of all. Baran's generation faced "no one should be able to destroy the network" and solved it with *engineering* — a topology, an algorithm, a design so good it still holds. Our version of the problem — "no three companies should be able to pause the world, and no one executive should decide who may speak on it" — has no topology to fix it. The fishnet can't help; the center is upstairs now, built from contracts and economies of scale. Is there an engineering answer this time? Or did the internet's second problem turn out to be the kind you can only solve with politics — the slow, contested, human kind that the network's founders built their beautiful machine to route around?
+
+## Discussion Questions
+
+1. Explain in your own words why a packet-switched network with no center survives failures that would destroy a hub-and-spoke network. Then give an analogy from outside computing.
+2. Write the Resilience Argument and the Efficiency Reply in your own words. Are they disagreeing about facts, like how often systems fail? Or about values, like what matters when they do? Defend your choice.
+3. You run the company that keeps a legal-but-vile website online. Activists demand you drop it. Your engineers say "we're infrastructure — we don't judge content." What do you do? What does your answer imply about who should hold that power?
+4. Pick one: the electric grid, banking, or container shipping. Is the internet's concentration more worrying than that industry's, or less? Why?
+5. List three services you personally rely on that would probably fail *together* in a major cloud outage. Did your list surprise you? Should ordinary users have any say in how this infrastructure is run?
+
+## Further Reading
+
+- Baran's RAND memorandum — the original no-center design, written to survive the end of the world [@baran1964].
+- "A Brief History of the Internet" — the story told by the people who built it, Cerf and Kahn among the authors [@leiner2009].
+- The end-to-end arguments paper — the short, famous case for keeping the network dumb [@saltzer1984].
+- *Inventing the Internet* — the standard scholarly history of how ARPANET became everything [@abbate1999].
+- "Why We Terminated Daily Stormer" — Prince's remarkable essay against his own power, written the day he used it [@prince2017].
+
+## References
+
+::: {#refs}
+:::

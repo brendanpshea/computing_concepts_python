@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-07-07">
+
+<title>Three Companies Own the Internet – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-case" id="toc-the-case" class="nav-link active" data-scroll-target="#the-case">The Case</a></li>
+  <li><a href="#how-it-worked" id="toc-how-it-worked" class="nav-link" data-scroll-target="#how-it-worked">How It Worked</a></li>
+  <li><a href="#the-argument-the-outages-started" id="toc-the-argument-the-outages-started" class="nav-link" data-scroll-target="#the-argument-the-outages-started">The Argument the Outages Started</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cs10_cloud_oligopoly.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Three Companies Own the Internet</h1>
+<p class="subtitle lead">The network was designed to have no center. The economy built one anyway — a COMP 1150 case study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 7, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="case-at-a-glance">
+<ul>
+<li><strong>Who:</strong> Paul Baran (1926–2011), the RAND engineer who designed a network no attack could kill; Vint Cerf and Bob Kahn, who wrote the rules that glued the networks together; Tim Berners-Lee, who gave the web away; and Matthew Prince, the Cloudflare CEO who kicked a website off the internet and then announced that no one — including him — should have that power.</li>
+<li><strong>What:</strong> The internet was engineered so that no single failure, company, or government could take it down. Fifty years later, one configuration error at one company can silence newspapers, banks, and governments in under a minute — and has, repeatedly. Nobody conspired. Every step was a rational choice. The question is what to do about a center that nobody voted to build.</li>
+<li><strong>Where / When:</strong> UCLA, October 29, 1969 (the first ARPANET message). The open internet’s rise, 1983–2006. Amazon Web Services, 2006 onward. The outages: Fastly, June 2021; CrowdStrike, July 2024; AWS us-east-1, October 2025.</li>
+<li><strong>Why it matters:</strong> Almost everything now runs on rented computing owned by a handful of firms. This case is about the collision between <span class="key-term">decentralization by design</span> and <span class="key-term">concentration by economics</span> — and about who holds power over infrastructure that everyone needs and no one governs.</li>
+<li><strong>Concepts at play:</strong> <span class="key-term">packet switching</span>, network topology, the <span class="key-term">end-to-end principle</span>, layers, <span class="key-term">cloud computing</span>, <span class="key-term">single point of failure</span>, economies of scale</li>
+</ul>
+</div>
+<section id="the-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-case">The Case</h2>
+<p>On the evening of October 29, 1969, a UCLA graduate student named Charley Kline sat down to send the first message ever transmitted on the ARPANET — the experimental network that would grow into the internet. He was logging in to a computer 350 miles away at the Stanford Research Institute. He typed <strong>L</strong>. It arrived. He typed <strong>O</strong>. It arrived. He typed <strong>G</strong> — and the remote system crashed.</p>
+<p>The first message on the internet was “LO.” As in, the engineers later liked to say, <em>lo and behold</em>.</p>
+<p>The network Kline was testing had an unusual design philosophy behind it, and a Cold War pedigree. Through the early 1960s, an engineer at the RAND Corporation named Paul Baran had studied a grim question: how do you build a communications network that keeps working after a nuclear strike? His answer overturned how networks were built. The telephone system of his day was <strong>centralized</strong> — calls flowed through major switching hubs, and destroying a few hubs would silence the country. Baran proposed a network with <em>no hubs at all</em>: a fishnet of equal nodes, where every message is chopped into pieces and each piece finds its own path, hopping node to node, routing itself around any damage <span class="citation" data-cites="baran1964">(<a href="#ref-baran1964" role="doc-biblioref">Baran 1964</a>)</span>.</p>
+<div class="context-box">
+<p><strong>Packet switching, the no-center design.</strong> In a <span class="key-term">packet-switched</span> network, a message is split into small chunks called packets. Each packet carries its destination address and travels independently, passed from node to node, taking whatever route is available right now. If a node dies, packets simply flow around it, like water around a rock. No node is in charge. No node is special. The network’s survival does not depend on any single machine — <em>by design</em>.</p>
+</div>
+<p>The ARPANET was built on Baran’s ideas, and it worked. But the deeper revolution came in the rules. In 1974, Vint Cerf and Bob Kahn published the protocol — later TCP/IP — that let <em>different</em> networks connect into one “internet.” On January 1, 1983, the ARPANET switched over to it <span class="citation" data-cites="leiner2009">(<a href="#ref-leiner2009" role="doc-biblioref">Leiner et al. 2009</a>)</span>. And TCP/IP embodied a principle that a famous 1984 paper made explicit: keep the network itself simple and dumb, and put the intelligence at the <em>edges</em>, in the computers of the people using it <span class="citation" data-cites="saltzer1984">(<a href="#ref-saltzer1984" role="doc-biblioref">Saltzer et al. 1984</a>)</span>.</p>
+<p>That principle sounds technical. It was political dynamite. A dumb network doesn’t check what you’re sending, doesn’t care what application you invented, and — crucially — doesn’t require anyone’s permission to join. In 1991, a researcher at CERN named Tim Berners-Lee used that freedom to release the World Wide Web, then persuaded his lab to give it away, patent-free, forever. Anyone could build anything. Two graduate students in a rented garage could reach every person on the network — which is exactly what two graduate students named Page and Brin did in 1998.</p>
+<p>For two decades, that was the story: no center, no permission, no owner. Then, without anyone quite announcing it, the center came back.</p>
+<p>It started as a side business. Amazon had built enormous computing operations to run its store, and in 2006 it began renting slices of them to anyone with a credit card: storage first, then whole virtual computers, billed by the hour. Amazon Web Services turned computing into something you buy like electricity — and running your own servers soon looked as quaint as running your own generator. Microsoft and Google followed. Startups stopped buying machines at all. Why would you? The cloud was cheaper, safer, faster, and someone else’s problem.</p>
+<p>Every individual choice was sensible. The sum of the choices was this: by the mid-2020s, roughly two-thirds of the world’s cloud computing ran on the machines of three companies — Amazon, Microsoft, and Google. Much of the web’s traffic flowed through a handful of delivery networks, Cloudflare and Fastly chief among them. The internet’s <em>pipes</em> still had no center. But nearly everything the pipes carried now started or ended in a small number of very large buildings.</p>
+<p>Then the buildings started demonstrating what that meant.</p>
+<p>On June 8, 2021, a single customer of Fastly changed a setting — a valid, ordinary configuration change — that triggered a hidden bug. Within seconds, much of the visible web went dark at once: the <em>New York Times</em>, the <em>Guardian</em>, Reddit, Amazon itself, and the UK government’s website, all returning the same error <span class="citation" data-cites="bbc2021fastly">(<a href="#ref-bbc2021fastly" role="doc-biblioref">BBC News 2021</a>)</span>. On October 20, 2025, a failure in a single Amazon region in Northern Virginia — the famous <strong>us-east-1</strong> — cascaded outward for hours. Banks, airlines, Snapchat, Ring doorbells, even internet-connected beds stopped working, across dozens of countries <span class="citation" data-cites="guardian2025aws">(<a href="#ref-guardian2025aws" role="doc-biblioref">The Guardian 2025</a>)</span>.</p>
+<p>A network designed to survive a nuclear war now had single points of failure with street addresses.</p>
+<p>Nobody broke a law. Nobody even made a mistake, exactly — except one engineer at a time, at companies doing what their customers paid for. The unresolved question is not <em>how</em> this happened; that part is just economics. It is whether a center that nobody chose, nobody elected, and nobody governs is anybody’s problem to fix — and if so, whose.</p>
+</section>
+<section id="how-it-worked" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-worked">How It Worked</h2>
+<p>To see what was gained and lost, you need two things: the design’s promise, and the reason the promise eroded anyway.</p>
+<section id="the-promise-in-fifteen-lines" class="level3">
+<h3 class="anchored" data-anchor-id="the-promise-in-fifteen-lines">The promise, in fifteen lines</h3>
+<p>Baran’s idea — no special nodes, messages route around damage — is simple enough to run. Here is a tiny network as a Python dictionary (each node lists its neighbors), and a function that finds a path by exploring outward, one hop at a time:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>network <span class="op">=</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>: [<span class="st">"B"</span>, <span class="st">"C"</span>],</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>: [<span class="st">"A"</span>, <span class="st">"D"</span>],</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C"</span>: [<span class="st">"A"</span>, <span class="st">"D"</span>],</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D"</span>: [<span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"E"</span>],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E"</span>: [<span class="st">"D"</span>],</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_path(start, goal):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    paths <span class="op">=</span> [[start]]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> paths:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        path <span class="op">=</span> paths.pop(<span class="dv">0</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> node <span class="kw">in</span> network.get(path[<span class="op">-</span><span class="dv">1</span>], []):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> node <span class="op">==</span> goal:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> path <span class="op">+</span> [node]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> node <span class="kw">not</span> <span class="kw">in</span> path:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                paths.append(path <span class="op">+</span> [node])</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_path(<span class="st">"A"</span>, <span class="st">"E"</span>))     <span class="co"># ['A', 'B', 'D', 'E']</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> network[<span class="st">"B"</span>]               <span class="co"># node B is destroyed</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_path(<span class="st">"A"</span>, <span class="st">"E"</span>))     <span class="co"># ['A', 'C', 'D', 'E']</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run it. The message from A to E first travels through B. Then B is deleted — destroyed, unplugged, flooded, seized — and the <em>same code</em>, with no changes, finds the way around: through C. The algorithm never asks which node failed or why. No node is special, so no failure is fatal. That indifference <em>is</em> the design. Scale it from five nodes to millions and you have the internet’s core, which has never suffered a global outage in its history.</p>
+<p>So why did October 2025 happen?</p>
+</section>
+<section id="the-center-came-back-one-layer-up" class="level3">
+<h3 class="anchored" data-anchor-id="the-center-came-back-one-layer-up">The center came back one layer up</h3>
+<p>Because the internet is built in <strong>layers</strong>, and the designers only decentralized the bottom ones. The packet layer — the fishnet — is still exactly as Baran drew it. But everything people actually <em>use</em> runs in layers above the pipes: websites, apps, storage, databases. And at those layers, three economic forces pushed relentlessly toward bigness:</p>
+<ol type="1">
+<li><strong>Scale is cheap.</strong> A data center with a million servers costs far less per server than a closet with five. Renting from a giant beats owning, almost always, for almost everyone.</li>
+<li><strong>Defense requires size.</strong> Modern attacks flood sites with garbage traffic. Only networks with enormous capacity can absorb them — so even tiny websites shelter behind giants like Cloudflare.</li>
+<li><strong>Speed requires presence.</strong> Users expect pages instantly, which means copies of everything stored physically near everyone — a global footprint only a few firms can build.</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>What lives there</th>
+<th>Centralized?</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pipes &amp; packets</td>
+<td>routers, cables, TCP/IP</td>
+<td>No — still Baran’s fishnet</td>
+<td>designed that way, and it held</td>
+</tr>
+<tr class="even">
+<td>Delivery</td>
+<td>the networks that carry sites to you</td>
+<td>A few CDNs</td>
+<td>absorbing attacks and distance takes size</td>
+</tr>
+<tr class="odd">
+<td>Compute &amp; storage</td>
+<td>the servers apps actually run on</td>
+<td>~3 clouds ≈ two-thirds</td>
+<td>scale is overwhelmingly cheaper</td>
+</tr>
+<tr class="even">
+<td>Applications</td>
+<td>search, social, shopping, chat</td>
+<td>a handful of giants</td>
+<td>winner-take-most markets</td>
+</tr>
+</tbody>
+</table>
+<p>Read the table bottom to top and the irony sharpens: each layer <em>up</em> is more centralized than the one below it. The fishnet survived. But when us-east-1 stumbles, it doesn’t matter that the packets can route around damage — the damage <em>is the destination</em>. Your bank’s app, your doorbell’s brain, and your airline’s check-in system were all standing in the same building. A <span class="key-term">single point of failure</span> is any component whose failure takes the whole system down. The design eliminated them at the packet layer. The economy rebuilt them upstairs.</p>
+</section>
+</section>
+<section id="the-argument-the-outages-started" class="level2">
+<h2 class="anchored" data-anchor-id="the-argument-the-outages-started">The Argument the Outages Started</h2>
+<p>The positions connect: each answers the one before.</p>
+<section id="the-resilience-argument-we-rebuilt-what-the-design-forbade" class="level3">
+<h3 class="anchored" data-anchor-id="the-resilience-argument-we-rebuilt-what-the-design-forbade">The resilience argument: we rebuilt what the design forbade</h3>
+<p>After each major outage, a chorus of engineers and policy scholars makes the same case: this is no longer a story about websites being briefly annoying. It is systemic risk — the same shape as banking before 2008, where the failure of one firm could cascade through everyone.</p>
+<div class="argument">
+<p><strong>The Resilience Argument</strong></p>
+<ol type="1">
+<li>The internet’s value rests on its founding design property: no single failure can take the system down.</li>
+<li>Cloud concentration has reintroduced single points of failure at planetary scale — one company’s configuration error now simultaneously halts banks, hospitals, airlines, and governments.</li>
+<li>When one actor’s private failure imposes costs on everyone, markets alone do not correct it, because each customer’s individually rational choice (use the biggest, cheapest cloud) is exactly what creates the shared risk.</li>
+<li>Therefore, hyperscale clouds are critical infrastructure — like the power grid — and should be governed like it: audited, stress-tested, and required to prove the failure of one region cannot cascade.</li>
+</ol>
+</div>
+<p>The evidence is the outage record itself, and one more incident that generalized the lesson. In July 2024, a bad update from a single security company, CrowdStrike, crashed some 8.5 million Windows machines worldwide in hours — grounding flights and closing hospital systems. Not a cloud, not a network: just one vendor whose software ran <em>everywhere</em>. The pattern has a name from farming: <strong>monoculture</strong>. Plant one crop everywhere and one blight takes it all. The weight of the argument rests on premise 3 — that the market cannot fix this. That is the premise the reply denies.</p>
+</section>
+<section id="the-efficiency-reply-concentration-is-what-resilience-looks-like" class="level3">
+<h3 class="anchored" data-anchor-id="the-efficiency-reply-concentration-is-what-resilience-looks-like">The efficiency reply: concentration is what resilience looks like</h3>
+<p>The cloud providers — and many economists — answer that the critics have the story backwards. The clouds did not <em>undermine</em> the internet’s reliability. They are the <em>reason</em> ordinary companies have any.</p>
+<div class="argument">
+<p><strong>The Efficiency Reply</strong></p>
+<ol type="1">
+<li>Security and reliability are products of scale: a hyperscale cloud employs thousands of the world’s best engineers, runs multiple isolated regions, and defends against attacks no ordinary company could survive alone.</li>
+<li>Concentration made that engineering available to everyone for pennies — which is why two founders in a garage can still reach the world, rather than only firms rich enough to build their own fortresses.</li>
+<li>The great outages make headlines precisely because they are rare; the alternative world of a million self-run server closets fails constantly, invisibly, one business at a time.</li>
+<li>Therefore, concentration did not break the founders’ promise. It delivered the promise — reliability for all — more effectively than the romantic, decentralized alternative ever did.</li>
+</ol>
+</div>
+<p>There is real steel here. The counterfactual matters: before the cloud, small companies lost their data to a failed disk and a missing backup, routinely, and no one wrote think-pieces about it. Amazon’s engineers <em>are</em> better at running servers than almost anyone renting from them. But notice what the reply measures — uptime — and notice what it quietly concedes. Premise 1 justifies trusting the giant’s <em>competence</em>. It says nothing about the giant’s <em>power</em>. That is where the next objection lives.</p>
+<p><strong>The power objection.</strong> In August 2017, Cloudflare — the company that shields a huge share of the web from attack — dropped a neo-Nazi site called the Daily Stormer as a customer. The site promptly staggered off the usable internet. What made the moment famous was that Cloudflare’s own CEO, Matthew Prince, immediately argued <em>against</em> his own authority to do it: “I woke up in a bad mood and decided someone shouldn’t be allowed on the Internet. No one should have that power” <span class="citation" data-cites="prince2017">(<a href="#ref-prince2017" role="doc-biblioref">Prince 2017</a>)</span>. Four years later, Amazon made a similar call, cutting off the social network Parler after the January 6 riot. Legal scholars noted what these episodes revealed: the end-to-end principle had been a <em>political</em> design — nobody’s permission needed — and permission was back, held by private executives, applied at whim or under public pressure, with no vote, no appeal, and no law that quite covers it. This objection challenges both formal arguments the same way: they debate whether the center is <em>reliable</em>, when the harder question is that the center <em>decides</em> — and even the man holding the off-switch says he shouldn’t be.</p>
+</section>
+<section id="where-it-rests-today-politics-without-an-engineering-answer" class="level3">
+<h3 class="anchored" data-anchor-id="where-it-rests-today-politics-without-an-engineering-answer">Where it rests today: politics without an engineering answer</h3>
+<p>The empirical turn is messy. Europe has moved first: its Digital Markets Act polices the gatekeepers’ business practices, and “digital sovereignty” projects try to grow European clouds — so far, mostly aspiration. A small counter-movement of companies has left the cloud entirely, repatriating to their own servers and publishing the millions saved; it remains a rounding error. And after each great outage comes the same quiet coda: almost nobody switches providers. Partly because moving is expensive. Partly because of a grim coordination logic — when the whole internet is down, being down looks like weather, not negligence. Nobody gets fired for failing at the same moment as everyone else.</p>
+<p>Which leaves the question the founders would find strangest of all. Baran’s generation faced “no one should be able to destroy the network” and solved it with <em>engineering</em> — a topology, an algorithm, a design so good it still holds. Our version of the problem — “no three companies should be able to pause the world, and no one executive should decide who may speak on it” — has no topology to fix it. The fishnet can’t help; the center is upstairs now, built from contracts and economies of scale. Is there an engineering answer this time? Or did the internet’s second problem turn out to be the kind you can only solve with politics — the slow, contested, human kind that the network’s founders built their beautiful machine to route around?</p>
+</section>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>Explain in your own words why a packet-switched network with no center survives failures that would destroy a hub-and-spoke network. Then give an analogy from outside computing.</li>
+<li>Write the Resilience Argument and the Efficiency Reply in your own words. Are they disagreeing about facts, like how often systems fail? Or about values, like what matters when they do? Defend your choice.</li>
+<li>You run the company that keeps a legal-but-vile website online. Activists demand you drop it. Your engineers say “we’re infrastructure — we don’t judge content.” What do you do? What does your answer imply about who should hold that power?</li>
+<li>Pick one: the electric grid, banking, or container shipping. Is the internet’s concentration more worrying than that industry’s, or less? Why?</li>
+<li>List three services you personally rely on that would probably fail <em>together</em> in a major cloud outage. Did your list surprise you? Should ordinary users have any say in how this infrastructure is run?</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li>Baran’s RAND memorandum — the original no-center design, written to survive the end of the world <span class="citation" data-cites="baran1964">(<a href="#ref-baran1964" role="doc-biblioref">Baran 1964</a>)</span>.</li>
+<li>“A Brief History of the Internet” — the story told by the people who built it, Cerf and Kahn among the authors <span class="citation" data-cites="leiner2009">(<a href="#ref-leiner2009" role="doc-biblioref">Leiner et al. 2009</a>)</span>.</li>
+<li>The end-to-end arguments paper — the short, famous case for keeping the network dumb <span class="citation" data-cites="saltzer1984">(<a href="#ref-saltzer1984" role="doc-biblioref">Saltzer et al. 1984</a>)</span>.</li>
+<li><em>Inventing the Internet</em> — the standard scholarly history of how ARPANET became everything <span class="citation" data-cites="abbate1999">(<a href="#ref-abbate1999" role="doc-biblioref">Abbate 1999</a>)</span>.</li>
+<li>“Why We Terminated Daily Stormer” — Prince’s remarkable essay against his own power, written the day he used it <span class="citation" data-cites="prince2017">(<a href="#ref-prince2017" role="doc-biblioref">Prince 2017</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-abbate1999" class="csl-entry" role="listitem">
+Abbate, Janet. 1999. <em>Inventing the Internet</em>. MIT Press.
+</div>
+<div id="ref-baran1964" class="csl-entry" role="listitem">
+Baran, Paul. 1964. <em>On Distributed Communications: <span>I</span>. Introduction to Distributed Communications Networks</em>. RM-3420-PR. RAND Corporation. <a href="https://www.rand.org/pubs/research_memoranda/RM3420.html">https://www.rand.org/pubs/research_memoranda/RM3420.html</a>.
+</div>
+<div id="ref-bbc2021fastly" class="csl-entry" role="listitem">
+BBC News. 2021. <em>Fastly Global Internet Outage: Why Did so Many Sites Go down — and What Is a <span>CDN</span>, Anyway?</em> BBC News, June 8, 2021. <a href="https://www.bbc.com/news/technology-57399628">https://www.bbc.com/news/technology-57399628</a>.
+</div>
+<div id="ref-leiner2009" class="csl-entry" role="listitem">
+Leiner, Barry M., Vinton G. Cerf, David D. Clark, et al. 2009. <span>“A Brief History of the Internet.”</span> <em>ACM SIGCOMM Computer Communication Review</em> 39 (5): 22–31.
+</div>
+<div id="ref-prince2017" class="csl-entry" role="listitem">
+Prince, Matthew. 2017. <em>Why We Terminated <span>Daily Stormer</span></em>. The Cloudflare Blog, August 16, 2017. <a href="https://blog.cloudflare.com/why-we-terminated-daily-stormer/">https://blog.cloudflare.com/why-we-terminated-daily-stormer/</a>.
+</div>
+<div id="ref-saltzer1984" class="csl-entry" role="listitem">
+Saltzer, Jerome H., David P. Reed, and David D. Clark. 1984. <span>“End-to-End Arguments in System Design.”</span> <em>ACM Transactions on Computer Systems</em> 2 (4): 277–88.
+</div>
+<div id="ref-guardian2025aws" class="csl-entry" role="listitem">
+The Guardian. 2025. <em>Amazon Web Services Outage Takes down Banks, Apps and Websites Around the World</em>. The Guardian, October 20, 2025. <a href="https://www.theguardian.com/technology/2025/oct/20/amazon-web-services-outage">https://www.theguardian.com/technology/2025/oct/20/amazon-web-services-outage</a>.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

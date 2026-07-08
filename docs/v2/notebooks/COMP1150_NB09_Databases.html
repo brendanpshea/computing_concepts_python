@@ -177,6 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#two-tables-are-better-than-one" id="toc-two-tables-are-better-than-one" class="nav-link" data-scroll-target="#two-tables-are-better-than-one">4. Two Tables Are Better Than One</a></li>
   <li><a href="#when-rows-dont-fit-junipers-flavor-dreams" id="toc-when-rows-dont-fit-junipers-flavor-dreams" class="nav-link" data-scroll-target="#when-rows-dont-fit-junipers-flavor-dreams">5. When Rows Don’t Fit: Juniper’s Flavor Dreams</a></li>
   <li><a href="#how-a-program-talks-to-the-database" id="toc-how-a-program-talks-to-the-database" class="nav-link" data-scroll-target="#how-a-program-talks-to-the-database">6. How a <em>Program</em> Talks to the Database</a></li>
+  <li><a href="#sql-quick-reference-the-card-on-the-wall" id="toc-sql-quick-reference-the-card-on-the-wall" class="nav-link" data-scroll-target="#sql-quick-reference-the-card-on-the-wall">SQL Quick Reference: The Card on the Wall</a></li>
   <li><a href="#capstone-the-sweetshop-database" id="toc-capstone-the-sweetshop-database" class="nav-link" data-scroll-target="#capstone-the-sweetshop-database">✏️ Capstone — The Sweetshop Database</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
@@ -261,6 +262,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="picture-it-the-factorys-tables" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-factorys-tables">Picture It: The Factory’s Tables</h3>
 <p>The diagram below shows the three tables we’ll build for the Marchpane Works, and how they connect. Each box is a table; each line inside it is a column. The arrows show rows in one table pointing at rows in another — a batch <em>belongs to</em> a candy, and so does an order.</p>
+<div id="a0f149a8" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB09_Databases_files/figure-html/cell-2-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p><strong>Reading it:</strong> each box is a table and each line is a column. The 🔑 marks the primary key — the row’s permanent ID. The arrows (↗) show that <code>batches</code> and <code>shop_orders</code> don’t store a candy’s <em>name</em>; they store its <code>candy_id</code>, pointing back at exactly one row in <code>candies</code>. Rename the candy there, and every batch and order follows automatically.</p>
 </section>
 <section id="think-about-it-you-used-five-databases-before-breakfast" class="level3">
@@ -1070,6 +1080,191 @@ Thundermint Bar: 250p</code></pre>
 <p>Same SQL, same answers — the language doesn’t change, only who’s speaking it. The query went in as a string; the results came back as a plain Python list you can loop over.</p>
 <p>Hold onto this pattern. Next notebook, we’ll build a small <strong>web application</strong>, and this is exactly how it will work: a browser asks a question, a few lines of Python run a query, and the database — the permanent, rule-enforcing memory underneath everything — supplies the answer.</p>
 </section>
+<section id="sql-quick-reference-the-card-on-the-wall" class="level2">
+<h2 class="anchored" data-anchor-id="sql-quick-reference-the-card-on-the-wall">SQL Quick Reference: The Card on the Wall</h2>
+<p>Cordelia keeps a laminated card taped beside the factory terminal — every command the Marchpane Works actually uses, with a working example of each. This is that card.</p>
+<p>Two bits of official vocabulary make the card easier to organize. Commands that shape the <em>tables themselves</em> are called <strong>DDL</strong> (<em>data definition language</em>). Commands that change or read the <em>rows inside them</em> are called <strong>DML</strong> (<em>data manipulation language</em>). You’ve been using both all along — the card just sorts them.</p>
+<p>Every example below runs against this notebook’s own tables. Paste any of them into a <code>%%sql</code> cell above and experiment.</p>
+<section id="defining-structure-ddl" class="level3">
+<h3 class="anchored" data-anchor-id="defining-structure-ddl">Defining Structure (DDL)</h3>
+<p>These commands create and reshape tables — the filing cabinets, not the files.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keyword</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>CREATE TABLE</code></td>
+<td>makes a new table with named, typed columns</td>
+<td><code>CREATE TABLE staff (staff_id INTEGER PRIMARY KEY, name TEXT);</code></td>
+</tr>
+<tr class="even">
+<td><code>DROP TABLE IF EXISTS</code></td>
+<td>deletes a table and everything in it</td>
+<td><code>DROP TABLE IF EXISTS staff;</code></td>
+</tr>
+<tr class="odd">
+<td><code>ALTER TABLE ... ADD COLUMN</code></td>
+<td>adds a column to an existing table</td>
+<td><code>ALTER TABLE candies ADD COLUMN is_seasonal INTEGER;</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>ALTER TABLE</code> is the command Juniper’s flavor dreams were rescuing us from: with rigid columns, every newly invented field means altering the table for <em>every</em> row.</p>
+</section>
+<section id="changing-data-dml" class="level3">
+<h3 class="anchored" data-anchor-id="changing-data-dml">Changing Data (DML)</h3>
+<p>These commands add, edit, and remove rows.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keyword</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>INSERT INTO ... VALUES</code></td>
+<td>adds new rows</td>
+<td><code>INSERT INTO candies (candy_id, name, department, price_pence, sugar_grams) VALUES (9, 'Fizzing Humbug', 'Fizzworks', 150, 21.0);</code></td>
+</tr>
+<tr class="even">
+<td><code>UPDATE ... SET ... WHERE</code></td>
+<td>edits matching rows</td>
+<td><code>UPDATE candies SET price_pence = 130 WHERE name = 'Gloomberry Fizzer';</code></td>
+</tr>
+<tr class="odd">
+<td><code>DELETE FROM ... WHERE</code></td>
+<td>removes matching rows</td>
+<td><code>DELETE FROM candies WHERE candy_id = 9;</code></td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ <strong>The classic disaster:</strong> on <code>UPDATE</code> and <code>DELETE</code>, the <code>WHERE</code> clause chooses <em>which</em> rows. Forget it, and you change — or delete — <strong>every row in the table</strong>. Databases do exactly what you ask. Ask carefully.</p>
+</section>
+<section id="asking-questions-queries" class="level3">
+<h3 class="anchored" data-anchor-id="asking-questions-queries">Asking Questions (Queries)</h3>
+<p>The <code>SELECT</code> family — most of the SQL anyone writes, most days.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keyword</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>SELECT ... FROM</code></td>
+<td>choose columns from a table</td>
+<td><code>SELECT name, price_pence FROM candies;</code></td>
+</tr>
+<tr class="even">
+<td><code>WHERE</code></td>
+<td>keep only matching rows</td>
+<td><code>SELECT name FROM candies WHERE sugar_grams &lt; 20;</code></td>
+</tr>
+<tr class="odd">
+<td><code>ORDER BY ... DESC</code></td>
+<td>sort results (DESC = highest first)</td>
+<td><code>SELECT name, price_pence FROM candies ORDER BY price_pence DESC;</code></td>
+</tr>
+<tr class="even">
+<td><code>LIMIT</code></td>
+<td>keep only the first <em>n</em> results</td>
+<td><code>SELECT name FROM candies ORDER BY price_pence DESC LIMIT 3;</code></td>
+</tr>
+<tr class="odd">
+<td><code>JOIN ... ON</code></td>
+<td>recombine two tables by matching keys</td>
+<td><code>SELECT candies.name, batches.quality_score FROM batches JOIN candies ON batches.candy_id = candies.candy_id;</code></td>
+</tr>
+<tr class="even">
+<td><code>GROUP BY</code></td>
+<td>gather rows into buckets for totals</td>
+<td><code>SELECT candy_id, COUNT(*) FROM batches GROUP BY candy_id;</code></td>
+</tr>
+<tr class="odd">
+<td><code>COUNT / SUM / AVG</code></td>
+<td>boil a bucket down to one number</td>
+<td><code>SELECT AVG(quality_score) FROM batches;</code></td>
+</tr>
+<tr class="even">
+<td><code>AS</code></td>
+<td>rename a result column</td>
+<td><code>SELECT name, price_pence AS price FROM candies;</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="types-and-rules" class="level3">
+<h3 class="anchored" data-anchor-id="types-and-rules">Types and Rules</h3>
+<p>The building blocks inside a <code>CREATE TABLE</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Keyword</th>
+<th>What it does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>INTEGER</code> / <code>REAL</code> / <code>TEXT</code></td>
+<td>column types: whole numbers / decimals / text</td>
+<td><code>sugar_grams REAL</code></td>
+</tr>
+<tr class="even">
+<td><code>PRIMARY KEY</code></td>
+<td>this column is the row’s unique, permanent ID</td>
+<td><code>candy_id INTEGER PRIMARY KEY</code></td>
+</tr>
+<tr class="odd">
+<td><code>FOREIGN KEY ... REFERENCES</code></td>
+<td>values here must exist as a key in another table</td>
+<td><code>FOREIGN KEY (candy_id) REFERENCES candies (candy_id)</code></td>
+</tr>
+<tr class="even">
+<td><code>NOT NULL</code></td>
+<td>this column may never be left empty</td>
+<td><code>name TEXT NOT NULL</code></td>
+</tr>
+<tr class="odd">
+<td><code>PRAGMA foreign_keys = ON</code></td>
+<td>tells SQLite to actually enforce foreign keys</td>
+<td><code>PRAGMA foreign_keys = ON;</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Not covered here, but you’ll meet them:</strong> <code>DISTINCT</code> (drop duplicate results), <code>HAVING</code> (a <code>WHERE</code> for groups), and <code>CREATE INDEX</code> (make lookups on a column faster). When you see them in the wild, you’ll know they’re friends.</p>
+<p>Keep the card handy — the capstone below is where you’ll want it.</p>
+</section>
+</section>
 <section id="capstone-the-sweetshop-database" class="level2">
 <h2 class="anchored" data-anchor-id="capstone-the-sweetshop-database">✏️ Capstone — The Sweetshop Database</h2>
 <p>Time to build your own. You’ll design a small database and have an AI assistant (Gemini, Claude, or ChatGPT) write the SQL — while <em>you</em> make every design decision and verify every result.</p>
@@ -1130,6 +1325,8 @@ Thundermint Bar: 250p</code></pre>
 <li><strong>Column</strong> — One fact recorded about every row in a table, such as <code>price_pence</code>.</li>
 <li><strong>Database</strong> — An organized, permanent collection of data managed by software that keeps it correct and shareable.</li>
 <li><strong>DBMS (database management system)</strong> — The program that manages a database and enforces its rules; SQLite is one.</li>
+<li><strong>DDL (data definition language)</strong> — The SQL commands that shape tables themselves: <code>CREATE TABLE</code>, <code>DROP TABLE</code>, <code>ALTER TABLE</code>.</li>
+<li><strong>DML (data manipulation language)</strong> — The SQL commands that change or read the rows: <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SELECT</code>.</li>
 <li><strong>Document database</strong> — A database that stores free-form documents (usually JSON), letting every record have a different shape.</li>
 <li><strong>Foreign key</strong> — A column holding the primary key of a row in another table, linking the two.</li>
 <li><strong>Integrity constraint</strong> — A rule about the data (like a foreign key) that the database itself enforces by refusing bad changes.</li>
