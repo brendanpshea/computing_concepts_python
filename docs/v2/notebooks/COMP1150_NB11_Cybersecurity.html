@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>comp1150_nb11_cybersecurity – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notebook-11-cybersecurity-defending-the-clinic" id="toc-notebook-11-cybersecurity-defending-the-clinic" class="nav-link active" data-scroll-target="#notebook-11-cybersecurity-defending-the-clinic">Notebook 11: Cybersecurity — Defending the Clinic</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#the-clinic-that-leaked" id="toc-the-clinic-that-leaked" class="nav-link" data-scroll-target="#the-clinic-that-leaked">The Clinic That Leaked</a></li>
+  <li><a href="#what-are-we-protecting-the-cia-triad" id="toc-what-are-we-protecting-the-cia-triad" class="nav-link" data-scroll-target="#what-are-we-protecting-the-cia-triad">1. What Are We Protecting? The CIA Triad</a></li>
+  <li><a href="#the-open-door-sql-injection" id="toc-the-open-door-sql-injection" class="nav-link" data-scroll-target="#the-open-door-sql-injection">2. The Open Door: SQL Injection</a></li>
+  <li><a href="#poisoned-input-never-trust-the-user" id="toc-poisoned-input-never-trust-the-user" class="nav-link" data-scroll-target="#poisoned-input-never-trust-the-user">3. Poisoned Input: Never Trust the User</a></li>
+  <li><a href="#the-locked-door-passwords-hashing-salting" id="toc-the-locked-door-passwords-hashing-salting" class="nav-link" data-scroll-target="#the-locked-door-passwords-hashing-salting">4. The Locked Door: Passwords, Hashing &amp; Salting</a></li>
+  <li><a href="#the-locked-hallway-encryption-in-transit-https" id="toc-the-locked-hallway-encryption-in-transit-https" class="nav-link" data-scroll-target="#the-locked-hallway-encryption-in-transit-https">5. The Locked Hallway: Encryption in Transit (HTTPS)</a></li>
+  <li><a href="#the-key-under-the-mat-secrets-management" id="toc-the-key-under-the-mat-secrets-management" class="nav-link" data-scroll-target="#the-key-under-the-mat-secrets-management">6. The Key Under the Mat: Secrets Management</a></li>
+  <li><a href="#layers-on-layers-defense-in-depth" id="toc-layers-on-layers-defense-in-depth" class="nav-link" data-scroll-target="#layers-on-layers-defense-in-depth">7. Layers on Layers: Defense in Depth</a></li>
+  <li><a href="#capstone-the-security-audit" id="toc-capstone-the-security-audit" class="nav-link" data-scroll-target="#capstone-the-security-audit">✏️ Capstone — The Security Audit</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB11_Cybersecurity.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB11_Cybersecurity.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB11_Cybersecurity.ipynb">View on GitHub</a></p>
+<section id="notebook-11-cybersecurity-defending-the-clinic" class="level1">
+<h1>Notebook 11: Cybersecurity — Defending the Clinic</h1>
+<section id="comp-1150-computer-science-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
+<p><strong>Brendan Shea, PhD</strong></p>
+<!-- Lecture video link to be added -->
+<p>📺 <strong>Lecture video:</strong> <em>(coming soon)</em></p>
+</section>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li>Use the CIA triad — confidentiality, integrity, availability — to reason about what a system must protect</li>
+<li>Explain how SQL injection works, and stop it with parameterized queries</li>
+<li>Describe cross-site scripting and the general rule of never trusting user input</li>
+<li>Distinguish hashing from encryption, and store passwords safely with salting</li>
+<li>Keep secrets like API keys out of your code and out of your git history</li>
+</ul>
+<p><em>Maps to course LOs: 12</em></p>
+</section>
+<section id="the-clinic-that-leaked" class="level2">
+<h2 class="anchored" data-anchor-id="the-clinic-that-leaked">The Clinic That Leaked</h2>
+<p>At 6 a.m., <strong>Mina Harker’s</strong> phone rings. Mina is chief risk officer at Harker Risk &amp; Insurance, and the caller is <strong>Victor Frankenstein</strong>, CTO of Frankenstein BioLab. His clinic’s patient portal — a small web app, the kind a student could build in a weekend — has just leaked forty thousand medical records.</p>
+<p>There was no break-in. No door was forced. The building alarms never went off. Someone simply typed the right thing into the wrong box on the login page, and the app handed over its entire database.</p>
+<p>Mina has seen this a hundred times. “Victor,” she says, pulling on her coat, “your app has doors you never counted. Attackers don’t pick locks. They walk through the doors you forgot were there.”</p>
+<p>This is the notebook where your programs grow enemies.</p>
+<p>In the last notebook you built a web server and opened it to the network — where <em>anyone</em> can send it a request. Most are ordinary visitors. A few are not. This notebook is about that few: the attacks that target a small web app like the one you’ll build for your final project, and the defenses that stop them.</p>
+<p>Mina’s method is the whole plan. She doesn’t guess where the danger is. She <strong>enumerates every door and tests each one</strong>:</p>
+<ol type="1">
+<li><strong>What are we even protecting?</strong> The three questions behind every security decision.</li>
+<li><strong>The open door</strong> — SQL injection, the attack that leaked Victor’s records.</li>
+<li><strong>Poisoned input</strong> — why <em>all</em> user input is a threat, and cross-site scripting.</li>
+<li><strong>The locked door</strong> — hashing, salting, and how to store passwords safely.</li>
+<li><strong>The key under the mat</strong> — secrets like passwords and API keys, and how to not leak them.</li>
+</ol>
+<p>At the end, you’ll run a real security audit: take a deliberately broken app and harden it, door by door.</p>
+</section>
+<section id="what-are-we-protecting-the-cia-triad" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-we-protecting-the-cia-triad">1. What Are We Protecting? The CIA Triad</h2>
+<p>Before you can defend a system, you have to know what “safe” even means for it. Security professionals answer that with three questions, known as the <strong>CIA triad</strong> — nothing to do with the agency, everything to do with three properties every system needs:</p>
+<ul>
+<li><strong>Confidentiality</strong> — can the <em>wrong people read</em> the data? (Victor’s leak was a confidentiality failure: outsiders read patient records.)</li>
+<li><strong>Integrity</strong> — can the wrong people <em>change</em> the data? (Imagine an attacker altering a prescription’s dosage.)</li>
+<li><strong>Availability</strong> — can they <em>stop the system working</em> at all? (Imagine the portal knocked offline so no doctor can reach any record.)</li>
+</ul>
+<p>Every attack in this notebook breaks at least one of these. Every defense protects at least one. When Mina audits a system, she walks every asset past all three questions.</p>
+<div id="cell-fig-cia" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>graphviz.Source(<span class="vs">r"""digraph G {</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  bgcolor="transparent"; rankdir=TB;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11]</span><span class="vs">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="vs">  triad </span><span class="pp">[label="Patient Records", shape=diamond, fillcolor="#f3e9d8"]</span><span class="vs">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="vs">  c </span><span class="pp">[label="Confidentiality</span><span class="ch">\n</span><span class="pp">wrong people READ it</span><span class="ch">\n</span><span class="pp">(the leak)", fillcolor="#dde8f0"]</span><span class="vs">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  i </span><span class="pp">[label="Integrity</span><span class="ch">\n</span><span class="pp">wrong people CHANGE it</span><span class="ch">\n</span><span class="pp">(altered dosage)", fillcolor="#dde8f0"]</span><span class="vs">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="vs">  a </span><span class="pp">[label="Availability</span><span class="ch">\n</span><span class="pp">they STOP it working</span><span class="ch">\n</span><span class="pp">(portal offline)", fillcolor="#e3efe1"]</span><span class="vs">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  triad -&gt; c; triad -&gt; i; triad -&gt; a;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="fig-cia" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-cia-output-1.svg" id="fig-cia" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> one asset — the patient records — faces three distinct dangers. A defense that guarantees confidentiality (say, hiding the data) does nothing for availability (the data can still be knocked offline). That’s why security is never one lock. It’s a checklist you run on everything valuable.</p>
+<section id="modeling-threats-as-data" class="level3">
+<h3 class="anchored" data-anchor-id="modeling-threats-as-data">Modeling Threats as Data</h3>
+<p>Mina doesn’t keep this in her head — she writes it down. A <strong>threat model</strong> is just a list of “what could go wrong,” and it’s ordinary data you already know how to handle: a list of dictionaries, one per threat.</p>
+<p>The next cell is the start of Mina’s threat model for the clinic. Each entry names an asset, the threat to it, and which CIA property it breaks.</p>
+<div id="b8105dee" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>threat_model <span class="op">=</span> [</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"asset"</span>: <span class="st">"patient records"</span>, <span class="st">"threat"</span>: <span class="st">"leaked via login box"</span>, <span class="st">"breaks"</span>: <span class="st">"confidentiality"</span>},</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"asset"</span>: <span class="st">"prescriptions"</span>,   <span class="st">"threat"</span>: <span class="st">"dosage altered"</span>,       <span class="st">"breaks"</span>: <span class="st">"integrity"</span>},</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"asset"</span>: <span class="st">"the portal"</span>,      <span class="st">"threat"</span>: <span class="st">"flooded offline"</span>,      <span class="st">"breaks"</span>: <span class="st">"availability"</span>},</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> threat_model:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'breaks'</span>]<span class="sc">:16}</span><span class="ss"> &lt;- </span><span class="sc">{</span>row[<span class="st">'asset'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>row[<span class="st">'threat'</span>]<span class="sc">}</span><span class="ss">)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>confidentiality  &lt;- patient records (leaked via login box)
+integrity        &lt;- prescriptions (dosage altered)
+availability     &lt;- the portal (flooded offline)</code></pre>
+</div>
+</div>
+<p>That’s the whole discipline in one loop: enumerate what you have, name what could happen to it, label the property at risk. A messy list like this, written <em>before</em> you’re attacked, is worth more than any single clever defense. It turns “are we secure?” — a question no one can answer — into “have we handled every row?” — a question you can.</p>
+</section>
+<section id="think-about-it-which-letter-matters-most" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-which-letter-matters-most">💭 Think About It — Which Letter Matters Most?</h3>
+<p>The three properties aren’t equally important for every system. Rank C, I, and A for each of these, and be ready to defend your order:</p>
+<ul>
+<li>a hospital’s patient records</li>
+<li>a bank’s account balances</li>
+<li>a public group chat for planning a birthday party</li>
+</ul>
+<p>There’s no single right ranking — that’s the point. Security starts with knowing what <em>you</em> most cannot afford to lose.</p>
+</section>
+</section>
+<section id="the-open-door-sql-injection" class="level2">
+<h2 class="anchored" data-anchor-id="the-open-door-sql-injection">2. The Open Door: SQL Injection</h2>
+<p>Now the attack that leaked Victor’s clinic. It’s called <strong>SQL injection</strong>, and it’s been near the top of every “most dangerous vulnerabilities” list for twenty years. To see it, we need to look at how Victor’s login worked.</p>
+<p>When someone logs in, the app takes the username they typed and builds a database query to look them up. Victor’s code built that query the tempting, disastrous way: by gluing the user’s text directly into the SQL string.</p>
+<p>The next cell sets up a tiny version of Victor’s user database, so we can watch the attack happen safely.</p>
+<div id="b4a7a784" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">":memory:"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>db.execute(<span class="st">"CREATE TABLE users (name TEXT, role TEXT)"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>db.executemany(<span class="st">"INSERT INTO users VALUES (?, ?)"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>               [(<span class="st">"mina"</span>, <span class="st">"admin"</span>), (<span class="st">"victor"</span>, <span class="st">"doctor"</span>), (<span class="st">"igor"</span>, <span class="st">"clerk"</span>)])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>db.commit()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Set up 3 users."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Set up 3 users.</code></pre>
+</div>
+</div>
+<p>Here is Victor’s mistake — the vulnerable lookup. It builds the query by pasting the username straight into the SQL text with an f-string. For a normal username like <code>mina</code>, it works perfectly, which is exactly why the bug survives to production.</p>
+<div id="641fa428" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unsafe_login(username):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="ss">f"SELECT * FROM users WHERE name = '</span><span class="sc">{</span>username<span class="sc">}</span><span class="ss">'"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"QUERY:"</span>, query)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> db.execute(query).fetchall()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unsafe_login(<span class="st">"mina"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>QUERY: SELECT * FROM users WHERE name = 'mina'
+[('mina', 'admin')]</code></pre>
+</div>
+</div>
+<p>Normal input, normal result: one row for <code>mina</code>. The query reads <code>... WHERE name = 'mina'</code>. Nothing looks wrong.</p>
+<p>Now the attacker. Instead of a username, they type this into the login box:</p>
+<pre><code>' OR '1'='1</code></pre>
+<section id="predict-before-you-run" class="level3">
+<h3 class="anchored" data-anchor-id="predict-before-you-run">🔮 Predict Before You Run</h3>
+<p>Look at how <code>unsafe_login</code> builds its string. When the username is <code>' OR '1'='1</code>, what will the finished <code>QUERY</code> line actually say? And <code>'1'='1'</code> is <em>always</em> true — so how many rows will come back? Write down your guess, then run the next cell.</p>
+<div id="06eb56ec" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>attack <span class="op">=</span> <span class="st">"' OR '1'='1"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unsafe_login(attack))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>QUERY: SELECT * FROM users WHERE name = '' OR '1'='1'
+[('mina', 'admin'), ('victor', 'doctor'), ('igor', 'clerk')]</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-attack" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-attack">Understanding the Attack</h3>
+<p>The finished query became:</p>
+<pre><code>SELECT * FROM users WHERE name = '' OR '1'='1'</code></pre>
+<p>The attacker’s quote mark closed Victor’s string early, and their <code>OR '1'='1'</code> bolted on a condition that is <em>always true</em>. So the database happily returned <strong>every user</strong> — Mina, Victor, and Igor. Scale that from three rows to forty thousand patients, and you have Victor’s morning.</p>
+<p>The root cause has a name worth remembering: <strong>the data became code.</strong> The app meant the username to be <em>data</em> — a value to look up. But because it was pasted into the query text, a cleverly written username turned into <em>commands</em> the database obeyed. Every injection attack, of every kind, is a version of this one confusion.</p>
+</section>
+<section id="the-fix-parameterized-queries" class="level3">
+<h3 class="anchored" data-anchor-id="the-fix-parameterized-queries">The Fix: Parameterized Queries</h3>
+<p>The fix is not to hunt for bad characters or ban apostrophes. It’s to <em>never let data into the code position in the first place.</em> You do this with a <strong>parameterized query</strong>: leave a <code>?</code> placeholder in the SQL, and hand the value to the database <em>separately</em>. The database then treats it as pure data — never as commands, no matter what’s in it.</p>
+<p>Watch the same attack hit the safe version.</p>
+<div id="d63f65f2" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_login(username):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> db.execute(<span class="st">"SELECT * FROM users WHERE name = ?"</span>, (username,)).fetchall()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"normal:"</span>, safe_login(<span class="st">"mina"</span>))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"attack:"</span>, safe_login(<span class="st">"' OR '1'='1"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>normal: [('mina', 'admin')]
+attack: []</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-fix" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-fix">Understanding the Fix</h3>
+<ul>
+<li>The <code>?</code> is a placeholder. The real value rides in the second argument, the tuple <code>(username,)</code>.</li>
+<li>The database keeps the query and the value in separate hands. The username <code>' OR '1'='1</code> is now looked up as a <em>literal name</em> — and since no user is actually called that, the attack returns an empty list.</li>
+<li>Normal logins still work exactly as before.</li>
+</ul>
+<p>This is the entire defense, and it’s less code than the broken version. The rule for the rest of your life as a programmer: <strong>never build a SQL query by gluing in user input. Always use <code>?</code> placeholders.</strong> Your database library — the <code>sqlite3</code> you already know — has supported this the whole time.</p>
+</section>
+<section id="your-turn-close-victors-other-door" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-close-victors-other-door">✏️ Your Turn — Close Victor’s Other Door</h3>
+<p>Victor has a second vulnerable function: <code>find_role</code>, which looks up a user’s role. It’s built the unsafe way. Rewrite it to use a parameterized query, then confirm the attack string returns nothing.</p>
+<div id="6683c631" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ This is the VULNERABLE version. Fix it.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_role(username):</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="ss">f"SELECT role FROM users WHERE name = '</span><span class="sc">{</span>username<span class="sc">}</span><span class="ss">'"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> db.execute(query).fetchall()</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: rewrite find_role to use a ? placeholder.</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Then test it:</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(find_role("mina"))                 # should find the admin</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># print(find_role("' OR '1'='1"))          # should return []</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="poisoned-input-never-trust-the-user" class="level2">
+<h2 class="anchored" data-anchor-id="poisoned-input-never-trust-the-user">3. Poisoned Input: Never Trust the User</h2>
+<p>SQL injection is one case of a much larger law, and <strong>Abraham Van Helsing</strong> — who has spent his career hunting things that hide inside ordinary-looking bodies — states it plainly: <em>“All input is a suspect until proven innocent.”</em></p>
+<p>Any data that comes from <em>outside</em> your program — a form field, a URL, an uploaded file, a response from another server — could have been crafted by an attacker. SQL injection poisons a database query. Its cousin poisons a <em>web page</em>.</p>
+<section id="cross-site-scripting-xss" class="level3">
+<h3 class="anchored" data-anchor-id="cross-site-scripting-xss">Cross-Site Scripting (XSS)</h3>
+<p>Suppose the clinic portal lets patients leave a comment, and later shows those comments to staff. A normal patient writes “Running five minutes late.” An attacker writes this:</p>
+<pre><code>&lt;script&gt;steal_the_session()&lt;/script&gt;</code></pre>
+<p>If the portal drops that text straight onto the page, the victim’s browser can’t tell the attacker’s <code>&lt;script&gt;</code> from the site’s own code — so it <em>runs it</em>. That’s <strong>cross-site scripting</strong>, or XSS: input that becomes executable code in someone else’s browser. Same root cause as before — data became code — just aimed at the page instead of the database.</p>
+</section>
+<section id="the-defense-escaping" class="level3">
+<h3 class="anchored" data-anchor-id="the-defense-escaping">The Defense: Escaping</h3>
+<p>The fix is to turn dangerous characters into harmless display text <em>before</em> showing them — a step called <strong>escaping</strong> (or sanitizing). The <code>&lt;</code> that starts a tag becomes <code>&amp;lt;</code>, which a browser <em>shows</em> as a literal “&lt;” instead of <em>obeying</em> as the start of a script.</p>
+<p>The next cell shows the transformation with Python’s built-in <code>html.escape</code>.</p>
+<div id="fc9084fb" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> html</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>attacker_comment <span class="op">=</span> <span class="st">"&lt;script&gt;steal_the_session()&lt;/script&gt;"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"stored raw:   "</span>, attacker_comment)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"escaped safe: "</span>, html.escape(attacker_comment))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>stored raw:    &lt;script&gt;steal_the_session()&lt;/script&gt;
+escaped safe:  &amp;lt;script&amp;gt;steal_the_session()&amp;lt;/script&amp;gt;</code></pre>
+</div>
+</div>
+<p>The escaped version displays as text and does nothing. Here is the reassuring part: the template tool Flask uses (Jinja) does this escaping <strong>automatically</strong> for every value you drop into a page. Much of your XSS defense is handled for you — as long as you don’t go out of your way to disable it. The danger returns the moment you mark something “safe” to skip escaping, which is why you should almost never do that.</p>
+</section>
+<section id="validation-checking-input-before-you-trust-it" class="level3">
+<h3 class="anchored" data-anchor-id="validation-checking-input-before-you-trust-it">Validation: Checking Input Before You Trust It</h3>
+<p>Escaping handles output. The other half of Van Helsing’s law is <strong>input validation</strong>: before you accept a value, check that it’s the <em>shape</em> you expected — right type, sane length, allowed characters. A field asking for an age should reject <code>"; DROP TABLE"</code> for the simple reason that it isn’t a number.</p>
+<p>The next cell is a small validator for the clinic’s intake form.</p>
+<div id="a14a78e4" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_age(raw):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> raw.isdigit():</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span>, <span class="st">"Age must be digits only."</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    age <span class="op">=</span> <span class="bu">int</span>(raw)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">0</span> <span class="kw">or</span> age <span class="op">&gt;</span> <span class="dv">120</span>:</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span>, <span class="st">"Age must be between 0 and 120."</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span>, age</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> test <span class="kw">in</span> [<span class="st">"37"</span>, <span class="st">"-4"</span>, <span class="st">"200"</span>, <span class="st">"'; DROP TABLE users; --"</span>]:</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>test<span class="sc">!r:28}</span><span class="ss"> -&gt; </span><span class="sc">{</span>validate_age(test)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'37'                         -&gt; (True, 37)
+'-4'                         -&gt; (False, 'Age must be digits only.')
+'200'                        -&gt; (False, 'Age must be between 0 and 120.')
+"'; DROP TABLE users; --"    -&gt; (False, 'Age must be digits only.')</code></pre>
+</div>
+</div>
+<p>Only the sensible value survives. Validation won’t catch every attack on its own — you still use parameterized queries and escaping — but it’s the first gate, and it turns away the crudest attacks before they get anywhere.</p>
+<p><em>(A related attack, <strong>cross-site request forgery</strong> (CSRF), tricks a logged-in user’s browser into sending a request they never intended — like a hidden button that transfers money using their active session. Full web frameworks including Flask ship with built-in CSRF protection you switch on; it’s worth knowing the name exists.)</em></p>
+</section>
+<section id="your-turn-van-helsings-filter" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-van-helsings-filter">✏️ Your Turn — Van Helsing’s Filter</h3>
+<p>The clinic wants a validator for a patient’s phone number: it must be <strong>exactly 10 digits</strong>, nothing else. Write <code>validate_phone(raw)</code> that returns <code>True</code> for <code>"5075551234"</code> and <code>False</code> for a number that’s too short, has letters, or contains a <code>&lt;script&gt;</code> tag.</p>
+<div id="81424b67" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_phone(raw):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: return True only for exactly 10 digits.</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for test in ["5075551234", "123", "abcd", "&lt;script&gt;", "507-555-1234"]:</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(test, "-&gt;", validate_phone(test))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="the-locked-door-passwords-hashing-salting" class="level2">
+<h2 class="anchored" data-anchor-id="the-locked-door-passwords-hashing-salting">4. The Locked Door: Passwords, Hashing &amp; Salting</h2>
+<p><strong>Christine Daaé</strong> runs a talent agency, and she has a stalker — someone who tries to log into her account night after night, guessing password after password. Her problem raises the deepest question in this notebook: how should a system store passwords at all?</p>
+<p>The naive answer — keep a list of everyone’s password — is a catastrophe waiting for one leak. If Victor’s database had stored passwords as plain text, the attacker wouldn’t just have this year’s records; they’d have passwords that people reuse on their bank, their email, everywhere. <strong>A system should never be able to read its own users’ passwords.</strong></p>
+<p>That sounds impossible — how do you check a password you can’t read? The answer is one of the most elegant ideas in computing.</p>
+<section id="hashing-vs.-encryption" class="level3">
+<h3 class="anchored" data-anchor-id="hashing-vs.-encryption">Hashing vs.&nbsp;Encryption</h3>
+<p>Two tools are easy to confuse:</p>
+<ul>
+<li><strong>Encryption</strong> is a <em>two-way</em> lock. You scramble data with a key, and anyone with the key can unscramble it back. Use it for data you need to <em>read again later</em> — a message in transit, a file at rest.</li>
+<li><strong>Hashing</strong> is a <em>one-way</em> lock. It turns any input into a fixed-length fingerprint, and there is <strong>no way back</strong> — you cannot un-hash a fingerprint to recover the input. Use it for passwords, exactly <em>because</em> you never want to recover them.</li>
+</ul>
+<p>The trick for passwords: store the <em>hash</em>, never the password. When a user logs in, hash what they typed and compare the two fingerprints. Same password always makes the same fingerprint, so the check works — but a stolen database yields only fingerprints, not passwords.</p>
+<p>The next cell hashes a password with <code>hashlib</code> (the same family of tools that fingerprints files and secures the web).</p>
+<div id="ec0ebe7f" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sha(text):</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hashlib.sha256(text.encode()).hexdigest()</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hunter2      -&gt;"</span>, sha(<span class="st">"hunter2"</span>))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hunter2 again-&gt;"</span>, sha(<span class="st">"hunter2"</span>))</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hunter3      -&gt;"</span>, sha(<span class="st">"hunter3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>hunter2      -&gt; f52fbd32b2b3b86ff88ef6c490628285f482af15ddcb29541f94bcf526a3f6c7
+hunter2 again-&gt; f52fbd32b2b3b86ff88ef6c490628285f482af15ddcb29541f94bcf526a3f6c7
+hunter3      -&gt; fb8c2e2b85ca81eb4350199faddd983cb26af3064614e737ea9f479621cfa57a</code></pre>
+</div>
+</div>
+<p>Two things to notice. The same password gives the <em>same</em> fingerprint every time — that’s what lets you verify a login. And a one-character change gives a <em>completely different</em> fingerprint — so the stored value tells an attacker nothing about how close a guess was.</p>
+<p>But there’s a crack in this door, and Christine’s stalker knows it.</p>
+</section>
+<section id="why-plain-hashing-isnt-enough-salting" class="level3">
+<h3 class="anchored" data-anchor-id="why-plain-hashing-isnt-enough-salting">Why Plain Hashing Isn’t Enough: Salting</h3>
+<p>Look again: <code>hunter2</code> <em>always</em> hashes to the same value. So two users with the same password store the <em>identical</em> fingerprint — and attackers have precomputed giant tables of “fingerprint → common password” (called rainbow tables). If your password is common, its hash is already in a lookup table somewhere.</p>
+<p>The fix is a <strong>salt</strong>: a chunk of random data, different for every user, mixed into the password before hashing. Now two users with the same password get <em>different</em> fingerprints, and the attacker’s precomputed tables are worthless — they’d need a fresh table for every salt.</p>
+<p>The next cell shows two users, both with the password <code>hunter2</code>, ending up with different stored hashes.</p>
+<div id="65f148b0" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib, os</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hash_with_salt(password, salt):</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hashlib.sha256(salt <span class="op">+</span> password.encode()).hexdigest()</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>alice_salt <span class="op">=</span> os.urandom(<span class="dv">8</span>)      <span class="co"># 8 random bytes, unique to Alice</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>bob_salt   <span class="op">=</span> os.urandom(<span class="dv">8</span>)      <span class="co"># a different 8 for Bob</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Alice:"</span>, hash_with_salt(<span class="st">"hunter2"</span>, alice_salt))</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Bob:  "</span>, hash_with_salt(<span class="st">"hunter2"</span>, bob_salt))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Alice: d6f863ffd64a12fabda2f9ecf6874e1f1edbbc48e70baa573600d654158dc5e6
+Bob:   7f4f8aa3251610807bc149e033544b9bc3f1ab1e7d2819576dbf10ead47196e3</code></pre>
+</div>
+</div>
+<p>Same password, two different stored fingerprints — because each was salted differently. You store the salt alongside the hash (it isn’t secret); its job is only to make every user’s hash unique and defeat precomputed tables.</p>
+<p>One last, crucial rule. <strong>Don’t actually build this yourself.</strong> Real password storage also needs the hashing to be deliberately <em>slow</em>, to blunt the stalker who guesses millions of times per second. Battle-tested tools do salting and slowness for you — <code>bcrypt</code>, or the <code>werkzeug.security</code> functions that come with Flask. The lesson here is to <em>understand</em> what they do, so you’ll recognize when they’re missing. The code you should ship is:</p>
+<pre><code>from werkzeug.security import generate_password_hash, check_password_hash
+
+stored = generate_password_hash("hunter2")     # salted + slow, automatically
+check_password_hash(stored, "hunter2")         # True</code></pre>
+<p>Christine’s stalker, meanwhile, is a <strong>brute-force</strong> attack: try every guess until one works. Slow hashing makes each guess costly, and a simple rule — lock the account after several failures — turns “millions of guesses a second” into “five guesses an hour.” Availability defended, without ever storing a readable password.</p>
+</section>
+<section id="your-turn-verify-a-login" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-verify-a-login">✏️ Your Turn — Verify a Login</h3>
+<p>Write <code>check_login(stored_hash, salt, attempt)</code> that hashes the <code>attempt</code> with the given <code>salt</code> and returns <code>True</code> only if it matches <code>stored_hash</code>. Use it to confirm that <code>"hunter2"</code> logs in and <code>"password123"</code> does not.</p>
+<div id="bcf194f9" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_login(stored_hash, salt, attempt):</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: hash the attempt with the salt, compare to stored_hash, return True/False.</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># salt = os.urandom(8)</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># stored = hashlib.sha256(salt + b"hunter2").hexdigest()</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># print(check_login(stored, salt, "hunter2"))       # True</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># print(check_login(stored, salt, "password123"))   # False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="the-locked-hallway-encryption-in-transit-https" class="level2">
+<h2 class="anchored" data-anchor-id="the-locked-hallway-encryption-in-transit-https">5. The Locked Hallway: Encryption in Transit (HTTPS)</h2>
+<p>So far we’ve protected data sitting <em>inside</em> the app — the database, the stored passwords. But a patient logging in from a coffee shop sends their password across a stranger’s Wi-Fi, then through an internet provider, then across routers owned by companies they’ve never heard of. Their data is most exposed not at rest, but <em>on the journey</em>.</p>
+<p>This is a new place for confidentiality to fail, and it has nothing to do with your code’s logic. Recall how data crosses a network: chopped into packets that hop from machine to machine. Anyone sitting on that path — the café’s router, the provider, someone running a snooping tool on the same Wi-Fi — can read every packet that passes. If the login travels as plain, readable text, they read the password.</p>
+<p>Plain <strong>HTTP</strong> sends everything as readable text. That’s the danger.</p>
+<section id="the-fix-https" class="level3">
+<h3 class="anchored" data-anchor-id="the-fix-https">The Fix: HTTPS</h3>
+<p><strong>HTTPS</strong> is simply HTTP with <strong>encryption</strong> added — the <em>S</em> stands for <em>secure</em>. Remember encryption from the last section: the two-way lock, where data is scrambled with a key and only the holder can unscramble it. HTTPS wraps the entire conversation between browser and server in that lock. An eavesdropper on the path still sees the packets go by — but all they see is scrambled gibberish. Only the browser and the clinic’s server hold the key to read it.</p>
+<p>That is exactly what the <strong>padlock icon</strong> in your browser’s address bar means: this connection is encrypted, so no one in between can read it.</p>
+<div id="cell-fig-https" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>graphviz.Source(<span class="vs">r"""digraph G {</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  bgcolor="transparent"; rankdir=LR;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10]</span><span class="vs">;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="vs">  edge </span><span class="pp">[fontname="Helvetica", fontsize=9]</span><span class="vs">;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  subgraph cluster_http {</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="vs">    label="Plain HTTP"; style=dashed; color="</span><span class="co">#b06060";</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="vs">    p1 </span><span class="pp">[label="Patient", fillcolor="#dde8f0"]</span><span class="vs">;</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="vs">    e1 </span><span class="pp">[label="Eavesdropper</span><span class="ch">\n</span><span class="pp">on the Wi-Fi</span><span class="ch">\n</span><span class="pp">sees: password = hunter2", fillcolor="#f6dede"]</span><span class="vs">;</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="vs">    s1 </span><span class="pp">[label="Clinic server", fillcolor="#e3efe1"]</span><span class="vs">;</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="vs">    p1 -&gt; e1 -&gt; s1 </span><span class="pp">[label="readable"]</span><span class="vs">;</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="vs">  }</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="vs">  subgraph cluster_https {</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="vs">    label="HTTPS </span><span class="kw">(</span><span class="vs">encrypted</span><span class="kw">)</span><span class="vs">"; style=dashed; color="</span><span class="co">#60a060";</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="vs">    p2 </span><span class="pp">[label="Patient", fillcolor="#dde8f0"]</span><span class="vs">;</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="vs">    e2 </span><span class="pp">[label="Eavesdropper</span><span class="ch">\n</span><span class="pp">on the Wi-Fi</span><span class="ch">\n</span><span class="pp">sees: x8#kP9$mLq...", fillcolor="#f3e9d8"]</span><span class="vs">;</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="vs">    s2 </span><span class="pp">[label="Clinic server", fillcolor="#e3efe1"]</span><span class="vs">;</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="vs">    p2 -&gt; e2 -&gt; s2 </span><span class="pp">[label="scrambled"]</span><span class="vs">;</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="vs">  }</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div id="fig-https" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-https-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-https-output-1.svg" id="fig-https" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-https-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> the data travels the same path both ways, past the same eavesdropper. Over plain HTTP the password is readable in transit; over HTTPS it’s scrambled, and the snooper on the café Wi-Fi gets nothing useful.</p>
+<p>HTTPS quietly does one more job: it proves the server <em>is who it claims to be</em>. A trusted outside authority issues the clinic a <strong>certificate</strong> vouching for its identity, so your browser can tell the real clinic from an impostor site pretending to be it. That’s why a browser warns you loudly about a “certificate error” — it can no longer confirm who’s on the other end.</p>
+<p>The practical rule for your own projects is short: <strong>never send passwords or personal data over plain HTTP.</strong> The good news is you rarely set this up by hand. The hosting platforms you might deploy to provide HTTPS automatically, and the tunneling tool used to share a Colab app gives you an HTTPS address for free. Your job is mostly to <em>use</em> it — and to never wave away a certificate warning.</p>
+</section>
+<section id="think-about-it-what-the-padlock-really-promises" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-what-the-padlock-really-promises">💭 Think About It — What the Padlock Really Promises</h3>
+<p>Many people were taught “look for the padlock, then the site is safe.” But scam sites can get a padlock too — certificates are easy to obtain.</p>
+<p>So what does the padlock <em>actually</em> guarantee? And what does it say nothing about? Why might “this connection is private” and “this site is trustworthy” be two very different claims?</p>
+</section>
+</section>
+<section id="the-key-under-the-mat-secrets-management" class="level2">
+<h2 class="anchored" data-anchor-id="the-key-under-the-mat-secrets-management">6. The Key Under the Mat: Secrets Management</h2>
+<p><strong>Jonathan Harker</strong>, a lawyer, made the most common security mistake in the world, and it wasn’t clever at all. Building a small app, he typed his email service’s password directly into his code so it would work:</p>
+<pre><code>API_KEY = "sk_live_9f8a7b6c5d4e3f2a1b"   # &lt;- right there in the file</code></pre>
+<p>Then he pushed the code to GitHub. Within hours, bots that constantly scan public repositories for exactly this found the key and ran up a bill. A <strong>secret</strong> — a password, an API key, a database credential — is anything that grants access, and the rule is absolute: <strong>secrets never go in your code.</strong></p>
+<section id="the-fix-environment-variables" class="level3">
+<h3 class="anchored" data-anchor-id="the-fix-environment-variables">The Fix: Environment Variables</h3>
+<p>Instead of writing the secret in the file, you store it <em>outside</em> the code — in an <strong>environment variable</strong>, a value the operating system holds — and your program reads it at runtime. The code contains only the <em>name</em> of the secret, never the secret itself.</p>
+<div id="8867d7f5" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The code names the secret but never contains it.</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> os.environ.get(<span class="st">"CLINIC_API_KEY"</span>, <span class="st">"(not set)"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Key loaded from environment:"</span>, api_key)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Key loaded from environment: (not set)</code></pre>
+</div>
+</div>
+<p>The code above is safe to share with the world — there’s no secret in it, only a request to read one named <code>CLINIC_API_KEY</code>. You set the actual value separately: on your own machine, in the operating system; on Colab, using the <strong>Secrets</strong> panel (the 🔑 icon in the left sidebar), read with <code>google.colab.userdata.get("CLINIC_API_KEY")</code>. Either way, the secret never touches a file you might share.</p>
+<p>You also tell git to ignore the files that <em>do</em> hold secrets locally (like a <code>.env</code> file) by listing them in a special file named <strong><code>.gitignore</code></strong>. Git then refuses to track them, so they can’t be committed by accident.</p>
+</section>
+<section id="think-about-it-jonathans-fix" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-jonathans-fix">💭 Think About It — Jonathan’s “Fix”</h3>
+<p>Jonathan realizes his mistake. In his <em>next</em> commit, he deletes the key from the file and pushes again. The current version of his code is clean. He relaxes.</p>
+<p>He shouldn’t. Why is the key <em>still</em> exposed, even though it’s gone from the latest version? (Think about what a version-control system keeps, and never forgets.) What does Jonathan actually have to do to be safe?</p>
+</section>
+</section>
+<section id="layers-on-layers-defense-in-depth" class="level2">
+<h2 class="anchored" data-anchor-id="layers-on-layers-defense-in-depth">7. Layers on Layers: Defense in Depth</h2>
+<p>Step back and look at what you’ve built. You have not learned <em>one</em> way to secure an app — you’ve learned six, and that plurality is the whole point.</p>
+<p>Victor’s clinic wasn’t breached because he was missing a single clever defense. It was breached because one weak spot — the login box — had <em>nothing behind it</em>. One failure was all it took. The professional answer to that is a principle called <strong>defense in depth</strong>: stack multiple independent defenses so that no single failure exposes everything. Assume any one layer <em>will</em> eventually fail, and make sure another one is waiting behind it.</p>
+<p>A castle is the old image: not one wall, but a moat, an outer wall, a gate, and guards. An attacker who swims the moat still faces the wall. For the clinic’s login form, your layers stack the same way.</p>
+<div id="cell-fig-defense" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>graphviz.Source(<span class="vs">r"""digraph G {</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  bgcolor="transparent"; rankdir=LR;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10,</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="pp">        fillcolor="#dde8f0"]</span><span class="vs">;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="vs">  edge </span><span class="pp">[fontname="Helvetica", fontsize=9]</span><span class="vs">;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  atk </span><span class="pp">[label="Attack", shape=diamond, fillcolor="#f6dede"]</span><span class="vs">;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="vs">  l1 </span><span class="pp">[label="Input</span><span class="ch">\n</span><span class="pp">validation"]</span><span class="vs">;</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  l2 </span><span class="pp">[label="Parameterized</span><span class="ch">\n</span><span class="pp">query"]</span><span class="vs">;</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="vs">  l3 </span><span class="pp">[label="Hashed +</span><span class="ch">\n</span><span class="pp">salted passwords"]</span><span class="vs">;</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="vs">  l4 </span><span class="pp">[label="HTTPS</span><span class="ch">\n</span><span class="pp">in transit"]</span><span class="vs">;</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="vs">  l5 </span><span class="pp">[label="Rate</span><span class="ch">\n</span><span class="pp">limiting"]</span><span class="vs">;</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="vs">  win </span><span class="pp">[label="Patient data</span><span class="ch">\n</span><span class="pp">SAFE", fillcolor="#e3efe1"]</span><span class="vs">;</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="vs">  atk -&gt; l1 -&gt; l2 -&gt; l3 -&gt; l4 -&gt; l5 -&gt; win;</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div id="fig-defense" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-defense-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-defense-output-1.svg" id="fig-defense" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-defense-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> an attack has to get past <em>every</em> layer to reach the data — and each layer stops a different kind of attack. Miss the validation? The parameterized query still blocks the injection. Database stolen anyway? The passwords are only salted hashes. Traffic sniffed? HTTPS scrambled it. Password guessing? Rate limiting locks them out. No layer is trusted to be perfect. That’s what makes the stack strong.</p>
+<p>This is why “are we secure?” is the wrong question, and “how many independent layers protect this?” is the right one. A single lock is a single point of failure — the very thing a network was designed to avoid, now applied to your app.</p>
+</section>
+<section id="capstone-the-security-audit" class="level2">
+<h2 class="anchored" data-anchor-id="capstone-the-security-audit">✏️ Capstone — The Security Audit</h2>
+<p>Every capstone so far has asked you to <em>build</em> something. This one asks you to <em>break and repair</em> something — the most valuable security skill there is.</p>
+<p>Below is a description of a small, deliberately <strong>insecure</strong> clinic login app. Your job is Mina’s job: find every door, and close it. You’ll work with an AI assistant — but with a twist you now understand deeply: <strong>AI will confidently write insecure code.</strong> It was trained on millions of examples, many of them vulnerable. You are the auditor. You verify.</p>
+<section id="step-0-read-the-broken-app" class="level3">
+<h3 class="anchored" data-anchor-id="step-0-read-the-broken-app">Step 0 — Read the Broken App</h3>
+<p>Here is the vulnerable app’s core logic (you don’t run this — you audit it):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/login"</span>, methods<span class="op">=</span>[<span class="st">"POST"</span>])</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> login():</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> request.form[<span class="st">"username"</span>]</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    pw <span class="op">=</span> request.form[<span class="st">"password"</span>]</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="ss">f"SELECT * FROM users WHERE name='</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">' AND password='</span><span class="sc">{</span>pw<span class="sc">}</span><span class="ss">'"</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    user <span class="op">=</span> db.execute(query).fetchall()</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"&lt;h1&gt;Welcome </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">&lt;/h1&gt;"</span> <span class="cf">if</span> user <span class="cf">else</span> <span class="st">"Denied"</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="st">"sk_live_realkey_do_not_share"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In the cell below, <strong>list every vulnerability you can find</strong> before asking any AI. Use the sections of this notebook as your checklist. There are at least four problems.</p>
+<p><em>(Double-click and write your audit findings here.)</em></p>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+</section>
+<section id="step-1-ask-the-ai-to-find-them-prompt-1" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-ask-the-ai-to-find-them-prompt-1">Step 1 — Ask the AI to Find Them <em>(prompt #1)</em></h3>
+<p>Now compare your list against an AI’s. A prompt skeleton:</p>
+<blockquote class="blockquote">
+<p>Here is a Flask login route and a config line. Act as a security auditor. List every security vulnerability you find, and for each, name the specific fix. <strong>[paste the broken code]</strong></p>
+</blockquote>
+<p>Paste the AI’s findings below. Did it catch everything you did? Did you catch anything <em>it</em> missed? (It happens — especially the leaked key and the missing password hashing.)</p>
+<p><em>(Paste and compare the AI’s findings here.)</em></p>
+</section>
+<section id="step-2-fix-it-prompt-2" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-fix-it-prompt-2">Step 2 — Fix It <em>(prompt #2)</em></h3>
+<p>Ask the AI to rewrite the app securely. Then <strong>verify each fix against what you learned</strong> — don’t just trust it:</p>
+<ul>
+<li>The login query uses a <strong><code>?</code> placeholder</strong>, not an f-string.</li>
+<li>Passwords are checked with <strong><code>check_password_hash</code></strong>, never compared as plain text.</li>
+<li>The output escapes the username (or relies on a template that does).</li>
+<li>The <strong>API key comes from <code>os.environ</code></strong>, not a string in the file.</li>
+</ul>
+<p>Paste the AI’s hardened version below, and annotate — in comments — which section of this notebook each fix comes from.</p>
+<div id="3cd35e52" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste the AI's hardened app here. Add a comment on each fix naming</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    the vulnerability it closes (e.g. "# fixes SQL injection - section 2").</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-3-try-to-break-it-then-reflect" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-try-to-break-it-then-reflect">Step 3 — Try to Break It, Then Reflect</h3>
+<p>Confirm the fixes actually work. On your hardened code, check:</p>
+<ol type="1">
+<li>Does the username <code>' OR '1'='1</code> still log you in? (It must not.)</li>
+<li>Is there any readable password or key left anywhere in the file? (There must not be.)</li>
+</ol>
+<p>Then reflect below, 2–3 sentences: What did the AI get wrong, or write insecurely, that you had to correct?</p>
+<p><em>AI is a fast first draft — and a fast first draft is often an insecure one. You verify.</em></p>
+<p><em>(Your 2–3 sentence reflection — double-click to edit.)</em></p>
+</section>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>.gitignore</strong> — A file listing paths git should refuse to track, keeping secrets out of the repository.</li>
+<li><strong>Availability</strong> — The security property that a system stays usable and reachable when needed.</li>
+<li><strong>Brute-force attack</strong> — Trying every possible password or key until one works.</li>
+<li><strong>Certificate</strong> — A credential from a trusted authority that vouches for a website’s identity, letting HTTPS prove you’re talking to the real server.</li>
+<li><strong>CIA triad</strong> — Confidentiality, integrity, availability: the three properties security protects.</li>
+<li><strong>Confidentiality</strong> — The security property that only authorized people can read the data.</li>
+<li><strong>CSRF (cross-site request forgery)</strong> — Tricking a logged-in user’s browser into sending a request they never intended.</li>
+<li><strong>Defense in depth</strong> — Stacking multiple independent security layers so that no single failure exposes the whole system.</li>
+<li><strong>Encryption</strong> — A reversible, two-way scrambling of data, unlockable with a key; for data you need to read back.</li>
+<li><strong>Environment variable</strong> — A value stored outside your code, in the operating system, where a program can read a secret without containing it.</li>
+<li><strong>Escaping</strong> — Converting dangerous characters into harmless display text to prevent input from running as code.</li>
+<li><strong>Hashing</strong> — A one-way fingerprint of data that cannot be reversed; used to store passwords safely.</li>
+<li><strong>HTTPS</strong> — HTTP with encryption added, so data in transit cannot be read by anyone on the network path.</li>
+<li><strong>Input validation</strong> — Checking that incoming data has the expected type, length, and format before trusting it.</li>
+<li><strong>Integrity</strong> — The security property that data cannot be changed by unauthorized people.</li>
+<li><strong>Parameterized query</strong> — A SQL query using <code>?</code> placeholders so user input is treated as data, never as commands.</li>
+<li><strong>Plaintext</strong> — Data sent or stored as readable text, with no encryption.</li>
+<li><strong>Salt</strong> — Random data mixed into a password before hashing, unique per user, to defeat precomputed tables.</li>
+<li><strong>Secret</strong> — Any credential (password, API key, database login) that grants access and must never appear in code.</li>
+<li><strong>SQL injection</strong> — An attack that smuggles commands into a database query built from unsanitized user input.</li>
+<li><strong>Threat model</strong> — A written list of a system’s assets, the threats to each, and the properties at risk.</li>
+<li><strong>XSS (cross-site scripting)</strong> — An attack where user input becomes executable code in another user’s browser.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Security is not one lock but a checklist run on everything you value. The CIA triad — confidentiality, integrity, availability — names what you’re protecting. Nearly every attack in this notebook shares one root cause: <em>data became code.</em> SQL injection smuggles commands into a query, and parameterized <code>?</code> queries stop it; cross-site scripting smuggles scripts into a page, and escaping stops it. The rule underneath both is Van Helsing’s: never trust input. Passwords demand a special tool — one-way hashing with a per-user salt, so a system can check a password it can never read — and battle-tested libraries, not homemade code, should do it. Finally, secrets like API keys belong outside your code and out of your git history, forever. None of this is exotic. It’s a handful of habits that turn the doors you forgot about into doors you locked.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p>You’ve learned to defend the app. The final notebook turns to what happens <em>inside</em> it. As programs increasingly make decisions about people — who gets a loan, who gets flagged, who gets seen — the hardest questions stop being “is it secure?” and become “is it fair, and who is accountable when it isn’t?” That’s where we end: AI, machine learning, and ethics.</p>
+<p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
