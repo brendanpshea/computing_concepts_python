@@ -1,0 +1,1166 @@
+{
+  "title": "Chapter 9 - Databases & SQL/NoSQL",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary benefit of storing program data in a database rather than in transient program variables?",
+      "answer_explanation": "Databases provide permanent storage (persistence) so that data survives when the program terminates or the computer restarts.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "permanence across program restarts",
+          "correct": true
+        },
+        {
+          "text": "faster cpu calculations",
+          "correct": false
+        },
+        {
+          "text": "reduced source code length",
+          "correct": false
+        },
+        {
+          "text": "simpler local computer compilation",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which issue did Hazel Nougat identify as a major flaw of storing records in a spreadsheet?",
+      "answer_explanation": "Spreadsheets lack automatic enforcement of rules (integrity constraints), allowing duplicate records, invalid entries, or spelling errors.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "lack of enforced rules",
+          "correct": true
+        },
+        {
+          "text": "slow manual search speeds",
+          "correct": false
+        },
+        {
+          "text": "high commercial software costs",
+          "correct": false
+        },
+        {
+          "text": "difficult local file sharing",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What is the term for a named grid that holds every record of one kind of thing in a relational database?",
+      "answer_explanation": "A table holds every record of one kind of thing (e.g., all candies in the candies table).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "table",
+          "correct": true
+        },
+        {
+          "text": "row",
+          "correct": false
+        },
+        {
+          "text": "column",
+          "correct": false
+        },
+        {
+          "text": "query",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does an individual row represent in a relational database table?",
+      "answer_explanation": "A row represents a single record of a thing, such as one candy in the candies table.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "a single record",
+          "correct": true
+        },
+        {
+          "text": "a single property",
+          "correct": false
+        },
+        {
+          "text": "a unique table name",
+          "correct": false
+        },
+        {
+          "text": "a database constraint",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does an individual column represent in a relational database table?",
+      "answer_explanation": "A column represents one specific fact or attribute recorded about every row.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "one recorded property",
+          "correct": true
+        },
+        {
+          "text": "one individual record",
+          "correct": false
+        },
+        {
+          "text": "a table index list",
+          "correct": false
+        },
+        {
+          "text": "a database primary key",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary characteristic of a primary key in a relational database table?",
+      "answer_explanation": "A primary key must be unique for each row and remain unchanging over time.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "unique and unchanging",
+          "correct": true
+        },
+        {
+          "text": "calculated from other rows",
+          "correct": false
+        },
+        {
+          "text": "containing multiple text paragraphs",
+          "correct": false
+        },
+        {
+          "text": "shared by multiple records",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the role of a foreign key in a relational database?",
+      "answer_explanation": "A foreign key links tables by storing the primary key of a row in another table.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "links to another table",
+          "correct": true
+        },
+        {
+          "text": "defines table columns",
+          "correct": false
+        },
+        {
+          "text": "uniquely identifies local rows",
+          "correct": false
+        },
+        {
+          "text": "deletes empty database tables",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which character is used in SQL to mark the end of a query statement?",
+      "answer_explanation": "Statements in SQL end with a semicolon (;).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "semicolon",
+          "correct": true
+        },
+        {
+          "text": "colon",
+          "correct": false
+        },
+        {
+          "text": "comma",
+          "correct": false
+        },
+        {
+          "text": "period",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which SQL command category shapes the structure of tables themselves rather than editing row records?",
+      "answer_explanation": "Data Definition Language (DDL) commands shape tables (e.g., CREATE TABLE).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "DDL",
+          "correct": true
+        },
+        {
+          "text": "DML",
+          "correct": false
+        },
+        {
+          "text": "DBMS",
+          "correct": false
+        },
+        {
+          "text": "JSON",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which SQL command category is used to query or modify individual row data?",
+      "answer_explanation": "Data Manipulation Language (DML) is used to modify or read rows (e.g. INSERT, SELECT).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "DML",
+          "correct": true
+        },
+        {
+          "text": "DDL",
+          "correct": false
+        },
+        {
+          "text": "DBMS",
+          "correct": false
+        },
+        {
+          "text": "JSON",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which SQL command is used to delete an existing table structure entirely from the database?",
+      "answer_explanation": "DROP TABLE is the DDL command used to delete a table entirely.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>DROP TABLE</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>DELETE TABLE</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>REMOVE TABLE</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>CLEAR TABLE</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the SQL command <code>CREATE TABLE candies (candy_id INTEGER PRIMARY KEY);</code> accomplish?",
+      "answer_explanation": "CREATE TABLE is a DDL command that defines the name and columns of a new table.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "defines a new table",
+          "correct": true
+        },
+        {
+          "text": "inserts a new row",
+          "correct": false
+        },
+        {
+          "text": "queries existing candy records",
+          "correct": false
+        },
+        {
+          "text": "creates a database file",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the wildcard symbol <code>*</code> represent in the SQL query <code>SELECT * FROM candies;</code>?",
+      "answer_explanation": "The asterisk symbol in SQL represents all columns in the specified table.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "each database column",
+          "correct": true
+        },
+        {
+          "text": "each matching row",
+          "correct": false
+        },
+        {
+          "text": "each primary key column",
+          "correct": false
+        },
+        {
+          "text": "each active database table",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which SQL clause is used to filter query results by evaluating conditions on rows?",
+      "answer_explanation": "The WHERE clause filters rows by evaluating a boolean expression on each row.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>WHERE</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>ORDER BY</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>GROUP BY</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>LIMIT</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which operator is used to test equality between a column and a value in SQL?",
+      "answer_explanation": "Unlike Python, SQL tests equality using a single equals sign (=).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>=</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>==</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>is</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>===</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which SQL keyword is appended after a column name in an <code>ORDER BY</code> clause to sort results from highest to lowest?",
+      "answer_explanation": "DESC (descending) sorts results from largest/highest to smallest/lowest.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>DESC</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>ASC</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>HIGH</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>DOWN</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the purpose of the <code>LIMIT</code> clause in a SQL query?",
+      "answer_explanation": "The LIMIT clause restricts the maximum number of rows returned by the query.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "restricts returned row count",
+          "correct": true
+        },
+        {
+          "text": "validates table column data",
+          "correct": false
+        },
+        {
+          "text": "restricts columns in SELECT",
+          "correct": false
+        },
+        {
+          "text": "speeds up database updates",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What happens if a program tries to insert a row with a foreign key that does not exist in the referenced table?",
+      "answer_explanation": "An integrity constraint violation occurs, causing the database to reject the insert operation.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "database rejects the insert",
+          "correct": true
+        },
+        {
+          "text": "database inserts null values",
+          "correct": false
+        },
+        {
+          "text": "database updates referenced table",
+          "correct": false
+        },
+        {
+          "text": "database creates missing record",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which text-based format for nested data is commonly used to store documents in NoSQL databases?",
+      "answer_explanation": "JavaScript Object Notation (JSON) is the standard format for representing structured, nested, and free-form document data.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "JSON",
+          "correct": true
+        },
+        {
+          "text": "SQL",
+          "correct": false
+        },
+        {
+          "text": "CSV",
+          "correct": false
+        },
+        {
+          "text": "HTML",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a defining trait of a document database compared to a relational database?",
+      "answer_explanation": "Document databases allow each record to have a different shape or schema, unlike relational tables where all rows share the same columns.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "flexible schema per record",
+          "correct": true
+        },
+        {
+          "text": "automatic database foreign keys",
+          "correct": false
+        },
+        {
+          "text": "standardized relational table structures",
+          "correct": false
+        },
+        {
+          "text": "faster cross table joins",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which SQLite function is used to query nested data stored inside a JSON text column?",
+      "answer_explanation": "SQLite uses the json_extract(column, '$.field') function to parse JSON values.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>json_extract()</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>json_get()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>json_find()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>json_read()</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which Python function in the <code>sqlite3</code> library is used to connect to a database file?",
+      "answer_explanation": "sqlite3.connect(database_name) establishes a connection to a database file.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>sqlite3.connect()</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>sqlite3.open()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>sqlite3.execute()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>sqlite3.load()</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was Edgar Codd's main criticism of the leading databases in 1970?",
+      "answer_explanation": "Codd argued that early databases (like IBM's IMS) stored data as a tangle of records hardwired directly to other records, breaking programs when storage structures changed.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "tangled records wired directly",
+          "correct": true
+        },
+        {
+          "text": "high cost of mainframes",
+          "correct": false
+        },
+        {
+          "text": "slow text loading speeds",
+          "correct": false
+        },
+        {
+          "text": "difficult file import steps",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Under Edgar Codd's relational model, where are the data rules and constraints stored?",
+      "answer_explanation": "Codd proposed moving rulekeeping out of application programs and into the database management system (DBMS) itself.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "inside the database system",
+          "correct": true
+        },
+        {
+          "text": "inside each program file",
+          "correct": false
+        },
+        {
+          "text": "inside the compiler settings",
+          "correct": false
+        },
+        {
+          "text": "inside individual user files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which commercial database did Larry Ellison build based on IBM's published research on Codd's model?",
+      "answer_explanation": "Ellison read IBM's research papers and raced to implement a commercial relational database, naming his company Oracle.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Oracle",
+          "correct": true
+        },
+        {
+          "text": "SQL Server",
+          "correct": false
+        },
+        {
+          "text": "Postgres",
+          "correct": false
+        },
+        {
+          "text": "MongoDB",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did Google engineers abandon the relational database model when building Bigtable?",
+      "answer_explanation": "At Google's scale, performing joins across tables scattered across thousands of cheap servers created crushingly expensive network traffic.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "distributed joins were expensive",
+          "correct": true
+        },
+        {
+          "text": "SQL syntax was difficult",
+          "correct": false
+        },
+        {
+          "text": "table structures consumed memory",
+          "correct": false
+        },
+        {
+          "text": "mainframe hardware was unavailable",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the core structure of Google's Bigtable data model?",
+      "answer_explanation": "Bigtable is designed as one gigantic sorted list of key-value pairs distributed across machines, with no SQL or joins.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "sorted key value map",
+          "correct": true
+        },
+        {
+          "text": "relational multi table schemas",
+          "correct": false
+        },
+        {
+          "text": "linked list index tree",
+          "correct": false
+        },
+        {
+          "text": "nested circular graph structures",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which trade-off did Amazon Dynamo make to ensure the shopping cart was always available?",
+      "answer_explanation": "Dynamo adopted eventual consistency, prioritizing availability (never refusing a customer) over immediate consistency.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "allows temporary inconsistent data",
+          "correct": true
+        },
+        {
+          "text": "enforces strict foreign keys",
+          "correct": false
+        },
+        {
+          "text": "rejects concurrent user updates",
+          "correct": false
+        },
+        {
+          "text": "limits customer order sizes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What did Michael Stonebraker argue regarding the NoSQL movement?",
+      "answer_explanation": "Stonebraker warned that NoSQL systems unlearned the painful lessons of the 1970s by moving rules out of the database and into application code.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "abandoning database rules was forgetting",
+          "correct": true
+        },
+        {
+          "text": "SQL should be updated weekly",
+          "correct": false
+        },
+        {
+          "text": "document models were typically faster",
+          "correct": false
+        },
+        {
+          "text": "servers should use single cores",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did Google develop Spanner in 2012 to replace their non-relational database models?",
+      "answer_explanation": "Google authors noted it was better to pay performance costs rather than forcing programmers to constantly write code to handle the lack of transactions.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "programmers struggled without transactions",
+          "correct": true
+        },
+        {
+          "text": "sorting row keys grew slow",
+          "correct": false
+        },
+        {
+          "text": "cheap servers became too expensive",
+          "correct": false
+        },
+        {
+          "text": "NoSQL storage sizes became excessive",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which SQL statements are classified under DDL (Data Definition Language)?",
+      "answer_explanation": "CREATE TABLE and DROP TABLE modify the schema/structure of the database and are DDL, while INSERT and SELECT are DML.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>CREATE TABLE</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>DROP TABLE</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>INSERT INTO</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>SELECT</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which SQL statements are classified under DML (Data Manipulation Language)?",
+      "answer_explanation": "INSERT INTO and SELECT manipulate or read row data (DML), whereas CREATE TABLE and DROP TABLE define structures (DDL).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>INSERT INTO</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>SELECT</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>CREATE TABLE</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>DROP TABLE</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which of the following are valid data types in SQLite?",
+      "answer_explanation": "SQLite data types include INTEGER, TEXT, REAL, BLOB, and NULL. DICTIONARY and LIST are Python types, not SQLite types.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>INTEGER</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>TEXT</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>DICTIONARY</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>LIST</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which SQL aggregate functions are used to summarize multiple rows into a single value?",
+      "answer_explanation": "SUM(), AVG(), COUNT(), MIN(), and MAX() are standard SQL aggregate functions. ADD() and DIV() are not.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>SUM()</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>AVG()</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>ADD()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>DIV()</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which properties are typical of relational databases compared to document databases?",
+      "answer_explanation": "Relational databases feature enforced rules (like foreign keys) and excellent join operations, but have rigid schemas.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "enforced multi table rules",
+          "correct": true
+        },
+        {
+          "text": "excellent cross table joins",
+          "correct": true
+        },
+        {
+          "text": "completely unstructured record shapes",
+          "correct": false
+        },
+        {
+          "text": "effortless ad hoc schema changes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which methods or functions belong to Python's built-in <code>sqlite3</code> connection or cursor object?",
+      "answer_explanation": "The connection and cursor objects in sqlite3 support execute() and fetchall(), but run_query() and select() are not standard methods.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>execute()</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>fetchall()</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>run_query()</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>select()</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which specific problems arise when multiple users edit a single spreadsheet simultaneously?",
+      "answer_explanation": "Spreadsheets lack concurrency control, allowing users to overwrite each other's edits, and lack constraints, allowing spelling errors or invalid records.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "concurrent write data overwriting",
+          "correct": true
+        },
+        {
+          "text": "accidental spelling entry errors",
+          "correct": true
+        },
+        {
+          "text": "slow local memory processing",
+          "correct": false
+        },
+        {
+          "text": "excessive file download times",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which SQL commands prepare or enable foreign key constraint checking in a SQLite session?",
+      "answer_explanation": "To use foreign keys in SQLite, one must declare the REFERENCES link in CREATE TABLE and activate checks with PRAGMA foreign_keys = ON;.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>PRAGMA foreign_keys = ON;</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>FOREIGN KEY (col) REFERENCES t(col)</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>ENABLE FOREIGN KEYS;</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>CHECK FOREIGN KEYS;</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which core properties must a distributed database system choose between according to the CAP theorem?",
+      "answer_explanation": "The CAP theorem states that a distributed system experiencing a network partition can guarantee Consistency or Availability, but not both.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Consistency",
+          "correct": true
+        },
+        {
+          "text": "Availability",
+          "correct": true
+        },
+        {
+          "text": "Velocity",
+          "correct": false
+        },
+        {
+          "text": "Security",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Under Edgar Codd's relational model, what guarantees are enforced directly by the database system?",
+      "answer_explanation": "The relational model guarantees transactional consistency (all-or-nothing changes) and integrity constraint enforcement.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "atomic transaction updates",
+          "correct": true
+        },
+        {
+          "text": "strict integrity rules across tables",
+          "correct": true
+        },
+        {
+          "text": "eventual data convergence across servers",
+          "correct": false
+        },
+        {
+          "text": "unlimited network partition availability",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1170 @@
+{
+  "title": "Chapter 10 - OS, Networks, Cloud & the Web",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a process in an operating system?",
+      "answer_explanation": "A process is one running instance of a program managed by the operating system.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "one running program instance",
+          "correct": true
+        },
+        {
+          "text": "a permanent storage file",
+          "correct": false
+        },
+        {
+          "text": "a network IP routing address",
+          "correct": false
+        },
+        {
+          "text": "a physical memory storage chip",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary purpose of the Linux command <code>ps aux</code>?",
+      "answer_explanation": "The ps aux command lists active computer processes, including CPU and memory usage.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "lists active computer processes",
+          "correct": true
+        },
+        {
+          "text": "deletes unused text files",
+          "correct": false
+        },
+        {
+          "text": "displays available network connections",
+          "correct": false
+        },
+        {
+          "text": "reclaims local hardware memory",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a Process Identifier (PID) in an operating system?",
+      "answer_explanation": "A PID is a unique whole-number ID assigned by the OS to identify each running process.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "unique process identification number",
+          "correct": true
+        },
+        {
+          "text": "total cpu clock speed",
+          "correct": false
+        },
+        {
+          "text": "physical memory hardware slot",
+          "correct": false
+        },
+        {
+          "text": "standard website route name",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary role of an operating system file system?",
+      "answer_explanation": "The file system organizes storage devices into named files and folders.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "organizes storage into folders",
+          "correct": true
+        },
+        {
+          "text": "schedules cpu program tasks",
+          "correct": false
+        },
+        {
+          "text": "grants temporary execution memory",
+          "correct": false
+        },
+        {
+          "text": "transmits network data packets",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the Linux command <code>ls /</code> accomplish?",
+      "answer_explanation": "The ls / command lists the contents of the root file system directory.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "lists root directory contents",
+          "correct": true
+        },
+        {
+          "text": "measures current memory availability",
+          "correct": false
+        },
+        {
+          "text": "displays active process tables",
+          "correct": false
+        },
+        {
+          "text": "tests local internet connections",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the Linux command <code>free -h</code> display?",
+      "answer_explanation": "The free -h command displays RAM usage (total, used, available) in human-readable units.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "human readable memory ledger",
+          "correct": true
+        },
+        {
+          "text": "active network router connections",
+          "correct": false
+        },
+        {
+          "text": "unlocked local storage drives",
+          "correct": false
+        },
+        {
+          "text": "running background python processes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which of the following describes the position of the operating system between programs and hardware?",
+      "answer_explanation": "Programs never control hardware directly; they request operations via the OS, which enforces limits.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "intercepts raw hardware commands",
+          "correct": true
+        },
+        {
+          "text": "compiles programs to binaries",
+          "correct": false
+        },
+        {
+          "text": "routes network data packets",
+          "correct": false
+        },
+        {
+          "text": "displays graphical browser pages",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why does a single crashing program process not take down the entire computer hardware?",
+      "answer_explanation": "The OS isolates processes from one another, preventing a single program crash from breaking the hardware.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "isolated by operating system",
+          "correct": true
+        },
+        {
+          "text": "recompiled by CPU automatically",
+          "correct": false
+        },
+        {
+          "text": "backed up by networks",
+          "correct": false
+        },
+        {
+          "text": "restored by local files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary function of the Domain Name System (DNS)?",
+      "answer_explanation": "DNS acts as the internet's phone book, translating human-readable site names into IP addresses.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "translates names to IP addresses",
+          "correct": true
+        },
+        {
+          "text": "numbers and reassembles data packets",
+          "correct": false
+        },
+        {
+          "text": "secures browser requests from hackers",
+          "correct": false
+        },
+        {
+          "text": "serves JSON APIs to programs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the purpose of an IP address on a computer network?",
+      "answer_explanation": "An IP address is the numeric address that uniquely identifies a machine on the network.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "identifies machine on network",
+          "correct": true
+        },
+        {
+          "text": "names running process instances",
+          "correct": false
+        },
+        {
+          "text": "specifies HTML file locations",
+          "correct": false
+        },
+        {
+          "text": "allocates random RAM segments",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why might a large website return different IP addresses for the same domain name lookup on different days?",
+      "answer_explanation": "DNS serves different addresses to direct client requests to different machines in a queue/load pool.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "directs queries to different machines",
+          "correct": true
+        },
+        {
+          "text": "encrypts network packet destination headers",
+          "correct": false
+        },
+        {
+          "text": "recreates local routing table rules",
+          "correct": false
+        },
+        {
+          "text": "refreshes active operating system processes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What are packets in the context of internet communication?",
+      "answer_explanation": "A packet is a small, addressed chunk of data sent across a packet-switched network.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "small addressed data chunks",
+          "correct": true
+        },
+        {
+          "text": "compiled CPU instruction sets",
+          "correct": false
+        },
+        {
+          "text": "nested JSON directory objects",
+          "correct": false
+        },
+        {
+          "text": "temporary server connection ports",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the role of Transmission Control Protocol (TCP) in network communication?",
+      "answer_explanation": "TCP numbers, confirms, re-sends, and reassembles packets so they arrive complete and in order.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "numbers and reassembles packets",
+          "correct": true
+        },
+        {
+          "text": "hosts web application routes",
+          "correct": false
+        },
+        {
+          "text": "translates domains to addresses",
+          "correct": false
+        },
+        {
+          "text": "encrypts user password strings",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which responsibility belongs to the Application layer of the TCP/IP model?",
+      "answer_explanation": "The Application layer governs what network messages mean (e.g. HTTP, DNS).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "defining message meaning",
+          "correct": true
+        },
+        {
+          "text": "assuring complete packet arrival",
+          "correct": false
+        },
+        {
+          "text": "routing packets across routers",
+          "correct": false
+        },
+        {
+          "text": "transmitting signals over wires",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which responsibility belongs to the Transport layer of the TCP/IP model?",
+      "answer_explanation": "The Transport layer handles complete, in-order packet delivery (typically TCP).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "complete in order delivery",
+          "correct": true
+        },
+        {
+          "text": "translating human readable names",
+          "correct": false
+        },
+        {
+          "text": "assigning hardware MAC addresses",
+          "correct": false
+        },
+        {
+          "text": "storing static template files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which responsibility belongs to the Internet layer of the TCP/IP model?",
+      "answer_explanation": "The Internet layer handles addressing and routing (IP, packet hops).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "addressing and packet routing",
+          "correct": true
+        },
+        {
+          "text": "formatting JSON server responses",
+          "correct": false
+        },
+        {
+          "text": "verifying file system permission",
+          "correct": false
+        },
+        {
+          "text": "checking socket memory addresses",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which responsibility belongs to the Link layer of the TCP/IP model?",
+      "answer_explanation": "The Link layer manages the physical wire connection (Wi-Fi, fiber, ethernet).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "handling physical wire transmission",
+          "correct": true
+        },
+        {
+          "text": "interpreting HTTP status codes",
+          "correct": false
+        },
+        {
+          "text": "ensuring correct packet order",
+          "correct": false
+        },
+        {
+          "text": "naming server route endpoints",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does HTTP status code 404 signify?",
+      "answer_explanation": "Status code 404 means the server responded but the requested page was not found.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "requested page not found",
+          "correct": true
+        },
+        {
+          "text": "server completed request successfully",
+          "correct": false
+        },
+        {
+          "text": "database connection failed internally",
+          "correct": false
+        },
+        {
+          "text": "process aborted by operating system",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does HTTP status code 200 signify?",
+      "answer_explanation": "Status code 200 means the server completed the client's request successfully.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "request succeeded",
+          "correct": true
+        },
+        {
+          "text": "page not found",
+          "correct": false
+        },
+        {
+          "text": "server internal error",
+          "correct": false
+        },
+        {
+          "text": "route requires login",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the purpose of an HTTP header in a web request or response?",
+      "answer_explanation": "An HTTP header acts like an envelope carrying metadata (like Content-Type or date).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "carries message envelope metadata",
+          "correct": true
+        },
+        {
+          "text": "executes remote server code",
+          "correct": false
+        },
+        {
+          "text": "stores primary database keys",
+          "correct": false
+        },
+        {
+          "text": "verifies local operating systems",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which HTTP header indicates the format of the returning response body so the client knows how to display it?",
+      "answer_explanation": "The Content-Type header tells the browser how to interpret the body payload (e.g., application/json).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>Content-Type</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>Server</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>Date</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>User-Agent</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In a Flask web server, what is the role of a route?",
+      "answer_explanation": "A route pairs a specific URL path with the function that should compute the answer.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "maps address to function",
+          "correct": true
+        },
+        {
+          "text": "creates empty database files",
+          "correct": false
+        },
+        {
+          "text": "numbers incoming socket packets",
+          "correct": false
+        },
+        {
+          "text": "allocates random computer memory",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was the text of the first message successfully sent on the ARPANET in 1969?",
+      "answer_explanation": "Kline typed L-O-G, but the remote system crashed on the third letter, making 'LO' the first message.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "<code>LO</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>LOG</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>HELLO</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>PING</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was Paul Baran's primary requirement when designing the RAND packet switching network?",
+      "answer_explanation": "Baran was studying how to build a network that could survive a nuclear strike.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "survive nuclear attacks successfully",
+          "correct": true
+        },
+        {
+          "text": "minimize computer hardware cost",
+          "correct": false
+        },
+        {
+          "text": "integrate commercial phone routers",
+          "correct": false
+        },
+        {
+          "text": "support high database query speeds",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What political idea was enabled by the end to end principle of the internet protocols?",
+      "answer_explanation": "By putting intelligence at the edges, Vint Cerf and Bob Kahn made a network that did not require anyone's permission to join.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "joining without developer permission",
+          "correct": true
+        },
+        {
+          "text": "voting on network configurations",
+          "correct": false
+        },
+        {
+          "text": "securing data from governments",
+          "correct": false
+        },
+        {
+          "text": "establishing cloud rental monopolies",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Who released the World Wide Web patent free to the public in 1991?",
+      "answer_explanation": "Tim Berners-Lee released the Web and persuaded CERN to give it away patent-free forever.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Tim Berners Lee",
+          "correct": true
+        },
+        {
+          "text": "Vint Cerf",
+          "correct": false
+        },
+        {
+          "text": "Charley Kline",
+          "correct": false
+        },
+        {
+          "text": "Paul Baran",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which major service was launched by Amazon in 2006 that pioneered modern cloud computing?",
+      "answer_explanation": "Amazon Web Services (AWS) launched utility computing in 2006 by renting out storage and servers by the hour.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Amazon Web Services",
+          "correct": true
+        },
+        {
+          "text": "CERN Web Server",
+          "correct": false
+        },
+        {
+          "text": "Google App Engine",
+          "correct": false
+        },
+        {
+          "text": "Adler Streaming Network",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Approximately how much of the world's cloud computing was run by the three giant providers in the mid 2020s?",
+      "answer_explanation": "Amazon, Microsoft, and Google controlled roughly two-thirds of the cloud computing market by the mid-2020s.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "roughly two thirds",
+          "correct": true
+        },
+        {
+          "text": "exactly one quarter",
+          "correct": false
+        },
+        {
+          "text": "around ten percent",
+          "correct": false
+        },
+        {
+          "text": "roughly half",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What triggered the major Fastly outage in June 2021 that took down large parts of the web?",
+      "answer_explanation": "A single customer of Fastly changed an ordinary configuration setting, which triggered a hidden bug.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "single customer setting change",
+          "correct": true
+        },
+        {
+          "text": "physical data center fire",
+          "correct": false
+        },
+        {
+          "text": "coordinated hacker group attack",
+          "correct": false
+        },
+        {
+          "text": "corrupted operating system updates",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was Matthew Prince's concern after Cloudflare dropped the Daily Stormer in 2017?",
+      "answer_explanation": "Prince argued that private tech executives should not hold arbitrary, unchecked power over internet speech.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "private executives holding arbitrary power",
+          "correct": true
+        },
+        {
+          "text": "losing commercial website advertising revenue",
+          "correct": false
+        },
+        {
+          "text": "violating federal cloud database regulations",
+          "correct": false
+        },
+        {
+          "text": "underestimating network packet routing capabilities",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which key computer resources are directly managed by a modern operating system?",
+      "answer_explanation": "The three main jobs of an operating system are managing processes, file systems, and memory.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "active program processes",
+          "correct": true
+        },
+        {
+          "text": "file storage directories",
+          "correct": true
+        },
+        {
+          "text": "physical memory allocation",
+          "correct": true
+        },
+        {
+          "text": "external web domain names",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which of the following are recognized cloud computing service models?",
+      "answer_explanation": "The three standard cloud models are IaaS (Infrastructure), PaaS (Platform), and SaaS (Software).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "IaaS",
+          "correct": true
+        },
+        {
+          "text": "PaaS",
+          "correct": true
+        },
+        {
+          "text": "SaaS",
+          "correct": true
+        },
+        {
+          "text": "VaaS",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which layers are parts of the standard four layer TCP/IP networking model?",
+      "answer_explanation": "The standard layers are Application, Transport, Internet, and Link. Session is not a layer in TCP/IP.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Application",
+          "correct": true
+        },
+        {
+          "text": "Transport",
+          "correct": true
+        },
+        {
+          "text": "Internet",
+          "correct": true
+        },
+        {
+          "text": "Link",
+          "correct": true
+        },
+        {
+          "text": "Session",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which arguments or parameters can be passed to the Python <code>requests.get()</code> function?",
+      "answer_explanation": "requests.get takes a URL string, query parameters dict (params), and request headers (headers).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>url</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>params</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>headers</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>database</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which features are used to define a dynamic route with variable parts in a Flask application?",
+      "answer_explanation": "Flask uses URL parameters in route decorators, which it passes directly as variables into the handler function.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "type converters in path",
+          "correct": true
+        },
+        {
+          "text": "parameters passed to function",
+          "correct": true
+        },
+        {
+          "text": "static file template folders",
+          "correct": false
+        },
+        {
+          "text": "active database connections",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What properties are true of dynamic HTML templates used by web servers?",
+      "answer_explanation": "Templates are calculated on-the-fly and contain slots where data is dropped before the page is served.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "computed when requested",
+          "correct": true
+        },
+        {
+          "text": "contain data placeholder slots",
+          "correct": true
+        },
+        {
+          "text": "stored statically on disk",
+          "correct": false
+        },
+        {
+          "text": "configured inside network routers",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which items are parts of a complete HTTP message conversation?",
+      "answer_explanation": "An HTTP conversation consists of client requests (with paths, headers) and server responses (with status codes). Packets belong to TCP/IP.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "request path names",
+          "correct": true
+        },
+        {
+          "text": "response status codes",
+          "correct": true
+        },
+        {
+          "text": "packet number sequences",
+          "correct": false
+        },
+        {
+          "text": "router routing table keys",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which status codes are standard responses in the HTTP protocol?",
+      "answer_explanation": "200 (Success), 404 (Not Found), and 500 (Internal Server Error) are standard. 999 is a placeholder.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>200</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>404</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>500</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>999</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which economic forces pushed the modern web toward centralized cloud infrastructures?",
+      "answer_explanation": "The web centralized due to economies of scale (cheaper compute), DDoS mitigation (requires large networks), and global footprints (speed/presence).",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "cheap scale advantages",
+          "correct": true
+        },
+        {
+          "text": "attack defense capabilities",
+          "correct": true
+        },
+        {
+          "text": "decentralized packet routing speeds",
+          "correct": false
+        },
+        {
+          "text": "strict government database requirements",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which events are examples of systemic outages caused by centralized cloud computing and infrastructure concentration?",
+      "answer_explanation": "The Fastly 2021 outage and the AWS 2025 outage both showed how centralized failures impact millions of users across the globe.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "Fastly outage in June 2021",
+          "correct": true
+        },
+        {
+          "text": "AWS us east 1 failure in 2025",
+          "correct": true
+        },
+        {
+          "text": "ARPANET initial system crash in 1969",
+          "correct": false
+        },
+        {
+          "text": "CERN World Wide Web release in 1991",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
