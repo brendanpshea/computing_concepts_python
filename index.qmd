@@ -36,13 +36,13 @@ browser), **Run** (open in Google Colab to execute and edit), and
 | 9 | Databases: Relational & Non-Relational | [HTML](v2/notebooks/COMP1150_NB09_Databases.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB09_Databases.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB09_Databases.ipynb) |
 | 10 | OS, Networks, Cloud & the Web | [HTML](v2/notebooks/COMP1150_NB10_OSNetworksWeb.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB10_OSNetworksWeb.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB10_OSNetworksWeb.ipynb) |
 | 11 | Cybersecurity & Secure Software Development | [HTML](v2/notebooks/COMP1150_NB11_Cybersecurity.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB11_Cybersecurity.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB11_Cybersecurity.ipynb) |
-| 12 | AI, Machine Learning & Ethics | *in progress* | | |
+| 12 | AI, Machine Learning & Ethics | [HTML](v2/notebooks/COMP1150_NB12_AIMLEthics.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb) |
 
 ## Case studies
 
 Short, discussion-ready pieces on the history, ethics, and unresolved
 arguments behind the technical material. About twenty to thirty
-minutes each. The eleven drafted so far:
+minutes each. All twelve:
 
 - [Lovelace and Turing: Can a Machine Originate?](v2/cases/cs01_lovelace_turing.qmd) —
   paired with Notebook 1.
@@ -66,9 +66,11 @@ minutes each. The eleven drafted so far:
   paired with Notebook 10.
 - [The Equifax Breach](v2/cases/cs11_equifax_breach.qmd) —
   paired with Notebook 11.
+- [The Score and the Face: COMPAS, Facial Recognition & AI Accountability](v2/cases/cs12_compas_fairness.qmd) —
+  paired with Notebook 12.
 
 The full [case studies index](v2/cases/index.qmd) lists all twelve
-planned cases with brief descriptions.
+cases with brief descriptions.
 
 ## How the pieces fit together
 

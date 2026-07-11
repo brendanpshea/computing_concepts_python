@@ -27,7 +27,7 @@ interesting.
 | 9 | [From SQL to NoSQL: Why Google Broke the Database](cs09_sql_nosql.qmd) | **Available** |
 | 10 | [Three Companies Own the Internet — ARPANET to the Cloud Oligopoly](cs10_cloud_oligopoly.qmd) | **Available** |
 | 11 | [The Equifax Breach](cs11_equifax_breach.qmd) | **Available** |
-| 12 | COMPAS, Facial Recognition & AI Accountability | *In progress* |
+| 12 | [The Score and the Face: COMPAS, Facial Recognition & AI Accountability](cs12_compas_fairness.qmd) | **Available** |
 
 ## How to read these
 

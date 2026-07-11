@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brendan Shea, PhD">
+<meta name="dcterms.date" content="2026-07-11">
+
+<title>The Score and the Face – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-case" id="toc-the-case" class="nav-link active" data-scroll-target="#the-case">The Case</a></li>
+  <li><a href="#how-it-worked" id="toc-how-it-worked" class="nav-link" data-scroll-target="#how-it-worked">How It Worked</a></li>
+  <li><a href="#the-argument" id="toc-the-argument" class="nav-link" data-scroll-target="#the-argument">The Argument</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cs12_compas_fairness.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Score and the Face</h1>
+<p class="subtitle lead">COMPAS, facial recognition, and the fairness you cannot have — a COMP 1150 case study</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brendan Shea, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 11, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="case-at-a-glance">
+<ul>
+<li><strong>Who:</strong> Northpointe (now Equivant), makers of the COMPAS risk tool used in courtrooms; the ProPublica journalists who audited it; Eric Loomis, sentenced with a score he was not allowed to inspect; Joy Buolamwini and Timnit Gebru, who measured who facial recognition fails; and Robert Williams, arrested in front of his daughters for a crime he did not commit.</li>
+<li><strong>What:</strong> Software now helps decide who gets bail, how long a sentence runs, and whom the police arrest. When researchers checked these systems, they found the errors fall harder on Black people — and then discovered something stranger: there are several definitions of “fair,” and no system can satisfy them all at once.</li>
+<li><strong>Where / When:</strong> Broward County, Florida (ProPublica’s COMPAS study, 2016); Wisconsin (<em>State v. Loomis</em>, 2016); the MIT Media Lab (<em>Gender Shades</em>, 2018); Detroit (Robert Williams’s wrongful arrest, 2020).</li>
+<li><strong>Why it matters:</strong> These tools decide freedom. And they force a collision between <span class="key-term">predictive accuracy</span> — being right about risk on average — and <span class="key-term">equal treatment</span> — spreading mistakes evenly across groups. When the groups differ, you cannot have both, and someone must choose which one to sacrifice.</li>
+<li><strong>Concepts at play:</strong> supervised learning and risk scores, <span class="key-term">training-data bias</span>, <span class="key-term">proxy variables</span>, <span class="key-term">false positives and false negatives</span>, <span class="key-term">calibration</span>, the accountability gap</li>
+</ul>
+</div>
+<section id="the-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-case">The Case</h2>
+<p>The number appears on a screen in the courtroom, and it helps decide how long a man goes to prison.</p>
+<p>The number is a <strong>COMPAS</strong> score — a risk rating from 1 to 10, produced by software sold to courts across the United States. A defendant answers 137 questions, or has them answered from records: prior arrests, age, employment, whether friends have been arrested. None of the questions asks the defendant’s race. Out comes a single number that claims to predict one thing: how likely this person is to commit another crime. Judges see it at bail hearings and at sentencing, folded in among everything else.</p>
+<p>In 2013, a Wisconsin man named Eric Loomis was sentenced to six years, and the judge mentioned his high COMPAS score. Loomis appealed on a simple ground: he was not allowed to know how the score was calculated. COMPAS is a <strong>trade secret</strong>. The company that makes it will not reveal the formula, so no defendant, lawyer, or judge can examine exactly how the number was reached. In 2016 the Wisconsin Supreme Court let the practice stand — but attached a warning that judges should be told the tool’s limits <span class="citation" data-cites="harvardlaw2017">(<a href="#ref-harvardlaw2017" role="doc-biblioref">Harvard Law Review 2017</a>)</span>. Loomis could be scored by a machine he was forbidden to cross-examine.</p>
+<div class="context-box">
+<p><strong>What a risk score really is.</strong> COMPAS is a <strong>supervised</strong> machine-learning tool: it was built by feeding software many past cases — people, their histories, and whether they were later arrested again — until it learned patterns linking the histories to the outcomes. A new defendant’s answers are run through those learned patterns to predict <em>their</em> risk. This matters for one reason: the tool learned from the past. Whatever patterns the past held — including the results of who gets policed and arrested — the tool absorbs and repeats. A risk score is a mirror held up to history. Keep in mind, too, that it never asks about race.</p>
+</div>
+<p>That last fact — no race question — is where the story turns. In 2016, journalists at ProPublica obtained the COMPAS scores of more than 7,000 people arrested in Broward County, Florida, and did what the company had not published: they waited two years and checked who was actually arrested again. Then they compared the predictions to reality, broken down by race <span class="citation" data-cites="angwin2016">(<a href="#ref-angwin2016" role="doc-biblioref">Angwin et al. 2016</a>)</span>.</p>
+<p>Overall, COMPAS was about equally accurate for Black and white defendants. But the <em>mistakes</em> were not shared equally. Among people who did <strong>not</strong> go on to reoffend, Black defendants had been labeled high-risk almost twice as often as white defendants — flagged as dangerous, wrongly. And among people who <strong>did</strong> reoffend, white defendants had more often been labeled low-risk — reassured, wrongly. The tool’s errors had a pattern, and the pattern had a color.</p>
+<div class="context-box">
+<p><strong>Two ways to be wrong.</strong> Any predictor makes two kinds of mistake. A <strong>false positive</strong> flags someone as high-risk who would not have reoffended — an innocent person marked dangerous. A <strong>false negative</strong> clears someone as low-risk who then does reoffend — a real risk missed. ProPublica found Black defendants hit with more false positives, white defendants with more false negatives. And remember: the tool never saw race. It didn’t need to. Variables like prior arrests and neighborhood act as <strong>proxies</strong> — stand-ins that carry race in through the side door, because in a society with biased policing, those variables already track it.</p>
+</div>
+<p>Northpointe rejected the finding, and did so with numbers of its own <span class="citation" data-cites="dieterich2016">(<a href="#ref-dieterich2016" role="doc-biblioref">Dieterich et al. 2016</a>)</span>. The company pointed out that COMPAS was <strong>calibrated</strong>: a score of 7 meant the same real-world risk whether the defendant was Black or white. Seven out of ten people who scored a 7 reoffended, in each group. By <em>that</em> measure — treating the same score as meaning the same thing for everyone — the tool was scrupulously even-handed. Both sides had real evidence. Both were, as we will see, correct. That is what makes this the case that would not resolve.</p>
+<p>Then the same shape appeared in a different technology, and with a face.</p>
+<p>In 2018, MIT researcher Joy Buolamwini and her colleague Timnit Gebru tested commercial facial-analysis systems — the kind that guess a face’s characteristics from a photo. The systems were superb on light-skinned men, wrong less than 1% of the time. On dark-skinned women, they were wrong up to about a third of the time <span class="citation" data-cites="buolamwini2018">(<a href="#ref-buolamwini2018" role="doc-biblioref">Buolamwini and Gebru 2018</a>)</span>. The reason was the mirror again: the faces used to train the systems had been mostly light and mostly male, so that is what the systems learned to see.</p>
+<p>This was not only an academic finding. On a January morning in 2020, police arrived at Robert Williams’s home in a Detroit suburb and arrested him on his front lawn, in front of his wife and two young daughters. He was held for thirty hours. His crime: a facial-recognition system had matched his old driver’s-license photo to blurry security footage of a shoplifter. The match was wrong. Robert Williams, who looked nothing like the thief beyond the broadest description, became the first person known to be wrongfully arrested in the United States because an algorithm made a mistake <span class="citation" data-cites="hill2020">(<a href="#ref-hill2020" role="doc-biblioref">Hill 2020</a>)</span>. He would not be the last.</p>
+<p>None of these systems was simply “broken.” COMPAS is accurate on average. Facial recognition works most of the time. That is exactly what makes them hard. The question they force is not “why is the machine failing?” It is: what do we owe the people who land in the error bars — and who gets to decide?</p>
+</section>
+<section id="how-it-worked" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-worked">How It Worked</h2>
+<p>The COMPAS fight looks like a factual dispute — was the tool biased or not? — but it is really a collision between two definitions of fairness that cannot both be satisfied. Seeing why is the key that unlocks the whole case.</p>
+<p>Start with the two fairness ideas, each perfectly reasonable:</p>
+<ul>
+<li><strong>Equal calibration</strong> (Northpointe’s measure): a given score should mean the same real risk for everyone. A 7 is a 7, whatever your race.</li>
+<li><strong>Equal error rates</strong> (ProPublica’s measure): the tool should make false-positive mistakes — flagging the innocent — at the same rate for every group.</li>
+</ul>
+<p>Now the uncomfortable fact: when two groups reoffend at different overall rates, <strong>you cannot have both at once.</strong> Not because of a bug, but because of arithmetic. The next cell builds a tiny two-group population where the tool is <em>perfectly calibrated</em> — and then measures the error rates.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> measure(people):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    flagged     <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> people <span class="cf">if</span> p[<span class="st">"score"</span>] <span class="op">&gt;=</span> <span class="dv">7</span>]      <span class="co"># labeled high-risk</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    innocents   <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> people <span class="cf">if</span> <span class="kw">not</span> p[<span class="st">"reoffended"</span>]]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    calibration <span class="op">=</span> <span class="bu">sum</span>(p[<span class="st">"reoffended"</span>] <span class="cf">for</span> p <span class="kw">in</span> flagged) <span class="op">/</span> <span class="bu">len</span>(flagged)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    false_pos   <span class="op">=</span> <span class="bu">sum</span>(p[<span class="st">"score"</span>] <span class="op">&gt;=</span> <span class="dv">7</span> <span class="cf">for</span> p <span class="kw">in</span> innocents) <span class="op">/</span> <span class="bu">len</span>(innocents)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> calibration, false_pos</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Group A reoffends less often; Group B more often. Same tool, same threshold.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>group_A <span class="op">=</span> ([{<span class="st">"reoffended"</span>: <span class="dv">1</span>, <span class="st">"score"</span>: <span class="dv">8</span>}] <span class="op">*</span> <span class="dv">20</span> <span class="op">+</span> [{<span class="st">"reoffended"</span>: <span class="dv">0</span>, <span class="st">"score"</span>: <span class="dv">8</span>}] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>           [{<span class="st">"reoffended"</span>: <span class="dv">1</span>, <span class="st">"score"</span>: <span class="dv">3</span>}] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> [{<span class="st">"reoffended"</span>: <span class="dv">0</span>, <span class="st">"score"</span>: <span class="dv">3</span>}] <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>group_B <span class="op">=</span> ([{<span class="st">"reoffended"</span>: <span class="dv">1</span>, <span class="st">"score"</span>: <span class="dv">8</span>}] <span class="op">*</span> <span class="dv">40</span> <span class="op">+</span> [{<span class="st">"reoffended"</span>: <span class="dv">0</span>, <span class="st">"score"</span>: <span class="dv">8</span>}] <span class="op">*</span> <span class="dv">20</span> <span class="op">+</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>           [{<span class="st">"reoffended"</span>: <span class="dv">1</span>, <span class="st">"score"</span>: <span class="dv">3</span>}] <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> [{<span class="st">"reoffended"</span>: <span class="dv">0</span>, <span class="st">"score"</span>: <span class="dv">3</span>}] <span class="op">*</span> <span class="dv">30</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, group <span class="kw">in</span> [(<span class="st">"A"</span>, group_A), (<span class="st">"B"</span>, group_B)]:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    cal, fp <span class="op">=</span> measure(group)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Group </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: calibration = </span><span class="sc">{</span>cal<span class="sc">:.2f}</span><span class="ss">   false-positive rate = </span><span class="sc">{</span>fp<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output:</p>
+<pre><code>Group A: calibration = 0.67   false-positive rate = 0.14
+Group B: calibration = 0.67   false-positive rate = 0.40</code></pre>
+<p>Look carefully. The <strong>calibration is identical</strong> — a high-risk flag means a 67% chance of reoffending in both groups, exactly the fairness Northpointe defended. And yet the <strong>false-positive rates are wildly different</strong>: an innocent person in Group B is flagged high-risk almost three times as often as an innocent person in Group A — exactly the unfairness ProPublica measured. Both numbers come from the <em>same tool on the same data</em>. Making the calibration equal <em>forced</em> the error rates apart.</p>
+<p>This is not special to our toy. Mathematicians proved it in general: when base rates differ, no tool can equalize calibration and error rates at the same time, short of being perfect <span class="citation" data-cites="kleinberg2016 chouldechova2017">(<a href="#ref-kleinberg2016" role="doc-biblioref">Kleinberg et al. 2017</a>; <a href="#ref-chouldechova2017" role="doc-biblioref">Chouldechova 2017</a>)</span>. The two fairnesses are genuinely incompatible.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Equal calibration</th>
+<th>Equal error rates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Demands that…</td>
+<td>a score means the same risk for all groups</td>
+<td>mistakes fall equally on all groups</td>
+</tr>
+<tr class="even">
+<td>Protects against…</td>
+<td>scores being secretly discounted by group</td>
+<td>the innocent of one group being flagged more</td>
+</tr>
+<tr class="odd">
+<td>Who measured it</td>
+<td>Northpointe</td>
+<td>ProPublica</td>
+</tr>
+<tr class="even">
+<td>True in the data?</td>
+<td><strong>Yes</strong></td>
+<td><strong>No</strong> — and can’t be, given the first</td>
+</tr>
+</tbody>
+</table>
+<p>So “is COMPAS fair?” has no yes-or-no answer. It is fair by one definition and unfair by another, and arithmetic forbids fixing both. Which definition should win is not a question mathematics can settle. It is a question about which mistake we are least willing to make — and that is a moral choice, not a technical one. The remaining question is who gets to make it, and whether anyone is even watching them do it.</p>
+</section>
+<section id="the-argument" class="level2">
+<h2 class="anchored" data-anchor-id="the-argument">The Argument</h2>
+<p>The positions connect: each answers the one before.</p>
+<section id="propublica-unequal-errors-are-injustice" class="level3">
+<h3 class="anchored" data-anchor-id="propublica-unequal-errors-are-injustice">ProPublica: unequal errors are injustice</h3>
+<p>To ProPublica and the researchers who followed, a tool whose wrong “high-risk” labels fall mainly on Black defendants is unjust, no matter how accurate it is on average. A false high-risk score is not a rounding error. It can mean a higher bail, a longer sentence, a denied parole — liberty taken from someone who would have done no harm.</p>
+<div class="argument">
+<p><strong>The Equal-Treatment Argument</strong></p>
+<ol type="1">
+<li>A false “high-risk” label inflicts real harm — lost freedom — on a person who would not have reoffended.</li>
+<li>COMPAS produces these false labels for Black defendants at nearly twice the rate it does for white defendants.</li>
+<li>A system that distributes a serious harm unequally by race is unjust, whatever its overall accuracy.</li>
+<li>Therefore COMPAS, as used, is unjust.</li>
+</ol>
+</div>
+<p>The force is in premise 1: the false positives are not abstractions. They are people, sorted by race into the group more likely to be wrongly caged. The reply does not deny this. It denies that fixing it is possible without a new injustice.</p>
+</section>
+<section id="northpointe-the-score-means-what-it-says" class="level3">
+<h3 class="anchored" data-anchor-id="northpointe-the-score-means-what-it-says">Northpointe: the score means what it says</h3>
+<p>Northpointe’s answer is that COMPAS treats every defendant the same way: the same score reflects the same risk, computed by the same formula, blind to race. To <em>force</em> the error rates equal, the company argues, you would have to treat identical scores differently depending on the defendant’s race — reading a 7 as “less serious” for one group than another. That is not removing discrimination; it is adding it.</p>
+<div class="argument">
+<p><strong>The Calibration Reply</strong></p>
+<ol type="1">
+<li>Fairness means treating like cases alike: the same score must carry the same meaning for everyone.</li>
+<li>COMPAS is calibrated — a given score reflects the same real risk across races — so it meets that standard.</li>
+<li>Equalizing the error rates would require deliberately treating identical scores differently by race.</li>
+<li>Therefore forcing “equal errors” would itself introduce the racial discrimination we are trying to avoid.</li>
+</ol>
+</div>
+<p>This is not a dodge. Calibration is a real and serious notion of fairness — the one that stops a lender from quietly demanding a higher score from one group. The weakness is premise 2’s quiet assumption: that the risk the tool measures is a clean fact. But the “risk” is reoffending as recorded by <em>arrests</em>, and arrests are the output of a policing system that is itself uneven. Which is where the deepest move enters.</p>
+<p><strong>The impossibility, and the buried choice.</strong> Here is what makes the case permanent rather than merely heated: both arguments are correct, and they cannot both be honored. The mathematics is settled — when two groups are arrested again at different rates, no tool can equalize calibration and error rates together. So “make it fair” is not a solvable engineering task; it is a fork. Down one path, you accept unequal error rates to keep scores meaning the same thing. Down the other, you accept unequal scores to protect the innocent equally. There is no third path, and choosing between them means ranking two harms: caging the innocent versus freeing the dangerous. Worse, the “different base rates” that force the whole dilemma are not a fact of nature — they partly reflect who gets policed in the first place, so the tool may be faithfully reproducing an injustice and calling it prediction. None of this is decided in the open. It is decided inside a company’s secret formula, and printed as a number a judge treats as neutral.</p>
+<p><strong>Who answers?</strong> Which returns us to Eric Loomis, forbidden to inspect the math that lengthened his sentence, and to Robert Williams, handcuffed on his lawn by a system no officer in the room could explain. Even if we somehow agreed which fairness to pick, a further problem remains: these decisions are made by tools that cannot be cross-examined, sold by companies that owe the accused nothing, deployed by officials who may not understand them. When the score is wrong, or the face is mismatched, there is often no one who answers for it — the vendor calls it the user’s judgment, the user calls it the vendor’s software. That is the accountability gap, now deciding who is free.</p>
+<p>The honest counter-argument deserves its due: the alternative to the machine is not a neutral human. Judges are biased too, and worse, they are biased <em>inconsistently</em> — the same case can turn on the hour of day or the judge’s mood. A tool at least applies the same flawed rule to everyone, and can, in principle, be audited. Perhaps a biased machine we can measure beats a biased human we cannot. Perhaps. But COMPAS is a trade secret, so in practice we cannot measure it either — we got our numbers only because journalists forced the question. Today some cities have banned police facial recognition outright; Europe’s AI Act labels court risk tools “high-risk” and demands scrutiny; and yet COMPAS-style systems still shape sentences across America, and facial recognition keeps spreading. The tools decide more each year, and we still have not answered the first question: if we cannot even agree what “fair” means, and the choice is made in secret, should a machine be deciding freedom at all — and is your answer any different once you remember that the human it replaces was never fair either?</p>
+</section>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>Use COMPAS or the facial-recognition findings to explain the idea that “a model is a mirror.” Why can a system that never asks about race still produce results that differ by race?</li>
+<li>Write the Equal-Treatment Argument and the Calibration Reply in your own words. Do they disagree about the <em>facts</em> of what COMPAS does, or about the <em>meaning of the word fair</em>? Defend your answer.</li>
+<li>You are a judge handed a defendant’s COMPAS score of 8, and you are not allowed to see how it was calculated. Do you use it? What do you owe the person in front of you?</li>
+<li>Pick another use of these tools — hiring software, credit scoring, or police facial recognition. Is its fairness problem more like COMPAS, or importantly different? Why?</li>
+<li>Which mistake is worse: jailing someone who would not have reoffended, or releasing someone who does? Your answer decides where the line is drawn. Who should get to make that choice — a company, a judge, or the public?</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li>ProPublica’s “Machine Bias” — the investigation that opened the debate, with its data and method laid out <span class="citation" data-cites="angwin2016">(<a href="#ref-angwin2016" role="doc-biblioref">Angwin et al. 2016</a>)</span>.</li>
+<li>Northpointe’s response — the calibration defense, in the company’s own words <span class="citation" data-cites="dieterich2016">(<a href="#ref-dieterich2016" role="doc-biblioref">Dieterich et al. 2016</a>)</span>.</li>
+<li>“Inherent Trade-Offs in the Fair Determination of Risk Scores” — the proof that the two fairnesses cannot both hold <span class="citation" data-cites="kleinberg2016">(<a href="#ref-kleinberg2016" role="doc-biblioref">Kleinberg et al. 2017</a>)</span>.</li>
+<li><em>Gender Shades</em> — Buolamwini and Gebru’s measurement of who facial recognition fails, and why <span class="citation" data-cites="buolamwini2018">(<a href="#ref-buolamwini2018" role="doc-biblioref">Buolamwini and Gebru 2018</a>)</span>.</li>
+<li>“Wrongfully Accused by an Algorithm” — the story of Robert Williams’s arrest <span class="citation" data-cites="hill2020">(<a href="#ref-hill2020" role="doc-biblioref">Hill 2020</a>)</span>.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-angwin2016" class="csl-entry" role="listitem">
+Angwin, Julia, Jeff Larson, Surya Mattu, and Lauren Kirchner. 2016. <em>Machine Bias</em>. ProPublica. <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing</a>.
+</div>
+<div id="ref-buolamwini2018" class="csl-entry" role="listitem">
+Buolamwini, Joy, and Timnit Gebru. 2018. <span>“Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification.”</span> <em>Proceedings of the 1st Conference on Fairness, Accountability, and Transparency (<span>FAT*</span>)</em>, 77–91.
+</div>
+<div id="ref-chouldechova2017" class="csl-entry" role="listitem">
+Chouldechova, Alexandra. 2017. <span>“Fair Prediction with Disparate Impact: A Study of Bias in Recidivism Prediction Instruments.”</span> <em>Big Data</em> 5 (2): 153–63.
+</div>
+<div id="ref-dieterich2016" class="csl-entry" role="listitem">
+Dieterich, William, Christina Mendoza, and Tim Brennan. 2016. <em><span>COMPAS</span> Risk Scales: Demonstrating Accuracy Equity and Predictive Parity</em>. Northpointe Inc. <a href="https://www.equivant.com/response-to-propublica-demonstrating-accuracy-equity-and-predictive-parity/">https://www.equivant.com/response-to-propublica-demonstrating-accuracy-equity-and-predictive-parity/</a>.
+</div>
+<div id="ref-harvardlaw2017" class="csl-entry" role="listitem">
+Harvard Law Review. 2017. <span>“<span class="nocase">State v. Loomis</span>: Wisconsin Supreme Court Requires Warning Before Use of Algorithmic Risk Assessments in Sentencing.”</span> <em>Harvard Law Review</em> 130 (5): 1530–37. <a href="https://harvardlawreview.org/print/vol-130/state-v-loomis/">https://harvardlawreview.org/print/vol-130/state-v-loomis/</a>.
+</div>
+<div id="ref-hill2020" class="csl-entry" role="listitem">
+Hill, Kashmir. 2020. <em>Wrongfully Accused by an Algorithm</em>. The New York Times. <a href="https://www.nytimes.com/2020/06/24/technology/facial-recognition-arrest.html">https://www.nytimes.com/2020/06/24/technology/facial-recognition-arrest.html</a>.
+</div>
+<div id="ref-kleinberg2016" class="csl-entry" role="listitem">
+Kleinberg, Jon, Sendhil Mullainathan, and Manish Raghavan. 2017. <span>“Inherent Trade-Offs in the Fair Determination of Risk Scores.”</span> <em>Proceedings of the 8th Innovations in Theoretical Computer Science Conference (ITCS)</em>. <a href="https://arxiv.org/abs/1609.05807">https://arxiv.org/abs/1609.05807</a>.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>comp1150_nb12_aimlethics – Computing Concepts with Python</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Computing Concepts with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../v2/cases/index.html"> 
+<span class="menu-text">Case Studies</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive/index.html"> 
+<span class="menu-text">Archive</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/brendanpshea/computing_concepts_python"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#notebook-12-ai-machine-learning-ethics-opening-the-oracle" id="toc-notebook-12-ai-machine-learning-ethics-opening-the-oracle" class="nav-link active" data-scroll-target="#notebook-12-ai-machine-learning-ethics-opening-the-oracle">Notebook 12: AI, Machine Learning &amp; Ethics — Opening the Oracle</a>
+  <ul class="collapse">
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#the-oracle-you-didnt-vote-for" id="toc-the-oracle-you-didnt-vote-for" class="nav-link" data-scroll-target="#the-oracle-you-didnt-vote-for">The Oracle You Didn’t Vote For</a></li>
+  <li><a href="#learning-from-data-not-rules" id="toc-learning-from-data-not-rules" class="nav-link" data-scroll-target="#learning-from-data-not-rules">1. Learning From Data, Not Rules</a></li>
+  <li><a href="#inside-the-black-box-the-perceptron" id="toc-inside-the-black-box-the-perceptron" class="nav-link" data-scroll-target="#inside-the-black-box-the-perceptron">2. Inside the Black Box: The Perceptron</a></li>
+  <li><a href="#what-a-language-model-actually-does" id="toc-what-a-language-model-actually-does" class="nav-link" data-scroll-target="#what-a-language-model-actually-does">3. What a Language Model Actually Does</a></li>
+  <li><a href="#the-mirror-where-bias-comes-from" id="toc-the-mirror-where-bias-comes-from" class="nav-link" data-scroll-target="#the-mirror-where-bias-comes-from">4. The Mirror: Where Bias Comes From</a></li>
+  <li><a href="#the-costs-we-dont-see" id="toc-the-costs-we-dont-see" class="nav-link" data-scroll-target="#the-costs-we-dont-see">5. The Costs We Don’t See</a></li>
+  <li><a href="#capstone-build-it-then-audit-it" id="toc-capstone-build-it-then-audit-it" class="nav-link" data-scroll-target="#capstone-build-it-then-audit-it">✏️ Capstone — Build It, Then Audit It</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- COLAB-BADGE -->
+<p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
+<a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb">View on GitHub</a></p>
+<section id="notebook-12-ai-machine-learning-ethics-opening-the-oracle" class="level1">
+<h1>Notebook 12: AI, Machine Learning &amp; Ethics — Opening the Oracle</h1>
+<section id="comp-1150-computer-science-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
+<p><strong>Brendan Shea, PhD</strong></p>
+<!-- Lecture video link to be added -->
+<p>📺 <strong>Lecture video:</strong> <em>(coming soon)</em></p>
+</section>
+<section id="learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this notebook, you will be able to:</p>
+<ul>
+<li>Explain how machine learning differs from ordinary programming, and distinguish supervised from unsupervised learning</li>
+<li>Describe how a perceptron learns, and see a tiny one learn in code</li>
+<li>Explain what a large language model does — tokenization, training, and next-token prediction — and what it is <em>not</em></li>
+<li>Show how bias enters a model through its data, and why hiding a variable doesn’t remove it</li>
+<li>Reason about the costs and accountability of AI systems: privacy, labor, environment, and who answers when they fail</li>
+</ul>
+<p><em>Maps to course LOs: 10, 11</em></p>
+</section>
+<section id="the-oracle-you-didnt-vote-for" class="level2">
+<h2 class="anchored" data-anchor-id="the-oracle-you-didnt-vote-for">The Oracle You Didn’t Vote For</h2>
+<p>All semester, an AI assistant has sat beside you — suggesting code, explaining errors, drafting text. You’ve used it, checked it, and sometimes caught it being confidently wrong. This notebook is where you finally open it up and see what it <em>is</em>.</p>
+<p>Meet <strong>Athena</strong>, who runs Athena Oversight, a firm that audits AI systems before they’re unleashed on the public. This week five companies want to deploy powerful new systems across the city: a hiring tool, a loan scorer, a chatbot, a face recognizer, a “risk” predictor for the courts. Athena has been hired to inspect them all.</p>
+<p>Her philosophy is the whole notebook:</p>
+<blockquote class="blockquote">
+<p>“Everyone treats these systems as oracles — mysterious, all-knowing, not to be questioned. My job is to pry them open. An oracle you can inspect is just a machine. An oracle you <em>can’t</em> inspect is just a god you never voted for. So we open every one.”</p>
+</blockquote>
+<p>This is the last notebook of the course, and it closes a loop. The very first notebook told the story of four algorithms, ending with ELIZA — a 1960s program that imitated a therapist and fooled people into pouring out their hearts. Everything since has built toward understanding the machines that now write, decide, and predict.</p>
+<p>Today we open five of them:</p>
+<ol type="1">
+<li><strong>Learning from data</strong> — how a machine “learns” a rule instead of being given one.</li>
+<li><strong>The perceptron</strong> — the tiny artificial neuron underneath it all, learning in front of you.</li>
+<li><strong>Language models</strong> — what the assistant you’ve used all semester actually does.</li>
+<li><strong>The mirror</strong> — where bias comes from, and why it’s so hard to remove.</li>
+<li><strong>The costs we don’t see</strong> — privacy, labor, environment, and the question under all of it: when an AI harms someone, who answers?</li>
+</ol>
+<p>By the end, you won’t see an oracle. You’ll see a machine — one you can question.</p>
+</section>
+<section id="learning-from-data-not-rules" class="level2">
+<h2 class="anchored" data-anchor-id="learning-from-data-not-rules">1. Learning From Data, Not Rules</h2>
+<p>For eleven notebooks, <em>you</em> wrote the rules. To decide who gets a loan, you’d write <code>if income &gt; 50000 and debt &lt; 10000:</code> — you picked the numbers, you picked the logic. Every program in this course has worked that way.</p>
+<p>But some problems have no rule you could ever write down. How would you write instructions to recognize a cat in a photo? You can’t list every possible arrangement of pixels — a cat can be orange or black, curled up or leaping, in sun or shadow. How would you write rules for “what word comes next in this sentence”? There are too many sentences, and no rulebook covers them.</p>
+<p>These aren’t just <em>hard</em> problems. They’re a different <em>kind</em> of problem — the kind humans solve from <strong>experience</strong>, not from rules anyone can state. You know a cat when you see one, but you can’t write down how. That gap is exactly where ordinary programming stops.</p>
+<section id="the-flip-learn-from-examples" class="level3">
+<h3 class="anchored" data-anchor-id="the-flip-learn-from-examples">The Flip: Learn From Examples</h3>
+<p><strong>Machine learning</strong> is the way around that wall. Instead of <em>writing</em> the rule, you <em>show the machine examples</em> — thousands of them — and let it work out the rule on its own.</p>
+<p>Think about how a small child learns the word “dog.” Nobody hands a toddler a definition (“four legs, fur, a tail” — so is a cat). Instead they see dog after dog after dog, hear “dog” each time, and eventually the pattern just <em>clicks</em>. They can spot a breed they’ve never seen before and still say “dog.”</p>
+<p>A machine-learning system learns the same way: not from a definition, but from piles of labeled examples until the pattern clicks. The thing it learns — the pattern — is called a <strong>model</strong>. Everything in this notebook is a version of this one idea.</p>
+</section>
+<section id="two-ways-to-learn" class="level3">
+<h3 class="anchored" data-anchor-id="two-ways-to-learn">Two Ways to Learn</h3>
+<p>Machine learning comes in two main flavors, and the difference is simply <em>what you hand the machine</em>:</p>
+<ul>
+<li><strong>Supervised learning</strong> — you give it examples <em>with the answers attached</em>: “these 1,000 emails are spam; these 1,000 are not.” It learns to predict the answer for new cases. The answer attached to each example is its <strong>label</strong>.</li>
+<li><strong>Unsupervised learning</strong> — you give it data with <em>no answers</em> and ask it to find structure by itself: “here are a million customers — put the similar ones together.” No labels; it discovers the groupings.</li>
+</ul>
+<div id="cell-fig-learning" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>graphviz.Source(<span class="vs">r"""digraph G {</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  bgcolor="transparent"; rankdir=TB;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, fillcolor="#dde8f0"]</span><span class="vs">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="vs">  edge </span><span class="pp">[fontname="Helvetica", fontsize=9]</span><span class="vs">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="vs">  sup </span><span class="pp">[label="Supervised</span><span class="ch">\n</span><span class="pp">examples WITH answers (labels)", fillcolor="#f3e9d8"]</span><span class="vs">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  uns </span><span class="pp">[label="Unsupervised</span><span class="ch">\n</span><span class="pp">examples with NO answers", fillcolor="#f3e9d8"]</span><span class="vs">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="vs">  sup -&gt; "predict a label</span><span class="ch">\n</span><span class="kw">(</span><span class="vs">spam / not spam</span><span class="kw">)</span><span class="vs">";</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  uns -&gt; "find groups</span><span class="ch">\n</span><span class="kw">(</span><span class="vs">cluster similar things</span><span class="kw">)</span><span class="vs">";</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="fig-learning" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-learning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-learning-output-1.svg" id="fig-learning" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-learning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> the split is about what you hand the machine. Labeled examples → it learns to <em>predict the label</em>. Unlabeled data → it learns to <em>find structure</em>. Almost everything called “AI” today is one of these two, and most of the headline systems — including the ones we open next — are supervised.</p>
+</section>
+<section id="watching-a-machine-find-a-rule" class="level3">
+<h3 class="anchored" data-anchor-id="watching-a-machine-find-a-rule">Watching a Machine Find a Rule</h3>
+<p>Let’s make “learning from examples” concrete and small enough to see all of it. <strong>Cassandra</strong>, who runs a prediction company, won’t hand-pick a loan cutoff. She has past data — each applicant’s income, and whether they repaid — and lets the machine find the dividing line itself.</p>
+<p>The machine’s whole strategy: <em>try every possible cutoff, and keep the one that fits the past best.</em> That’s it. The next cell does exactly that.</p>
+<div id="c0b50f7f" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Past loans: (income in $1000s, repaid?). The machine will find the cutoff itself.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>loans <span class="op">=</span> [(<span class="dv">20</span>, <span class="dv">0</span>), (<span class="dv">25</span>, <span class="dv">0</span>), (<span class="dv">30</span>, <span class="dv">0</span>), (<span class="dv">35</span>, <span class="dv">1</span>), (<span class="dv">45</span>, <span class="dv">1</span>), (<span class="dv">55</span>, <span class="dv">1</span>), (<span class="dv">60</span>, <span class="dv">1</span>)]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>best_cutoff, best_score <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cutoff <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>, <span class="dv">61</span>, <span class="dv">5</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    correct <span class="op">=</span> <span class="bu">sum</span>((<span class="dv">1</span> <span class="cf">if</span> income <span class="op">&gt;=</span> cutoff <span class="cf">else</span> <span class="dv">0</span>) <span class="op">==</span> repaid <span class="cf">for</span> income, repaid <span class="kw">in</span> loans)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> correct <span class="op">&gt;</span> best_score:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        best_score, best_cutoff <span class="op">=</span> correct, cutoff</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The machine learned the rule: approve if income &gt;= </span><span class="sc">{</span>best_cutoff<span class="sc">}</span><span class="ss">k"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"(That rule fits </span><span class="sc">{</span>best_score<span class="sc">}</span><span class="ss"> of </span><span class="sc">{</span><span class="bu">len</span>(loans)<span class="sc">}</span><span class="ss"> past cases.)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The machine learned the rule: approve if income &gt;= 35k
+(That rule fits 7 of 7 past cases.)</code></pre>
+</div>
+</div>
+<p>Nobody told the program that 35 was the magic number. It <em>tried</em> the options and kept the rule that best matched the examples. That is machine learning stripped to its bones: no human wrote the threshold; the data chose it.</p>
+<p>Real systems do this with millions of examples and thousands of variables at once, and they can’t just “try every cutoff” — the search is far too big. So they need a smarter way to <em>search</em> for a good rule. That smarter way is the subject of the next section, and it’s the engine inside almost all modern AI.</p>
+</section>
+<section id="think-about-it-rules-vs.-examples" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-rules-vs.-examples">💭 Think About It — Rules vs.&nbsp;Examples</h3>
+<p>Think of two things you can do: one you learned from a <em>rule</em> someone told you (“i before e except after c”), and one you learned from <em>examples</em> until you just got a feel for it (recognizing a friend’s face, knowing when a joke will land).</p>
+<p>Which kind is easier to <em>explain</em> to someone else? Machine-learned skills are usually the second kind: the machine can <em>do</em> it but can’t say <em>why</em>. Hold onto that thought — it comes back when we ask whether these systems are fair.</p>
+</section>
+</section>
+<section id="inside-the-black-box-the-perceptron" class="level2">
+<h2 class="anchored" data-anchor-id="inside-the-black-box-the-perceptron">2. Inside the Black Box: The Perceptron</h2>
+<p><strong>Daedalus</strong>, the city’s master engineer, builds the automated systems everyone else treats as magic. He’ll tell you there’s no magic — just a tiny part, repeated. That part, invented in 1958, is called a <strong>perceptron</strong>, and it is the seed of every neural network alive today. Understand this one small thing and you understand the shape of all of it.</p>
+<p>A perceptron is a single decision-maker. Picture a judge weighing evidence for a yes-or-no verdict. Each piece of evidence is an <strong>input</strong>. The judge trusts some evidence more than others — that trust is a <strong>weight</strong>. The judge adds up the evidence, each piece scaled by how much it’s trusted, and returns <em>yes</em> if the total clears a bar, <em>no</em> if it doesn’t.</p>
+<div id="cell-fig-neuron" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>graphviz.Source(<span class="vs">r"""digraph G {</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  bgcolor="transparent"; rankdir=LR;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[fontname="Helvetica", fontsize=10]</span><span class="vs">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[shape=box, style="rounded,filled", fillcolor="#dde8f0"]</span><span class="vs">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="vs">  in1 </span><span class="pp">[label="income"]</span><span class="vs">; in2 </span><span class="pp">[label="debt"]</span><span class="vs">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[shape=circle, style="filled", fillcolor="#f3e9d8", width=1.1, fixedsize=true]</span><span class="vs">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="vs">  sum </span><span class="pp">[label="add up</span><span class="ch">\n</span><span class="pp">(weighted)"]</span><span class="vs">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[shape=box, style="rounded,filled", fillcolor="#e3efe1"]</span><span class="vs">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="vs">  out </span><span class="pp">[label="over the bar?</span><span class="ch">\n</span><span class="pp">yes = approve</span><span class="ch">\n</span><span class="pp">no = deny"]</span><span class="vs">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="vs">  in1 -&gt; sum </span><span class="pp">[label=" x weight 1"]</span><span class="vs">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="vs">  in2 -&gt; sum </span><span class="pp">[label=" x weight 2"]</span><span class="vs">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="vs">  sum -&gt; out;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="fig-neuron" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-neuron-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-neuron-output-1.svg" id="fig-neuron" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-neuron-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> the two inputs (income, debt) each get multiplied by a weight, the results are added up, and if the total clears a bar the perceptron says “approve.” In numbers, that’s just three steps:</p>
+<pre><code>total  = weight1 * input1  +  weight2 * input2  +  bias
+output = 1 if total &gt; 0 else 0</code></pre>
+<p>The <strong>bias</strong> is simply where the bar sits. The whole cleverness is in the weights — get them right and the perceptron makes good decisions. So the real question is: where do the right weights come from?</p>
+<section id="how-it-learns-guess-check-nudge" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-learns-guess-check-nudge">How It Learns: Guess, Check, Nudge</h3>
+<p>Nobody sets the weights by hand. The perceptron <em>learns</em> them, and its method is one you already use.</p>
+<p>Think about learning to throw a ball at a target. You throw, you see how far off you were, you adjust, you throw again. Guess, check, nudge — over and over — until you’re hitting it. The perceptron learns weights exactly this way:</p>
+<ol type="1">
+<li><strong>Guess</strong> — make a prediction with the current weights.</li>
+<li><strong>Check</strong> — compare the guess to the known right answer. Off by how much? That gap is the <strong>error</strong>.</li>
+<li><strong>Nudge</strong> — shift each weight a little in the direction that would have reduced the error.</li>
+</ol>
+<p>If the guess was already right, the error is zero and nothing changes. Only mistakes cause learning. Let’s watch one single nudge happen, by hand, before turning it loose.</p>
+</section>
+<section id="one-lesson-in-slow-motion" class="level3">
+<h3 class="anchored" data-anchor-id="one-lesson-in-slow-motion">One Lesson, in Slow Motion</h3>
+<p>The perceptron starts knowing <em>nothing</em>: both weights are 0, and the bias is 0. Here comes its first example — an applicant with <strong>income 6, debt 1</strong>, who we know was <strong>approved</strong> (the right answer is 1).</p>
+<ul>
+<li><strong>Guess:</strong> total = (0 × 6) + (0 × 1) + 0 = <strong>0</strong>. Is 0 above the bar (0)? No.&nbsp;So it guesses <strong>0 — deny.</strong></li>
+<li><strong>Check:</strong> the right answer was 1 (approve). Error = 1 − 0 = <strong>+1</strong>. It was wrong, and the error is positive — it guessed too low.</li>
+<li><strong>Nudge:</strong> shift each weight by <code>learning rate × error × input</code>. With a learning rate of 0.1: income’s weight becomes 0 + (0.1 × 1 × 6) = <strong>0.6</strong>; debt’s weight becomes 0 + (0.1 × 1 × 1) = <strong>0.1</strong>; the bias becomes <strong>0.1</strong>.</li>
+</ul>
+<p>In one step it learned a little: income now counts <em>for</em> approval. It hasn’t learned that debt should count <em>against</em> approval yet — that comes from the examples where high debt led to denial. Run through all the examples a few times, and the weights settle into place. The next cell does exactly that.</p>
+<div id="30c46739" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Each example: [income, debt] -&gt; 1 approve, 0 deny</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [([<span class="dv">6</span>,<span class="dv">1</span>],<span class="dv">1</span>), ([<span class="dv">7</span>,<span class="dv">2</span>],<span class="dv">1</span>), ([<span class="dv">8</span>,<span class="dv">1</span>],<span class="dv">1</span>), ([<span class="dv">5</span>,<span class="dv">0</span>],<span class="dv">1</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        ([<span class="dv">2</span>,<span class="dv">5</span>],<span class="dv">0</span>), ([<span class="dv">1</span>,<span class="dv">4</span>],<span class="dv">0</span>), ([<span class="dv">3</span>,<span class="dv">6</span>],<span class="dv">0</span>), ([<span class="dv">2</span>,<span class="dv">3</span>],<span class="dv">0</span>)]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> [<span class="fl">0.0</span>, <span class="fl">0.0</span>]   <span class="co"># weights start at zero: the perceptron knows nothing</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>rate <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> training_pass <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):        <span class="co"># go through all the examples 20 times</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x, target <span class="kw">in</span> data:</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        total <span class="op">=</span> w[<span class="dv">0</span>]<span class="op">*</span>x[<span class="dv">0</span>] <span class="op">+</span> w[<span class="dv">1</span>]<span class="op">*</span>x[<span class="dv">1</span>] <span class="op">+</span> b</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        guess <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> total <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        error <span class="op">=</span> target <span class="op">-</span> guess         <span class="co"># 0 if right; +1 or -1 if wrong</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        w[<span class="dv">0</span>] <span class="op">+=</span> rate <span class="op">*</span> error <span class="op">*</span> x[<span class="dv">0</span>]     <span class="co"># nudge each weight (only when wrong)</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        w[<span class="dv">1</span>] <span class="op">+=</span> rate <span class="op">*</span> error <span class="op">*</span> x[<span class="dv">1</span>]</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        b    <span class="op">+=</span> rate <span class="op">*</span> error</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Final learned weights:"</span>, [<span class="bu">round</span>(v, <span class="dv">2</span>) <span class="cf">for</span> v <span class="kw">in</span> w], <span class="st">" bias:"</span>, <span class="bu">round</span>(b, <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Final learned weights: [0.4, -0.4]  bias: 0.0</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-code">Understanding the Code</h3>
+<ul>
+<li>It starts at zero and loops through the examples 20 times, doing guess-check-nudge on each.</li>
+<li><code>error</code> is 0 when the guess is right — so correct answers change nothing. <strong>Only mistakes teach it.</strong></li>
+<li>It ends with a <strong>positive</strong> weight for income (+0.4) and a <strong>negative</strong> weight for debt (−0.4): it taught itself that income is good and debt is bad, from nothing but examples.</li>
+</ul>
+<p>But numbers like <code>[0.4, -0.4]</code> don’t show what the machine really <em>did</em>. The clearest way to see it is to draw it.</p>
+<div id="cell-fig-boundary" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>approve <span class="op">=</span> [(<span class="dv">6</span>,<span class="dv">1</span>),(<span class="dv">7</span>,<span class="dv">2</span>),(<span class="dv">8</span>,<span class="dv">1</span>),(<span class="dv">5</span>,<span class="dv">0</span>)]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>deny    <span class="op">=</span> [(<span class="dv">2</span>,<span class="dv">5</span>),(<span class="dv">1</span>,<span class="dv">4</span>),(<span class="dv">3</span>,<span class="dv">6</span>),(<span class="dv">2</span>,<span class="dv">3</span>)]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.scatter([p[<span class="dv">0</span>] <span class="cf">for</span> p <span class="kw">in</span> approve], [p[<span class="dv">1</span>] <span class="cf">for</span> p <span class="kw">in</span> approve], color<span class="op">=</span><span class="st">"#2a78d6"</span>, s<span class="op">=</span><span class="dv">90</span>, label<span class="op">=</span><span class="st">"approved"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.scatter([p[<span class="dv">0</span>] <span class="cf">for</span> p <span class="kw">in</span> deny], [p[<span class="dv">1</span>] <span class="cf">for</span> p <span class="kw">in</span> deny], color<span class="op">=</span><span class="st">"#e34948"</span>, s<span class="op">=</span><span class="dv">90</span>, marker<span class="op">=</span><span class="st">"s"</span>, label<span class="op">=</span><span class="st">"denied"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>,<span class="dv">9</span>], [<span class="dv">0</span>,<span class="dv">9</span>], color<span class="op">=</span><span class="st">"#52514e"</span>, lw<span class="op">=</span><span class="dv">2</span>, ls<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"the line it learned"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"income"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"debt"</span>)<span class="op">;</span> plt.legend()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="fig-boundary" class="quarto-float quarto-figure quarto-figure-center anchored" width="576" height="429">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-boundary-output-1.png" id="fig-boundary" width="576" height="429" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> each dot is an applicant — blue circles approved, red squares denied. The dashed line is the rule the perceptron <em>discovered</em>: approve everyone above it, deny everyone below. It landed on “approve when income is greater than debt.” Nobody drew that line or programmed that rule. The neuron found it, from examples alone, by nudging two numbers. <em>That</em> is what “learning” means here.</p>
+</section>
+<section id="from-one-neuron-to-a-brain" class="level3">
+<h3 class="anchored" data-anchor-id="from-one-neuron-to-a-brain">From One Neuron to a Brain</h3>
+<p>A single perceptron can only ever draw one straight line. That’s enough to separate income from debt, but the world is rarely so tidy — no straight line separates photos of cats from photos of dogs.</p>
+<p>The power comes from wiring many perceptrons together in <strong>layers</strong>: the outputs of one layer become the inputs of the next. This is a <strong>neural network</strong>.</p>
+<div id="cell-fig-network" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>graphviz.Source(<span class="vs">r"""digraph G {</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  bgcolor="transparent"; rankdir=LR; splines=line;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[shape=circle, style=filled, width=0.3, fixedsize=true, label="", fillcolor="#dde8f0"]</span><span class="vs">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="vs">  i1 i2 i3;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[fillcolor="#f3e9d8"]</span><span class="vs">; h1 h2 h3 h4;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  node </span><span class="pp">[fillcolor="#e3efe1"]</span><span class="vs">; o1;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="vs">  {i1 i2 i3} -&gt; {h1 h2 h3 h4} </span><span class="pp">[color="#b8c4d0"]</span><span class="vs">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  {h1 h2 h3 h4} -&gt; o1 </span><span class="pp">[color="#b8c4d0"]</span><span class="vs">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="vs">  labelloc="b";</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="vs">  label="inputs        →     hidden layer     →   output";</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="fig-network" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-network-output-1.svg" id="fig-network" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> every neuron in one column connects to every neuron in the next. Why does stacking help? Because each layer learns patterns built from the layer before it. Shown millions of photos, the <strong>early</strong> layers learn to spot simple things — an edge, a patch of color. <strong>Later</strong> layers combine those into bigger things — a curve, then an eye, then a face. Simple parts, combined and recombined, become the ability to recognize almost anything.</p>
+<p>And here’s the punchline: every one of those neurons is doing the exact guess-check-nudge you just watched. The giant models behind today’s AI are this same tiny part — multiply, add, check the bar, nudge — repeated <em>billions</em> of times across many layers. The difference between your perceptron and a system that writes essays is <strong>scale, not kind.</strong></p>
+</section>
+<section id="your-turn-retrain-the-neuron" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-retrain-the-neuron">✏️ Your Turn — Retrain the Neuron</h3>
+<p>The bank changes its policy: now it cares about <strong>savings</strong> instead of debt, and wants to approve people with high income <em>and</em> high savings. Change the training <code>data</code> below so the second number is savings (higher = better), retrain, and check whether the learned weight for the second input flips from negative to <strong>positive</strong>.</p>
+<div id="97091de0" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CHANGE the data so the 2nd number is savings (high = approve), then re-run the training loop.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [([<span class="dv">6</span>,<span class="dv">1</span>],<span class="dv">1</span>), ([<span class="dv">7</span>,<span class="dv">2</span>],<span class="dv">1</span>), ([<span class="dv">8</span>,<span class="dv">1</span>],<span class="dv">1</span>), ([<span class="dv">5</span>,<span class="dv">0</span>],<span class="dv">1</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        ([<span class="dv">2</span>,<span class="dv">5</span>],<span class="dv">0</span>), ([<span class="dv">1</span>,<span class="dv">4</span>],<span class="dv">0</span>), ([<span class="dv">3</span>,<span class="dv">6</span>],<span class="dv">0</span>), ([<span class="dv">2</span>,<span class="dv">3</span>],<span class="dv">0</span>)]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: edit the examples above, then copy the training loop from earlier and run it.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Did the 2nd weight become positive?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="what-a-language-model-actually-does" class="level2">
+<h2 class="anchored" data-anchor-id="what-a-language-model-actually-does">3. What a Language Model Actually Does</h2>
+<p><strong>Prometheus</strong> runs the lab that built the city’s chatbot — the same kind of system that’s been your assistant all semester. People treat it as if it <em>understands</em> them. Athena’s audit replaces that impression with something simpler, and stranger.</p>
+<p>A <strong>large language model</strong> (LLM) does exactly one thing: <strong>it predicts the next word.</strong> Give it some text, it guesses what comes next, adds that, and guesses again. Everything it seems to do — answer questions, translate, write code — is that single trick, run over and over at enormous scale. The rest of this section takes that claim apart until you believe it.</p>
+<section id="step-one-turn-words-into-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="step-one-turn-words-into-numbers">Step One: Turn Words Into Numbers</h3>
+<p>A machine can only do math, so before anything else the text must become numbers. This step is <strong>tokenization</strong>: chop the text into pieces called <strong>tokens</strong>, and give each piece a number.</p>
+<p>Tokens are like the Lego bricks of language — a few thousand reusable pieces the model snaps together. Common words are their own brick; rarer words get built from smaller ones (“unbelievable” might be <code>un</code> + <code>believ</code> + <code>able</code>). The next cell tokenizes a sentence.</p>
+<div id="c3773760" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tokenize(text):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    vocabulary <span class="op">=</span> {}</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    tokens <span class="op">=</span> text.replace(<span class="st">"."</span>, <span class="st">" ."</span>).split()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    ids <span class="op">=</span> [vocabulary.setdefault(tok, <span class="bu">len</span>(vocabulary)) <span class="cf">for</span> tok <span class="kw">in</span> tokens]</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tokens, ids</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>tokens, ids <span class="op">=</span> tokenize(<span class="st">"the model sees numbers not words ."</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tokens:"</span>, tokens)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ids:   "</span>, ids)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tokens: ['the', 'model', 'sees', 'numbers', 'not', 'words', '.']
+ids:    [0, 1, 2, 3, 4, 5, 6]</code></pre>
+</div>
+</div>
+<p>The model never sees “words” — only that list of numbers. (Because it works in bricks, not letters, it can be strangely bad at spelling: ask an LLM how many <em>r</em>’s are in “strawberry” and it may miss, because it never saw the letters, only the bricks.)</p>
+</section>
+<section id="step-two-predict-the-next-token" class="level3">
+<h3 class="anchored" data-anchor-id="step-two-predict-the-next-token">Step Two: Predict the Next Token</h3>
+<p>Now the heart of it. How does the model know what word comes next? During training it read enormous amounts of text and kept track of <strong>what tends to follow what</strong>. Its “knowledge” is, in essence, a giant tally.</p>
+<p>We can build a tiny version and <em>look inside it</em>. The next cell reads a short passage and, for each word, records every word that followed it.</p>
+<div id="ff109997" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>passage <span class="op">=</span> (<span class="st">"the hero takes the sword the hero fights the dragon "</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"the hero saves the town the town cheers the hero"</span>).split()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>next_words <span class="op">=</span> {}</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> current, following <span class="kw">in</span> <span class="bu">zip</span>(passage, passage[<span class="dv">1</span>:]):</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    next_words.setdefault(current, []).append(following)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Look inside: after the word "the", what did the model actually see?</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"after 'the', the model saw:"</span>, <span class="bu">dict</span>(Counter(next_words[<span class="st">"the"</span>])))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"after 'hero', the model saw:"</span>, <span class="bu">dict</span>(Counter(next_words[<span class="st">"hero"</span>])))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>after 'the', the model saw: {'hero': 4, 'sword': 1, 'dragon': 1, 'town': 2}
+after 'hero', the model saw: {'takes': 1, 'fights': 1, 'saves': 1}</code></pre>
+</div>
+</div>
+<p>There is the whole “mind” of the model, in the open: after <strong>“the”</strong> it saw <em>hero</em> four times, <em>town</em> twice, <em>sword</em> and <em>dragon</em> once each. So to predict what follows “the,” it just picks from that tally — usually “hero,” because that’s what it saw most. No meaning, no understanding. A frequency table.</p>
+<p>To <strong>generate</strong> text, it does this repeatedly: pick a likely next word, move to it, pick again. The next cell chains it into a sentence.</p>
+<div id="8a37fbcc" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>word <span class="op">=</span> <span class="st">"the"</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>story <span class="op">=</span> [word]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">1</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    word <span class="op">=</span> random.choice(next_words[word])   <span class="co"># pick a word that really followed this one</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    story.append(word)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" "</span>.join(story))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>the hero saves the hero takes the hero fights the</code></pre>
+</div>
+</div>
+<p>A real LLM builds this same kind of “what follows what” knowledge — but incomparably richer, weighing thousands of previous words instead of one, across billions of examples. And it learns it the same way your perceptron did: <strong>guess the next word, check against the real text, nudge the weights.</strong> Guess-check-nudge, the whole way down — just predicting words instead of approving loans.</p>
+</section>
+<section id="what-it-is-and-isnt" class="level3">
+<h3 class="anchored" data-anchor-id="what-it-is-and-isnt">What It Is, and Isn’t</h3>
+<p>Scaled up massively, this next-word trick becomes fluent enough to feel like thought. But look hard at the mechanism and you can see what it is — and isn’t:</p>
+<ul>
+<li>It <strong>is</strong> an extraordinarily powerful <em>pattern-continuer</em>: it produces plausible next words.</li>
+<li>It is <strong>not</strong> a database of facts. It stores patterns, not truths, so it can state a falsehood with total confidence.</li>
+<li>It is <strong>not</strong> reasoning or understanding. It has no idea what the words <em>mean</em>. Our toy wrote “the hero” without knowing what a hero is — and the giant version, underneath, is doing the same thing.</li>
+</ul>
+<p>This is <em>why</em> the rule you’ve followed all course is true: <strong>AI is a fast first draft — you verify.</strong> A machine built to produce plausible words will produce plausible-<em>sounding</em> mistakes, delivered with perfect confidence. Now you know the reason in your bones: it was never checking whether it was right. It was only ever predicting the next word.</p>
+</section>
+<section id="your-turn-change-its-voice" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-change-its-voice">✏️ Your Turn — Change Its Voice</h3>
+<p>The generator’s “voice” is nothing but its training text. Replace the <code>passage</code> with a few sentences in a very different style — song lyrics, a recipe, a sports recap — keep the seed, and generate again. The model has no style of its own; it only echoes what it was fed. What does that tell you about where an AI’s “personality” really comes from — and who chose it?</p>
+<div id="0bbcc2b6" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace with 3-4 sentences of your own, then re-run the tally + generate steps.</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>passage <span class="op">=</span> (<span class="st">"the hero takes the sword the hero fights the dragon "</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">"the hero saves the town the town cheers the hero"</span>).split()</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: rebuild next_words from your passage, then generate from it.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="the-mirror-where-bias-comes-from" class="level2">
+<h2 class="anchored" data-anchor-id="the-mirror-where-bias-comes-from">4. The Mirror: Where Bias Comes From</h2>
+<p>Now the audit turns serious. <strong>Cassandra</strong> — cursed in the old story to see the truth and never be believed — runs the risk-scoring system the courts and banks want to use. Athena’s hardest question: <em>is it fair?</em></p>
+<p>Here is the uncomfortable heart of machine learning. A model learns from data about the past. <strong>If the past was biased, the model learns the bias</strong> — and then applies it to the future wearing a mask of mathematical objectivity. The model is a <strong>mirror</strong>: it reflects the data it was trained on, warts and all.</p>
+<p>Suppose a company’s past hiring favored one group over another, regardless of skill. The next cell holds that history: equally skilled people, but Group 1 was rarely hired.</p>
+<div id="d0d9d7dc" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Historical hiring. skill is high for everyone here, but group 1 was denied.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> [</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">8</span>, <span class="st">"group"</span>: <span class="dv">1</span>, <span class="st">"hired"</span>: <span class="dv">0</span>},</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">9</span>, <span class="st">"group"</span>: <span class="dv">1</span>, <span class="st">"hired"</span>: <span class="dv">0</span>},</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">7</span>, <span class="st">"group"</span>: <span class="dv">1</span>, <span class="st">"hired"</span>: <span class="dv">0</span>},</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">6</span>, <span class="st">"group"</span>: <span class="dv">0</span>, <span class="st">"hired"</span>: <span class="dv">1</span>},</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">7</span>, <span class="st">"group"</span>: <span class="dv">0</span>, <span class="st">"hired"</span>: <span class="dv">1</span>},</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">5</span>, <span class="st">"group"</span>: <span class="dv">0</span>, <span class="st">"hired"</span>: <span class="dv">1</span>},</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A simple learner: predict "hire" based on what happened to this group before.</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> learned_rule(group):</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    outcomes <span class="op">=</span> [r[<span class="st">"hired"</span>] <span class="cf">for</span> r <span class="kw">in</span> history <span class="cf">if</span> r[<span class="st">"group"</span>] <span class="op">==</span> group]</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(<span class="bu">sum</span>(outcomes) <span class="op">/</span> <span class="bu">len</span>(outcomes))</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model's decision for a Group 0 applicant:"</span>, learned_rule(<span class="dv">0</span>))</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model's decision for a Group 1 applicant:"</span>, learned_rule(<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model's decision for a Group 0 applicant: 1
+Model's decision for a Group 1 applicant: 0</code></pre>
+</div>
+</div>
+<p>The model denies every Group 1 applicant and approves every Group 0 applicant — even though Group 1 here is <em>more</em> skilled. It didn’t invent this; it faithfully learned the past. That’s the mirror.</p>
+<p>“Easy fix,” says the company. “Delete the group column so the model can’t see it.” The next cell does exactly that — and shows why it fails.</p>
+<div id="36b06b19" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove 'group'. But 'neighborhood' quietly tracks group membership.</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>history2 <span class="op">=</span> [</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">8</span>, <span class="st">"neighborhood"</span>: <span class="st">"east"</span>, <span class="st">"hired"</span>: <span class="dv">0</span>},   <span class="co"># was group 1</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">9</span>, <span class="st">"neighborhood"</span>: <span class="st">"east"</span>, <span class="st">"hired"</span>: <span class="dv">0</span>},</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">7</span>, <span class="st">"neighborhood"</span>: <span class="st">"east"</span>, <span class="st">"hired"</span>: <span class="dv">0</span>},</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">6</span>, <span class="st">"neighborhood"</span>: <span class="st">"west"</span>, <span class="st">"hired"</span>: <span class="dv">1</span>},   <span class="co"># was group 0</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">7</span>, <span class="st">"neighborhood"</span>: <span class="st">"west"</span>, <span class="st">"hired"</span>: <span class="dv">1</span>},</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"skill"</span>: <span class="dv">5</span>, <span class="st">"neighborhood"</span>: <span class="st">"west"</span>, <span class="st">"hired"</span>: <span class="dv">1</span>},</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rule_by_neighborhood(neighborhood):</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    outcomes <span class="op">=</span> [r[<span class="st">"hired"</span>] <span class="cf">for</span> r <span class="kw">in</span> history2 <span class="cf">if</span> r[<span class="st">"neighborhood"</span>] <span class="op">==</span> neighborhood]</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(<span class="bu">sum</span>(outcomes) <span class="op">/</span> <span class="bu">len</span>(outcomes))</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Applicant from 'east':"</span>, rule_by_neighborhood(<span class="st">"east"</span>))</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Applicant from 'west':"</span>, rule_by_neighborhood(<span class="st">"west"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Applicant from 'east': 0
+Applicant from 'west': 1</code></pre>
+</div>
+</div>
+<section id="understanding-the-failure" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-failure">Understanding the Failure</h3>
+<p>The group column is gone — and the model discriminates <em>exactly as before</em>. Why? Because neighborhood is tangled up with group: it’s a <strong>proxy</strong>, a stand-in variable that carries the same information through a side door. The model doesn’t need the forbidden label; it reconstructs it from whatever correlates with it — a zip code, a name, a school.</p>
+<p>This is the lesson that makes AI fairness genuinely hard:</p>
+<ul>
+<li>Bias lives in the <strong>data</strong>, not the code — the algorithm is “just math,” which is exactly why it launders history into a decision that looks neutral.</li>
+<li><strong>Hiding the sensitive variable doesn’t remove the bias.</strong> Proxies smuggle it back in.</li>
+<li>A model can be <strong>accurate about the past and unjust about the future</strong> at the same time — those aren’t in conflict.</li>
+</ul>
+<p>Fairness, then, can’t be an afterthought or a deleted column. It takes deliberately examining what the data encodes, and what the model does to real people — the work Athena’s whole audit exists to do.</p>
+</section>
+<section id="think-about-it-two-kinds-of-danger" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-two-kinds-of-danger">💭 Think About It — Two Kinds of Danger</h3>
+<p>Cassandra’s curse was to speak true predictions that no one believed. Modern risk scores are almost the opposite: predictions people believe <em>too much</em>, because a number on a screen feels objective.</p>
+<p>Which is more dangerous — a true warning ignored, or a biased guess trusted completely? Where have you seen a number treated as fact just because a computer produced it?</p>
+</section>
+<section id="your-turn-predict-the-bias" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-predict-the-bias">✏️ Your Turn — Predict the Bias</h3>
+<p>Below is a small dataset of past loan decisions. Before running anything, <strong>read it and predict</strong>: if you train a simple rule on this history, who will it favor? Then explain in a sentence what real-world harm could follow if a bank deployed it.</p>
+<div id="5ba6c390" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Past loans. Look at who got approved, and predict what a model would learn.</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>loans <span class="op">=</span> [</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"income"</span>: <span class="dv">40</span>, <span class="st">"zip"</span>: <span class="st">"A"</span>, <span class="st">"approved"</span>: <span class="dv">1</span>},</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"income"</span>: <span class="dv">42</span>, <span class="st">"zip"</span>: <span class="st">"A"</span>, <span class="st">"approved"</span>: <span class="dv">1</span>},</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"income"</span>: <span class="dv">41</span>, <span class="st">"zip"</span>: <span class="st">"B"</span>, <span class="st">"approved"</span>: <span class="dv">0</span>},</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"income"</span>: <span class="dv">43</span>, <span class="st">"zip"</span>: <span class="st">"B"</span>, <span class="st">"approved"</span>: <span class="dv">0</span>},</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co"> (in words): Whom does this history favor? What proxy is doing the work?</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                  What harm follows if a bank ships a model trained on it?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="the-costs-we-dont-see" class="level2">
+<h2 class="anchored" data-anchor-id="the-costs-we-dont-see">5. The Costs We Don’t See</h2>
+<p>The models work. But Athena’s audit isn’t only “does it work?” — it’s “what does it cost, and who pays?” Three costs stay hidden behind the magic, kept by <strong>Pandora</strong>, whose data company gathered the training sets, and <strong>Hephaestus</strong>, whose servers run the forge that trains the models.</p>
+<p><strong>Privacy.</strong> A model has to learn from <em>something</em>, and that something is data made by real people — their photos, their posts, their medical notes, their code — gathered at a scale no one meaningfully consented to. Pandora’s old story is the warning: once the box is open, it can’t be closed. Once a model has trained on your data, there’s no clean way to reach in and take your part back out. It’s baked in.</p>
+<p><strong>Labor.</strong> AI changes whose work has value — and not only by replacing jobs. There’s a hidden workforce behind the magic: thousands of low-paid people who label the training data and filter the worst content, so the system can seem effortless. The “automatic” system runs on human hands you never see.</p>
+<p><strong>Environment.</strong> Training a large model runs thousands of processors for weeks, and that electricity has a carbon cost. The exact numbers are debated, but the <em>scale</em> is not in doubt. The chart below compares the estimated carbon emissions of training one large model against everyday high-carbon activities.</p>
+<div id="cell-fig-carbon" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>activities <span class="op">=</span> [<span class="st">"One transatlantic</span><span class="ch">\n</span><span class="st">flight (per seat)"</span>, <span class="st">"A gas car</span><span class="ch">\n</span><span class="st">(one year)"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">"One US person</span><span class="ch">\n</span><span class="st">(one year, all)"</span>, <span class="st">"Training one</span><span class="ch">\n</span><span class="st">large AI model"</span>]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>tonnes <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">4.6</span>, <span class="dv">15</span>, <span class="dv">500</span>]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">"#2a78d6"</span>, <span class="st">"#2a78d6"</span>, <span class="st">"#2a78d6"</span>, <span class="st">"#eb6834"</span>]</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.6</span>))</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(activities, tonnes, color<span class="op">=</span>colors)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Approximate CO₂ emissions (metric tonnes)"</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"The hidden cost of one training run"</span>, fontsize<span class="op">=</span><span class="dv">12</span>, loc<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar, val <span class="kw">in</span> <span class="bu">zip</span>(bars, tonnes):</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    ax.text(bar.get_width() <span class="op">+</span> <span class="dv">6</span>, bar.get_y() <span class="op">+</span> bar.get_height()<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"~</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">560</span>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>ax.invert_yaxis()</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"top"</span>, <span class="st">"right"</span>]:</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    ax.spines[s].set_visible(<span class="va">False</span>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="fig-carbon" class="quarto-float quarto-figure quarto-figure-center anchored" width="661" height="336">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-carbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-carbon-output-1.png" id="fig-carbon" width="661" height="336" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-carbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> each blue bar is an everyday high-carbon activity; the orange bar is <em>one</em> training run for a large model (estimates vary, and newer efficient methods lower it — but the gap is the point). And that’s a single run: real systems are trained many times over. The forge is enormous, and it runs out of sight.</p>
+<section id="accountability-who-answers" class="level3">
+<h3 class="anchored" data-anchor-id="accountability-who-answers">Accountability: Who Answers?</h3>
+<p>Which brings the audit to its final question, the one under all the others. When an AI system denies the right loan, jails the wrong person, or crashes the wrong car — <strong>who is responsible?</strong></p>
+<ul>
+<li>The engineers who built it? They’ll say they only wrote general code; the data decided.</li>
+<li>The company that deployed it? They’ll say they trusted the vendor’s model.</li>
+<li>The data? Data can’t be sued.</li>
+<li>The user who followed its recommendation? They’ll say the machine told them to.</li>
+</ul>
+<p>Everyone can point somewhere else. This is the <strong>accountability gap</strong>: powerful automated decisions with no clear person who answers for them. In the old story, Prometheus was punished for handing dangerous power to mortals. The modern question is harder — when the fire burns someone, there’s often <em>no one</em> standing where Prometheus stood. Closing that gap isn’t a technical problem you can code away. It’s a human decision about who we <em>require</em> to answer. And now that you can open these machines, you’re equipped to be part of making it.</p>
+</section>
+</section>
+<section id="capstone-build-it-then-audit-it" class="level2">
+<h2 class="anchored" data-anchor-id="capstone-build-it-then-audit-it">✏️ Capstone — Build It, Then Audit It</h2>
+<p>This is the final build of the course, and it’s the one that matters most for your project. You’ll build one small AI feature — then do what almost no one does: <strong>audit your own creation</strong> the way Athena would.</p>
+<section id="step-0-design-build-prompt-1" class="level3">
+<h3 class="anchored" data-anchor-id="step-0-design-build-prompt-1">Step 0 — Design &amp; Build (prompt #1)</h3>
+<p>Pick one small AI feature for an app (yours, or the Flask final project):</p>
+<ul>
+<li>a <strong>classifier</strong> — flags a message as urgent / not urgent</li>
+<li>an <strong>LLM feature</strong> — summarizes text, suggests a reply, or recommends something</li>
+<li>an <strong>extended perceptron</strong> — trained on your own labeled examples</li>
+</ul>
+<p>Turn it into a prompt for your AI assistant. A skeleton:</p>
+<blockquote class="blockquote">
+<p>Help me build a small <strong>[classifier / summarizer / recommender]</strong> in Python. It should take <strong>[input]</strong> and return <strong>[output]</strong>. Keep it under 30 lines and explain each part.</p>
+</blockquote>
+<p>Build it in the cell below. Get the simplest version working before adding anything.</p>
+<div id="1e513a46" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Build your small AI feature here (with your assistant's help).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-1-test-it-honestly" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-test-it-honestly">Step 1 — Test It Honestly</h3>
+<p>Before trusting it, try to break it — the habit this whole course has drilled:</p>
+<ol type="1">
+<li>Give it a normal input. Does it work?</li>
+<li>Give it a weird or empty input. Does it fail gracefully, or crash?</li>
+<li>Give it an input from a <em>different</em> group or style than your examples. Does the quality drop?</li>
+</ol>
+<p>Note what you find in a comment. Surprises here are the whole point.</p>
+<div id="cd2a595d" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Test your feature on normal, weird, and out-of-group inputs. Note what breaks.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-audit-it-the-athena-review" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-audit-it-the-athena-review">Step 2 — Audit It (the Athena review)</h3>
+<p>Now write a short <strong>impact audit</strong> of your own feature — the documentation professionals increasingly call a <em>model card</em>. Answer honestly, in the cell below:</p>
+<ol type="1">
+<li><strong>What could it get wrong?</strong> Name a realistic mistake and who it would affect.</li>
+<li><strong>Whose data would train it</strong> at real scale — and did they consent?</li>
+<li><strong>Who is harmed if it fails</strong>, and who is <strong>accountable</strong> — you, the user, the AI vendor?</li>
+<li><strong>Should it be built at all?</strong> If yes, what safeguard would you require first?</li>
+</ol>
+<p><em>AI is a fast first draft — and now you know why. You verify what it makes, and you answer for what you ship.</em></p>
+<p><em>(Write your four-point audit here — double-click to edit.)</em></p>
+<ol type="1">
+<li><strong>What could it get wrong:</strong></li>
+<li><strong>Whose data / consent:</strong></li>
+<li><strong>Harm &amp; accountability:</strong></li>
+<li><strong>Should it be built:</strong></li>
+</ol>
+</section>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Accountability gap</strong> — The absence of a clear responsible party when an automated system causes harm.</li>
+<li><strong>Algorithmic bias</strong> — Systematic unfairness in a model’s outputs, usually learned from biased training data.</li>
+<li><strong>Feature</strong> — One input variable a model uses to make a prediction (like income or debt).</li>
+<li><strong>Inference</strong> — Using a trained model to make a prediction on new input (as opposed to training it).</li>
+<li><strong>Label</strong> — The correct answer attached to an example in supervised learning.</li>
+<li><strong>Large language model (LLM)</strong> — A model trained to predict the next token, producing fluent text.</li>
+<li><strong>Machine learning</strong> — Building programs that learn rules from examples instead of being given the rules.</li>
+<li><strong>Model</strong> — The learned set of weights and rules a machine-learning system produces from data.</li>
+<li><strong>Neural network</strong> — Many perceptrons wired in layers, able to learn complex patterns.</li>
+<li><strong>Next-token prediction</strong> — The core operation of an LLM: repeatedly guessing the next piece of text.</li>
+<li><strong>Perceptron</strong> — The simplest artificial neuron: a weighted sum passed through a threshold, able to learn its weights.</li>
+<li><strong>Proxy variable</strong> — A feature that stands in for a sensitive one (like a zip code for race), letting bias slip back in.</li>
+<li><strong>Supervised learning</strong> — Learning from labeled examples to predict labels for new cases.</li>
+<li><strong>Token</strong> — A piece of text (word or word-part) that a language model treats as one unit.</li>
+<li><strong>Tokenization</strong> — Splitting text into tokens and mapping them to numbers a model can process.</li>
+<li><strong>Training data</strong> — The examples a model learns from; its quality and bias shape everything the model does.</li>
+<li><strong>Unsupervised learning</strong> — Finding structure (like groups) in data that has no labels.</li>
+<li><strong>Weight</strong> — A number saying how much one input counts toward a model’s decision; learning means adjusting weights.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Machine learning flips programming around: instead of writing the rule, you show the machine examples and it learns the rule — supervised (with labeled answers) or unsupervised (finding structure alone). Underneath the biggest systems is the humble perceptron: weighted sum, threshold, and a nudge toward the right answer, stacked billions of times into a neural network. A language model is that mechanism trained to do one thing — predict the next token — which makes it a brilliant pattern-continuer and a poor truth-teller, and explains why you always verify it. Bias is the shadow of this power: a model is a mirror of its data, and hiding a sensitive variable only lets proxies smuggle it back. Behind the results sit real costs — privacy given without consent, hidden human labor, real carbon — and a hard question no code can answer: when an AI harms someone, who is accountable? You can open these machines now. That is exactly what it takes to hold them, and their makers, to account.</p>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p>This is the last notebook — but not the end of the work. Ahead is your <strong>final project</strong>: a Flask web app that ties together everything you’ve built, from control flow and data structures to databases, security, and now a touch of AI. And beyond this course, you leave with something rarer than any one skill: you can look at the systems deciding more and more of the world and, instead of seeing an oracle, see a machine you’re equipped to question. Go build carefully. Verify what you ship. And keep asking who answers when it fails.</p>
+<p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Brendan Shea, PhD · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

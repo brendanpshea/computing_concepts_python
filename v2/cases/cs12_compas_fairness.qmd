@@ -1,0 +1,156 @@
+---
+title: "The Score and the Face"
+subtitle: "COMPAS, facial recognition, and the fairness you cannot have — a COMP 1150 case study"
+author: "Brendan Shea, PhD"
+date: last-modified
+bibliography: refs.bib
+---
+
+::: {.case-at-a-glance}
+- **Who:** Northpointe (now Equivant), makers of the COMPAS risk tool used in courtrooms; the ProPublica journalists who audited it; Eric Loomis, sentenced with a score he was not allowed to inspect; Joy Buolamwini and Timnit Gebru, who measured who facial recognition fails; and Robert Williams, arrested in front of his daughters for a crime he did not commit.
+- **What:** Software now helps decide who gets bail, how long a sentence runs, and whom the police arrest. When researchers checked these systems, they found the errors fall harder on Black people — and then discovered something stranger: there are several definitions of "fair," and no system can satisfy them all at once.
+- **Where / When:** Broward County, Florida (ProPublica's COMPAS study, 2016); Wisconsin (*State v. Loomis*, 2016); the MIT Media Lab (*Gender Shades*, 2018); Detroit (Robert Williams's wrongful arrest, 2020).
+- **Why it matters:** These tools decide freedom. And they force a collision between [predictive accuracy]{.key-term} — being right about risk on average — and [equal treatment]{.key-term} — spreading mistakes evenly across groups. When the groups differ, you cannot have both, and someone must choose which one to sacrifice.
+- **Concepts at play:** supervised learning and risk scores, [training-data bias]{.key-term}, [proxy variables]{.key-term}, [false positives and false negatives]{.key-term}, [calibration]{.key-term}, the accountability gap
+:::
+
+## The Case
+
+The number appears on a screen in the courtroom, and it helps decide how long a man goes to prison.
+
+The number is a **COMPAS** score — a risk rating from 1 to 10, produced by software sold to courts across the United States. A defendant answers 137 questions, or has them answered from records: prior arrests, age, employment, whether friends have been arrested. None of the questions asks the defendant's race. Out comes a single number that claims to predict one thing: how likely this person is to commit another crime. Judges see it at bail hearings and at sentencing, folded in among everything else.
+
+In 2013, a Wisconsin man named Eric Loomis was sentenced to six years, and the judge mentioned his high COMPAS score. Loomis appealed on a simple ground: he was not allowed to know how the score was calculated. COMPAS is a **trade secret**. The company that makes it will not reveal the formula, so no defendant, lawyer, or judge can examine exactly how the number was reached. In 2016 the Wisconsin Supreme Court let the practice stand — but attached a warning that judges should be told the tool's limits [@harvardlaw2017]. Loomis could be scored by a machine he was forbidden to cross-examine.
+
+::: {.context-box}
+**What a risk score really is.** COMPAS is a **supervised** machine-learning tool: it was built by feeding software many past cases — people, their histories, and whether they were later arrested again — until it learned patterns linking the histories to the outcomes. A new defendant's answers are run through those learned patterns to predict *their* risk. This matters for one reason: the tool learned from the past. Whatever patterns the past held — including the results of who gets policed and arrested — the tool absorbs and repeats. A risk score is a mirror held up to history. Keep in mind, too, that it never asks about race.
+:::
+
+That last fact — no race question — is where the story turns. In 2016, journalists at ProPublica obtained the COMPAS scores of more than 7,000 people arrested in Broward County, Florida, and did what the company had not published: they waited two years and checked who was actually arrested again. Then they compared the predictions to reality, broken down by race [@angwin2016].
+
+Overall, COMPAS was about equally accurate for Black and white defendants. But the *mistakes* were not shared equally. Among people who did **not** go on to reoffend, Black defendants had been labeled high-risk almost twice as often as white defendants — flagged as dangerous, wrongly. And among people who **did** reoffend, white defendants had more often been labeled low-risk — reassured, wrongly. The tool's errors had a pattern, and the pattern had a color.
+
+::: {.context-box}
+**Two ways to be wrong.** Any predictor makes two kinds of mistake. A **false positive** flags someone as high-risk who would not have reoffended — an innocent person marked dangerous. A **false negative** clears someone as low-risk who then does reoffend — a real risk missed. ProPublica found Black defendants hit with more false positives, white defendants with more false negatives. And remember: the tool never saw race. It didn't need to. Variables like prior arrests and neighborhood act as **proxies** — stand-ins that carry race in through the side door, because in a society with biased policing, those variables already track it.
+:::
+
+Northpointe rejected the finding, and did so with numbers of its own [@dieterich2016]. The company pointed out that COMPAS was **calibrated**: a score of 7 meant the same real-world risk whether the defendant was Black or white. Seven out of ten people who scored a 7 reoffended, in each group. By *that* measure — treating the same score as meaning the same thing for everyone — the tool was scrupulously even-handed. Both sides had real evidence. Both were, as we will see, correct. That is what makes this the case that would not resolve.
+
+Then the same shape appeared in a different technology, and with a face.
+
+In 2018, MIT researcher Joy Buolamwini and her colleague Timnit Gebru tested commercial facial-analysis systems — the kind that guess a face's characteristics from a photo. The systems were superb on light-skinned men, wrong less than 1% of the time. On dark-skinned women, they were wrong up to about a third of the time [@buolamwini2018]. The reason was the mirror again: the faces used to train the systems had been mostly light and mostly male, so that is what the systems learned to see.
+
+This was not only an academic finding. On a January morning in 2020, police arrived at Robert Williams's home in a Detroit suburb and arrested him on his front lawn, in front of his wife and two young daughters. He was held for thirty hours. His crime: a facial-recognition system had matched his old driver's-license photo to blurry security footage of a shoplifter. The match was wrong. Robert Williams, who looked nothing like the thief beyond the broadest description, became the first person known to be wrongfully arrested in the United States because an algorithm made a mistake [@hill2020]. He would not be the last.
+
+None of these systems was simply "broken." COMPAS is accurate on average. Facial recognition works most of the time. That is exactly what makes them hard. The question they force is not "why is the machine failing?" It is: what do we owe the people who land in the error bars — and who gets to decide?
+
+## How It Worked
+
+The COMPAS fight looks like a factual dispute — was the tool biased or not? — but it is really a collision between two definitions of fairness that cannot both be satisfied. Seeing why is the key that unlocks the whole case.
+
+Start with the two fairness ideas, each perfectly reasonable:
+
+- **Equal calibration** (Northpointe's measure): a given score should mean the same real risk for everyone. A 7 is a 7, whatever your race.
+- **Equal error rates** (ProPublica's measure): the tool should make false-positive mistakes — flagging the innocent — at the same rate for every group.
+
+Now the uncomfortable fact: when two groups reoffend at different overall rates, **you cannot have both at once.** Not because of a bug, but because of arithmetic. The next cell builds a tiny two-group population where the tool is *perfectly calibrated* — and then measures the error rates.
+
+```python
+def measure(people):
+    flagged     = [p for p in people if p["score"] >= 7]      # labeled high-risk
+    innocents   = [p for p in people if not p["reoffended"]]
+    calibration = sum(p["reoffended"] for p in flagged) / len(flagged)
+    false_pos   = sum(p["score"] >= 7 for p in innocents) / len(innocents)
+    return calibration, false_pos
+
+# Group A reoffends less often; Group B more often. Same tool, same threshold.
+group_A = ([{"reoffended": 1, "score": 8}] * 20 + [{"reoffended": 0, "score": 8}] * 10 +
+           [{"reoffended": 1, "score": 3}] * 10 + [{"reoffended": 0, "score": 3}] * 60)
+group_B = ([{"reoffended": 1, "score": 8}] * 40 + [{"reoffended": 0, "score": 8}] * 20 +
+           [{"reoffended": 1, "score": 3}] * 10 + [{"reoffended": 0, "score": 3}] * 30)
+
+for name, group in [("A", group_A), ("B", group_B)]:
+    cal, fp = measure(group)
+    print(f"Group {name}: calibration = {cal:.2f}   false-positive rate = {fp:.2f}")
+```
+
+The output:
+
+```
+Group A: calibration = 0.67   false-positive rate = 0.14
+Group B: calibration = 0.67   false-positive rate = 0.40
+```
+
+Look carefully. The **calibration is identical** — a high-risk flag means a 67% chance of reoffending in both groups, exactly the fairness Northpointe defended. And yet the **false-positive rates are wildly different**: an innocent person in Group B is flagged high-risk almost three times as often as an innocent person in Group A — exactly the unfairness ProPublica measured. Both numbers come from the *same tool on the same data*. Making the calibration equal *forced* the error rates apart.
+
+This is not special to our toy. Mathematicians proved it in general: when base rates differ, no tool can equalize calibration and error rates at the same time, short of being perfect [@kleinberg2016; @chouldechova2017]. The two fairnesses are genuinely incompatible.
+
+| | Equal calibration | Equal error rates |
+|---|---|---|
+| Demands that… | a score means the same risk for all groups | mistakes fall equally on all groups |
+| Protects against… | scores being secretly discounted by group | the innocent of one group being flagged more |
+| Who measured it | Northpointe | ProPublica |
+| True in the data? | **Yes** | **No** — and can't be, given the first |
+
+So "is COMPAS fair?" has no yes-or-no answer. It is fair by one definition and unfair by another, and arithmetic forbids fixing both. Which definition should win is not a question mathematics can settle. It is a question about which mistake we are least willing to make — and that is a moral choice, not a technical one. The remaining question is who gets to make it, and whether anyone is even watching them do it.
+
+## The Argument
+
+The positions connect: each answers the one before.
+
+### ProPublica: unequal errors are injustice
+
+To ProPublica and the researchers who followed, a tool whose wrong "high-risk" labels fall mainly on Black defendants is unjust, no matter how accurate it is on average. A false high-risk score is not a rounding error. It can mean a higher bail, a longer sentence, a denied parole — liberty taken from someone who would have done no harm.
+
+::: {.argument}
+**The Equal-Treatment Argument**
+
+1. A false "high-risk" label inflicts real harm — lost freedom — on a person who would not have reoffended.
+2. COMPAS produces these false labels for Black defendants at nearly twice the rate it does for white defendants.
+3. A system that distributes a serious harm unequally by race is unjust, whatever its overall accuracy.
+4. Therefore COMPAS, as used, is unjust.
+:::
+
+The force is in premise 1: the false positives are not abstractions. They are people, sorted by race into the group more likely to be wrongly caged. The reply does not deny this. It denies that fixing it is possible without a new injustice.
+
+### Northpointe: the score means what it says
+
+Northpointe's answer is that COMPAS treats every defendant the same way: the same score reflects the same risk, computed by the same formula, blind to race. To *force* the error rates equal, the company argues, you would have to treat identical scores differently depending on the defendant's race — reading a 7 as "less serious" for one group than another. That is not removing discrimination; it is adding it.
+
+::: {.argument}
+**The Calibration Reply**
+
+1. Fairness means treating like cases alike: the same score must carry the same meaning for everyone.
+2. COMPAS is calibrated — a given score reflects the same real risk across races — so it meets that standard.
+3. Equalizing the error rates would require deliberately treating identical scores differently by race.
+4. Therefore forcing "equal errors" would itself introduce the racial discrimination we are trying to avoid.
+:::
+
+This is not a dodge. Calibration is a real and serious notion of fairness — the one that stops a lender from quietly demanding a higher score from one group. The weakness is premise 2's quiet assumption: that the risk the tool measures is a clean fact. But the "risk" is reoffending as recorded by *arrests*, and arrests are the output of a policing system that is itself uneven. Which is where the deepest move enters.
+
+**The impossibility, and the buried choice.** Here is what makes the case permanent rather than merely heated: both arguments are correct, and they cannot both be honored. The mathematics is settled — when two groups are arrested again at different rates, no tool can equalize calibration and error rates together. So "make it fair" is not a solvable engineering task; it is a fork. Down one path, you accept unequal error rates to keep scores meaning the same thing. Down the other, you accept unequal scores to protect the innocent equally. There is no third path, and choosing between them means ranking two harms: caging the innocent versus freeing the dangerous. Worse, the "different base rates" that force the whole dilemma are not a fact of nature — they partly reflect who gets policed in the first place, so the tool may be faithfully reproducing an injustice and calling it prediction. None of this is decided in the open. It is decided inside a company's secret formula, and printed as a number a judge treats as neutral.
+
+**Who answers?** Which returns us to Eric Loomis, forbidden to inspect the math that lengthened his sentence, and to Robert Williams, handcuffed on his lawn by a system no officer in the room could explain. Even if we somehow agreed which fairness to pick, a further problem remains: these decisions are made by tools that cannot be cross-examined, sold by companies that owe the accused nothing, deployed by officials who may not understand them. When the score is wrong, or the face is mismatched, there is often no one who answers for it — the vendor calls it the user's judgment, the user calls it the vendor's software. That is the accountability gap, now deciding who is free.
+
+The honest counter-argument deserves its due: the alternative to the machine is not a neutral human. Judges are biased too, and worse, they are biased *inconsistently* — the same case can turn on the hour of day or the judge's mood. A tool at least applies the same flawed rule to everyone, and can, in principle, be audited. Perhaps a biased machine we can measure beats a biased human we cannot. Perhaps. But COMPAS is a trade secret, so in practice we cannot measure it either — we got our numbers only because journalists forced the question. Today some cities have banned police facial recognition outright; Europe's AI Act labels court risk tools "high-risk" and demands scrutiny; and yet COMPAS-style systems still shape sentences across America, and facial recognition keeps spreading. The tools decide more each year, and we still have not answered the first question: if we cannot even agree what "fair" means, and the choice is made in secret, should a machine be deciding freedom at all — and is your answer any different once you remember that the human it replaces was never fair either?
+
+## Discussion Questions
+
+1. Use COMPAS or the facial-recognition findings to explain the idea that "a model is a mirror." Why can a system that never asks about race still produce results that differ by race?
+2. Write the Equal-Treatment Argument and the Calibration Reply in your own words. Do they disagree about the *facts* of what COMPAS does, or about the *meaning of the word fair*? Defend your answer.
+3. You are a judge handed a defendant's COMPAS score of 8, and you are not allowed to see how it was calculated. Do you use it? What do you owe the person in front of you?
+4. Pick another use of these tools — hiring software, credit scoring, or police facial recognition. Is its fairness problem more like COMPAS, or importantly different? Why?
+5. Which mistake is worse: jailing someone who would not have reoffended, or releasing someone who does? Your answer decides where the line is drawn. Who should get to make that choice — a company, a judge, or the public?
+
+## Further Reading
+
+- ProPublica's "Machine Bias" — the investigation that opened the debate, with its data and method laid out [@angwin2016].
+- Northpointe's response — the calibration defense, in the company's own words [@dieterich2016].
+- "Inherent Trade-Offs in the Fair Determination of Risk Scores" — the proof that the two fairnesses cannot both hold [@kleinberg2016].
+- *Gender Shades* — Buolamwini and Gebru's measurement of who facial recognition fails, and why [@buolamwini2018].
+- "Wrongfully Accused by an Algorithm" — the story of Robert Williams's arrest [@hill2020].
+
+## References
+
+::: {#refs}
+:::
