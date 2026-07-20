@@ -1,0 +1,1166 @@
+{
+  "title": "Chapter 12 - AI, Machine Learning & COMPAS Fairness",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In contrast to ordinary programming where developers write explicit logic rules, how does a machine learning system establish its decision rules?",
+      "answer_explanation": "In machine learning, rules are learned directly from patterns in data examples rather than hand-coded.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "learning patterns from data examples",
+          "correct": true
+        },
+        {
+          "text": "compiling source code into bytecode",
+          "correct": false
+        },
+        {
+          "text": "running conditional checks on loops",
+          "correct": false
+        },
+        {
+          "text": "querying database servers directly",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What type of machine learning task is characterized by training a model on data examples that have correct answers attached?",
+      "answer_explanation": "Supervised learning uses labeled training examples where correct answers are already known.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "supervised learning",
+          "correct": true
+        },
+        {
+          "text": "unsupervised learning",
+          "correct": false
+        },
+        {
+          "text": "heuristic programming",
+          "correct": false
+        },
+        {
+          "text": "database indexing",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary objective when running an unsupervised learning algorithm on a dataset?",
+      "answer_explanation": "Unsupervised learning tries to find clusters or structures in data without predefined labels.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "discovering structures in data",
+          "correct": true
+        },
+        {
+          "text": "predicting known categorical labels",
+          "correct": false
+        },
+        {
+          "text": "hashing text inputs into signatures",
+          "correct": false
+        },
+        {
+          "text": "verifying database login credentials",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In a perceptron, what does the weight assigned to an input feature represent?",
+      "answer_explanation": "Weights define how much each input feature contributes to the perceptron's final sum and decision.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "feature importance in the decision",
+          "correct": true
+        },
+        {
+          "text": "physical memory storage size",
+          "correct": false
+        },
+        {
+          "text": "processor execution speed limit",
+          "correct": false
+        },
+        {
+          "text": "number of training loops",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In a single artificial neuron perceptron, what is the role of the bias?",
+      "answer_explanation": "The bias sets the threshold or baseline level that the weighted sum must cross for the neuron to activate.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "setting the activation threshold level",
+          "correct": true
+        },
+        {
+          "text": "randomizing input variables values",
+          "correct": false
+        },
+        {
+          "text": "limiting max learning rate",
+          "correct": false
+        },
+        {
+          "text": "storing prediction error rates",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What mathematical step does a perceptron perform after calculating the weighted sum of its inputs and bias?",
+      "answer_explanation": "It checks if the sum is greater than zero using a threshold step function.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "runs a threshold step function",
+          "correct": true
+        },
+        {
+          "text": "hashes outputs using sha256",
+          "correct": false
+        },
+        {
+          "text": "normalizes inputs using division",
+          "correct": false
+        },
+        {
+          "text": "reverses weights using keys",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "During the training of a perceptron, when are the weights and bias updated?",
+      "answer_explanation": "Weights are only nudged or adjusted when the current weights lead to an incorrect guess (error).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "only when predictions are incorrect",
+          "correct": true
+        },
+        {
+          "text": "at every single input epoch",
+          "correct": false
+        },
+        {
+          "text": "only after running all loops",
+          "correct": false
+        },
+        {
+          "text": "whenever inputs match the bias",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In the perceptron learning algorithm, which value is multiplied by the input and the learning rate to determine the weight update?",
+      "answer_explanation": "The error (target minus guess) is multiplied by learning rate and input to shift weights.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "the calculated prediction error",
+          "correct": true
+        },
+        {
+          "text": "the current bias threshold",
+          "correct": false
+        },
+        {
+          "text": "the total feature count",
+          "correct": false
+        },
+        {
+          "text": "the random connection salt",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What capability is added when single perceptrons are wired together in multiple layered neural networks?",
+      "answer_explanation": "Multiple layers allow neural networks to fit complex non-linear boundaries rather than simple straight lines.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "learning complex non-linear boundaries",
+          "correct": true
+        },
+        {
+          "text": "decreasing training data size",
+          "correct": false
+        },
+        {
+          "text": "eliminating all training labels",
+          "correct": false
+        },
+        {
+          "text": "running loops without memory",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In a multi-layer neural network trained on images, what do the deeper hidden layers typically learn to detect?",
+      "answer_explanation": "Earlier layers spot edges, while deeper hidden layers combine those edges into complex combined shapes and objects.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "complex combined shapes",
+          "correct": true
+        },
+        {
+          "text": "simple isolated edges",
+          "correct": false
+        },
+        {
+          "text": "raw image pixel colors",
+          "correct": false
+        },
+        {
+          "text": "database connection paths",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the single primary mathematical operation performed by a Large Language Model (LLM) during inference?",
+      "answer_explanation": "LLMs operate by next-token prediction, repeatedly choosing the most likely token to follow the current sequence.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "predicting the next token",
+          "correct": true
+        },
+        {
+          "text": "retrieving verified historical database facts",
+          "correct": false
+        },
+        {
+          "text": "compiling syntax code logic commands",
+          "correct": false
+        },
+        {
+          "text": "verifying secure connection server hashes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the process of tokenization in natural language processing?",
+      "answer_explanation": "Tokenization breaks raw text down into numbers mapping to a vocabulary of word parts (tokens).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "splitting text into numeric indicators",
+          "correct": true
+        },
+        {
+          "text": "encrypting text packets across ports",
+          "correct": false
+        },
+        {
+          "text": "hashing text inputs for security",
+          "correct": false
+        },
+        {
+          "text": "compiling text scripts to bytecode",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why might a Large Language Model (LLM) fail at counting letters in a word like strawberry?",
+      "answer_explanation": "LLMs read text chopped into multi-letter tokens, not individual letters, so they don't see the character sequence directly.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "it processes text tokens not letters",
+          "correct": true
+        },
+        {
+          "text": "it lacks character encoding library updates",
+          "correct": false
+        },
+        {
+          "text": "it hashes the entire input string",
+          "correct": false
+        },
+        {
+          "text": "it encrypts text during input validation",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does a Large Language Model (LLM) learn which word tokens are likely to follow a given set of tokens?",
+      "answer_explanation": "LLMs learn frequency connections by training weights over millions of text training examples.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "nudging weights from training examples",
+          "correct": true
+        },
+        {
+          "text": "searching precompiled dictionary tables",
+          "correct": false
+        },
+        {
+          "text": "running static database queries",
+          "correct": false
+        },
+        {
+          "text": "hand-coding syntax rules sheets",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why do Large Language Models (LLMs) sometimes confidently state false information?",
+      "answer_explanation": "LLMs generate sentences based on probabilistic patterns of language, not by checking fact databases.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "they generate text by probability patterns",
+          "correct": true
+        },
+        {
+          "text": "their database connections go offline",
+          "correct": false
+        },
+        {
+          "text": "their validation checks delete key files",
+          "correct": false
+        },
+        {
+          "text": "their local security certificates expire",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary source of algorithmic bias in machine learning models?",
+      "answer_explanation": "Models learn patterns directly from their training data; if the past data reflects bias, the model inherits it.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "historical inequalities in training data",
+          "correct": true
+        },
+        {
+          "text": "syntax coding errors in loops",
+          "correct": false
+        },
+        {
+          "text": "hashing password credentials using salts",
+          "correct": false
+        },
+        {
+          "text": "running parameterized database queries safely",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why does deleting a sensitive attribute like gender fail to prevent a model from discriminating based on that attribute?",
+      "answer_explanation": "Other features act as proxies carrying the correlated information through a side door.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "other features correlate as proxies",
+          "correct": true
+        },
+        {
+          "text": "validation requirements require complete attributes",
+          "correct": false
+        },
+        {
+          "text": "models automatically retrieve deleted columns",
+          "correct": false
+        },
+        {
+          "text": "hashing processes copy deleted variables",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why is privacy a significant ethical challenge when collecting data for large AI models?",
+      "answer_explanation": "Large-scale dataset assembly frequently scoops up personal data without consent, and it's hard to extract once trained.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "personal information is harvested without consent",
+          "correct": true
+        },
+        {
+          "text": "databases cannot search private user records",
+          "correct": false
+        },
+        {
+          "text": "hashing processes leak plaintext user files",
+          "correct": false
+        },
+        {
+          "text": "private attributes slow training loops down",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What hidden labor cost is required to filter offensive content and label datasets for modern AI systems?",
+      "answer_explanation": "Underneath the automated facade stands a large workforce of low-paid data labelers filtering raw data.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "low-paid gig data labeling",
+          "correct": true
+        },
+        {
+          "text": "automated compiler optimization runs",
+          "correct": false
+        },
+        {
+          "text": "database backup indexing jobs",
+          "correct": false
+        },
+        {
+          "text": "security certificate audit checks",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does the carbon footprint of training a single large AI model compare to typical human activities?",
+      "answer_explanation": "Training runs require immense computational power, emitting carbon equivalent to multiple cars' lifetimes.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "exceeds multiple cars emissions",
+          "correct": true
+        },
+        {
+          "text": "matches one person's footprint",
+          "correct": false
+        },
+        {
+          "text": "matches single flight footprints",
+          "correct": false
+        },
+        {
+          "text": "draws minimal network power",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the accountability gap in automated algorithmic decision-making?",
+      "answer_explanation": "When an algorithm causes real-world harm, there is no clear human or legal entity that is held accountable.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "lacking legally responsible parties",
+          "correct": true
+        },
+        {
+          "text": "failing to log queries",
+          "correct": false
+        },
+        {
+          "text": "omitting input validation checks",
+          "correct": false
+        },
+        {
+          "text": "forgetting comments in code",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the general rule regarding developer verification of AI-generated code?",
+      "answer_explanation": "AI code is a fast first draft that often contains subtle bugs; it must always be verified before shipping.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "verify all AI drafts",
+          "correct": true
+        },
+        {
+          "text": "accept all code outputs",
+          "correct": false
+        },
+        {
+          "text": "trust all training matches",
+          "correct": false
+        },
+        {
+          "text": "use template logic files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following tasks are categorized as supervised machine learning applications?",
+      "answer_explanation": "Supervised tasks learn from labeled examples where correct predictions are mapped beforehand.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "classifying incoming email spam messages",
+          "correct": true
+        },
+        {
+          "text": "predicting house prices from attributes",
+          "correct": true
+        },
+        {
+          "text": "identifying urgent client system requests",
+          "correct": true
+        },
+        {
+          "text": "clustering website visitors by behavior",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which mathematical components are directly involved in a perceptron's decision calculation?",
+      "answer_explanation": "A perceptron multiplies inputs by weights, adds a bias, and runs a threshold step.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "input features scaled by weights",
+          "correct": true
+        },
+        {
+          "text": "bias values added to totals",
+          "correct": true
+        },
+        {
+          "text": "step functions checking the threshold",
+          "correct": true
+        },
+        {
+          "text": "cryptographic hashes encrypting connection inputs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which factors directly determine the size and direction of a perceptron's weight adjustment when a prediction error occurs?",
+      "answer_explanation": "Updates are computed using: learning rate * error * input value.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "the specific input feature value",
+          "correct": true
+        },
+        {
+          "text": "the calculated prediction error size",
+          "correct": true
+        },
+        {
+          "text": "the configured training learning rate",
+          "correct": true
+        },
+        {
+          "text": "the total network layer count",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following are standard layer components of a multi-layer neural network?",
+      "answer_explanation": "A network comprises an input layer, one or more hidden layers, and an output layer.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "an input feature variables layer",
+          "correct": true
+        },
+        {
+          "text": "hidden features representation layers",
+          "correct": true
+        },
+        {
+          "text": "an output final prediction layer",
+          "correct": true
+        },
+        {
+          "text": "a database parameterized query layer",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which statements are true regarding text tokenization for Large Language Models?",
+      "answer_explanation": "Words translate to Lego-like token indices, where rare words are chopped up.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "common words receive individual tokens",
+          "correct": true
+        },
+        {
+          "text": "rare words split into pieces",
+          "correct": true
+        },
+        {
+          "text": "tokens convert directly to numbers",
+          "correct": true
+        },
+        {
+          "text": "text files compile to bytecode",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following describe what a Large Language Model is NOT capable of doing under the hood?",
+      "answer_explanation": "LLMs predict language patterns; they cannot verify factual truth or reason semantically.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "guaranteeing factual truth",
+          "correct": true
+        },
+        {
+          "text": "performing logical reasoning",
+          "correct": true
+        },
+        {
+          "text": "verifying database queries",
+          "correct": true
+        },
+        {
+          "text": "predicting next text tokens",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following features can act as proxy variables that implicitly leak sensitive race attributes?",
+      "answer_explanation": "Attributes strongly correlated with race (like zip code or school) act as proxies leaking the data.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "neighborhood postal zip codes",
+          "correct": true
+        },
+        {
+          "text": "high school attendance histories",
+          "correct": true
+        },
+        {
+          "text": "family arrest record histories",
+          "correct": true
+        },
+        {
+          "text": "cryptographic password verification salts",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which issues represent core ethical dimensions of training and deploying modern AI models?",
+      "answer_explanation": "Key concerns include environmental footprints, worker wages, and consent for dataset compilation.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "privacy violations from harvesting",
+          "correct": true
+        },
+        {
+          "text": "carbon emissions from cooling",
+          "correct": true
+        },
+        {
+          "text": "exploitative data labeling labor",
+          "correct": true
+        },
+        {
+          "text": "sql injection vulnerabilities inside databases",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "In the Eric Loomis court case, on what grounds did the developer refuse to reveal the formula used to calculate Loomis's sentence risk score?",
+      "answer_explanation": "Northpointe protected the scoring algorithm as a trade secret, which the court upheld.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "formula is trade secret",
+          "correct": true
+        },
+        {
+          "text": "logic changes at runtime",
+          "correct": false
+        },
+        {
+          "text": "algorithm requires internet links",
+          "correct": false
+        },
+        {
+          "text": "parameters are privately encrypted",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why is a risk scoring algorithm like COMPAS often described as a mirror of history?",
+      "answer_explanation": "Risk tools learn patterns from historical records; they repeat past inequalities such as biased policing rates.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "learns patterns from history",
+          "correct": true
+        },
+        {
+          "text": "requires historical database backups",
+          "correct": false
+        },
+        {
+          "text": "compares faces against databases",
+          "correct": false
+        },
+        {
+          "text": "runs checks on logs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "When ProPublica audited the COMPAS risk score predictions, what racial disparity did they find in false positive error rates?",
+      "answer_explanation": "ProPublica's audit showed Black defendants were flagged as high-risk but did not reoffend at twice the rate of whites.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "higher rates for Black defendants",
+          "correct": true
+        },
+        {
+          "text": "identical rates across groups",
+          "correct": false
+        },
+        {
+          "text": "higher rates for white defendants",
+          "correct": false
+        },
+        {
+          "text": "zero errors for all groups",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "When ProPublica checked COMPAS errors, what pattern did they discover regarding false negative error rates?",
+      "answer_explanation": "White defendants who did reoffend were mistakenly labeled low-risk significantly more often than Black defendants.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "higher rates for white defendants",
+          "correct": true
+        },
+        {
+          "text": "zero errors for white defendants",
+          "correct": false
+        },
+        {
+          "text": "higher rates for Black defendants",
+          "correct": false
+        },
+        {
+          "text": "equal errors for all defendants",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does it mean for a risk tool like COMPAS to be calibrated across different racial groups?",
+      "answer_explanation": "Calibration means a score represents the same risk probability (e.g. 70% rate for a 7) for all groups.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "scores carry identical risk probabilities",
+          "correct": true
+        },
+        {
+          "text": "error rates match across groups",
+          "correct": false
+        },
+        {
+          "text": "racial attributes are hashed early",
+          "correct": false
+        },
+        {
+          "text": "databases run queries in parallel",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "In Joy Buolamwini's MIT study on facial-analysis software, which demographic group had the highest error rate?",
+      "answer_explanation": "Facial-analysis tools had error rates up to 34.7% for dark-skinned female faces.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "dark-skinned women",
+          "correct": true
+        },
+        {
+          "text": "light-skinned men",
+          "correct": false
+        },
+        {
+          "text": "light-skinned women",
+          "correct": false
+        },
+        {
+          "text": "dark-skinned men",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did early commercial facial-analysis systems fail to accurately recognize darker female faces?",
+      "answer_explanation": "Training datasets contained mostly light male faces, leaving darker female patterns unrepresented.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "training datasets were light male",
+          "correct": true
+        },
+        {
+          "text": "hardware lacked sufficient color pixels",
+          "correct": false
+        },
+        {
+          "text": "escaping processes deleted darker pixels",
+          "correct": false
+        },
+        {
+          "text": "network connections throttled image data",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What occurred during the Detroit wrongful arrest of Robert Williams in 2020?",
+      "answer_explanation": "Police arrested Robert Williams due to a flawed match from a facial recognition scan of blurred security footage.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "facial recognition matched blurred video",
+          "correct": true
+        },
+        {
+          "text": "queries leaked private credential files",
+          "correct": false
+        },
+        {
+          "text": "judges used secret risk scores",
+          "correct": false
+        },
+        {
+          "text": "hackers bypassed network egress inspectors",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following describe why equalizing both calibration and error rates in a risk tool is mathematically impossible?",
+      "answer_explanation": "Mathematical proofs show that when groups have different baseline arrest rates, calibration and error rate balances conflict.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "groups have different arrest rates",
+          "correct": true
+        },
+        {
+          "text": "calibration and errors mathematically conflict",
+          "correct": true
+        },
+        {
+          "text": "perfect predictive accuracy is impossible",
+          "correct": true
+        },
+        {
+          "text": "database queries are encrypted locally",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following are arguments against using trade-secret algorithmic risk scores in court sentencing?",
+      "answer_explanation": "Accused individuals are denied the rights to inspect scoring formulas or cross-examine calculation tools.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "defendants cannot inspect calculation formulas",
+          "correct": true
+        },
+        {
+          "text": "accused individuals cannot cross-examine tools",
+          "correct": true
+        },
+        {
+          "text": "vendors hold no direct accountability",
+          "correct": true
+        },
+        {
+          "text": "database inputs are parameterized automatically",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

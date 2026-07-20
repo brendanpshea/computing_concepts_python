@@ -1,0 +1,1166 @@
+{
+  "title": "Chapter 11 - Cybersecurity & the Equifax Breach",
+  "shuffle_answers": true,
+  "questions": [
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which security property is violated when an unauthorized user obtains read access to patient medical records?",
+      "answer_explanation": "Confidentiality ensures that only authorized users can read protected data.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "confidentiality",
+          "correct": true
+        },
+        {
+          "text": "integrity",
+          "correct": false
+        },
+        {
+          "text": "availability",
+          "correct": false
+        },
+        {
+          "text": "accountability",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which security property is violated when an attacker unauthorizedly modifies the dosage amount in an active prescription record?",
+      "answer_explanation": "Integrity ensures that data cannot be modified or altered by unauthorized users.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "integrity",
+          "correct": true
+        },
+        {
+          "text": "confidentiality",
+          "correct": false
+        },
+        {
+          "text": "availability",
+          "correct": false
+        },
+        {
+          "text": "authenticity",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which security property is violated when a flood of network traffic takes a patient portal offline, preventing doctors from retrieving medical records?",
+      "answer_explanation": "Availability ensures that the system and its resources remain reachable and usable.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "availability",
+          "correct": true
+        },
+        {
+          "text": "confidentiality",
+          "correct": false
+        },
+        {
+          "text": "integrity",
+          "correct": false
+        },
+        {
+          "text": "non-repudiation",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary purpose of constructing a threat model before building a web application?",
+      "answer_explanation": "Threat modeling identifies what could go wrong and what security properties are at risk early.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "finding potential vulnerabilities early",
+          "correct": true
+        },
+        {
+          "text": "increasing database query speed",
+          "correct": false
+        },
+        {
+          "text": "compiling source code files",
+          "correct": false
+        },
+        {
+          "text": "styling user interface layouts",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the underlying root cause of a SQL injection vulnerability?",
+      "answer_explanation": "SQL injection occurs when user-supplied input data is mixed directly into query strings and executed as commands by the database.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "running user data as code",
+          "correct": true
+        },
+        {
+          "text": "failing to encrypt databases",
+          "correct": false
+        },
+        {
+          "text": "allowing too many connections",
+          "correct": false
+        },
+        {
+          "text": "omitting key table constraints",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Which Python string formatting practice indicates an unsafe, SQL-injectable database lookup?",
+      "answer_explanation": "Using f-strings or string concatenation to insert values into query text allows SQL injection.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "f-string query string construction",
+          "correct": true
+        },
+        {
+          "text": "parameterized query tuple mapping",
+          "correct": false
+        },
+        {
+          "text": "dictionary value key placeholders",
+          "correct": false
+        },
+        {
+          "text": "list element index selection",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does a parameterized query prevent SQL injection attacks?",
+      "answer_explanation": "A parameterized query uses placeholders to separate user input from the structure of SQL commands, forcing the input to be parsed strictly as data.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "separating commands from inputs",
+          "correct": true
+        },
+        {
+          "text": "encrypting data during execution",
+          "correct": false
+        },
+        {
+          "text": "restricting administrator database access",
+          "correct": false
+        },
+        {
+          "text": "filtering text box inputs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "In a parameterized SQLite query in Python, what character is typically used as a placeholder for user data?",
+      "answer_explanation": "The question mark (?) is the standard placeholder in SQLite database libraries.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "<code>?</code>",
+          "correct": true
+        },
+        {
+          "text": "<code>%</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>$</code>",
+          "correct": false
+        },
+        {
+          "text": "<code>*</code>",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "What type of security vulnerability occurs when unescaped user input is executed as script code inside another user's web browser?",
+      "answer_explanation": "Cross-Site Scripting (XSS) happens when raw user input is printed back into html and run by browser interpreters.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "cross-site scripting",
+          "correct": true
+        },
+        {
+          "text": "SQL injection",
+          "correct": false
+        },
+        {
+          "text": "cross-site request forgery",
+          "correct": false
+        },
+        {
+          "text": "directory traversal",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the process of HTML escaping do to user input containing the character <code><</code>?",
+      "answer_explanation": "HTML escaping translates sensitive characters like < to display-safe entities like &lt;, preventing browsers from interpreting them as html tags.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "converts it to display-safe text",
+          "correct": true
+        },
+        {
+          "text": "deletes characters from input",
+          "correct": false
+        },
+        {
+          "text": "hashes the input string",
+          "correct": false
+        },
+        {
+          "text": "blocks the network request",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does the Jinja template engine in Flask help defend against cross-site scripting (XSS)?",
+      "answer_explanation": "Jinja automatically escapes variables printed inside templates by default, rendering them as safe text.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "automatically escaping template variables",
+          "correct": true
+        },
+        {
+          "text": "encrypting database transaction inputs",
+          "correct": false
+        },
+        {
+          "text": "blocking unauthorized server connections",
+          "correct": false
+        },
+        {
+          "text": "hashing form password inputs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary purpose of input validation in secure coding?",
+      "answer_explanation": "Input validation is checking that incoming data matches expected types, ranges, or lengths, rejecting bad inputs early.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "rejecting incorrectly formatted inputs",
+          "correct": true
+        },
+        {
+          "text": "responsive mobile layout formatting",
+          "correct": false
+        },
+        {
+          "text": "indexing database table columns",
+          "correct": false
+        },
+        {
+          "text": "encrypting packets in transit",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why should web applications never store user passwords in plain text?",
+      "answer_explanation": "If a database is leaked, plaintext passwords immediately expose credentials that users often reuse across multiple sites.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "leaks expose reusable passwords",
+          "correct": true
+        },
+        {
+          "text": "plaintext consumes extra memory",
+          "correct": false
+        },
+        {
+          "text": "databases cannot query text",
+          "correct": false
+        },
+        {
+          "text": "browsers reject plaintext credentials",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is a defining characteristic of a cryptographic hash function used for storing passwords?",
+      "answer_explanation": "Cryptographic hashes are one-way functions, meaning they calculate a signature that cannot be mathematically reversed to recover the input.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "irreversible one-way hash output",
+          "correct": true
+        },
+        {
+          "text": "requires private keys",
+          "correct": false
+        },
+        {
+          "text": "easily decrypted back later",
+          "correct": false
+        },
+        {
+          "text": "variable output length results",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the main operational difference between hashing and encryption?",
+      "answer_explanation": "Hashing is a one-way transformation meant to be irreversible, whereas encryption is two-way and designed to be decrypted with a key.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "hashing is irreversible",
+          "correct": true
+        },
+        {
+          "text": "hashing requires secret keys",
+          "correct": false
+        },
+        {
+          "text": "encryption runs much faster",
+          "correct": false
+        },
+        {
+          "text": "hashing produces variable lengths",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the primary security goal of salting passwords before hashing them?",
+      "answer_explanation": "Salts add unique randomness to each password, ensuring identical passwords yield different hashes, defeating precomputed rainbow tables.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "defeating precomputed lookup attacks",
+          "correct": true
+        },
+        {
+          "text": "slowing user login processing",
+          "correct": false
+        },
+        {
+          "text": "hiding the hashing algorithm",
+          "correct": false
+        },
+        {
+          "text": "compressing long password inputs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How should password salts be generated and assigned to users?",
+      "answer_explanation": "Salts must be randomly generated unique sequences assigned to each individual user account.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "random and unique per user",
+          "correct": true
+        },
+        {
+          "text": "identical for all accounts",
+          "correct": false
+        },
+        {
+          "text": "derived from registration dates",
+          "correct": false
+        },
+        {
+          "text": "hardcoded inside source files",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What password defense is specifically designed to slow down attackers guessing passwords millions of times per second?",
+      "answer_explanation": "Slow cryptographic hashing functions like bcrypt make brute-force guessing computationally expensive.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "intentionally slow hashing functions",
+          "correct": true
+        },
+        {
+          "text": "randomly generated user salts",
+          "correct": false
+        },
+        {
+          "text": "encrypted secure HTTPS routing",
+          "correct": false
+        },
+        {
+          "text": "changing database administrator names",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What does the secure S in HTTPS guarantee about data traveling between a browser and a server?",
+      "answer_explanation": "HTTPS encrypts the HTTP packets in transit, rendering them unreadable to eavesdroppers on the network path.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "data is encrypted",
+          "correct": true
+        },
+        {
+          "text": "data is pre-validated",
+          "correct": false
+        },
+        {
+          "text": "data is stored",
+          "correct": false
+        },
+        {
+          "text": "data is verified",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How does HTTPS establish that the browser is connecting to the genuine server and not an impostor?",
+      "answer_explanation": "HTTPS uses digital identity certificates issued by trusted authorities to verify server ownership.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "using digital identity certificates",
+          "correct": true
+        },
+        {
+          "text": "salting the connection keys",
+          "correct": false
+        },
+        {
+          "text": "running parameterized network queries",
+          "correct": false
+        },
+        {
+          "text": "locking application port numbers",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Where should application secrets, such as external API keys, be stored in production?",
+      "answer_explanation": "Secrets must be stored outside code in system environment variables to avoid accidental leaks via source files.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "system environment variables",
+          "correct": true
+        },
+        {
+          "text": "public git code repositories",
+          "correct": false
+        },
+        {
+          "text": "plain text configuration files",
+          "correct": false
+        },
+        {
+          "text": "global code module variables",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What is the function of the <code>.gitignore</code> file in a software development project?",
+      "answer_explanation": "A .gitignore file lists specific file paths or extensions that git must refuse to track, keeping local secrets out of repositories.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "ignoring files from versioning",
+          "correct": true
+        },
+        {
+          "text": "blocking database injection attacks",
+          "correct": false
+        },
+        {
+          "text": "deleting unused backup folders",
+          "correct": false
+        },
+        {
+          "text": "hashing credentials on commit",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "single word or term",
+      "prompt": "Which of the following are components of the CIA triad in cybersecurity?",
+      "answer_explanation": "The CIA triad stands for Confidentiality, Integrity, and Availability.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "confidentiality",
+          "correct": true
+        },
+        {
+          "text": "integrity",
+          "correct": true
+        },
+        {
+          "text": "availability",
+          "correct": true
+        },
+        {
+          "text": "authorization",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following statements accurately describe how a parameterized query protects a SQL database?",
+      "answer_explanation": "Parameterized queries keep the SQL structure and data inputs strictly separate.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "treats inputs as data",
+          "correct": true
+        },
+        {
+          "text": "separates queries from values",
+          "correct": true
+        },
+        {
+          "text": "prevents input execution commands",
+          "correct": true
+        },
+        {
+          "text": "encrypts stored table values",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which techniques help defend a web application against Cross-Site Scripting (XSS) attacks?",
+      "answer_explanation": "XSS is defended against by input validation and output escaping.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "escaping outputs before display",
+          "correct": true
+        },
+        {
+          "text": "using template automatic escaping",
+          "correct": true
+        },
+        {
+          "text": "validating inputs before storage",
+          "correct": true
+        },
+        {
+          "text": "hashing inputs with salts",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which criteria should be checked when validating a standard 10-digit phone number input?",
+      "answer_explanation": "Validating phone numbers requires checking both digit-only format and exact length.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "confirming characters are digits",
+          "correct": true
+        },
+        {
+          "text": "verifying length is ten",
+          "correct": true
+        },
+        {
+          "text": "rejecting alphabetical letters",
+          "correct": true
+        },
+        {
+          "text": "comparing against password hashes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which options correctly describe the differences between symmetric encryption and cryptographic hashing?",
+      "answer_explanation": "Symmetric encryption is designed to be decrypted (two-way), while hashing is designed to be irreversible (one-way).",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "encryption is reversible",
+          "correct": true
+        },
+        {
+          "text": "hashing is one-way",
+          "correct": true
+        },
+        {
+          "text": "encryption secures data recovery",
+          "correct": true
+        },
+        {
+          "text": "hashing requires private keys",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "What security improvements does adding a salt to passwords provide?",
+      "answer_explanation": "Salts ensure that identical passwords result in unique hashes, defeating lookup/rainbow table attacks.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "uniquely hashes identical passwords",
+          "correct": true
+        },
+        {
+          "text": "defeats precomputed lookup tables",
+          "correct": true
+        },
+        {
+          "text": "creates unique user hashes",
+          "correct": true
+        },
+        {
+          "text": "speeds up login validation",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following are prevented when a website uses HTTPS instead of plain HTTP?",
+      "answer_explanation": "HTTPS encrypts connection traffic to prevent eavesdropping and validates server identities.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "snooping passwords on Wi-Fi",
+          "correct": true
+        },
+        {
+          "text": "reading active session cookies",
+          "correct": true
+        },
+        {
+          "text": "accessing spoofed fake servers",
+          "correct": true
+        },
+        {
+          "text": "injecting database command inputs",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which steps are part of proper secrets management in a Git-tracked software project?",
+      "answer_explanation": "Secrets management involves storing keys in local variables and git-ignoring them.",
+      "points": "",
+      "tags": [
+        "source: notebook",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "using environment variables",
+          "correct": true
+        },
+        {
+          "text": "adding secrets to .gitignore",
+          "correct": true
+        },
+        {
+          "text": "excluding config from commits",
+          "correct": true
+        },
+        {
+          "text": "writing keys in code",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "Which widely used web application software framework contained the vulnerability exploited in the 2017 Equifax data breach?",
+      "answer_explanation": "The breach was caused by an unpatched vulnerability in Apache Struts, a framework used to build web applications.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "Apache Struts",
+          "correct": true
+        },
+        {
+          "text": "Flask Web Framework",
+          "correct": false
+        },
+        {
+          "text": "SQLite Database Engine",
+          "correct": false
+        },
+        {
+          "text": "Jinja Template Library",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "What was the primary exploit capability of the vulnerability CVE-2017-5638 exploited during the Equifax breach?",
+      "answer_explanation": "The vulnerability allowed Remote Code Execution (RCE), letting attackers run system commands on the server.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "remote code execution",
+          "correct": true
+        },
+        {
+          "text": "denial of service",
+          "correct": false
+        },
+        {
+          "text": "local privilege escalation",
+          "correct": false
+        },
+        {
+          "text": "directory path traversal",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did the security alert sent by Equifax's internal security team fail to result in patching the vulnerable ACIS server?",
+      "answer_explanation": "The patch notification went to a distribution list that did not reach the system administrators of the ACIS portal.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "alert emails missed responsible teams",
+          "correct": true
+        },
+        {
+          "text": "patch files corrupted during download",
+          "correct": false
+        },
+        {
+          "text": "vulnerability databases lacked patch keys",
+          "correct": false
+        },
+        {
+          "text": "operating systems blocked updates entirely",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "How did attackers manage to access 51 different databases once inside the first Equifax web server?",
+      "answer_explanation": "Attackers located plaintext credentials (usernames and passwords) left unsecured on the compromised web server.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "finding plaintext database passwords",
+          "correct": true
+        },
+        {
+          "text": "generating new administrator keys",
+          "correct": false
+        },
+        {
+          "text": "guessing default admin credentials",
+          "correct": false
+        },
+        {
+          "text": "hashing connection verification records",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did Equifax's network monitoring device fail to detect 147 million records being exfiltrated over eleven weeks?",
+      "answer_explanation": "The egress traffic inspector was blinded because its security certificate, needed to inspect encrypted traffic, was expired.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "traffic inspection certificates had expired",
+          "correct": true
+        },
+        {
+          "text": "attackers blocked egress communication lines",
+          "correct": false
+        },
+        {
+          "text": "inspectors skipped small file packets",
+          "correct": false
+        },
+        {
+          "text": "monitoring algorithms generated too many alarms",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "single word or term",
+      "prompt": "For how long had the security certificate on Equifax's network traffic inspection device been expired when the breach was discovered?",
+      "answer_explanation": "The security certificate had been expired for nineteen months, leaving the inspection device blinded for over a year and a half.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "nineteen months",
+          "correct": true
+        },
+        {
+          "text": "six months",
+          "correct": false
+        },
+        {
+          "text": "three weeks",
+          "correct": false
+        },
+        {
+          "text": "five years",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "Why did consumer market pressures fail to force Equifax to secure their databases prior to the breach?",
+      "answer_explanation": "Equifax is a credit reporting agency that collects data on consumers without their direct consent or a customer-vendor relationship.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "affected consumers were not customers",
+          "correct": true
+        },
+        {
+          "text": "federal agencies subsidized breach recovery",
+          "correct": false
+        },
+        {
+          "text": "competitor credit bureaus went offline",
+          "correct": false
+        },
+        {
+          "text": "insurance policies covered data losses",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MC",
+      "answer_style": "clause",
+      "prompt": "According to security writer Bruce Schneier, how should consumer data stored by credit bureaus be conceptually treated?",
+      "answer_explanation": "Bruce Schneier argues that personal data is a toxic asset, representing a significant liability rather than a safe commodity.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "as a toxic asset",
+          "correct": true
+        },
+        {
+          "text": "as a free commodity",
+          "correct": false
+        },
+        {
+          "text": "as a permanent value",
+          "correct": false
+        },
+        {
+          "text": "as encrypted private property",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following technical failures contributed to the severity of the 2017 Equifax data breach?",
+      "answer_explanation": "Equifax failed to apply basic defenses including password hashing, network segmentation, and certificate updates.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: technical"
+      ],
+      "choices": [
+        {
+          "text": "storing database credentials in plaintext",
+          "correct": true
+        },
+        {
+          "text": "operating a flat undivided network",
+          "correct": true
+        },
+        {
+          "text": "leaving traffic monitoring devices blinded",
+          "correct": true
+        },
+        {
+          "text": "encrypting incoming database server records",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "question_type": "MR",
+      "answer_style": "clause",
+      "prompt": "Which of the following occurred in the immediate aftermath of the Equifax breach discovery and disclosure?",
+      "answer_explanation": "Executives sold stock before the public announcement, recovery sites were flagged as phishing scams, and a settlement was eventually reached.",
+      "points": "",
+      "tags": [
+        "source: case-study",
+        "type: conceptual"
+      ],
+      "choices": [
+        {
+          "text": "executives sold stock before announcement",
+          "correct": true
+        },
+        {
+          "text": "company dispute websites flagged scams",
+          "correct": true
+        },
+        {
+          "text": "settlements reached hundreds of millions",
+          "correct": true
+        },
+        {
+          "text": "attackers locked database files permanently",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
