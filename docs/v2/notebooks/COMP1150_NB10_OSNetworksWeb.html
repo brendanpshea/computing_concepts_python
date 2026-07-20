@@ -249,13 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="the-crime-scene-is-a-real-computer">The Crime Scene Is a Real Computer</h3>
 <p>Here’s a fact that surprises most people: when you use Google Colab, you’re not using “a website” — you’ve been lent a <strong>real Linux computer</strong> in a Google data center. And Linux will happily let us interrogate it.</p>
 <p>In a code cell, a line starting with <code>!</code> is not Python — it’s a command sent straight to the operating system. The next cell asks the OS to list its running <strong>processes</strong>. Run it in Colab and examine the scene.</p>
-<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="1">
+<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this in Colab: every row is one process (one running program).</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ps aux <span class="op">|</span> head <span class="op">-</span><span class="dv">15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You’ll see a table: each row is one process, with its ID number (<code>PID</code>), how much CPU and memory it’s using, and the command that started it. Somewhere in that list you’ll find <code>python3</code> — <em>that row is this notebook</em>. Your code is just one tenant among many, and the OS is managing all of them at once.</p>
 <p>Now the other two jobs — files and memory. The next cell peeks at the top of the file system, then asks the OS how much memory it’s handed out.</p>
-<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-execution_count="2">
+<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this in Colab: the top of the file system, then the memory situation.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">/</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>free <span class="op">-</span>h</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>What’s inside the <code>/tmp</code> directory right now?</li>
 <li>Roughly how much memory is <em>available</em> on your Colab machine?</li>
 </ol>
-<div id="cell-7" class="cell" data-execution_count="4">
+<div id="cell-7" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: your three investigation commands, one per line.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -300,15 +300,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Python can ask DNS directly. The general pattern:</p>
 <pre><code>socket.gethostbyname("website name")</code></pre>
 <p>The next cell looks up three real names.</p>
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:18:57.752533Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:18:57.751820Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:18:57.811891Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:18:57.810056Z&quot;}}" data-execution_count="2">
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:32:33.792258Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:32:33.791682Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:32:33.898095Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:32:33.896698Z&quot;}}" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> site <span class="kw">in</span> [<span class="st">"google.com"</span>, <span class="st">"wikipedia.org"</span>, <span class="st">"python.org"</span>]:</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>site<span class="sc">:16}</span><span class="ss"> -&gt; </span><span class="sc">{</span>socket<span class="sc">.</span>gethostbyname(site)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>google.com       -&gt; 142.251.218.78
+<pre><code>google.com       -&gt; 142.251.219.142
 wikipedia.org    -&gt; 208.80.154.224
-python.org       -&gt; 151.101.192.223</code></pre>
+python.org       -&gt; 151.101.128.223</code></pre>
 </div>
 </div>
 <p>Three names, three numeric addresses — you just used the same lookup your browser performs before loading any page. (Run it twice on different days and <code>google.com</code> may answer with <em>different</em> numbers. Big sites have many machines behind one name; DNS hands out addresses like a receptionist directing a queue.)</p>
@@ -382,7 +382,7 @@ python.org       -&gt; 151.101.192.223</code></pre>
 <h3 class="anchored" data-anchor-id="your-turn-marys-address-book">✏️ Your Turn — Mary’s Address Book</h3>
 <p>Mary wants a mini address book. Look up the IP addresses of <strong>three websites you actually use</strong> (pick your own). Then run your lookups a second time.</p>
 <p>Did any address change between runs — or differ from a classmate’s result for the same site? Write one sentence proposing <em>why</em> a single name might answer with different numbers.</p>
-<div id="cell-13" class="cell" data-execution_count="7">
+<div id="cell-13" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: look up three sites you use. Run it twice. Compare.</span></span>
@@ -437,7 +437,7 @@ python.org       -&gt; 151.101.192.223</code></pre>
 response.status_code   # the three-digit verdict
 response.json()        # the content, if it's JSON</code></pre>
 <p>Let’s question a real server. Open-Meteo is a free weather service with an API — and since the next section of this case takes us to London, the next cell asks for the current weather near Baker Street.</p>
-<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:18:58.637744Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:18:58.637193Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:19:00.039130Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:19:00.037139Z&quot;}}" data-execution_count="4">
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:32:34.930410Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:32:34.929854Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:32:36.405345Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:32:36.403215Z&quot;}}" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.open-meteo.com/v1/forecast"</span></span>
@@ -450,7 +450,7 @@ response.json()        # the content, if it's JSON</code></pre>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.json()[<span class="st">"current_weather"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Status code: 200
-{'time': '2026-07-20T21:15', 'interval': 900, 'temperature': 20.0, 'windspeed': 13.7, 'winddirection': 121, 'is_day': 0, 'weathercode': 2}</code></pre>
+{'time': '2026-07-20T21:30', 'interval': 900, 'temperature': 19.8, 'windspeed': 13.3, 'winddirection': 124, 'is_day': 0, 'weathercode': 1}</code></pre>
 </div>
 </div>
 </section>
@@ -467,7 +467,7 @@ response.json()        # the content, if it's JSON</code></pre>
 <h3 class="anchored" data-anchor-id="reading-the-envelope-headers">Reading the Envelope: Headers</h3>
 <p>There’s more to an HTTP message than its content and its status code. Every request and every response also carries <strong>headers</strong> — labeled notes on the outside of the message, like the writing on an envelope: who sent it, what’s inside, how to handle it.</p>
 <p>Sherlock, naturally, reads envelopes before letters. The next cell makes a request and inspects three headers from the response.</p>
-<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:19:00.044528Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:19:00.044018Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:19:00.962113Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:19:00.959100Z&quot;}}" data-execution_count="5">
+<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:32:36.412632Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:32:36.411242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:32:37.348796Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:32:37.346986Z&quot;}}" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"https://api.github.com"</span>)</span>
@@ -477,7 +477,7 @@ response.json()        # the content, if it's JSON</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Content-Type  : application/json; charset=utf-8
 Server        : github.com
-Date          : Mon, 20 Jul 2026 21:18:54 GMT</code></pre>
+Date          : Mon, 20 Jul 2026 21:32:19 GMT</code></pre>
 </div>
 </div>
 <p>Three notes on the envelope:</p>
@@ -492,7 +492,7 @@ Date          : Mon, 20 Jul 2026 21:18:54 GMT</code></pre>
 <h3 class="anchored" data-anchor-id="predict-before-you-run">🔮 Predict Before You Run</h3>
 <p>The next cell deliberately asks GitHub’s API for a page that does not exist.</p>
 <p>Look at Sherlock’s status-code table above. <strong>Before running it</strong>, write down the code you expect.</p>
-<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:19:00.968128Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:19:00.967357Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:19:01.913710Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:19:01.911823Z&quot;}}" data-execution_count="6">
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:32:37.353934Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:32:37.353387Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:32:38.238391Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:32:38.236529Z&quot;}}" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"https://api.github.com/this-page-does-not-exist"</span>)</span>
@@ -508,7 +508,7 @@ Date          : Mon, 20 Jul 2026 21:18:54 GMT</code></pre>
 <h3 class="anchored" data-anchor-id="your-turn-irenes-weather-wall">✏️ Your Turn — Irene’s Weather Wall</h3>
 <p>Irene wants a weather widget for her office wall: the current weather for a city of <em>your</em> choice.</p>
 <p>Find your city’s rough latitude and longitude (search engines answer this instantly), call the Open-Meteo API like the example above, and print <strong>just two things</strong>: the temperature and the wind speed, pulled out of the JSON by key.</p>
-<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:108}}" data-execution_count="11">
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:108}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: your city's coordinates, one API call, print temperature and windspeed only.</span></span>
@@ -591,7 +591,7 @@ def handler():
 <li><strong>Is safe to re-run</strong> — it shuts down any previous server on the same port before starting, so you’ll never see “port already in use.”</li>
 <li><strong>Shows your site two ways</strong>: an <strong>inline preview</strong> right in the notebook (works for everyone, no login), <em>and</em> a pop-out link to a full browser tab.</li>
 </ul>
-<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:19:01.919464Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:19:01.918934Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:19:02.019601Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:19:02.016978Z&quot;}}" data-execution_count="7">
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:32:38.243786Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:32:38.242964Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:32:38.347517Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:32:38.345352Z&quot;}}" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Run this once. It's plumbing — you don't need to read it. ──</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket, threading, time</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> werkzeug.serving <span class="im">import</span> make_server</span>
@@ -634,72 +634,125 @@ def handler():
 <p><strong>Why two views?</strong> The pop-out tab uses a Colab feature tied to <em>your</em> Google login, so it only opens for people signed into a Google account in Chrome. The <strong>inline preview</strong> has no such requirement — it renders your site right inside the notebook, for everyone. We lead with the inline one.</p>
 </blockquote>
 </section>
+<section id="a-little-html-tags-that-wrap-text" class="level3">
+<h3 class="anchored" data-anchor-id="a-little-html-tags-that-wrap-text">A Little HTML: Tags That Wrap Text</h3>
+<p>Our routes are about to return <strong>HTML</strong> — the language every web page is written in. You don’t need to master it; you need a handful of <strong>tags</strong>. A tag wraps a piece of text to say what it <em>is</em>, and almost always comes in an open/close pair:</p>
+<pre><code>&lt;tag&gt;the content goes here&lt;/tag&gt;</code></pre>
+<p>The closing tag is the same word with a slash. These six are all we’ll use, and they read almost like English:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 51%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th>Wraps text as</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;h1&gt;…&lt;/h1&gt;</code></td>
+<td>a big heading</td>
+<td><code>&lt;h1&gt;Welcome&lt;/h1&gt;</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;p&gt;…&lt;/p&gt;</code></td>
+<td>a paragraph</td>
+<td><code>&lt;p&gt;Hello there.&lt;/p&gt;</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;b&gt;…&lt;/b&gt;</code></td>
+<td><strong>bold</strong></td>
+<td><code>&lt;b&gt;open&lt;/b&gt;</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;ul&gt;…&lt;/ul&gt;</code></td>
+<td>a bulleted list (the container)</td>
+<td><code>&lt;ul&gt; … &lt;/ul&gt;</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;li&gt;…&lt;/li&gt;</code></td>
+<td>one item inside a list</td>
+<td><code>&lt;li&gt;First tip&lt;/li&gt;</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;a href="/path"&gt;…&lt;/a&gt;</code></td>
+<td>a clickable link to <code>/path</code></td>
+<td><code>&lt;a href="/status"&gt;Status&lt;/a&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>That last one — the <strong>link</strong> — is how a visitor travels between your routes, which is exactly what the <code>NAV</code> bar below is built from. A page, then, is just a string with a few tags in it. You already know how to build strings.</p>
+</section>
 <section id="mrs.-hudson-opens-the-doors" class="level3">
 <h3 class="anchored" data-anchor-id="mrs.-hudson-opens-the-doors">Mrs.&nbsp;Hudson Opens the Doors</h3>
 <p>Naturally, our server will be hosted by a landlady. <strong>Mrs.&nbsp;Hudson</strong> — of Hudson Hosting — presents the next cell: a complete, working web server in about a dozen lines.</p>
 <p>Notice two things in it. First, every page returns the same <code>NAV</code> bar of links — so once your site is live, you can <strong>click between routes</strong> and watch the request/response cycle happen. Second, the last line hands the app to <code>run_web_app</code> instead of blocking forever: no spinner, no stop button, and you can re-run it as often as you like.</p>
-<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:19:02.024924Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:19:02.024335Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:19:02.218721Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:19:02.216303Z&quot;}}" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># A shared navigation bar, so every page links to the others.</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>NAV <span class="op">=</span> (<span class="st">'&lt;nav&gt;&lt;a href="/"&gt;Home&lt;/a&gt; | '</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>       <span class="st">'&lt;a href="/api/status"&gt;Status (JSON)&lt;/a&gt;&lt;/nav&gt;&lt;hr&gt;'</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/"</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> home():</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> NAV <span class="op">+</span> <span class="st">"&lt;h1&gt;221B Web Services&lt;/h1&gt;&lt;p&gt;Mrs. Hudson welcomes you.&lt;/p&gt;"</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/api/status"</span>)</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> status():</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"service"</span>: <span class="st">"221B Web Services"</span>, <span class="st">"status"</span>: <span class="st">"open"</span>, <span class="st">"cases_solved"</span>: <span class="dv">47</span>}</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>run_web_app(app, port<span class="op">=</span><span class="dv">5000</span>)   <span class="co"># non-blocking, re-runnable, shows inline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:32:38.353456Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:32:38.352526Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:32:38.580257Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:32:38.578047Z&quot;}}" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># A shared navigation bar, so every page links to the others.</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>NAV <span class="op">=</span> (<span class="st">'&lt;nav&gt;&lt;a href="/"&gt;Home&lt;/a&gt; | '</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>       <span class="st">'&lt;a href="/status"&gt;Status&lt;/a&gt;&lt;/nav&gt;&lt;hr&gt;'</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/"</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> home():</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> NAV <span class="op">+</span> <span class="st">"&lt;h1&gt;221B Web Services&lt;/h1&gt;&lt;p&gt;Mrs. Hudson welcomes you.&lt;/p&gt;"</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/status"</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> status():</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> NAV <span class="op">+</span> <span class="st">"&lt;h1&gt;Status&lt;/h1&gt;&lt;p&gt;We are &lt;b&gt;open&lt;/b&gt;. Cases solved: &lt;b&gt;47&lt;/b&gt;.&lt;/p&gt;"</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>run_web_app(app, port<span class="op">=</span><span class="dv">5000</span>)   <span class="co"># non-blocking, re-runnable, shows inline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <b>Live on port 5000:</b> <a href="http://127.0.0.1:5000" target="_blank">open your site »</a>
 </div>
 </div>
-<p>Use the preview above — or the pop-out tab — and you are <em>visiting your own website</em>, served by a process you started on a rented Linux machine in a data center. Click <strong>Status (JSON)</strong> in the nav bar (or add <code>/api/status</code> to the address) and you’ll get JSON: you’ve built an API, the very kind you <em>consumed</em> in section 3. (Returning a dictionary from a route is all it takes — Flask converts it to JSON for you.)</p>
+<p>Use the preview above — or the pop-out tab — and you are <em>visiting your own website</em>, served by a process you started on a rented Linux machine in a data center. Click <strong>Status</strong> in the nav bar (or add <code>/status</code> to the address) and Flask runs the <code>status()</code> function and sends back the page it builds. Look closely at each route: it just returns a <strong>string with a few HTML tags in it</strong> — the heading, paragraph, and bold text you met a moment ago.</p>
 <p>Trace one full visit against the suspect map: browser → (address lookup) → packets → <strong>your process</strong> → its return value → packets → rendered page. The <strong>request/response cycle</strong>, end to end — and this time you own the last box.</p>
 <p><em>(Want a link that works on your phone, off Colab? A tool called <code>pyngrok</code> can tunnel your server to a public URL — it needs a free ngrok account and token, so we leave it as an optional side quest.)</em></p>
 </section>
 <section id="routes-that-listen-url-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="routes-that-listen-url-parameters">Routes That Listen: URL Parameters</h3>
-<p>Mrs.&nbsp;Hudson’s two routes are fixed addresses — <code>/</code> and <code>/api/status</code> always answer the same way. But think back to section 3: the weather API answered differently depending on the coordinates <em>you</em> sent. Real servers listen.</p>
+<p>Mrs.&nbsp;Hudson’s two routes are fixed addresses — <code>/</code> and <code>/status</code> always answer the same way. But think back to section 3: the weather API answered differently depending on the coordinates <em>you</em> sent. Real servers listen.</p>
 <p>Flask does this by putting a placeholder in the route’s path:</p>
 <pre><code>@app.route("/tip/&lt;int:tip_id&gt;")
 def one_tip(tip_id):
     ...</code></pre>
 <p>The angle brackets declare a <strong>URL parameter</strong>: whatever number appears in that spot of the address becomes the argument <code>tip_id</code>, handed straight to your function. Visit <code>/tip/2</code>, and <code>tip_id</code> is <code>2</code>.</p>
 <p>The next cell upgrades the server: a list of case tips, and a route that serves any <em>one</em> of them by number — politely refusing numbers that don’t exist.</p>
-<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:19:02.223760Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:19:02.223254Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:19:02.722494Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:19:02.720832Z&quot;}}" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> [</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id"</span>: <span class="dv">1</span>, <span class="st">"from"</span>: <span class="st">"anonymous"</span>, <span class="st">"tip"</span>: <span class="st">"The landlady saw everything."</span>},</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id"</span>: <span class="dv">2</span>, <span class="st">"from"</span>: <span class="st">"Wiggins"</span>, <span class="st">"tip"</span>: <span class="st">"Check the server logs from Tuesday."</span>},</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id"</span>: <span class="dv">3</span>, <span class="st">"from"</span>: <span class="st">"a concerned neighbor"</span>, <span class="st">"tip"</span>: <span class="st">"The process died at 3 AM."</span>},</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Nav bar with a link to each tip, so you can click through them.</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>links <span class="op">=</span> <span class="st">" | "</span>.join(<span class="ss">f'&lt;a href="/tip/</span><span class="sc">{</span>t[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">"&gt;Tip #</span><span class="sc">{</span>t[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">&lt;/a&gt;'</span> <span class="cf">for</span> t <span class="kw">in</span> tips)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>NAV <span class="op">=</span> <span class="ss">f"&lt;nav&gt;</span><span class="sc">{</span>links<span class="sc">}</span><span class="ss">&lt;/nav&gt;&lt;hr&gt;"</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/"</span>)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> home():</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> NAV <span class="op">+</span> <span class="st">"&lt;h1&gt;The Tip Line&lt;/h1&gt;&lt;p&gt;Pick a tip above.&lt;/p&gt;"</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/tip/&lt;int:tip_id&gt;"</span>)</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> one_tip(tip_id):</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tip <span class="kw">in</span> tips:</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> tip[<span class="st">"id"</span>] <span class="op">==</span> tip_id:</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> tip</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"error"</span>: <span class="ss">f"No tip #</span><span class="sc">{</span>tip_id<span class="sc">}</span><span class="ss"> on file."</span>}, <span class="dv">404</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>run_web_app(app, port<span class="op">=</span><span class="dv">5000</span>)   <span class="co"># reuses port 5000 — the helper frees it first</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-07-20T21:32:38.585280Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-07-20T21:32:38.584526Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-07-20T21:32:39.091021Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-07-20T21:32:39.088980Z&quot;}}" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> [</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id"</span>: <span class="dv">1</span>, <span class="st">"from"</span>: <span class="st">"anonymous"</span>, <span class="st">"tip"</span>: <span class="st">"The landlady saw everything."</span>},</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id"</span>: <span class="dv">2</span>, <span class="st">"from"</span>: <span class="st">"Wiggins"</span>, <span class="st">"tip"</span>: <span class="st">"Check the server logs from Tuesday."</span>},</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id"</span>: <span class="dv">3</span>, <span class="st">"from"</span>: <span class="st">"a concerned neighbor"</span>, <span class="st">"tip"</span>: <span class="st">"The process died at 3 AM."</span>},</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Nav bar with a link to each tip, so you can click through them.</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>links <span class="op">=</span> <span class="st">" | "</span>.join(<span class="ss">f'&lt;a href="/tip/</span><span class="sc">{</span>t[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">"&gt;Tip #</span><span class="sc">{</span>t[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">&lt;/a&gt;'</span> <span class="cf">for</span> t <span class="kw">in</span> tips)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>NAV <span class="op">=</span> <span class="ss">f"&lt;nav&gt;</span><span class="sc">{</span>links<span class="sc">}</span><span class="ss">&lt;/nav&gt;&lt;hr&gt;"</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/"</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> home():</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> NAV <span class="op">+</span> <span class="st">"&lt;h1&gt;The Tip Line&lt;/h1&gt;&lt;p&gt;Pick a tip above.&lt;/p&gt;"</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/tip/&lt;int:tip_id&gt;"</span>)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> one_tip(tip_id):</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tip <span class="kw">in</span> tips:</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> tip[<span class="st">"id"</span>] <span class="op">==</span> tip_id:</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> NAV <span class="op">+</span> <span class="ss">f"&lt;h1&gt;Tip #</span><span class="sc">{</span>tip[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">&lt;/h1&gt;&lt;p&gt;From &lt;b&gt;</span><span class="sc">{</span>tip[<span class="st">'from'</span>]<span class="sc">}</span><span class="ss">&lt;/b&gt;:&lt;/p&gt;&lt;p&gt;</span><span class="sc">{</span>tip[<span class="st">'tip'</span>]<span class="sc">}</span><span class="ss">&lt;/p&gt;"</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> NAV <span class="op">+</span> <span class="ss">f"&lt;h1&gt;No such tip&lt;/h1&gt;&lt;p&gt;There is no tip #</span><span class="sc">{</span>tip_id<span class="sc">}</span><span class="ss"> on file.&lt;/p&gt;"</span>, <span class="dv">404</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>run_web_app(app, port<span class="op">=</span><span class="dv">5000</span>)   <span class="co"># reuses port 5000 — the helper frees it first</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <b>Live on port 5000:</b> <a href="http://127.0.0.1:5000" target="_blank">open your site »</a>
 </div>
@@ -708,26 +761,26 @@ def one_tip(tip_id):
 <section id="understanding-the-code-1" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-the-code-1">Understanding the Code</h3>
 <ul>
-<li><code>tips</code> is a list of dictionaries — the same shape as the JSON you pulled from APIs in section 3. Data going out of a server looks just like data coming in.</li>
+<li><code>tips</code> is a list of dictionaries — the same shape as the JSON you pulled from APIs in section 3. Data in a program and data on a page are the same facts, dressed differently.</li>
 <li><code>&lt;int:tip_id&gt;</code> captures the number from the address and passes it to the function as a real Python <code>int</code>.</li>
-<li>The loop searches for a matching tip; returning the dictionary sends it as JSON.</li>
-<li>The last line is the polite refusal: <code>return something, 404</code> sets the <strong>status code</strong> yourself. Visit <code>/tip/99</code> and you get a clean JSON error and a 404 — “no such person at this address,” said properly. Your server now <em>fails informatively</em>, exactly like the well-behaved APIs you questioned earlier.</li>
+<li>The loop searches for a matching tip, then drops its fields into an f-string of HTML tags — a page <strong>built on the spot</strong> from data.</li>
+<li>The last line is the polite refusal: <code>return page, 404</code> sets the <strong>status code</strong> yourself. Visit <code>/tip/99</code> and you get a clean “no such tip” page <em>and</em> a 404 — “no such person at this address,” said properly. Your server now <em>fails informatively</em>, exactly like the well-behaved APIs you questioned earlier.</li>
 </ul>
 </section>
 <section id="pages-that-are-computed-not-stored" class="level3">
 <h3 class="anchored" data-anchor-id="pages-that-are-computed-not-stored">Pages That Are Computed, Not Stored</h3>
 <p>One more secret of the web, hiding in plain sight: most web pages don’t exist until you ask for them.</p>
 <p>There is no file anywhere containing your social-media feed or your bank statement page. When your request arrives, a function <em>builds</em> that HTML on the spot — from data — and returns it. A page is just a string a server computed. You already know how to compute strings.</p>
-<p>The next cell adds a human-readable tips page: the same <code>tips</code> data, but assembled into HTML with an f-string instead of returned as JSON.</p>
-<div id="cell-29" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/tips"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tips_page():</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tip <span class="kw">in</span> tips:</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        rows <span class="op">+=</span> <span class="ss">f"&lt;li&gt;&lt;b&gt;Tip #</span><span class="sc">{</span>tip[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">&lt;/b&gt; from </span><span class="sc">{</span>tip[<span class="st">'from'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>tip[<span class="st">'tip'</span>]<span class="sc">}</span><span class="ss">&lt;/li&gt;"</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> NAV <span class="op">+</span> <span class="ss">f"&lt;h1&gt;The Tip Ledger&lt;/h1&gt;&lt;ul&gt;</span><span class="sc">{</span>rows<span class="sc">}</span><span class="ss">&lt;/ul&gt;"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The next cell adds one more route — a <code>/tips</code> page that lists <em>all</em> the tips at once, by looping over the data and gluing together one <code>&lt;li&gt;</code> list item per tip.</p>
+<div id="cell-29" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/tips"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tips_page():</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tip <span class="kw">in</span> tips:</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        rows <span class="op">+=</span> <span class="ss">f"&lt;li&gt;&lt;b&gt;Tip #</span><span class="sc">{</span>tip[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">&lt;/b&gt; from </span><span class="sc">{</span>tip[<span class="st">'from'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>tip[<span class="st">'tip'</span>]<span class="sc">}</span><span class="ss">&lt;/li&gt;"</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> NAV <span class="op">+</span> <span class="ss">f"&lt;h1&gt;The Tip Ledger&lt;/h1&gt;&lt;ul&gt;</span><span class="sc">{</span>rows<span class="sc">}</span><span class="ss">&lt;/ul&gt;"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Add this route to the server cell above, re-run, and visit <code>/tips</code>: same data, two faces. <code>/tip/2</code> serves machines (JSON); <code>/tips</code> serves humans (HTML) — and both are computed from one list the moment you ask.</p>
+<p>Add this route to the server cell above, re-run, and visit <code>/tips</code>: <code>/tip/2</code> shows <em>one</em> tip, <code>/tips</code> shows <em>all</em> of them — and neither page exists until you ask. Both are computed from the same list the moment the request arrives.</p>
 <p>Real Flask apps keep the HTML in separate files called <strong>templates</strong>, with slots where the data drops in — same idea, tidier housekeeping. You’ll see templates again; the concept is the part that matters: <em>on the modern web, pages are the output of functions.</em></p>
 <p>One suspect remains in Irene’s case. Time to close it.</p>
 </section>
@@ -742,20 +795,20 @@ def one_tip(tip_id):
 <h3 class="anchored" data-anchor-id="your-turn-your-own-route">✏️ Your Turn — Your Own Route</h3>
 <p>Reopen Mrs.&nbsp;Hudson’s server cell and add a <strong>third route</strong> at the path <code>/about</code> that returns a short HTML paragraph about <em>you</em> (or your favorite detective).</p>
 <p>Re-run the cell, visit <code>/about</code>, and confirm your page is live. Then, for one bonus mark of Sherlock’s respect: visit a path you <em>didn’t</em> define and note what Flask returns.</p>
-<div id="cell-31" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: copy the server from above, add an /about route, re-run, visit it.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-31" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: copy the server from above, add an /about route, re-run, visit it.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="capstone-the-baker-street-tip-line" class="level2">
 <h2 class="anchored" data-anchor-id="capstone-the-baker-street-tip-line">✏️ Capstone — The Baker Street Tip Line</h2>
 <p>Time to run your own corner of the web. You’ll design a small web service and have an AI assistant (Gemini, Claude, or ChatGPT) write the Flask code — while you make the design decisions and verify every route.</p>
-<p><strong>The default theme:</strong> an anonymous tip line for Baker Street Diagnostics — a home page, an API route serving the current tips as JSON, and a route that looks up one tip by number. <strong>Or reskin it</strong>: a fan site with an API, a team status board, a restaurant menu service. Any theme with a page + data works.</p>
+<p><strong>The default theme:</strong> an anonymous tip line for Baker Street Diagnostics — a home page, a page that lists all the tips, and a route that looks up one tip by number. <strong>Or reskin it</strong>: a fan site, a team status board, a restaurant menu. Any theme with a page + data works.</p>
 <section id="step-0-design-first-before-touching-the-ai" class="level3">
 <h3 class="anchored" data-anchor-id="step-0-design-first-before-touching-the-ai">Step 0 — Design First (before touching the AI)</h3>
 <p>In the cell below, write your design as plain text:</p>
 <ul>
-<li>Your <strong>three routes</strong>: their paths, and what each returns (HTML page or JSON?)</li>
+<li>Your <strong>three routes</strong>: their paths, and what HTML page each returns</li>
 <li>The data behind them (a list of dictionaries is plenty — no database needed)</li>
 <li>One route must take a <strong>URL parameter</strong> — like <code>/tip/2</code> returning tip #2</li>
 </ul>
@@ -772,21 +825,21 @@ def one_tip(tip_id):
 <p>I’m learning Flask in Google Colab. Write a complete Flask app with these three routes: <strong>[paste your design]</strong>. Store the data as a Python list of dictionaries defined at the top. Give every HTML page a shared <code>NAV</code> bar linking to the other routes. Do <strong>not</strong> call <code>app.run(...)</code>. A helper named <code>run_web_app(app, port=5000)</code> is already defined — end the code with that line instead. One code block, no explanations.</p>
 </blockquote>
 <p>Paste the result below, run it, and <strong>visit every route</strong> in the opened tab. Don’t move on until all three answer.</p>
-<div id="cell-33" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built Flask app here, run it, and visit every route.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-33" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built Flask app here, run it, and visit every route.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-2-question-your-own-witness-prompt-2" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-question-your-own-witness-prompt-2">Step 2 — Question Your Own Witness <em>(prompt #2)</em></h3>
 <p>In section 3 you interrogated other people’s servers with <code>requests</code>. Now interrogate <strong>your own</strong> — the two halves of this notebook shaking hands.</p>
-<p>While your server cell is running, open Colab’s <em>second</em> trick: you can’t easily <code>requests.get</code> your own Colab tab from outside, so test like a detective instead:</p>
+<p>While your server cell is running, test like a detective — click and visit, since you can’t easily <code>requests.get</code> your own Colab tab from outside:</p>
 <ol type="1">
-<li>Visit your JSON route in the browser — is it valid JSON? Every field you designed?</li>
-<li>Visit your parameter route with a number that <strong>exists</strong> — right answer?</li>
-<li>Visit it with a number that <strong>doesn’t exist</strong> — what happens? (If it crashes with an ugly error page: that’s a finding. Ask the AI to make it return a polite JSON message and a <code>404</code> status instead.)</li>
+<li>Visit each page — does the HTML render? Every field you designed showing up?</li>
+<li>Visit your parameter route with a number that <strong>exists</strong> — right tip?</li>
+<li>Visit it with a number that <strong>doesn’t exist</strong> — what happens? (If it crashes with an ugly error page: that’s a finding. Ask the AI to make it return a polite “not found” page and a <code>404</code> status instead.)</li>
 </ol>
-<div id="cell-35" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your improved app here (with the polite 404 handling), re-run, re-test.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-35" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your improved app here (with the polite 404 handling), re-run, re-test.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-3-one-extension-then-reflect" class="level3">
@@ -794,8 +847,8 @@ def one_tip(tip_id):
 <p>Add <strong>one</strong> bell or whistle — your choice: a route that returns <em>how many</em> tips there are; a search route like <code>/tips/urgent</code>; or a home page that lists links to every other route. Re-test everything after (a change that breaks an old route is the oldest bug in the book).</p>
 <p>Then reflect below, 2–3 sentences: What did the AI get wrong or almost-wrong? What did you only catch by <em>visiting the routes yourself</em>?</p>
 <p><em>AI is a fast first draft. You verify.</em></p>
-<div id="cell-37" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your final, extended app here.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-37" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your final, extended app here.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>(Your 2–3 sentence reflection — double-click to edit.)</em></p>
 </section>
@@ -809,6 +862,7 @@ def one_tip(tip_id):
 <li><strong>File system</strong> — The OS’s organization of storage into named files and folders.</li>
 <li><strong>Flask</strong> — A small Python library for building web servers.</li>
 <li><strong>Header</strong> — A labeled note on the outside of an HTTP request or response, like <em>Content-Type</em>; the envelope around the message.</li>
+<li><strong>HTML</strong> — The language web pages are written in: text wrapped in tags (<code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>…) that say what each piece <em>is</em>.</li>
 <li><strong>HTTP</strong> — The web’s request/response language, spoken between clients and servers.</li>
 <li><strong>IaaS / PaaS / SaaS</strong> — The three cloud rental sizes: raw machines / a platform for your code / finished software.</li>
 <li><strong>IP address</strong> — The numeric address that identifies a machine on a network.</li>
@@ -816,7 +870,7 @@ def one_tip(tip_id):
 <li><strong>Packet</strong> — A small, addressed chunk of data; messages cross the internet as many packets.</li>
 <li><strong>Process</strong> — One running program, managed (started, scheduled, stopped) by the OS.</li>
 <li><strong>Request/response cycle</strong> — The full round trip: client asks, server’s code runs, answer returns.</li>
-<li><strong>Route</strong> — In a web server, one path (like <code>/api/status</code>) paired with the function that answers it.</li>
+<li><strong>Route</strong> — In a web server, one path (like <code>/status</code>) paired with the function that answers it.</li>
 <li><strong>Server</strong> — A program that waits for requests and returns responses.</li>
 <li><strong>Status code</strong> — The three-digit verdict in every HTTP response: 200 OK, 404 not found, 500 server error.</li>
 <li><strong>TCP</strong> — The protocol that numbers, confirms, re-sends, and reassembles packets so messages arrive complete.</li>
