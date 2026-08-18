@@ -1,23 +1,41 @@
-"""Render the Summer 2026 syllabus Markdown to a styled, self-contained HTML file."""
+"""Render a COMP 1150 syllabus Markdown file to a styled, self-contained HTML file.
+
+Usage:
+    python _render_syllabus.py                    # renders every syllabus_*.md
+    python _render_syllabus.py syllabus_fa26.md   # renders just one
+"""
+import re
+import sys
+from pathlib import Path
+
 import markdown
 
-SRC = "syllabus_su26.md"
-OUT = "syllabus_su26.html"
+HERE = Path(__file__).parent
 
-with open(SRC, encoding="utf-8") as f:
-    md_text = f.read()
+TERMS = {
+    "su": "Summer",
+    "fa": "Fall",
+    "sp": "Spring",
+}
 
-body = markdown.markdown(
-    md_text,
-    extensions=["extra", "sane_lists", "toc", "nl2br"],
-)
 
-html = f"""<!DOCTYPE html>
+def page_title(md_text: str, src: Path) -> str:
+    """Build the <title> from the '**COMP 1150 | Fall 2026**' line, else the filename."""
+    m = re.search(r"\*\*(COMP\s*1150)\s*\|\s*([^*]+)\*\*", md_text)
+    if m:
+        return f"{m.group(1)} — Computer Science Concepts ({m.group(2).strip()})"
+    m = re.match(r"syllabus_([a-z]{2})(\d{2})", src.stem)
+    if m:
+        return f"COMP 1150 — Computer Science Concepts ({TERMS.get(m.group(1), '')} 20{m.group(2)})"
+    return src.stem
+
+
+TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>COMP 1150 — Computer Science Concepts (Summer 2026)</title>
+<title>{title}</title>
 <style>
   :root {{
     --accent: #1f5f8b;
@@ -36,7 +54,7 @@ html = f"""<!DOCTYPE html>
     padding: 2rem 1rem;
   }}
   .page {{
-    max-width: 860px;
+    max-width: 900px;
     margin: 0 auto;
     background: #fff;
     padding: 3rem 3.5rem;
@@ -57,6 +75,7 @@ html = f"""<!DOCTYPE html>
     padding-bottom: 0.3rem;
   }}
   h3 {{ color: #2c4a63; margin-top: 1.8rem; }}
+  h4 {{ color: #2c4a63; margin-top: 1.5rem; font-size: 1.05rem; }}
   a {{ color: var(--accent); }}
   code, pre {{
     background: var(--accent-light);
@@ -74,6 +93,21 @@ html = f"""<!DOCTYPE html>
     background: var(--accent-light);
     color: var(--muted);
   }}
+  .table-wrap {{ overflow-x: auto; margin: 1.2rem 0; }}
+  table {{
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.95rem;
+  }}
+  th, td {{
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }}
+  th {{ background: var(--accent-light); color: #14222e; }}
+  tbody tr:nth-child(even) {{ background: #fafcfe; }}
+  s {{ color: var(--muted); }}
   ul, ol {{ padding-left: 1.5rem; }}
   li {{ margin: 0.25rem 0; }}
   hr {{ border: none; border-top: 1px solid var(--border); margin: 2rem 0; }}
@@ -81,6 +115,8 @@ html = f"""<!DOCTYPE html>
   @media print {{
     body {{ background: #fff; padding: 0; }}
     .page {{ box-shadow: none; max-width: none; padding: 0; }}
+    table {{ page-break-inside: auto; }}
+    tr {{ page-break-inside: avoid; }}
   }}
 </style>
 </head>
@@ -92,7 +128,28 @@ html = f"""<!DOCTYPE html>
 </html>
 """
 
-with open(OUT, "w", encoding="utf-8") as f:
-    f.write(html)
 
-print(f"Wrote {OUT} ({len(html):,} bytes)")
+def render(src: Path) -> Path:
+    md_text = src.read_text(encoding="utf-8")
+    body = markdown.markdown(
+        md_text,
+        extensions=["extra", "sane_lists", "toc", "nl2br"],
+    )
+    # Let wide calendar tables scroll rather than blow out the page on phones.
+    body = body.replace("<table>", '<div class="table-wrap"><table>').replace(
+        "</table>", "</table></div>"
+    )
+    out = src.with_suffix(".html")
+    out.write_text(
+        TEMPLATE.format(title=page_title(md_text, src), body=body), encoding="utf-8"
+    )
+    print(f"Wrote {out.name} ({out.stat().st_size:,} bytes)")
+    return out
+
+
+if __name__ == "__main__":
+    targets = [Path(a) for a in sys.argv[1:]] or sorted(HERE.glob("syllabus_*.md"))
+    if not targets:
+        sys.exit("No syllabus_*.md files found.")
+    for t in targets:
+        render(t if t.is_absolute() else HERE / t)
