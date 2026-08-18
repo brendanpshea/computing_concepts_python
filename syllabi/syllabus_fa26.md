@@ -20,7 +20,7 @@ This syllabus covers **both sections** of COMP 1150. The readings, assignments, 
 
 | Section | Format | Meetings |
 | :--- | :--- | :--- |
-| **01** | In person | Tuesdays & Thursdays in **Atrium (AT) 210** (see D2L for meeting time) |
+| **01** | In person | Tuesdays & Thursdays, **12:30–1:45 PM**, in **Atrium (AT) 210** |
 | **71** | Fully online, asynchronous | No required synchronous meetings |
 
 Both sections share a single D2L course shell, a single Perusall course, and the same due dates.
@@ -108,7 +108,7 @@ Each exam focuses on the three chapters covered since the previous exam, though 
 
 **How exams are proctored depends on your section:**
 
-- **Section 01 (in person):** You will take each exam **in class** during our regular Tuesday/Thursday meeting.
+- **Section 01 (in person):** You will take each exam **in class** in AT 210 during our regular meeting time. Our class period is exactly 75 minutes, so the exam uses the whole session — please arrive on time, since the exam closes at 1:45 PM regardless of when you start.
 - **Section 71 (online):** Exams are delivered through D2L and require **Respondus LockDown Browser with Respondus Monitor**. You will need:
     - A PC, Mac, or Linux laptop/desktop (Chromebooks, tablets, and phones are not supported).
     - A working **webcam and microphone** — Respondus Monitor records you while you take the exam.
