@@ -239,33 +239,38 @@ Each week's Perusall reading (lecture notes plus case study) opens the preceding
 
 | Week | Dates | Topic | Section 01 meetings |
 | :---: | :--- | :--- | :--- |
-| 1 | Aug. 24–30 | Course orientation; **Ch. 1: What Is Computing?** | Tue. 8/25, Thur. 8/27 |
-| 2 | Aug. 31–Sept. 6 | **Ch. 2: Machine Architecture & Data Representation** | Tue. 9/1, Thur. 9/3 |
-| 3 | Sept. 7–13 | **Ch. 3: Python via Pseudocode & Flowcharts** | Tue. 9/8, Thur. 9/10 |
-| 4 | Sept. 14–20 | Ch. 3 continued; review — **Exam 1 (Ch. 1–3)** | Tue. 9/15, Thur. 9/17 *(exam)* |
-| 5 | Sept. 21–27 | **Ch. 4: Control Flow & Functions** | Tue. 9/22, Thur. 9/24 |
-| 6 | Sept. 28–Oct. 4 | Ch. 4 continued | Tue. 9/29, Thur. 10/1 |
-| 7 | Oct. 5–11 | **Ch. 5: Collections & Abstract Data Types** | <s>Tue. 10/6</s> *(Student Success Day)*, Thur. 10/8 |
-| 8 | Oct. 12–18 | **Ch. 6: Functions, Modules & OOP** | Tue. 10/13, <s>Thur. 10/15</s> *(Education MN)* |
-| 9 | Oct. 19–25 | Ch. 6 continued; review — **Exam 2 (Ch. 4–6)** | Tue. 10/20, Thur. 10/22 *(exam)* |
-| 10 | Oct. 26–Nov. 1 | **Ch. 7: Algorithms, Complexity & the Limits of Computation** | Tue. 10/27, Thur. 10/29 |
-| 11 | Nov. 2–8 | **Ch. 8: Software Engineering, Git & AI-Assisted Development** | Tue. 11/3 *(election day — class meets)*, Thur. 11/5 |
-| 12 | Nov. 9–15 | **Ch. 9: Databases — Relational & Non-Relational** | Tue. 11/10, Thur. 11/12 |
-| 13 | Nov. 16–22 | Ch. 9 continued; review — **Exam 3 (Ch. 7–9)** | Tue. 11/17, Thur. 11/19 *(exam)* |
-| 14 | Nov. 23–29 | **Ch. 10: OS, Networks, Cloud & the Web** | Tue. 11/24, <s>Thur. 11/26</s> *(Thanksgiving)* |
-| 15 | Nov. 30–Dec. 6 | **Ch. 11: Cybersecurity & Secure Software Development** | Tue. 12/1, Thur. 12/3 |
-| 16 | Dec. 7–13 | **Ch. 12: AI, Machine Learning & Ethics** | Tue. 12/8, Thur. 12/10 |
-| 17 | Dec. 14–18 | Review and wrap-up — **Exam 4 (Ch. 10–12)** | Tue. 12/15, Thur. 12/17 *(exam)* |
+| 1 | Aug. 24–30 | **Course introduction:** syllabus, how Perusall works, setting up Colab and *Loop of the Recursive Dragon* | Tue. 8/25, Thur. 8/27 |
+| 2 | Aug. 31–Sept. 6 | **Ch. 1: What Is Computing?** | Tue. 9/1, Thur. 9/3 |
+| 3 | Sept. 7–13 | **Ch. 2: Machine Architecture & Data Representation** | Tue. 9/8, Thur. 9/10 |
+| 4 | Sept. 14–20 | **Ch. 3: Python via Pseudocode & Flowcharts** | Tue. 9/15, Thur. 9/17 |
+| 5 | Sept. 21–27 | Ch. 3 continued; review — **Exam 1 (Ch. 1–3)** | Tue. 9/22, Thur. 9/24 *(exam)* |
+| 6 | Sept. 28–Oct. 4 | **Ch. 4: Control Flow & Functions** | Tue. 9/29, Thur. 10/1 |
+| 7 | Oct. 5–11 | Ch. 4 continued | <s>Tue. 10/6</s> *(Student Success Day)*, Thur. 10/8 |
+| 8 | Oct. 12–18 | **Ch. 5: Collections & Abstract Data Types** | Tue. 10/13, <s>Thur. 10/15</s> *(Education MN)* |
+| 9 | Oct. 19–25 | Ch. 5 continued; **Ch. 6: Functions, Modules & OOP** | Tue. 10/20, Thur. 10/22 |
+| 10 | Oct. 26–Nov. 1 | Ch. 6 continued; review — **Exam 2 (Ch. 4–6)** | Tue. 10/27, Thur. 10/29 *(exam)* |
+| 11 | Nov. 2–8 | **Ch. 7: Algorithms, Complexity & the Limits of Computation** | Tue. 11/3 *(election day — class meets)*, Thur. 11/5 |
+| 12 | Nov. 9–15 | **Ch. 8: Software Engineering, Git & AI-Assisted Development** | Tue. 11/10, Thur. 11/12 |
+| 13 | Nov. 16–22 | **Ch. 9: Databases — Relational & Non-Relational** | Tue. 11/17, Thur. 11/19 |
+| 14 | Nov. 23–29 | Review — **Exam 3 (Ch. 7–9)** | Tue. 11/24 *(exam)*, <s>Thur. 11/26</s> *(Thanksgiving)* |
+| 15 | Nov. 30–Dec. 6 | **Ch. 10: OS, Networks, Cloud & the Web** | Tue. 12/1, Thur. 12/3 |
+| 16 | Dec. 7–13 | **Ch. 11: Cybersecurity & Secure Software Development**; **Ch. 12: AI, Machine Learning & Ethics** begins | Tue. 12/8, Thur. 12/10 |
+| 17 | Dec. 14–18 | Ch. 12 concluded; review — **Exam 4 (Ch. 10–12)** | Tue. 12/15, Thur. 12/17 *(exam)* |
+
+Weeks 7 and 8 each lose a meeting to a campus closure, which is why Ch. 4 and Ch. 5 are each spread across two calendar weeks — between them they get four class sessions, the same as any other pair of chapters.
 
 ### Deadlines at a Glance
 
 | Item | Date |
 | :--- | :--- |
-| **Exam 1** (Ch. 1–3) | Thur., Sept. 17 — section 71 window closes Sun., Sept. 20 |
-| **Exam 2** (Ch. 4–6) | Thur., Oct. 22 — section 71 window closes Sun., Oct. 25 |
-| **Exam 3** (Ch. 7–9) | Thur., Nov. 19 — section 71 window closes Sun., Nov. 22 |
+| **Exam 1** (Ch. 1–3) | Thur., Sept. 24 — section 71 window closes Sun., Sept. 27 |
+| **Exam 2** (Ch. 4–6) | Thur., Oct. 29 — section 71 window closes Sun., Nov. 1 |
+| **Exam 3** (Ch. 7–9) | **Tues.**, Nov. 24 — section 71 window closes Sun., Nov. 29 |
 | ***Loop of the Recursive Dragon*** — all sections complete | Fri., Dec. 11 |
 | **Optional final project** (extra credit) | Fri., Dec. 11 |
 | **Exam 4** (Ch. 10–12) | Thur., Dec. 17 — section 71 window closes Fri., Dec. 18 |
 
-Note that **Exam 4's online window is shorter** than the others, because the semester ends Friday, Dec. 18. Plan accordingly.
+Two scheduling notes worth putting on your own calendar now:
+
+- **Exam 3 falls on a Tuesday**, not a Thursday, because that Thursday is Thanksgiving. Section 01 takes it Tues., Nov. 24; section 71's window runs through the holiday weekend.
+- **Exam 4's online window is shorter** than the others — Thursday to Friday rather than through the weekend — because the semester ends Friday, Dec. 18.
