@@ -8,7 +8,7 @@
 **Email:** Brendan.Shea@rctc.edu  
 **Phone:** 507-722-1146  
 **Office:** M2403Q  
-**Office Hours:** Mon & Wed 10:00 AM – 12:00 PM (by Zoom), plus before and after class on Tuesdays and Thursdays. Please email me ahead of time to let me know you are coming.
+**Office Hours:** Tuesdays & Thursdays, 9:00–10:00 AM and 11:00 AM–12:00 PM, in M2403Q or by Zoom. **Section 71 students are just as welcome as section 01 students** — join by Zoom if you can't come to campus. Please email me ahead of time to let me know you are coming.
 
 **Zoom Link (office hours):** Available on D2L
 
@@ -20,7 +20,7 @@ This syllabus covers **both sections** of COMP 1150. The readings, assignments, 
 
 | Section | Format | Meetings |
 | :--- | :--- | :--- |
-| **01** | In person | Tuesdays & Thursdays (see D2L for time and room) |
+| **01** | In person | Tuesdays & Thursdays in **Atrium (AT) 210** (see D2L for meeting time) |
 | **71** | Fully online, asynchronous | No required synchronous meetings |
 
 Both sections share a single D2L course shell, a single Perusall course, and the same due dates.
