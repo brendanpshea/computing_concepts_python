@@ -95,8 +95,9 @@ Your final grade is a weighted average of the following:
 | Component | Weight |
 | :--- | :---: |
 | Four proctored exams (15% each) | **60%** |
-| Lectures and case studies on Perusall | **30%** |
+| Lectures and case studies on Perusall | **25%** |
 | *Loop of the Recursive Dragon* | **10%** |
+| Week 1 pre-test | **5%** |
 | **Total** | **100%** |
 | *Optional* final programming project | *extra credit* |
 
@@ -114,9 +115,26 @@ Each exam focuses on the three chapters covered since the previous exam, though 
     - A working **webcam and microphone** — Respondus Monitor records you while you take the exam.
     - A reliable internet connection and a quiet, well-lit space.
 
-    You'll be prompted to install LockDown Browser the first time you launch a quiz from D2L. I recommend installing it and running a short practice quiz **at least a few days before Exam 1** so any setup problems surface early. Each exam window **opens the evening of the listed exam date and closes Sunday at 11:59 PM**, so you can choose when to sit it across the weekend. (Exam 4 is the exception — see the calendar.)
+    You'll be prompted to install LockDown Browser the first time you launch a quiz from D2L. **The week 1 pre-test is your setup check** — it runs under the same software as the real exams, so any installation or webcam problems surface in August rather than the night of Exam 1. See "Week 1 Pre-Test" below. Each exam window **opens the evening of the listed exam date and closes Sunday at 11:59 PM**, so you can choose when to sit it across the weekend. (Exam 4 is the exception — see the calendar.)
 
-#### Lectures and Case Studies on Perusall — 30%
+#### Week 1 Pre-Test — 5%
+
+During the **first week of class** you will take a short **proctored pre-test** covering the kinds of questions this course asks. It is due **Sunday, Aug. 30 at 11:59 PM**.
+
+**You have unlimited attempts, and you may review the feedback after each one.** Retake it as many times as you like; only your best score counts. Like *Loop of the Recursive Dragon*, this is not meant to be hard — it is meant to be *done*.
+
+The pre-test has two purposes:
+
+1. **It shows you what exam questions look like** before one counts for 15% of your grade.
+2. **It proves your proctoring setup works.** This matters most for **section 71**: you must complete the pre-test **through Respondus LockDown Browser with Respondus Monitor**, exactly as you will for the real exams. A submission that does not include a successful Respondus Monitor recording does not count, even if the answers are right — the whole point is to confirm the software runs on *your* computer.
+
+    If LockDown Browser or Monitor will not install, will not launch, or cannot see your webcam, **that is what week 1 is for.** Email me immediately. Do not wait until the night of Exam 1 (Sept. 24) to find out, and do not assume it will sort itself out.
+
+Students in **section 01** take the pre-test in class and do not need Respondus.
+
+Because everyone can retake the pre-test until it is right, it is not a measure of what you already know, and I do not use it to place or track anyone. It is a warm-up and a systems check.
+
+#### Lectures and Case Studies on Perusall — 25%
 
 This is where most of the week-to-week work happens. Each chapter's lecture notes and its accompanying case study are posted in **Perusall**, and you earn credit by **annotating** them — asking questions, answering your classmates, and working through the ideas together.
 
@@ -171,7 +189,7 @@ Both sections annotate in the **same** Perusall course, so you will be reading a
 If you miss a quiz or activity due to a brief sickness, work conflict, class trip, computer malfunction, wedding, auto problem, court date, funeral, sporting event, etc., you do NOT need to email me (though it's okay if you want to give me a heads up). Here are my policies for making up missed or late work:
 
 1. Perusall assignments can be submitted up to two days late for reduced credit. Credit declines "linearly" (basically, if you submit it one minute late, you get 99.9% of the credit; if you submit it 1.5 days late, you'll get almost no credit).
-2. *Loop of the Recursive Dragon* allows unlimited retries right up until its deadline, so no late work is accepted after that date. Start early.
+2. The week 1 pre-test and *Loop of the Recursive Dragon* both allow unlimited retries right up until their deadlines, so no late work is accepted after those dates. Start early.
 3. Exams cannot be submitted late without good reason (and will require my approval). Late exams may be subject to a late penalty.
 
 **I will make exceptions to these policies if you can demonstrate a genuine need.** Please talk to me if anything comes up that is preventing you from succeeding in class.
@@ -239,7 +257,7 @@ Each week's Perusall reading (lecture notes plus case study) opens the preceding
 
 | Week | Dates | Topic | Section 01 meetings |
 | :---: | :--- | :--- | :--- |
-| 1 | Aug. 24–30 | **Course introduction:** syllabus, how Perusall works, setting up Colab and *Loop of the Recursive Dragon* | Tue. 8/25, Thur. 8/27 |
+| 1 | Aug. 24–30 | **Course introduction:** syllabus, how Perusall works, setting up Colab and *Loop of the Recursive Dragon*; **proctored pre-test** (due Sun. 8/30) | Tue. 8/25, Thur. 8/27 |
 | 2 | Aug. 31–Sept. 6 | **Ch. 1: What Is Computing?** | Tue. 9/1, Thur. 9/3 |
 | 3 | Sept. 7–13 | **Ch. 2: Machine Architecture & Data Representation** | Tue. 9/8, Thur. 9/10 |
 | 4 | Sept. 14–20 | **Ch. 3: Python via Pseudocode & Flowcharts** | Tue. 9/15, Thur. 9/17 |
@@ -263,6 +281,7 @@ Weeks 7 and 8 each lose a meeting to a campus closure, which is why Ch. 4 and Ch
 
 | Item | Date |
 | :--- | :--- |
+| **Pre-test** (section 71 must use Respondus) | Sun., Aug. 30 |
 | **Exam 1** (Ch. 1–3) | Thur., Sept. 24 — section 71 window closes Sun., Sept. 27 |
 | **Exam 2** (Ch. 4–6) | Thur., Oct. 29 — section 71 window closes Sun., Nov. 1 |
 | **Exam 3** (Ch. 7–9) | **Tues.**, Nov. 24 — section 71 window closes Sun., Nov. 29 |
