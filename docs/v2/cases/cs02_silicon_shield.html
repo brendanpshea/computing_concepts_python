@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-05-26">
+<meta name="dcterms.date" content="2026-08-20">
 
 <title>The Silicon Shield: TSMC, Moore’s Law, and the New Chip Wars – Computing Concepts with Python</title>
 <style>
@@ -63,7 +63,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -211,7 +211,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 26, 2026</p>
+      <p class="date">August 20, 2026</p>
     </div>
   </div>
   
@@ -227,7 +227,7 @@ window.Quarto = {
 <ul>
 <li><strong>Who:</strong> Morris Chang, the engineer who founded the Taiwan Semiconductor Manufacturing Company (TSMC) in 1987; the chip designers who depend on him to actually make their chips; and the U.S. and Chinese governments now fighting over which chips can be sold where</li>
 <li><strong>What:</strong> A single foundry on a single island makes most of the world’s most advanced chips. In 2022, the U.S. imposed the largest peacetime export controls in a generation on what those chips can be sold for, and to whom.</li>
-<li><strong>Where / When:</strong> Hsinchu, Taiwan (TSMC, 1987–present); Washington, Beijing, and The Hague (export-control fights, 2019–2025); Pasadena and Palo Alto (the VLSI design revolution, mid-1970s)</li>
+<li><strong>Where / When:</strong> Hsinchu, Taiwan (TSMC, 1987–present); Washington, Beijing, and The Hague (export-control fights, 2019–present); Pasadena and Palo Alto (the VLSI design revolution, mid-1970s)</li>
 <li><strong>Why it matters:</strong> The story of computing is the story of <span class="key-term">bits per chip</span>. Doubling them was Moore’s Law. Where you double them — and who is allowed to buy the results — has become the largest economic and security question of the decade.</li>
 <li><strong>Concepts at play:</strong> binary representation, bit width, address space, numerical precision, exponential growth, and how physical scale (nanometers of transistor) sets what software can do</li>
 </ul>
@@ -243,7 +243,7 @@ window.Quarto = {
 </ul>
 <p>Many of his American colleagues told him it would not work. Designing and manufacturing were too tightly coupled, they said. The economics did not add up. Chang opened TSMC’s first factory in Hsinchu in 1987. Backing came from the Taiwanese government and from Philips of the Netherlands. He was already past the age most engineers retire.</p>
 <p>He had not invented the idea of separating design from manufacturing alone. Two American researchers had spent the previous decade making that separation technically possible. Carver Mead at Caltech and Lynn Conway at Xerox PARC published a textbook in 1980 called <em>Introduction to VLSI Systems</em> <span class="citation" data-cites="meadConway1980">(<a href="#ref-meadConway1980" role="doc-biblioref">Mead and Conway 1980</a>)</span>. Their key contribution was a set of standardised <span class="key-term">design rules</span>. A published grammar described how to lay out a chip so that any fab could build it. They paired this with a service, MOSIS, that let a university student send a design and receive working silicon a few weeks later. Before Mead and Conway, designing a chip was something you did inside a factory. After them, it was something you could do at a desk.</p>
-<p>The Mead–Conway revolution and Chang’s foundry model fit together like a key in a lock. Designers could now design without owning a factory. Factories could now manufacture without owning a design team. A whole new kind of company became possible — the <span class="key-term">fabless</span> chip company. Nvidia (founded 1993), Qualcomm, Apple Silicon, and almost every artificial-intelligence chip you have heard of are fabless companies. They do not own a fab. Most of them have their chips made by TSMC.</p>
+<p>The Mead–Conway revolution and Chang’s foundry model fit together like a key in a lock. Designers could now design without owning a factory. Factories could now manufacture without owning a design team. A whole new kind of company became possible — the <span class="key-term">fabless</span> chip company. Nvidia (founded 1993), Qualcomm, Apple’s silicon group, and almost every artificial-intelligence chip you have heard of are fabless companies. They do not own a fab. Most of them have their chips made by TSMC.</p>
 <p>Thirty-five years later, this arrangement has produced a remarkable concentration. By 2024, TSMC made:</p>
 <ul>
 <li>about 60% of the world’s chips by foundry revenue</li>
@@ -293,37 +293,37 @@ Predicts the transistor count a given number of years out.
 </tr>
 <tr class="odd">
 <td>1999</td>
-<td>AMD Athlon</td>
+<td>AMD Athlon (K7)</td>
 <td>≈ 38 million</td>
-<td>≈ 9.5 million</td>
+<td>≈ 22 million</td>
 </tr>
 <tr class="even">
-<td>2010</td>
+<td>2011</td>
 <td>Intel Sandy Bridge</td>
-<td>≈ 1.2 billion</td>
-<td>≈ 1.17 billion</td>
+<td>≈ 2.4 billion</td>
+<td>≈ 995 million</td>
 </tr>
 <tr class="odd">
-<td>2024</td>
+<td>2023</td>
 <td>Apple M2 Ultra</td>
 <td>≈ 154 billion</td>
 <td>≈ 134 billion</td>
 </tr>
 </tbody>
 </table>
-<p>The headline transistor count has tracked Moore’s prediction surprisingly well for half a century. What has <em>not</em> held is the economics. Each new doubling now requires a fab that costs tens of billions of dollars to build. The rate of cost-per-transistor decline that defined the industry for decades flattened around 2010. The famous “end of Moore’s Law” is mostly an end of the cheap doubling. It is also the reason the leading-edge fab is so concentrated. Only a handful of companies can afford to chase the next node. As of 2025, only one — TSMC — is making the very latest chips in volume.</p>
+<p>The headline transistor count has stayed within roughly a factor of two of Moore’s naive extrapolation for half a century — remarkable for a fifty-year forecast, though you can see the rule running ahead of any single mainstream chip in the middle of the run, then being caught again by the largest chips of the 2020s. What has <em>not</em> held is the economics. Each new doubling now requires a fab that costs tens of billions of dollars to build. The rate of cost-per-transistor decline that defined the industry for decades flattened around 2010. The famous “end of Moore’s Law” is mostly an end of the cheap doubling. It is also the reason the leading-edge fab is so concentrated. Only a handful of companies can afford to chase the next node. As of 2025, only one — TSMC — is making the very latest chips in volume.</p>
 <p>The second fact is what those transistors <em>let you represent</em>. A chip stores and moves data in bits. The <span class="key-term">bit width</span> of its memory addresses sets a hard ceiling on what software can do. The rule is one line:</p>
 <pre><code>reach(n_bits) = 2 ^ n_bits   bytes      (if one byte per address)</code></pre>
-<p>Each step up the staircase is not a doubling of the previous reach. It is a <em>squaring</em> of it:</p>
+<p>Each time the address width <em>doubles</em>, the reach is not doubled — it is <em>squared</em>:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 40%">
+<col style="width: 20%">
+<col style="width: 32%">
 <col style="width: 48%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Width</th>
+<th>Address width</th>
 <th>Reach</th>
 <th>What this looked like in practice</th>
 </tr>
@@ -332,26 +332,31 @@ Predicts the transistor count a given number of years out.
 <tr class="odd">
 <td>8-bit</td>
 <td>256 bytes</td>
-<td>Atari 2600, the Apple II family</td>
+<td>One page of 6502 memory; the Atari 2600’s entire RAM</td>
 </tr>
 <tr class="even">
 <td>16-bit</td>
 <td>64 KB</td>
-<td>The original IBM PC</td>
+<td>The Apple II and NES address space in full</td>
 </tr>
 <tr class="odd">
+<td>20-bit</td>
+<td>1 MB</td>
+<td>The original IBM PC (a 16-bit CPU with a 20-bit bus)</td>
+</tr>
+<tr class="even">
 <td>32-bit</td>
 <td>4 GB</td>
 <td>The desktop era</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>64-bit</td>
 <td>16 EB (16 billion gigabytes)</td>
 <td>Every phone and laptop made today</td>
 </tr>
 </tbody>
 </table>
-<p>The 1970s microprocessors lived inside 8-bit and 16-bit windows. They could not hold a modern photo in memory if they wanted to. The reason your phone can run a multi-billion-parameter language model is not magic. It is sixty years of doubling, packed into 64-bit address space and 5nm transistors.</p>
+<p>Note the distinction the table turns on: a chip’s <em>data</em> width (how many bits it computes on at once) and its <em>address</em> width (how much memory it can reach) are different numbers. The 6502 in an Apple II was an 8-bit processor with a 16-bit address bus — 8-bit arithmetic, 64 KB of reach. The 1970s and 1980s microprocessors lived inside those small windows either way. They could not hold a modern photo in memory if they wanted to. The reason your phone can run a multi-billion-parameter language model is not magic. It is sixty years of doubling, packed into 64-bit address space and 5nm transistors.</p>
 <p>The same arithmetic applies to <em>numerical precision</em>. A floating-point number stored in 32 bits (FP32) takes twice the space of one in 16 bits (FP16). FP16 takes twice the space of FP8. A 70-billion-parameter language model in FP32 needs 280 GB of memory. In FP8 it needs 70 GB. That difference is the difference between a chip that can serve such a model and one that cannot. The 2022 export controls set numerical thresholds on compute and on memory bandwidth. Those thresholds map almost directly onto which AI workloads a chip can run. The geopolitics is downstream of the bit accounting.</p>
 </section>
 <section id="the-argument-the-silicon-shield-started" class="level2">
@@ -384,12 +389,12 @@ Predicts the transistor count a given number of years out.
 </ol>
 </div>
 <p>The reply does not deny the dual-use premise. It denies premise 4 of the original argument — that controls materially slow what they target. Two pieces of evidence sit in its favour. The first is the Huawei 7nm chip in September 2023. The second is DeepSeek’s frontier-class model, trained in January 2025 on a smaller cluster of <em>export-permitted</em> H800s. Each says, in different words, that the target found a way.</p>
-<p><strong>The silicon-shield reframe.</strong> Both arguments above assume the question is <em>which restrictions to impose</em>. A third move asks whether the underlying arrangement should exist at all. Most of the world’s leading-edge chips are made on a single island claimed by a nuclear power. Defenders of the <em>silicon shield</em> hold that the concentration in Taiwan is itself the deterrent. No major power would risk a conflict that destroys TSMC, because the rest of the world’s economy depends on its output. Critics answer that the same concentration is a single point of catastrophic failure — a target that paints itself. The reframe does not solve the dispute. It widens it. The export-control fight becomes the same fight as the diversification fight — the U.S. CHIPS Act, the EU Chips Act, the Arizona TSMC fab now under construction — an effort to make the world less dependent on Hsinchu without bankrupting itself <span class="citation" data-cites="miller2022chipwar">(<a href="#ref-miller2022chipwar" role="doc-biblioref">Miller 2022</a>)</span>.</p>
+<p><strong>The silicon-shield reframe.</strong> Both arguments above assume the question is <em>which restrictions to impose</em>. A third move asks whether the underlying arrangement should exist at all. Most of the world’s leading-edge chips are made on a single island claimed by a nuclear power. Defenders of the <em>silicon shield</em> hold that the concentration in Taiwan is itself the deterrent. No major power would risk a conflict that destroys TSMC, because the rest of the world’s economy depends on its output. Critics answer that the same concentration is a single point of catastrophic failure — a target that paints itself. The reframe does not solve the dispute. It widens it. The export-control fight becomes the same fight as the diversification fight — the U.S. CHIPS Act, the EU Chips Act, the Arizona TSMC fab, which began volume production at the end of 2024 and is still expanding — an effort to make the world less dependent on Hsinchu without bankrupting itself <span class="citation" data-cites="miller2022chipwar">(<a href="#ref-miller2022chipwar" role="doc-biblioref">Miller 2022</a>)</span>.</p>
 <p><strong>Where the argument rests now.</strong> Three things are simultaneously true:</p>
 <ul>
 <li>The export controls have, in fact, slowed the very top end of Chinese AI compute. The fastest chips legally available in China lag the global frontier by a generation.</li>
 <li>They have not stopped the frontier. Huawei is making 7nm chips. DeepSeek-class models are being trained on permitted hardware. A government willing to spend $150 billion is generating its own capability.</li>
-<li>TSMC’s Arizona fab is years behind schedule and costs billions more than its Taiwan equivalents. The duplication the controls implicitly demand is expensive enough to test the political will that produced them.</li>
+<li>TSMC’s Arizona fab reached volume production roughly two years later than first promised, and costs billions more per wafer than its Taiwan equivalents. The duplication the controls implicitly demand is expensive enough to test the political will that produced them.</li>
 </ul>
 <p>The neat lesson would be that the controls “worked” or “failed.” The honest answer is that they did some of what they were intended to do, at a cost we do not yet know how to count. The question they were meant to settle — whether advanced compute should be a national-security strategic asset at all — is still open.</p>
 </section>
@@ -400,7 +405,7 @@ Predicts the transistor count a given number of years out.
 <li>Moore’s Law was a prediction that became a target — the industry organized itself for sixty years to make the prediction come true. Pick another field (sports records, life expectancy, internet speed, anything) where a forecast or schedule seems to have become self-fulfilling in this way. What did the field gain by committing to the target, and what got distorted because of it?</li>
 <li>Explain to a friend who knows nothing about chips why a country might treat one company (TSMC) as more strategically important than several of its own military bases. Use plain words and no jargon. What is the single fact your friend has to accept before the rest of your explanation makes sense?</li>
 <li>Write <strong>The Export-Control Argument</strong> and <strong>The Fragmentation Reply</strong> in your own words. What is the one thing they really disagree about?</li>
-<li>You are at the U.S. Bureau of Industry and Security in March 2026. Your draft rule restricts a new chip — and a parallel rule tightens visa scrutiny for Chinese graduate students in semiconductor research at U.S. universities. Most of those students have no link to Chinese military programs. Do you publish both rules together, split them apart, or pull the visa rule entirely? Defend your choice.</li>
+<li>You are at the U.S. Bureau of Industry and Security today. Your draft rule restricts a new chip — and a parallel rule tightens visa scrutiny for Chinese graduate students in semiconductor research at U.S. universities. Most of those students have no link to Chinese military programs. Do you publish both rules together, split them apart, or pull the visa rule entirely? Defend your choice.</li>
 <li>Pick one: the phone in your pocket, a U.S. F-35 fighter, a chatbot you have used. Trace its dependence on TSMC. What would change about it if TSMC stopped shipping tomorrow?</li>
 </ol>
 </section>

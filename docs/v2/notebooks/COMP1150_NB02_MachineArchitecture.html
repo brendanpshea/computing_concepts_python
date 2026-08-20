@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-07-06">
+<meta name="dcterms.date" content="2026-08-20">
 
 <title>Notebook 2: Machine Architecture &amp; Data Representation – Computing Concepts with Python</title>
 <style>
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 6, 2026</p>
+      <p class="date">August 20, 2026</p>
     </div>
   </div>
   
@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p><strong>OR</strong> — output 1 if <em>either</em> input is 1. &nbsp;&nbsp; <strong>XOR</strong> (“exclusive or”) — output 1 if the inputs are <em>different</em>. &nbsp;&nbsp; <strong>NOT</strong> — one input, flipped.</p>
+<p><strong>OR</strong> — output 1 if <em>either</em> input is 1. &nbsp;&nbsp; <strong>XOR</strong> (“exclusive or”) — output 1 if the inputs are <em>different</em>. &nbsp;&nbsp; <strong>NOT</strong> — one input, flipped. &nbsp;&nbsp; One more shows up in the drill below: <strong>NAND</strong> — an AND gate with a NOT stuck on the end, so it outputs 1 <em>except</em> when both inputs are 1.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -417,8 +417,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Chain eight half-adders together (passing each carry into the next column) and you can add two 8-bit numbers. That chain is the core of the <strong>ALU</strong> — the <strong>Arithmetic Logic Unit</strong>, the part of the chip that does math and comparisons. Add some gates that select <em>which</em> operation to run, and you have, essentially, a processor’s calculator.</p>
-<p>That’s the whole bottom of the stack: <strong>transistor → gate → half-adder → ALU.</strong> Next we’ll see where the ALU sits inside a complete machine.</p>
+<p>A half-adder handles one column in isolation, which is only enough for the rightmost column — every column above it also has to accept a carry <em>coming in</em> from its right. Add a third input for that and you have a <strong>full adder</strong>. Chain one half-adder and seven full adders, passing each carry left into the next column, and you can add two 8-bit numbers. That chain is the core of the <strong>ALU</strong> — the <strong>Arithmetic Logic Unit</strong>, the part of the chip that does math and comparisons. Add some gates that select <em>which</em> operation to run, and you have, essentially, a processor’s calculator.</p>
+<p>That’s the whole bottom of the stack: <strong>transistor → gate → half-adder → full adder → ALU.</strong> Next we’ll see where the ALU sits inside a complete machine.</p>
 <p>Before we go up a level, here’s a practice game for the gates. You don’t need to read its code — that comes in Notebook 4. Just <strong>run it and drill</strong> until the answers come fast.</p>
 <p><strong>🎮 This is a practice tool — not code to study.</strong> The hidden cell above defines the game; the cell below runs it. You’re not expected to understand <em>how</em> it’s built yet — functions arrive in Notebook 4. For now, just play: drill the gates until the answers come automatically.</p>
 <div id="A4vzd_2ytAF3" class="cell" data-execution_count="4">
@@ -1207,6 +1207,8 @@ next level -&gt; stored as   2  (00000010)
 next level -&gt; stored as   3  (00000011)</code></pre>
 </div>
 </div>
+<p>Run that cell and watch 254 → 255 → <strong>0</strong>. Nothing is “broken” — the hardware did exactly what fixed-width wrap-around always does (the same <code>&amp; 0xFF</code> masking from the two’s-complement section). The bug was a <em>human</em> decision: choosing a box too small for the numbers that would eventually go in it.</p>
+<p>Every representation choice in this notebook — byte width, palette size, sample rate, character encoding — is an engineering trade-off with real consequences. That is the deep lesson of data representation, and it’s why this is Learning Outcomes 1 and 2 of the course, not an afterthought.</p>
 </section>
 <section id="think-about-it-when-the-numbers-run-out" class="level3">
 <h3 class="anchored" data-anchor-id="think-about-it-when-the-numbers-run-out">💭 Think About It — When the Numbers Run Out</h3>
@@ -1217,8 +1219,6 @@ next level -&gt; stored as   3  (00000011)</code></pre>
 <li>Have you ever hit an invisible limit in an app or game — a max level, a character cap, a counter that froze? What do you now think was happening underneath?</li>
 </ul>
 <p>There are no single right answers here — share a sentence or two on each.</p>
-<p>Run that cell and watch 254 → 255 → <strong>0</strong>. Nothing is “broken” — the hardware did exactly what fixed-width wrap-around always does (the same <code>&amp; 0xFF</code> masking from the two’s-complement section). The bug was a <em>human</em> decision: choosing a box too small for the numbers that would eventually go in it.</p>
-<p>Every representation choice in this notebook — byte width, palette size, sample rate, character encoding — is an engineering trade-off with real consequences. That is the deep lesson of data representation, and it’s why this is Learning Outcomes 1 and 2 of the course, not an afterthought.</p>
 </section>
 <section id="exercise-4-build-a-retro-text-adventure-with-ai" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-4-build-a-retro-text-adventure-with-ai">✏️ Exercise 4 — Build a Retro Text Adventure with AI</h3>
@@ -1257,7 +1257,8 @@ next level -&gt; stored as   3  (00000011)</code></pre>
 <li><strong>Transistor</strong> — A microscopic electrical switch with two states (on/off); the physical basis of all digital computing.</li>
 <li><strong>Logic gate</strong> — A small group of transistors that follows one logical rule (AND, OR, NOT, XOR).</li>
 <li><strong>Truth table</strong> — A table listing every input combination for a gate or circuit and the resulting output.</li>
-<li><strong>Half-adder</strong> — An XOR gate plus an AND gate that together add two bits (XOR = sum, AND = carry).</li>
+<li><strong>Half-adder</strong> — An XOR gate plus an AND gate that together add two bits (XOR = sum, AND = carry out). It has no carry <em>in</em>.</li>
+<li><strong>Full adder</strong> — An adder for one column that takes three inputs (two bits plus a carry in) and produces a sum bit and a carry out; the building block of every column but the rightmost.</li>
 <li><strong>ALU (Arithmetic Logic Unit)</strong> — The CPU part that performs arithmetic and logic, built from chained adders and gates.</li>
 <li><strong>Control Unit</strong> — The CPU part that reads each instruction and directs all other parts.</li>
 <li><strong>Register</strong> — A tiny, extremely fast storage slot inside the CPU.</li>
@@ -1283,7 +1284,7 @@ next level -&gt; stored as   3  (00000011)</code></pre>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <ul>
-<li><strong>Transistors → gates → half-adders → ALU.</strong> Computation is switches wired to follow logical rules.</li>
+<li><strong>Transistors → gates → half-adders → full adders → ALU.</strong> Computation is switches wired to follow logical rules.</li>
 <li><strong>Inside the CPU</strong>, a Control Unit directs an ALU and registers (PC, IR, accumulator) through the <strong>fetch–decode–execute</strong> loop, talking to memory over buses.</li>
 <li><strong>The memory hierarchy</strong> (registers → cache → RAM → SSD → disk) exists because no memory is fast, big, and cheap at once; <strong>caching</strong> works because programs have locality.</li>
 <li><strong>Consoles from 1977 to 2020</strong> show RAM growing ~130 million-fold while the architecture stayed the same — magnitudes change, ideas don’t.</li>

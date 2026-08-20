@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-07-06">
+<meta name="dcterms.date" content="2026-08-20">
 
 <title>Open Source and the Code an AI Learned From – Computing Concepts with Python</title>
 <style>
@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -217,7 +217,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 6, 2026</p>
+      <p class="date">August 20, 2026</p>
     </div>
   </div>
   
@@ -279,7 +279,10 @@ div.csl-indent {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(git_blob_hash(<span class="st">"hello World</span><span class="ch">\n</span><span class="st">"</span>))   <span class="co"># one letter changed</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 58bd3da091baa2c5ddaf2d841ba1fdb51be1874f</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Run it, and you will get exactly those two fingerprints — anyone, on any machine, always. That is the point of a <span class="key-term">hash function</span>: the same content always gives the same fingerprint, and even a one-letter change gives a completely different one. There is no way to work backward from the fingerprint to the content, and no practical way to craft a different file with the same fingerprint.</p>
+<p>Run it, and you will get exactly those two fingerprints — anyone, on any machine, always. That is the point of a <span class="key-term">hash function</span>: the same content always gives the same fingerprint, and even a one-letter change gives a completely different one. There is no way to work backward from the fingerprint to the content.</p>
+<div class="context-box">
+<p><strong>A caveat Git has had to live with.</strong> The last property you want from a hash — that nobody can <em>manufacture</em> two different files with the same fingerprint — is the one SHA-1 no longer has. In 2017 a Google and CWI team produced the first real SHA-1 collision (the “SHAttered” attack), and a 2020 result made chosen-prefix collisions cheap enough to rent. Git’s answer was two-fold: it ships a hardened SHA-1 that detects the known collision technique and refuses the object, and the format now supports SHA-256 repositories for projects that want to migrate. So the ledger below still holds in practice — but because of active patching, not because SHA-1 was strong enough. Cryptographic assumptions expire; you will meet this idea again in Notebook 11.</p>
+</div>
 <p>Git builds its whole history from this trick:</p>
 <ol type="1">
 <li>Every file’s content gets a hash (a <em>blob</em>).</li>

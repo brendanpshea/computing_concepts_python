@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-05-26">
+<meta name="dcterms.date" content="2026-08-20">
 
 <title>How We Represent People: ADTs and the Ethics of Data Modeling – Computing Concepts with Python</title>
 <style>
@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -217,7 +217,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 26, 2026</p>
+      <p class="date">August 20, 2026</p>
     </div>
   </div>
   
@@ -335,7 +335,7 @@ div.csl-indent {
 <p>Seven years on, the empirical record is more complicated, and the Universalist position now has its own evidence.</p>
 <p>The U.S. National Institute of Standards and Technology runs continuous evaluations of commercial face-recognition systems (the program was renamed from FRVT to FRTE in 2023). The most recent results show that the top-performing algorithms have largely closed the demographic accuracy gap that <em>Gender Shades</em> identified. The median deployed system still shows the old pattern; the best vendors do not. A 2025 review by Kotwal and colleagues argues that the residual gap on top systems is now better explained by confounders — illumination, image quality, hairstyle occlusion of the face — than by any intrinsic property of the demographic group <span class="citation" data-cites="kotwal2025">(<a href="#ref-kotwal2025" role="doc-biblioref">Kotwal and Marcel 2025</a>)</span>. On the dataset side, ImageNet’s cleanup removed the worst labels; subsequent work has moved toward consent-based and synthetic alternatives.</p>
 <p>The cleanest Universalist reading of this evidence is: <em>the system works now; the early audits did their job; the schema question was a transitional problem.</em></p>
-<p>The cleanest Pluralist reading is sharper, and is what most of the 2024–2025 literature actually says. The accuracy gap closed, but it closed <em>within the original ontology</em>. Gender stayed binary in the benchmarks that vendors optimized against. Skin tone stayed Fitzpatrick. ImageNet’s category structure — inherited from a 1985 lexical database called WordNet — stayed; the cleanup edited rows, not the schema. A 2024 retrospective titled <em>The Nine Lives of ImageNet</em> argues that this is the deep lesson of the whole episode: you cannot fix a dataset whose central operation, labeling a person by visual category, was the thing under critique <span class="citation" data-cites="denton2024">(<a href="#ref-denton2024" role="doc-biblioref">Denton et al. 2024</a>)</span>. Making the classifier more accurate at a binary task does not address whether the task should be binary. Better models inside the old ontology are still better models inside the old ontology.</p>
+<p>The cleanest Pluralist reading is sharper, and is what most of the 2024–2025 literature actually says. The accuracy gap closed, but it closed <em>within the original ontology</em>. Gender stayed binary in the benchmarks that vendors optimized against. Skin tone stayed Fitzpatrick. ImageNet’s category structure — inherited from a 1985 lexical database called WordNet — stayed; the cleanup edited rows, not the schema. A 2024 retrospective by Alexandra Sasha Luccioni and Kate Crawford, <em>The Nine Lives of ImageNet</em>, argues that this is the deep lesson of the whole episode: you cannot fix a dataset whose central operation, labeling a person by visual category, was the thing under critique <span class="citation" data-cites="luccioni2024 denton2021">(<a href="#ref-luccioni2024" role="doc-biblioref">Luccioni and Crawford 2024</a>; <a href="#ref-denton2021" role="doc-biblioref">Denton et al. 2021</a>)</span>. Making the classifier more accurate at a binary task does not address whether the task should be binary. Better models inside the old ontology are still better models inside the old ontology.</p>
 <p>This puts the case in a sharper place than it sat in 2018. The pure technical objection — <em>the model doesn’t work for these people</em> — is increasingly answerable on the vendor’s terms. The schema objection — <em>the categories the model can ever recognize are themselves a worldview</em> — is not. <em>If the categories in your dataset are the only categories your model can ever recognize, and we now know how to make models very accurate within those categories, does the technical success make the schema question more urgent, or less?</em></p>
 </section>
 </section>
@@ -356,7 +356,7 @@ div.csl-indent {
 <li>Patrick McKenzie, “Falsehoods Programmers Believe About Names” (2010) — the post that named the genre and is still the first thing handed to new engineers building a user table <span class="citation" data-cites="mckenzie2010">(<a href="#ref-mckenzie2010" role="doc-biblioref">McKenzie 2010</a>)</span>.</li>
 <li>Joy Buolamwini and Timnit Gebru, “Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification” (FAccT 2018) — the audit that put demographic bias in face recognition on the public record <span class="citation" data-cites="buolamwini2018">(<a href="#ref-buolamwini2018" role="doc-biblioref">Buolamwini and Gebru 2018</a>)</span>.</li>
 <li>Os Keyes, “The Misgendering Machines: Trans/HCI Implications of Automatic Gender Recognition” (CSCW 2018) — the most direct argument that the schema of gender recognition is the problem, not the model’s accuracy on that schema <span class="citation" data-cites="keyes2018">(<a href="#ref-keyes2018" role="doc-biblioref">Keyes 2018</a>)</span>.</li>
-<li>Emily Denton et al., “The Nine Lives of ImageNet: A Sociotechnical Retrospective” (2024) — the long retrospective on what the ImageNet cleanups did, what they could not do, and why <span class="citation" data-cites="denton2024">(<a href="#ref-denton2024" role="doc-biblioref">Denton et al. 2024</a>)</span>.</li>
+<li>Alexandra Sasha Luccioni and Kate Crawford, “The Nine Lives of ImageNet: A Sociotechnical Retrospective of a Foundation Dataset and the Limits of Automated Essentialism” (<em>DMLR</em>, 2024) — the long retrospective on what the ImageNet cleanups did, what they could not do, and why <span class="citation" data-cites="luccioni2024">(<a href="#ref-luccioni2024" role="doc-biblioref">Luccioni and Crawford 2024</a>)</span>; Emily Denton and colleagues’ earlier critical history of the dataset is the study it builds on <span class="citation" data-cites="denton2021">(<a href="#ref-denton2021" role="doc-biblioref">Denton et al. 2021</a>)</span>.</li>
 </ul>
 </section>
 <section id="references" class="level2">
@@ -380,8 +380,8 @@ Buolamwini, Joy, and Timnit Gebru. 2018. <span>“Gender Shades: Intersectional 
 <div id="ref-crawford2019" class="csl-entry" role="listitem">
 Crawford, Kate, and Trevor Paglen. 2019. <em>Excavating <span>AI</span>: The Politics of Images in Machine-Learning Training Sets</em>. Excavating.ai. <a href="https://excavating.ai/">https://excavating.ai/</a>.
 </div>
-<div id="ref-denton2024" class="csl-entry" role="listitem">
-Denton, Emily, Alex Hanna, Razvan Amironesei, Andrew Smart, and Hilary Nicole. 2024. <span>“The Nine Lives of <span>ImageNet</span>: A Sociotechnical Retrospective of a Foundation Dataset and the Limits of Automated Essentialism.”</span> <em>Proceedings of Machine Learning Research — Data Studies</em>.
+<div id="ref-denton2021" class="csl-entry" role="listitem">
+Denton, Emily, Alex Hanna, Razvan Amironesei, Andrew Smart, and Hilary Nicole. 2021. <span>“On the Genealogy of Machine Learning Datasets: A Critical History of <span>ImageNet</span>.”</span> <em>Big Data &amp; Society</em> 8 (2). <a href="https://doi.org/10.1177/20539517211035955">https://doi.org/10.1177/20539517211035955</a>.
 </div>
 <div id="ref-hunt2015" class="csl-entry" role="listitem">
 Hunt, Elle. 2015. <em><span>Facebook</span>’s Real-Name Policy Continues to Lock Out Indigenous Users</em>. The Guardian. <a href="https://www.theguardian.com/technology/2015/feb/16/facebook-real-name-policy-indigenous-users">https://www.theguardian.com/technology/2015/feb/16/facebook-real-name-policy-indigenous-users</a>.
@@ -391,6 +391,9 @@ Keyes, Os. 2018. <span>“The Misgendering Machines: <span>Trans/HCI</span> Impl
 </div>
 <div id="ref-kotwal2025" class="csl-entry" role="listitem">
 Kotwal, Ketan, and Sébastien Marcel. 2025. <span>“Review of Demographic Fairness in Face Recognition.”</span> <em>IEEE Transactions on Biometrics, Behavior, and Identity Science (<span>TBIOM</span>)</em>.
+</div>
+<div id="ref-luccioni2024" class="csl-entry" role="listitem">
+Luccioni, Alexandra Sasha, and Kate Crawford. 2024. <span>“The Nine Lives of <span>ImageNet</span>: A Sociotechnical Retrospective of a Foundation Dataset and the Limits of Automated Essentialism.”</span> <em>Journal of Data-Centric Machine Learning Research (<span>DMLR</span>)</em> 1. <a href="https://data.mlr.press/assets/pdf/v01-4.pdf">https://data.mlr.press/assets/pdf/v01-4.pdf</a>.
 </div>
 <div id="ref-mckenzie2010" class="csl-entry" role="listitem">
 McKenzie, Patrick. 2010. <em>Falsehoods Programmers Believe about Names</em>. Kalzumeus Software blog. <a href="https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/">https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/</a>.
