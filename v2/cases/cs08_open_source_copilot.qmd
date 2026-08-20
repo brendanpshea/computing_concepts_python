@@ -74,7 +74,11 @@ print(git_blob_hash("hello World\n"))   # one letter changed
 # 58bd3da091baa2c5ddaf2d841ba1fdb51be1874f
 ```
 
-Run it, and you will get exactly those two fingerprints — anyone, on any machine, always. That is the point of a [hash function]{.key-term}: the same content always gives the same fingerprint, and even a one-letter change gives a completely different one. There is no way to work backward from the fingerprint to the content, and no practical way to craft a different file with the same fingerprint.
+Run it, and you will get exactly those two fingerprints — anyone, on any machine, always. That is the point of a [hash function]{.key-term}: the same content always gives the same fingerprint, and even a one-letter change gives a completely different one. There is no way to work backward from the fingerprint to the content.
+
+::: {.context-box}
+**A caveat Git has had to live with.** The last property you want from a hash — that nobody can *manufacture* two different files with the same fingerprint — is the one SHA-1 no longer has. In 2017 a Google and CWI team produced the first real SHA-1 collision (the "SHAttered" attack), and a 2020 result made chosen-prefix collisions cheap enough to rent. Git's answer was two-fold: it ships a hardened SHA-1 that detects the known collision technique and refuses the object, and the format now supports SHA-256 repositories for projects that want to migrate. So the ledger below still holds in practice — but because of active patching, not because SHA-1 was strong enough. Cryptographic assumptions expire; you will meet this idea again in Notebook 11.
+:::
 
 Git builds its whole history from this trick:
 

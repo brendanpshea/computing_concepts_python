@@ -10,7 +10,7 @@ date: last-modified
 
 <!--
 ====================================================================
-COMP 1150 CASE STUDY TEMPLATE  (Summer 2026)
+COMP 1150 CASE STUDY TEMPLATE  (Fall 2026)
 Read case_study_style_guide.md before drafting. Quick reminders:
 
   - ~3,000 words of core prose (The Case + the argument dialogue);

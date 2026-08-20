@@ -1,4 +1,4 @@
-# Case Study Template & Style Guide — Summer 2026
+# Case Study Template & Style Guide — Fall 2026
 
 Authoring guide for the 12 COMP 1150 case studies. Companion to
 `notebook_template.md`. Each case study pairs with exactly one notebook

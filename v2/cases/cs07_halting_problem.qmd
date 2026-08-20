@@ -8,7 +8,7 @@ date: last-modified
 ---
 
 ::: {.case-at-a-glance}
-- **Who:** David Hilbert, the most famous mathematician alive; Kurt Gödel, a 24-year-old logic student from Vienna; Alan Turing, a 23-year-old graduate student at Cambridge — with John von Neumann, Max Newman, and Alonzo Church in supporting roles
+- **Who:** David Hilbert, the most famous mathematician alive; Kurt Gödel, a 24-year-old logic student from Vienna; Alan Turing, a 22-year-old Cambridge mathematician — with John von Neumann, Max Newman, and Alonzo Church in supporting roles
 - **What:** Hilbert announced a plan to put all of mathematics on a firm, machine-checkable footing. Gödel proved in 1931 that the plan could never fully succeed. Turing proved in 1936 that no possible machine can solve a simple-sounding question about programs — and the blueprint for the modern computer was hiding inside his proof
 - **Where / When:** Königsberg, September 1930; Vienna, 1931; Cambridge and Princeton, 1935–1936
 - **Why it matters:** Computer science is the only engineering field that proved its hard limits *before* its first machine was built. Two collisions drive the case: [truth]{.key-term} vs. [provability]{.key-term}, and whether the limits on [machines]{.key-term} are also limits on [minds]{.key-term}
@@ -19,7 +19,7 @@ date: last-modified
 
 On September 8, 1930, the city of Königsberg gave David Hilbert the highest honor it could: it made him an honorary citizen. Hilbert was sixty-eight and retiring. He was the most influential mathematician of his era, and Königsberg was his hometown. He marked the occasion with a speech, broadcast live on German radio. The recording still exists.
 
-The speech was a declaration of war on doubt. A century earlier, some scientists had adopted a gloomy Latin motto: *ignoramus et ignorabimus* — "we do not know, and we will not know." Some questions, they said, are simply beyond human reach. Hilbert despised this idea. In mathematics, he insisted, there is no *ignorabimus*. Every well-posed problem has an answer, and we can find it. He ended the speech with six words that would later be carved on his tombstone:
+The speech was a declaration of war on doubt. Two generations earlier, some scientists had adopted a gloomy Latin motto — the physiologist Emil du Bois-Reymond made it famous in an 1872 lecture: *ignoramus et ignorabimus* — "we do not know, and we will not know." Some questions, they said, are simply beyond human reach. Hilbert despised this idea. In mathematics, he insisted, there is no *ignorabimus*. Every well-posed problem has an answer, and we can find it. He ended the speech with six words that would later be carved on his tombstone:
 
 > *Wir müssen wissen. Wir werden wissen.*
 > "We must know. We will know."

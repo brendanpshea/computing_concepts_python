@@ -35,7 +35,7 @@ She wrote this in the same room where she had just designed a program. She did n
 
 Lovelace did her mathematics inside a world that did not formally count her as a scientist. The Royal Society would not admit a woman for the better part of a century. She corresponded with De Morgan as a private student. She published her Notes under her initials, "A. A. L." Her contemporaries who could have cited her work generally did not. None of this kept her from doing it. It is worth saying. The rest of her century — and a fair part of the next — treated her contribution as Babbage's footnote. Lovelace died of cancer in 1852, at thirty-six. The Analytical Engine was never built in her lifetime. Her Notes lay mostly unread for almost a century.
 
-When her argument was next picked up — and named — its respondent was Alan Turing. In 1936, still a graduate student, Turing wrote a paper titled "On Computable Numbers, with an Application to the Entscheidungsproblem" [@turing1936]. He asked what it could mean for a number to be *computable* at all. His answer was a thought experiment. Imagine a machine with:
+When her argument was next picked up — and named — its respondent was Alan Turing. In 1936, a newly elected fellow of King's College, Cambridge and not yet twenty-four, Turing wrote a paper titled "On Computable Numbers, with an Application to the Entscheidungsproblem" [@turing1936]. He asked what it could mean for a number to be *computable* at all. His answer was a thought experiment. Imagine a machine with:
 
 - an unlimited paper tape
 - a tiny set of rules

@@ -1,6 +1,6 @@
 ---
 title: "Case Studies"
-subtitle: "COMP 1150 — Computer Science Concepts, Summer 2026"
+subtitle: "COMP 1150 — Computer Science Concepts, Fall 2026"
 author: "Brendan Shea, PhD"
 date: last-modified
 toc: false

@@ -1,4 +1,4 @@
-# Notebook Template & Style Guide — Summer 2026
+# Notebook Template & Style Guide — Fall 2026
 
 A template and authoring guide for the 12 main notebooks in the redesigned COMP 1150. Use this as a checklist when drafting; deviate when a topic demands it, but aim to keep the look and rhythm consistent across the semester.
 
