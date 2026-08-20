@@ -119,6 +119,45 @@ def normalize_form_cells(cells: list) -> None:
         c["source"] = lines
 
 
+def split_off_header(source) -> str:
+    """Return whatever a header-bearing cell holds *besides* the header.
+
+    Colab merges adjacent markdown cells on save, so the badge header
+    routinely ends up glued to the notebook's title, learning outcomes,
+    and opening prose. Replacing such a cell wholesale silently deletes
+    all of it, so we peel off just the header lines and hand the rest back
+    to the caller to re-insert as its own cell.
+    """
+    text = "".join(source) if not isinstance(source, str) else source
+    lines = text.splitlines(keepends=True)
+    out, i = [], 0
+    # Drop a leading YAML fence Colab sometimes injects (--- / jupyter: ... / ---).
+    if lines and lines[0].strip() == "---":
+        j = 1
+        while j < len(lines) and lines[j].strip() != "---":
+            j += 1
+        if j < len(lines) and all(":" in ln or not ln.strip() for ln in lines[1:j]):
+            i = j + 1
+    while i < len(lines):
+        ln = lines[i]
+        if ln.strip() == MARKER:
+            i += 1
+            # Consume the header's own link lines and any blank line after them.
+            while i < len(lines) and (
+                "colab-badge.svg" in lines[i]
+                or "Download .ipynb" in lines[i]
+                or not lines[i].strip()
+            ):
+                if lines[i].strip() and "colab" not in lines[i].lower() \
+                        and "Download .ipynb" not in lines[i]:
+                    break
+                i += 1
+            continue
+        out.append(ln)
+        i += 1
+    return "".join(out)
+
+
 def update_notebook(path: Path, repo_root: Path) -> bool:
     rel_path = path.relative_to(repo_root).as_posix()
     original = path.read_text(encoding="utf-8")
@@ -142,7 +181,14 @@ def update_notebook(path: Path, repo_root: Path) -> bool:
     if existing_idx is None:
         cells.insert(0, new_cell)
     else:
+        leftover = split_off_header(cells[existing_idx].get("source", []))
         cells[existing_idx] = new_cell
+        if leftover.strip():
+            cells.insert(existing_idx + 1, {
+                "cell_type": "markdown",
+                "metadata": {},
+                "source": leftover.splitlines(keepends=True),
+            })
 
     nb["cells"] = cells
     new_text = json.dumps(nb, indent=1, ensure_ascii=False) + "\n"

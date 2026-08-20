@@ -9,7 +9,7 @@ bibliography: refs.bib
 ::: {.case-at-a-glance}
 - **Who:** Paul Baran (1926–2011), the RAND engineer who designed a network no attack could kill; Vint Cerf and Bob Kahn, who wrote the rules that glued the networks together; Tim Berners-Lee, who gave the web away; and Matthew Prince, the Cloudflare CEO who kicked a website off the internet and then announced that no one — including him — should have that power.
 - **What:** The internet was engineered so that no single failure, company, or government could take it down. Fifty years later, one configuration error at one company can silence newspapers, banks, and governments in under a minute — and has, repeatedly. Nobody conspired. Every step was a rational choice. The question is what to do about a center that nobody voted to build.
-- **Where / When:** UCLA, October 29, 1969 (the first ARPANET message). The open internet's rise, 1983–2006. Amazon Web Services, 2006 onward. The outages: Fastly, June 2021; CrowdStrike, July 2024; AWS us-east-1, October 2025.
+- **Where / When:** UCLA, October 29, 1969 (the first ARPANET message). The open internet's rise, 1983–2006. Amazon Web Services, 2006 onward. The outages: Fastly, June 2021; CrowdStrike, July 2024; and the five weeks in late 2025 when AWS, Microsoft, and Cloudflare each took down a slice of the web in turn.
 - **Why it matters:** Almost everything now runs on rented computing owned by a handful of firms. This case is about the collision between [decentralization by design]{.key-term} and [concentration by economics]{.key-term} — and about who holds power over infrastructure that everyone needs and no one governs.
 - **Concepts at play:** [packet switching]{.key-term}, network topology, the [end-to-end principle]{.key-term}, layers, [cloud computing]{.key-term}, [single point of failure]{.key-term}, economies of scale
 :::
@@ -38,7 +38,13 @@ Every individual choice was sensible. The sum of the choices was this: by the mi
 
 Then the buildings started demonstrating what that meant.
 
-On June 8, 2021, a single customer of Fastly changed a setting — a valid, ordinary configuration change — that triggered a hidden bug. Within seconds, much of the visible web went dark at once: the *New York Times*, the *Guardian*, Reddit, Amazon itself, and the UK government's website, all returning the same error [@bbc2021fastly]. On October 20, 2025, a failure in a single Amazon region in Northern Virginia — the famous **us-east-1** — cascaded outward for hours. Banks, airlines, Snapchat, Ring doorbells, even internet-connected beds stopped working, across dozens of countries [@guardian2025aws].
+On June 8, 2021, a single customer of Fastly changed a setting — a valid, ordinary configuration change — that triggered a hidden bug. Within seconds, much of the visible web went dark at once: the *New York Times*, the *Guardian*, Reddit, Amazon itself, and the UK government's website, all returning the same error [@bbc2021fastly].
+
+Then came the autumn of 2025, which made the point three times in five weeks.
+
+On **October 20**, a failure in a single Amazon region in Northern Virginia — the famous **us-east-1** — cascaded outward for hours. Banks, airlines, Snapchat, Ring doorbells, even internet-connected beds stopped working, across dozens of countries [@guardian2025aws]. Nine days later, on **October 29**, a configuration change inside Microsoft's Azure Front Door slipped past the safeguard that should have caught it — the safeguard itself had a bug — and propagated a broken configuration worldwide. Microsoft 365, Outlook, Xbox, and the Azure portal went with it, and so did Alaska Airlines, Starbucks, and Costco [@azure2025afd]. Three weeks after that, on **November 18**, a permissions change to one of Cloudflare's databases caused a bot-detection file to double in size, past a limit the software assumed it would never reach. Cloudflare sits in front of a large fraction of the web; X, OpenAI, and Anthropic went dark with it [@cloudflare2025outage].
+
+Three companies, three unrelated systems, five weeks. Not one of them was attacked. Each was a routine change meeting a latent assumption — the same shape as Fastly in 2021, at a scale that now takes a meaningful share of the world's software offline for an afternoon.
 
 A network designed to survive a nuclear war now had single points of failure with street addresses.
 
@@ -115,7 +121,7 @@ After each major outage, a chorus of engineers and policy scholars makes the sam
 4. Therefore, hyperscale clouds are critical infrastructure — like the power grid — and should be governed like it: audited, stress-tested, and required to prove the failure of one region cannot cascade.
 :::
 
-The evidence is the outage record itself, and one more incident that generalized the lesson. In July 2024, a bad update from a single security company, CrowdStrike, crashed some 8.5 million Windows machines worldwide in hours — grounding flights and closing hospital systems. Not a cloud, not a network: just one vendor whose software ran *everywhere*. The pattern has a name from farming: **monoculture**. Plant one crop everywhere and one blight takes it all. The weight of the argument rests on premise 3 — that the market cannot fix this. That is the premise the reply denies.
+The evidence is the outage record itself — and the 2025 cluster sharpens it, because the three failures were *independent*. A firm that had diversified away from AWS onto Azure would have been down nine days later; one that had hedged both would still have been behind Cloudflare on November 18. Diversification is the market's answer to concentration risk, and that autumn it did not work. One more incident generalized the lesson further. In July 2024, a bad update from a single security company, CrowdStrike, crashed some 8.5 million Windows machines worldwide in hours — grounding flights and closing hospital systems. Not a cloud, not a network: just one vendor whose software ran *everywhere*. The pattern has a name from farming: **monoculture**. Plant one crop everywhere and one blight takes it all. The weight of the argument rests on premise 3 — that the market cannot fix this. That is the premise the reply denies.
 
 ### The efficiency reply: concentration is what resilience looks like
 
@@ -136,7 +142,7 @@ There is real steel here. The counterfactual matters: before the cloud, small co
 
 ### Where it rests today: politics without an engineering answer
 
-The empirical turn is messy. Europe has moved first: its Digital Markets Act polices the gatekeepers' business practices, and "digital sovereignty" projects try to grow European clouds — so far, mostly aspiration. A small counter-movement of companies has left the cloud entirely, repatriating to their own servers and publishing the millions saved; it remains a rounding error. And after each great outage comes the same quiet coda: almost nobody switches providers. Partly because moving is expensive. Partly because of a grim coordination logic — when the whole internet is down, being down looks like weather, not negligence. Nobody gets fired for failing at the same moment as everyone else.
+The empirical turn is messy. Europe has moved first: its Digital Markets Act polices the gatekeepers' business practices, and "digital sovereignty" projects try to grow European clouds — so far, mostly aspiration. A small counter-movement of companies has left the cloud entirely, repatriating to their own servers and publishing the millions saved; it remains a rounding error. And after each great outage comes the same quiet coda: almost nobody switches providers. Partly because moving is expensive. Partly because, as the autumn of 2025 showed, there may be nowhere meaningfully different to move to. And partly because of a grim coordination logic — when the whole internet is down, being down looks like weather, not negligence. Nobody gets fired for failing at the same moment as everyone else.
 
 Which leaves the question the founders would find strangest of all. Baran's generation faced "no one should be able to destroy the network" and solved it with *engineering* — a topology, an algorithm, a design so good it still holds. Our version of the problem — "no three companies should be able to pause the world, and no one executive should decide who may speak on it" — has no topology to fix it. The fishnet can't help; the center is upstairs now, built from contracts and economies of scale. Is there an engineering answer this time? Or did the internet's second problem turn out to be the kind you can only solve with politics — the slow, contested, human kind that the network's founders built their beautiful machine to route around?
 
@@ -147,6 +153,7 @@ Which leaves the question the founders would find strangest of all. Baran's gene
 3. You run the company that keeps a legal-but-vile website online. Activists demand you drop it. Your engineers say "we're infrastructure — we don't judge content." What do you do? What does your answer imply about who should hold that power?
 4. Pick one: the electric grid, banking, or container shipping. Is the internet's concentration more worrying than that industry's, or less? Why?
 5. List three services you personally rely on that would probably fail *together* in a major cloud outage. Did your list surprise you? Should ordinary users have any say in how this infrastructure is run?
+6. In five weeks of 2025, AWS, Microsoft, and Cloudflare each failed separately, and none of them was attacked — every one was a routine change meeting an assumption nobody had checked. If moving to a competitor would not have saved you, what would? Name something a single company could do, and something only a rule could do.
 
 ## Further Reading
 

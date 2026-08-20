@@ -222,7 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB06_ModulesOOP.ipynb">View on GitHub</a></p>
-<p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -348,7 +347,7 @@ Big job: 8250.0</code></pre>
 <section id="your-turn-your-own-toolkit" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-your-own-toolkit">✏️ Your Turn — Your Own Toolkit</h3>
 <p>Python’s standard library is full of ready-made tools. Import one you haven’t used yet and try it — for example <code>import statistics</code> then <code>statistics.mean([...])</code>, or <code>from datetime import date</code> then <code>date.today()</code>. Print the result.</p>
-<div id="cell-20" class="cell">
+<div id="cell-19" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: import a tool from the standard library and use it.</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># import statistics</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(statistics.mean([10, 20, 30]))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -565,7 +564,7 @@ Percival: 225.0</code></pre>
 <section id="your-turn-lancelots-athlete-class" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-lancelots-athlete-class">✏️ Your Turn — Lancelot’s Athlete Class</h3>
 <p>Write a class <code>Athlete</code> with an <code>__init__</code> that stores <code>name</code> and <code>wins</code> (default <code>0</code>), plus a method <code>record_win(self)</code> that adds one to <code>wins</code>. Make <strong>two</strong> athletes, record a few wins for each, print both — and confirm that recording a win for one does <strong>not</strong> change the other’s total.</p>
-<div id="cell-49" class="cell">
+<div id="cell-48" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: define class Athlete with __init__(self, name, wins=0)</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       and a method record_win(self) that does self.wins += 1.</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -614,7 +613,7 @@ True</code></pre>
 <section id="your-turn-guineveres-__str__" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-guineveres-__str__">✏️ Your Turn — Guinevere’s <code>__str__</code></h3>
 <p>Guinevere wants her <code>Citizen</code> objects to print nicely instead of as <code>&lt;...object at 0x...&gt;</code>. Add a <code>__str__</code> method to <code>Citizen</code> that returns something like <code>"Elaine Astolat (North ward): owes 120.0"</code>. Then create a citizen and <code>print</code> it to confirm your <code>__str__</code> runs.</p>
-<div id="cell-54" class="cell">
+<div id="cell-53" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Citizen:</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, ward, balance):</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
@@ -733,7 +732,7 @@ First Knight Lancelot leads the patrol.</code></pre>
 <section id="your-turn-morgans-researcher-hierarchy" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-morgans-researcher-hierarchy">✏️ Your Turn — Morgan’s Researcher Hierarchy</h3>
 <p>Write a base class <code>Researcher</code> that stores <code>name</code> and has a method <code>describe()</code> returning <code>"&lt;name&gt; runs experiments."</code>. Then write a subclass <code>LeadResearcher(Researcher)</code> that adds a <code>team_size</code> (using <code>super().__init__()</code>) and <strong>overrides</strong> <code>describe()</code> to also mention the team size. Make one of each and print both descriptions.</p>
-<div id="cell-69" class="cell">
+<div id="cell-68" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: class Researcher with __init__(self, name) and describe(self).</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: class LeadResearcher(Researcher) that adds team_size via super().__init__()</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#       and overrides describe().</span></span>
@@ -987,7 +986,7 @@ Now delivering: Lyonesse #3</code></pre>
 <section id="your-turn-nimues-queue-extended" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-nimues-queue-extended">✏️ Your Turn — Nimue’s Queue, Extended</h3>
 <p>Add a method <code>peek(self)</code> to the <code>DeliveryQueue</code> class that returns the next package <strong>without</strong> removing it (the front item is <code>self._items[0]</code>). Build a queue, add three packages, call <code>peek()</code>, then <code>dequeue()</code> once, and show that <code>peek</code> reported the right one without consuming it.</p>
-<div id="cell-102" class="cell">
+<div id="cell-101" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeliveryQueue:</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._items <span class="op">=</span> []</span>
@@ -1047,7 +1046,7 @@ Now delivering: Lyonesse #3</code></pre>
 <p><strong>Step 5 — Test it like Smee.</strong> Try to break it: hp driven below zero, an empty monster list, a monster attacking after it’s already been defeated. Fix one thing it gets wrong.</p>
 <p><strong>Step 6 — Reflect.</strong> In a markdown cell, write 2–3 sentences: where did inheritance save you repetition, and what did the AI get wrong that you had to fix?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
-<div id="cell-106" class="cell">
+<div id="cell-105" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built battle game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>

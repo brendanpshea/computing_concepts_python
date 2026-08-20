@@ -9,7 +9,7 @@
 <meta name="author" content="Brendan Shea, PhD">
 <meta name="dcterms.date" content="2026-08-20">
 
-<title>Notebook 12: AI, Machine Learning &amp; Ethics – Computing Concepts with Python</title>
+<title>Notebook 12: AI, Machine Learning &amp; Ethics — Opening the Oracle – Computing Concepts with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -166,9 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#notebook-12-ai-machine-learning-ethics-opening-the-oracle" id="toc-notebook-12-ai-machine-learning-ethics-opening-the-oracle" class="nav-link active" data-scroll-target="#notebook-12-ai-machine-learning-ethics-opening-the-oracle">Notebook 12: AI, Machine Learning &amp; Ethics — Opening the Oracle</a>
-  <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#the-oracle-you-didnt-vote-for" id="toc-the-oracle-you-didnt-vote-for" class="nav-link" data-scroll-target="#the-oracle-you-didnt-vote-for">The Oracle You Didn’t Vote For</a></li>
   <li><a href="#learning-from-data-not-rules" id="toc-learning-from-data-not-rules" class="nav-link" data-scroll-target="#learning-from-data-not-rules">1. Learning From Data, Not Rules</a></li>
   <li><a href="#inside-the-black-box-the-perceptron" id="toc-inside-the-black-box-the-perceptron" class="nav-link" data-scroll-target="#inside-the-black-box-the-perceptron">2. Inside the Black Box: The Perceptron</a></li>
@@ -179,7 +177,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -188,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Notebook 12: AI, Machine Learning &amp; Ethics</h1>
+<h1 class="title">Notebook 12: AI, Machine Learning &amp; Ethics — Opening the Oracle</h1>
 <p class="subtitle lead">COMP 1150 — Computer Science Concepts</p>
 </div>
 
@@ -221,14 +218,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb">View on GitHub</a></p>
-<section id="notebook-12-ai-machine-learning-ethics-opening-the-oracle" class="level1">
-<h1>Notebook 12: AI, Machine Learning &amp; Ethics — Opening the Oracle</h1>
-<section id="comp-1150-computer-science-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="comp-1150-computer-science-concepts">COMP 1150 — Computer Science Concepts</h3>
-<p><strong>Brendan Shea, PhD</strong></p>
-<!-- Lecture video link to be added -->
-<p>📺 <strong>Lecture video:</strong> <em>(coming soon)</em></p>
-</section>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -433,7 +422,7 @@ output = 1 if total &gt; 0 else 0</code></pre>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"income"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"debt"</span>)<span class="op">;</span> plt.legend()</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="fig-boundary" class="quarto-float quarto-figure quarto-figure-center anchored" width="576" height="429">
+<div id="fig-boundary" class="quarto-float quarto-figure quarto-figure-center anchored" height="429" width="576">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-boundary-output-1.png" id="fig-boundary" width="576" height="429" class="figure-img">
@@ -693,7 +682,7 @@ Applicant from 'west': 1</code></pre>
 <span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="fig-carbon" class="quarto-float quarto-figure quarto-figure-center anchored" width="661" height="336">
+<div id="fig-carbon" class="quarto-float quarto-figure quarto-figure-center anchored" height="336" width="661">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-carbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-carbon-output-1.png" id="fig-carbon" width="661" height="336" class="figure-img">
@@ -803,7 +792,6 @@ Figure&nbsp;5
 <p><em>COMP 1150 — Computer Science Concepts · Brendan Shea, PhD</em> <em>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</em></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

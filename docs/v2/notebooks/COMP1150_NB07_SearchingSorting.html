@@ -229,7 +229,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB07_SearchingSorting.ipynb">View on GitHub</a></p>
-<p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -277,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> items[index] <span class="op">==</span> target:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> index        <span class="co"># found it — report the position</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span>                 <span class="co"># checked everything — not here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="cell-9" class="cell">
+<div id="cell-8" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_search(items, target):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return the index of target in items, or None if it is not present."""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
@@ -312,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>If the target is <strong>not in the deck at all</strong>, how many comparisons does it make?</li>
 <li>On average, for a random target that <em>is</em> present, roughly how many?</li>
 </ol>
-<div id="cell-12" class="cell">
+<div id="cell-11" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>deck12 <span class="op">=</span> [<span class="ss">f"Card </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>)]   <span class="co"># "Card 1" ... "Card 12"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_search_counting(items, target):</span>
@@ -332,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-alices-linear-search" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-alices-linear-search">✏️ Your Turn — Alice’s Linear Search</h3>
 <p>Alice has an <strong>unsorted</strong> guest list. Complete <code>find_guest(guests, name)</code> so it returns the <em>position</em> of a guest, or the string <code>"not invited"</code> if the name is absent. Test it on a hit and a miss.</p>
-<div id="cell-15" class="cell">
+<div id="cell-14" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>guests <span class="op">=</span> [<span class="st">"Dormouse"</span>, <span class="st">"Mad Hatter"</span>, <span class="st">"March Hare"</span>, <span class="st">"Gryphon"</span>, <span class="st">"Mock Turtle"</span>]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_guest(guests, name):</span>
@@ -364,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:                              <span class="co"># target is in the lower half</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            high <span class="op">=</span> mid <span class="op">-</span> <span class="dv">1</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="cell-18" class="cell">
+<div id="cell-17" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binary_search(sorted_items, target):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return the index of target in a SORTED list, or None if not present.</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Prints each step so we can watch the search space shrink."""</span></span>
@@ -421,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-trap-binary-search-on-an-unsorted-list" class="level3">
 <h3 class="anchored" data-anchor-id="a-trap-binary-search-on-an-unsorted-list">A Trap: Binary Search on an <em>Unsorted</em> List</h3>
 <p>Binary search trusts that the deck is sorted. Give it a shuffled deck and it will happily rule out the <em>wrong</em> half — and report “not found” for a card that is sitting right there. It fails <strong>silently</strong>, which is the worst kind of failure.</p>
-<div id="cell-23" class="cell">
+<div id="cell-22" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>shuffled <span class="op">=</span> [<span class="st">"March Hare"</span>, <span class="st">"Dormouse"</span>, <span class="st">"Knave of Hearts"</span>,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Duchess"</span>, <span class="st">"Mad Hatter"</span>, <span class="st">"Gryphon"</span>]   <span class="co"># NOT sorted</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -434,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-the-caterpillars-binary-search" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-the-caterpillars-binary-search">✏️ Your Turn — The Caterpillar’s Binary Search</h3>
 <p>The Caterpillar hands you a <strong>sorted</strong> list and asks you to implement <code>binary_search(nums, target)</code> from scratch — return the index, or <code>None</code> if it’s absent. Keep two markers, <code>low</code> and <code>high</code>, and check the middle each pass. (Stuck on the <code>low</code>/<code>high</code> updates? That’s the classic off-by-one — trace it by hand on a small list until it clicks.)</p>
-<div id="cell-25" class="cell">
+<div id="cell-24" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sorted_nums <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binary_search(nums, target):</span>
@@ -499,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Big-O ignores constants and small terms. We do not say “3n + 7 steps”; we say <code>O(n)</code>. The point is the <strong>shape of the growth</strong>, not the exact count.</p>
-<div id="cell-27" class="cell">
+<div id="cell-26" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'deck size n'</span><span class="sc">:&gt;14}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'linear O(n)'</span><span class="sc">:&gt;12}</span><span class="ss"> | </span><span class="sc">{</span><span class="st">'binary O(log n)'</span><span class="sc">:&gt;16}</span><span class="ss">"</span>)</span>
@@ -549,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                smallest <span class="op">=</span> j</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        items[i], items[smallest] <span class="op">=</span> items[smallest], items[i]   <span class="co"># swap into place</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> items</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="cell-35" class="cell">
+<div id="cell-34" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selection_sort(items):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Sort items in place using selection sort, printing each pass."""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
@@ -581,7 +580,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="predict-before-you-run-1" class="level3">
 <h3 class="anchored" data-anchor-id="predict-before-you-run-1">🔮 Predict Before You Run</h3>
 <p>Given the list <code>[5, 3, 8, 1, 9]</code>, what will it look like <strong>after the first pass</strong> of selection sort (after the smallest card is placed in slot 0)? Write down your guess, then run the cell.</p>
-<div id="cell-38" class="cell">
+<div id="cell-37" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>demo <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">9</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>selection_sort(demo)   <span class="co"># watch only the FIRST printed pass to check your prediction</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -589,7 +588,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-the-hatters-selection-sort" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-the-hatters-selection-sort">✏️ Your Turn — The Hatter’s Selection Sort</h3>
 <p>The tea party seats guests by <strong>arrival time</strong> (smaller number = arrived earlier). Use selection sort to order the list, printing it after each pass so the Hatter can watch it tidy itself.</p>
-<div id="cell-40" class="cell">
+<div id="cell-39" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>arrivals <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>]   <span class="co"># arrival times</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selection_sort(items):</span>
@@ -626,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>items.sort()                        <span class="co"># sorts in place, returns None</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(items, key<span class="op">=</span>some_function)    <span class="co"># sort by what some_function returns for each item</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A <code>key</code> function receives <strong>one</strong> item and returns the value to sort <em>by</em>. A <code>lambda</code> is a tiny one-line function, handy here: <code>lambda c: c.rank</code> means “given a card <code>c</code>, sort by its <code>rank</code>.”</p>
-<div id="cell-46" class="cell">
+<div id="cell-45" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numbers and strings: the obvious cases</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>([<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">1</span>]))                 <span class="co"># [1, 2, 4, 7, 10]</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">sorted</span>([<span class="st">"Hatter"</span>, <span class="st">"Alice"</span>, <span class="st">"Duchess"</span>]))   <span class="co"># alphabetical</span></span>
@@ -717,7 +716,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-sorting-the-knaves-tarts-with-key" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-sorting-the-knaves-tarts-with-key">✏️ Your Turn — Sorting the Knave’s Tarts with <code>key=</code></h3>
 <p>The Knave has a list of <code>Tart</code> objects, each with a <code>flavor</code> (string) and a <code>count</code> (int). Use <code>sorted(..., key=...)</code> to produce <strong>two</strong> orderings: one by <code>count</code> (most tarts last), and one alphabetically by <code>flavor</code>. Use the built-in — don’t write your own sort.</p>
-<div id="cell-50" class="cell">
+<div id="cell-49" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Tart:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, flavor, count):</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.flavor <span class="op">=</span> flavor</span>
@@ -752,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here is the shocking part. This ribbon-and-rulebook gadget can compute <strong>anything</strong> that your laptop, a supercomputer, or any future computer can compute. The claim that “anything computable can be computed by a Turing machine” is called the <strong>Church–Turing thesis</strong>. It is the reason we can talk about <em>computation</em> as a single universal idea, instead of a different idea for every brand of machine.</p>
 <section id="picture-it-the-tape-the-head-the-rulebook" class="level3">
 <h3 class="anchored" data-anchor-id="picture-it-the-tape-the-head-the-rulebook">Picture It: The Tape, the Head, the Rulebook</h3>
-<div id="cell-55" class="cell">
+<div id="cell-54" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A tiny illustrative Turing machine: flip every bit on the tape, left to right.</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_tiny_tm(tape):</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Move right across the tape, flipping 1&lt;-&gt;0, until we run off the end."""</span></span>
@@ -873,7 +872,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Step 5 — Check your work.</strong> Run it a few times. Does the <strong>leaderboard always come out in the right order</strong> (the slowest time should be last)? Try an empty racer list, or a bet on a name that isn’t running — does the game cope, or crash?</p>
 <p><strong>Step 6 — Reflect.</strong> In a markdown cell, write 2–3 sentences: which Notebook 6 idea (an object? a method? inheritance?) made the racers easy to build, and where did <code>sorted(key=...)</code> save you from writing a sort by hand?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
-<div id="cell-66" class="cell">
+<div id="cell-65" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built race game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>

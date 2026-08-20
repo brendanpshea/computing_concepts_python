@@ -32,7 +32,7 @@ The Mead–Conway revolution and Chang's foundry model fit together like a key i
 
 Thirty-five years later, this arrangement has produced a remarkable concentration. By 2024, TSMC made:
 
-- about 60% of the world's chips by foundry revenue
+- over 70% of the world's chips by foundry revenue — a share that has *grown* since the export controls began, reaching roughly 72% in early 2026
 - more than 90% of the world's most advanced chips (those built on processes 7nm and smaller)
 - essentially 100% of the chips used in top-end smartphones, AI accelerators, and graphics processors
 
@@ -43,6 +43,10 @@ Then, on October 7, 2022, the United States government published a new rule. The
 The chips affected included Nvidia's H100 and A100 graphics processors. These are the engines of nearly every large AI model trained outside China. Nvidia responded by designing slower variants for the Chinese market: the A800, then the H800, then a further-throttled H20. Each new variant ran into a new restriction. The dance has continued ever since.
 
 China responded by investing — on a scale of roughly $150 billion — in a domestic semiconductor industry. In September 2023, Huawei released its Mate 60 Pro phone with a chip called the Kirin 9000s. Independent teardowns identified the chip as being made on a 7nm process by SMIC, China's leading foundry [@techinsights2023]. This was not supposed to be possible without EUV. SMIC had managed it with older [DUV]{.key-term} tools and a more complex fabrication process. Then, in January 2025, a Chinese company called DeepSeek released a frontier-grade large language model. It had reportedly been trained on a smaller cluster of H800 chips — the throttled variant the export rules had allowed.
+
+Then the policy itself started reversing. In May 2025 the Bureau of Industry and Security rescinded the "AI diffusion rule" — a Biden-era framework that would have sorted the whole world into three tiers of chip access — before it ever took effect, replacing it with country-by-country deals and case-by-case licences. The H20 whipsawed twice: restricted in April 2025, then licensed again in July. In December 2025 the White House announced a one-year waiver allowing a degraded version of Nvidia's H200 into China, licensed case by case and taxed on the way out, while the frontier Blackwell-class parts stayed blocked. In three years the rule had gone from a bright line to a negotiation.
+
+And then the other government moved. In September 2025 the Cyberspace Administration of China told its own technology companies to stop buying Nvidia's AI chips altogether — including the throttled models Washington had just re-approved — and to stop testing them. Beijing was now enforcing, from its side, a separation the United States had spent three years trying to impose from the outside. Huawei published an Ascend roadmap running to 2028 and its chips became the backbone of state-backed AI infrastructure; Cambricon, a domestic rival, swung from heavy losses to record profits in a single year.
 
 Each of these developments raises the same question. Did the export controls work?
 
@@ -73,7 +77,7 @@ Run the procedure on paper from the Intel 4004 (1971, 2,300 transistors) and com
 | 2011 | Intel Sandy Bridge | ≈ 2.4 billion      | ≈ 995 million   |
 | 2023 | Apple M2 Ultra     | ≈ 154 billion      | ≈ 134 billion   |
 
-The headline transistor count has stayed within roughly a factor of two of Moore's naive extrapolation for half a century — remarkable for a fifty-year forecast, though you can see the rule running ahead of any single mainstream chip in the middle of the run, then being caught again by the largest chips of the 2020s. What has *not* held is the economics. Each new doubling now requires a fab that costs tens of billions of dollars to build. The rate of cost-per-transistor decline that defined the industry for decades flattened around 2010. The famous "end of Moore's Law" is mostly an end of the cheap doubling. It is also the reason the leading-edge fab is so concentrated. Only a handful of companies can afford to chase the next node. As of 2025, only one — TSMC — is making the very latest chips in volume.
+The headline transistor count has stayed within roughly a factor of two of Moore's naive extrapolation for half a century — remarkable for a fifty-year forecast, though you can see the rule running ahead of any single mainstream chip in the middle of the run, then being caught again by the largest chips of the 2020s. What has *not* held is the economics. Each new doubling now requires a fab that costs tens of billions of dollars to build. The rate of cost-per-transistor decline that defined the industry for decades flattened around 2010. The famous "end of Moore's Law" is mostly an end of the cheap doubling. It is also the reason the leading-edge fab is so concentrated. Only a handful of companies can afford to chase the next node. As of 2026 the leading edge is no longer quite a monopoly — Samsung is producing at 2nm and Intel's 18A entered high-volume manufacturing in late 2025 — but neither is close to TSMC's yields or volumes, and TSMC's overall share of the foundry market has gone *up*, not down, since the controls began.
 
 The second fact is what those transistors *let you represent*. A chip stores and moves data in bits. The [bit width]{.key-term} of its memory addresses sets a hard ceiling on what software can do. The rule is one line:
 
@@ -125,17 +129,20 @@ The argument's strongest premise is 2. Modern AI systems really are dual-use. Th
 5. Therefore, the controls do not buy security at a reasonable cost. They buy a slower, costlier, more dangerous version of the same competition.
 :::
 
-The reply does not deny the dual-use premise. It denies premise 4 of the original argument — that controls materially slow what they target. Two pieces of evidence sit in its favour. The first is the Huawei 7nm chip in September 2023. The second is DeepSeek's frontier-class model, trained in January 2025 on a smaller cluster of *export-permitted* H800s. Each says, in different words, that the target found a way.
+The reply does not deny the dual-use premise. It denies premise 4 of the original argument — that controls materially slow what they target. Three pieces of evidence sit in its favour. The first is the Huawei 7nm chip in September 2023. The second is DeepSeek's frontier-class model, trained in January 2025 on a smaller cluster of *export-permitted* H800s. The third arrived in September 2025, when China banned its own firms from buying Nvidia at all — the clearest possible sign that the indigenous capability the controls were meant to prevent had become good enough to mandate. Each says, in different words, that the target found a way.
 
 **The silicon-shield reframe.** Both arguments above assume the question is *which restrictions to impose*. A third move asks whether the underlying arrangement should exist at all. Most of the world's leading-edge chips are made on a single island claimed by a nuclear power. Defenders of the *silicon shield* hold that the concentration in Taiwan is itself the deterrent. No major power would risk a conflict that destroys TSMC, because the rest of the world's economy depends on its output. Critics answer that the same concentration is a single point of catastrophic failure — a target that paints itself. The reframe does not solve the dispute. It widens it. The export-control fight becomes the same fight as the diversification fight — the U.S. CHIPS Act, the EU Chips Act, the Arizona TSMC fab, which began volume production at the end of 2024 and is still expanding — an effort to make the world less dependent on Hsinchu without bankrupting itself [@miller2022chipwar].
 
-**Where the argument rests now.** Three things are simultaneously true:
+**Where the argument rests now.** Four things are simultaneously true:
 
-- The export controls have, in fact, slowed the very top end of Chinese AI compute. The fastest chips legally available in China lag the global frontier by a generation.
-- They have not stopped the frontier. Huawei is making 7nm chips. DeepSeek-class models are being trained on permitted hardware. A government willing to spend $150 billion is generating its own capability.
-- TSMC's Arizona fab reached volume production roughly two years later than first promised, and costs billions more per wafer than its Taiwan equivalents. The duplication the controls implicitly demand is expensive enough to test the political will that produced them.
+- The controls did slow the very top end of Chinese AI compute. The fastest chips legally available in China still lag the global frontier.
+- They did not stop it. Huawei is making 7nm chips and shipping an Ascend line on a published multi-year roadmap. DeepSeek-class models were trained on permitted hardware. A government willing to spend $150 billion generated its own capability.
+- The policy has become unstable. A rule rescinded before it took effect, a chip banned and then licensed within three months, a frontier-adjacent part waived through for a year with a tax attached — these are the moves of a negotiation, not a line. Firms cannot plan against them, which is its own kind of cost.
+- The concentration the controls were partly meant to unwind got worse. TSMC's share of the foundry market is higher than when the controls started. Its Arizona fab reached volume production roughly two years later than first promised and costs billions more per wafer than its Taiwan equivalents.
 
-The neat lesson would be that the controls "worked" or "failed." The honest answer is that they did some of what they were intended to do, at a cost we do not yet know how to count. The question they were meant to settle — whether advanced compute should be a national-security strategic asset at all — is still open.
+And then the twist that neither original argument predicted: after three years of Washington deciding what China may buy, Beijing decided its firms would not buy it anyway. The export-control argument assumed the seller holds the leverage. The fragmentation reply assumed the buyer would route around the restriction. Both assumed the buyer still *wanted* the chips.
+
+The neat lesson would be that the controls "worked" or "failed." The honest answer is that they did some of what they were intended to do, changed shape repeatedly while doing it, and helped produce a competitor that no longer needs the thing being withheld. The question they were meant to settle — whether advanced compute should be a national-security strategic asset at all — is still open, and the two governments have now answered it the same way from opposite directions.
 
 ## Discussion Questions
 
@@ -143,6 +150,7 @@ The neat lesson would be that the controls "worked" or "failed." The honest answ
 2. Explain to a friend who knows nothing about chips why a country might treat one company (TSMC) as more strategically important than several of its own military bases. Use plain words and no jargon. What is the single fact your friend has to accept before the rest of your explanation makes sense?
 3. Write **The Export-Control Argument** and **The Fragmentation Reply** in your own words. What is the one thing they really disagree about?
 4. You are at the U.S. Bureau of Industry and Security today. Your draft rule restricts a new chip — and a parallel rule tightens visa scrutiny for Chinese graduate students in semiconductor research at U.S. universities. Most of those students have no link to Chinese military programs. Do you publish both rules together, split them apart, or pull the visa rule entirely? Defend your choice.
+6. Since 2022 the same restriction has been written, loosened, reversed, and waived. Then the country it targeted told its own companies not to buy the chips anyway. Does a control that keeps changing still count as a control — and if the target stops wanting what you are withholding, what exactly do you still have leverage over?
 5. Pick one: the phone in your pocket, a U.S. F-35 fighter, a chatbot you have used. Trace its dependence on TSMC. What would change about it if TSMC stopped shipping tomorrow?
 
 ## Further Reading

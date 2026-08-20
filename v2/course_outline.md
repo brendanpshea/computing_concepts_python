@@ -1,9 +1,11 @@
-# COMP 1150: Computer Science Concepts — Summer 2026 Redesign
+# COMP 1150: Computer Science Concepts — Second Edition Design Notes
 
 **Instructor:** Brendan Shea, PhD
-**Last revised:** April 2026
+**Written:** April 2026, for the summer 2026 redesign · **Revised:** August 2026 for fall 2026
 
-This document outlines the planned redesign of COMP 1150 for summer 2026. All 12 notebooks will be rewritten; 12 case studies will be refreshed; a Flask-based final project replaces the prior capstone structure.
+This document records the design of the second edition of COMP 1150 — the rationale, the twelve-week sequence, and the through-lines connecting the case studies to the notebooks. It was written as a plan for the summer 2026 rebuild and is kept as the reference for anyone adopting or adapting the course.
+
+> **The syllabus is authoritative for how the course is actually run.** Where this document and the current syllabus disagree about assessment, dates, or requirements, follow [`syllabi/syllabus_fa26.md`](../syllabi/syllabus_fa26.md). The "Assessment Alignment" section below has been updated to match it.
 
 ---
 
@@ -11,7 +13,7 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 
 1. **AI-assisted development from day one.** Students begin using an LLM as a coding partner in Notebook 1 and build explicit skills in prompt craft, verification, and critical evaluation of AI output across the semester.
 2. **Critical thinking as a through-line.** Every notebook pairs with a case study that demands systematic analysis before accepting conclusions (RCTC Core Outcome).
-3. **Everything builds toward the Flask app.** Databases, APIs, security, and AI features are introduced with an eye toward their role in the final project.
+3. **Everything builds toward something shippable.** Databases, APIs, security, and AI features are introduced with an eye toward the optional final project — a Python program of the student's own design, for which a small Flask app is the most ambitious path.
 4. **Philosophical, not mathematical, treatment of computability.** The limits of computation are presented as conceptual boundaries of what machines can do, not as formal proofs.
 
 ---
@@ -114,7 +116,7 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 - SQLite in Colab
 - Non-relational models: document stores (JSON using SQLite)
 - When to use which: tradeoffs in flexibility, consistency, scale
-- Preview: how the Flask app will use a database
+- Preview: how a small web app would use a database
 
 ### NB 10 — OS, Networks, Cloud & the Web
 **LOs:** 3
@@ -122,7 +124,7 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 - TCP/IP, HTTP, DNS
 - Cloud service models: IaaS, PaaS, SaaS
 - REST APIs; the `requests` library
-- **First Flask "Hello World" in Colab with `pyngrok` tunneling**
+- **First Flask "Hello World" in Colab, served through Colab's built-in port tunnelling**
 - Request/response cycle; templates as preview
 
 ### NB 11 — Cybersecurity & Secure Software Development
@@ -132,7 +134,7 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 - Input validation and sanitization
 - Hashing vs. encryption; salting passwords
 - Secrets management (environment variables, never-commit rules)
-- Each topic tied directly to what the Flask final needs
+- Each topic tied to what a student would need to build a small app of their own
 
 ### NB 12 — AI, Machine Learning & AI
 **LOs:** 10, 11
@@ -144,19 +146,23 @@ This document outlines the planned redesign of COMP 1150 for summer 2026. All 12
 
 ---
 
-## Final Project: Flask Web App
+## Final Project
 
-Students build a small full-stack Flask application that integrates the major threads of the course.
+**As taught in fall 2026 the project is optional and worth extra credit**, and the requirements are deliberately light: any Python program of the student's own design, in a Colab notebook or as a standalone script, with a README, a short AI-use reflection, a GitHub repo, and a two-to-three minute video demo. [`FINAL_PROJECT_SPEC.md`](../FINAL_PROJECT_SPEC.md) is the authoritative statement of what is required; this section records the more ambitious version the course was originally designed around, for anyone who wants to assign it.
 
-### Required integrations
+### The ambitious version: a small full-stack Flask app
+A student who wants to use everything the course covers can build a web application integrating the major threads:
+
 - **Database** — SQLite or document-store, with at least two tables/collections (NB 9)
 - **External API call** — any public API (NB 10)
 - **AI feature** — an LLM call (summarizer, chatbot, classifier, recommender, etc.) (NB 12)
 - **At least two security practices** — parameterized queries, input validation, password hashing, or secrets management (NB 11)
 - **Git-tracked repo** — README, meaningful commits, and a written reflection (NB 8)
 
-### Primary deployment target: Colab + pyngrok
-Students develop and demonstrate in Colab with `pyngrok` tunneling a public URL. This keeps the toolchain consistent with the rest of the course and avoids external signups for the assessed submission.
+None of these are required under the fall 2026 spec. They are a menu, and a student who builds a text adventure with a save file has met the actual requirement.
+
+### Development and demo target: Colab
+Students develop and demonstrate in Colab, serving the app through Colab's built-in port tunnelling (`serve_kernel_port_as_iframe` / `serve_kernel_port_as_window`, as in NB 10). This keeps the toolchain consistent with the rest of the course and avoids external signups. `pyngrok` remains an option for a public URL reachable off Colab, at the cost of a free ngrok account and token.
 
 ### Alternative hosting paths (documented in final-project handout)
 Provided for students who want to take their project further:
@@ -205,19 +211,33 @@ Each case study pairs with a notebook and is designed around the RCTC Critical T
 
 ## Assessment Alignment
 
-The syllabus lists: Tests, Lab exercises, Assignments, Comprehensive final test (written).
+As taught in **fall 2026** (see the syllabus for dates and exact weights):
 
-Proposed structure:
-- **Lab exercises** — embedded in each notebook; autograded where possible
-- **Assignments** — one per notebook, building toward the Flask app (e.g., NB 9 assignment asks students to design the data model for their app)
-- **Tests** — midterm after NB 6, second test after NB 10
-- **Final** — comprehensive written test covering concepts + Flask project submission + brief demo
+| Component | Weight | Notes |
+|---|---:|---|
+| Four proctored exams | 60% | 15% each, 75 minutes, covering the three chapters since the last exam. Mostly objective questions plus a few short coding questions, each closing with one essay on a case study. |
+| Lectures and case studies on Perusall | 25% | Annotation quality, active reading time, and engagement with classmates. No Perusall quizzes this term. |
+| *Loop of the Recursive Dragon* | 10% | Self-paced Python practice delivered in D2L as a SCORM module; unlimited retries. |
+| Week 1 pre-test | 5% | Proctored, unlimited attempts. Doubles as the Respondus setup check for the online section. |
+| Optional final programming project | extra credit | Any Python project; see `FINAL_PROJECT_SPEC.md`. Not required, and cannot lower a grade. |
+
+Exams fall after chapters 3, 6, 9, and 12. Two notes for anyone adapting this:
+
+- **The notebooks carry the practice, not the grade.** The `✏️ Your Turn` cells, the PyQuiz banks, and the capstones are formative — nothing in a notebook is collected. The graded practice lives in *Loop of the Recursive Dragon*.
+- **Every exam ends on a case study essay.** That is what makes the case studies load-bearing rather than optional enrichment, and it is why each one closes with arguments laid out in premise-conclusion form.
 
 ---
 
-## Open Questions / Next Steps
+## Open Questions — Resolved
 
-1. **Notebook authoring order.** Suggest drafting NB 1, NB 8, and the Flask final-project handout first — these set the tone and the capstone target. Then fill in the rest.
-2. **AI tool choice.** Pick a primary LLM for student use (Claude.ai free tier? Gemini in Colab? ChatGPT?) and standardize examples against it, with notes on the others.
-3. **Case study format.** Retain the existing PDF format, or move to markdown for easier iteration?
-4. **Pyngrok vs. Colab's built-in tunneling.** Confirm which is currently the most reliable path for Flask-in-Colab as of summer 2026 before committing in the handout.
+The questions this document opened in April 2026 have since been settled by the build:
+
+1. **Notebook authoring order.** ~~Draft NB 1, NB 8, and the final-project handout first.~~ All twelve notebooks and twelve case studies are written and published.
+2. **AI tool choice.** ~~Pick a primary LLM and standardize examples against it.~~ Resolved as *no single tool*: the notebooks name Gemini (built into Colab), Claude, and ChatGPT interchangeably, and the exercises are written to work with any of them. The transferable skill is verification, not one vendor's interface.
+3. **Case study format.** ~~PDF or markdown?~~ Resolved as Quarto `.qmd`, rendering to HTML for the site and DOCX for print. The 2024 PDFs are preserved in `archive/`.
+4. **Pyngrok vs. Colab's built-in tunneling.** Resolved in favour of Colab's built-in tunnelling — Notebook 10 uses `serve_kernel_port_as_iframe` and `serve_kernel_port_as_window`, which need no account or token. `pyngrok` is mentioned only as an optional side quest for students who want a URL reachable off Colab.
+
+## Still Open
+
+- **Lecture videos.** The placeholder links have been removed from the notebooks; add real links when the recordings exist.
+- **PyQuiz coverage.** Banks exist for notebooks 3–5 only. Decide whether to extend the set to 6–12 or leave the later chapters to *Loop of the Recursive Dragon*.

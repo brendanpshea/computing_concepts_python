@@ -1,6 +1,6 @@
 # COMP 1150: Final Programming Project
 
-**Total Points:** 15 points  
+**Optional — 15 points of extra credit**, added on top of your final grade. It cannot lower your grade.
 **Submission Location:** D2L Assignment Folder  
 **Format:** Google Colab Notebook OR Local Python Project (VS Code) + GitHub + Video Demo  
 
@@ -35,7 +35,7 @@ Need ideas? Here are a few ways to extend what we covered in class:
 
 ---
 
-## 📋 Project Requirements & Grading (15 Points Total)
+## 📋 Project Requirements & Grading (15 Extra-Credit Points Total)
 
 | Requirement | Description | Points |
 | :--- | :--- | :---: |

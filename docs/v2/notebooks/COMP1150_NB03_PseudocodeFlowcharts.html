@@ -224,7 +224,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- COLAB-BADGE -->
 <p><a href="https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><br>
 <a href="https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb">Download .ipynb</a> · <a href="https://github.com/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB03_PseudocodeFlowcharts.ipynb">View on GitHub</a></p>
-<p>📺 <strong>Lecture video:</strong> <em>(link coming soon)</em></p>
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
 <p>By the end of this notebook, you will be able to:</p>
@@ -325,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here is the shape of every assignment you’ll ever write:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>box_name <span class="op">=</span> value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The trick is how to <em>read</em> that <code>=</code>. Read it as <strong>“gets,”</strong> not “equals.” So <code>crowns = 50</code> means <em>“the box named <code>crowns</code> gets the value 50.”</em> It’s an <strong>instruction to store something</strong>, not a claim that two things are equal. Mirabel likes this arrangement: a named box can be checked, reused, and corrected in exactly one place — unlike Fen’s totals, scattered in the margins of three different pages.</p>
-<div id="cell-11" class="cell">
+<div id="cell-10" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>crowns <span class="op">=</span> <span class="dv">50</span>      <span class="co"># coins in the till</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>spent  <span class="op">=</span> <span class="dv">12</span>      <span class="co"># a customer's purchase</span></span>
@@ -341,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-update-the-till" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-update-the-till">✏️ Your Turn — Update the Till</h3>
 <p>A customer buys a phoenix feather. Start with the till and the price already in boxes, then update the till to reflect the sale, and print the new total.</p>
-<div id="cell-16" class="cell">
+<div id="cell-15" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>till  <span class="op">=</span> <span class="dv">200</span>      <span class="co"># crowns currently in the till</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="dv">35</span>       <span class="co"># price of one phoenix feather</span></span>
@@ -400,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>When you want to know what you’re holding, ask Python directly with the <code>type()</code> function:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(some_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="cell-18" class="cell">
+<div id="cell-17" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">42</span>))           <span class="co"># a whole number</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="fl">3.14</span>))         <span class="co"># has a decimal point</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="st">"Mirabel"</span>))    <span class="co"># in quotes -&gt; text</span></span>
@@ -415,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-name-that-type" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-name-that-type">✏️ Your Turn — Name That Type</h3>
 <p>Store one value of <strong>each</strong> of the four types in the boxes below — your own choices — then print the type of each. Before you run it, predict each answer out loud; then check yourself against Python.</p>
-<div id="cell-21" class="cell">
+<div id="cell-20" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ FILL IN a value of each type, then run.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>whole_number   <span class="op">=</span>      <span class="co"># an int</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>decimal_number <span class="op">=</span>      <span class="co"># a float</span></span>
@@ -468,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>The pair <code>//</code> and <code>%</code> are a team. Together they answer one very practical question: <em>“how many whole groups fit, and how much is left over?”</em> That question is everywhere — and in our shop, it’s exactly how you turn a heap of copper bits into crowns-and-bits.</p>
-<div id="cell-23" class="cell">
+<div id="cell-22" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>bits <span class="op">=</span> <span class="dv">347</span>        <span class="co"># a pile of loose copper bits (100 bits = 1 crown)</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -535,7 +534,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-crowns-and-bits" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-crowns-and-bits">✏️ Your Turn — Crowns and Bits</h3>
 <p>A customer pays for a jar of moonpetal with a fistful of loose bits. Given the number of bits, work out how many whole <strong>crowns</strong> that is and how many <strong>bits</strong> are left over, and print both.</p>
-<div id="cell-27" class="cell">
+<div id="cell-26" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>paid_bits <span class="op">=</span> <span class="dv">525</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -645,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong><code>or</code></strong> — True when <strong>either</strong> side is True.</li>
 <li><strong><code>not</code></strong> — flips it: <code>not True</code> is <code>False</code>.</li>
 </ul>
-<div id="cell-30" class="cell">
+<div id="cell-29" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>purse  <span class="op">=</span> <span class="dv">72</span>        <span class="co"># crowns the customer is carrying</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>price  <span class="op">=</span> <span class="dv">50</span>        <span class="co"># price of the item</span></span>
@@ -667,7 +666,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-the-shopkeepers-test" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-the-shopkeepers-test">✏️ Your Turn — The Shopkeeper’s Test</h3>
 <p>Mirabel will sell an item only if the customer can afford it <strong>and</strong> it’s in stock. Set up the boxes below, then write and print <strong>one</strong> boolean expression that is <code>True</code> exactly when the sale should go through. Test it by changing the values so it comes out both <code>True</code> and <code>False</code>.</p>
-<div id="cell-33" class="cell">
+<div id="cell-32" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>purse    <span class="op">=</span> <span class="dv">40</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>price    <span class="op">=</span> <span class="dv">35</span></span>
@@ -688,7 +687,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The shape of an input is:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> <span class="bu">input</span>(<span class="st">"a prompt to show: "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>There is one surprise hiding in that line, and it is responsible for the most common bug in this entire course — so let’s meet it head-on.</p>
-<div id="cell-35" class="cell">
+<div id="cell-34" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This cell PAUSES and waits for you to type. That's expected, not a freeze.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>typed <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Type any number: "</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(typed, <span class="st">"has type"</span>, <span class="bu">type</span>(typed))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -697,7 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-1-beginner-bug" class="level3">
 <h3 class="anchored" data-anchor-id="the-1-beginner-bug">The #1 Beginner Bug</h3>
 <p>Because <code>input()</code> returns a string, doing arithmetic on it goes wrong in a way that looks <em>almost</em> right — which is the most dangerous kind of wrong:</p>
-<div id="cell-38" class="cell">
+<div id="cell-37" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">"5"</span>     <span class="co"># pretend these two arrived from input()</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="st">"3"</span></span>
@@ -713,7 +712,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-ask-and-answer" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-ask-and-answer">✏️ Your Turn — Ask and Answer</h3>
 <p>Ask the customer how many phoenix feathers they want and the price per feather, then print the total cost. Remember to cast each input before multiplying.</p>
-<div id="cell-41" class="cell">
+<div id="cell-40" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: read two numbers with input(), cast them with int(),</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       multiply, and print the total cost.</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
@@ -754,7 +753,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="cell-43" class="cell">
+<div id="cell-42" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Line one</span><span class="ch">\n</span><span class="st">Line two"</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Item:</span><span class="ch">\t</span><span class="st">Moonpetal"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mirabel said </span><span class="ch">\"</span><span class="st">mind the cat</span><span class="ch">\"</span><span class="st">"</span>)</span>
@@ -803,7 +802,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="cell-46" class="cell">
+<div id="cell-45" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="fl">19.5</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>name  <span class="op">=</span> <span class="st">"mirabel"</span></span>
@@ -883,7 +882,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Two things to know. Strings are <strong>immutable</strong> — a method never changes the original; it hands back a <em>new</em> string. And methods can be <strong>chained</strong> left to right, so <code>raw.strip().title()</code> trims first, then title-cases the trimmed result.</p>
-<div id="cell-49" class="cell">
+<div id="cell-48" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THIS, THEN RE-RUN</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="st">"  mirabel quill  "</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------</span></span>
@@ -899,7 +898,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="putting-it-together-a-shop-label" class="level3">
 <h3 class="anchored" data-anchor-id="putting-it-together-a-shop-label">Putting It Together: a Shop Label</h3>
 <p>These tools shine when you use them <em>at once</em>. The cell below prints a bordered price label using all three — a repeated-character rule, a centred upper-cased banner, and a right-aligned price column to two decimals.</p>
-<div id="cell-52" class="cell">
+<div id="cell-51" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>shop <span class="op">=</span> <span class="st">"mirabel's emporium"</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> <span class="st">"phoenix feather"</span></span>
@@ -919,7 +918,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-your-own-price-label" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn-your-own-price-label">✏️ Your Turn — Your Own Price Label</h3>
 <p>Make a label for an item of your own invention (a <em>self-stirring teaspoon</em>? a <em>jar of bottled Tuesday</em>?). Print a bordered label with the shop name centred and the price right-aligned to two decimals — start from the cell above and make it yours.</p>
-<div id="cell-55" class="cell">
+<div id="cell-54" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>shop  <span class="op">=</span> <span class="st">"your shop name"</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>item  <span class="op">=</span> <span class="st">"your wondrous item"</span></span>
@@ -990,7 +989,7 @@ OUTPUT:  share        — crystals each apprentice receives
 <p>Six numbered steps anyone could follow — including a tired future you, debugging this at midnight.</p>
 <p><strong>Step 2½ — The Flowchart.</strong> The same six steps, drawn so the straight-line shape is obvious: Start, two inputs, two calculations, one output, End.</p>
 <p><strong>Step 3 — Python.</strong> Now — and only now — translate the pseudocode line for line. We use an editable value block first, so the output is reproducible and we can check it by hand:</p>
-<div id="cell-67" class="cell">
+<div id="cell-66" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ⬇️ CHANGE THESE, THEN RE-RUN</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>crystals    <span class="op">=</span> <span class="dv">1000</span>      <span class="co"># step 1: READ crystals</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>apprentices <span class="op">=</span> <span class="dv">7</span>         <span class="co"># step 2: READ apprentices</span></span>
@@ -1010,7 +1009,7 @@ OUTPUT:  share        — crystals each apprentice receives
 </ul>
 <p>That <code>(quotient × divisor) + remainder = original</code> check works for <em>any</em> <code>//</code> and <code>%</code> pair. Get in the habit of running it.</p>
 <p>Here is the same algorithm wired to a real person, with <code>int(input(...))</code> standing in for steps 1–2 — the type-casting rule applied. The <em>thinking</em> was finished before a line of Python got written. That’s the whole method.</p>
-<div id="cell-69" class="cell">
+<div id="cell-68" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>crystals    <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Crystals in the cache: "</span>))</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>apprentices <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Number of apprentices: "</span>))</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1034,7 +1033,7 @@ OUTPUT:  share        — crystals each apprentice receives
 <li><strong>Python:</strong> in a code cell with an editable value block — then <strong>verify by hand</strong> with one example and show the cross-check.</li>
 </ol>
 <p><em>Hint: it’s the same <code>//</code> and <code>%</code> shape as the crystal split.</em></p>
-<div id="cell-71" class="cell">
+<div id="cell-70" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Your Python for the bits-to-crowns exercise.</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your pseudocode in a markdown cell FIRST, then translate it here.</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1085,7 +1084,7 @@ OUTPUT:  share        — crystals each apprentice receives
 <h3 class="anchored" data-anchor-id="how-to-use-it">How to use it</h3>
 <p>For each problem: read the description and sample runs, edit the code in the box, and click <strong>Run Tests</strong> to see how you did. Stuck? Click <strong>Hint</strong>. Use <strong>Next</strong> to move on, or the dropdown to jump around — your code is checked per test case, so you can see partial progress clearly.</p>
 <p>Run the cell below to start. <em>(The first time, it downloads <code>pyquiz.py</code> from the course repo — a brief pause, then the tool appears.)</em></p>
-<div id="cell-75" class="cell">
+<div id="cell-74" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PyQuiz bootstrap — works in Colab or any local Jupyter.</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, urllib.request</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>REPO <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main"</span></span>
@@ -1118,7 +1117,7 @@ OUTPUT:  share        — crystals each apprentice receives
 <p><strong>Step 4 — Add the bells and whistles.</strong> Once the core works, add <strong>one or two</strong> extras, testing after each: prices that change each turn, a sell price different from the buy price (where profit lives), a win/lose message, or a risky item that might be worthless.</p>
 <p><strong>Step 5 — Reflect.</strong> In a markdown cell, write 2–3 sentences: what did the AI get wrong or what did you improve, and how did you fix it?</p>
 <p>Remember the course rule: <em>AI is a fast first draft. You verify.</em></p>
-<div id="cell-77" class="cell">
+<div id="cell-76" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built trading game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
