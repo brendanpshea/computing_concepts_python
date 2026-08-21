@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-21">
 
 <title>Notebook 11: Cybersecurity — Defending the Clinic – Computing Concepts with Python</title>
 <style>
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 21, 2026</p>
     </div>
   </div>
   
@@ -270,10 +270,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  triad -&gt; c; triad -&gt; i; triad -&gt; a;</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-cia" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-cia" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram of the CIA triad applied to patient records: confidentiality is the wrong people reading it, integrity is the wrong people changing it, and availability is stopping it from working at all.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-cia-output-1.svg" id="fig-cia" class="img-fluid figure-img">
+<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-cia-output-1.svg" id="fig-cia" class="img-fluid figure-img" alt="Diagram of the CIA triad applied to patient records: confidentiality is the wrong people reading it, integrity is the wrong people changing it, and availability is stopping it from working at all.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1
@@ -584,10 +584,10 @@ check_password_hash(stored, "hunter2")         # True</code></pre>
 <span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="vs">  }</span></span>
 <span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-<div id="fig-https" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-https" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Comparison of plain HTTP with HTTPS: over HTTP an eavesdropper on the Wi-Fi reads the password in the clear, while over HTTPS the same traffic appears scrambled.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-https-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-https-output-1.svg" id="fig-https" class="img-fluid figure-img">
+<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-https-output-1.svg" id="fig-https" class="img-fluid figure-img" alt="Comparison of plain HTTP with HTTPS: over HTTP an eavesdropper on the Wi-Fi reads the password in the clear, while over HTTPS the same traffic appears scrambled.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-https-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2
@@ -656,10 +656,10 @@ Figure&nbsp;2
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="vs">  atk -&gt; l1 -&gt; l2 -&gt; l3 -&gt; l4 -&gt; l5 -&gt; win;</span></span>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<div id="fig-defense" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-defense" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Defense-in-depth diagram: an attack must get past input validation, parameterized queries, hashed and salted passwords, HTTPS in transit, and rate limiting before patient data would be at risk.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-defense-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-defense-output-1.svg" id="fig-defense" class="img-fluid figure-img">
+<img src="COMP1150_NB11_Cybersecurity_files/figure-html/fig-defense-output-1.svg" id="fig-defense" class="img-fluid figure-img" alt="Defense-in-depth diagram: an attack must get past input validation, parameterized queries, hashed and salted passwords, HTTPS in transit, and rate limiting before patient data would be at risk.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-defense-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3

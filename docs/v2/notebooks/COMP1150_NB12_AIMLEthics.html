@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-21">
 
 <title>Notebook 12: AI, Machine Learning &amp; Ethics — Opening the Oracle – Computing Concepts with Python</title>
 <style>
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 21, 2026</p>
     </div>
   </div>
   
@@ -279,10 +279,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  uns -&gt; "find groups</span><span class="ch">\n</span><span class="kw">(</span><span class="vs">cluster similar things</span><span class="kw">)</span><span class="vs">";</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-learning" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-learning" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram contrasting supervised learning, which trains on examples that carry answers, with unsupervised learning, which trains on examples that carry none.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-learning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-learning-output-1.svg" id="fig-learning" class="img-fluid figure-img">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-learning-output-1.svg" id="fig-learning" class="img-fluid figure-img" alt="Diagram contrasting supervised learning, which trains on examples that carry answers, with unsupervised learning, which trains on examples that carry none.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-learning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1
@@ -343,10 +343,10 @@ Figure&nbsp;1
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="vs">  sum -&gt; out;</span></span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<div id="fig-neuron" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-neuron" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram of a single artificial neuron: income and debt inputs are each multiplied by a weight, added together, and compared against a threshold that approves or denies.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-neuron-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-neuron-output-1.svg" id="fig-neuron" class="img-fluid figure-img">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-neuron-output-1.svg" id="fig-neuron" class="img-fluid figure-img" alt="Diagram of a single artificial neuron: income and debt inputs are each multiplied by a weight, added together, and compared against a threshold that approves or denies.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-neuron-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2
@@ -422,10 +422,10 @@ output = 1 if total &gt; 0 else 0</code></pre>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"income"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"debt"</span>)<span class="op">;</span> plt.legend()</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="fig-boundary" class="quarto-float quarto-figure quarto-figure-center anchored" height="429" width="576">
+<div id="fig-boundary" class="quarto-float quarto-figure quarto-figure-center anchored" height="429" alt="Scatter plot of applicants by income and debt, with a straight decision boundary separating the approved points from the denied ones." width="576">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-boundary-output-1.png" id="fig-boundary" width="576" height="429" class="figure-img">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-boundary-output-1.png" id="fig-boundary" alt="Scatter plot of applicants by income and debt, with a straight decision boundary separating the approved points from the denied ones." width="576" height="429" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3
@@ -454,10 +454,10 @@ Figure&nbsp;3
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="vs">  label="inputs        →     hidden layer     →   output";</span></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="vs">}"""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<div id="fig-network" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-network" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram of a small neural network: a column of input nodes connects to a hidden layer, which connects in turn to the output.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-network-output-1.svg" id="fig-network" class="img-fluid figure-img">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-network-output-1.svg" id="fig-network" class="img-fluid figure-img" alt="Diagram of a small neural network: a column of input nodes connects to a hidden layer, which connects in turn to the output.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4
@@ -682,10 +682,10 @@ Applicant from 'west': 1</code></pre>
 <span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="fig-carbon" class="quarto-float quarto-figure quarto-figure-center anchored" height="336" width="661">
+<div id="fig-carbon" class="quarto-float quarto-figure quarto-figure-center anchored" height="336" alt="Bar chart of approximate CO2 emissions in metric tonnes, showing the hidden cost of a single model training run." width="661">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-carbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-carbon-output-1.png" id="fig-carbon" width="661" height="336" class="figure-img">
+<img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-carbon-output-1.png" id="fig-carbon" alt="Bar chart of approximate CO2 emissions in metric tonnes, showing the hidden cost of a single model training run." width="661" height="336" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-carbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5
