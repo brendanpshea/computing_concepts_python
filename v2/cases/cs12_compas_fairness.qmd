@@ -92,6 +92,8 @@ This is not special to our toy. Mathematicians proved it in general: when base r
 | Who measured it | Northpointe | ProPublica |
 | True in the data? | **Yes** | **No** — and can't be, given the first |
 
+: Equal calibration and equal error rates as competing definitions of fairness.
+
 So "is COMPAS fair?" has no yes-or-no answer. It is fair by one definition and unfair by another, and arithmetic forbids fixing both. Which definition should win is not a question mathematics can settle. It is a question about which mistake we are least willing to make — and that is a moral choice, not a technical one. The remaining question is who gets to make it, and whether anyone is even watching them do it.
 
 ## The Argument

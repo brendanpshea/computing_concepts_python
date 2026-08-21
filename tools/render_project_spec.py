@@ -4,7 +4,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from fix_a11y import add_th_scope  # shared with the Quarto post-render step
+from fix_a11y import add_th_scope, caption_from_marker  # shared with the post-render step
 
 def render_md_to_html(src_path, out_path, title="COMP 1150 — Final Programming Project"):
     with open(src_path, encoding="utf-8") as f:
@@ -14,6 +14,7 @@ def render_md_to_html(src_path, out_path, title="COMP 1150 — Final Programming
         md_text,
         extensions=["extra", "sane_lists", "toc", "tables", "nl2br"],
     )
+    body, _ = caption_from_marker(body)
     body, _ = add_th_scope(body)
 
     html = f"""<!DOCTYPE html>

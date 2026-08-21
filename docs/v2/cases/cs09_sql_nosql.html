@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-21">
 
 <title>From SQL to NoSQL: Why Google Broke the Database – Computing Concepts with Python</title>
 <style>
@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -217,7 +217,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 21, 2026</p>
     </div>
   </div>
   
@@ -283,6 +283,7 @@ div.csl-indent {
 <p>That second function is the whole bargain in four lines. The lookup is fast — but now two structures must agree forever, and no database is checking. If a crash hits between the two updates, they silently disagree. Codd’s model made that <em>impossible</em>; the database applied related changes as one transaction. Bigtable made it <em>your job</em>. The work never disappeared. It moved from the database into every program that uses it.</p>
 <p>The full trade looks like this:</p>
 <table class="caption-top table">
+<caption>Relational and Bigtable-style NoSQL databases compared on the questions that matter most.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">

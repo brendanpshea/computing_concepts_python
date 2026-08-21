@@ -56,6 +56,26 @@ def add_th_scope(html: str) -> tuple[str, int]:
     return html, n
 
 
+def caption_from_marker(html: str) -> tuple[str, int]:
+    """Turn a leading `Table: ...` paragraph into that table's <caption>.
+
+    Python-Markdown has no table-caption syntax, so the Markdown source marks
+    one with a `Table: ...` line before the table. (Quarto/Pandoc sources use
+    their own `: caption` syntax instead and never reach this.)
+    """
+    n = 0
+
+    def one(m: re.Match) -> str:
+        nonlocal n
+        n += 1
+        return f"<table><caption>{m.group(1).strip()}</caption>"
+
+    html = re.sub(
+        r"<p>Table:\s*(.*?)</p>\s*<table>", one, html, flags=re.DOTALL
+    )
+    return html, n
+
+
 def label_inline_svg(html: str) -> tuple[str, int]:
     """Name each inline <svg> from its own <figcaption>, per WCAG 1.1.1."""
     n = 0

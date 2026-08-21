@@ -104,6 +104,8 @@ The comparison at the heart of the legal fight looks like this:
 | Sees the license? | yes, and can honor it | no — licenses are just more text |
 | Who profits directly | the learner | the company selling the model |
 
+: How a person learning from code differs from a model training on it.
+
 Whether the two columns describe *the same activity* at different scales, or *different activities* that merely rhyme, is exactly what the argument below is about.
 
 ## The Argument Copilot Started

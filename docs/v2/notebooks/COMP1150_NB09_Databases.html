@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-21">
 
 <title>Notebook 9: Databases — Where Data Lives When the Program Stops – Computing Concepts with Python</title>
 <style>
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 21, 2026</p>
     </div>
   </div>
   
@@ -1010,6 +1010,7 @@ GROUP BY column;</code></pre>
 <p>Notice Prof.&nbsp;Anemone’s <code>taste</code> comes back as <code>None</code> — her dream simply doesn’t have that field, and the document model shrugs: fine.</p>
 <p>That shrug is the whole trade-off. Compare the two models honestly:</p>
 <table class="caption-top table">
+<caption>Relational tables compared with JSON documents on structure, rules, and change.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1109,6 +1110,7 @@ Thundermint Bar: 250p</code></pre>
 <h3 class="anchored" data-anchor-id="defining-structure-ddl">Defining Structure (DDL)</h3>
 <p>These commands create and reshape tables — the filing cabinets, not the files.</p>
 <table class="caption-top table">
+<caption>SQL keywords for defining structure (DDL), with an example of each.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1145,6 +1147,7 @@ Thundermint Bar: 250p</code></pre>
 <h3 class="anchored" data-anchor-id="changing-data-dml">Changing Data (DML)</h3>
 <p>These commands add, edit, and remove rows.</p>
 <table class="caption-top table">
+<caption>SQL keywords for changing data (DML), with an example of each.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1181,6 +1184,7 @@ Thundermint Bar: 250p</code></pre>
 <h3 class="anchored" data-anchor-id="asking-questions-queries">Asking Questions (Queries)</h3>
 <p>The <code>SELECT</code> family — most of the SQL anyone writes, most days.</p>
 <table class="caption-top table">
+<caption>SQL keywords for querying data, with an example of each.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1241,6 +1245,7 @@ Thundermint Bar: 250p</code></pre>
 <h3 class="anchored" data-anchor-id="types-and-rules">Types and Rules</h3>
 <p>The building blocks inside a <code>CREATE TABLE</code>.</p>
 <table class="caption-top table">
+<caption>SQL column types and constraints, with an example of each.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">

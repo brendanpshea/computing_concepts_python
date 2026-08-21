@@ -77,6 +77,8 @@ Run the procedure on paper from the Intel 4004 (1971, 2,300 transistors) and com
 | 2011 | Intel Sandy Bridge | ≈ 2.4 billion      | ≈ 995 million   |
 | 2023 | Apple M2 Ultra     | ≈ 154 billion      | ≈ 134 billion   |
 
+: Moore's prediction compared with the actual transistor count of representative chips.
+
 The headline transistor count has stayed within roughly a factor of two of Moore's naive extrapolation for half a century — remarkable for a fifty-year forecast, though you can see the rule running ahead of any single mainstream chip in the middle of the run, then being caught again by the largest chips of the 2020s. What has *not* held is the economics. Each new doubling now requires a fab that costs tens of billions of dollars to build. The rate of cost-per-transistor decline that defined the industry for decades flattened around 2010. The famous "end of Moore's Law" is mostly an end of the cheap doubling. It is also the reason the leading-edge fab is so concentrated. Only a handful of companies can afford to chase the next node. As of 2026 the leading edge is no longer quite a monopoly — Samsung is producing at 2nm and Intel's 18A entered high-volume manufacturing in late 2025 — but neither is close to TSMC's yields or volumes, and TSMC's overall share of the foundry market has gone *up*, not down, since the controls began.
 
 The second fact is what those transistors *let you represent*. A chip stores and moves data in bits. The [bit width]{.key-term} of its memory addresses sets a hard ceiling on what software can do. The rule is one line:
@@ -94,6 +96,8 @@ Each time the address width *doubles*, the reach is not doubled — it is *squar
 | 20-bit        | 1 MB                   | The original IBM PC (a 16-bit CPU with a 20-bit bus) |
 | 32-bit        | 4 GB                   | The desktop era                    |
 | 64-bit        | 16 EB (16 billion gigabytes) | Every phone and laptop made today |
+
+: How far each address width could reach, and what that meant for real machines.
 
 Note the distinction the table turns on: a chip's *data* width (how many bits it computes on at once) and its *address* width (how much memory it can reach) are different numbers. The 6502 in an Apple II was an 8-bit processor with a 16-bit address bus — 8-bit arithmetic, 64 KB of reach. The 1970s and 1980s microprocessors lived inside those small windows either way. They could not hold a modern photo in memory if they wanted to. The reason your phone can run a multi-billion-parameter language model is not magic. It is sixty years of doubling, packed into 64-bit address space and 5nm transistors.
 

@@ -81,6 +81,8 @@ One open door lets an attacker in. It should not let them reach everything, stay
 | Attacker reads database logins | credentials stored as unreadable hashes | usernames and passwords in plain text |
 | Data streams out for 76 days | monitoring that watches the exits | a monitor blinded by a certificate expired 19 months |
 
+: Each stage of the Equifax attack, the defense that should have stopped it, and what Equifax actually had.
+
 Read the table top to bottom and a pattern appears: not one failure, but four, stacked — and each was a lesson known to the field for decades. The attacker needed a single hole. Equifax needed all four defenses working, on every system, continuously, for years. That asymmetry is real, and it is the strongest thing that can be said in the company's defense. It is also where the argument begins.
 
 ## The Argument the Breach Started

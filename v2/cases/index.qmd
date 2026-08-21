@@ -29,6 +29,8 @@ interesting.
 | 11 | [The Equifax Breach](cs11_equifax_breach.qmd) | **Available** |
 | 12 | [The Score and the Face: COMPAS, Facial Recognition & AI Accountability](cs12_compas_fairness.qmd) | **Available** |
 
+: The twelve case studies and whether each is currently available.
+
 ## How to read these
 
 Every case has the same four parts:

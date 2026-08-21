@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-21">
 
 <title>Notebook 3: Python Basics via Pseudocode &amp; Flowcharts – Computing Concepts with Python</title>
 <style>
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 21, 2026</p>
     </div>
   </div>
   
@@ -272,6 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-roadmap" class="level2">
 <h2 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h2>
 <table class="caption-top table">
+<caption>The parts of this notebook and what each one covers.</caption>
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -356,6 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Every value a program holds has a <strong>type</strong> — a category that decides what you’re allowed to do with it. You can add two numbers, but “adding” two names means something different, and dividing a word by three means nothing at all. The type is what tells Python which rules apply.</p>
 <p><strong>Auditor Crane</strong>, who visits from the Guild of Weights and Measures with a magnifying glass and no sense of humour, insists that you <em>always know which type you are holding</em>. The four you need right now:</p>
 <table class="caption-top table">
+<caption>Python’s basic data types, with an example and typical use for each.</caption>
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -431,6 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>An <strong>expression</strong> is any piece of code that computes a value. <code>crowns - spent</code> is an expression; so is <code>7 &gt; 3</code>. The values an expression works on are its <strong>operands</strong>, and the symbols that act on them — <code>+</code>, <code>-</code>, and friends — are its <strong>operators</strong>. A whole line of code like <code>total = crowns - spent</code> is a <strong>statement</strong>: a complete instruction. (Tuck those four words away — <em>expression, operand, operator, statement</em> — they come back all year.)</p>
 <p>The everyday arithmetic operators are the ones you’d expect: <code>+  -  *  /</code>. But three more deserve special attention, because they show up constantly and surprise people:</p>
 <table class="caption-top table">
+<caption>Arithmetic operators, with an example and result for each.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Operator</th>
@@ -482,6 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="a-few-built-in-math-tools">A Few Built-in Math Tools</h3>
 <p>Operators aren’t the only way to compute. Python ships with small <strong>functions</strong> that do common jobs — you call one by writing its name and putting its inputs in parentheses, like <code>abs(-5)</code>. A clerk’s-toolkit worth knowing:</p>
 <table class="caption-top table">
+<caption>Built-in math functions, with an example and result for each.</caption>
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -549,6 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>So far our expressions have produced numbers. But programs also need to ask <strong>questions</strong> — <em>is the till empty? can the customer afford this?</em> — and the answer to a yes/no question is a <strong>bool</strong>: either <code>True</code> or <code>False</code>.</p>
 <p>You ask numeric questions with the <strong>comparison operators</strong>:</p>
 <table class="caption-top table">
+<caption>Comparison operators, with an example and result for each.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Operator</th>
@@ -599,6 +604,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>One of these causes more grief than all the others combined: <strong><code>==</code> is a question, <code>=</code> is a command.</strong> <code>crowns == 50</code> <em>asks</em> “is the till 50?” and answers True or False. <code>crowns = 50</code> <em>orders</em> “put 50 in the till.” Mixing them up is a rite of passage; knowing the difference now will save you a real headache later.</p>
 <p>Often one question isn’t enough — <em>can the customer afford it <strong>and</strong> is it in stock?</em> You combine yes/no answers with the <strong>boolean operators</strong> <code>and</code>, <code>or</code>, and <code>not</code>. These are exactly the AND / OR / NOT logic gates from Notebook 2, now spelled as English words:</p>
 <table class="caption-top table">
+<caption>Truth table for Python’s and, or, and not operators.</caption>
 <thead>
 <tr class="header">
 <th scope="col"><code>A</code></th>
@@ -728,6 +734,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="escape-characters">Escape Characters</h3>
 <p>Inside a string, a backslash begins an <strong>escape character</strong> — a little code for something you can’t easily type:</p>
 <table class="caption-top table">
+<caption>Common escape characters and what each one produces.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Escape</th>
@@ -767,6 +774,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f"text </span><span class="sc">{</span>variable<span class="sc">}</span><span class="ss"> more text"</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ss">f"</span><span class="sc">{</span>variable<span class="sc">:</span>specifier<span class="sc">}</span><span class="ss">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table">
+<caption>f-string format specifiers, with an example of each.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Spec</th>
@@ -822,6 +830,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Strings come with built-in <strong>methods</strong> — small tools you call <em>on</em> a string by attaching a dot:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>text.method()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table">
+<caption>Common string methods, with an example and result for each.</caption>
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">

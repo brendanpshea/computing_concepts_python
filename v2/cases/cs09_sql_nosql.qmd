@@ -89,6 +89,8 @@ The full trade looks like this:
 | Cross-table questions | one join, database does the work | build your own second index |
 | During a network failure | may refuse to answer (stays right) | keeps answering (may be stale) |
 
+: Relational and Bigtable-style NoSQL databases compared on the questions that matter most.
+
 The last row deserves its own name. Systems like Dynamo promise [eventual consistency]{.key-term}: after an update, different machines may briefly disagree about the truth, and the system reconciles them later. Amazon judged that a shopping cart that *sometimes shows a deleted item* beats a cart that *sometimes refuses to open*. For carts, most people agree. For bank balances, most people do not — which is exactly where the argument begins.
 
 ::: {.context-box}

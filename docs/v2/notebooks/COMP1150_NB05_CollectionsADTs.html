@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-21">
 
 <title>Notebook 5: Collections &amp; Abstract Data Types – Computing Concepts with Python</title>
 <style>
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -212,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 21, 2026</p>
     </div>
   </div>
   
@@ -244,6 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-big-contract">The Big Contract</h2>
 <p>Welcome to <strong>The Midnight Masquerade</strong>, a delightfully creaky costume emporium where six rather famous monsters share one shop floor and a single, much-abused cash register. The lighting flickers on purpose, the cobwebs are <em>decorative</em>, and — to everyone’s eternal frustration — absolutely nothing runs on paper any more.</p>
 <table class="caption-top table">
+<caption>The three departments of the Big Contract, their proprietors, and the problem each one faces.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -294,6 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-roadmap" class="level2">
 <h2 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h2>
 <table class="caption-top table">
+<caption>The parts of this notebook, the department each one uses as its example, and what you’ll learn.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -523,6 +525,7 @@ dusk     : ['cape', 'fangs', 'masks']</code></pre>
 <h3 class="anchored" data-anchor-id="list-methods-cheatsheet">📋 List Methods Cheatsheet</h3>
 <p>The list operations from this section, plus a few close cousins worth knowing exist. You don’t need to memorise the right-hand column — just remember this table is here.</p>
 <table class="caption-top table">
+<caption>Common list methods and what each one does.</caption>
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -812,6 +815,7 @@ Prices high→low: [30.0, 18.0, 12.0, 9.0, 6.0]</code></pre>
 <section id="dictionary-methods-cheatsheet" class="level3">
 <h3 class="anchored" data-anchor-id="dictionary-methods-cheatsheet">📋 Dictionary Methods Cheatsheet</h3>
 <table class="caption-top table">
+<caption>Common dictionary methods and what each one does.</caption>
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -938,6 +942,7 @@ How many distinct guests? 4</code></pre>
 <section id="set-methods-cheatsheet" class="level3">
 <h3 class="anchored" data-anchor-id="set-methods-cheatsheet">📋 Set Methods Cheatsheet</h3>
 <table class="caption-top table">
+<caption>Common set methods and operators, and what each one does.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Method / operator</th>
@@ -1008,6 +1013,7 @@ How many distinct guests? 4</code></pre>
 <h3 class="anchored" data-anchor-id="choosing-your-collection-a-quick-guide">Choosing Your Collection — A Quick Guide</h3>
 <p>Four collections, four jobs. If you remember nothing else from this notebook, remember this table.</p>
 <table class="caption-top table">
+<caption>Which collection type to reach for in a given situation, with an example of each.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1309,6 +1315,7 @@ allowance     : {'Dracula': 2, 'Mina': 2, 'Hyde': 2}</code></pre>
 <p>A <strong>dictionary</strong> (and a <strong>set</strong>) does something cleverer. It doesn’t walk at all — it jumps <em>straight</em> to the right spot, and it takes about the same tiny amount of time whether the catalogue holds ten masks or ten thousand. Think of a coat-check: you hand over ticket #47 and the attendant walks directly to slot 47, never glancing at the other coats.</p>
 <p><strong>The trick is called hashing.</strong> When you store a key like <code>"plague doctor beak"</code>, Python runs it through a <strong>hash function</strong> — a small recipe that turns the key into a number. That number tells Python <em>which shelf</em> to put the value on. Later, when you look the same key up, Python runs the <em>same</em> recipe, gets the <em>same</em> number, and goes straight to that shelf. No scanning. The key itself tells Python where to look.</p>
 <table class="caption-top table">
+<caption>How lists compare with dictionaries and sets when looking up an item.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">

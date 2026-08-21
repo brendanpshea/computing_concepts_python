@@ -38,6 +38,8 @@ browser), **Run** (open in Google Colab to execute and edit), and
 | 11 | Cybersecurity & Secure Software Development | [HTML](v2/notebooks/COMP1150_NB11_Cybersecurity.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB11_Cybersecurity.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB11_Cybersecurity.ipynb) |
 | 12 | AI, Machine Learning & Ethics | [HTML](v2/notebooks/COMP1150_NB12_AIMLEthics.html) | [Colab](https://colab.research.google.com/github/brendanpshea/computing_concepts_python/blob/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb) | [.ipynb](https://raw.githubusercontent.com/brendanpshea/computing_concepts_python/main/v2/notebooks/COMP1150_NB12_AIMLEthics.ipynb) |
 
+: The twelve course notebooks, with links to read, run, or download each one.
+
 ## Case studies
 
 Short, discussion-ready pieces on the history, ethics, and unresolved

@@ -37,6 +37,8 @@ Need ideas? Here are a few ways to extend what we covered in class:
 
 ## 📋 Project Requirements & Grading (15 Extra-Credit Points Total)
 
+Table: Final project requirements and the extra-credit points available for each.
+
 | Requirement | Description | Points |
 | :--- | :--- | :---: |
 | **1. Working Python Code** | Code runs smoothly without syntax errors. Uses foundational Python concepts correctly (variables, loops, conditionals, functions, collections, or classes). | **5 pts** |

@@ -102,6 +102,8 @@ Because the internet is built in **layers**, and the designers only decentralize
 | Compute & storage | the servers apps actually run on | ~3 clouds ≈ two-thirds | scale is overwhelmingly cheaper |
 | Applications | search, social, shopping, chat | a handful of giants | winner-take-most markets |
 
+: Which layers of the internet stayed decentralized, which recentralized, and why.
+
 Read the table bottom to top and the irony sharpens: each layer *up* is more centralized than the one below it. The fishnet survived. But when us-east-1 stumbles, it doesn't matter that the packets can route around damage — the damage *is the destination*. Your bank's app, your doorbell's brain, and your airline's check-in system were all standing in the same building. A [single point of failure]{.key-term} is any component whose failure takes the whole system down. The design eliminated them at the packet layer. The economy rebuilt them upstairs.
 
 ## The Argument the Outages Started

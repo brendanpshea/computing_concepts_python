@@ -101,6 +101,8 @@ Now nothing pretends to be a kind of something it cannot replace. Each shape sta
 | Can you change it later? | parent is fixed when the child is written | parts can be swapped while the program runs |
 | Main risk | a child that can't truly replace its parent | a little more wiring to write by hand |
 
+: Inheritance compared with composition as ways of relating objects.
+
 Inheritance is not always wrong. When a child can *genuinely* replace its parent, it is clean and powerful. The danger is that "is-a" sentences are easy to say and often false in the one way that matters — substitutability. That is why the slogan that eventually won was not "never inherit." It was milder, and it came from inside the OOP world itself.
 
 ## The Argument Kay Started

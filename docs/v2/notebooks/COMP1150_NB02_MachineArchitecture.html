@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-21">
 
 <title>Notebook 2: Machine Architecture &amp; Data Representation – Computing Concepts with Python</title>
 <style>
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 21, 2026</p>
     </div>
   </div>
   
@@ -246,6 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-roadmap">The Roadmap</h2>
 <p>We’ll build understanding bottom-up — the same direction a computer is physically built:</p>
 <table class="caption-top table">
+<caption>The four parts of this notebook and the question each one answers.</caption>
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -314,6 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A gate’s rule is captured in a <strong>truth table</strong> — every possible input, and the output it produces. There are no surprises and no choices: same inputs, same output, every time.</p>
 <p><strong>AND</strong> — output 1 only if <em>both</em> inputs are 1:</p>
 <table class="caption-top table">
+<caption>Truth table for the AND gate.</caption>
 <thead>
 <tr class="header">
 <th scope="col">A</th>
@@ -346,6 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p><strong>OR</strong> — output 1 if <em>either</em> input is 1. &nbsp;&nbsp; <strong>XOR</strong> (“exclusive or”) — output 1 if the inputs are <em>different</em>. &nbsp;&nbsp; <strong>NOT</strong> — one input, flipped. &nbsp;&nbsp; One more shows up in the drill below: <strong>NAND</strong> — an AND gate with a NOT stuck on the end, so it outputs 1 <em>except</em> when both inputs are 1.</p>
 <table class="caption-top table">
+<caption>Truth tables for the OR, XOR, and NOT gates.</caption>
 <thead>
 <tr class="header">
 <th scope="col">A</th>
@@ -477,6 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="watching-one-instruction-run">Watching One Instruction Run</h3>
 <p>Suppose memory holds this tiny program. Each line is an instruction stored as a number:</p>
 <table class="caption-top table">
+<caption>A short program as stored in memory, with each instruction’s address and meaning.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Address</th>
@@ -504,6 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Here is exactly what the CPU does to run the <code>ADD 3</code> instruction (the one at address 1), step by step:</p>
 <table class="caption-top table">
+<caption>The fetch-decode-execute cycle for a single ADD instruction, and the part responsible at each stage.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -562,6 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-memory-hierarchy">The Memory Hierarchy</h2>
 <p>Why is there RAM <em>and</em> storage <em>and</em> registers <em>and</em> something called cache? Because no single memory technology is fast, big, and cheap at the same time. So computers use <strong>layers</strong>: a little very-fast memory close to the CPU, backed by progressively larger, slower, cheaper memory further away.</p>
 <table class="caption-top table">
+<caption>Levels of the memory hierarchy compared by speed, size, and whether they survive power loss.</caption>
 <colgroup>
 <col style="width: 20%">
 <col style="width: 20%">
@@ -621,6 +627,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="how-big-are-these-speed-gaps-really">How Big Are These Speed Gaps, Really?</h3>
 <p>The numbers are too small to feel. So scale them up: imagine one register access takes <strong>1 second</strong>. Then, very roughly:</p>
 <table class="caption-top table">
+<caption>Memory access times rescaled so that a register access takes one second.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Memory</th>
@@ -678,6 +685,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="consoles-as-a-fossil-record">Consoles as a Fossil Record</h2>
 <p>The von Neumann architecture has barely changed since 1945. What changed is the <em>numbers</em>. Game consoles are a perfect fossil record because each generation is a fixed, well-documented snapshot of consumer hardware:</p>
 <table class="caption-top table">
+<caption>Clock speed, RAM, and storage of home game consoles from 1977 onward.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Console</th>
@@ -776,6 +784,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="worked-example-01001011-decimal">Worked Example: <code>01001011</code> → decimal</h3>
 <p>Walk left to right. Wherever the bit is 1, add that column’s place value:</p>
 <table class="caption-top table">
+<caption>Converting the byte 01001011 to decimal by place value.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Bit</th>
@@ -829,6 +838,7 @@ int('01001011', 2) = 75</code></pre>
 <p><strong>Pip Renderwick</strong>, the studio’s sprite and audio artist — who can draw a dragon in 8×8 pixels and insists it’s <em>clearly</em> a dragon — never writes binary by hand. She uses <strong>hexadecimal</strong> (base 16).</p>
 <p>Long binary strings are error-prone for humans (<code>01001011</code> — did you miscount?). Hex fixes this because <strong>exactly 4 bits = 1 hex digit</strong>. Hex needs 16 digit symbols, so after 9 it borrows letters:</p>
 <table class="caption-top table">
+<caption>The sixteen hexadecimal digits and their decimal equivalents.</caption>
 <colgroup>
 <col style="width: 5%">
 <col style="width: 5%">
@@ -928,6 +938,7 @@ int('01001011', 2) = 75</code></pre>
 <section id="worked-example-1-encode-37-as-an-8-bit-byte" class="level3">
 <h3 class="anchored" data-anchor-id="worked-example-1-encode-37-as-an-8-bit-byte">Worked Example 1: encode <strong>−37</strong> as an 8-bit byte</h3>
 <table class="caption-top table">
+<caption>Encoding -37 as an 8-bit two’s-complement byte, step by step.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Step</th>
@@ -956,6 +967,7 @@ int('01001011', 2) = 75</code></pre>
 <h3 class="anchored" data-anchor-id="worked-example-2-decode-11011011-back-to-a-signed-number">Worked Example 2: decode <code>11011011</code> back to a signed number</h3>
 <p>The leftmost bit is <strong>1</strong>, so this byte is negative. Reverse the process to find the magnitude:</p>
 <table class="caption-top table">
+<caption>Decoding the byte 11011011 back to a signed decimal number, step by step.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Step</th>
@@ -1174,6 +1186,7 @@ int('01001011', 2) = 75</code></pre>
 <h3 class="anchored" data-anchor-id="the-real-one-the-pac-man-kill-screen">The Real One: the Pac-Man Kill Screen</h3>
 <p>The 1980 arcade game <strong>Pac-Man</strong> stored its level number in a single byte and used it to draw the bonus-fruit display. At <strong>level 256</strong> that byte overflowed; the draw routine ran wild and corrupted the right half of the screen into a famous garbled mess — the “<strong>kill screen</strong>.” The game was literally unbeatable past that point, not by design, but because of one undersized integer.</p>
 <table class="caption-top table">
+<caption>Each design decision behind the Pac-Man kill screen and its consequence.</caption>
 <thead>
 <tr class="header">
 <th scope="col">Decision</th>
