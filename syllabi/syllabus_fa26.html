@@ -21,7 +21,7 @@
     margin: 0;
     padding: 2rem 1rem;
   }
-  .page {
+  .page, main.page {
     max-width: 900px;
     margin: 0 auto;
     background: #fff;
@@ -62,10 +62,19 @@
     color: var(--muted);
   }
   .table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+  .table-wrap:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
   table {
     border-collapse: collapse;
     width: 100%;
     font-size: 0.95rem;
+  }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-weight: 600;
+    color: #40515f;
+    font-size: 0.9rem;
+    padding: 0 0 0.45rem;
   }
   th, td {
     border: 1px solid var(--border);
@@ -89,7 +98,7 @@
 </style>
 </head>
 <body>
-<div class="page">
+<main class="page">
 <h1 id="computer-science-concepts">Computer Science Concepts 💻</h1>
 <p><strong>COMP 1150 | Fall 2026</strong></p>
 <h2 id="course-information">Course Information</h2>
@@ -102,12 +111,12 @@
 <p><strong>Prerequisites:</strong> MATH 0099</p>
 <h3 id="sections">Sections</h3>
 <p>This syllabus covers <strong>both sections</strong> of COMP 1150. The readings, assignments, exams, and grading are <strong>identical</strong>; only the way we meet differs.</p>
-<div class="table-wrap"><table>
+<div class="table-wrap" tabindex="0" role="group"><table><caption>COMP 1150 sections, formats, and meeting times.</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Section</th>
-<th style="text-align: left;">Format</th>
-<th style="text-align: left;">Meetings</th>
+<th scope="col" style="text-align: left;">Section</th>
+<th scope="col" style="text-align: left;">Format</th>
+<th scope="col" style="text-align: left;">Meetings</th>
 </tr>
 </thead>
 <tbody>
@@ -181,11 +190,11 @@
 </ul>
 <h3 id="grade-breakdown">Grade Breakdown</h3>
 <p>Your final grade is a weighted average of the following:</p>
-<div class="table-wrap"><table>
+<div class="table-wrap" tabindex="0" role="group"><table><caption>Grade breakdown by component and weight.</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Component</th>
-<th style="text-align: center;">Weight</th>
+<th scope="col" style="text-align: left;">Component</th>
+<th scope="col" style="text-align: center;">Weight</th>
 </tr>
 </thead>
 <tbody>
@@ -300,11 +309,11 @@
 <p><strong>Student Support Services/TRIO (SS 159)</strong> provides academic support for first-generation and low-income college students, as well as those with documented disabilities.</p>
 <p><strong>Drop-in Math/CS Tutoring (GL 235)</strong> is available free of charge to <em>all</em> RCTC students. Please take advantage of it!</p>
 <h2 id="important-semester-dates">Important Semester Dates 🗓️</h2>
-<div class="table-wrap"><table>
+<div class="table-wrap" tabindex="0" role="group"><table><caption>Important RCTC dates for Fall 2026.</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Date</th>
-<th style="text-align: left;">Event</th>
+<th scope="col" style="text-align: left;">Date</th>
+<th scope="col" style="text-align: left;">Event</th>
 </tr>
 </thead>
 <tbody>
@@ -354,13 +363,13 @@
 <h2 id="course-calendar">Course Calendar 📅</h2>
 <p>This calendar shows the order in which things will be covered. <strong>All specific due dates are on the D2L Course Calendar, which is authoritative.</strong></p>
 <p>Each week's Perusall reading (lecture notes plus case study) opens the preceding Friday and is due Sunday night unless D2L says otherwise. For <strong>section 71</strong>, each exam window opens the evening of the listed date and closes that Sunday at 11:59 PM; <strong>section 01</strong> takes the exam in class on the listed date.</p>
-<div class="table-wrap"><table>
+<div class="table-wrap" tabindex="0" role="group"><table><caption>Weekly course calendar, with section 01 meeting dates.</caption>
 <thead>
 <tr>
-<th style="text-align: center;">Week</th>
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: left;">Section 01 meetings</th>
+<th scope="col" style="text-align: center;">Week</th>
+<th scope="col" style="text-align: left;">Dates</th>
+<th scope="col" style="text-align: left;">Topic</th>
+<th scope="col" style="text-align: left;">Section 01 meetings</th>
 </tr>
 </thead>
 <tbody>
@@ -404,13 +413,13 @@
 <td style="text-align: center;">7</td>
 <td style="text-align: left;">Oct. 5–11</td>
 <td style="text-align: left;">Ch. 4 continued</td>
-<td style="text-align: left;"><s>Tue. 10/6</s> <em>(Student Success Day)</em>, Thur. 10/8</td>
+<td style="text-align: left;"><s>Tue. 10/6</s> <em>(no class — Student Success Day)</em>, Thur. 10/8</td>
 </tr>
 <tr>
 <td style="text-align: center;">8</td>
 <td style="text-align: left;">Oct. 12–18</td>
 <td style="text-align: left;"><strong>Ch. 5: Collections &amp; Abstract Data Types</strong></td>
-<td style="text-align: left;">Tue. 10/13, <s>Thur. 10/15</s> <em>(Education MN)</em></td>
+<td style="text-align: left;">Tue. 10/13, <s>Thur. 10/15</s> <em>(no class — Education MN conference)</em></td>
 </tr>
 <tr>
 <td style="text-align: center;">9</td>
@@ -446,7 +455,7 @@
 <td style="text-align: center;">14</td>
 <td style="text-align: left;">Nov. 23–29</td>
 <td style="text-align: left;">Review — <strong>Exam 3 (Ch. 7–9)</strong></td>
-<td style="text-align: left;">Tue. 11/24 <em>(exam)</em>, <s>Thur. 11/26</s> <em>(Thanksgiving)</em></td>
+<td style="text-align: left;">Tue. 11/24 <em>(exam)</em>, <s>Thur. 11/26</s> <em>(no class — Thanksgiving)</em></td>
 </tr>
 <tr>
 <td style="text-align: center;">15</td>
@@ -470,11 +479,11 @@
 </table></div>
 <p>Weeks 7 and 8 each lose a meeting to a campus closure, which is why Ch. 4 and Ch. 5 are each spread across two calendar weeks — between them they get four class sessions, the same as any other pair of chapters.</p>
 <h3 id="deadlines-at-a-glance">Deadlines at a Glance</h3>
-<div class="table-wrap"><table>
+<div class="table-wrap" tabindex="0" role="group"><table><caption>Major deadlines at a glance.</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Item</th>
-<th style="text-align: left;">Date</th>
+<th scope="col" style="text-align: left;">Item</th>
+<th scope="col" style="text-align: left;">Date</th>
 </tr>
 </thead>
 <tbody>
@@ -513,6 +522,6 @@
 <li><strong>Exam 3 falls on a Tuesday</strong>, not a Thursday, because that Thursday is Thanksgiving. Section 01 takes it Tues., Nov. 24; section 71's window runs through the holiday weekend.</li>
 <li><strong>Exam 4's online window is shorter</strong> than the others — Thursday to Friday rather than through the weekend — because the semester ends Friday, Dec. 18.</li>
 </ul>
-</div>
+</main>
 </body>
 </html>

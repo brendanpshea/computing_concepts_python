@@ -53,7 +53,7 @@ TEMPLATE = """<!DOCTYPE html>
     margin: 0;
     padding: 2rem 1rem;
   }}
-  .page {{
+  .page, main.page {{
     max-width: 900px;
     margin: 0 auto;
     background: #fff;
@@ -94,10 +94,19 @@ TEMPLATE = """<!DOCTYPE html>
     color: var(--muted);
   }}
   .table-wrap {{ overflow-x: auto; margin: 1.2rem 0; }}
+  .table-wrap:focus {{ outline: 2px solid var(--accent); outline-offset: 2px; }}
   table {{
     border-collapse: collapse;
     width: 100%;
     font-size: 0.95rem;
+  }}
+  caption {{
+    caption-side: top;
+    text-align: left;
+    font-weight: 600;
+    color: #40515f;
+    font-size: 0.9rem;
+    padding: 0 0 0.45rem;
   }}
   th, td {{
     border: 1px solid var(--border);
@@ -121,12 +130,33 @@ TEMPLATE = """<!DOCTYPE html>
 </style>
 </head>
 <body>
-<div class="page">
+<main class="page">
 {body}
-</div>
+</main>
 </body>
 </html>
 """
+
+
+def accessible_tables(body: str) -> str:
+    """Give every table a <caption> and every <th> a scope, per WCAG 1.3.1.
+
+    A line of the form ``Table: some caption`` immediately before a Markdown
+    table becomes that table's <caption>. Python-Markdown only ever emits <th>
+    for the header row, so scope="col" is always the right answer here.
+    """
+    body = re.sub(
+        r"<p>Table:\s*(.*?)</p>\s*<table>",
+        lambda m: f"<table><caption>{m.group(1)}</caption>",
+        body,
+        flags=re.DOTALL,
+    )
+    body = re.sub(r"<th(\s|>)", r'<th scope="col"\1', body)
+
+    missing = body.count("<table>") - body.count("<caption>")
+    if missing:
+        print(f"  WARNING: {missing} table(s) without a caption — add a 'Table: ...' line")
+    return body
 
 
 def render(src: Path) -> Path:
@@ -135,10 +165,12 @@ def render(src: Path) -> Path:
         md_text,
         extensions=["extra", "sane_lists", "toc", "nl2br"],
     )
+    body = accessible_tables(body)
     # Let wide calendar tables scroll rather than blow out the page on phones.
-    body = body.replace("<table>", '<div class="table-wrap"><table>').replace(
-        "</table>", "</table></div>"
-    )
+    # tabindex makes the scroll region reachable by keyboard (WCAG 2.1.1).
+    body = body.replace(
+        "<table>", '<div class="table-wrap" tabindex="0" role="group"><table>'
+    ).replace("</table>", "</table></div>")
     out = src.with_suffix(".html")
     out.write_text(
         TEMPLATE.format(title=page_title(md_text, src), body=body), encoding="utf-8"

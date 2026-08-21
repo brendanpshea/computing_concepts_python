@@ -18,6 +18,8 @@
 
 This syllabus covers **both sections** of COMP 1150. The readings, assignments, exams, and grading are **identical**; only the way we meet differs.
 
+Table: COMP 1150 sections, formats, and meeting times.
+
 | Section | Format | Meetings |
 | :--- | :--- | :--- |
 | **01** | In person | Tuesdays & Thursdays, **12:30–1:45 PM**, in **Atrium (AT) 210** |
@@ -91,6 +93,8 @@ Critical Thinking
 ### Grade Breakdown
 
 Your final grade is a weighted average of the following:
+
+Table: Grade breakdown by component and weight.
 
 | Component | Weight |
 | :--- | :---: |
@@ -234,6 +238,8 @@ Some helpful resources at RCTC (all of which are included with your course tuiti
 
 ## Important Semester Dates 🗓️
 
+Table: Important RCTC dates for Fall 2026.
+
 | Date | Event |
 | :--- | :--- |
 | Mon., Aug. 24 | Fall semester classes begin |
@@ -255,6 +261,8 @@ This calendar shows the order in which things will be covered. **All specific du
 
 Each week's Perusall reading (lecture notes plus case study) opens the preceding Friday and is due Sunday night unless D2L says otherwise. For **section 71**, each exam window opens the evening of the listed date and closes that Sunday at 11:59 PM; **section 01** takes the exam in class on the listed date.
 
+Table: Weekly course calendar, with section 01 meeting dates.
+
 | Week | Dates | Topic | Section 01 meetings |
 | :---: | :--- | :--- | :--- |
 | 1 | Aug. 24–30 | **Course introduction:** syllabus, how Perusall works, setting up Colab and *Loop of the Recursive Dragon*; **proctored pre-test** (due Sun. 8/30) | Tue. 8/25, Thur. 8/27 |
@@ -263,14 +271,14 @@ Each week's Perusall reading (lecture notes plus case study) opens the preceding
 | 4 | Sept. 14–20 | **Ch. 3: Python via Pseudocode & Flowcharts** | Tue. 9/15, Thur. 9/17 |
 | 5 | Sept. 21–27 | Ch. 3 continued; review — **Exam 1 (Ch. 1–3)** | Tue. 9/22, Thur. 9/24 *(exam)* |
 | 6 | Sept. 28–Oct. 4 | **Ch. 4: Control Flow & Functions** | Tue. 9/29, Thur. 10/1 |
-| 7 | Oct. 5–11 | Ch. 4 continued | <s>Tue. 10/6</s> *(Student Success Day)*, Thur. 10/8 |
-| 8 | Oct. 12–18 | **Ch. 5: Collections & Abstract Data Types** | Tue. 10/13, <s>Thur. 10/15</s> *(Education MN)* |
+| 7 | Oct. 5–11 | Ch. 4 continued | <s>Tue. 10/6</s> *(no class — Student Success Day)*, Thur. 10/8 |
+| 8 | Oct. 12–18 | **Ch. 5: Collections & Abstract Data Types** | Tue. 10/13, <s>Thur. 10/15</s> *(no class — Education MN conference)* |
 | 9 | Oct. 19–25 | Ch. 5 continued; **Ch. 6: Functions, Modules & OOP** | Tue. 10/20, Thur. 10/22 |
 | 10 | Oct. 26–Nov. 1 | Ch. 6 continued; review — **Exam 2 (Ch. 4–6)** | Tue. 10/27, Thur. 10/29 *(exam)* |
 | 11 | Nov. 2–8 | **Ch. 7: Algorithms, Complexity & the Limits of Computation** | Tue. 11/3 *(election day — class meets)*, Thur. 11/5 |
 | 12 | Nov. 9–15 | **Ch. 8: Software Engineering, Git & AI-Assisted Development** | Tue. 11/10, Thur. 11/12 |
 | 13 | Nov. 16–22 | **Ch. 9: Databases — Relational & Non-Relational** | Tue. 11/17, Thur. 11/19 |
-| 14 | Nov. 23–29 | Review — **Exam 3 (Ch. 7–9)** | Tue. 11/24 *(exam)*, <s>Thur. 11/26</s> *(Thanksgiving)* |
+| 14 | Nov. 23–29 | Review — **Exam 3 (Ch. 7–9)** | Tue. 11/24 *(exam)*, <s>Thur. 11/26</s> *(no class — Thanksgiving)* |
 | 15 | Nov. 30–Dec. 6 | **Ch. 10: OS, Networks, Cloud & the Web** | Tue. 12/1, Thur. 12/3 |
 | 16 | Dec. 7–13 | **Ch. 11: Cybersecurity & Secure Software Development**; **Ch. 12: AI, Machine Learning & Ethics** begins | Tue. 12/8, Thur. 12/10 |
 | 17 | Dec. 14–18 | Ch. 12 concluded; review — **Exam 4 (Ch. 10–12)** | Tue. 12/15, Thur. 12/17 *(exam)* |
@@ -278,6 +286,8 @@ Each week's Perusall reading (lecture notes plus case study) opens the preceding
 Weeks 7 and 8 each lose a meeting to a campus closure, which is why Ch. 4 and Ch. 5 are each spread across two calendar weeks — between them they get four class sessions, the same as any other pair of chapters.
 
 ### Deadlines at a Glance
+
+Table: Major deadlines at a glance.
 
 | Item | Date |
 | :--- | :--- |
