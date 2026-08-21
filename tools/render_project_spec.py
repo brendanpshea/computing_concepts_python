@@ -1,6 +1,10 @@
 """Render final_project_spec.md to a styled, self-contained HTML file."""
 import markdown
 import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fix_a11y import add_th_scope  # shared with the Quarto post-render step
 
 def render_md_to_html(src_path, out_path, title="COMP 1150 — Final Programming Project"):
     with open(src_path, encoding="utf-8") as f:
@@ -10,6 +14,7 @@ def render_md_to_html(src_path, out_path, title="COMP 1150 — Final Programming
         md_text,
         extensions=["extra", "sane_lists", "toc", "tables", "nl2br"],
     )
+    body, _ = add_th_scope(body)
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -104,9 +109,9 @@ def render_md_to_html(src_path, out_path, title="COMP 1150 — Final Programming
 </style>
 </head>
 <body>
-<div class="page">
+<main class="page">
 {body}
-</div>
+</main>
 </body>
 </html>
 """

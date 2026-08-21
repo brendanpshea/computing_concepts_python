@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -249,6 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-four-algorithms-well-study" class="level2">
 <h2 class="anchored" data-anchor-id="the-four-algorithms-well-study">The Four Algorithms We’ll Study</h2>
 <table class="caption-top table">
+<caption>The four algorithms this course studies, with the year and the problem each one solved.</caption>
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -257,10 +258,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>#</th>
-<th>Algorithm</th>
-<th>Year</th>
-<th>What it did</th>
+<th scope="col">#</th>
+<th scope="col">Algorithm</th>
+<th scope="col">Year</th>
+<th scope="col">What it did</th>
 </tr>
 </thead>
 <tbody>
@@ -296,6 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="a-hundred-and-twenty-years-of-hardware">A Hundred and Twenty Years of Hardware</h2>
 <p>The four algorithms didn’t run on laptops. They ran on fundamentally different machines, and the hardware shaped what was possible.</p>
 <table class="caption-top table">
+<caption>How the switching element, storage medium, and speed of computers changed across the four eras.</caption>
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -304,10 +306,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Era</th>
-<th>Switching element</th>
-<th>How it stored data</th>
-<th>Rough speed</th>
+<th scope="col">Era</th>
+<th scope="col">Switching element</th>
+<th scope="col">How it stored data</th>
+<th scope="col">Rough speed</th>
 </tr>
 </thead>
 <tbody>
@@ -394,6 +396,7 @@ That distinction will matter a great deal this semester.</code></pre>
 <h3 class="anchored" data-anchor-id="the-hardware-babbages-analytical-engine">The Hardware: Babbage’s Analytical Engine</h3>
 <p>The Analytical Engine was never completed — it was too complex to build with Victorian manufacturing. But Babbage’s design describes a machine shockingly close to a modern computer.</p>
 <table class="caption-top table">
+<caption>Babbage’s names for the Analytical Engine’s parts and their modern equivalents.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -401,9 +404,9 @@ That distinction will matter a great deal this semester.</code></pre>
 </colgroup>
 <thead>
 <tr class="header">
-<th>Modern name</th>
-<th>Babbage’s name</th>
-<th>What it did</th>
+<th scope="col">Modern name</th>
+<th scope="col">Babbage’s name</th>
+<th scope="col">What it did</th>
 </tr>
 </thead>
 <tbody>
@@ -583,6 +586,7 @@ OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
 </ol>
 <p><strong>Why this was a huge leap:</strong></p>
 <table class="caption-top table">
+<caption>Hand tabulation by human clerks compared with Hollerith’s punch-card machines.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -590,9 +594,9 @@ OUTPUT:    a list of the first n factorials: [1!, 2!, ..., n!]
 </colgroup>
 <thead>
 <tr class="header">
-<th></th>
-<th>Human clerks</th>
-<th>Hollerith’s machines</th>
+<th scope="col"></th>
+<th scope="col">Human clerks</th>
+<th scope="col">Hollerith’s machines</th>
 </tr>
 </thead>
 <tbody>
@@ -914,6 +918,7 @@ Shift 25: HVS SOUZS VOG ZOBRSR</code></pre>
 <h3 class="anchored" data-anchor-id="the-hardware-mainframes-and-time-sharing">The Hardware: Mainframes and Time-Sharing</h3>
 <p>ELIZA ran on MIT’s <strong>IBM 7094</strong> mainframe under a new operating system called <strong>CTSS</strong> — the Compatible Time-Sharing System. Three big things had changed since Turing’s day:</p>
 <table class="caption-top table">
+<caption>Computing in Turing’s era compared with the machines that ran ELIZA.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -921,9 +926,9 @@ Shift 25: HVS SOUZS VOG ZOBRSR</code></pre>
 </colgroup>
 <thead>
 <tr class="header">
-<th></th>
-<th>Turing era (1940s)</th>
-<th>ELIZA era (1960s)</th>
+<th scope="col"></th>
+<th scope="col">Turing era (1940s)</th>
+<th scope="col">ELIZA era (1960s)</th>
 </tr>
 </thead>
 <tbody>
@@ -1080,6 +1085,7 @@ ELIZA: Please go on.
 <h2 class="anchored" data-anchor-id="closing-the-pattern-across-the-four">Closing: The Pattern Across the Four</h2>
 <p>Each algorithm solved a specific, urgent problem with the hardware of its era:</p>
 <table class="caption-top table">
+<caption>Each algorithm, the hardware of its era, and the core programming idea it introduces.</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1087,9 +1093,9 @@ ELIZA: Please go on.
 </colgroup>
 <thead>
 <tr class="header">
-<th>Algorithm</th>
-<th>Era’s hardware</th>
-<th>Core idea you learned</th>
+<th scope="col">Algorithm</th>
+<th scope="col">Era’s hardware</th>
+<th scope="col">Core idea you learned</th>
 </tr>
 </thead>
 <tbody>

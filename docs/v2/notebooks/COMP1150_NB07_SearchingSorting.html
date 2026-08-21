@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-239bde3124289438291dc3edd76b87dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9c745101ea7fe6478d2d324050612a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -168,17 +168,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
   <li><a href="#the-problem-the-queen-wants-it-found-and-now" id="toc-the-problem-the-queen-wants-it-found-and-now" class="nav-link" data-scroll-target="#the-problem-the-queen-wants-it-found-and-now">The Problem: The Queen Wants It <em>Found</em>, and <em>Now</em></a></li>
-  <li><a href="#part-1-searching-sorting-how-long-it-takes" id="toc-part-1-searching-sorting-how-long-it-takes" class="nav-link" data-scroll-target="#part-1-searching-sorting-how-long-it-takes">Part 1 — Searching, Sorting &amp; How Long It Takes</a>
-  <ul class="collapse">
+  <li><a href="#part-1-searching-sorting-how-long-it-takes" id="toc-part-1-searching-sorting-how-long-it-takes" class="nav-link" data-scroll-target="#part-1-searching-sorting-how-long-it-takes">Part 1 — Searching, Sorting &amp; How Long It Takes</a></li>
   <li><a href="#linear-search-check-every-card" id="toc-linear-search-check-every-card" class="nav-link" data-scroll-target="#linear-search-check-every-card">Linear Search: Check Every Card</a></li>
   <li><a href="#binary-search-cut-the-deck-in-half-again-and-again" id="toc-binary-search-cut-the-deck-in-half-again-and-again" class="nav-link" data-scroll-target="#binary-search-cut-the-deck-in-half-again-and-again">Binary Search: Cut the Deck in Half (Again and Again)</a></li>
   <li><a href="#why-order-matters-counting-the-rabbits-steps" id="toc-why-order-matters-counting-the-rabbits-steps" class="nav-link" data-scroll-target="#why-order-matters-counting-the-rabbits-steps">Why Order Matters: Counting the Rabbit’s Steps</a></li>
   <li><a href="#sorting-putting-the-deck-in-order" id="toc-sorting-putting-the-deck-in-order" class="nav-link" data-scroll-target="#sorting-putting-the-deck-in-order">Sorting: Putting the Deck in Order</a></li>
   <li><a href="#a-faster-idea-merge-sort-described-not-coded" id="toc-a-faster-idea-merge-sort-described-not-coded" class="nav-link" data-scroll-target="#a-faster-idea-merge-sort-described-not-coded">A Faster Idea: Merge Sort (Described, Not Coded)</a></li>
   <li><a href="#the-practical-tool-sorted-and-key" id="toc-the-practical-tool-sorted-and-key" class="nav-link" data-scroll-target="#the-practical-tool-sorted-and-key">The Practical Tool: <code>sorted()</code> and <code>key=</code></a></li>
-  </ul></li>
-  <li><a href="#part-2-the-limits-of-computation" id="toc-part-2-the-limits-of-computation" class="nav-link" data-scroll-target="#part-2-the-limits-of-computation">Part 2 — The Limits of Computation</a>
-  <ul class="collapse">
+  <li><a href="#part-2-the-limits-of-computation" id="toc-part-2-the-limits-of-computation" class="nav-link" data-scroll-target="#part-2-the-limits-of-computation">Part 2 — The Limits of Computation</a></li>
   <li><a href="#a-machine-made-of-almost-nothing-the-turing-machine" id="toc-a-machine-made-of-almost-nothing-the-turing-machine" class="nav-link" data-scroll-target="#a-machine-made-of-almost-nothing-the-turing-machine">A Machine Made of Almost Nothing: The Turing Machine</a></li>
   <li><a href="#the-halting-problem-a-question-no-program-can-answer" id="toc-the-halting-problem-a-question-no-program-can-answer" class="nav-link" data-scroll-target="#the-halting-problem-a-question-no-program-can-answer">The Halting Problem: A Question No Program Can Answer</a></li>
   <li><a href="#p-vs.-np-easy-to-check-hard-to-solve" id="toc-p-vs.-np-easy-to-check-hard-to-solve" class="nav-link" data-scroll-target="#p-vs.-np-easy-to-check-hard-to-solve">P vs.&nbsp;NP: Easy to Check, Hard to Solve</a></li>
@@ -187,7 +184,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -256,8 +252,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Part 2 — What can’t be made fast, or done at all.</strong> Some problems are merely slow (the Queen’s impossible puzzles — <strong>P vs.&nbsp;NP</strong>). Others can <em>never</em> be solved by any program, no matter how clever (the <strong>halting problem</strong> and <strong>undecidability</strong>). We close by asking what all this means for modern <strong>AI and large language models</strong>.</p>
 </section>
 </section>
-<section id="part-1-searching-sorting-how-long-it-takes" class="level1">
-<h1>Part 1 — Searching, Sorting &amp; How Long It Takes</h1>
+<section id="part-1-searching-sorting-how-long-it-takes" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-searching-sorting-how-long-it-takes">Part 1 — Searching, Sorting &amp; How Long It Takes</h2>
+</section>
 <section id="linear-search-check-every-card" class="level2">
 <h2 class="anchored" data-anchor-id="linear-search-check-every-card">Linear Search: Check Every Card</h2>
 <p>Alice’s deck is <strong>shuffled</strong> — no order at all. She is told to find the <strong>Knave of Hearts</strong>. With a random pile, she has no shortcut: she must turn over the top card, check it, and if it is not the Knave, move to the next. She keeps going until she finds him or runs out of cards.</p>
@@ -458,10 +455,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Big-O</th>
-<th>Name</th>
-<th>What it means</th>
-<th>Our example</th>
+<th scope="col">Big-O</th>
+<th scope="col">Name</th>
+<th scope="col">What it means</th>
+<th scope="col">Our example</th>
 </tr>
 </thead>
 <tbody>
@@ -667,11 +664,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Tool</th>
-<th>Needs sorted input?</th>
-<th>Changes the list?</th>
-<th>Big-O</th>
-<th>Reach for it when…</th>
+<th scope="col">Tool</th>
+<th scope="col">Needs sorted input?</th>
+<th scope="col">Changes the list?</th>
+<th scope="col">Big-O</th>
+<th scope="col">Reach for it when…</th>
 </tr>
 </thead>
 <tbody>
@@ -734,11 +731,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-</section>
-<section id="part-2-the-limits-of-computation" class="level1">
-<h1>Part 2 — The Limits of Computation</h1>
+<section id="part-2-the-limits-of-computation" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-the-limits-of-computation">Part 2 — The Limits of Computation</h2>
 <p>So far, every problem has had a fast-enough answer: search smarter, sort first, count the steps. Now the <strong>Cheshire Cat</strong> fades into view, all grin, and asks a different kind of question. Not <em>“how long will it take?”</em> but: <strong>“Are there questions a machine can never answer at all — no matter how clever the algorithm, no matter how fast the computer?”</strong></p>
 <p>The astonishing answer, proved in 1936 by a mathematician named <strong>Alan Turing</strong>, is <strong>yes</strong>. This part is about <em>ideas</em>, not code. Read it like a set of philosophy puzzles.</p>
+</section>
 <section id="a-machine-made-of-almost-nothing-the-turing-machine" class="level2">
 <h2 class="anchored" data-anchor-id="a-machine-made-of-almost-nothing-the-turing-machine">A Machine Made of Almost Nothing: The Turing Machine</h2>
 <p>Before there were computers, Turing asked: <em>what is the simplest possible device that could carry out any calculation a human follows by rote?</em> His answer was a machine so simple it sounds like a toy:</p>
@@ -911,7 +908,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Notebook 8 — Software Engineering: SDLC, Git &amp; AI-Assisted Development.</strong> How real software gets built: the development lifecycle, Waterfall vs.&nbsp;Agile, using Git and GitHub from Colab, AI-assisted workflows (spec → code → test → review), and the basics of testing.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
