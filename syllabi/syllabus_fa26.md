@@ -8,7 +8,7 @@
 **Email:** Brendan.Shea@rctc.edu  
 **Phone:** 507-722-1146  
 **Office:** M2403Q  
-**Office Hours:** Tuesdays & Thursdays, 9:00–10:00 AM and 11:00 AM–12:00 PM, in M2403Q or by Zoom. **Section 71 students are just as welcome as section 01 students** — join by Zoom if you can't come to campus. Please email me ahead of time to let me know you are coming.
+**Office Hours:** Tuesdays & Thursdays, 9:00–9:30 AM and 11:00 AM–12:30 PM, in M2403Q or by Zoom. **Section 71 students are just as welcome as section 01 students** — join by Zoom if you can't come to campus. Please email me ahead of time to let me know you are coming.
 
 **Zoom Link (office hours):** Available on D2L
 
