@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 8: Software Engineering — SDLC, Git &amp; AI-Assisted Development – Computing Concepts with Python</title>
 <style>
@@ -175,6 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-tin-woodmans-standard" id="toc-the-tin-woodmans-standard" class="nav-link" data-scroll-target="#the-tin-woodmans-standard">The Tin Woodman’s Standard</a></li>
   <li><a href="#how-code-really-gets-written-in-2026" id="toc-how-code-really-gets-written-in-2026" class="nav-link" data-scroll-target="#how-code-really-gets-written-in-2026">How Code Really Gets Written in 2026</a></li>
   <li><a href="#capstone-crack-the-emerald-gate-code" id="toc-capstone-crack-the-emerald-gate-code" class="nav-link" data-scroll-target="#capstone-crack-the-emerald-gate-code">✏️ Capstone — Crack the Emerald Gate Code</a></li>
+  <li><a href="#the-first-ninety-days" id="toc-the-first-ninety-days" class="nav-link" data-scroll-target="#the-first-ninety-days">💼 The First Ninety Days</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -204,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -728,6 +729,36 @@ Guess 3: 🟥 🟩 🟩 🟦   -&gt;  4 right spot  --  cracked it! 🎉</code><
 <section id="ship-it-save-to-github" class="level3">
 <h3 class="anchored" data-anchor-id="ship-it-save-to-github">Ship It — Save to GitHub</h3>
 <p>You took a real program through the full loop: spec, AI draft, tests, an extension, a regression caught and fixed. Now save your work the way you set up earlier: <strong>File -&gt; Save a copy in GitHub -&gt; your <code>comp1150</code> repo.</strong> That’s a real commit, in your real history — with a game in it you can actually play. <em>(Plain Jupyter: download the notebook, then <strong>Add file → Upload files</strong> in your repo on github.com — same commit, different door.)</em></p>
+</section>
+</section>
+<section id="the-first-ninety-days" class="level2">
+<h2 class="anchored" data-anchor-id="the-first-ninety-days">💼 The First Ninety Days</h2>
+<p>Suppose it works. You get the job. What actually happens?</p>
+<p>Almost nobody tells students this, so here it is. Your first three months on a software team will look very little like your first three months in this course, and the difference surprises people badly enough that some of them quit.</p>
+<p><strong>You will read far more code than you write.</strong> Probably ten times more. The codebase will be large, old, partly undocumented, and written by people who have left. Your first task is usually something small and real — fix a typo in an error message, add one field to a form — chosen specifically so you have to learn how to get a change from your laptop into production without breaking anything. That is the point of the task. The typo is not the point.</p>
+<p><strong>Your work will be reviewed, in writing, by name.</strong> The pull request you opened in this notebook is the mechanism. Someone senior will read your diff and leave comments on it, some of them blunt. This is not a punishment and it is not personal, though it takes most people a few rounds to stop reading it that way. Seven of Nine’s code reviews are how the codebase stays alive.</p>
+<p><strong>You will not understand most conversations for a while.</strong> The system has names for things, the team has history, and both are undocumented. Everyone competent went through this. The ones who struggle are usually the ones who pretended otherwise.</p>
+<section id="what-actually-gets-you-through-it" class="level3">
+<h3 class="anchored" data-anchor-id="what-actually-gets-you-through-it">What Actually Gets You Through It</h3>
+<p>The advice that working engineers give juniors, more or less unanimously:</p>
+<ul>
+<li><strong>Ask early, ask specifically, and show your work.</strong> Not “how does auth work?” but “I traced the login to <code>verify_token</code> and I can’t tell where the session gets created — am I looking in the wrong place?” The first question costs a colleague twenty minutes; the second costs two, and makes you look better.</li>
+<li><strong>Keep changes small.</strong> A ten-line pull request gets reviewed today. A thousand-line one sits for a week and comes back with forty comments.</li>
+<li><strong>Write down what you learn.</strong> You will work out how the deploy pipeline works exactly once. If you don’t record it, you will do that work twice.</li>
+<li><strong>Deliver something real in the first month, however small.</strong> It matters more for your own confidence than for the codebase.</li>
+</ul>
+<p>There is one thing on that list you can practise before you are hired: <strong>the specific question.</strong> It is the same skill as writing a good prompt, and the same skill as a good bug report. In each case you are transferring the contents of your head to somebody who cannot see it — and this course has now asked you to do that with an AI, with a tester, and with a reviewer.</p>
+<p>Notice also that none of the four bullets is about coding ability. By the time you are hired, that is assumed. What separates a junior who thrives from one who stalls is almost entirely how they handle not knowing things in public.</p>
+</section>
+<section id="think-about-it-being-new" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-being-new">💭 Think About It — Being New</h3>
+<ul>
+<li>“You will read ten times more code than you write.” Why do you think schools invert that ratio? What would a course look like that matched the job?</li>
+<li>Rewrite a question you actually asked this semester — of the instructor, a classmate, or an AI — into the specific, show-your-work form above. What did you have to figure out in order to ask it well?</li>
+<li>Getting your work publicly critiqued in writing is normal on a software team and unusual almost everywhere else. What would help you take that well? What would make you take it badly?</li>
+<li>Captain Janeway has to decide whether a new hire is struggling or just new. What would you want her to look at before deciding?</li>
+</ul>
+<p>Share a sentence or two on each.</p>
 </section>
 </section>
 <section id="key-terms" class="level2">

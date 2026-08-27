@@ -237,7 +237,37 @@ The questions this document opened in April 2026 have since been settled by the 
 3. **Case study format.** ~~PDF or markdown?~~ Resolved as Quarto `.qmd`, rendering to HTML for the site and DOCX for print. The 2024 PDFs are preserved in `archive/`.
 4. **Pyngrok vs. Colab's built-in tunneling.** Resolved in favour of Colab's built-in tunnelling — Notebook 10 uses `serve_kernel_port_as_iframe` and `serve_kernel_port_as_window`, which need no account or token. `pyngrok` is mentioned only as an optional side quest for students who want a URL reachable off Colab.
 
+## The Career Strand
+
+Every notebook carries a three-cell **💼 block** before its Key Terms: a real
+job the chapter's material belongs to, its figures, and a Think About It.
+Eight are occupations, four are processes (the shape of the field, reading a
+job posting, the technical interview, the first ninety days) — because there
+are not twelve distinct junior roles to hand out.
+
+Three decisions worth recording:
+
+- **Figures are generated, never typed.** `tools/career_data.py` is the single
+  source for every number, each with a source URL, an as-of date and a
+  confidence flag; `--check` reports drift and refuses to pass on an
+  unestablished figure. Twelve notebooks of hand-typed salaries would be
+  twelve archaeology jobs each August.
+- **Projections always print their base year.** A BLS projection is a model
+  run from a base year, and the 2024-2034 round predates the entry-level
+  contraction the New York Fed's current numbers show. Notebook 1 makes that
+  disagreement the lesson rather than hiding it — which is also the cleanest
+  Critical Thinking artifact in the course.
+- **The strand tests the course's own argument.** The Hopper case study's
+  Labor Reply claims every abstraction displaces a category of worker, junior
+  developers writing boilerplate included. The career blocks are the empirical
+  running commentary on that claim, and Notebook 12 closes the loop.
+
 ## Still Open
 
 - **Lecture videos.** The placeholder links have been removed from the notebooks; add real links when the recordings exist.
+- **Career figures are second-hand.** Every row in `tools/career_data.py` was
+  assembled from search results quoting the BLS pages rather than read off
+  bls.gov directly, and one (database administrator median) is not yet
+  established at all. Confirming a row is one click and one word; `--check`
+  lists what remains.
 - **PyQuiz coverage.** Banks exist for notebooks 3–5 only. Decide whether to extend the set to 6–12 or leave the later chapters to *Loop of the Recursive Dragon*.

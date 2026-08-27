@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 9: Databases — Where Data Lives When the Program Stops – Computing Concepts with Python</title>
 <style>
@@ -179,6 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#how-a-program-talks-to-the-database" id="toc-how-a-program-talks-to-the-database" class="nav-link" data-scroll-target="#how-a-program-talks-to-the-database">6. How a <em>Program</em> Talks to the Database</a></li>
   <li><a href="#sql-quick-reference-the-card-on-the-wall" id="toc-sql-quick-reference-the-card-on-the-wall" class="nav-link" data-scroll-target="#sql-quick-reference-the-card-on-the-wall">SQL Quick Reference: The Card on the Wall</a></li>
   <li><a href="#capstone-the-sweetshop-database" id="toc-capstone-the-sweetshop-database" class="nav-link" data-scroll-target="#capstone-the-sweetshop-database">✏️ Capstone — The Sweetshop Database</a></li>
+  <li><a href="#the-job-database-administrator-architect" id="toc-the-job-database-administrator-architect" class="nav-link" data-scroll-target="#the-job-database-administrator-architect">💼 The Job: Database Administrator &amp; Architect</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -208,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -1336,6 +1337,62 @@ Thundermint Bar: 250p</code></pre>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="op">--</span> ✏️ Your constraint<span class="op">-</span>breaking INSERT goes here. It SHOULD fail.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>(Your 2–3 sentence reflection — double-click to edit.)</em></p>
+</section>
+</section>
+<section id="the-job-database-administrator-architect" class="level2">
+<h2 class="anchored" data-anchor-id="the-job-database-administrator-architect">💼 The Job: Database Administrator &amp; Architect</h2>
+<p>Jane Bennet’s clinic has patients, visits, and prescriptions, and a foreign key stopping anyone from writing a prescription for a patient who does not exist. Somebody designed that constraint, and somebody keeps the database it lives in running. BLS tracks both, on one page, as <strong>database administrators and architects</strong>.</p>
+<p>The split is worth knowing, because it is a career path rather than two unrelated jobs:</p>
+<ul>
+<li><strong>Architects</strong> design the structure. Which tables exist, what the keys are, what the constraints forbid — the work you did when you decided how Longbourn Publishing should store manuscripts, authors, and royalties.</li>
+<li><strong>Administrators</strong> keep it alive. Backups, permissions, performance, and being the person who is awake at 3am when the restore is running.</li>
+</ul>
+<p>You have now done a small version of the architect’s job. Every <code>CREATE TABLE</code> in this notebook was a decision about what the database would refuse to store — and as the case study for this chapter argues, that decision is where the guarantees live. Google spent years discovering the cost of dropping them.</p>
+<section id="what-the-numbers-say" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-numbers-say">What the Numbers Say</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Database Administrator &amp; Architect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Median pay</strong></td>
+<td>$127,000 (2025)</td>
+</tr>
+<tr class="even">
+<td><strong>Projected change</strong></td>
+<td>+4%, 2025-2035</td>
+</tr>
+<tr class="odd">
+<td><strong>Jobs in 2025</strong></td>
+<td>144,500</td>
+</tr>
+<tr class="even">
+<td><strong>Change over the decade</strong></td>
+<td>+6,500</td>
+</tr>
+<tr class="odd">
+<td><strong>Typical entry education</strong></td>
+<td>Bachelor’s degree</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: U.S. Bureau of Labor Statistics, <a href="https://www.bls.gov/ooh/computer-and-information-technology/database-administrators.htm">Occupational Outlook Handbook</a>, SOC 15-1242, 15-1243. Figures retrieved 2026-08-27. The projection is a forecast made from a 2025 base year, not a measurement of today.</em></p>
+<p>Two things about that table.</p>
+<p><strong>+4% is the least dramatic projection in this course</strong>, and that is informative. Databases are not a boom industry. They are infrastructure: unglamorous, everywhere, and impossible to remove. About 6,500 added jobs over a decade, on a base of 144,500, is not a gold rush — but the work is stable in a way that fashionable work is not. Relational databases were declared obsolete in 2009 by people who were extremely confident, and Postgres is still here.</p>
+<p><strong>It pays well for a job nobody writes articles about.</strong> A median of $127,000 puts this above the systems analyst and just under the software developer. Being the person who understands where the data actually lives, and what happens if it is lost, turns out to be worth quite a lot to an organization — usually most obviously at 3am.</p>
+</section>
+<section id="think-about-it-the-unglamorous-layer" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-unglamorous-layer">💭 Think About It — The Unglamorous Layer</h3>
+<ul>
+<li>The architect decides what the database will <em>refuse</em> to store. Pick one constraint you wrote in this notebook and describe, concretely, what goes wrong in the clinic if it isn’t there.</li>
+<li>This occupation is projected to grow 4% — the slowest in this course — for work that essentially every organization needs. Why do you think essential and fast-growing are not the same thing?</li>
+<li>The table above has a hole in it, because one figure could not be verified. Would you rather see a table with a gap or a table with a plausible guess? Does your answer change if it is a medical chart instead of a career table?</li>
+</ul>
+<p>Share a sentence or two on each.</p>
 </section>
 </section>
 <section id="key-terms" class="level2">

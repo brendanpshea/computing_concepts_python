@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 6: Modules &amp; Object-Oriented Design – Computing Concepts with Python</title>
 <style>
@@ -178,6 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#abstraction-one-interface-many-implementations" id="toc-abstraction-one-interface-many-implementations" class="nav-link" data-scroll-target="#abstraction-one-interface-many-implementations">Abstraction: One Interface, Many Implementations</a></li>
   <li><a href="#the-four-pillars-of-oop" id="toc-the-four-pillars-of-oop" class="nav-link" data-scroll-target="#the-four-pillars-of-oop">The Four Pillars of OOP</a></li>
   <li><a href="#capstone-build-a-battle-game-oop" id="toc-capstone-build-a-battle-game-oop" class="nav-link" data-scroll-target="#capstone-build-a-battle-game-oop">✏️ Capstone — Build a Battle Game (OOP)</a></li>
+  <li><a href="#the-job-computer-systems-analyst" id="toc-the-job-computer-systems-analyst" class="nav-link" data-scroll-target="#the-job-computer-systems-analyst">💼 The Job: Computer Systems Analyst</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -207,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -1049,6 +1050,65 @@ Now delivering: Lyonesse #3</code></pre>
 <div id="cell-105" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built battle game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="the-job-computer-systems-analyst" class="level2">
+<h2 class="anchored" data-anchor-id="the-job-computer-systems-analyst">💼 The Job: Computer Systems Analyst</h2>
+<p>Merlin Advisory does not write most of the code it is paid for. Merlin’s partners walk into an organization, work out what it actually needs, decide how the pieces should fit together, and then tell the engineers what to build. That is a real occupation, and BLS calls it <strong>computer systems analyst</strong>.</p>
+<p>It is the job this notebook has been quietly training you for. Everything you did here was a decision about <em>structure</em>:</p>
+<ul>
+<li>should this be one class or two?</li>
+<li>does <code>Knight</code> genuinely belong under <code>Guard</code>, or is that a false is-a?</li>
+<li>what goes in the module everyone imports, and what stays local?</li>
+<li>which parts of the system are allowed to know about which other parts?</li>
+</ul>
+<p>Those are not coding questions. They are design questions that happen to be written in code. An analyst asks them one level up — about whole systems rather than classes — but it is recognisably the same skill: deciding where the boundaries go, and living with the consequences.</p>
+<p>The work in practice: study how an organization currently operates, research what technology could improve it, cost it out, design the new arrangement, and then translate between the people who want it and the people who have to build it.</p>
+<section id="what-the-numbers-say" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-numbers-say">What the Numbers Say</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Computer Systems Analyst</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Median pay</strong></td>
+<td>$106,000 (2025)</td>
+</tr>
+<tr class="even">
+<td><strong>Projected change</strong></td>
+<td>+8%, 2025-2035</td>
+</tr>
+<tr class="odd">
+<td><strong>Jobs in 2025</strong></td>
+<td>544,400</td>
+</tr>
+<tr class="even">
+<td><strong>Change over the decade</strong></td>
+<td>+42,900</td>
+</tr>
+<tr class="odd">
+<td><strong>Typical entry education</strong></td>
+<td>Bachelor’s degree</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: U.S. Bureau of Labor Statistics, <a href="https://www.bls.gov/ooh/computer-and-information-technology/computer-systems-analysts.htm">Occupational Outlook Handbook</a>, SOC 15-1211. Figures retrieved 2026-08-27. The projection is a forecast made from a 2025 base year, not a measurement of today.</em></p>
+<p><strong>Notice what this occupation is paid for.</strong> A systems analyst earns less than a software developer — about $28,000 less at the median — while sitting closer to the decisions. You are not paid here for volume of code. You are paid for judgment about structure, which is harder to measure and, at least at the median, priced lower than the ability to build the thing.</p>
+<p>Whether that is the right price is a live argument in the industry, and you are allowed to have an opinion about it.</p>
+<p><strong>+8% and +42,900 jobs</strong> is solid, unspectacular growth over a base of 544,400 — a large, stable occupation rather than a boom. It is also one of the few in this course where the day-to-day work is mostly <em>talking</em>: to the people who want something, and to the people who have to build it.</p>
+</section>
+<section id="think-about-it-the-people-who-decide-the-shape" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-people-who-decide-the-shape">💭 Think About It — The People Who Decide the Shape</h3>
+<ul>
+<li>The analyst’s job is to sit between people who want something and people who must build it. Name a time you have been in that position — in a job, a family, a group project. What made it hard?</li>
+<li>This table’s base year differs from the others in the course. Why is comparing a 2025-base projection to a 2024-base projection a bad idea, and what would you have to do to compare them fairly?</li>
+<li>Guinevere is deciding whether Camelot Civic Systems should build its own citizen-records system or buy one. That is an analyst’s call. List the three questions you would want answered before choosing, and say who in the organization can answer each.</li>
+</ul>
+<p>Share a sentence or two on each.</p>
+</section>
 </section>
 <section id="key-terms" class="level2">
 <h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>

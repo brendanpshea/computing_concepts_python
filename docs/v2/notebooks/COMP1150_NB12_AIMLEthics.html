@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 12: AI, Machine Learning &amp; Ethics — Opening the Oracle – Computing Concepts with Python</title>
 <style>
@@ -174,6 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-mirror-where-bias-comes-from" id="toc-the-mirror-where-bias-comes-from" class="nav-link" data-scroll-target="#the-mirror-where-bias-comes-from">4. The Mirror: Where Bias Comes From</a></li>
   <li><a href="#the-costs-we-dont-see" id="toc-the-costs-we-dont-see" class="nav-link" data-scroll-target="#the-costs-we-dont-see">5. The Costs We Don’t See</a></li>
   <li><a href="#capstone-build-it-then-audit-it" id="toc-capstone-build-it-then-audit-it" class="nav-link" data-scroll-target="#capstone-build-it-then-audit-it">✏️ Capstone — Build It, Then Audit It</a></li>
+  <li><a href="#the-job-data-scientist" id="toc-the-job-data-scientist" class="nav-link" data-scroll-target="#the-job-data-scientist">💼 The Job: Data Scientist</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -203,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -422,7 +423,7 @@ output = 1 if total &gt; 0 else 0</code></pre>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"income"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"debt"</span>)<span class="op">;</span> plt.legend()</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="fig-boundary" class="quarto-float quarto-figure quarto-figure-center anchored" height="429" width="576">
+<div id="fig-boundary" class="quarto-float quarto-figure quarto-figure-center anchored" width="576" height="429">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-boundary-output-1.png" id="fig-boundary" width="576" height="429" class="figure-img">
@@ -682,7 +683,7 @@ Applicant from 'west': 1</code></pre>
 <span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="fig-carbon" class="quarto-float quarto-figure quarto-figure-center anchored" height="336" width="661">
+<div id="fig-carbon" class="quarto-float quarto-figure quarto-figure-center anchored" width="661" height="336">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-carbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="COMP1150_NB12_AIMLEthics_files/figure-html/fig-carbon-output-1.png" id="fig-carbon" width="661" height="336" class="figure-img">
@@ -757,6 +758,72 @@ Figure&nbsp;5
 <li><strong>Harm &amp; accountability:</strong></li>
 <li><strong>Should it be built:</strong></li>
 </ol>
+</section>
+</section>
+<section id="the-job-data-scientist" class="level2">
+<h2 class="anchored" data-anchor-id="the-job-data-scientist">💼 The Job: Data Scientist</h2>
+<p>Shuri’s lab trains models; Diana Prince’s council audits them for bias. Both of those are done by people BLS tracks as <strong>data scientists</strong>, and it is the fastest-growing occupation in this entire course.</p>
+<p>What the work is:</p>
+<ul>
+<li>decide what question the data could actually answer, which is usually not the question you were asked</li>
+<li>gather and clean the data, which is most of the job and nobody warns you</li>
+<li>choose and train a model, then find out honestly how well it does</li>
+<li>explain the result to people who will act on it and cannot read the code</li>
+</ul>
+<p>You did a small version of all four in this notebook. You watched a perceptron learn, you saw how bias enters through the training data, and you looked at what an LLM is actually doing when it predicts the next token. The fourth bullet — explaining it to someone who will act on it — is what the case study asks of you when it puts a COMPAS score in a judge’s hands.</p>
+<section id="what-the-numbers-say" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-numbers-say">What the Numbers Say</h3>
+<p>BLS has not yet restated data science for the 2025–2035 round, so this table comes from CompTIA, projecting 2026–2036:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Data Scientists &amp; Analysts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Workforce, 2026</strong></td>
+<td>252,890</td>
+</tr>
+<tr class="even">
+<td><strong>Projected, 2036</strong></td>
+<td>324,303</td>
+</tr>
+<tr class="odd">
+<td><strong>Annual replacement hiring</strong></td>
+<td>about 15,317</td>
+</tr>
+<tr class="even">
+<td><strong>Annual turnover rate</strong></td>
+<td>51% — the highest in tech</td>
+</tr>
+<tr class="odd">
+<td><strong>Typical entry education</strong></td>
+<td>Bachelor’s degree; some employers prefer a master’s</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: CompTIA, “State of the Tech Workforce” (2026 release), analysing Lightcast and U.S. Bureau of Labor Statistics data. Retrieved 2026-08-27.</em></p>
+<p>That is roughly 28% growth over the decade, the fastest of any occupation in this course. Two cautions, though.</p>
+<p><strong>The turnover rate is the highest in tech.</strong> Fifty-one percent a year. Some of that is people being promoted, but a job people leave that often is telling you something about the job.</p>
+<p><strong>“Data scientist” is the least stable job title here.</strong> It has meant, at different companies in the same year, a statistician, a person who makes dashboards, and a machine-learning engineer. A projection for a title that unstable should be held loosely.</p>
+<p><strong>Now the number that matters most to you.</strong> Employers posted about <strong>1,229,505 jobs requiring AI skills</strong> in a single year — and when you sort those postings by how much experience they ask for, <strong>35% want 0–3 years</strong>, more than any other band. Hiring for <em>dedicated</em> AI job titles grew 81% year over year but remains a small slice of tech hiring overall; the volume is in ordinary jobs that now expect you to use these tools well.</p>
+<p>Which is worth holding against this chapter’s case study. Notebook 3’s Hopper case argues that <strong>every abstraction in software has displaced a category of worker</strong> — hand calculators, hand coders, junior developers writing boilerplate — and that argument is being tested right now, on the rung you are trying to reach. The posting data does not settle it. But it does say that, so far, employers are asking for AI skills at the entry level more than anywhere else. Make of that what you will; it is your rung.</p>
+</section>
+<section id="think-about-it-the-fastest-growing-job-in-the-course" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-fastest-growing-job-in-the-course">💭 Think About It — The Fastest-Growing Job in the Course</h3>
+<ul>
+<li>“Data scientist” means different things at different companies. Why does that make a growth projection for it less trustworthy than one for, say, network administrator?</li>
+<li>The Hopper case study argues that every abstraction displaces a category of worker, and that junior developers writing boilerplate are next. You have used an AI assistant all semester. From what you actually saw it do well and badly, do you find that argument convincing?</li>
+<li>If the roles that hold up are the ones where code is attached to judgment about something, what is the something you would want yours attached to? You do not have to know yet — but say what you would need to find out.</li>
+<li>Diana Prince’s council audits models for bias. That job did not exist fifteen years ago. What job that does not exist today do you think this decade will require?</li>
+</ul>
+<p>Share a sentence or two on each.</p>
 </section>
 </section>
 <section id="key-terms" class="level2">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 10: OS, Networks, Cloud &amp; the Web — The Case of the Vanishing Website – Computing Concepts with Python</title>
 <style>
@@ -177,6 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#whose-computer-is-it-anyway-the-cloud" id="toc-whose-computer-is-it-anyway-the-cloud" class="nav-link" data-scroll-target="#whose-computer-is-it-anyway-the-cloud">4. Whose Computer Is It Anyway? The Cloud</a></li>
   <li><a href="#becoming-the-server" id="toc-becoming-the-server" class="nav-link" data-scroll-target="#becoming-the-server">5. Becoming the Server</a></li>
   <li><a href="#capstone-the-baker-street-tip-line" id="toc-capstone-the-baker-street-tip-line" class="nav-link" data-scroll-target="#capstone-the-baker-street-tip-line">✏️ Capstone — The Baker Street Tip Line</a></li>
+  <li><a href="#the-job-network-computer-systems-administrator" id="toc-the-job-network-computer-systems-administrator" class="nav-link" data-scroll-target="#the-job-network-computer-systems-administrator">💼 The Job: Network &amp; Computer Systems Administrator</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -206,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -1014,6 +1015,70 @@ Try `serve_kernel_port_as_iframe` instead. </span>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your final, extended app here.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>(Your 2–3 sentence reflection — double-click to edit.)</em></p>
+</section>
+</section>
+<section id="the-job-network-computer-systems-administrator" class="level2">
+<h2 class="anchored" data-anchor-id="the-job-network-computer-systems-administrator">💼 The Job: Network &amp; Computer Systems Administrator</h2>
+<p>Sherlock’s case turned on a request that left a device, crossed machines nobody at Adler Streaming owns, and failed somewhere along the road. Following that road — and keeping it open — is somebody’s full-time job. BLS calls it <strong>network and computer systems administrator</strong>.</p>
+<p>You spent this notebook doing the diagnostic half of it: asking the operating system what it was running, watching a name become an address, reading an HTTP conversation, and finally becoming the server yourself. A sysadmin does that on a system other people depend on, usually while those people are waiting.</p>
+<p>The work:</p>
+<ul>
+<li>install and maintain the organization’s networks, servers, and the software on them</li>
+<li>watch performance, and notice a problem before the support tickets arrive</li>
+<li>manage who is allowed to access what</li>
+<li>fix it when it breaks, which is frequently and rarely at a convenient hour</li>
+</ul>
+<p>There is an adjacent route worth naming. <strong>Web developer</strong> — building the applications that ride on top of all this — has a median around $91,000, a +7% projection, and BLS says its education requirement ranges from a high school diploma to a bachelor’s degree. Of every occupation in this course, that is the one with the widest-open door.</p>
+<section id="what-the-numbers-say" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-numbers-say">What the Numbers Say</h3>
+<p>BLS has not yet restated this occupation for the 2025–2035 round, so the table below comes from CompTIA instead, which projects the same workforce on a 2026–2036 horizon:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Network &amp; Systems Administrators</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Workforce, 2026</strong></td>
+<td>312,430</td>
+</tr>
+<tr class="even">
+<td><strong>Projected, 2036</strong></td>
+<td>313,556</td>
+</tr>
+<tr class="odd">
+<td><strong>Annual replacement hiring</strong></td>
+<td>about 15,083</td>
+</tr>
+<tr class="even">
+<td><strong>Annual turnover rate</strong></td>
+<td>38%</td>
+</tr>
+<tr class="odd">
+<td><strong>Typical entry education</strong></td>
+<td>Often a bachelor’s degree; some positions take an associate degree or certification plus related experience</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: CompTIA, “State of the Tech Workforce” (2026 release), analysing Lightcast and U.S. Bureau of Labor Statistics data. Retrieved 2026-08-27.</em></p>
+<p><strong>Look at the first two rows, then the third.</strong> The workforce is projected to be almost exactly the same size in 2036 as in 2026 — about a thousand jobs larger, on a base of three hundred thousand. Flat. And yet roughly <strong>15,083 people a year</strong> will be hired into it, because that many leave. This is the same pattern you met in Notebook 2, and it is the single most misread number in career data: a flat or shrinking occupation can be a perfectly ordinary place to get hired.</p>
+<p>What is <em>not</em> flat is where the work happens. A great deal of what a sysadmin used to do by walking to a server rack is now done by configuring somebody else’s cloud — which is the case study’s point arriving in the labour data. When three companies own the computers, the job of running computers changes shape rather than disappearing.</p>
+<p><strong>The education line is the flexible kind.</strong> Often a bachelor’s, sometimes an associate degree or a certification plus experience. Combined with the support role from Notebook 2, this is a genuine ladder: support desk, then certifications, then administration.</p>
+</section>
+<section id="think-about-it-keeping-the-road-open" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-keeping-the-road-open">💭 Think About It — Keeping the Road Open</h3>
+<ul>
+<li>This is the second occupation in the course with a negative projection and thousands of annual openings. What would you now tell someone who saw only the projection and crossed the job off their list?</li>
+<li>Some sysadmin work has not vanished so much as moved into the cloud providers from the case study. Is that a better or worse deal for the people doing the work? For the rest of us?</li>
+<li>Irene Adler has to decide whether to hire a sysadmin or rent more managed cloud. Argue one side. What does she lose either way?</li>
+</ul>
+<p>Share a sentence or two on each.</p>
 </section>
 </section>
 <section id="key-terms" class="level2">

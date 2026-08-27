@@ -8,7 +8,7 @@ A template and authoring guide for the 12 main notebooks in the redesigned COMP 
 
 | Spec | Target |
 |------|--------|
-| Total cells | ~45 |
+| Total cells | ~48 (45 + a 3-cell career block) |
 | Word count (prose only) | ~6,000 |
 | Reading level | 10th–12th grade |
 | Practice exercises | One short **✏️ Your Turn** per concept section, interleaved (not clustered at the end) |
@@ -349,6 +349,69 @@ Design principles:
 - **Two cells:** the markdown brief (the six steps), then an empty `#| eval: false` paste cell — `# ✏️ Paste your AI-built [thing] here, then run it and fix what's broken.`
 - **Placement:** the last section before "Key Terms" (after PyQuiz, if the notebook uses it).
 
+### 41c. The career block (3 cells, markdown)
+
+Every notebook carries one **💼 block** — a short, sourced look at a real job
+the chapter's material belongs to. This is often the first CS course a student
+takes, and it is the only place in the sequence where the question *what is
+this for* gets a factual answer.
+
+- **Placement:** after the capstone, immediately before "## Key Terms". The
+  `💼` must be in the **heading line** — `tools/career_data.py` finds the
+  block by looking there, and treats everything up to the next `##` as part
+  of it.
+- **Three cells, always:** what the job actually is (tied to this notebook's
+  cast and to what the student just did) → the figures table → a
+  `### 💭 Think About It`.
+- **Eight of the twelve are occupations; four are processes** — there are not
+  twelve distinct junior roles, and inventing them would be worse than
+  useful. The process blocks are Notebook 1 (the shape of the field and how
+  to read a labor number), 5 (reading a job posting), 7 (the technical
+  interview), and 8 (your first ninety days).
+
+**Never type a figure by hand.** Every number lives in `tools/career_data.py`
+with a source URL, an as-of date, and a confidence flag. Two sources are in
+play: the **BLS Occupational Outlook Handbook** for per-occupation pay and
+projections, and **CompTIA's *State of the Tech Workforce*** for the two
+things the OOH does not publish — wage percentiles and replacement hiring.
+Where BLS has not yet restated an occupation for the current projection
+round, the notebook uses CompTIA and says so in the table. Generate the
+table:
+
+```bash
+python tools/career_data.py --render infosec    # paste the output into the cell
+python tools/career_data.py --check             # find notebooks quoting stale figures
+```
+
+`--check` also fails on a salary figure written anywhere outside a 💼 block,
+because a number loose in the prose is a number nobody will remember to
+update.
+
+**Rules for the prose:**
+
+- **Tie it to the notebook.** The block only earns its place if the student
+  can see that the thing they just did is a piece of the job. Name the cast.
+- **Print the base year with every projection.** A BLS projection is a model
+  run from a base year, not a measurement of now. Notebook 1 teaches students
+  to ask "as of when?", and the later blocks have to keep faith with that.
+- **Be straight about the market.** Entry-level technical hiring is hard right
+  now and the honest framing is more useful — and more credible — than
+  encouragement. Where a projection and the current data disagree, say so and
+  explain why rather than picking the cheerful one.
+- **Read both columns.** Several of these occupations have a negative
+  projection and thousands of annual openings, because replacement is not
+  growth — CompTIA puts tech replacement hiring at about 6% a year. Students
+  consistently misread the first number alone.
+- **Never let a median stand as a starting salary.** Notebook 1 gives students
+  the wage-percentile ladder precisely so the medians in the other eleven
+  blocks are read correctly. If you add a block, do not undo that.
+- **Include the reachable roles.** Support, network administration and web
+  development are open to an associate degree or a certificate, and for many
+  students in this course they are the realistic first rung. Say so plainly;
+  don't treat the bachelor's track as the only path.
+- **No instructor-facing notes in student cells.** Verification status belongs
+  in `career_data.py`, not in the notebook.
+
 ### 42. Key Terms glossary (1–2 cells, markdown)
 Alphabetical list of the technical terms introduced in the notebook. Each entry: term in bold, one-sentence plain-language definition.
 
@@ -610,6 +673,9 @@ PyQuiz (above) remains the optional closing self-check for function-writing note
 - [ ] 4–5 concept sections, each following the 8-cell pattern (ending in a ✏️ Your Turn) or a defensible variation
 - [ ] One short **✏️ Your Turn** after each concept section (interleaved, scaffolded, no inline solutions)
 - [ ] One end-of-notebook **AI-assisted capstone** that fuses the notebook's concepts, with a student-choosable theme
+- [ ] 💼 career block present, with `💼` in its heading line
+- [ ] every career figure generated by `tools/career_data.py --render`, never typed
+- [ ] `python tools/career_data.py --check` passes
 - [ ] Key Terms glossary covers every bolded term in the notebook
 - [ ] Summary + What's Next + credits footer in place
 - [ ] No code cell exceeds ~25 lines

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 5: Collections &amp; Abstract Data Types – Computing Concepts with Python</title>
 <style>
@@ -183,6 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#methods-cheatsheets-where-to-find-them" id="toc-methods-cheatsheets-where-to-find-them" class="nav-link" data-scroll-target="#methods-cheatsheets-where-to-find-them">Methods Cheatsheets — Where to Find Them</a></li>
   <li><a href="#practice-pyquiz" id="toc-practice-pyquiz" class="nav-link" data-scroll-target="#practice-pyquiz">Practice: PyQuiz</a></li>
   <li><a href="#capstone-build-a-collection-manager-ai-assisted" id="toc-capstone-build-a-collection-manager-ai-assisted" class="nav-link" data-scroll-target="#capstone-build-a-collection-manager-ai-assisted">✏️ Capstone — Build a Collection Manager (AI-Assisted)</a></li>
+  <li><a href="#the-skill-reading-a-job-posting" id="toc-the-skill-reading-a-job-posting" class="nav-link" data-scroll-target="#the-skill-reading-a-job-posting">💼 The Skill: Reading a Job Posting</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -212,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -1428,6 +1429,43 @@ allowance     : {'Dracula': 2, 'Mina': 2, 'Hyde': 2}</code></pre>
 <div id="3bfbc794" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built collection manager here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="the-skill-reading-a-job-posting" class="level2">
+<h2 class="anchored" data-anchor-id="the-skill-reading-a-job-posting">💼 The Skill: Reading a Job Posting</h2>
+<p>A job posting is a record with fields, and like every record you met in this notebook, some of those fields are load-bearing and some are decoration. Learning which is which will save you months.</p>
+<p>Here is a posting of the kind that stops people from applying. Count Dracula’s rentals desk is hiring:</p>
+<blockquote class="blockquote">
+<p><strong>Junior Software Engineer — Midnight Masquerade</strong> - 3–5 years of professional experience - Bachelor’s degree in Computer Science or equivalent - Expert-level Python; strong SQL - Experience with Docker, Kubernetes, AWS, React, GraphQL, Redis - Excellent communication skills</p>
+</blockquote>
+<p>Read literally, that posting is asking for someone who does not exist: three to five years of experience in a <em>junior</em> role, expertise in seven technologies, and a degree. Read correctly, it is a <strong>wish list written by a committee</strong>, and it is much softer than it looks.</p>
+<p>How to actually read it:</p>
+<ul>
+<li><strong>“3–5 years” is a filter, not a rule.</strong> It is there to discourage the wholly unqualified. Hiring managers routinely interview people at the bottom of a stated range, and sometimes below it.</li>
+<li><strong>The technology list is sorted, even though it doesn’t look sorted.</strong> The first two items are usually real requirements. The tail is usually “would be nice.”</li>
+<li><strong>“Or equivalent” is doing real work.</strong> It is the clause that lets them hire the person with a portfolio instead of a diploma.</li>
+<li><strong>“Excellent communication skills” is not filler.</strong> It is often the thing that actually decides between two finalists, and it is the one item on the list you can practice for free.</li>
+</ul>
+<section id="what-to-do-with-that" class="level3">
+<h3 class="anchored" data-anchor-id="what-to-do-with-that">What to Do With That</h3>
+<p>The practical move is to treat a posting like a <strong>set</strong>, which you now know how to reason about.</p>
+<p>Make two sets: what they asked for, and what you have. Then look at three things.</p>
+<ul>
+<li><strong>The intersection</strong> — what you can already claim. This is what your application leads with.</li>
+<li><strong>The difference, their side</strong> — what you are missing. If it is one or two items from the tail of the list, apply anyway. If it is the first two items plus the degree, this one is a stretch.</li>
+<li><strong>The difference, your side</strong> — what you have that they did not ask for. A student who has actually shipped a small Flask app, or who spent four years talking to angry customers in a service job, is carrying something most applicants aren’t. Say so.</li>
+</ul>
+<p>The rule of thumb that working engineers pass around, and which is roughly right: <strong>apply if you meet about 60% of it.</strong> People who wait until they meet 100% are applying for jobs they are already overqualified for, and they are usually applying too late.</p>
+<p>One more thing worth knowing. Postings are written by employers, so they describe the <em>ideal</em> candidate, not the <em>hired</em> one. The gap between those two is where almost everybody’s first job comes from.</p>
+</section>
+<section id="think-about-it-the-wish-list" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-wish-list">💭 Think About It — The Wish List</h3>
+<ul>
+<li>Find a real entry-level posting for something you might want. Sort its requirements into “actually required” and “wish list.” What did you use to decide?</li>
+<li>The 60% rule exists because people systematically misjudge whether they qualify — and research suggests the misjudging is not evenly distributed. Who do you think is most likely to rule themselves out too early, and what would change that?</li>
+<li>Camilla runs the masquerade balls and needs someone who can handle a guest list, a budget, and a furious duchess at 11pm. Write the three-line posting she should actually run — the version that describes the hired person rather than the ideal one.</li>
+</ul>
+<p>Share a sentence or two on each.</p>
+</section>
 </section>
 <section id="key-terms" class="level2">
 <h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>

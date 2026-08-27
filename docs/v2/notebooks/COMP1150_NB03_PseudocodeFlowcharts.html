@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 3: Python Basics via Pseudocode &amp; Flowcharts – Computing Concepts with Python</title>
 <style>
@@ -180,6 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#building-with-ai-plan-first-then-code" id="toc-building-with-ai-plan-first-then-code" class="nav-link" data-scroll-target="#building-with-ai-plan-first-then-code">Building With AI: Plan First, Then Code</a></li>
   <li><a href="#practice-pyquiz" id="toc-practice-pyquiz" class="nav-link" data-scroll-target="#practice-pyquiz">Practice: PyQuiz</a></li>
   <li><a href="#capstone-build-a-trading-game-ai-assisted" id="toc-capstone-build-a-trading-game-ai-assisted" class="nav-link" data-scroll-target="#capstone-build-a-trading-game-ai-assisted">✏️ Capstone — Build a Trading Game (AI-Assisted)</a></li>
+  <li><a href="#the-job-qa-analyst-tester" id="toc-the-job-qa-analyst-tester" class="nav-link" data-scroll-target="#the-job-qa-analyst-tester">💼 The Job: QA Analyst &amp; Tester</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -209,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -1120,6 +1121,66 @@ OUTPUT:  share        — crystals each apprentice receives
 <div id="cell-76" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built trading game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="the-job-qa-analyst-tester" class="level2">
+<h2 class="anchored" data-anchor-id="the-job-qa-analyst-tester">💼 The Job: QA Analyst &amp; Tester</h2>
+<p>Auditor Crane came to Mirabel’s Emporium to check that every value was the type it claimed to be — that a price was a number and not a string that looked like one. Crane is not being pedantic. Crane is doing a job that pays six figures.</p>
+<p>A <strong>quality assurance analyst</strong> — a tester — is paid to find out what a program does wrong before a customer does. Not to write the feature: to break it.</p>
+<p>You have been doing this all notebook without the title. Every time you predicted what a cell would print before running it, you were testing. Every time your prediction was wrong and you worked out why, you were doing the core loop of the job:</p>
+<ol type="1">
+<li>Decide what the program is <em>supposed</em> to do.</li>
+<li>Run it.</li>
+<li>Compare what happened to what should have happened.</li>
+<li>Write down the difference precisely enough that someone else can reproduce it.</li>
+</ol>
+<p>Step 4 is the whole skill. “It’s broken” is not a bug report. “Given a <code>paid_bits</code> of 0, the function returns None instead of raising an error” is one, and the pseudocode habits from this notebook are exactly how you learn to write the second kind of sentence.</p>
+<section id="what-the-numbers-say" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-numbers-say">What the Numbers Say</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>QA Analyst &amp; Tester</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Median pay</strong></td>
+<td>$134,000 (2025)</td>
+</tr>
+<tr class="even">
+<td><strong>Projected change</strong></td>
+<td>+10%, 2025-2035</td>
+</tr>
+<tr class="odd">
+<td><strong>Jobs in 2025</strong></td>
+<td>1,905,400</td>
+</tr>
+<tr class="even">
+<td><strong>Change over the decade</strong></td>
+<td>+185,400</td>
+</tr>
+<tr class="odd">
+<td><strong>Typical entry education</strong></td>
+<td>Bachelor’s degree</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: U.S. Bureau of Labor Statistics, <a href="https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm">Occupational Outlook Handbook</a>, SOC 15-1253. Figures retrieved 2026-08-27. The projection is a forecast made from a 2025 base year, not a measurement of today. BLS reports the outlook, headcount and median pay for software developers, QA analysts, and testers together.</em></p>
+<p>Read that source line carefully, because it is doing something unusual.</p>
+<p><strong>BLS does not separate testers from developers.</strong> Software developers, QA analysts, and testers share one page, one projection, one headcount, and — as of the 2025 figures — <strong>one median wage</strong>. So the $134,000 above is not a tester’s salary. It is the middle of a group of 1.9 million people that includes both the person writing the feature and the person breaking it, and those two are not paid the same. The Bureau breaks them out further down its Pay page; the Quick Facts table does not.</p>
+<p>This is worth noticing for its own sake. <strong>A number is only as specific as the category it was collected under.</strong> When someone quotes you an average salary, the first question is what got averaged.</p>
+<p>What the table does tell you is that the whole group is projected to grow 10% and add about 185,000 jobs over the decade — the largest absolute gain of any occupation in this course. Testing is a common way into that group, because it asks less prior code than a developer job and teaches you a codebase fast: you spend your days finding out where it is weak.</p>
+</section>
+<section id="think-about-it-getting-paid-to-break-things" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-getting-paid-to-break-things">💭 Think About It — Getting Paid to Break Things</h3>
+<ul>
+<li>Write the worst bug report you can imagine, then rewrite it so a stranger could reproduce the problem. What did you have to add?</li>
+<li>Testers make a median $30,000 a year less than the developers whose work they check. Give one honest argument for why that gap exists, and one honest argument for why it might be too wide.</li>
+<li>Somebody has to decide what a program is <em>supposed</em> to do before anyone can say it is wrong. In this notebook, who decided that — you, or the instructions? On a real job, who decides, and what happens when nobody has?</li>
+</ul>
+<p>Share a sentence or two on each.</p>
+</section>
 </section>
 <section id="key-terms" class="level2">
 <h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>

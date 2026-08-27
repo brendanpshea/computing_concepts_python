@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 11: Cybersecurity — Defending the Clinic – Computing Concepts with Python</title>
 <style>
@@ -176,6 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-key-under-the-mat-secrets-management" id="toc-the-key-under-the-mat-secrets-management" class="nav-link" data-scroll-target="#the-key-under-the-mat-secrets-management">6. The Key Under the Mat: Secrets Management</a></li>
   <li><a href="#layers-on-layers-defense-in-depth" id="toc-layers-on-layers-defense-in-depth" class="nav-link" data-scroll-target="#layers-on-layers-defense-in-depth">7. Layers on Layers: Defense in Depth</a></li>
   <li><a href="#capstone-the-security-audit" id="toc-capstone-the-security-audit" class="nav-link" data-scroll-target="#capstone-the-security-audit">✏️ Capstone — The Security Audit</a></li>
+  <li><a href="#the-job-information-security-analyst" id="toc-the-job-information-security-analyst" class="nav-link" data-scroll-target="#the-job-information-security-analyst">💼 The Job: Information Security Analyst</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -205,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -730,6 +731,70 @@ Figure&nbsp;3
 <p>Then reflect below, 2–3 sentences: What did the AI get wrong, or write insecurely, that you had to correct?</p>
 <p><em>AI is a fast first draft — and a fast first draft is often an insecure one. You verify.</em></p>
 <p><em>(Your 2–3 sentence reflection — double-click to edit.)</em></p>
+</section>
+</section>
+<section id="the-job-information-security-analyst" class="level2">
+<h2 class="anchored" data-anchor-id="the-job-information-security-analyst">💼 The Job: Information Security Analyst</h2>
+<p>Everything you just did in this notebook is somebody’s job.</p>
+<p>Van Helsing runs threat research. When the clinic leaked, he was the one who read the logs, found the injection, and wrote up how far the attacker got. That work has a job title — <strong>information security analyst</strong> — and the U.S. Bureau of Labor Statistics tracks it as its own occupation.</p>
+<p>What the Bureau says analysts actually do, day to day:</p>
+<ul>
+<li>watch the organization’s networks for breaches, and investigate the ones that happen</li>
+<li>install and maintain the defenses — firewalls, encryption</li>
+<li>look for weaknesses in systems before an attacker does</li>
+<li>write up what was attempted, what got through, and what it cost</li>
+<li>recommend fixes to management, and help staff use the new tools</li>
+</ul>
+<p>Read that list again next to what you did in this notebook. You wrote a parameterized query to close an injection hole. You salted a password. You found the secret sitting in the source code. Those are the first three bullets. This is not a preview of the job — it is a small, real piece of it.</p>
+<section id="what-the-numbers-say" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-numbers-say">What the Numbers Say</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Information Security Analyst</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Median pay</strong></td>
+<td>$129,000 (2025)</td>
+</tr>
+<tr class="even">
+<td><strong>Projected change</strong></td>
+<td>+21%, 2025-2035</td>
+</tr>
+<tr class="odd">
+<td><strong>Jobs in 2025</strong></td>
+<td>192,900</td>
+</tr>
+<tr class="even">
+<td><strong>Change over the decade</strong></td>
+<td>+40,600</td>
+</tr>
+<tr class="odd">
+<td><strong>Typical entry education</strong></td>
+<td>Bachelor’s degree, and BLS lists less than five years of related work experience</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: U.S. Bureau of Labor Statistics, <a href="https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm">Occupational Outlook Handbook</a>, SOC 15-1212. Figures retrieved 2026-08-27. The projection is a forecast made from a 2025 base year, not a measurement of today.</em></p>
+<p>Two things in that table are worth slowing down for.</p>
+<p><strong>+21% is very high</strong>, even after coming down. The previous round of these projections said 29%; the Bureau reran the model for 2025–2035 and got 21%. Either way it is among the fastest-growing occupations BLS tracks — most are in the low single digits — because the attack surface keeps expanding and the defenders are scarce. Forty thousand added jobs over the decade, on a base of 192,900.</p>
+<p><strong>The experience line matters more than the education line.</strong> BLS lists a bachelor’s degree and <em>less than five years</em> of related work experience. That second half is the real shape of this job: it is rarely a first job. It is a job you move into, most often from support or network administration — the occupation in Notebook 2, which pays less than half as much. That is not a discouraging fact. It is a route, and it is written down in the Bureau’s own data.</p>
+</section>
+<section id="think-about-it-the-job-you-just-practiced" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-job-you-just-practiced">💭 Think About It — The Job You Just Practiced</h3>
+<ul>
+<li>The duties list above is written in the language of an employer. The work you did in this notebook is the same work, written in the language of a beginner. Pick one bullet and describe, in your own words, what it would actually look like on a Tuesday.</li>
+<li>Security is projected to grow much faster than most computing jobs. Nothing in this notebook was harder than what you did in Notebook 4. So why do you think the people who can do it are scarce? Is the barrier the difficulty, or something else?</li>
+<li>This is one of the few computing occupations where BLS says certifications can substitute for a degree. What would you want to know about a certificate program before paying for one — and who benefits if you pick wrong?</li>
+</ul>
+<p>Share a sentence or two on each.</p>
 </section>
 </section>
 <section id="key-terms" class="level2">

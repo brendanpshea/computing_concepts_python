@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-20">
+<meta name="dcterms.date" content="2026-08-27">
 
 <title>Notebook 7: Algorithms, Complexity &amp; the Limits of Computation – Computing Concepts with Python</title>
 <style>
@@ -184,6 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#p-vs.-np-easy-to-check-hard-to-solve" id="toc-p-vs.-np-easy-to-check-hard-to-solve" class="nav-link" data-scroll-target="#p-vs.-np-easy-to-check-hard-to-solve">P vs.&nbsp;NP: Easy to Check, Hard to Solve</a></li>
   <li><a href="#what-this-means-for-ai-and-llms" id="toc-what-this-means-for-ai-and-llms" class="nav-link" data-scroll-target="#what-this-means-for-ai-and-llms">What This Means for AI and LLMs</a></li>
   <li><a href="#capstone-the-great-wonderland-race-ai-assisted" id="toc-capstone-the-great-wonderland-race-ai-assisted" class="nav-link" data-scroll-target="#capstone-the-great-wonderland-race-ai-assisted">✏️ Capstone — The Great Wonderland Race (AI-Assisted)</a></li>
+  <li><a href="#the-gate-the-technical-interview" id="toc-the-gate-the-technical-interview" class="nav-link" data-scroll-target="#the-gate-the-technical-interview">💼 The Gate: The Technical Interview</a></li>
   <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next">What’s Next</a></li>
@@ -214,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 20, 2026</p>
+      <p class="date">August 27, 2026</p>
     </div>
   </div>
   
@@ -875,6 +876,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="cell-65" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ✏️ Paste your AI-built race game here, then run it and fix what's broken.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="the-gate-the-technical-interview" class="level2">
+<h2 class="anchored" data-anchor-id="the-gate-the-technical-interview">💼 The Gate: The Technical Interview</h2>
+<p>Alice spent this notebook searching a deck of cards, first the slow way and then the fast way, while the White Rabbit counted steps. If you ever apply for a software job, you will be asked to do almost exactly that, out loud, in front of a stranger, on a whiteboard or a shared screen.</p>
+<p>The <strong>technical interview</strong> is the standard gate into most coding jobs, and it is worth knowing what it is before it happens to you.</p>
+<p>A typical round:</p>
+<ol type="1">
+<li>You get a small problem. <em>Find whether this value is in this sorted list. Now do it faster.</em></li>
+<li>You are expected to <strong>talk while you think</strong> — to say what you are considering and why, not to go quiet and emerge with an answer.</li>
+<li>You are asked what it costs. This is the White Rabbit’s question: how many steps, as the input grows? The vocabulary you learned this chapter — linear, binary, O(n), O(log n) — is the vocabulary of the answer.</li>
+<li>You are asked to improve it, or to handle a case you did not think of. The Caterpillar’s move.</li>
+</ol>
+<p>The single most common mistake is silence. The interviewer cannot grade a correct answer they did not watch you reach, and they will happily help someone who is reasoning out loud and stuck. Being stuck is normal. Being stuck quietly is what fails.</p>
+<section id="what-it-does-and-does-not-measure" class="level3">
+<h3 class="anchored" data-anchor-id="what-it-does-and-does-not-measure">What It Does and Does Not Measure</h3>
+<p>Here is the part most guides leave out: <strong>this format is widely criticised, including by the people who run it.</strong></p>
+<p>The complaints are serious. It tests performance under artificial pressure rather than the work — you will almost never solve an algorithm puzzle from memory on a deadline with someone watching. It rewards people with time to drill, which favours those who are not working a second job or caring for family. And it is a known source of bias, because “seemed confident” is easy to confuse with “was competent.” Plenty of good engineers interview badly, and a few bad ones interview beautifully.</p>
+<p>It is also, for now, the gate. Both things are true, and you have to plan around the gate that exists rather than the one that should.</p>
+<p>What actually helps:</p>
+<ul>
+<li><strong>Practice out loud, not silently.</strong> Explain a solution to a wall, a friend, or a rubber duck. The talking is the part being graded.</li>
+<li><strong>Practice the small set that recurs.</strong> Search, sort, count, and “does this input contain that” cover a lot of first-round questions — the material in this notebook, in other words.</li>
+<li><strong>Say what you don’t know, then say what you’d do about it.</strong> “I don’t remember the exact syntax, but I’d look it up; the approach is —” is a strong answer, not a weak one.</li>
+<li><strong>Ask questions before coding.</strong> “Can the list be empty? Is it already sorted?” Interviewers are usually grading whether you check.</li>
+</ul>
+<p>And notice that the last two are the same habit this course has pushed all semester about AI-generated code: state your uncertainty, then verify.</p>
+</section>
+<section id="think-about-it-the-gate-and-the-job" class="level3">
+<h3 class="anchored" data-anchor-id="think-about-it-the-gate-and-the-job">💭 Think About It — The Gate and the Job</h3>
+<ul>
+<li>You have now written binary search yourself. Explain it out loud to somebody who has not taken this course, timing yourself. Where did you get stuck, and was the sticking point the algorithm or the explaining?</li>
+<li>The technical interview is criticised for testing something other than the job, and it is still the standard gate. Design a better one. What would you have candidates do instead, and what would your version fail to catch?</li>
+<li>The Queen of Hearts wants an answer <em>now</em> and does not care how. The White Rabbit wants to know how many steps it took. Real jobs contain both people. Which one is the interview simulating, and is that the right choice?</li>
+</ul>
+<p>Share a sentence or two on each.</p>
+</section>
 </section>
 <section id="key-terms" class="level2">
 <h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
