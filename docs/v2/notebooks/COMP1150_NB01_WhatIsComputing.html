@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brendan Shea, PhD">
-<meta name="dcterms.date" content="2026-08-21">
+<meta name="dcterms.date" content="2026-09-01">
 
 <title>Notebook 1: What Is Computing? A Story of Four Algorithms – Computing Concepts with Python</title>
 <style>
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 21, 2026</p>
+      <p class="date">September 1, 2026</p>
     </div>
   </div>
   
@@ -641,6 +641,16 @@ OUTPUT:    a dictionary mapping each value of that field to its count
               SET tally[key] = 1
 3. RETURN tally</code></pre>
 <p>Notice: the <em>mechanical</em> version (Hollerith) used pins, circuits, and counters. The <em>Python</em> version uses a dictionary. The logic is identical.</p>
+<div id="cell-hollerith-flowchart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-8-output-1.svg" class="img-fluid figure-img" alt="Flowchart of Hollerith's count_by_field algorithm: start with an empty tally dictionary, then for each remaining record look up its value for the chosen field; if that key is already in the tally add one to its count, otherwise create a new entry set to 1; both paths return to the record test, and when no records remain the finished tally is returned."></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> compare this to Lovelace’s flowchart. Hers had one diamond — the loop test. This one has <strong>two</strong>. The outer diamond asks <em>“any records left?”</em>; the inner one asks <em>“have I seen this category before?”</em> The two arrows leaving that inner diamond do genuinely different work — one bumps an existing count, the other starts a new one at 1 — and then both flow back to the loop test. That split-do-different-things-rejoin shape is what an <code>if</code>/<code>else</code> looks like as a picture, and you’ll meet it constantly from here on.</p>
 <div id="cell-26-hollerith-code" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:35.692207Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:35.691247Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:35.703620Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:35.701547Z&quot;}}" data-outputid="f1334601-b416-4bb6-8d83-a78a0f434b06" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Each person is a Python dictionary (like one of Hollerith's cards).</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The whole list is our "stack of cards."</span></span>
@@ -699,7 +709,7 @@ OUTPUT:    a dictionary mapping each value of that field to its count
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img" alt="Two bar charts of Hollerith's census tabulation: record counts broken down by state, and record counts broken down by occupation."></p>
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img" alt="Two bar charts of Hollerith's census tabulation: record counts broken down by state, and record counts broken down by occupation."></p>
 </figure>
 </div>
 </div>
@@ -775,6 +785,16 @@ OUTPUT:    the encrypted string
            OTHERWISE:
               APPEND c to result unchanged
 3. RETURN result</code></pre>
+<div id="cell-caesar-flowchart" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-11-output-1.svg" class="img-fluid figure-img" alt="Flowchart of the Caesar cipher encryption algorithm: start with an empty result string, then for each remaining character check whether it is a letter; if it is, shift it forward by the shift amount wrapping from Z back to A and append the new letter to the result, otherwise append the character unchanged; both paths return to the character test, and when no characters remain the result is returned."></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> the outer diamond walks the message one character at a time. The inner diamond is the cipher’s only real decision — letters get shifted, everything else passes through untouched. That’s why the encrypted output keeps the original’s spaces and punctuation, which, as codebreakers noticed, leaks a great deal about the message. Both branches rejoin at the loop test, exactly like Hollerith’s tally. The one step the picture waves at — <em>wrapping Z → A</em> — is the step Python does with a single <code>%</code> operator.</p>
 <div id="cell-35-enigma-encrypt" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:35.943553Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:35.943109Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:35.951303Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:35.949724Z&quot;}}" data-outputid="20db070a-7ef4-4326-d18f-4acb0c0eab45" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caesar_encrypt(plaintext, shift):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Encrypt a string by shifting each letter by `shift` positions."""</span></span>
@@ -806,6 +826,20 @@ Encrypted: GUR RNTYR UNF YNAQRQ</code></pre>
 <li><strong><code>%</code></strong> — the <strong>modulo operator</strong>, which returns the remainder after division. <code>27 % 26 = 1</code>, <code>52 % 26 = 0</code>. This is what wraps letters around: if you shift <code>Z</code> by 1, you get <code>A</code>, not some off-the-end character.</li>
 </ul>
 <p><strong>Line by line:</strong> - <code>for c in plaintext.upper():</code> — loop through each character of the uppercased input. - <code>if c.isalpha():</code> — only shift letters; leave spaces and punctuation alone. - <code>shifted = (ord(c) - ord('A') + shift) % 26</code> — this is four operations: 1. <code>ord(c) - ord('A')</code> — convert the letter to a 0-based index (A=0, B=1, …, Z=25) 2. <code>+ shift</code> — move it forward by <code>shift</code> positions 3. <code>% 26</code> — wrap around if we went past Z 4. (The result is still a number 0–25) - <code>chr(shifted + ord('A'))</code> — convert back to a letter (add 65 to get back into ASCII, then <code>chr</code> gives us the character).</p>
+</section>
+<section id="turings-strategy-generate-filter-recognize" class="level3">
+<h3 class="anchored" data-anchor-id="turings-strategy-generate-filter-recognize">Turing’s Strategy: Generate, Filter, Recognize</h3>
+<p>Encrypting is the easy half. <strong>Breaking</strong> a message when you don’t know the shift is the hard half, and the algorithm changes shape entirely: there’s no formula that reads the shift off the ciphertext. There’s only a strategy — and it’s the one Turing’s machines automated.</p>
+<div id="cell-turing-pipeline" class="cell" data-cellview="form" data-quarto-private-1="{&quot;key&quot;:&quot;jupyter&quot;,&quot;value&quot;:{&quot;source_hidden&quot;:true}}" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+<figure class="figure">
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-13-output-1.svg" class="img-fluid figure-img" alt="Pipeline diagram of Turing's codebreaking strategy: the ciphertext, whose shift is unknown, feeds a generate step that tries every shift from 1 to 25; that produces 25 candidate decryptions, which feed a filter and recognize step asking which one reads like English; the output is the plaintext."></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Reading it:</strong> notice how little cleverness there is. The <em>generate</em> box is pure brute force — try everything. All the intelligence sits in the <em>recognize</em> box, and for a Caesar cipher your own eye does that job instantly. Scaling this picture up is the whole story of the Bombe: Enigma had roughly 159 quintillion settings rather than 25, so Turing’s real contribution was shrinking the <em>generate</em> box to something a machine could chew through in hours, and mechanizing <em>recognize</em> so no human had to read the output. The code below runs the small version.</p>
 <div id="cell-37-enigma-bruteforce" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-06-03T13:16:35.954647Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-06-03T13:16:35.954339Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-06-03T13:16:35.960924Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-06-03T13:16:35.959933Z&quot;}}" data-outputid="4986c545-dd23-496f-a753-cc5e1330b20f" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turing's move, in miniature: try every possible shift, and let a human</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># spot the one that reads like English.</span></span>
@@ -977,7 +1011,7 @@ OUTPUT:    a string response
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <figure class="figure">
-<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-12-output-1.svg" class="img-fluid figure-img" alt="Flowchart of ELIZA's pattern matching: take the user input, lowercase it, then for each rule check whether its trigger appears in the input; if it does, return that rule's response, otherwise try the next rule, and return a default response if no rule matches."></p>
+<p><img src="COMP1150_NB01_WhatIsComputing_files/figure-html/cell-15-output-1.svg" class="img-fluid figure-img" alt="Flowchart of ELIZA's pattern matching: take the user input, lowercase it, then for each rule check whether its trigger appears in the input; if it does, return that rule's response, otherwise try the next rule, and return a default response if no rule matches."></p>
 </figure>
 </div>
 </div>
